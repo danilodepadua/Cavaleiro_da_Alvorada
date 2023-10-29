@@ -22,7 +22,7 @@ public class SimpleGameApp extends GameApplication {
 
     private Entity player;
     private final int speed = 100;
-    private Vec2 MOVE = new Vec2();
+    private Vec2 MOVE = new Vec2(); //Vector2 que irá controlar a velocidade do player
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -34,15 +34,15 @@ public class SimpleGameApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        PhysicsComponent Fisica = new PhysicsComponent();
-        Fisica.setBodyType(BodyType.DYNAMIC);
-        Fisica.setOnPhysicsInitialized(() -> Fisica.getBody().setGravityScale(0));
+        PhysicsComponent Fisica = new PhysicsComponent(); //Componete de física do player
+        Fisica.setBodyType(BodyType.DYNAMIC); //Alterando o Corpo para Dinamico(afetado pela física)
+        Fisica.setOnPhysicsInitialized(() -> Fisica.getBody().setGravityScale(0)); //Tirando o efeito da gravidade
         FixtureDef fd = new FixtureDef();
         fd.setDensity(0.7f);
         fd.setRestitution(0.3f);
         Fisica.setFixtureDef(fd);
 
-        PhysicsComponent FisicaInimigo = new PhysicsComponent();
+        PhysicsComponent FisicaInimigo = new PhysicsComponent(); //Componete de física do inimigo
         FixtureDef fdd = new FixtureDef();
         fdd.setDensity(0.7f);
         fdd.setRestitution(0.3f);
@@ -51,24 +51,24 @@ public class SimpleGameApp extends GameApplication {
                 .type(EntityTypes.Player)
                 .at(100, 100)
                 .viewWithBBox(new Rectangle(40, 40, Color.BLUE))
-                .collidable()
-                .with(Fisica)
+                .collidable() //Adicionando colisão
+                .with(Fisica) //Adicionando o componente de física
                 .buildAndAttach();
         Entity enimy = entityBuilder()
                 .type(EntityTypes.Inimigo)
                 .at(100, 300)
                 .viewWithBBox(new Rectangle(50, 50, Color.RED))
-                .collidable()
-                .with(FisicaInimigo)
+                .collidable() // Adicionando colisão
+                .with(FisicaInimigo) //Adicionando o componente de física
                 .buildAndAttach();
 
-        getGameScene().getViewport().setBounds(-500,-500,500, 500);
-        getGameScene().getViewport().bindToEntity(player,400, 300);
+        getGameScene().getViewport().setBounds(-500,-500,500, 500); // Posições maximas e minimas da câmera
+        getGameScene().getViewport().bindToEntity(player,400, 300); // Colocando para a camera seguir o player e sentralizar ele na tela
     }
 
     @Override
     protected void initPhysics() {
-
+        //Adicionando eventos de colisão
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.Player, EntityTypes.Inimigo) {
             @Override
             protected void onCollisionBegin(Entity a, Entity b) {
@@ -80,13 +80,14 @@ public class SimpleGameApp extends GameApplication {
 
     @Override
     protected void onUpdate(double tpf) {
-        player.getComponent(PhysicsComponent.class).setLinearVelocity(MOVE.x*speed, MOVE.y*speed);
+        player.getComponent(PhysicsComponent.class).setLinearVelocity(MOVE.x*speed, MOVE.y*speed); //Velocidade do player usando Física
     }
 
     @Override
     protected void initInput() {
         Input input = getInput();
 
+        //Inputs que alteram o MOVE e fazem a mivimentação acontecer
         input.addAction(new UserAction("Move Right") {
             @Override
             protected void onAction() {
