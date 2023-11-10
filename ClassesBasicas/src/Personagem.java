@@ -1,30 +1,20 @@
-public class Personagem {
+import com.almasb.fxgl.texture.AnimatedTexture;
 
-    private int vida;
-    private int ataque;
+abstract class Personagem {
+    private String nome;
+    private int hp;
+    private int dano;
     private int defesa;
 
-    public Personagem() {
+    private AnimatedTexture texture;
 
-        this.vida = 10;
-        this.ataque = 5;
-        this.defesa = 5;
+
+    public Personagem(String nome,  int hp, int dano, int defesa) {
+        this.nome = nome;
+        this.hp = hp;
+        this.dano= dano;
+        this.defesa = defesa;
     }
-
-
-    public int getVida() {
-        return vida;
-    }
-
-    public int getAtaque() {
-        return ataque;
-    }
-
-    public int getDefesa() {
-        return defesa;
-    }
-
-    protected void setVida(int novaVida) {
-        this.vida = novaVida;
-    }
+    
+    
 }
