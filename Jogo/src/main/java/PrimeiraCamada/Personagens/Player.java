@@ -4,10 +4,14 @@ public class Player extends Personagem{
     private int speed;
     private boolean vivo;
     private Inventario inventario;
+    public static Player player;
 
     public Player(String nome, int hp, int dano, int defesa) {
-        super(nome, hp, dano, defesa);
-        this.inventario = inventario;
+        if(Player.player == null){
+            Player.player = this;
+            Player.player.setStats(nome, hp, dano, defesa);
+            this.inventario = new Inventario();
+        }
     }
 
     public int getSpeed() {

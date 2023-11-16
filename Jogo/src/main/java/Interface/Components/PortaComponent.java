@@ -1,5 +1,7 @@
 package Interface.Components;
 
+import Interface.GameMap;
+import PrimeiraCamada.Personagens.Player;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.scene.input.MouseButton;
 
@@ -27,6 +29,7 @@ public class PortaComponent extends Component {
             if (e.getButton() == MouseButton.PRIMARY) {
 
                 // Obter as coordenadas do jogador
+                GameMap.getPlayer().getComponent(PlayerComponent.class).interact();
                 showAlert(nomeMapa, alerta , positionX, positionY);
                 // Em seguida, chame o método para entrar no portal
             }

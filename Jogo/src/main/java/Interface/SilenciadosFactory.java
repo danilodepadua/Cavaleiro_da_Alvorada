@@ -16,6 +16,7 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -98,11 +99,10 @@ public class SilenciadosFactory implements EntityFactory {
         Entity player = entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .collidable()
-                .bbox(new HitBox(BoundingShape.box(32, 32)))
+                .bbox(new HitBox(new Point2D(24,48),BoundingShape.box(16, 16)))
                 .with(physics)
                 .with(new PlayerComponent())
                 .buildAndAttach();
-
         return player;
     }
 
