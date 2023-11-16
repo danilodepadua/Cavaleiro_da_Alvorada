@@ -19,7 +19,7 @@ import static com.almasb.fxgl.dsl.FXGL.image;
 
 public class PlayerComponent extends Component {
 
-    private Vec2 MOVE = new Vec2();
+    public Vec2 MOVE = new Vec2();
     private int speed = 150;
     private PhysicsComponent physics;
     private AnimatedTexture texture;
@@ -98,11 +98,13 @@ public class PlayerComponent extends Component {
     }
 
     // Métodos que ajustam o vetor de movimento com base nas teclas pressionadas ou soltas
-    public void moveRight() {
 
+    public void interact(){
+        getInput().clearAll();
+    }
+    public void moveRight() {
         MOVE.x = 1;
     }
-
     public void stopMoveRight() {
         MOVE.x = 0;
     }

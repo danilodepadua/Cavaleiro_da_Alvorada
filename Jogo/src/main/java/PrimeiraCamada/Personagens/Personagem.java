@@ -11,7 +11,7 @@ abstract class Personagem {
     private AnimatedTexture texture;
 
 
-    public Personagem(String nome,  int hp, int dano, int defesa) {
+    public void setStats(String nome,  int hp, int dano, int defesa) {
         this.nome = nome;
         this.hp = hp;
         this.dano= dano;

@@ -5,7 +5,7 @@ public class NPC extends Personagem{
 
 
     public NPC(String nome, int hp, int dano, int defesa) {
-        super(nome, hp, dano, defesa);
+        setStats(nome, hp, dano, defesa);
     }
 
     public Comportamento getComportamento() {

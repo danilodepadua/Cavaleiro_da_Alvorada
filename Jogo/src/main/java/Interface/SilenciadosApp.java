@@ -5,6 +5,7 @@ import Interface.Components.PlayerComponent;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
@@ -19,6 +20,8 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class SilenciadosApp extends GameApplication {
 
     private Text fpsText;
+    private Text VelText;
+    private Vec2 vel;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -33,13 +36,18 @@ public class SilenciadosApp extends GameApplication {
 
     @Override
     protected void initUI() {
-        // Crie o Text para exibir os FPS
+        // Cria os Text
         fpsText = new Text("FPS: 0");
         fpsText.setFont(Font.font(18));
         fpsText.setFill(Color.YELLOW);
 
-        // Adicione o Text à cena do jogo
+        VelText = new Text("Vel: x = ; y =");
+        VelText.setFont(Font.font(18));
+        VelText.setFill(Color.YELLOW);
+
+        // Adiciona os Text à cena do jogo
         addUINode(fpsText, 10, 30);
+        addUINode(VelText, 10, 60);
     }
 
     @Override
@@ -118,7 +126,7 @@ public class SilenciadosApp extends GameApplication {
     @Override
     protected void onUpdate(double tpf) {
         fpsText.setText("FPS: " + Math.round(1.0 / tpf));
-
+        VelText.setText("Vel: x = " + GameMap.getPlayer().getComponent(PlayerComponent.class).MOVE.x + "; y = " + GameMap.getPlayer().getComponent(PlayerComponent.class).MOVE.y);
     }
 
 
