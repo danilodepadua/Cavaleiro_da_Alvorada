@@ -52,6 +52,22 @@ public class SilenciadosFactory implements EntityFactory {
 
         return platform;
     }
+    @Spawns("porta1")
+    public Entity newPortal(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.STATIC);
+
+        int width = data.get("width");
+        int height = data.get("height");
+
+        return entityBuilder(data)
+                .type(EntityType.PORTA)
+                .viewWithBBox(new Rectangle(width, height, Color.TRANSPARENT))
+                .with(new CollidableComponent(true))
+                .with(new PortaComponent("Mansao", 610, 450))
+                .with(physics)
+                .build();
+    }
     @Spawns("arvore")
     public Entity newArvore(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
@@ -64,7 +80,6 @@ public class SilenciadosFactory implements EntityFactory {
                 .type(EntityType.ARVORE)
                 .viewWithBBox(new Rectangle(width, height, Color.TRANSPARENT))
                 .with(new CollidableComponent(true))
-                .with(new PortaComponent("Mansao", "Deseja ir para a Mansão?", 400, 500))
                 .with(physics)
                 .build();
     }
@@ -79,7 +94,6 @@ public class SilenciadosFactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(50, 50, Color.BLUE))
                 .collidable()
                 .with(physics)
-                .with(new PortaComponent("Castelo2", "Deseja ir Ao castelo?", 10, 10))
                 .build();
     }
     @Spawns("cadeira")
@@ -119,7 +133,7 @@ public class SilenciadosFactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(width, height, Color.BLUE))
                 .with(new CollidableComponent(true))
                 .with(physics)
-                .with(new PortaComponent("Castelo2", "Deseja ir Ao castelo?", 10, 10))
+                .with(new PortaComponent("Castelo2", 620, 650))
                 .build();
     }
 

@@ -63,8 +63,6 @@ public class SilenciadosApp extends GameApplication {
 
         //Spawnar um NPC
         Gameplay.currentMap.spawnNPC(10, 10, "NPC");
-        // Certifique-se de que este método seja chamado corretamente
-        Entity objeto = FXGL.spawn("objetoInvisivel", 600, 600);
 
     }
 

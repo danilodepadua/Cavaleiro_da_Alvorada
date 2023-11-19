@@ -1,22 +1,22 @@
 package Interface.Components;
 
+import Interface.EntityType;
 import Interface.GameMap;
 import PrimeiraCamada.Personagens.Player;
+import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.scene.input.MouseButton;
 
 import static Interface.Gameplay.enterPortal;
-import static Interface.Gameplay.showAlert;
 
 public class PortaComponent extends Component {
     private String nomeMapa;
-    private String alerta;
     private double positionX;
     private double positionY;
 
-    public PortaComponent(String nomeMapa, String alerta, double positionX, double positionY) {
+    public PortaComponent(String nomeMapa, double positionX, double positionY) {
         this.nomeMapa = nomeMapa;
-        this.alerta = alerta;
         this.positionX = positionX;
         this.positionY = positionY;
 
@@ -24,16 +24,13 @@ public class PortaComponent extends Component {
 
     @Override
     public void onAdded() {
-        entity.getViewComponent().addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, e -> {
-            // Verificar se o botão do mouse foi clicado
-            if (e.getButton() == MouseButton.PRIMARY) {
+        // Adicione um manipulador de colisões para lidar com colisões entre o jogador e a porta
+        FXGL.onCollisionBegin(EntityType.PLAYER, EntityType.PORTA, this::handleCollision);
+    }
 
-                // Obter as coordenadas do jogador
-                GameMap.getPlayer().getComponent(PlayerComponent.class).interact();
-                showAlert(nomeMapa, alerta , positionX, positionY);
-                // Em seguida, chame o método para entrar no portal
-            }
-        });
+    private void handleCollision(Entity player, Entity porta) {
+        // Chame o método para trocar de mapa diretamente
+        enterPortal(nomeMapa, positionX, positionY);
     }
 
 
