@@ -3,14 +3,11 @@ package Interface;
 import Interface.Components.NPCComponent;
 import Interface.Components.PlayerComponent;
 import Interface.Components.PortaComponent;
-import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.dsl.components.view.ChildViewComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import com.almasb.fxgl.entity.components.TypeComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
@@ -136,6 +133,23 @@ public class SilenciadosFactory implements EntityFactory {
                 .with(new NPCComponent())
                 .buildAndAttach();
 
+    }
+
+    @Spawns("Barril")
+    public Entity newBarril(SpawnData data)
+    {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+        physics.setOnPhysicsInitialized(() -> {physics.getBody().setGravityScale(0);});
+        int width = data.get("width");
+        int height = data.get("height");
+        System.out.println("Barril Criado");
+        return entityBuilder(data)
+                .type(EntityType.Arrastavel)
+                .viewWithBBox(new Rectangle(width,height,Color.RED))
+                .collidable()
+                .with(physics)
+                .build();
     }
 
 }

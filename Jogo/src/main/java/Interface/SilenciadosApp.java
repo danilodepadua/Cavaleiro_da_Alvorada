@@ -7,9 +7,13 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.handlers.CollectibleHandler;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.SpawnData;
+import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -73,7 +77,6 @@ public class SilenciadosApp extends GameApplication {
     @Override
     protected void initInput() {
         Input input = getInput();
-
         input.addAction(new UserAction("Move Right") {
             @Override
             protected void onAction() {
@@ -121,6 +124,13 @@ public class SilenciadosApp extends GameApplication {
                 GameMap.getPlayer().getComponent(PlayerComponent.class).stopMoveDown();
             }
         }, KeyCode.S);
+    }
+
+    @Override
+    protected void initPhysics() {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.Arrastavel){
+
+        });
     }
 
     @Override

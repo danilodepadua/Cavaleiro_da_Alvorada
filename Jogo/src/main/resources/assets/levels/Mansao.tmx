@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="33">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="47">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="grass.png" width="96" height="192"/>
  </tileset>
@@ -198,13 +198,15 @@
   <object id="19" name="arvore" type="arvore" x="1121" y="716.833" width="31.6667" height="19.167"/>
   <object id="20" name="arvore" type="arvore" x="1155.17" y="590.167" width="26.6667" height="17.833"/>
   <object id="32" name="arvore" type="arvore" x="225" y="714.25" width="29.5" height="20.5"/>
+  <object id="46" name="Barril" type="Barril" x="768" y="544.5" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="9" name="platform">
+ <objectgroup color="#fffeff" id="9" name="platform">
   <object id="25" name="platform" type="platform" x="-0.66667" y="746.333" width="1284" height="24"/>
   <object id="26" name="platform" type="platform" x="0.6667" y="446" width="13.3333" height="321.333"/>
   <object id="27" name="platform" type="platform" x="1262" y="449.333" width="18.6667" height="320"/>
   <object id="28" name="platform" type="platform" x="2.66667" y="446.667" width="612" height="4"/>
   <object id="29" name="platform" type="platform" x="661.333" y="434.667" width="617.333" height="9.33333"/>
   <object id="31" name="porta" type="porta" x="608.667" y="335" width="64" height="98.6667"/>
+  <object id="45" name="Barril" type="Barril" x="800.75" y="480.5" width="32" height="32"/>
  </objectgroup>
 </map>
