@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="18">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
-  <image source="grass.png" width="96" height="192"/>
+  <image source="../../../../../../../../../../IdeaProjects/OsSilenciados/src/main/resources/assets/levels/grass.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="castlefloors_outside" tilewidth="32" tileheight="32" tilecount="20" columns="4">
-  <image source="castlefloors_outside.png" width="128" height="160"/>
+  <image source="../../../../../../../../../../IdeaProjects/OsSilenciados/src/main/resources/assets/levels/castlefloors_outside.png" width="128" height="160"/>
  </tileset>
  <tileset firstgid="39" name="castle_outside" tilewidth="32" tileheight="32" tilecount="187" columns="17">
-  <image source="castle_outside.png" width="544" height="352"/>
+  <image source="../../../../../../../../../../IdeaProjects/OsSilenciados/src/main/resources/assets/levels/castle_outside.png" width="544" height="352"/>
  </tileset>
  <layer id="1" name="Base" width="40" height="24">
   <data encoding="csv">
@@ -136,6 +136,6 @@
   <object id="4" name="platform" type="platform" x="350" y="-2" width="93" height="193"/>
  </objectgroup>
  <objectgroup id="15" name="Camada de Objetos 4">
-  <object id="12" name="arvore" type="arvore" x="611.167" y="569.167" width="61" height="87"/>
+  <object id="12" name="porta1" type="porta1" x="612.167" y="571.167" width="61" height="87"/>
  </objectgroup>
 </map>

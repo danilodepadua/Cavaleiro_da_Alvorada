@@ -1,0 +1,1016 @@
+18:11:33.259 [main                     ] DEBUG Logger               - Configured Logger
+18:11:33.289 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Silenciados
+Version: 0.1
+Width: 1280
+Height: 720
+Fullscreen: true
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
+
+18:11:33.733 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+18:11:33.740 [JavaFX Application Thread] INFO  Engine               - FXGL-17.3 (30.03.2023 11.49) on WINDOWS (J:21.0.1 FX:20)
+18:11:33.740 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+18:11:33.741 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 11 version 10.0
+18:11:33.741 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+18:11:33.741 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+18:11:33.741 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+18:11:33.741 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+18:11:33.851 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+18:11:33.905 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 1280.0 x 720.0
+18:11:33.906 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    1280.0 x 720.0
+18:11:33.906 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+18:11:33.907 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+18:11:33.912 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+18:11:34.040 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (14.4000244140625, 37.5999755859375)
+18:11:34.040 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 1280.0 x 720.0
+18:11:34.040 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+18:11:34.040 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 1280.0 x 720.0
+18:11:34.040 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 1294.4000244140625 x 757.5999755859375
+18:11:34.049 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+18:11:34.112 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class Interface.SilenciadosApp
+18:11:34.112 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+18:11:34.113 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/css/fxgl_dark.css
+18:11:34.164 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+18:11:34.197 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+18:11:34.264 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=720, physics.ppm=50,0
+18:11:34.265 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+18:11:34.269 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x720
+18:11:34.282 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+18:11:34.296 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+18:11:34.308 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/particles/smoke.png
+18:11:34.412 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/particles/trace_horizontal.png
+18:11:34.445 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+18:11:34.459 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+18:11:34.464 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\thiag\OneDrive\Documentos\GitHub\RPGemturnosG1\Jogo\system\fxgl.bundle
+18:11:34.475 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+18:11:34.475 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+18:11:34.500 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+18:11:34.501 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+18:11:34.501 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+18:11:34.501 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/languages/english.lang
+18:11:34.520 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0,471 sec
+18:11:34.531 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Right - D
+18:11:34.531 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Left - A
+18:11:34.531 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Up - W
+18:11:34.531 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Down - S
+18:11:34.532 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/fxgl_icon.png
+18:11:34.535 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+18:11:34.540 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+18:11:34.544 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+18:11:34.561 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/thiag/.m2/repository/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/fxgl_default_cursor.png
+18:11:34.563 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+18:11:34.565 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - 1
+18:11:34.565 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Console - 2
+18:11:34.565 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+18:11:34.566 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+18:11:34.566 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+18:11:34.570 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+18:11:34.583 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+18:11:34.584 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+18:11:34.585 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:11:34.596 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLLoadingScene
+18:11:34.601 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLLoadingScene
+18:11:34.601 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+18:11:34.601 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+18:11:34.601 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+18:11:34.601 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+18:11:34.603 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+18:11:34.603 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+18:11:34.655 [FXGL Background Thread 4 ] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:34.680 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:34.680 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:34.683 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:34.685 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.702 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:34.705 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.716 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:34.718 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.737 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:34.740 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.741 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:34.744 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.747 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:34.750 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:34.751 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:34.794 [FXGL Background Thread 4 ] DEBUG GameWorld            - Clearing removable entities
+18:11:34.795 [FXGL Background Thread 4 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@187f47f3
+18:11:34.805 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/textures/dev_player.png
+18:11:34.840 [FXGL Background Thread 4 ] WARN  GameWorld            - Entity is already attached to world
+18:11:34.842 [FXGL Background Thread 4 ] WARN  GameWorld            - Entity is already attached to world
+18:11:34.844 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/textures/male_hurt.png
+18:11:34.850 [FXGL Background Thread 4 ] WARN  GameWorld            - Entity is already attached to world
+18:11:34.853 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 0,250 sec
+18:11:34.871 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:11:34.882 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+18:11:34.887 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+18:11:37.500 [FXGL Background Thread 3 ] DEBUG Engine               - Logging environment variables
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - achievements: []
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeight: 720.0
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeightProperty: ReadOnlyDoubleProperty [value: 720.0]
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidth: 1280.0
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidthProperty: ReadOnlyDoubleProperty [value: 1280.0]
+18:11:37.502 [FXGL Background Thread 3 ] DEBUG Engine               - appIcon: fxgl_icon.png
+18:11:37.503 [FXGL Background Thread 3 ] DEBUG Engine               - applicationMode: DEVELOPER
+18:11:37.503 [FXGL Background Thread 3 ] DEBUG Engine               - cSSList: [fxgl_dark.css]
+18:11:37.503 [FXGL Background Thread 3 ] DEBUG Engine               - collisionDetectionStrategy: BRUTE_FORCE
+18:11:37.503 [FXGL Background Thread 3 ] DEBUG Engine               - configClass: Optional.empty
+18:11:37.503 [FXGL Background Thread 3 ] DEBUG Engine               - credits: []
+18:11:37.518 [FXGL Background Thread 3 ] DEBUG Engine               - defaultCursor: CursorInfo(imageName=fxgl_default_cursor.png, hotspotX=7.0, hotspotY=6.0)
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - devEnableDebugCameraProperty: BooleanProperty [value: false]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - enabledMenuItems: []
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - engineServices: [class com.almasb.fxgl.app.services.FXGLAssetLoaderService, class com.almasb.fxgl.app.FXGLApplication$GameApplicationService, class com.almasb.fxgl.app.services.FXGLDialogService, class com.almasb.fxgl.app.services.IOTaskExecutorService, class com.almasb.fxgl.io.FileSystemService, class com.almasb.fxgl.localization.LocalizationService, class com.almasb.fxgl.app.services.SystemBundleService, class com.almasb.fxgl.profile.SaveLoadService, class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider, class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider, class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementService, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService, class com.almasb.fxgl.net.NetService, class com.almasb.fxgl.app.services.UpdaterService, class com.almasb.fxgl.dev.DevService]
+18:11:37.519 [FXGL Background Thread 3 ] DEBUG Engine               - fontGame: Abel-Regular.ttf
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - fontMono: TerminalLandMono-Regular.otf
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - fontSizeScaleUI: 1.0
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - fontText: Courier-Prime.ttf
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficulty: MEDIUM
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficultyProperty: ObjectProperty [value: MEDIUM]
+18:11:37.520 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolume: 0.5
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolume: 0.5
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - height: 720
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - is3D: false
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isAndroid: false
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isBrowser: false
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isClickFeedbackEnabled: false
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isCloseConfirmation: false
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isDesktop: true
+18:11:37.521 [FXGL Background Thread 3 ] DEBUG Engine               - isDeveloperMenuEnabled: true
+18:11:37.522 [FXGL Background Thread 3 ] DEBUG Engine               - isEmbedded: false
+18:11:37.522 [FXGL Background Thread 3 ] DEBUG Engine               - isEntityPreloadEnabled: true
+18:11:37.522 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalTiledLargeMap: false
+18:11:37.523 [FXGL Background Thread 3 ] DEBUG Engine               - isFileSystemWriteAllowed: true
+18:11:37.527 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenAllowed: true
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenFromStart: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isGameMenuEnabled: true
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isIOS: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isIntroEnabled: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isLinux: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isMac: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isMainMenuEnabled: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isManualResizeEnabled: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isMobile: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isNative: false
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isPauseMusicWhenMinimized: true
+18:11:37.528 [FXGL Background Thread 3 ] DEBUG Engine               - isPreserveResizeRatio: false
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - isProfilingEnabled: false
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - isScaleAffectedOnResize: true
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - isSingleStep: false
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - isUserProfileEnabled: false
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - isWindows: true
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - menuKey: ESCAPE
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - mouseSensitivity: 0.2
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - pixelsPerMeter: 50.0
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - platform: WINDOWS
+18:11:37.529 [FXGL Background Thread 3 ] DEBUG Engine               - prefHeightProperty: ReadOnlyDoubleProperty [value: 720.0]
+18:11:37.530 [FXGL Background Thread 3 ] DEBUG Engine               - prefWidthProperty: ReadOnlyDoubleProperty [value: 1280.0]
+18:11:37.530 [FXGL Background Thread 3 ] DEBUG Engine               - profileDir: profiles/
+18:11:37.530 [FXGL Background Thread 3 ] DEBUG Engine               - profileName: StringProperty [value: DEFAULT]
+18:11:37.530 [FXGL Background Thread 3 ] DEBUG Engine               - randomSeed: -1
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=17.3, build=30.03.2023 11.49)
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - saveFileExt: sav
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - scaledHeightProp$fxgl: DoubleProperty [bound, value: 720.0]
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - scaledWidthProp$fxgl: DoubleProperty [bound, value: 1280.0]
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - sceneFactory: com.almasb.fxgl.app.scene.SceneFactory@6a27b378
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - secondsIn24h: 60
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuBack: menu/back.wav
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuPress: menu/press.wav
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuSelect: menu/select.wav
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - soundNotification: core/notification.wav
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - stageStyle: DECORATED
+18:11:37.531 [FXGL Background Thread 3 ] DEBUG Engine               - supportedLanguages: [ENGLISH, FRENCH, GERMAN, HUNGARIAN, RUSSIAN]
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - ticksPerSecond: -1
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - title: Silenciados
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/release/README.md
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - userAppClass: class Interface.SilenciadosApp
+18:11:37.532 [FXGL Background Thread 3 ] DEBUG Engine               - version: 0.1
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - width: 1280
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - Logging services
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLAssetLoaderService
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.FXGLApplication$GameApplicationService
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLDialogService
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.IOTaskExecutorService
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.io.FileSystemService
+18:11:37.533 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.localization.LocalizationService
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.SystemBundleService
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.profile.SaveLoadService
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.audio.AudioPlayer
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+18:11:37.536 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.achievement.AchievementService
+18:11:37.537 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.cutscene.CutsceneService
+18:11:37.537 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.minigames.MiniGameService
+18:11:37.537 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.net.NetService
+18:11:37.537 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.UpdaterService
+18:11:37.537 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.dev.DevService
+18:11:40.497 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:40.505 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:40.505 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:40.507 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:40.508 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:40.525 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:40.528 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:40.530 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:40.533 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:40.534 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:40.537 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:40.538 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:40.542 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:40.552 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@1a762d27
+18:11:40.555 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:40.555 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.360 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.369 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.369 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.370 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.373 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.377 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.379 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.382 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.384 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.390 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.392 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.393 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.396 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.398 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.400 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.401 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.407 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.408 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@30b6317c
+18:11:46.413 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.413 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.442 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.447 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:46.448 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.448 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:46.451 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.466 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:46.467 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.469 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:46.469 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.470 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:46.472 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.472 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.474 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.477 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@32e569fc
+18:11:46.479 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.480 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.496 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.502 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.502 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.502 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.503 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.507 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.507 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.510 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.511 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.516 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.518 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.518 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.521 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.522 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.526 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.526 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.532 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.534 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@371236f1
+18:11:46.537 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.538 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.561 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.565 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:46.565 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.566 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:46.569 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.583 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:46.587 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.589 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:46.592 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.592 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:46.595 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.596 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.598 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.600 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@761615c6
+18:11:46.602 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.602 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.624 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.630 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.630 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.630 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.631 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.634 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.635 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.637 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.638 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.643 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.643 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.644 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.644 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.646 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.646 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.647 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.653 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.654 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@75064201
+18:11:46.657 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.657 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.683 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.685 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:46.686 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.686 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:46.687 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.694 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:46.695 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.696 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:46.696 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.697 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:46.697 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.697 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.701 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.702 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@12cfbc12
+18:11:46.704 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.704 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.723 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.726 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.727 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.728 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.728 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.732 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.732 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.735 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.735 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.741 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.741 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.742 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.742 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.744 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.744 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.745 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.748 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.749 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@5b612987
+18:11:46.751 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.751 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.780 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.782 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:46.782 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.783 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:46.783 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.794 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:46.795 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.797 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:46.799 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.801 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:46.803 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.803 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.806 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.809 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@73d024b4
+18:11:46.811 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.811 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.835 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.841 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.841 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.841 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.844 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.849 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.852 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.855 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.858 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.865 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.869 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.871 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.873 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.875 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.879 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.879 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.887 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.888 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@5b3dcff
+18:11:46.891 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.891 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.916 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.918 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:46.918 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.918 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:46.921 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.932 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:46.932 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.937 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:46.938 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.939 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:46.939 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.939 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.941 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.944 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@2a90fe5a
+18:11:46.946 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.946 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.966 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:46.969 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:46.969 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:46.970 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:46.970 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.973 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:46.973 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.976 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:46.976 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.982 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:46.982 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.983 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:46.983 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.985 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:46.985 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:46.986 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:46.989 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:46.990 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@16d4ad6b
+18:11:46.992 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:46.992 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.022 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.025 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.025 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.025 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.026 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.033 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.034 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.035 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.036 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.037 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.038 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.040 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.041 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.044 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@4a5e4e31
+18:11:47.046 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.046 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.074 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.076 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.076 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.077 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.078 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.080 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.081 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.082 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.083 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.088 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.088 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.088 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.089 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.089 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.090 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.090 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.093 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.094 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@5df02924
+18:11:47.096 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.096 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.123 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.124 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.124 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.124 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.125 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.132 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.132 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.133 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.133 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.133 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.134 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.134 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.135 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.136 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@1152eacf
+18:11:47.138 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.138 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.163 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.165 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.165 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.165 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.165 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.167 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.167 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.170 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.170 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.175 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.175 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.176 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.176 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.176 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.177 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.177 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.180 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.181 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@25e16596
+18:11:47.182 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.182 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.213 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.214 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.215 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.215 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.215 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.222 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.223 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.224 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.225 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.225 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.226 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.226 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.228 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.230 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@28e06775
+18:11:47.231 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.232 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.262 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.264 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.264 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.264 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.265 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.267 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.267 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.272 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.272 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.278 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.279 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.279 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.279 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.280 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.281 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.281 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.285 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.286 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@7bd1ec4e
+18:11:47.289 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.289 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.330 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.332 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.332 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.332 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.333 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.340 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.340 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.341 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.341 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.341 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.341 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.342 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.343 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.344 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@5ee81bc6
+18:11:47.345 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.345 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.375 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.378 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.378 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.378 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.379 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.382 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.382 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.385 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.385 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.391 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.391 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.392 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.394 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.396 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.399 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.399 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.404 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.405 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@49ba5885
+18:11:47.406 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.406 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.455 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.457 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.457 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.458 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.629 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.639 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.640 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.640 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.642 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.646 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.646 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.646 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.648 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.650 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@43ce8afb
+18:11:47.651 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.651 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.870 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.873 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.873 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.874 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.874 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.878 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.878 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.881 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.881 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.886 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.886 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.886 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.888 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.888 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.889 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.889 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.892 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.892 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@181bb986
+18:11:47.895 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.895 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.931 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.932 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:47.932 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.933 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:47.933 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.939 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:47.940 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.940 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:47.940 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.941 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:47.941 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.941 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.942 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.944 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@263241e0
+18:11:47.945 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.946 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.978 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:47.979 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:47.979 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:47.979 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:47.979 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.982 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:47.982 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.984 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:47.985 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.989 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:47.990 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.990 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:47.990 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.992 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:47.993 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:47.993 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:47.997 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:47.997 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@62e7a364
+18:11:47.999 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:47.999 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.037 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.038 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.039 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.039 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.039 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.045 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.045 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.046 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.046 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.046 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.047 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.047 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.048 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.049 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@5266623c
+18:11:48.050 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.050 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.087 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.089 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.089 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.089 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.092 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.096 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.098 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.101 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.104 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.109 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.112 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.113 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.117 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.118 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.121 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.121 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.124 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.125 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@781caf31
+18:11:48.127 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.127 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.181 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.182 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.182 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.183 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.183 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.190 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.191 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.191 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.191 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.192 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.192 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.192 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.194 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.195 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@788144f7
+18:11:48.196 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.196 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.229 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.231 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.231 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.231 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.232 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.234 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.235 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.237 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.237 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.242 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.242 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.242 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.243 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.243 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.243 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.244 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.246 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.247 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@6003b6bb
+18:11:48.249 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.249 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.296 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.298 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.298 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.298 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.299 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.306 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.306 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.307 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.308 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.308 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.309 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.309 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.310 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.312 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@226f49ec
+18:11:48.314 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.314 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.366 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.369 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.369 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.370 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.370 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.373 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.374 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.378 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.379 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.385 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.386 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.386 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.386 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.387 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.388 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.388 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.393 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.393 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@6b2977dd
+18:11:48.395 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.395 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.452 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.454 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.454 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.456 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.456 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.464 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.464 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.465 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.465 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.465 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.465 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.466 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.467 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.468 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@2b96ce17
+18:11:48.470 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.470 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.516 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.519 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.519 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.520 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.521 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.526 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.527 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.531 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.532 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.538 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.539 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.539 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.540 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.542 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.542 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.543 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.547 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.548 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@1f7efdbe
+18:11:48.550 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.551 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.600 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.601 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.601 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.602 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.602 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.608 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.608 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.608 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.609 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.609 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.609 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.609 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.610 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.611 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@40e3e957
+18:11:48.612 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.612 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.668 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.670 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.670 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.670 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.672 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.673 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.711 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.713 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.715 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.722 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.725 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.725 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.726 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.727 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.733 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.734 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.737 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.738 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@38aeb917
+18:11:48.740 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.741 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.795 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.795 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.795 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.795 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.800 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.807 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.807 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.808 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.810 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.812 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.812 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.813 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.814 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.815 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@4c67985d
+18:11:48.816 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.817 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.853 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.855 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:48.855 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.855 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:48.855 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.858 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:48.858 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.860 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:48.861 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.867 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:48.867 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.868 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:48.868 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.869 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:48.869 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.869 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.872 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.873 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@7547f850
+18:11:48.874 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.875 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.929 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:48.931 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:48.931 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:48.931 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:48.931 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.939 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:48.939 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.940 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:48.940 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.941 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:48.941 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:48.941 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:48.942 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:48.944 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@675617f2
+18:11:48.945 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.945 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:48.999 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.001 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:49.001 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.001 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:49.003 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.006 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:49.007 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.010 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:49.010 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.019 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:49.019 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.020 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:49.020 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.021 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:49.022 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.023 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.027 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.027 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@37db3ba
+18:11:49.029 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.029 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.096 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.098 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:49.098 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.098 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:49.099 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.106 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:49.106 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.107 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:49.107 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.109 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:49.109 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.109 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.111 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.112 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@37d844d3
+18:11:49.114 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.114 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.177 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.179 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:49.179 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.179 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:49.180 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.185 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:49.186 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.190 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:49.191 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.199 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:49.200 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.200 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:49.201 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.203 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:49.204 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.205 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.209 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.210 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@43a091fc
+18:11:49.212 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.212 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.275 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.276 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:49.276 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.276 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:49.276 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.282 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:49.283 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.283 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:49.284 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.284 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:49.284 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.284 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.285 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.286 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@24ea21c3
+18:11:49.287 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.287 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.327 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.328 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Mansao.tmx
+18:11:49.328 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.328 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Chão
+18:11:49.329 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.331 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ChãoGraminhas
+18:11:49.331 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.333 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Árvores
+18:11:49.333 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.338 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer arvore
+18:11:49.338 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.338 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Mansao
+18:11:49.338 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.339 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer ARVORE2.0
+18:11:49.339 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.339 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.342 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.342 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@6c1a82da
+18:11:49.343 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.345 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.394 [JavaFX Application Thread] WARN  TMXLevelLoader       - TiledMap generated from 1.10.2. Supported version: 1.9.0. Some features may not be parsed fully.
+18:11:49.395 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/thiag/OneDrive/Documentos/GitHub/RPGemturnosG1/Jogo/target/classes/assets/levels/Castelo2.tmx
+18:11:49.395 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:11:49.396 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Base
+18:11:49.396 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.402 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 2
+18:11:49.403 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.403 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 3
+18:11:49.404 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.404 [JavaFX Application Thread] DEBUG TilesetLoader        - Loading view for layer Camada de Blocos 4
+18:11:49.404 [JavaFX Application Thread] DEBUG TilesetLoader        - Created buffer with size 1280.0x768.0
+18:11:49.404 [JavaFX Application Thread] DEBUG TMXLevelLoader       - Creating object layer entities
+18:11:49.407 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+18:11:49.408 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@7fede755
+18:11:49.409 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.409 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+18:11:49.451 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: FXGLDefaultMenu
+18:11:49.456 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:11:49.459 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to FXGLDefaultMenu
+18:11:49.461 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> FXGLDefaultMenu
+18:11:53.522 [JavaFX Application Thread] DEBUG Menu                 - fireExit()
+18:11:53.525 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DialogSubScene
+18:11:53.525 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:11:53.526 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLDefaultMenu and adding to DialogSubScene
+18:11:53.528 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLDefaultMenu -> DialogSubScene
+18:11:54.674 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: DialogSubScene
+18:11:54.674 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:11:54.676 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DialogSubScene and adding to FXGLDefaultMenu
+18:11:54.677 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLDefaultMenu <- DialogSubScene
+18:11:54.677 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+18:11:54.677 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+18:11:54.677 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+18:11:54.683 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\thiag\OneDrive\Documentos\GitHub\RPGemturnosG1\Jogo\system\fxgl.bundle
+18:11:54.687 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+18:11:54.687 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+18:11:54.723 [JavaFX Application Thread] DEBUG Logger               - Closing Logger
