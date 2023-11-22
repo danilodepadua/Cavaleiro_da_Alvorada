@@ -1,0 +1,30 @@
+project(":core") {
+    apply plugin: "java-library"
+
+    // Configurações específicas do Java
+    sourceCompatibility = JavaVersion.VERSION_17
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    sourceSets {
+        main {
+            java.srcDirs("src/java/")
+            resources.srcDir("src/resources")
+        }
+        test {
+            java.srcDirs("src/java/")
+        }
+    }
+    eclipse.project.name = appName + "-core"
+
+    dependencies {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation 'org.slf4j:slf4j-api:1.7.32'
+        implementation 'ch.qos.logback:logback-classic:1.2.6'
+        // Adicione outras dependências, se necessário
+    }
+
+    // Herda a propriedade 'appName' do projeto raiz
+    ext {
+        appName = 'SilenciadosApp'
+    }
+}

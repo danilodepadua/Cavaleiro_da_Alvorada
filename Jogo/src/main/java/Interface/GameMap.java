@@ -5,6 +5,10 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityWorldListener;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.components.ViewComponent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 
@@ -36,12 +40,25 @@ public class GameMap implements EntityWorldListener {
         //Dar zoom na camera
         FXGL.getGameScene().getViewport().setZoom(1.2);
 
-        // Após criar o jogador, defina a propriedade Z para garantir a ordem de renderização correta
-        player.getComponent(ViewComponent.class).zIndexProperty().set(1);
-
         // Ajustar manualmente a posição da câmera para garantir que não mostre além dos limites do mapa
         adjustCameraBounds();
+
+        // Fazer spawns específicos de NPCs com base no nome do mapa usando switch
+        switch (mapName) {
+            case "Castelo2":
+                spawnNPC(300, 400);
+                break;
+            case "":
+                // Fazer spawns específicos para outro mapa, se necessário
+                break;
+            // Adicione mais casos conforme necessário
+            default:
+                // Lidar com casos não previstos, se houver
+                break;
+        }
+
     }
+
 
     private void adjustCameraBounds() {
         double mapMinX = 0;
@@ -54,11 +71,8 @@ public class GameMap implements EntityWorldListener {
 
 
 
-    public void spawnNPC(int cellX, int cellY, String npcType) {
-        SpawnData data = new SpawnData(cellX * FXGL.getAppWidth() / 20.0, cellY * FXGL.getAppHeight() / 15.0);
-        data.put("type", npcType);
-
-        FXGL.spawn("NPC", data); // Chama o método de spawn da classe FXGL
+    public void spawnNPC(double x, double y) {
+        FXGL.spawn("NPC", x, y); // Chama o método de spawn da classe FXGL
     }
 
 
