@@ -149,4 +149,21 @@ public class SilenciadosFactory implements EntityFactory {
 
     }
 
+    @Spawns("Barril")
+    public Entity newBarril(SpawnData data)
+    {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+        physics.setOnPhysicsInitialized(() -> {physics.getBody().setGravityScale(0);});
+        int width = data.get("width");
+        int height = data.get("height");
+        System.out.println("Barril Criado");
+        return entityBuilder(data)
+                .type(EntityType.Arrastavel)
+                .viewWithBBox(new Rectangle(width,height,Color.RED))
+                .collidable()
+                .with(physics)
+                .build();
+    }
+
 }
