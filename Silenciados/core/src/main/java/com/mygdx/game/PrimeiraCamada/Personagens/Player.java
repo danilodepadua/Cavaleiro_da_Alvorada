@@ -1,4 +1,4 @@
-package PrimeiraCamada.Personagens;
+package com.mygdx.game.PrimeiraCamada.Personagens;
 
 public class Player extends Personagem{
     private int speed;
@@ -7,7 +7,7 @@ public class Player extends Personagem{
 
     public Player(String nome, int hp, int dano, int defesa) {
         super(nome, hp, dano, defesa);
-        this.inventario = inventario;
+        this.inventario = new Inventario();
     }
 
     public int getSpeed() {

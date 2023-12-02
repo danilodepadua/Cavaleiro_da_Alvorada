@@ -1,4 +1,4 @@
-package PrimeiraCamada.Personagens;
+package com.mygdx.game.PrimeiraCamada.Personagens;
 
 public enum Comportamento {
     AGRESSIVO,

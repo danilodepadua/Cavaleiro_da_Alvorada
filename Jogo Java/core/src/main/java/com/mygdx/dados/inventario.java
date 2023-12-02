@@ -10,7 +10,7 @@ public class inventario {
     public void adiciorItem(item i){
         itens.add(i);
     }
-    public void removerItem(item i) throws ItemInexistenteExcepition {
+    public void removerItem(item i) {
         try{
             itens.remove(i);
         }

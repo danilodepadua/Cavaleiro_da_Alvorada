@@ -1,26 +1,21 @@
-package PrimeiraCamada.Personagens;
+package com.mygdx.game.PrimeiraCamada.Personagens;
+
+import com.mygdx.game.PrimeiraCamada.Exceptions.ItemInexistenteException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Inventario {
+    ArrayList<Item> itens = new ArrayList<Item>();
 
-    private List<Item> itens;
-
-    public Inventario() {
-        this.itens = new ArrayList<>();
+    public void adiciorItem(Item i){
+        itens.add(i);
     }
-
-    public void adicionarItem(Item item) {
-        this.itens.add(item);
+    public void removerItem(Item i) throws ItemInexistenteException {
+        try{
+            itens.remove(i);
+        }
+        catch(Exception e){
+            throw new ItemInexistenteException(i);
+        }
     }
-
-    public void removerItem(Item item) {
-        this.itens.remove(item);
-    }
-
-    public List<Item> getItens() {
-        return this.itens;
-    }
-
 }
