@@ -1,5 +1,6 @@
 package com.mygdx.game.Manejar;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -15,7 +16,6 @@ public class ManejarRecursos {
     private static AssetManager manejarAssets = new AssetManager();
     public final static int TAMANHO_BLOCO = 32;
     private static InternalFileHandleResolver resolverPathArquivo =  new InternalFileHandleResolver();
-
     public ManejarRecursos() {
 
     }

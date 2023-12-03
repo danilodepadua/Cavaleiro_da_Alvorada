@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.Camera.CameraStyles;
+import com.mygdx.game.Entities.PlayerEntity;
 import com.mygdx.game.Manejar.ManejarRecursos;
 import com.mygdx.game.Mapas.FabricaDeMapa;
 import com.mygdx.game.Mapas.ManejarMapa;
@@ -27,7 +29,7 @@ public class TelaJogo extends Tela{
     private float alturaLevel;
     private float fimX;
     private float fimY;
-    protected OrthographicCamera camera;
+    public OrthographicCamera camera;
     public static class VIEWPORT {
         private static float viewportWidth;
         private static float viewportHeight;
@@ -70,6 +72,7 @@ public class TelaJogo extends Tela{
         if (rendezirarMapa == null) {
             rendezirarMapa = new OrthogonalTiledMapRenderer(manejarMapa.getAtualMapaTiled(), Mapa.UNIDADE_ESCALA);
         }
+        gdxGame.engine.addEntity(new PlayerEntity(new Texture("asset/map/VermelhoQuadrado.jpg")));
     }
 
     @Override

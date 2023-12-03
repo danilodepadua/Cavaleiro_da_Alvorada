@@ -1,5 +1,6 @@
 package com.mygdx.game.Telas;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.Components.Systems.MovementSystem;
 import com.mygdx.game.Manejar.ManejarRecursos;
 import com.mygdx.game.Silenciados;
 
@@ -63,6 +65,7 @@ public class Tela implements Screen {
     public void render(float delta) {
         stage.act(delta);
         stage.draw();
+        gdxGame.engine.update(delta);
     }
 
     @Override
