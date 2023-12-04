@@ -65,7 +65,6 @@ public class Tela implements Screen {
     public void render(float delta) {
         stage.act(delta);
         stage.draw();
-        gdxGame.engine.update(delta);
     }
 
     @Override

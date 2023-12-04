@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Camera.CameraStyles;
 import com.mygdx.game.Entities.PlayerEntity;
 import com.mygdx.game.Manejar.ManejarRecursos;
@@ -72,7 +73,7 @@ public class TelaJogo extends Tela{
         if (rendezirarMapa == null) {
             rendezirarMapa = new OrthogonalTiledMapRenderer(manejarMapa.getAtualMapaTiled(), Mapa.UNIDADE_ESCALA);
         }
-        gdxGame.engine.addEntity(new PlayerEntity(new Texture("asset/map/VermelhoQuadrado.jpg")));
+        gdxGame.engine.addEntity(new PlayerEntity(new Texture("asset/map/VermelhoQuadrado.jpg"), new Vector2(10,10)));
     }
 
     @Override
@@ -105,6 +106,7 @@ public class TelaJogo extends Tela{
         }
         // Renderiza o mapa
         rendezirarMapa.render();
+        gdxGame.engine.update(delta);
 
         // Configura as bordas da câmera para evitar que ultrapasse os limites do mapa
         inicioX = camera.viewportWidth / 2;

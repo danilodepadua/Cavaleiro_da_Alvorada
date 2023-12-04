@@ -7,6 +7,8 @@ import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.Components.ComponentMappers;
 import com.mygdx.game.Components.GraphicsComponent;
 
 public class RenderingSystem extends EntitySystem {
@@ -27,6 +29,7 @@ public class RenderingSystem extends EntitySystem {
 
         for (com.badlogic.ashley.core.Entity entity : entities) {
             GraphicsComponent graphics = graphicsMapper.get(entity);
+            graphics.sprite.setPosition(ComponentMappers.Transforms.get(entity).position.x,ComponentMappers.Transforms.get(entity).position.y);
 
             // Renderize o sprite da entidade
             graphics.sprite.draw(batch);
