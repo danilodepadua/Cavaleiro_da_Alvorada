@@ -3,11 +3,17 @@ package com.mygdx.game.Components;
 import com.badlogic.ashley.core.Component;
 
 public class EntityType implements Component {
-    public static final int PLAYER = 0;
-    public static final int ENEMY = 1;
-    public static final int SCENERY = 3;
-    public static final int OTHER = 4;
+    public enum Types{
+        Player,
+        Enimy,
+        Scenery,
+        Other
+    }
 
-    public int type = OTHER;
+    public Types type;
+
+    public EntityType(Types tipo){
+        type = tipo;
+    }
 
 }
