@@ -7,10 +7,13 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Camera.CameraStyles;
 import com.mygdx.game.Components.MovementComponent;
+import com.mygdx.game.Components.Systems.AnimationSystem;
+import com.mygdx.game.Components.Systems.PlayerControllerSystem;
 import com.mygdx.game.Entities.PlayerEntity;
 import com.mygdx.game.Manejar.ManejarRecursos;
 import com.mygdx.game.Mapas.FabricaDeMapa;
@@ -77,8 +80,10 @@ public class TelaJogo extends Tela{
         if (rendezirarMapa == null) {
             rendezirarMapa = new OrthogonalTiledMapRenderer(manejarMapa.getAtualMapaTiled(), Mapa.UNIDADE_ESCALA);
         }
-        Player = new PlayerEntity(new Texture("asset/map/VermelhoQuadrado.jpg"), new Vector2(10,10));
+        Player = new PlayerEntity( new Vector2(10,10));
         gdxGame.engine.addEntity(Player);
+        gdxGame.engine.addSystem(new PlayerControllerSystem());
+        gdxGame.engine.addSystem(new AnimationSystem());
     }
 
     @Override
@@ -121,31 +126,6 @@ public class TelaJogo extends Tela{
         fimX = larguraLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA - inicioX * 2;
         fimY = alturaLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA - inicioY * 2;
         CameraStyles.boundaries(camera, inicioX, inicioY, fimX, fimY);
-
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            Player.getComponent(MovementComponent.class).up = true;
-        }
-        else{
-            Player.getComponent(MovementComponent.class).up = false;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            Player.getComponent(MovementComponent.class).down = true;
-        }
-        else {
-            Player.getComponent(MovementComponent.class).down = false;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            Player.getComponent(MovementComponent.class).left = true;
-        }
-        else{
-            Player.getComponent(MovementComponent.class).left = false;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            Player.getComponent(MovementComponent.class).right = true;
-        }
-        else{
-            Player.getComponent(MovementComponent.class).right = false;
-        }
     }
 
     private static void setupViewport(int width, int height) {
