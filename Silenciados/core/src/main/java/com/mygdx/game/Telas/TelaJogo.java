@@ -80,7 +80,7 @@ public class TelaJogo extends Tela{
         if (rendezirarMapa == null) {
             rendezirarMapa = new OrthogonalTiledMapRenderer(manejarMapa.getAtualMapaTiled(), Mapa.UNIDADE_ESCALA);
         }
-        Player = new PlayerEntity( new Vector2(10,10));
+        Player = new PlayerEntity( new Vector2(10,10), gdxGame.world);
         gdxGame.engine.addEntity(Player);
         gdxGame.engine.addSystem(new PlayerControllerSystem());
         gdxGame.engine.addSystem(new AnimationSystem());
@@ -97,7 +97,7 @@ public class TelaJogo extends Tela{
                 alturaLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA / 2,
                 0f);
         camera.update();
-
+        gdxGame.world.step(delta, 6,2);
         rendezirarMapa.setView(camera);
 
         // Configura o modo de mistura para lidar com transparência

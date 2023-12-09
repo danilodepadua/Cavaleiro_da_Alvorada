@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Components.*;
 import com.mygdx.game.Utilities.AnimationMaker;
 
 public class PlayerEntity extends Entity {
-    public PlayerEntity(Vector2 vec){
+    public PlayerEntity(Vector2 vec, World world){
         Array<Animation<TextureRegion>> Animations = new Array<>();
         Animations.add(AnimationMaker.MakeAnim(0.125f, new Texture("asset/map/Player/_down idle.png"), 2,4, 5));
         Animations.add(AnimationMaker.MakeAnim(0.125f, new Texture("asset/map/Player/_down walk.png"), 2,4, 6));
@@ -23,6 +26,9 @@ public class PlayerEntity extends Entity {
         add(new MovementComponent(100));
         add(new GraphicsComponent());
         add(new AnimationComponent(Animations));
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(2.5f,2.5f);
+        add(new ColliderComponent(10,0,shape, BodyDef.BodyType.DynamicBody,vec, world));
         System.out.println("Fui Criado");
         System.out.println("Posição: x = " + this.getComponent(TransformComponent.class).position.x + ", Y = " + this.getComponent(TransformComponent.class).position.y);
     }

@@ -29,7 +29,7 @@ public class RenderingSystem extends EntitySystem {
 
         for (com.badlogic.ashley.core.Entity entity : entities) {
             GraphicsComponent graphics = graphicsMapper.get(entity);
-            graphics.sprite.setPosition(ComponentMappers.Transforms.get(entity).position.x,ComponentMappers.Transforms.get(entity).position.y);
+            graphics.sprite.setPosition(ComponentMappers.Colliders.get(entity).body.getPosition().x, ComponentMappers.Colliders.get(entity).body.getPosition().y);
             graphics.sprite.setScale(ComponentMappers.Transforms.get(entity).Scale);
             if(graphics.flipY){
                 graphics.sprite.setFlip(true, false);

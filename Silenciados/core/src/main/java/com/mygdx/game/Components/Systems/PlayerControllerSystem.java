@@ -20,31 +20,35 @@ public class PlayerControllerSystem extends EntitySystem {
             if(Player.getComponent(EntityType.class).type == EntityType.Types.Player){
                 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
                     Player.getComponent(MovementComponent.class).up = true;
+                    Player.getComponent(MovementComponent.class).down = false;
                     Player.getComponent(AnimationComponent.class).ChangeAnimation(3);
-                } else {
-                    Player.getComponent(MovementComponent.class).up = false;
                 }
-                if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+                else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                     Player.getComponent(MovementComponent.class).down = true;
+                    Player.getComponent(MovementComponent.class).up = false;
                     Player.getComponent(AnimationComponent.class).ChangeAnimation(1);
-                } else {
+                }
+                else{
+                    Player.getComponent(MovementComponent.class).up = false;
                     Player.getComponent(MovementComponent.class).down = false;
                 }
                 if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                     Player.getComponent(MovementComponent.class).left = true;
+                    Player.getComponent(MovementComponent.class).right = false;
                     Player.getComponent(AnimationComponent.class).ChangeAnimation(5);
                     Player.getComponent(GraphicsComponent.class).flipY = false;
-                } else {
-                    Player.getComponent(MovementComponent.class).left = false;
                 }
-                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+                else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                     Player.getComponent(MovementComponent.class).right = true;
+                    Player.getComponent(MovementComponent.class).left = false;
                     Player.getComponent(AnimationComponent.class).ChangeAnimation(5);
                     Player.getComponent(GraphicsComponent.class).flipY = true;
-                } else {
+                }
+                else {
+                    Player.getComponent(MovementComponent.class).left = false;
                     Player.getComponent(MovementComponent.class).right = false;
                 }
-                if(!Player.getComponent(MovementComponent.class).up && !Player.getComponent(MovementComponent.class).down && !Player.getComponent(MovementComponent.class).right && !Player.getComponent(MovementComponent.class).left){
+                if(!Player.getComponent(MovementComponent.class).up && !Player.getComponent(MovementComponent.class).down &&!Player.getComponent(MovementComponent.class).right && !Player.getComponent(MovementComponent.class).left){
                     int i = Player.getComponent(AnimationComponent.class).currentAnimationIndex;
                     if(i == 1){
                         Player.getComponent(AnimationComponent.class).ChangeAnimation(0);

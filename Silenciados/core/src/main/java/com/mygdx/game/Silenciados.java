@@ -4,6 +4,8 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Components.Systems.MovementSystem;
 import com.mygdx.game.Components.Systems.RenderingSystem;
 import com.mygdx.game.Entities.PlayerEntity;
@@ -15,6 +17,7 @@ public class Silenciados extends Game {
 	private ManejarRecursos manejarRecursos;
 	private TelaJogo telaJogo;
 	public Engine engine = new Engine();
+	public World world = new World(new Vector2(0,0), true);
 
 	@Override
 	public void create () {

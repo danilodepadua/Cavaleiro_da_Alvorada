@@ -5,11 +5,12 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
+import com.mygdx.game.Components.ColliderComponent;
 import com.mygdx.game.Components.MovementComponent;
 import com.mygdx.game.Components.TransformComponent;
 
 public class MovementSystem extends EntitySystem {
-    private final Family family = Family.all(TransformComponent.class, MovementComponent.class).get();
+    private final Family family = Family.all(ColliderComponent.class, MovementComponent.class).get();
 
     @Override
     public void addedToEngine(Engine engine) {
@@ -24,21 +25,27 @@ public class MovementSystem extends EntitySystem {
         ImmutableArray<Entity> entities = getEngine().getEntitiesFor(family);
 
         for (Entity entity : entities) {
-            TransformComponent position = entity.getComponent(TransformComponent.class);
+            ColliderComponent position = entity.getComponent(ColliderComponent.class);
             MovementComponent control = entity.getComponent(MovementComponent.class);
 
             // Atualiza a posição com base nos controles (apenas um exemplo)
             if (control.left) {
-                position.position.x -= deltaTime * control.Speed;
+                position.body.setLinearVelocity(-control.Speed*10,position.body.getLinearVelocity().y);
             }
-            if (control.right) {
-                position.position.x += deltaTime * control.Speed;
+            else if (control.right) {
+                position.body.setLinearVelocity(control.Speed*10,position.body.getLinearVelocity().y);
+            }
+            else {
+                position.body.setLinearVelocity(0,position.body.getLinearVelocity().y);
             }
             if (control.up) {
-                position.position.y += deltaTime * control.Speed;
+                position.body.setLinearVelocity(position.body.getLinearVelocity().x,control.Speed*10);
             }
-            if (control.down) {
-                position.position.y -= deltaTime * control.Speed;
+            else if (control.down) {
+                position.body.setLinearVelocity(position.body.getLinearVelocity().x,-control.Speed*10);
+            }
+            else{
+                position.body.setLinearVelocity(position.body.getLinearVelocity().x,0);
             }
         }
     }
