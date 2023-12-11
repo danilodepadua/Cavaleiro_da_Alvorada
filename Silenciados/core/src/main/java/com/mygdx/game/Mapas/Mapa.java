@@ -11,16 +11,15 @@ import org.slf4j.LoggerFactory;
 
 public abstract class Mapa {
     private static final Logger LOGGER = LoggerFactory.getLogger(Mapa.class); //Para Debug
-    protected static final String COLLISION_LAYER = "MAPA_LAYOUTS_COLISAO";
-    protected static final String SPAWNS_LAYER = "MAPA_LAYOUTS_SPAWNS";
-    protected static final String PORTAL_LAYER = "MAPA_LAYOUTS_PORTAL";
-    protected static final String QUEST_ITEM_SPAWN_LAYER = "MAPA_QUEST_ITEM_SPAWN_LAYER";
+    protected static final String COLLISION_LAYER = "MAP_COLLISION_LAYER";
+    protected static final String SPAWNS_LAYER = "MAP_SPAWNS_LAYER";
+    protected static final String PORTAL_LAYER = "MAP_PORTAL_LAYER";
+    protected static final String QUEST_ITEM_SPAWN_LAYER = "MAP_QUEST_ITEM_SPAWN_LAYER";
     public static final float UNIDADE_ESCALA = 1/32f;
-    protected static final String INICIAR_PLAYER = "INICIAR_PLAYER";
+    protected static final String INICIAR_PLAYER = "PLAYER_START";
     protected Vector2 convertedUnits;
     protected Vector2 playerStartPositionRect;
     protected Vector2 closestPlayerStartPosition;
-    protected FabricaDeMapa.MapType currentMapType;
     protected MapLayer layerColisao = null;
     protected MapLayer layerPortal = null;
     protected MapLayer layerSpawn = null;
@@ -89,7 +88,7 @@ public abstract class Mapa {
     protected void dispose() {
     }
     private void setClosestStartPosition(final Vector2 position) {
-        LOGGER.debug("setClosestStartPosition INPUT: ({},{}) {}", position.x, position.y, currentMapType.toString());
+        LOGGER.debug("setClosestStartPosition INPUT: ({},{}) {}", position.x, position.y, mapTypeAtual.toString());
 
         // Obtém a última posição conhecida neste mapa
         playerStartPositionRect.set(0, 0);
@@ -108,12 +107,12 @@ public abstract class Mapa {
                 ((RectangleMapObject) object).getRectangle().getPosition(playerStartPositionRect);
                 float distance = position.dst2(playerStartPositionRect);
 
-                LOGGER.debug("DISTANCE: {} for {}", distance, currentMapType.toString());
+                LOGGER.debug("DISTANCE: {} for {}", distance, mapTypeAtual.toString());
 
                 if (distance < shortestDistance || shortestDistance == 0) {
                     closestPlayerStartPosition.set(playerStartPositionRect);
                     shortestDistance = distance;
-                    LOGGER.debug("closest START is: ({},{}) {}", closestPlayerStartPosition.x, closestPlayerStartPosition.y, currentMapType.toString());
+                    LOGGER.debug("closest START is: ({},{}) {}", closestPlayerStartPosition.x, closestPlayerStartPosition.y, mapTypeAtual.toString());
                 }
             }
         }
