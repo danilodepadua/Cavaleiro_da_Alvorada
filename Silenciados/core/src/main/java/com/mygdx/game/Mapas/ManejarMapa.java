@@ -43,7 +43,7 @@ public class ManejarMapa {
     }
     public TiledMap getAtualMapaTiled() {
         if (mapaAtual == null) {
-            carregarMapa(FabricaDeMapa.MapType.MANSAO);
+            carregarMapa(FabricaDeMapa.MapType.CASTELO);
         }
         return mapaAtual.getMapaAtual();
     }

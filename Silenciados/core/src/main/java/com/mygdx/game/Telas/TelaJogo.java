@@ -27,7 +27,6 @@ public class TelaJogo extends Tela{
     private static final Logger LOGGER = LoggerFactory.getLogger(TelaJogo.class);
     protected OrthogonalTiledMapRenderer rendezirarMapa = null;
     protected ManejarMapa manejarMapa;
-    private static GameState gameState;
     private Silenciados game;
     // Posições de início e fim do nível, largura e altura do nível
     private float inicioX;
@@ -47,15 +46,7 @@ public class TelaJogo extends Tela{
         private static float physicalHeight;
         private static float aspectRatio;
     }
-    private InputMultiplexer multiplexer;
 
-    public enum GameState {
-        SAVING,
-        LOADING,
-        RUNNING,
-        PAUSED,
-        GAME_OVER
-    }
     public TelaJogo(Silenciados app, ManejarRecursos manejarRecursos){
         // Chama o construtor da classe pai (BaseScreen)
         super(app, manejarRecursos);
