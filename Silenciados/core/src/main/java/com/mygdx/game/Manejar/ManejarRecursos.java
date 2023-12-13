@@ -1,6 +1,5 @@
 package com.mygdx.game.Manejar;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
