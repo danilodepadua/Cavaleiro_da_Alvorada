@@ -1,5 +1,6 @@
 package com.mygdx.game.Mapas;
 
+import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Mapas.MapasMundo.Castelo;
 import com.mygdx.game.Mapas.MapasMundo.InteriorCastelo;
 import com.mygdx.game.Mapas.MapasMundo.Mansao;
@@ -15,34 +16,30 @@ public class FabricaDeMapa {
         CASTELO_INTERIOR
     }
 
-    public static Hashtable<MapType, Mapa> getMapTable() {
-        return mapTable;
-    }
-
-    public static Mapa getMap(MapType mapType) {
+    public static Mapa getMap(MapType mapType, World world) {
         Mapa map = null;
         switch(mapType) {
             case CASTELO:
                 map = mapTable.get(MapType.CASTELO);
                 if (map == null) {
-                    map = new Castelo();
+                    map = new Castelo(world);
                     mapTable.put(MapType.CASTELO, map);
                 }
                 break;
             case MANSAO:
                 map = mapTable.get(MapType.MANSAO);
                 if (map == null) {
-                    map = new Mansao();
+                    map = new Mansao(world);
                     mapTable.put(MapType.MANSAO, map);
                 }
                 break;
             case CASTELO_INTERIOR:
                 map = mapTable.get(MapType.CASTELO_INTERIOR);
                 if (map == null) {
-                    map = new InteriorCastelo();
+                    map = new InteriorCastelo(world);
                     mapTable.put(MapType.CASTELO_INTERIOR, map);
                 }
-
+                break;
             default:
                 break;
         }

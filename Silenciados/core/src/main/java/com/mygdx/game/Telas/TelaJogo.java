@@ -29,17 +29,17 @@ public class TelaJogo extends Tela{
     protected ManejarMapa manejarMapa;
     private Silenciados game;
     // Posições de início e fim do nível, largura e altura do nível
-    private float inicioX;
-    private float inicioY;
-    private float larguraLevel;
-    private float alturaLevel;
-    private float fimX;
-    private float fimY;
+    public float inicioX;
+    public float inicioY;
+    public float larguraLevel;
+    public float alturaLevel;
+    public float fimX;
+    public float fimY;
     private Entity Player;
     public OrthographicCamera camera;
     public static class VIEWPORT {
-        private static float viewportWidth;
-        private static float viewportHeight;
+        static float viewportWidth;
+        static float viewportHeight;
         private static float virtualWidth;
         private static float virtualHeight;
         private static float physicalWidth;
@@ -67,59 +67,15 @@ public class TelaJogo extends Tela{
 
     @Override
     public void show() {
-        // Inicializa o renderizador de mapa se ainda não estiver inicializado
-        if (rendezirarMapa == null) {
-            rendezirarMapa = new OrthogonalTiledMapRenderer(manejarMapa.getAtualMapaTiled(), Mapa.UNIDADE_ESCALA);
-        }
-        Player = new PlayerEntity( new Vector2(10,10), gdxGame.world);
-        gdxGame.engine.addEntity(Player);
-        gdxGame.engine.addSystem(new PlayerControllerSystem());
-        gdxGame.engine.addSystem(new AnimationSystem());
+
     }
 
     @Override
     public void render(float delta) {
-        // Configuração do OpenGL para limpar o buffer de cores
-        Gdx.gl.glClearColor(0, 0, 0, 1); // Cor preta para melhor contraste com o mapa
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // Simplifica a atualização da câmera para centralizar no mapa
-        camera.position.set(larguraLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA / 2,
-                alturaLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA / 2,
-                0f);
-        camera.update();
-        gdxGame.world.step(delta, 6,2);
-        rendezirarMapa.setView(camera);
-
-        // Configura o modo de mistura para lidar com transparência
-        rendezirarMapa.getBatch().enableBlending();
-        rendezirarMapa.getBatch().setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-
-        // Verifica se o mapa foi alterado
-        if (manejarMapa.mapaAlterado()) {
-            // Atualiza o renderizador de mapa e a posição da câmera
-            rendezirarMapa.setMap(manejarMapa.getAtualMapaTiled());
-
-            camera.position.set(manejarMapa.getPlayerStartUnitScaled().x, manejarMapa.getPlayerStartUnitScaled().y, 0f);
-
-            camera.update();
-            manejarMapa.setTrocaMapa(false);
-        }
-        // Renderiza o mapa
-        rendezirarMapa.render();
-        gdxGame.engine.update(delta);
-
-        // Configura as bordas da câmera para evitar que ultrapasse os limites do mapa
-        inicioX = camera.viewportWidth / 2;
-        inicioY = camera.viewportHeight / 2;
-        larguraLevel = manejarMapa.getAtualMapaTiled().getProperties().get("width", Integer.class);
-        alturaLevel = manejarMapa.getAtualMapaTiled().getProperties().get("height", Integer.class);
-        fimX = larguraLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA - inicioX * 2;
-        fimY = alturaLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA - inicioY * 2;
-        CameraStyles.boundaries(camera, inicioX, inicioY, fimX, fimY);
     }
 
-    private static void setupViewport(int width, int height) {
+    static void setupViewport(int width, int height) {
         // Define a largura e altura virtual do viewport
         VIEWPORT.virtualWidth = width;
         VIEWPORT.virtualHeight = height;

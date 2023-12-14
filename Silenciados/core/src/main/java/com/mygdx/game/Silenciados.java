@@ -10,21 +10,21 @@ import com.mygdx.game.Components.Systems.MovementSystem;
 import com.mygdx.game.Components.Systems.RenderingSystem;
 import com.mygdx.game.Entities.PlayerEntity;
 import com.mygdx.game.Manejar.ManejarRecursos;
+import com.mygdx.game.Telas.TelaCastelo;
 import com.mygdx.game.Telas.TelaJogo;
 
 public class Silenciados extends Game {
 	SpriteBatch batch;
 	private ManejarRecursos manejarRecursos;
-	private TelaJogo telaJogo;
+	private TelaCastelo telaJogo;
 	public Engine engine = new Engine();
-	public World world = new World(new Vector2(0,0), true);
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		manejarRecursos = new ManejarRecursos();
 
-		telaJogo = new TelaJogo(this, manejarRecursos);
+		telaJogo = new TelaCastelo(this, manejarRecursos);
 		this.setScreen(telaJogo);
 		engine.addSystem(new MovementSystem());
 		engine.addSystem(new RenderingSystem(batch, telaJogo.camera));
@@ -48,7 +48,8 @@ public class Silenciados extends Game {
 		return telaJogo;
 	}
 
-	public void setTelaJogo(TelaJogo telaJogo) {
+	public void setTelaJogo(TelaCastelo telaJogo) {
 		this.telaJogo = telaJogo;
 	}
+
 }

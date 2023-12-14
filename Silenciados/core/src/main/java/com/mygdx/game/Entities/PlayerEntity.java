@@ -4,12 +4,18 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Components.*;
+import com.mygdx.game.Mapas.FabricaDeMapa;
+import com.mygdx.game.Mapas.ManejarMapa;
 import com.mygdx.game.Utilities.AnimationMaker;
 
 public class PlayerEntity extends Entity {
@@ -30,6 +36,9 @@ public class PlayerEntity extends Entity {
         shape.setAsBox(2.5f,2.5f);
         add(new ColliderComponent(10,0,shape, BodyDef.BodyType.DynamicBody,vec, world));
         System.out.println("Fui Criado");
-        System.out.println("Posição: x = " + this.getComponent(TransformComponent.class).position.x + ", Y = " + this.getComponent(TransformComponent.class).position.y);
+        System.out.println("Posicão: x = " + this.getComponent(TransformComponent.class).position.x + ", Y = " + this.getComponent(TransformComponent.class).position.y);
     }
+
+
+
 }
