@@ -12,22 +12,23 @@ import com.mygdx.game.Entities.PlayerEntity;
 import com.mygdx.game.Manejar.ManejarRecursos;
 import com.mygdx.game.Telas.TelaCastelo;
 import com.mygdx.game.Telas.TelaJogo;
+import com.mygdx.game.Telas.TelaTestes;
 
 public class Silenciados extends Game {
 	SpriteBatch batch;
 	private ManejarRecursos manejarRecursos;
-	private TelaCastelo telaJogo;
-	public Engine engine = new Engine();
+	private TelaTestes telaJogo;
+	//public Engine engine = new Engine();
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		manejarRecursos = new ManejarRecursos();
 
-		telaJogo = new TelaCastelo(this, manejarRecursos);
+		telaJogo = new TelaTestes(batch);
 		this.setScreen(telaJogo);
-		engine.addSystem(new MovementSystem());
-		engine.addSystem(new RenderingSystem(batch, telaJogo.camera));
+		//engine.addSystem(new MovementSystem());
+		//engine.addSystem(new RenderingSystem(batch, telaJogo.camera));
 	}
 	@Override
 	public void dispose () {
@@ -44,12 +45,12 @@ public class Silenciados extends Game {
 		this.batch = batch;
 	}
 
-	public TelaJogo getTelaJogo() {
+	/*public TelaJogo getTelaJogo() {
 		return telaJogo;
 	}
 
 	public void setTelaJogo(TelaCastelo telaJogo) {
 		this.telaJogo = telaJogo;
-	}
+	}*/
 
 }

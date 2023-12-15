@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Components.*;
 import com.mygdx.game.Mapas.FabricaDeMapa;
 import com.mygdx.game.Mapas.ManejarMapa;
+import com.mygdx.game.Mapas.Mapa;
 import com.mygdx.game.Utilities.AnimationMaker;
 
 public class PlayerEntity extends Entity {
@@ -33,7 +34,7 @@ public class PlayerEntity extends Entity {
         add(new GraphicsComponent());
         add(new AnimationComponent(Animations));
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(2.5f,2.5f);
+        shape.setAsBox(16* Mapa.UNIDADE_ESCALA,32*Mapa.UNIDADE_ESCALA);
         add(new ColliderComponent(10,0,shape, BodyDef.BodyType.DynamicBody,vec, world));
         System.out.println("Fui Criado");
         System.out.println("Posicão: x = " + this.getComponent(TransformComponent.class).position.x + ", Y = " + this.getComponent(TransformComponent.class).position.y);

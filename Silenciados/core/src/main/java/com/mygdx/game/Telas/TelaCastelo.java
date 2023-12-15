@@ -2,6 +2,7 @@ package com.mygdx.game.Telas;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapObject;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Camera.CameraStyles;
 import com.mygdx.game.Components.Systems.AnimationSystem;
@@ -29,7 +31,6 @@ public class TelaCastelo extends TelaJogo{
     private Entity Player;
     private final World world;
     private final TiledMap map;
-
     private final Box2DDebugRenderer worldRenderer;
 
     public TelaCastelo(Silenciados app, ManejarRecursos manejarRecursos) {
@@ -62,7 +63,7 @@ public class TelaCastelo extends TelaJogo{
                 Rectangle rectangle = rectangleObject.getRectangle();
 
                 BodyDef bodyDef = getBodyDef(rectangle.getX() + rectangle.getWidth() / 2f, rectangle.getY() + rectangle.getHeight() / 2f);
-
+                bodyDef.position.set(new Vector2(1, 1));
                 Body body = world.createBody(bodyDef);
                 PolygonShape polygonShape = new PolygonShape();
                 polygonShape.setAsBox(rectangle.getWidth() / 2f, rectangle.getHeight() / 2f);
@@ -90,7 +91,7 @@ public class TelaCastelo extends TelaJogo{
                 PolygonMapObject polygonMapObject = (PolygonMapObject) mapObject;
                 Polygon polygon = polygonMapObject.getPolygon();
 
-                BodyDef bodyDef = getBodyDef(polygon.getX(), polygon.getY());
+                BodyDef bodyDef = getBodyDef(polygon.getX()*Mapa.UNIDADE_ESCALA, polygon.getY()*Mapa.UNIDADE_ESCALA);
 
                 Body body = world.createBody(bodyDef);
                 PolygonShape polygonShape = new PolygonShape();
@@ -119,9 +120,9 @@ public class TelaCastelo extends TelaJogo{
         }
 
         Player = new PlayerEntity(manejarMapa.IniciarPlayer(), manejarMapa.getWorld());
-        gdxGame.engine.addEntity(Player);
-        gdxGame.engine.addSystem(new PlayerControllerSystem());
-        gdxGame.engine.addSystem(new AnimationSystem());
+        //gdxGame.engine.addEntity(Player);
+        //gdxGame.engine.addSystem(new PlayerControllerSystem());
+        //gdxGame.engine.addSystem(new AnimationSystem());
     }
 
     @Override
@@ -134,10 +135,11 @@ public class TelaCastelo extends TelaJogo{
         camera.position.set(larguraLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA / 2,
                 alturaLevel * ManejarRecursos.TAMANHO_BLOCO * Mapa.UNIDADE_ESCALA / 2,
                 0f);
+        worldRenderer.render(world, camera.combined);
+        System.out.println(camera.position);
         camera.update();
         manejarMapa.getWorld().step(delta, 6,2);
         rendezirarMapa.setView(camera);
-
         // Configura o modo de mistura para lidar com transparência
         rendezirarMapa.getBatch().enableBlending();
         rendezirarMapa.getBatch().setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
@@ -154,7 +156,7 @@ public class TelaCastelo extends TelaJogo{
         }
         // Renderiza o mapa
         rendezirarMapa.render();
-        gdxGame.engine.update(delta);
+        //gdxGame.engine.update(delta);
 
         // Configura as bordas da câmera para evitar que ultrapasse os limites do mapa
         inicioX = camera.viewportWidth / 2;

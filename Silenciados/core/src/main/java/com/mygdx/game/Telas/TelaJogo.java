@@ -41,10 +41,10 @@ public class TelaJogo extends Tela{
         static float viewportWidth;
         static float viewportHeight;
         private static float virtualWidth;
-        private static float virtualHeight;
-        private static float physicalWidth;
-        private static float physicalHeight;
-        private static float aspectRatio;
+        static float virtualHeight;
+        static float physicalWidth;
+        static float physicalHeight;
+        static float aspectRatio;
     }
 
     public TelaJogo(Silenciados app, ManejarRecursos manejarRecursos){
