@@ -1,6 +1,8 @@
 package com.daniel.Basicos;
 
-public abstract class Character {
+import javafx.scene.image.Image;
+
+public abstract class Personagem {
     protected int HP = 0;
     protected int MP = 0;
     protected String Name = null;
@@ -9,4 +11,5 @@ public abstract class Character {
     protected int MagicDef = 0;
     protected int Def = 0;
     protected int Inteligence = 0;
+    protected Image image;
 }

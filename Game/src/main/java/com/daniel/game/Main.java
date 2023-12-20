@@ -16,6 +16,7 @@ public class Main extends Application {
         try {
             Scene scene = new Scene(Root.load());
             CurrentStage.setScene(scene);
+
         }
         catch(IOException ignored){
             System.out.println(ignored);
@@ -26,7 +27,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         CurrentStage = stage;
         FXMLLoader root = new FXMLLoader(Main.class.getResource("MainScene.fxml"));
-        Scene scene = new Scene(root.load());
+        Scene scene = new Scene(root.load(),1024, 768);
         stage.setScene(scene);
         stage.setTitle("teste");
         stage.show();

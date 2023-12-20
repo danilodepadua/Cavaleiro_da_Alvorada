@@ -1,4 +1,4 @@
-package com.daniel.controller;
+package com.daniel.ControleInterface;
 
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainController {
 
