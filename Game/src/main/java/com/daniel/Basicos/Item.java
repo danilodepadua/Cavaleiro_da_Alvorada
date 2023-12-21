@@ -1,13 +1,20 @@
 package com.daniel.Basicos;
 
+import javafx.scene.image.Image;
+
 public class Item {
 
     private String nome;
+    private Image imagem;
 
-    public Item(String nome) {
+    public Item(String nome, Image imagem) {
         this.nome = nome;
+        this.imagem = imagem;
     }
 
+    public Image getImage(){
+        return imagem;
+    }
     public String getNome() {
         return nome;
     }

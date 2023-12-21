@@ -65,6 +65,6 @@ public class CityController implements Initializable {
         lblDefesaMagica.setText(""+ player.getMagicDef());
         lblInteligencia.setText(""+ player.getIntelligence());
         LblDefesa.setText(""+ player.getDef());
-
+        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
     }
 }
