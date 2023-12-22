@@ -10,8 +10,14 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    void Iniciar(ActionEvent event) throws IOException {
+    void Iniciar(ActionEvent event){
         System.out.println("Iniciou");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")));
+    }
+    @FXML
+    void Carregar(ActionEvent event){
+        System.out.println("Carregando");
+        Main.saveManager.Carregar();
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
     }
 }

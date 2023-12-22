@@ -4,11 +4,13 @@ import com.daniel.Exceptions.PlayerExistenteException;
 import com.daniel.Repositorios.Inventario;
 import javafx.scene.image.Image;
 
-public class Player extends Personagem {
+import java.io.Serializable;
+
+public class Player extends Personagem implements Serializable {
     private Inventario inventario;
 
     public static Player player;
-    public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity, Image image) throws PlayerExistenteException {
+    public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity) throws PlayerExistenteException {
         if(player != null){
             throw new PlayerExistenteException();
         }
@@ -21,7 +23,6 @@ public class Player extends Personagem {
             this.MagicDef = MagicDEF;
             this.Velocity = Velocity;
             this.Inteligence = Int;
-            this.image = image;
             this.inventario = new Inventario();
             player = this;
         }
@@ -61,9 +62,5 @@ public class Player extends Personagem {
 
     public int getVelocity() {
         return this.Velocity;
-    }
-
-    public Image getImage() {
-        return this.image;
     }
 }

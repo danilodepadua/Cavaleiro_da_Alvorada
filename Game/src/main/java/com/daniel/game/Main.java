@@ -1,5 +1,6 @@
 package com.daniel.game;
 
+import com.daniel.Basicos.SaveManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -10,6 +11,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     static Stage CurrentStage;
+    public static SaveManager saveManager = new SaveManager();
 
 
     public static void ChangeScene(FXMLLoader Root){

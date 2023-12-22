@@ -2,7 +2,9 @@ package com.daniel.Basicos;
 
 import javafx.scene.image.Image;
 
-public abstract class Personagem {
+import java.io.Serializable;
+
+public abstract class Personagem implements Serializable {
     protected int HP = 0;
     protected int currentHP = 0;
     protected int MP = 0;
@@ -13,5 +15,4 @@ public abstract class Personagem {
     protected int MagicDef = 0;
     protected int Def = 0;
     protected int Inteligence = 0;
-    protected Image image;
 }

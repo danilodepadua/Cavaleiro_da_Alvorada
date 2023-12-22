@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.ControleInterface.MainController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.ControleInterface.MainController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="33.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -14,6 +14,6 @@
       </ImageView>
       <Button layoutX="446.0" layoutY="261.0" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Novo Jogo" />
       <Button layoutX="446.0" layoutY="450.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Sair" />
-      <Button layoutX="446.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Opções" />
+      <Button layoutX="446.0" layoutY="355.0" mnemonicParsing="false" onAction="#Carregar" prefHeight="26.0" prefWidth="120.0" text="Carregar" />
    </children>
 </AnchorPane>

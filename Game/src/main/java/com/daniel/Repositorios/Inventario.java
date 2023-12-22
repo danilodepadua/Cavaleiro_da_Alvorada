@@ -2,10 +2,11 @@ package com.daniel.Repositorios;
 
 import com.daniel.Basicos.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventario {
+public class Inventario implements Serializable {
 
     private Item item;
     private List<Item> itens = new ArrayList<>();
