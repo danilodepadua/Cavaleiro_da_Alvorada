@@ -1,6 +1,7 @@
-package com.daniel.Basicos;
+package com.daniel.PrimeiraCamada.Save;
 
-import com.daniel.game.Main;
+
+import com.daniel.PrimeiraCamada.Entidades.Player;
 
 import java.io.*;
 import java.nio.file.Path;

@@ -13,4 +13,10 @@ module com.daniel.game {
     opens com.daniel.PrimeiraCamada to javafx.fxml;
     exports com.daniel.PrimeiraCamada.Itens;
     opens com.daniel.PrimeiraCamada.Itens to javafx.fxml;
+    exports com.daniel.PrimeiraCamada.Save;
+    opens com.daniel.PrimeiraCamada.Save to javafx.fxml;
+    exports com.daniel.PrimeiraCamada.Entidades;
+    opens com.daniel.PrimeiraCamada.Entidades to javafx.fxml;
+    exports com.daniel.PrimeiraCamada.Interfaces;
+    opens com.daniel.PrimeiraCamada.Interfaces to javafx.fxml;
 }

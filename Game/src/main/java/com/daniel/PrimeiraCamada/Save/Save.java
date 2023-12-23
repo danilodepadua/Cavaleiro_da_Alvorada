@@ -1,4 +1,7 @@
-package com.daniel.Basicos;
+package com.daniel.PrimeiraCamada.Save;
+
+
+import com.daniel.PrimeiraCamada.Entidades.Player;
 
 import java.io.Serializable;
 

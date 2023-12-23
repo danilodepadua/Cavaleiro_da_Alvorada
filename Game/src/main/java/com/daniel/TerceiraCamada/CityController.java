@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.daniel.PrimeiraCamada.Player.player;
+import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class CityController implements Initializable {
     @FXML
@@ -68,7 +68,7 @@ public class CityController implements Initializable {
         LabelMP.setText(""+ player.getMP());
         labelVida.setText(""+ player.getHP());
         lblDefesaMagica.setText(""+ player.getMagicDef());
-        lblInteligencia.setText(""+ player.getIntelligence());
+        lblInteligencia.setText(""+ player.getInteligence());
         LblDefesa.setText(""+ player.getDef());
         btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
         btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));

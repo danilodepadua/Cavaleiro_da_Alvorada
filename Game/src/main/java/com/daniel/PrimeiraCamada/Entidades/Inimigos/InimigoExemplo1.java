@@ -1,6 +1,6 @@
-package com.daniel.PrimeiraCamada.Inimigos;
+package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
-import com.daniel.PrimeiraCamada.IFightable;
+import com.daniel.PrimeiraCamada.Interfaces.IFightable;
 import com.daniel.PrimeiraCamada.Personagem;
 
 public class InimigoExemplo1 extends Personagem implements IFightable {

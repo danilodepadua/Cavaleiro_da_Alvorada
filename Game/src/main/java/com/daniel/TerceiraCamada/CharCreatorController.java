@@ -1,6 +1,6 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Player;
+import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;

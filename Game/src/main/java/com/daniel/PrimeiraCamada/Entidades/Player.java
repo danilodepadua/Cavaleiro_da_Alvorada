@@ -1,8 +1,8 @@
-package com.daniel.PrimeiraCamada;
+package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
+import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
-import javafx.scene.image.Image;
 
 import java.io.Serializable;
 
@@ -32,35 +32,4 @@ public class Player extends Personagem implements Serializable {
         return player;
     }
 
-    public String getName() {
-        return this.Name;
-    }
-
-    public int getHP() {
-        return this.HP;
-    }
-
-    public int getMP() {
-        return this.MP;
-    }
-
-    public int getForce() {
-        return this.Force;
-    }
-
-    public int getIntelligence() {
-        return this.Inteligence;
-    }
-
-    public int getDef() {
-        return this.Def;
-    }
-
-    public int getMagicDef() {
-        return this.MagicDef;
-    }
-
-    public int getVelocity() {
-        return this.Velocity;
-    }
 }

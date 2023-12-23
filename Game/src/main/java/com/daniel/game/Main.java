@@ -1,6 +1,6 @@
 package com.daniel.game;
 
-import com.daniel.Basicos.SaveManager;
+import com.daniel.PrimeiraCamada.Save.SaveManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
