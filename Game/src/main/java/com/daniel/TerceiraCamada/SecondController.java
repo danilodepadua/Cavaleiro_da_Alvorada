@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -17,9 +18,9 @@ import java.util.ResourceBundle;
 public class SecondController implements Initializable {
 
     @FXML
-    private ImageView BackGround;
+    private AnchorPane Screen;
     String[] Dialogo = {"Dialogo1", "Dialogo2", "Dialogo3"};
-    Image[] Fundos = {new Image(Main.class.getResource("/com.daniel.Images/Predios.jpg").toString()), new Image(Main.class.getResource("/com.daniel.Images/Rua.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Trens.jpg").toString())};
+    Image[] Fundos = { new Image(Main.class.getResource("/com.daniel.Images/Rua.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Predios.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Trens.jpg").toString())};
 
     @FXML
     private Text Texto;
@@ -33,12 +34,29 @@ public class SecondController implements Initializable {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")));
     }
 
+    public void MudarBackGround(Image imagem){
+        Screen.setBackground(new Background(new BackgroundImage(imagem,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundPosition.DEFAULT,
+                        new BackgroundSize(
+                                BackgroundSize.AUTO,
+                                BackgroundSize.AUTO,
+                                false,
+                                false,
+                                true,
+                                true
+                        )
+                )
+                )
+        );
+    }
     private void adicionarCaracteresComAtraso() {
         Timeline timeline = new Timeline();
-        double Time = 0;
+        double Time = 35;
         for (int i = 0; i < Dialogo.length; i++) {
             final int finalI = i;
-            KeyFrame key = new KeyFrame(Duration.millis(Time),event -> BackGround.setImage(Fundos[finalI]));
+            KeyFrame key = new KeyFrame(Duration.millis(Time),event -> MudarBackGround(Fundos[finalI]));
             timeline.getKeyFrames().add(key);
             for (int j = 0; j < Dialogo[i].length(); j++) {
                 final int finalJ = j;
