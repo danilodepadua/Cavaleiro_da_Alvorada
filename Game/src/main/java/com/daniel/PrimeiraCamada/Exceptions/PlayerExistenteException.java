@@ -1,4 +1,4 @@
-package com.daniel.Exceptions;
+package com.daniel.PrimeiraCamada.Exceptions;
 
 public class PlayerExistenteException extends Exception{
     //Implementar

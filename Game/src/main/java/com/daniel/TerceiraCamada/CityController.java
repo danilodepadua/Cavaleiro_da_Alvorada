@@ -1,6 +1,5 @@
-package com.daniel.ControleInterface;
+package com.daniel.TerceiraCamada;
 
-import com.daniel.Basicos.Player;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +12,7 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.daniel.Basicos.Player.player;
+import static com.daniel.PrimeiraCamada.Player.player;
 
 public class CityController implements Initializable {
     @FXML
@@ -36,6 +35,8 @@ public class CityController implements Initializable {
 
     @FXML
     private Button btncacar;
+    @FXML
+    private Button btnInventario;
 
     @FXML
     private Label labelNome;
@@ -65,6 +66,8 @@ public class CityController implements Initializable {
         lblDefesaMagica.setText(""+ player.getMagicDef());
         lblInteligencia.setText(""+ player.getIntelligence());
         LblDefesa.setText(""+ player.getDef());
-        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
+        btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
+        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));
+
     }
 }

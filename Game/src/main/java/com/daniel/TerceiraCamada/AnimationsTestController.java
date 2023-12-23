@@ -1,8 +1,8 @@
-package com.daniel.ControleInterface;
+package com.daniel.TerceiraCamada;
 
-import com.daniel.Repositorios.FireAnimation;
-import com.daniel.Repositorios.IceAnimation;
-import com.daniel.Repositorios.SlashAnimation;
+import com.daniel.SegundaCamada.FireAnimation;
+import com.daniel.SegundaCamada.IceAnimation;
+import com.daniel.SegundaCamada.SlashAnimation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;

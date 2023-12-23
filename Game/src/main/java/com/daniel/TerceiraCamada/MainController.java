@@ -1,4 +1,4 @@
-package com.daniel.ControleInterface;
+package com.daniel.TerceiraCamada;
 
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;

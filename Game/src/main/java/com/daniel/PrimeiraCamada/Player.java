@@ -1,7 +1,7 @@
-package com.daniel.Basicos;
+package com.daniel.PrimeiraCamada;
 
-import com.daniel.Exceptions.PlayerExistenteException;
-import com.daniel.Repositorios.Inventario;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
+import com.daniel.SegundaCamada.Inventario;
 import javafx.scene.image.Image;
 
 public class Player extends Personagem {

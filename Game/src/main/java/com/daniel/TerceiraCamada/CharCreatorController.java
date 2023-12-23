@@ -1,7 +1,7 @@
-package com.daniel.ControleInterface;
+package com.daniel.TerceiraCamada;
 
-import com.daniel.Basicos.Player;
-import com.daniel.Exceptions.PlayerExistenteException;
+import com.daniel.PrimeiraCamada.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +19,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static com.daniel.Basicos.Player.player;
 
 public class CharCreatorController implements Initializable {
 

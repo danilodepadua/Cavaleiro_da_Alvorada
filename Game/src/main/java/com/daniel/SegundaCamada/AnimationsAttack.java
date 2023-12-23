@@ -1,4 +1,4 @@
-package com.daniel.Repositorios;
+package com.daniel.SegundaCamada;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

@@ -1,6 +1,6 @@
-package com.daniel.ControleInterface;
+package com.daniel.TerceiraCamada;
 
-import com.daniel.Basicos.Item;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,4 +1,4 @@
-package com.daniel.Repositorios;
+package com.daniel.SegundaCamada;
 
 import com.daniel.game.Main;
 import javafx.animation.Timeline;

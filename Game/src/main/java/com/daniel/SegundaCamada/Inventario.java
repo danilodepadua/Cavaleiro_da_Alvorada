@@ -1,6 +1,6 @@
-package com.daniel.Repositorios;
+package com.daniel.SegundaCamada;
 
-import com.daniel.Basicos.Item;
+import com.daniel.PrimeiraCamada.Itens.Item;
 
 import java.util.ArrayList;
 import java.util.List;
