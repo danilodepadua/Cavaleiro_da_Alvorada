@@ -86,7 +86,7 @@ public class CharCreatorController implements Initializable {
         int defesaMagica = calcularValorDaBarra(BarraDefesaMagica);
 
         try {
-            Player.player = new Player(vida, 50, forca, 50, nomeDoJogador, defesa, defesaMagica, velocidade, imgBonecos.getImage());
+            Player.player = new Player(vida, 50, forca, 50, nomeDoJogador, defesa, defesaMagica, velocidade);
         } catch (PlayerExistenteException e) {
             e.printStackTrace();
         }

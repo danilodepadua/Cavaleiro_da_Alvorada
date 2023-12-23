@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.ControleInterface.CityController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -43,7 +43,7 @@
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Text>
-            <Button fx:id="btnInventario" layoutX="914.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Inventario" />
+            <Button layoutX="914.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Inventario" />
             <Button layoutX="818.0" layoutY="24.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Status" />
             <Label fx:id="labelNome" layoutX="91.0" layoutY="9.0" text="Player" textFill="#0090ff">
                <font>
@@ -114,7 +114,7 @@
             </Button>
             <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" mnemonicParsing="false" prefWidth="200.0" text="Loja" />
             <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" mnemonicParsing="false" prefWidth="154.0" text="Caçar" />
-            <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefWidth="200.0" text="Viajar" />
+            <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" onAction="#Salvar" prefWidth="200.0" text="Salvar" />
          </children>
          <opaqueInsets>
             <Insets />

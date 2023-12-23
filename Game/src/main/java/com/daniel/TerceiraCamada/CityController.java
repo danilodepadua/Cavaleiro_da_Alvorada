@@ -55,6 +55,10 @@ public class CityController implements Initializable {
         System.out.println("O nome do player é "+ player.getName());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("AnimationsTest.fxml")));
     }
+    @FXML
+    void Salvar(ActionEvent event){
+        Main.saveManager.Salvar();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
