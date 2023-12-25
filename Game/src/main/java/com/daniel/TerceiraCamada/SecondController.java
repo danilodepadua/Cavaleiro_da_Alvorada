@@ -53,7 +53,7 @@ public class SecondController implements Initializable {
     }
     private void adicionarCaracteresComAtraso() {
         Timeline timeline = new Timeline();
-        double Time = 35;
+        double Time = 50;
         for (int i = 0; i < Dialogo.length; i++) {
             final int finalI = i;
             KeyFrame key = new KeyFrame(Duration.millis(Time),event -> MudarBackGround(Fundos[finalI]));

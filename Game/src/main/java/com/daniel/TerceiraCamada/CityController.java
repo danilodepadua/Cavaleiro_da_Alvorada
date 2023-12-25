@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class CityController implements Initializable {
+    @FXML
+    private AnchorPane Screen;
     @FXML
     private Label lblDefesaMagica;
 
@@ -72,6 +74,17 @@ public class CityController implements Initializable {
         LblDefesa.setText(""+ player.getDef());
         btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
         btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));
-
+        Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundo(),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(
+                        BackgroundSize.AUTO,
+                        BackgroundSize.AUTO,
+                        false,
+                        false,
+                        true,
+                        true
+                ))));
     }
 }
