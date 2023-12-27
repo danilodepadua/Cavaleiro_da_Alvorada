@@ -18,8 +18,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static com.daniel.PrimeiraCamada.Entidades.Player.player;
+
 public class ControllerLoja implements Initializable {
     private ArrayList<Item> itensVenda = new ArrayList<>();
+    private Item itemSelecionado; //Armanezar item clicado
 
     @FXML
     private Button btnComprar;
@@ -81,7 +84,10 @@ public class ControllerLoja implements Initializable {
 
     @FXML
     void onActionComprar(ActionEvent event) {
-
+        if (itemSelecionado != null) {
+            player.getInventario().adicionarItem(itemSelecionado);
+            System.out.println("Item adicionado ao seu inventário");
+        }
     }
 
     @FXML
@@ -91,6 +97,9 @@ public class ControllerLoja implements Initializable {
     }
 
     public void ItemSelecionado(Item i){
+        // Atualize o campo itemSelecionado quando um item for selecionado
+        itemSelecionado = i;
+
         txtNomeItem.setText("Nome: " + i.getNome());
         txtInfoItem.setText("Informações: ");
         PainelInfos.setDisable(false);

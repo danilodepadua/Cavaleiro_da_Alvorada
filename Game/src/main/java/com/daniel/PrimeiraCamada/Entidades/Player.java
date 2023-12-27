@@ -28,6 +28,11 @@ public class Player extends Personagem implements Serializable {
         }
     }
 
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+
     public static Player getPlayer() {
         return player;
     }
