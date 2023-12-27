@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -18,11 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static com.daniel.PrimeiraCamada.Entidades.Player.player;
-
 public class ControllerLoja implements Initializable {
-    private ArrayList<Item> itensVenda = new ArrayList<>();
-    private Item itemSelecionado; //Armanezar item clicado
 
     @FXML
     private Button btnComprar;
@@ -53,9 +50,6 @@ public class ControllerLoja implements Initializable {
         int columns = 2;  // Número de colunas
         int rows = 3;     // Número de linhas
 
-        for(int i = 0; i < 6; i++) {
-            itensVenda.add(new Item("Item teste", new Image(Main.class.getResource("/com.daniel.Images/Fire/Fire1.png").toString())));
-        }
 
         for (int i = 0; i < columns * rows; i++) {
             Button item = new Button();
@@ -64,7 +58,7 @@ public class ControllerLoja implements Initializable {
 
             item.setGraphic(image);
 
-            image.setImage(itensVenda.get(i).getImage());
+            image.setImage(Player.player.inventario.getInventario()[i].getImage());
 
             image.autosize();
 
@@ -78,16 +72,13 @@ public class ControllerLoja implements Initializable {
 
             int finalI = i;
 
-            item.setOnAction(event->ItemSelecionado(itensVenda.get(finalI)));
+            item.setOnAction(event->ItemSelecionado(Player.player.inventario.getInventario()[finalI]));
         }
     }
 
     @FXML
     void onActionComprar(ActionEvent event) {
-        if (itemSelecionado != null) {
-            player.getInventario().adicionarItem(itemSelecionado);
-            System.out.println("Item adicionado ao seu inventário");
-        }
+
     }
 
     @FXML
@@ -97,9 +88,6 @@ public class ControllerLoja implements Initializable {
     }
 
     public void ItemSelecionado(Item i){
-        // Atualize o campo itemSelecionado quando um item for selecionado
-        itemSelecionado = i;
-
         txtNomeItem.setText("Nome: " + i.getNome());
         txtInfoItem.setText("Informações: ");
         PainelInfos.setDisable(false);
