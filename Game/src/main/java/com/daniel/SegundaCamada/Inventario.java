@@ -5,22 +5,41 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Inventario implements Serializable {
 
     private Item item;
-    private List<Item> itens = new ArrayList<>();
+    private Item[] itens= new Item[100];
 
 
     public void adicionarItem(Item item){
-        itens.add(item);
-
+        Integer nullIndex = null;
+        for(int i = 0; i<itens.length; i++){
+            if(itens[i] == null && nullIndex == null){
+                nullIndex = i;
+            }
+            else if(itens[i] != null && Objects.equals(itens[i].getNome(), item.getNome())){
+                itens[i].MaisQuant();
+                nullIndex = null;
+                break;
+            }
+        }
+        if(nullIndex != null) {
+            itens[nullIndex] = item;
+        }
     }
-    public Item getItem() {
-        return item;
+    public void RemoverItem(Item i){
+        for(int j = 0; j< itens.length;j++){
+            if(itens[j] != null && Objects.equals(itens[j].getNome(), i.getNome())){
+                itens[j].MenosQuant();
+                if(itens[j].getQuant() <= 0){
+                    itens[j] = null;
+                }
+            }
+        }
     }
-
-    public List<Item> getItens() {
+    public Item[] getInventario() {
         return itens;
     }
 }

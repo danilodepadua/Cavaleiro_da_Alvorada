@@ -1,14 +1,18 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.game.Main;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -16,18 +20,51 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerInventario implements Initializable {
-    ArrayList<Item> itens = new ArrayList<>();
+
+    @FXML
+    private Text DefesaMagicaPlayer;
+
+    @FXML
+    private Text DefesaPlayer;
+
+    @FXML
+    private Text ForcaPlayer;
 
     @FXML
     private GridPane Grid;
+
+    @FXML
+    private Text HpPlayer;
+
     @FXML
     private ImageView ImagemItem;
+
+    @FXML
+    private ImageView ImgPlayer;
+
+    @FXML
+    private Text InteligenciaPlayer;
+
+    @FXML
+    private Text MpPlayer;
 
     @FXML
     private Text NomeItem;
 
     @FXML
+    private Text NomePlayer;
+
+    @FXML
     private AnchorPane PainelInfos;
+
+    @FXML
+    private Text ResistenciaPlayer;
+
+    @FXML
+    private ScrollPane Scroll;
+
+    @FXML
+    private Text VelocidadePlayer;
 
     @FXML
     private Button botaoAcao;
@@ -38,22 +75,54 @@ public class ControllerInventario implements Initializable {
         botaoAcao.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
+        if(i instanceof IConsumable){
+            botaoAcao.setOnAction(Event -> {((IConsumable) i).Consumir(); Player.player.inventario.RemoverItem(i); AtualizarDados();});
+        }
+    }
+
+    private void AtualizarDados(){
+        VelocidadePlayer.setText("Vel: " + Player.player.getVelocity());
+        ForcaPlayer.setText("Fr: " + Player.player.getForce());
+        HpPlayer.setText("HP: " + Player.player.getCurrentHP() + "/" + Player.player.getHP());
+        MpPlayer.setText("MP: " + Player.player.getCurrentMP() + "/" + Player.player.getMP());
+        InteligenciaPlayer.setText("Int: " + Player.player.getInteligence());
+        ResistenciaPlayer.setText("Res: " + Player.player.getResistencia());
+        DefesaPlayer.setText("Def: " + Player.player.getDef());
+        DefesaMagicaPlayer.setText("DefMag: " + Player.player.getMagicDef());
+        Grid.getChildren().clear();
+        int j =0;
+        for(int i = 0; i< Player.player.inventario.getInventario().length; i++){
+            if(Player.player.inventario.getInventario()[i] != null) {
+                Button item = new Button();
+                ImageView image = new ImageView();
+                image.setImage(Player.player.inventario.getInventario()[i].getImage());
+                Grid.add(item, j % 10, j / 10);
+                item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
+                item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
+                image.setFitWidth(50);
+                image.setPreserveRatio(true);
+                item.setGraphic(image);
+                int finalI = i;
+                item.setOnAction(event -> ItemSelecionado(Player.player.inventario.getInventario()[finalI]));
+                j++;
+            }
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for(int i = 0; i<12; i++){
-            itens.add(new Item("Item teste", new Image(Main.class.getResource("/com.daniel.Images/Fire/Fire1.png").toString())));
+        NomePlayer.setText(Player.player.getName());
+        Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
+        Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
+        RowConstraints row = new RowConstraints();
+        ColumnConstraints col = new ColumnConstraints();
+        col.setPercentWidth(100f/Grid.getColumnCount());
+        row.setPrefHeight(Grid.getColumnConstraints().get(0).getPrefWidth());
+        for(int i = 0; i< Grid.getColumnCount(); i++){
+            Grid.getRowConstraints().set(i,row);
+            Grid.getColumnConstraints().set(i,col);
         }
-        for(int i =0; i< itens.size(); i++){
-            Button item = new Button();
-            ImageView image = new ImageView();
-            item.setGraphic(image);
-            image.setImage(itens.get(i).getImage());
-            image.autosize();
-            Grid.add(item, i%10, (int)i/10);
-            item.setMaxSize(102.2, 102.2);
-            int finalI = i;
-            item.setOnAction(event->ItemSelecionado(itens.get(finalI)));
-        }
+        Grid.setLayoutX(0);
+        Grid.setLayoutY(0);
+        AtualizarDados();
     }
 }

@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerLoja implements Initializable {
-    private ArrayList<Item> itensVenda = new ArrayList<>();
 
     @FXML
     private Button btnComprar;
@@ -50,9 +50,6 @@ public class ControllerLoja implements Initializable {
         int columns = 2;  // Número de colunas
         int rows = 3;     // Número de linhas
 
-        for(int i = 0; i < 6; i++) {
-            itensVenda.add(new Item("Item teste", new Image(Main.class.getResource("/com.daniel.Images/Fire/Fire1.png").toString())));
-        }
 
         for (int i = 0; i < columns * rows; i++) {
             Button item = new Button();
@@ -61,7 +58,7 @@ public class ControllerLoja implements Initializable {
 
             item.setGraphic(image);
 
-            image.setImage(itensVenda.get(i).getImage());
+            image.setImage(Player.player.inventario.getInventario()[i].getImage());
 
             image.autosize();
 
@@ -75,7 +72,7 @@ public class ControllerLoja implements Initializable {
 
             int finalI = i;
 
-            item.setOnAction(event->ItemSelecionado(itensVenda.get(finalI)));
+            item.setOnAction(event->ItemSelecionado(Player.player.inventario.getInventario()[finalI]));
         }
     }
 
