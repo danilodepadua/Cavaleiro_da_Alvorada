@@ -5,8 +5,10 @@ import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.game.Main;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -21,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class ControllerInventario implements Initializable {
 
+    @FXML
+    private Button btnVoltar;
     @FXML
     private Text DefesaMagicaPlayer;
 
@@ -124,5 +128,11 @@ public class ControllerInventario implements Initializable {
         Grid.setLayoutX(0);
         Grid.setLayoutY(0);
         AtualizarDados();
+    }
+
+    @FXML
+    void onClickVoltar(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+
     }
 }

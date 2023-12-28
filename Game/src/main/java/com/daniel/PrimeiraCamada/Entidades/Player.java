@@ -32,10 +32,7 @@ public class Player extends Personagem implements Serializable {
             this.currentMP = this.MP-(this.MP/2);
             this.inventario = new Inventario();
             this.coins = coins;
-            for(int i=0; i<5;i++) {
-                this.inventario.adicionarItem(new PocaoCura());
-                this.inventario.adicionarItem(new PocaoMp());
-            }
+
             player = this;
         }
     }
