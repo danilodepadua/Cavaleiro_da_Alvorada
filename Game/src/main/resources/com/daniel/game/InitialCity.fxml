@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
+<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane fx:id="pane1" cache="true" focusTraversable="true" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
-               <font>
-                  <Font name="Bell MT" size="26.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LV: 1" wrappingWidth="67.1708984375" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0">
-               <font>
-                  <Font name="Bell MT" size="26.0" />
-               </font>
-            </Text>
+            <Pane fx:id="pane1" cache="true" focusTraversable="true" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text fill="WHITE" layoutX="11.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LV: 1" wrappingWidth="67.1708984375">
+                     <font>
+                        <Font name="Bell MT" size="26.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="8.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                     <font>
+                        <Font name="Bell MT" size="26.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="labelNome" layoutX="85.0" layoutY="12.0" text="Player" textFill="#0090ff">
+                     <font>
+                        <Font name="Bell MT" size="26.0" />
+                     </font>
+                  </Label>
+                  <Text fill="WHITE" layoutX="11.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinheiro:">
+                     <font>
+                        <Font name="Bell MT" size="26.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="lblDinheiro" layoutX="120.0" layoutY="71.0" text="Label" textFill="#ffee00">
+                     <font>
+                        <Font name="Bell MT" size="26.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
             <Text fill="WHITE" layoutX="224.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida:" wrappingWidth="85.693359375" AnchorPane.leftAnchor="224.0" AnchorPane.topAnchor="12.1259765625">
                <font>
                   <Font name="Bell MT" size="26.0" />
@@ -37,11 +49,6 @@
             </Text>
             <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Inventario" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
             <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Status" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="20.0" />
-            <Label fx:id="labelNome" text="Player" textFill="#0090ff" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="20.0">
-               <font>
-                  <Font name="Bell MT" size="26.0" />
-               </font>
-            </Label>
             <Label fx:id="LabelForca" layoutX="294.0" layoutY="72.0" text="Label" textFill="#0090ff" AnchorPane.leftAnchor="294.0" AnchorPane.topAnchor="72.0">
                <font>
                   <Font name="Bell MT" size="26.0" />
@@ -94,7 +101,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutX="442.0" layoutY="191.0" prefHeight="260.0" prefWidth="154.0" spacing="10.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="191.0">
+      <VBox alignment="TOP_CENTER" layoutX="400.0" layoutY="190.0" prefHeight="260.0" prefWidth="154.0" spacing="10.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="190.0">
          <children>
             <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" prefWidth="200.0" text="Teste Animações">
                <VBox.margin>

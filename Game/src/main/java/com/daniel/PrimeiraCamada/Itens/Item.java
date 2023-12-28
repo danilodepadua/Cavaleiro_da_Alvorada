@@ -4,6 +4,7 @@ import com.daniel.game.Main;
 import javafx.scene.image.Image;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class Item implements Serializable {
 
@@ -24,6 +25,7 @@ public abstract class Item implements Serializable {
     public void MenosQuant(){
         this.quant--;
     }
+    public abstract int getPreco();
 
     public void setNome(String nome) {
         this.nome = nome;

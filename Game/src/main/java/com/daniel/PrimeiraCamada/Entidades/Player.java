@@ -10,9 +10,11 @@ import java.io.Serializable;
 
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
+    private int coins;
+
 
     public static Player player;
-    public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity, int Res) throws PlayerExistenteException {
+    public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity, int Res, int coins) throws PlayerExistenteException {
         if(player != null){
             throw new PlayerExistenteException();
         }
@@ -29,6 +31,7 @@ public class Player extends Personagem implements Serializable {
             this.currentHP = this.HP-(this.HP/2);
             this.currentMP = this.MP-(this.MP/2);
             this.inventario = new Inventario();
+            this.coins = coins;
             for(int i=0; i<5;i++) {
                 this.inventario.adicionarItem(new PocaoCura());
                 this.inventario.adicionarItem(new PocaoMp());
@@ -46,4 +49,17 @@ public class Player extends Personagem implements Serializable {
         return player;
     }
 
+    public int getCoins() {
+        return coins;
+    }
+    public void removerCoins(int quantidade) {
+        if (quantidade > 0 && this.coins >= quantidade) {
+            this.coins -= quantidade;
+        } else {
+            System.out.println("Quantidade inválida ou moedas insuficientes.");
+        }
+    }
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
 }

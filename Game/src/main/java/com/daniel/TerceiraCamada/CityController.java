@@ -19,6 +19,8 @@ public class CityController implements Initializable {
     private AnchorPane Screen;
     @FXML
     private Label lblDefesaMagica;
+    @FXML
+    private Label lblDinheiro;
 
     @FXML
     private Label lblInteligencia;
@@ -72,8 +74,10 @@ public class CityController implements Initializable {
         lblDefesaMagica.setText(""+ player.getMagicDef());
         lblInteligencia.setText(""+ player.getInteligence());
         LblDefesa.setText(""+ player.getDef());
+        lblDinheiro.setText(""+ player.getCoins());
         btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
         btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));
+
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundo(),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
