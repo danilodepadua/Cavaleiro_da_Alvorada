@@ -2,6 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.game.Main;
@@ -53,6 +54,11 @@ public class ControllerInventario implements Initializable {
     private Text MpPlayer;
 
     @FXML
+    private Button btnDesequipar;
+
+    @FXML
+    private Button btnEquipar;
+    @FXML
     private Text NomeItem;
 
     @FXML
@@ -79,10 +85,37 @@ public class ControllerInventario implements Initializable {
         botaoAcao.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
-        if(i instanceof IConsumable){
-            botaoAcao.setOnAction(Event -> {((IConsumable) i).Consumir(); Player.player.inventario.RemoverItem(i); AtualizarDados();});
+
+        if (i instanceof IConsumable) {
+            botaoAcao.setOnAction(Event -> {
+                ((IConsumable) i).Consumir();
+                Player.player.inventario.RemoverItem(i);
+                AtualizarDados();
+            });
+        }
+
+        if (i instanceof IEquipable) {
+            IEquipable equipableItem = (IEquipable) i;
+            btnEquipar.setDisable(equipableItem.isEquipado());
+            btnDesequipar.setDisable(!equipableItem.isEquipado());
+
+            btnEquipar.setOnAction(event -> {
+                equipableItem.equipar();
+                AtualizarDados();
+                btnEquipar.setDisable(true);
+            });
+
+            btnDesequipar.setOnAction(event -> {
+                equipableItem.desequipar();
+                AtualizarDados();
+                btnDesequipar.setDisable(true);
+            });
+        } else {
+            btnEquipar.setDisable(true);
+            btnDesequipar.setDisable(true);
         }
     }
+
 
     private void AtualizarDados(){
         VelocidadePlayer.setText("Vel: " + Player.player.getVelocity());
@@ -112,6 +145,7 @@ public class ControllerInventario implements Initializable {
             }
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NomePlayer.setText(Player.player.getName());
@@ -133,6 +167,6 @@ public class ControllerInventario implements Initializable {
     @FXML
     void onClickVoltar(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
-
     }
+
 }

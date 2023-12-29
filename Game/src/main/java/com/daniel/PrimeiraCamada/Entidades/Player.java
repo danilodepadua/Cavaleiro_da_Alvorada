@@ -1,12 +1,15 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
+import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.PocaoMp;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
@@ -56,6 +59,8 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Quantidade inválida ou moedas insuficientes.");
         }
     }
+
+
     public void setCoins(int coins) {
         this.coins = coins;
     }

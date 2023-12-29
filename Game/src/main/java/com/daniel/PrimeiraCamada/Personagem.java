@@ -64,6 +64,17 @@ public abstract class Personagem implements Serializable {
             this.currentHP = this.HP;
         }
     }
+
+    public void aumentarDefesa(int aumento){
+        this.Def += aumento;
+    }
+    public void diminuirDefesa(int diminuicao) {
+        this.Def -= diminuicao;
+        if (this.Def < 0) {
+            this.Def = 0;
+        }
+    }
+
     public void RecuperarMp(int i){
         this.currentMP += i;
         if(this.currentMP > this.MP){

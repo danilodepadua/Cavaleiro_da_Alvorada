@@ -1,6 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Itens.ArmaduraFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.PocaoMp;
@@ -67,6 +68,8 @@ public class ControllerLoja implements Initializable {
 
         // Criar botão para PocaoMp na coluna 1, linha 0
         criarBotaoItem(new PocaoMp(), 1, 0);
+
+        criarBotaoItem(new ArmaduraFerro(), 0, 1);
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {
@@ -132,12 +135,16 @@ public class ControllerLoja implements Initializable {
             PocaoCura pocaoCura = (PocaoCura) i;
             // Restante do código para poção de cura
             txtInfoItem.setText("Descrição: " + pocaoCura.getDescricao());
-            txtPreco.setText("Preço: " + pocaoCura.getPreco()+ " BitCoins");
+            txtPreco.setText("Preço: " + pocaoCura.getPreco() + " BitCoins");
         } else if (i instanceof PocaoMp) {
             PocaoMp pocaoMp = (PocaoMp) i;
             // Restante do código para poção de MP
             txtInfoItem.setText("Descrição: " + pocaoMp.getDescricao());
-            txtPreco.setText("Preço: " + pocaoMp.getPreco()+ " BitCoins");
+            txtPreco.setText("Preço: " + pocaoMp.getPreco() + " BitCoins");
+        } else if (i instanceof ArmaduraFerro) {
+            ArmaduraFerro armaduraFerro = (ArmaduraFerro) i;
+            txtInfoItem.setText("Descrição: " + armaduraFerro.getDescricao());
+            txtPreco.setText("Preço: " + armaduraFerro.getPreco() + " BitCoins");
         } else {
             txtInfoItem.setText("Descrição: N/A");
             txtPreco.setText("Preço: N/A");
