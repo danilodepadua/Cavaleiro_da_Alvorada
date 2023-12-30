@@ -1,25 +1,21 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Entidades.Player;
-import com.daniel.PrimeiraCamada.Itens.ArmaduraFerro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Itens.PocaoCura;
-import com.daniel.PrimeiraCamada.Itens.PocaoMp;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -69,7 +65,9 @@ public class ControllerLoja implements Initializable {
         // Criar botão para PocaoMp na coluna 1, linha 0
         criarBotaoItem(new PocaoMp(), 1, 0);
 
-        criarBotaoItem(new ArmaduraFerro(), 0, 1);
+        criarBotaoItem(new ArmaduraCouro(), 0, 1);
+
+        criarBotaoItem(new ArmaduraFerro(), 1, 1 );
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {
@@ -141,6 +139,10 @@ public class ControllerLoja implements Initializable {
             // Restante do código para poção de MP
             txtInfoItem.setText("Descrição: " + pocaoMp.getDescricao());
             txtPreco.setText("Preço: " + pocaoMp.getPreco() + " BitCoins");
+        } else if (i instanceof ArmaduraCouro) {
+            ArmaduraCouro armaduraCouro = (ArmaduraCouro) i;
+            txtInfoItem.setText("Descrição: " + armaduraCouro.getDescricao());
+            txtPreco.setText("Preço: " + armaduraCouro.getPreco() + " BitCoins");
         } else if (i instanceof ArmaduraFerro) {
             ArmaduraFerro armaduraFerro = (ArmaduraFerro) i;
             txtInfoItem.setText("Descrição: " + armaduraFerro.getDescricao());

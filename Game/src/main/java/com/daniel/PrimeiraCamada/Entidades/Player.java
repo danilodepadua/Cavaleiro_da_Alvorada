@@ -2,9 +2,7 @@ package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
-import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Itens.PocaoCura;
-import com.daniel.PrimeiraCamada.Itens.PocaoMp;
+import com.daniel.PrimeiraCamada.Itens.*;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -14,8 +12,7 @@ import java.util.List;
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
     private int coins;
-
-
+    private Peitoral peitoral;
     public static Player player;
     public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity, int Res, int coins) throws PlayerExistenteException {
         if(player != null){
@@ -35,6 +32,7 @@ public class Player extends Personagem implements Serializable {
             this.currentMP = this.MP-(this.MP/2);
             this.inventario = new Inventario();
             this.coins = coins;
+            this.peitoral = null; // Inicialmente sem peitoral equipado
 
             player = this;
         }
@@ -59,7 +57,25 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Quantidade inválida ou moedas insuficientes.");
         }
     }
+    public void equiparPeitoral(Peitoral peitoral) {
+        if (this.peitoral == null) {
+            this.peitoral = peitoral;
+        } else {
+            System.out.println("Você já está usando um peitoral. Desequipa o atual antes de equipar outro.");
+        }
+    }
 
+    public void desequiparPeitoral() {
+        if (this.peitoral != null) {
+            this.peitoral = null;
+        } else {
+            System.out.println("Você não está usando nenhum peitoral para desequipar.");
+        }
+    }
+
+    public Peitoral getPeitoral() {
+        return peitoral;
+    }
 
     public void setCoins(int coins) {
         this.coins = coins;

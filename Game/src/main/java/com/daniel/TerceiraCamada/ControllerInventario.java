@@ -1,26 +1,23 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Itens.PocaoCura;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class ControllerInventario implements Initializable {
 
@@ -89,15 +86,16 @@ public class ControllerInventario implements Initializable {
         if (i instanceof IConsumable) {
             botaoAcao.setOnAction(Event -> {
                 ((IConsumable) i).Consumir();
-                Player.player.inventario.RemoverItem(i);
+                player.inventario.RemoverItem(i);
                 AtualizarDados();
             });
         }
 
         if (i instanceof IEquipable) {
             IEquipable equipableItem = (IEquipable) i;
-            btnEquipar.setDisable(equipableItem.isEquipado());
             btnDesequipar.setDisable(!equipableItem.isEquipado());
+
+            btnEquipar.setDisable(player.getPeitoral() != null);
 
             btnEquipar.setOnAction(event -> {
                 equipableItem.equipar();
@@ -114,25 +112,26 @@ public class ControllerInventario implements Initializable {
             btnEquipar.setDisable(true);
             btnDesequipar.setDisable(true);
         }
+
     }
 
 
     private void AtualizarDados(){
-        VelocidadePlayer.setText("Vel: " + Player.player.getVelocity());
-        ForcaPlayer.setText("Fr: " + Player.player.getForce());
-        HpPlayer.setText("HP: " + Player.player.getCurrentHP() + "/" + Player.player.getHP());
-        MpPlayer.setText("MP: " + Player.player.getCurrentMP() + "/" + Player.player.getMP());
-        InteligenciaPlayer.setText("Int: " + Player.player.getInteligence());
-        ResistenciaPlayer.setText("Res: " + Player.player.getResistencia());
-        DefesaPlayer.setText("Def: " + Player.player.getDef());
-        DefesaMagicaPlayer.setText("DefMag: " + Player.player.getMagicDef());
+        VelocidadePlayer.setText("Vel: " + player.getVelocity());
+        ForcaPlayer.setText("Fr: " + player.getForce());
+        HpPlayer.setText("HP: " + player.getCurrentHP() + "/" + player.getHP());
+        MpPlayer.setText("MP: " + player.getCurrentMP() + "/" + player.getMP());
+        InteligenciaPlayer.setText("Int: " + player.getInteligence());
+        ResistenciaPlayer.setText("Res: " + player.getResistencia());
+        DefesaPlayer.setText("Def: " + player.getDef());
+        DefesaMagicaPlayer.setText("DefMag: " + player.getMagicDef());
         Grid.getChildren().clear();
         int j =0;
-        for(int i = 0; i< Player.player.inventario.getInventario().length; i++){
-            if(Player.player.inventario.getInventario()[i] != null) {
+        for(int i = 0; i< player.inventario.getInventario().length; i++){
+            if(player.inventario.getInventario()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
-                image.setImage(Player.player.inventario.getInventario()[i].getImage());
+                image.setImage(player.inventario.getInventario()[i].getImage());
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
@@ -140,7 +139,7 @@ public class ControllerInventario implements Initializable {
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
                 int finalI = i;
-                item.setOnAction(event -> ItemSelecionado(Player.player.inventario.getInventario()[finalI]));
+                item.setOnAction(event -> ItemSelecionado(player.inventario.getInventario()[finalI]));
                 j++;
             }
         }
@@ -148,7 +147,7 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NomePlayer.setText(Player.player.getName());
+        NomePlayer.setText(player.getName());
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();

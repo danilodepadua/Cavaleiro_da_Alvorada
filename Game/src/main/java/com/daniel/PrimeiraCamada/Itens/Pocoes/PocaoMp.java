@@ -1,17 +1,20 @@
-package com.daniel.PrimeiraCamada.Itens;
+package com.daniel.PrimeiraCamada.Itens.Pocoes;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Itens.Item;
 
-public class PocaoCura extends Item implements IConsumable {
+public class PocaoMp extends Item implements IConsumable {
     private int preco;
     private String descricao;
 
-    public PocaoCura() {
-        this.imagem = "/com.daniel.Images/Itens/pt1.png";
-        this.nome = "Poção de cura";
+    public PocaoMp(){
+        this.nome = "Ether";
+        this.imagem = "/com.daniel.Images/Itens/pt2.png";
+        this.preco = 20; // Preço inicial
         this.descricao = "Poção que concede recuperação de vida";
-        this.preco = 50; // Preço inicial
+
+
     }
 
     public int getPreco() {
@@ -22,9 +25,8 @@ public class PocaoCura extends Item implements IConsumable {
         return descricao;
     }
 
-
     @Override
     public void Consumir() {
-        Player.player.RecuperarVida(100);
+        Player.player.RecuperarMp(100);
     }
 }
