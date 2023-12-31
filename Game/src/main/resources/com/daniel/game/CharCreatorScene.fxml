@@ -16,57 +16,49 @@
 
 <AnchorPane minHeight="640.0" minWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CharCreatorController">
    <children>
-      <ProgressBar fx:id="BarraForca" layoutX="435.0" layoutY="146.1171875" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="146.1171875" />
-      <ProgressBar fx:id="BarraVida" layoutX="435.0" layoutY="216.1171875" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="216.1171875" />
-      <ProgressBar fx:id="BarraVel" layoutX="435.0" layoutY="426.1171875" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="426.1171875" />
-      <Button layoutX="645.0" layoutY="146.1171875" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="146.1171875" />
-      <Button layoutX="645.0" layoutY="216.1171875" mnemonicParsing="false" onAction="#MenosVida" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="216.1171875" />
-      <Button layoutX="645.0" layoutY="426.1171875" mnemonicParsing="false" onAction="#MenosVel" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="426.1171875" />
-      <Button layoutX="400.0" layoutY="146.1171875" mnemonicParsing="false" onAction="#MaisForca" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="146.0" />
-      <Button layoutX="400.0" layoutY="216.1171875" mnemonicParsing="false" onAction="#MaisVida" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="216.1171875" />
-      <Button layoutX="400.0" layoutY="426.1171875" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisVel" prefHeight="25.0" text="+" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="426.1171875" />
-      <Text layoutX="410.0" layoutY="101.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Atributos" AnchorPane.topAnchor="80.0">
+      <ProgressBar fx:id="BarraForca" layoutX="430.0" layoutY="206.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="206.0" />
+      <ProgressBar fx:id="BarraRes" layoutX="430.0" layoutY="276.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="276.0" />
+      <Button layoutX="395.0" layoutY="206.0" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="206.0" />
+      <Button layoutX="395.0" layoutY="276.0" mnemonicParsing="false" onAction="#MenosRes" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="276.0" />
+      <Button layoutX="640.0" layoutY="206.0" mnemonicParsing="false" onAction="#MaisForca" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="206.0" />
+      <Button layoutX="640.0" layoutY="276.0" mnemonicParsing="false" onAction="#MaisRes" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="276.0" />
+      <Text layoutX="405.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atributos" AnchorPane.topAnchor="139.8828125">
          <font>
             <Font name="Forte" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="400.0" layoutY="131.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Força" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="115.0">
+      <Text layoutX="395.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Força" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="175.162109375">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="400.0" layoutY="201.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="185.0">
+      <Text layoutX="395.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistecia" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="245.0">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="400.0" layoutY="411.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="395.279296875">
+      <Text layoutX="545.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" AnchorPane.topAnchor="140.162109375">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="550.0" layoutY="101.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" AnchorPane.topAnchor="80.0">
+      <Text fx:id="Pontos" fill="#2c7aff" layoutX="605.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" AnchorPane.topAnchor="140.162109375">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
       </Text>
-      <Text fx:id="Pontos" fill="#2c7aff" layoutX="610.0" layoutY="101.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" AnchorPane.topAnchor="80.0">
+      <ProgressBar fx:id="BarraInt" layoutX="430.0" layoutY="346.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="346.0" />
+      <Text layoutX="395.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="315.0">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="BarraDefesa" layoutX="435.0" layoutY="286.1171875" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="286.1171875" />
-      <Text layoutX="400.0" layoutY="271.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="255.0">
-         <font>
-            <Font name="Forte" size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="400.0" layoutY="286.1171875" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisDEF" prefHeight="25.0" text="+" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="286.1171875" />
-      <Button layoutX="645.0" layoutY="286.1171875" mnemonicParsing="false" onAction="#MenosDEF" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="286.1171875" />
-      <ProgressBar fx:id="BarraDefesaMagica" layoutX="435.0" layoutY="356.1171875" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="356.1171875" />
-      <Button layoutX="400.0" layoutY="356.1171875" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisDefMagica" prefHeight="25.0" text="+" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="356.1171875" />
-      <Button layoutX="645.0" layoutY="356.1171875" mnemonicParsing="false" onAction="#MenosDefMagica" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="356.1171875" />
-      <Text layoutX="400.0" layoutY="341.1171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa Mágica" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="325.279296875">
+      <Button layoutX="640.0" layoutY="346.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisInt" prefHeight="25.0" text="+" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="346.0" />
+      <Button layoutX="395.0" layoutY="346.0" mnemonicParsing="false" onAction="#MenosInt" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="346.0" />
+      <ProgressBar fx:id="BarraVel" layoutX="430.0" layoutY="416.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="416.0" />
+      <Button layoutX="640.0" layoutY="416.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisVel" prefHeight="25.0" text="+" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="416.0" />
+      <Button layoutX="395.0" layoutY="416.0" mnemonicParsing="false" onAction="#MenosVel" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="416.0" />
+      <Text layoutX="395.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="385.0">
          <font>
             <Font name="Forte" size="18.0" />
          </font>
@@ -82,7 +74,7 @@
          </font>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0084ff" height="241.0" layoutX="760.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="215.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0" />
-      <GridPane fx:id="txtForca" layoutX="767.0" layoutY="210.0" prefHeight="241.0" prefWidth="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0">
+      <GridPane fx:id="Grid" layoutX="767.0" layoutY="210.0" prefHeight="241.0" prefWidth="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="170.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -93,6 +85,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Força">
@@ -100,17 +93,17 @@
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vida" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia" GridPane.rowIndex="1">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade" GridPane.rowIndex="5">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa" GridPane.rowIndex="2">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
@@ -125,22 +118,32 @@
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text fx:id="txtVida" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="TxtRes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text fx:id="TxtVelocidade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="TxtDef" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
-            <Text fx:id="TxtDefesa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="TxtInt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>
             </Text>
             <Text fx:id="TxtDefesaMagica" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Forte" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Forte" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="TxtVel" fill="WHITE" layoutX="110.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Forte" size="18.0" />
                </font>

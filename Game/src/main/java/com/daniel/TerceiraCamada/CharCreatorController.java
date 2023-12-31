@@ -1,7 +1,6 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
-import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,19 +25,16 @@ public class CharCreatorController implements Initializable {
     private int indiceAtual;
 
     @FXML
-    private ProgressBar BarraDefesa;
-
-    @FXML
-    private ProgressBar BarraDefesaMagica;
-
-    @FXML
     private ProgressBar BarraForca;
 
     @FXML
-    private ProgressBar BarraVel;
+    private ProgressBar BarraInt;
 
     @FXML
-    private ProgressBar BarraVida;
+    private ProgressBar BarraRes;
+
+    @FXML
+    private ProgressBar BarraVel;
 
     @FXML
     private TextField Nome;
@@ -47,16 +43,19 @@ public class CharCreatorController implements Initializable {
     private Text Pontos;
 
     @FXML
-    private Text TxtForce;
-
-    @FXML
-    private Text TxtDefesa;
+    private Text TxtDef;
 
     @FXML
     private Text TxtDefesaMagica;
 
     @FXML
-    private Text TxtVelocidade;
+    private Text TxtForce;
+
+    @FXML
+    private Text TxtInt;
+
+    @FXML
+    private Text TxtVel;
 
     @FXML
     private Button btnProxSkin;
@@ -65,12 +64,13 @@ public class CharCreatorController implements Initializable {
     private Button btnSkinAnterior;
 
     @FXML
-    private GridPane txtForca;
-    @FXML
     private ImageView imgBonecos;
 
     @FXML
-    private Text txtVida;
+    private GridPane Grid;
+
+    @FXML
+    private Text TxtRes;
 
     @FXML
     void Criar(ActionEvent event) {
@@ -80,15 +80,9 @@ public class CharCreatorController implements Initializable {
         // Configurando as características do jogador
         int forca = calcularValorDaBarra(BarraForca);
         int velocidade = calcularValorDaBarra(BarraVel);
-        int vida = calcularValorDaBarra(BarraVida);
-        int defesa = calcularValorDaBarra(BarraDefesa);
-        int defesaMagica = calcularValorDaBarra(BarraDefesaMagica);
-
-        try {
-            Player.player = new Player(vida, 50, forca, 50, nomeDoJogador, defesa, defesaMagica, velocidade, 50, 100);
-        } catch (PlayerExistenteException e) {
-            e.printStackTrace();
-        }
+        int res = calcularValorDaBarra(BarraRes);
+        int Int = calcularValorDaBarra(BarraInt);
+        Player.CreatePlayer("/com.daniel.Images/Player.png", forca, Int, nomeDoJogador, velocidade, res, 100);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
 
     }
@@ -109,11 +103,11 @@ public class CharCreatorController implements Initializable {
         }
     }
     @FXML
-    void MaisVida(ActionEvent event) {
+    void MaisRes(ActionEvent event) {
         if(pontosDisp>0){
         pontosDisp--;
         Pontos.setText(pontosDisp.toString());
-        BarraVida.setProgress(BarraVida.getProgress() + 0.05);
+        BarraRes.setProgress(BarraRes.getProgress() + 0.05);
         }
     }
     @FXML
@@ -133,62 +127,49 @@ public class CharCreatorController implements Initializable {
         }
     }
     @FXML
-    void MenosVida(ActionEvent event) {
-        if(BarraVida.getProgress() > 0.25) {
+    void MenosRes(ActionEvent event) {
+        if(BarraRes.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraVida.setProgress(BarraVida.getProgress() - 0.05);
+            BarraRes.setProgress(BarraRes.getProgress() - 0.05);
         }
     }
     @FXML
-    void MenosDEF(ActionEvent event) {
-        if(BarraDefesa.getProgress() > 0.25) {
+    void MenosInt(ActionEvent event) {
+        if(BarraInt.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraDefesa.setProgress(BarraDefesa.getProgress() - 0.05);
+            BarraInt.setProgress(BarraInt.getProgress() - 0.05);
         }
     }
     @FXML
-    void MaisDEF(ActionEvent event) {
+    void MaisInt(ActionEvent event) {
         if(pontosDisp>0){
             pontosDisp--;
             Pontos.setText(pontosDisp.toString());
-            BarraDefesa.setProgress(BarraDefesa.getProgress() + 0.05);
-        }
-    }
-    @FXML
-    void MenosDefMagica(ActionEvent event) {
-        if(BarraDefesaMagica.getProgress() > 0.25) {
-            pontosDisp++;
-            Pontos.setText(pontosDisp.toString());
-            BarraDefesaMagica.setProgress(BarraDefesaMagica.getProgress() - 0.05);
-        }
-    }
-    @FXML
-    void MaisDefMagica(ActionEvent event) {
-        if(pontosDisp>0){
-            pontosDisp--;
-            Pontos.setText(pontosDisp.toString());
-            BarraDefesaMagica.setProgress(BarraDefesaMagica.getProgress() + 0.05);
+            BarraInt.setProgress(BarraInt.getProgress() + 0.05);
         }
     }
     private int calcularValorDaBarra(ProgressBar barra) {
-        return (int) (barra.getProgress() * 100);
+        double progresso = barra.getProgress() * 100;
+        return (int) Math.round(progresso);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        configurarOuvinte(BarraDefesa, TxtDefesa);
-        configurarOuvinte(BarraVel, TxtVelocidade);
-        configurarOuvinte(BarraDefesaMagica, TxtDefesaMagica);
+        configurarOuvinte(BarraInt, TxtInt);
+        configurarOuvinte(BarraInt, TxtDefesaMagica);
+        configurarOuvinte(BarraVel, TxtVel);
+        configurarOuvinte(BarraRes, TxtRes);
+        configurarOuvinte(BarraRes, TxtDef);
         configurarOuvinte(BarraForca, TxtForce);
-        configurarOuvinte(BarraVida, txtVida);
 
         // Definir os textos iniciais com os valores iniciais das barras
-        TxtDefesa.setText(String.valueOf(calcularValorDaBarra(BarraDefesa)));
-        TxtVelocidade.setText(String.valueOf(calcularValorDaBarra(BarraVel)));
-        TxtDefesaMagica.setText(String.valueOf(calcularValorDaBarra(BarraDefesaMagica)));
+        TxtDef.setText(String.valueOf(calcularValorDaBarra(BarraRes)));
+        TxtVel.setText(String.valueOf(calcularValorDaBarra(BarraVel)));
+        TxtDefesaMagica.setText(String.valueOf(calcularValorDaBarra(BarraInt)));
         TxtForce.setText(String.valueOf(calcularValorDaBarra(BarraForca)));
-        txtVida.setText(String.valueOf(calcularValorDaBarra(BarraVida)));
+        TxtRes.setText(String.valueOf(calcularValorDaBarra(BarraRes)));
+        TxtInt.setText(String.valueOf(calcularValorDaBarra(BarraInt)));
 
         images = new ArrayList<>();
         images.add(new Image(Main.class.getResource("/com.daniel.Images/Player2.png").toString()));

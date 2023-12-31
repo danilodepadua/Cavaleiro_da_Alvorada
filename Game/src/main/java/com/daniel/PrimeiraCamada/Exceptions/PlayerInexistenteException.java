@@ -1,8 +1,8 @@
 package com.daniel.PrimeiraCamada.Exceptions;
 
-public class PlayerExistenteException extends Exception{
+public class PlayerInexistenteException extends Exception{
     //Implementar
-    public PlayerExistenteException(){
+    public PlayerInexistenteException(){
         super("Player não existe");
     }
 }

@@ -1,10 +1,9 @@
 package com.daniel.PrimeiraCamada.Itens.Armaduras;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Peitoral;
-
-import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class ArmaduraFerro extends Peitoral implements IEquipable {
     private int preco;
@@ -18,21 +17,15 @@ public class ArmaduraFerro extends Peitoral implements IEquipable {
         this.aumentoDefesaFisica = 70;
         this.equipado = false;
     }
-
-    public int getAumentoDefesa() {
-        return this.aumentoDefesaFisica;
-    }
-
     public String getDescricao() {
         return descricao;
     }
 
     @Override
-    public void equipar() {
+    public void equipar() throws PlayerInexistenteException {
         if (!isEquipado()) {
-            if (player.getPeitoral() == null) {
-                player.aumentarDefesa(this.getAumentoDefesa());
-                player.equiparPeitoral(this);
+            if (Player.getPlayer().getPeitoral() == null) {
+                Player.getPlayer().equiparPeitoral(this);
                 this.equipado = true;
             } else {
                 System.out.println("Já existe um peitoral equipado.");
@@ -44,10 +37,9 @@ public class ArmaduraFerro extends Peitoral implements IEquipable {
 
 
     @Override
-    public void desequipar() {
+    public void desequipar() throws PlayerInexistenteException {
         if (isEquipado()) {
-            player.diminuirDefesa(this.getAumentoDefesa());
-            player.desequiparPeitoral();
+            Player.getPlayer().desequiparPeitoral();
             this.equipado = false;
         } else {
             System.out.println("Essa armadura não está equipada.");

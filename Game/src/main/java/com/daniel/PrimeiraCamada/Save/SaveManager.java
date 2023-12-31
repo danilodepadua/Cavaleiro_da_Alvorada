@@ -2,6 +2,7 @@ package com.daniel.PrimeiraCamada.Save;
 
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -21,8 +22,8 @@ public class SaveManager {
             System.out.println("Não foi possivel criar o diretorio");
         }
     }
-    public void Salvar() {
-        Save save = new Save(Player.player);
+    public void Salvar() throws PlayerInexistenteException {
+        Save save = new Save(Player.getPlayer());
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(CaminhoSave.toFile()));
             out.writeObject(save);
@@ -36,12 +37,14 @@ public class SaveManager {
         try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(CaminhoSave.toFile()));
             Save save = (Save) in.readObject();
-            Player.player = save.player;
-            System.out.println(Player.player.getName());
+            Player.setPlayer(save.player);
+            System.out.println(Player.getPlayer().getName());
             System.out.println(save.player.getName());
         }
         catch (IOException | ClassNotFoundException e){
             System.out.println("Falha ao carregar arquivo");
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
         }
     }
 }

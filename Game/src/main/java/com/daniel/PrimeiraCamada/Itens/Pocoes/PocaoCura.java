@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada.Itens.Pocoes;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Itens.Item;
 
@@ -25,7 +26,7 @@ public class PocaoCura extends Item implements IConsumable {
 
 
     @Override
-    public void Consumir() {
-        Player.player.RecuperarVida(100);
+    public void Consumir() throws PlayerInexistenteException {
+        Player.getPlayer().RecuperarVida(100);
     }
 }

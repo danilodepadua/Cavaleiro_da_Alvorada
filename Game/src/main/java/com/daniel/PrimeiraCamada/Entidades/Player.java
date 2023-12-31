@@ -1,40 +1,37 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
-import com.daniel.PrimeiraCamada.Exceptions.PlayerExistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.*;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.nullPeitoral;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
     private int coins;
     private Peitoral peitoral;
-    public static Player player;
-    public Player(int Vida, int MP, int Force, int Int, String Name, int DEF, int MagicDEF, int Velocity, int Res, int coins) throws PlayerExistenteException {
+    private static Player player;
+    private int lvl;
+    private int currentXp;
+    private int currentMp, currentHp;
+    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
+        super(Name, Img, Force, Int, Res, Velocity);
+        this.currentHp = this.getHP();
+        this.currentMp = this.getMP();
+        this.inventario = new Inventario();
+        this.coins = coins;
+        this.peitoral = new nullPeitoral(); // Inicialmente sem peitoral equipado
+        player = this;
+    }
+
+    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
         if(player != null){
-            throw new PlayerExistenteException();
+            return player;
         }
         else{
-            this.HP = Vida;
-            this.MP = MP;
-            this.Force = Force;
-            this.Name = Name;
-            this.Def = DEF;
-            this.MagicDef = MagicDEF;
-            this.Velocity = Velocity;
-            this.Inteligence = Int;
-            this.Resistencia = Res;
-            this.currentHP = this.HP-(this.HP/2);
-            this.currentMP = this.MP-(this.MP/2);
-            this.inventario = new Inventario();
-            this.coins = coins;
-            this.peitoral = null; // Inicialmente sem peitoral equipado
-
-            player = this;
+            return new Player(Img, Force, Int, Name, Velocity, Res, coins);
         }
     }
 
@@ -42,9 +39,23 @@ public class Player extends Personagem implements Serializable {
         return inventario;
     }
 
+    public int getcHP(){
+        return this.currentHp;
+    }
+    public int getcMp(){
+        return this.currentMp;
+    }
 
-    public static Player getPlayer() {
-        return player;
+    public static Player getPlayer() throws PlayerInexistenteException {
+        if(Player.player == null){
+            throw new PlayerInexistenteException();
+        }
+        else {
+            return player;
+        }
+    }
+    public static void setPlayer(Player p){
+        Player.player = p;
     }
 
     public int getCoins() {
@@ -64,7 +75,6 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Você já está usando um peitoral. Desequipa o atual antes de equipar outro.");
         }
     }
-
     public void desequiparPeitoral() {
         if (this.peitoral != null) {
             this.peitoral = null;
@@ -72,12 +82,46 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Você não está usando nenhum peitoral para desequipar.");
         }
     }
+    public int getDefesaF(){
+        return this.Resistencia + this.peitoral.getAumentoDefesaF();
+    }
+    public int getDefesaM(){
+        return this.Inteligence + this.peitoral.getAumentoDefesaM();
+    }
+    public int getAtaqueF(){
+        return Force;
+    }
+    public int getAtaqueM(){
+        return Inteligence;
+    }
 
     public Peitoral getPeitoral() {
         return peitoral;
     }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
+    private boolean VereficarLevelUp(){
+        int i = currentXp /1000*lvl;
+        if(i>lvl){
+            lvl = i;
+            return true;
+        }
+        return false;
+    }
+    public boolean ganharXp(int xp){
+        this.currentXp += xp;
+        return this.VereficarLevelUp();
+    }
+
+    public void RecuperarVida(int i){
+        this.currentHp += i;
+        if(this.currentHp > this.HP){
+            this.currentHp = this.HP;
+        }
+    }
+    public void RecuperarMana(int i){
+        this.currentMp += i;
+        if(this.currentMp > this.MP){
+            this.currentMp = this.MP;
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,8 +13,6 @@ import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class CityController implements Initializable {
     @FXML
@@ -55,28 +55,47 @@ public class CityController implements Initializable {
     private Label LabelMP;
 
     @FXML
-    void Mudar(ActionEvent event) {
-        System.out.println("O nome do player é "+ player.getName());
+    void Mudar(ActionEvent event) throws PlayerInexistenteException {
+        System.out.println("O nome do player é "+ Player.getPlayer().getName());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("AnimationsTest.fxml")));
     }
     @FXML
-    void Salvar(ActionEvent event){
+    void Salvar(ActionEvent event) throws PlayerInexistenteException {
         Main.saveManager.Salvar();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Método chamado automaticamente quando o controlador é inicializado
-        labelNome.setText(player.getName());
-        LabelForca.setText("" + player.getForce());
-        LabelMP.setText(""+ player.getMP());
-        labelVida.setText(""+ player.getHP());
-        lblDefesaMagica.setText(""+ player.getMagicDef());
-        lblInteligencia.setText(""+ player.getInteligence());
-        LblDefesa.setText(""+ player.getDef());
-        lblDinheiro.setText(""+ player.getCoins());
+        System.out.println("1");
+        try {
+            System.out.println("2");
+            System.out.println(Player.getPlayer() != null);
+            // Método chamado automaticamente quando o controlador é inicializado
+            labelNome.setText(Player.getPlayer().getName());
+            System.out.println("nome colocado");
+            LabelForca.setText("" + Player.getPlayer().getForce());
+            System.out.println("força colocada");
+            LabelMP.setText("" + Player.getPlayer().getMP());
+            System.out.println("mp colocado");
+            labelVida.setText("" + Player.getPlayer().getHP());
+            System.out.println("hp colocado");
+            lblDefesaMagica.setText("" + Player.getPlayer().getDefesaM());
+            System.out.println("DefM colocada");
+            lblInteligencia.setText("" + Player.getPlayer().getInteligence());
+            System.out.println("Int colocada");
+            LblDefesa.setText("" + Player.getPlayer().getDefesaF());
+            System.out.println("DefF colocada");
+            lblDinheiro.setText("" + Player.getPlayer().getCoins());
+            System.out.println("ouro colocado");
+            System.out.println("final");
+        }
+        catch (PlayerInexistenteException e){
+            throw new RuntimeException(e);
+        }
         btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
         btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));
+        btncacar.setOnAction(event -> Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"))));
+
 
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundo(),
                 BackgroundRepeat.NO_REPEAT,

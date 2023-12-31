@@ -1,5 +1,7 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -20,8 +22,6 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class ControllerLoja implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
@@ -99,13 +99,13 @@ public class ControllerLoja implements Initializable {
 
 
     @FXML
-    void onClickComprar(ActionEvent event) {
-        if (player != null && itemSelecionado != null) {
+    void onClickComprar(ActionEvent event) throws PlayerInexistenteException {
+        if (Player.getPlayer() != null && itemSelecionado != null) {
             int precoItem = itemSelecionado.getPreco();
-            if (player.getCoins() >= precoItem) {
+            if (Player.getPlayer().getCoins() >= precoItem) {
                 // Realize a compra
-                player.removerCoins(precoItem);
-                player.getInventario().adicionarItem(itemSelecionado);
+                Player.getPlayer().removerCoins(precoItem);
+                Player.getPlayer().getInventario().adicionarItem(itemSelecionado);
 
                 // Atualiza as informações do item após a compra
                 ItemSelecionado(itemSelecionado);

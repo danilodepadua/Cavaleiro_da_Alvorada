@@ -1,5 +1,7 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -16,8 +18,6 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.daniel.PrimeiraCamada.Entidades.Player.player;
 
 public class ControllerInventario implements Initializable {
 
@@ -76,7 +76,7 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Button botaoAcao;
 
-    public void ItemSelecionado(Item i){
+    public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
         botaoAcao.setText("Usar");
@@ -85,9 +85,17 @@ public class ControllerInventario implements Initializable {
 
         if (i instanceof IConsumable) {
             botaoAcao.setOnAction(Event -> {
-                ((IConsumable) i).Consumir();
-                player.inventario.RemoverItem(i);
-                AtualizarDados();
+                try {
+                    ((IConsumable) i).Consumir();
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    Player.getPlayer().inventario.RemoverItem(i);
+                    AtualizarDados();
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
             });
         }
 
@@ -95,17 +103,25 @@ public class ControllerInventario implements Initializable {
             IEquipable equipableItem = (IEquipable) i;
             btnDesequipar.setDisable(!equipableItem.isEquipado());
 
-            btnEquipar.setDisable(player.getPeitoral() != null);
+            btnEquipar.setDisable(Player.getPlayer().getPeitoral() != null);
 
             btnEquipar.setOnAction(event -> {
-                equipableItem.equipar();
-                AtualizarDados();
+                try {
+                    equipableItem.equipar();
+                    AtualizarDados();
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
                 btnEquipar.setDisable(true);
             });
 
             btnDesequipar.setOnAction(event -> {
-                equipableItem.desequipar();
-                AtualizarDados();
+                try {
+                    equipableItem.desequipar();
+                    AtualizarDados();
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
                 btnDesequipar.setDisable(true);
             });
         } else {
@@ -116,22 +132,22 @@ public class ControllerInventario implements Initializable {
     }
 
 
-    private void AtualizarDados(){
-        VelocidadePlayer.setText("Vel: " + player.getVelocity());
-        ForcaPlayer.setText("Fr: " + player.getForce());
-        HpPlayer.setText("HP: " + player.getCurrentHP() + "/" + player.getHP());
-        MpPlayer.setText("MP: " + player.getCurrentMP() + "/" + player.getMP());
-        InteligenciaPlayer.setText("Int: " + player.getInteligence());
-        ResistenciaPlayer.setText("Res: " + player.getResistencia());
-        DefesaPlayer.setText("Def: " + player.getDef());
-        DefesaMagicaPlayer.setText("DefMag: " + player.getMagicDef());
+    private void AtualizarDados() throws PlayerInexistenteException {
+        VelocidadePlayer.setText("Vel: " + Player.getPlayer().getVelocity());
+        ForcaPlayer.setText("Fr: " + Player.getPlayer().getForce());
+        HpPlayer.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
+        MpPlayer.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
+        InteligenciaPlayer.setText("Int: " + Player.getPlayer().getInteligence());
+        ResistenciaPlayer.setText("Res: " + Player.getPlayer().getResistencia());
+        DefesaPlayer.setText("Def: " + Player.getPlayer().getDefesaF());
+        DefesaMagicaPlayer.setText("DefMag: " + Player.getPlayer().getDefesaM());
         Grid.getChildren().clear();
         int j =0;
-        for(int i = 0; i< player.inventario.getInventario().length; i++){
-            if(player.inventario.getInventario()[i] != null) {
+        for(int i = 0; i< Player.getPlayer().inventario.getInventario().length; i++){
+            if(Player.getPlayer().inventario.getInventario()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
-                image.setImage(player.inventario.getInventario()[i].getImage());
+                image.setImage(Player.getPlayer().inventario.getInventario()[i].getImage());
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
@@ -139,7 +155,13 @@ public class ControllerInventario implements Initializable {
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
                 int finalI = i;
-                item.setOnAction(event -> ItemSelecionado(player.inventario.getInventario()[finalI]));
+                item.setOnAction(event -> {
+                    try {
+                        ItemSelecionado(Player.getPlayer().inventario.getInventario()[finalI]);
+                    } catch (PlayerInexistenteException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
                 j++;
             }
         }
@@ -147,7 +169,11 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NomePlayer.setText(player.getName());
+        try {
+            NomePlayer.setText(Player.getPlayer().getName());
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();
@@ -160,7 +186,11 @@ public class ControllerInventario implements Initializable {
         }
         Grid.setLayoutX(0);
         Grid.setLayoutY(0);
-        AtualizarDados();
+        try {
+            AtualizarDados();
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

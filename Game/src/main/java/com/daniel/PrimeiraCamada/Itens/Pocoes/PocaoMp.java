@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada.Itens.Pocoes;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Itens.Item;
 
@@ -26,7 +27,7 @@ public class PocaoMp extends Item implements IConsumable {
     }
 
     @Override
-    public void Consumir() {
-        Player.player.RecuperarMp(100);
+    public void Consumir() throws PlayerInexistenteException {
+        Player.getPlayer().RecuperarMana(100);
     }
 }
