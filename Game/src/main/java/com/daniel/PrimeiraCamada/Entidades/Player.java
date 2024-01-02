@@ -3,6 +3,7 @@ package com.daniel.PrimeiraCamada.Entidades;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -27,7 +28,6 @@ public class Player extends Personagem implements Serializable {
         this.capacete = new Capacete();
         player = this;
     }
-
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
         if(player != null){
             return player;
@@ -36,18 +36,15 @@ public class Player extends Personagem implements Serializable {
             return new Player(Img, Force, Int, Name, Velocity, Res, coins);
         }
     }
-
     public Inventario getInventario() {
         return inventario;
     }
-
     public int getcHP(){
         return this.currentHp;
     }
     public int getcMp(){
         return this.currentMp;
     }
-
     public static Player getPlayer() throws PlayerInexistenteException {
         if(Player.player == null){
             throw new PlayerInexistenteException();
@@ -59,7 +56,6 @@ public class Player extends Personagem implements Serializable {
     public static void setPlayer(Player p){
         Player.player = p;
     }
-
     public int getCoins() {
         return coins;
     }
@@ -69,6 +65,10 @@ public class Player extends Personagem implements Serializable {
         } else {
             System.out.println("Quantidade inválida ou moedas insuficientes.");
         }
+    }
+    public void ganhaCoins(int quantidade) {
+        this.coins += quantidade;
+        System.out.println("Ganhou " + quantidade + " moedas. Novo saldo: " + this.coins);
     }
     public void equiparPeitoral(Peitoral peitoral) {
         desequiparPeitoral();
@@ -100,11 +100,9 @@ public class Player extends Personagem implements Serializable {
     public int getAtaqueM(){
         return Inteligence;
     }
-
     public Peitoral getPeitoral() {
         return peitoral;
     }
-
     private boolean VereficarLevelUp(){
         int i = currentXp /1000*lvl;
         if(i>lvl){
@@ -117,7 +115,6 @@ public class Player extends Personagem implements Serializable {
         this.currentXp += xp;
         return this.VereficarLevelUp();
     }
-
     public void RecuperarVida(int i){
         this.currentHp += i;
         if(this.currentHp > this.HP){
@@ -130,7 +127,6 @@ public class Player extends Personagem implements Serializable {
             this.currentMp = this.MP;
         }
     }
-
     public Capacete getCapacete() {
         return capacete;
     }

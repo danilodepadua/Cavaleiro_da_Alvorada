@@ -43,7 +43,8 @@ public class ControllerInventario implements Initializable {
 
     @FXML
     private ImageView ImgPlayer;
-
+    @FXML
+    private Button btnVender;
     @FXML
     private Text InteligenciaPlayer;
 
@@ -86,6 +87,16 @@ public class ControllerInventario implements Initializable {
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
 
+        btnVender.setOnAction(event -> {
+            try {
+                venderItem(i);
+                AtualizarDados();
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
         if (i instanceof IConsumable) {
             botaoAcao.setOnAction(Event -> {
                 try {
@@ -101,20 +112,21 @@ public class ControllerInventario implements Initializable {
                 }
             });
         }
+
         if (i instanceof IEquipable) {
             IEquipable equipableItem = (IEquipable) i;
 
             if (!Player.getPlayer().getPeitoral().equals(equipableItem) &&
-                    !Player.getPlayer().getCapacete().equals(equipableItem)) {
+                    !Player.getPlayer().getCapacete().equals(equipableItem)) { //Compara se o item atual é igual ao atual inserido no player
                 btnEquipar.setDisable(false);
                 btnEquipar.setOnAction(event -> {
                     try {
-                        equipableItem.equipar(); //Chama o equipar implementado da interface.
-                        AtualizarDados();
+                        equipableItem.equipar(); //Chama o equipar implementado da interface e aplica
+                        AtualizarDados(); //Atualizar os dados da tela novamente
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }
-                    btnEquipar.setDisable(true);
+                    btnEquipar.setDisable(true); //Setar o botão pra ser disable novamente, impossibilitando o clique
                 });
 
                 btnDesequipar.setDisable(true);
@@ -123,7 +135,7 @@ public class ControllerInventario implements Initializable {
                 btnDesequipar.setDisable(false);
                 btnDesequipar.setOnAction(event -> {
                     try {
-                        equipableItem.desequipar();
+                        equipableItem.desequipar(); //Analogo ao equipar, chama o metodo implementando
                         AtualizarDados();
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
@@ -153,6 +165,8 @@ public class ControllerInventario implements Initializable {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getInventario()[i].getImage());
+                image.setFitWidth(50);
+                image.setFitHeight(50);
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
@@ -197,10 +211,14 @@ public class ControllerInventario implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     @FXML
     void onClickVoltar(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
     }
+    public void venderItem(Item item) throws PlayerInexistenteException {
+        int precoItem = item.getPreco(); //Pega o preço
+        Player.getPlayer().ganhaCoins(precoItem * 70/100); //Adiciona as moedas com 70% do valor
+        Player.getPlayer().getInventario().RemoverItem(item); //Remove do inventario
 
+    }
 }

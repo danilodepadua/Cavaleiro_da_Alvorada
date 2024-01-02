@@ -15,7 +15,6 @@ public class Capacete extends Armadura implements IEquipable {
         Player.getPlayer().desequiparCapacete();
         Player.getPlayer().equiparCapacete(this);
     }
-
     @Override
     public void desequipar() throws PlayerInexistenteException {
         Player.getPlayer().desequiparCapacete();
