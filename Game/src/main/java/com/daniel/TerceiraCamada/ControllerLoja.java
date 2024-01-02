@@ -2,6 +2,9 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
@@ -60,17 +63,15 @@ public class ControllerLoja implements Initializable {
     private Text txtPreco;
 
     public void initialize(URL location, ResourceBundle resources) {
-        // Criar botão para PocaoCura na coluna 0, linha 0
         criarBotaoItem(new PocaoCura(), 0, 0);
-
-        // Criar botão para PocaoMp na coluna 1, linha 0
         criarBotaoItem(new PocaoMp(), 1, 0);
+        criarBotaoItem(new CapaceteCouro(), 0, 1);
+        criarBotaoItem(new CapaceteFerro(), 1, 1 );
+        criarBotaoItem(new PeitoralCouro(), 0, 2);
+        criarBotaoItem(new PeitoralFerro(), 1, 2);
+        criarBotaoItem(new CalcaCouro(), 0, 3);
+        criarBotaoItem(new CalcaFerro(), 1, 3);
 
-        criarBotaoItem(new PeitoralCouro(), 0, 1);
-
-        criarBotaoItem(new PeitoralFerro(), 1, 1 );
-
-        criarBotaoItem(new CapaceteFerro(), 0, 2);
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {
@@ -154,6 +155,10 @@ public class ControllerLoja implements Initializable {
             CapaceteFerro capaceteFerro = (CapaceteFerro) i;
             txtInfoItem.setText("Descrição: " + capaceteFerro.getDescricao());
             txtPreco.setText("Preço: " + capaceteFerro.getPreco() + " BitCoins");
+        } else if (i instanceof CapaceteCouro) {
+            CapaceteCouro capaceteCouro = (CapaceteCouro) i;
+            txtInfoItem.setText("Descrição: " + capaceteCouro.getDescricao());
+            txtPreco.setText("Preço: " + capaceteCouro.getPreco() + " BitCoins");
         } else {
             txtInfoItem.setText("Descrição: N/A");
             txtPreco.setText("Preço: N/A");

@@ -5,19 +5,20 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
 
-public class Capacete extends Armadura implements IEquipable {
-    public Capacete(){
+public class Calca extends Armadura implements IEquipable {
+    public Calca(){
         this.aumentoDefesaFisica = 0;
-        this.aumentoDefesaMagica = 0;
+        this.aumentoDefesaMagica= 0;
     }
     @Override
     public void equipar() throws PlayerInexistenteException {
-        Player.getPlayer().desequiparCapacete();
-        Player.getPlayer().equiparCapacete(this);
-    }
-    @Override
-    public void desequipar() throws PlayerInexistenteException {
-        Player.getPlayer().desequiparCapacete();
+        Player.getPlayer().desequiparCalca();
+        Player.getPlayer().equiparCalca(this);
+
     }
 
+    @Override
+    public void desequipar() throws PlayerInexistenteException {
+        Player.getPlayer().desequiparCalca();
+    }
 }
