@@ -6,7 +6,6 @@ import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
 
 public class Capacete extends Armadura implements IEquipable {
-    protected boolean equiparCapacete;
     public Capacete(){
         this.aumentoDefesaFisica = 0;
         this.aumentoDefesaMagica = 0;
@@ -15,7 +14,6 @@ public class Capacete extends Armadura implements IEquipable {
     public void equipar() throws PlayerInexistenteException {
         Player.getPlayer().desequiparCapacete();
         Player.getPlayer().equiparCapacete(this);
-        this.equiparCapacete = true;
     }
 
     @Override

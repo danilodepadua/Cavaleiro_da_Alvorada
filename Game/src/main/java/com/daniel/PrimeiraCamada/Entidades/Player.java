@@ -84,14 +84,10 @@ public class Player extends Personagem implements Serializable {
         this.capacete = capacete;
         System.out.println("Capacete equipado.");
     }
-
     public void desequiparCapacete(){
         this.capacete = new Capacete();
         System.out.println("Capacete desequipado.");
     }
-
-
-
     public int getDefesaF(){
         return this.Resistencia + this.peitoral.getAumentoDefesaF() + this.capacete.getAumentoDefesaF();
     }
