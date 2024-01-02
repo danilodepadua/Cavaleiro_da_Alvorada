@@ -51,10 +51,10 @@ public class ControllerInventario implements Initializable {
     private Text MpPlayer;
 
     @FXML
-    private Button btnDesequipar;
+    private Button btnEquipar;
 
     @FXML
-    private Button btnEquipar;
+    private Button btnDesequipar;
     @FXML
     private Text NomeItem;
 
@@ -74,11 +74,14 @@ public class ControllerInventario implements Initializable {
     private Text VelocidadePlayer;
 
     @FXML
+    private Text txtDescricao;
+    @FXML
     private Button botaoAcao;
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
+        txtDescricao.setText("Descrição: " +i.getDescricao());
         botaoAcao.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
@@ -98,39 +101,41 @@ public class ControllerInventario implements Initializable {
                 }
             });
         }
-
         if (i instanceof IEquipable) {
             IEquipable equipableItem = (IEquipable) i;
-            btnDesequipar.setDisable(!equipableItem.isEquipado());
 
-            btnEquipar.setDisable(Player.getPlayer().getPeitoral() != null);
+            if (!Player.getPlayer().getPeitoral().equals(equipableItem) &&
+                    !Player.getPlayer().getCapacete().equals(equipableItem)) {
+                btnEquipar.setDisable(false);
+                btnEquipar.setOnAction(event -> {
+                    try {
+                        equipableItem.equipar(); //Chama o equipar implementado da interface.
+                        AtualizarDados();
+                    } catch (PlayerInexistenteException e) {
+                        throw new RuntimeException(e);
+                    }
+                    btnEquipar.setDisable(true);
+                });
 
-            btnEquipar.setOnAction(event -> {
-                try {
-                    equipableItem.equipar();
-                    AtualizarDados();
-                } catch (PlayerInexistenteException e) {
-                    throw new RuntimeException(e);
-                }
-                btnEquipar.setDisable(true);
-            });
-
-            btnDesequipar.setOnAction(event -> {
-                try {
-                    equipableItem.desequipar();
-                    AtualizarDados();
-                } catch (PlayerInexistenteException e) {
-                    throw new RuntimeException(e);
-                }
                 btnDesequipar.setDisable(true);
-            });
+            } else {
+                btnEquipar.setDisable(true);
+                btnDesequipar.setDisable(false);
+                btnDesequipar.setOnAction(event -> {
+                    try {
+                        equipableItem.desequipar();
+                        AtualizarDados();
+                    } catch (PlayerInexistenteException e) {
+                        throw new RuntimeException(e);
+                    }
+                    btnDesequipar.setDisable(true);
+                });
+            }
         } else {
             btnEquipar.setDisable(true);
             btnDesequipar.setDisable(true);
         }
-
     }
-
 
     private void AtualizarDados() throws PlayerInexistenteException {
         VelocidadePlayer.setText("Vel: " + Player.getPlayer().getVelocity());

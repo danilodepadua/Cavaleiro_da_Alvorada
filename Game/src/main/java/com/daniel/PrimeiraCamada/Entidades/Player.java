@@ -1,8 +1,8 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Itens.*;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.nullPeitoral;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -12,6 +12,7 @@ public class Player extends Personagem implements Serializable {
     public Inventario inventario;
     private int coins;
     private Peitoral peitoral;
+    private Capacete capacete;
     private static Player player;
     private int lvl;
     private int currentXp;
@@ -22,7 +23,8 @@ public class Player extends Personagem implements Serializable {
         this.currentMp = this.getMP();
         this.inventario = new Inventario();
         this.coins = coins;
-        this.peitoral = new nullPeitoral(); // Inicialmente sem peitoral equipado
+        this.peitoral = new Peitoral();
+        this.capacete = new Capacete();
         player = this;
     }
 
@@ -69,24 +71,32 @@ public class Player extends Personagem implements Serializable {
         }
     }
     public void equiparPeitoral(Peitoral peitoral) {
-        if (this.peitoral == null) {
-            this.peitoral = peitoral;
-        } else {
-            System.out.println("Você já está usando um peitoral. Desequipa o atual antes de equipar outro.");
-        }
+        desequiparPeitoral();
+        this.peitoral = peitoral;
+        System.out.println("Peitoral equipado.");
     }
     public void desequiparPeitoral() {
-        if (this.peitoral != null) {
-            this.peitoral = null;
-        } else {
-            System.out.println("Você não está usando nenhum peitoral para desequipar.");
-        }
+        this.peitoral = new Peitoral();
+        System.out.println("Peitoral desequipado.");
     }
+    public void equiparCapacete(Capacete capacete){
+        desequiparCapacete();
+        this.capacete = capacete;
+        System.out.println("Capacete equipado.");
+    }
+
+    public void desequiparCapacete(){
+        this.capacete = new Capacete();
+        System.out.println("Capacete desequipado.");
+    }
+
+
+
     public int getDefesaF(){
-        return this.Resistencia + this.peitoral.getAumentoDefesaF();
+        return this.Resistencia + this.peitoral.getAumentoDefesaF() + this.capacete.getAumentoDefesaF();
     }
     public int getDefesaM(){
-        return this.Inteligence + this.peitoral.getAumentoDefesaM();
+        return this.Inteligence + this.peitoral.getAumentoDefesaM() + this.capacete.getAumentoDefesaM();
     }
     public int getAtaqueF(){
         return Force;
@@ -123,5 +133,9 @@ public class Player extends Personagem implements Serializable {
         if(this.currentMp > this.MP){
             this.currentMp = this.MP;
         }
+    }
+
+    public Capacete getCapacete() {
+        return capacete;
     }
 }

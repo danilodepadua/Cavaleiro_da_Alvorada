@@ -2,8 +2,9 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraCouro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.ArmaduraFerro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteFerro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
@@ -65,9 +66,11 @@ public class ControllerLoja implements Initializable {
         // Criar botão para PocaoMp na coluna 1, linha 0
         criarBotaoItem(new PocaoMp(), 1, 0);
 
-        criarBotaoItem(new ArmaduraCouro(), 0, 1);
+        criarBotaoItem(new PeitoralCouro(), 0, 1);
 
-        criarBotaoItem(new ArmaduraFerro(), 1, 1 );
+        criarBotaoItem(new PeitoralFerro(), 1, 1 );
+
+        criarBotaoItem(new CapaceteFerro(), 0, 2);
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {
@@ -139,14 +142,18 @@ public class ControllerLoja implements Initializable {
             // Restante do código para poção de MP
             txtInfoItem.setText("Descrição: " + pocaoMp.getDescricao());
             txtPreco.setText("Preço: " + pocaoMp.getPreco() + " BitCoins");
-        } else if (i instanceof ArmaduraCouro) {
-            ArmaduraCouro armaduraCouro = (ArmaduraCouro) i;
-            txtInfoItem.setText("Descrição: " + armaduraCouro.getDescricao());
-            txtPreco.setText("Preço: " + armaduraCouro.getPreco() + " BitCoins");
-        } else if (i instanceof ArmaduraFerro) {
-            ArmaduraFerro armaduraFerro = (ArmaduraFerro) i;
-            txtInfoItem.setText("Descrição: " + armaduraFerro.getDescricao());
-            txtPreco.setText("Preço: " + armaduraFerro.getPreco() + " BitCoins");
+        } else if (i instanceof PeitoralCouro) {
+            PeitoralCouro peitoralCouro = (PeitoralCouro) i;
+            txtInfoItem.setText("Descrição: " + peitoralCouro.getDescricao());
+            txtPreco.setText("Preço: " + peitoralCouro.getPreco() + " BitCoins");
+        } else if (i instanceof PeitoralFerro) {
+            PeitoralFerro peitoralFerro = (PeitoralFerro) i;
+            txtInfoItem.setText("Descrição: " + peitoralFerro.getDescricao());
+            txtPreco.setText("Preço: " + peitoralFerro.getPreco() + " BitCoins");
+        } else if (i instanceof CapaceteFerro) {
+            CapaceteFerro capaceteFerro = (CapaceteFerro) i;
+            txtInfoItem.setText("Descrição: " + capaceteFerro.getDescricao());
+            txtPreco.setText("Preço: " + capaceteFerro.getPreco() + " BitCoins");
         } else {
             txtInfoItem.setText("Descrição: N/A");
             txtPreco.setText("Preço: N/A");
