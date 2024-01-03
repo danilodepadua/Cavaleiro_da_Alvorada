@@ -81,8 +81,8 @@ public class ControllerLoja implements Initializable {
         Button button = new Button();
         ImageView imageView = new ImageView();
         imageView.setPreserveRatio(true);
-        imageView.setFitWidth(120);
-        imageView.setFitHeight(80);
+        imageView.setFitWidth(110);
+        imageView.setFitHeight(60);
 
         double cellWidth = grid.getPrefWidth() / columns;
         double cellHeight = grid.getPrefHeight() / rows;

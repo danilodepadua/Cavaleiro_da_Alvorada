@@ -23,6 +23,8 @@ public class CityController implements Initializable {
     private Label lblDinheiro;
 
     @FXML
+    private Button btnCassino;
+    @FXML
     private Label lblInteligencia;
     @FXML
     private Label LblDefesa;
@@ -110,4 +112,10 @@ public class CityController implements Initializable {
                         true
                 ))));
     }
+    @FXML
+    void onClickCassino(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerCassino.fxml")));
+
+    }
+
 }

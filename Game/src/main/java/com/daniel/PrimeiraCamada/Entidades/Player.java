@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
+
     private int coins;
     private Peitoral peitoral;
     private Capacete capacete;
