@@ -2,6 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Armas.Espada;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
@@ -71,6 +72,7 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new PeitoralFerro(), 1, 2);
         criarBotaoItem(new CalcaCouro(), 0, 3);
         criarBotaoItem(new CalcaFerro(), 1, 3);
+        criarBotaoItem(new Espada(), 0 , 4);
 
     }
 
@@ -159,6 +161,18 @@ public class ControllerLoja implements Initializable {
             CapaceteCouro capaceteCouro = (CapaceteCouro) i;
             txtInfoItem.setText("Descrição: " + capaceteCouro.getDescricao());
             txtPreco.setText("Preço: " + capaceteCouro.getPreco() + " BitCoins");
+        } else if (i instanceof CalcaCouro) {
+            CalcaCouro calcaCouro = (CalcaCouro) i;
+            txtInfoItem.setText("Descrição: " + calcaCouro.getDescricao());
+            txtPreco.setText("Preço: " + calcaCouro.getPreco() + " BitCoins");
+        } else if (i instanceof CalcaFerro) {
+            CalcaFerro calcaFerro = (CalcaFerro) i;
+            txtInfoItem.setText("Descrição: " + calcaFerro.getDescricao());
+            txtPreco.setText("Preço: " + calcaFerro.getPreco() + " BitCoins");
+        } else if (i instanceof Espada) {
+            Espada espada = (Espada) i;
+            txtInfoItem.setText("Descrição: " + espada.getDescricao());
+            txtPreco.setText("Preço: " + espada.getPreco() + " BitCoins");
         } else {
             txtInfoItem.setText("Descrição: N/A");
             txtPreco.setText("Preço: N/A");

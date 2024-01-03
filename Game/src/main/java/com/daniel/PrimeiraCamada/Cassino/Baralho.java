@@ -1,7 +1,5 @@
 package com.daniel.PrimeiraCamada.Cassino;
 
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -41,16 +39,16 @@ public class Baralho {
     public void criarBaralho(String naipe) {
         for (int valor = 2; valor <= 10; valor++) {
             String valorCarta = obterNomeCarta(valor);
-            String caminho = "/com.daniel.Images/img/" + valorCarta + "_of_" + naipe.toLowerCase() + ".png";
+            String caminho = "/com.daniel.Images/Cartas/" + valorCarta + "_of_" + naipe.toLowerCase() + ".png";
             System.out.println("Caminho da imagem: " + caminho);
             cartas.add(new Carta(valorCarta, naipe, valor, caminho));
         }
 
         // Adiciona Ás, Valete, Dama e Rei
-        cartas.add(new Carta("Ás", naipe, 11, "/com.daniel.Images/img/ace_of_" + naipe.toLowerCase() + ".png"));
-        cartas.add(new Carta("Valete", naipe, 10, "/com.daniel.Images/img/jack_of_" + naipe.toLowerCase() + ".png"));
-        cartas.add(new Carta("Dama", naipe, 10, "/com.daniel.Images/img/queen_of_" + naipe.toLowerCase() + ".png"));
-        cartas.add(new Carta("Rei", naipe, 10, "/com.daniel.Images/img/king_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Ás", naipe, 11, "/com.daniel.Images/Cartas/ace_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Valete", naipe, 10, "/com.daniel.Images/Cartas/jack_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Dama", naipe, 10, "/com.daniel.Images/Cartas/queen_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Rei", naipe, 10, "/com.daniel.Images/Cartas/king_of_" + naipe.toLowerCase() + ".png"));
 
     }
 

@@ -117,7 +117,7 @@ public class ControllerInventario implements Initializable {
             IEquipable equipableItem = (IEquipable) i;
 
             if (!Player.getPlayer().getPeitoral().equals(equipableItem) &&
-                    !Player.getPlayer().getCapacete().equals(equipableItem)) { //Compara se o item atual é igual ao atual inserido no player
+                    !Player.getPlayer().getCapacete().equals(equipableItem) && !Player.getPlayer().getCalca().equals(equipableItem) && !Player.getPlayer().getArma().equals(equipableItem) ) { //Compara se o item atual é igual ao atual inserido no player
                 btnEquipar.setDisable(false);
                 btnEquipar.setOnAction(event -> {
                     try {
@@ -151,7 +151,7 @@ public class ControllerInventario implements Initializable {
 
     private void AtualizarDados() throws PlayerInexistenteException {
         VelocidadePlayer.setText("Vel: " + Player.getPlayer().getVelocity());
-        ForcaPlayer.setText("Fr: " + Player.getPlayer().getForce());
+        ForcaPlayer.setText("Fr: " + Player.getPlayer().getAtaqueF());
         HpPlayer.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
         MpPlayer.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
         InteligenciaPlayer.setText("Int: " + Player.getPlayer().getInteligence());

@@ -12,11 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -142,7 +140,7 @@ public class ControllerBlackJack  implements Initializable{
 
     private void adicionarCartaCostas(GridPane gridPane, int coluna) {
         // Crie uma carta de costas com valor 0
-        Carta cartaCostas = new Carta("Costas", "", 0, "/com.daniel.Images/img/backside.png");
+        Carta cartaCostas = new Carta("Costas", "", 0, "/com.daniel.Images/Cartas/backside.png");
 
         // Crie uma ImageView para a carta de costas
         ImageView imageView = new ImageView(cartaCostas.getImage());
@@ -184,6 +182,7 @@ public class ControllerBlackJack  implements Initializable{
         }
     }
     private void resetarJogo() {
+
         // Limpar as GridPanes
         GridPaneDealer.getChildren().clear();
         GridPanePlayer.getChildren().clear();
@@ -195,6 +194,13 @@ public class ControllerBlackJack  implements Initializable{
         // Resetar os pontos do jogador e do dealer
         jogador.setPontos(0);
         dealer.setPontos(0);
+
+        //Resetar o baralho se acabar as cartas
+        if (baralho.vazio()){
+            baralho.reiniciarBaralho();
+            baralho.embaralhar();
+        }
+
 
         // Desabilitar os botões novamente
         btnPuxar.setDisable(true);

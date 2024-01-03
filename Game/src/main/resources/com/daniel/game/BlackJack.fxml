@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="640.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../com.daniel.Images/img/Mesa.png" />
+            <Image url="@../../../com.daniel.Images/Cartas/Mesa.png" />
          </image>
       </ImageView>
       <Button fx:id="btnApostar" layoutX="440.0" layoutY="548.0" mnemonicParsing="false" onAction="#Apostar" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Apostar" />
@@ -35,12 +35,12 @@
          <children>
             <ImageView fx:id="costasCartaUm" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/img/backside.png" />
+                  <Image url="@../../../com.daniel.Images/Cartas/backside.png" />
                </image>
             </ImageView>
             <ImageView fx:id="costasCartaDois" fitHeight="150.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../../../com.daniel.Images/img/backside.png" />
+                  <Image url="@../../../com.daniel.Images/Cartas/backside.png" />
                </image>
             </ImageView>
          </children>

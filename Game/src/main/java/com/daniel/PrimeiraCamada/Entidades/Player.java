@@ -1,10 +1,10 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
-import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class Player extends Personagem implements Serializable {
     public Inventario inventario;
-
+    private Arma arma;
     private int coins;
     private Peitoral peitoral;
     private Capacete capacete;
@@ -30,6 +30,7 @@ public class Player extends Personagem implements Serializable {
         this.peitoral = new Peitoral();
         this.capacete = new Capacete();
         this.calca = new Calca();
+        this.arma = new Arma();
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
@@ -74,6 +75,16 @@ public class Player extends Personagem implements Serializable {
         this.coins += quantidade;
         System.out.println("Ganhou " + quantidade + " moedas. Novo saldo: " + this.coins);
     }
+    public void equiparArma(Arma arma){
+        desequiparArma();
+        this.arma = arma;
+        System.out.println("Arma equipada");
+    }
+    public void desequiparArma(){
+        this.arma = new Arma();
+        System.out.println("Arma desequipada");
+
+    }
     public void equiparCalca(Calca calca){
         desequiparCalca();
         this.calca = calca;
@@ -108,7 +119,7 @@ public class Player extends Personagem implements Serializable {
         return this.Inteligence + this.peitoral.getAumentoDefesaM() + this.capacete.getAumentoDefesaM() + this.calca.getAumentoDefesaM();
     }
     public int getAtaqueF(){
-        return Force;
+        return Force + this.arma.getAumentoDeAtaqueFisico();
     }
     public int getAtaqueM(){
         return Inteligence;
@@ -142,5 +153,13 @@ public class Player extends Personagem implements Serializable {
     }
     public Capacete getCapacete() {
         return capacete;
+    }
+
+    public Arma getArma() {
+        return arma;
+    }
+
+    public Calca getCalca() {
+        return calca;
     }
 }

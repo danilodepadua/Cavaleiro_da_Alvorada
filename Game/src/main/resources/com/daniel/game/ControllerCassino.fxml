@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="640.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../../com.daniel.Images/img/Mesa.png" />
+            <Image url="@../../../com.daniel.Images/Cartas/Mesa.png" />
          </image>
       </ImageView>
       <Button fx:id="btnBlackJack" layoutX="429.0" layoutY="263.0" mnemonicParsing="false" onAction="#Jogar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Black Jack" />
