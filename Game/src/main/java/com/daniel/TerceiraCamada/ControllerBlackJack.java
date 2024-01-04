@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
@@ -51,120 +52,77 @@ public class ControllerBlackJack  implements Initializable{
     @FXML
     private Text txtPontosDaCasa;
     @FXML
-    void onClickManter(ActionEvent event) throws PlayerInexistenteException {
+    void onClickManter(ActionEvent event) throws BaralhoVazioException {
         determinarVencedor();
     }
     @FXML
-    void onClickPuxar(ActionEvent event) throws PlayerInexistenteException {
+    void onClickPuxar(ActionEvent event) throws BaralhoVazioException {
         adicionarCarta(GridPanePlayer, jogador, 2);
-        System.out.println("Pontos do jogador apos puxar" + jogador.getPontos());
         txtSeusPontos.setText("Seus Pontos: "+ jogador.getPontos());
         determinarVencedor();
 
     }
-    public void determinarVencedor() throws PlayerInexistenteException {
+    public void determinarVencedor() throws BaralhoVazioException {
         String valorStr = textFieldAposta.getText();
         int valorAposta = Integer.parseInt(valorStr);
 
         adicionarCarta(GridPaneDealer, dealer, 0);
         adicionarCarta(GridPaneDealer, dealer, 1);
         txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+
         //Criar um pause pra imersão
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(e -> {
-            int pontosJogador = jogador.getPontos();
-            int pontosDealer = dealer.getPontos();
-            System.out.println("Pontos do jogador: "+ pontosJogador);
-            System.out.println("Pontos do dealer: "+ pontosDealer);
-            // Se o dealer tem menos de 15 pontos, ele puxa uma carta
-            if (pontosDealer <= 15) {
-                adicionarCarta(GridPaneDealer, dealer, 2);
-                pontosDealer = dealer.getPontos();
-                System.out.println("Pontos do dealer apos puxar : "+ pontosDealer);
-                txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
-            }
-            // Verifica se alguém ultrapassou 21 (bust)
-            if (pontosJogador > 21 && pontosDealer <= 21) {
-                System.out.println("Você perdeu, você estourou 21!");
-                txtVoceGanhou.setText("Você perdeu!");
-                try {
-                    Player.getPlayer().removerCoins(valorAposta);
-                } catch (PlayerInexistenteException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
-                } catch (PlayerInexistenteException ex) {
-                    throw new RuntimeException(ex);
-                }
-                btnApostar.setDisable(false);
-                btnVoltar.setDisable(false);
-            } else if (pontosDealer > 21 && pontosJogador <= 21) {
-                System.out.println("Você venceu, o dealer estourou 21!");
-                txtVoceGanhou.setText("Você venceu!");
-                try {
-                    Player.getPlayer().ganhaCoins(valorAposta );
-                } catch (PlayerInexistenteException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
-                } catch (PlayerInexistenteException ex) {
-                    throw new RuntimeException(ex);
-                }
-                btnApostar.setDisable(false);
-                btnVoltar.setDisable(false);
-
-            } else {
-                // Verifica quem tem mais pontos sem ultrapassar 21
-                if (pontosJogador > pontosDealer) {
-                    System.out.println("Você venceu!");
-                    txtVoceGanhou.setText("Você venceu!");
-                    try {
-                        Player.getPlayer().ganhaCoins(valorAposta );
-                    } catch (PlayerInexistenteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    try {
-                        txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
-                    } catch (PlayerInexistenteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    btnApostar.setDisable(false);
-                    btnVoltar.setDisable(false);
-
-                } else if (pontosDealer > pontosJogador) {
-                    System.out.println("Você perdeu!");
-                    txtVoceGanhou.setText("Você perdeu!");
-                    try {
-                        Player.getPlayer().removerCoins(valorAposta);
-                    } catch (PlayerInexistenteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    try {
-                        txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
-                    } catch (PlayerInexistenteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    btnApostar.setDisable(false);
-                    btnVoltar.setDisable(false);
-                } else {
-                    System.out.println("Empate!");
-                    try {
-                        txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
-                    } catch (PlayerInexistenteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    btnApostar.setDisable(false);
-                    btnVoltar.setDisable(false);
-                    txtVoceGanhou.setText("Empate!");
-                }
-        }
-        });
+        pause.setOnFinished(e -> processarVencedor(valorAposta));
         pause.play();
+
         btnManter.setDisable(true);
         btnPuxar.setDisable(true);
+    }
 
+    private void processarVencedor(int valorAposta) {
+        int pontosJogador = jogador.getPontos();
+        int pontosDealer = dealer.getPontos();
+
+        // Se o dealer tem menos de 14 pontos, ele puxa uma carta
+        if (pontosDealer <= 14) {
+            try {
+                adicionarCarta(GridPaneDealer, dealer, 2);
+            } catch (BaralhoVazioException ex) {
+                throw new RuntimeException(ex);
+            }
+            pontosDealer = dealer.getPontos();
+            txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+        }
+
+        // Verifica se alguém ultrapassou 21 (bust)
+        if (pontosJogador > 21 && pontosDealer <= 21) {
+            handleResultado("Você perdeu!", -valorAposta);
+        } else if (pontosDealer > 21 && pontosJogador <= 21) {
+            handleResultado("Você venceu!", valorAposta);
+        } else {
+            determinarVencedorSemEstouro(pontosJogador, pontosDealer, valorAposta);
+        }
+    }
+    private void determinarVencedorSemEstouro(int pontosJogador, int pontosDealer, int valorAposta) {
+        // Verifica quem tem mais pontos sem ultrapassar 21
+        if (pontosJogador > pontosDealer) {
+            handleResultado("Você venceu!", valorAposta);
+        } else if (pontosDealer > pontosJogador) {
+            handleResultado("Você perdeu!", -valorAposta);
+        } else {
+            handleResultado("Empate!", 0);
+        }
+    }
+    private void handleResultado(String mensagem, int alteracaoSaldo) {
+        txtVoceGanhou.setText(mensagem);
+        try {
+            Player.getPlayer().ganhaCoins(alteracaoSaldo);
+            txtSeuSaldo.setText("" + Player.getPlayer().getCoins() + " Moedas");
+        } catch (PlayerInexistenteException ex) {
+            throw new RuntimeException(ex);
+        }
+        btnApostar.setDisable(false);
+        btnVoltar.setDisable(false);
     }
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
@@ -173,7 +131,7 @@ public class ControllerBlackJack  implements Initializable{
         try {
             int valorAposta = Integer.parseInt(valorStr);
 
-            if (valorAposta > Player.getPlayer().getCoins()) {
+            if (valorAposta > Player.getPlayer().getCoins() ) {
                 System.out.println("Você não possui esse saldo");
 
             } else {
@@ -189,7 +147,7 @@ public class ControllerBlackJack  implements Initializable{
                 btnApostar.setDisable(true);
                 btnVoltar.setDisable(true);
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | BaralhoVazioException e) {
             System.out.println("Valor de aposta inválido");
         }
     }
@@ -207,7 +165,7 @@ public class ControllerBlackJack  implements Initializable{
     void Voltar(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerCassino.fxml")));
     }
-    private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) {
+    private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
         Carta carta = baralho.pegarCarta();
         if (carta != null) {
             ImageView imageView = new ImageView(carta.getImage());
@@ -264,7 +222,7 @@ public class ControllerBlackJack  implements Initializable{
         this.jogador = new Mão();
         this.dealer = new Mão();
         try {
-            txtSeuSaldo.setText(""+Player.getPlayer().getCoins());
+            txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }

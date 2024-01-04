@@ -10,7 +10,8 @@ public  class Arma extends Item implements IEquipable {
     public Arma(){
         this.aumentoDeAtaqueFisico = 0;
         this.aumentoDeAtaqueMagico = 0;
-
+        this.imagem = "/com.daniel.Images/Itens/FundoArma.png";
+        this.nome = "";
     }
     public int getAumentoDeAtaqueFisico() {
         return aumentoDeAtaqueFisico;

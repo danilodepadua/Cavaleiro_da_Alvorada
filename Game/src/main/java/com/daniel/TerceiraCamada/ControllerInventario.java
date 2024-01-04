@@ -2,8 +2,12 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
+import com.daniel.PrimeiraCamada.Itens.Arma;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -12,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -20,9 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerInventario implements Initializable {
-
-    @FXML
-    private Button btnVoltar;
+    private boolean statusVisivel = false; // Variável para controlar se os dados estão visíveis
+    private boolean botaoInicial = false;
     @FXML
     private Text DefesaMagicaPlayer;
 
@@ -42,20 +46,11 @@ public class ControllerInventario implements Initializable {
     private ImageView ImagemItem;
 
     @FXML
-    private ImageView ImgPlayer;
-    @FXML
-    private Button btnVender;
-    @FXML
     private Text InteligenciaPlayer;
 
     @FXML
     private Text MpPlayer;
 
-    @FXML
-    private Button btnEquipar;
-
-    @FXML
-    private Button btnDesequipar;
     @FXML
     private Text NomeItem;
 
@@ -74,19 +69,150 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Text VelocidadePlayer;
 
+
+    @FXML
+    private Button btnDesequipar;
+
+    @FXML
+    private Button btnEquipar;
+
+    @FXML
+    private Button btnUsar;
+
+    @FXML
+    private Button btnVender;
+
+    @FXML
+    private Button btnVoltar;
+
+    @FXML
+    private Button btnStatus;
     @FXML
     private Text txtDescricao;
     @FXML
-    private Button botaoAcao;
+    private GridPane gridEquipaveis;
+
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
-        txtDescricao.setText("Descrição: " +i.getDescricao());
-        botaoAcao.setText("Usar");
+        txtDescricao.setText("Descrição: " + i.getDescricao());
+        btnUsar.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
 
+        configurarVenda(i);
+
+        if (i instanceof IConsumable) {
+            btnUsar.setDisable(false);
+            configurarAcaoConsumivel((IConsumable) i);
+        } else {
+            btnUsar.setDisable(true);
+        }
+        if (i instanceof IEquipable) {
+            IEquipable equipableItem = (IEquipable) i;
+
+            if (podeEquiparItem(equipableItem)) {
+                configurarBtnEquipar(equipableItem);
+            } else {
+                configurarBtnDesequipar(equipableItem);
+            }
+        } else {
+            btnEquipar.setDisable(true);
+            btnDesequipar.setDisable(true);
+        }
+    }
+    private void criaBotaoEquipavel(Item i) throws PlayerInexistenteException {
+        if (i.getNome()!= null){
+            Button itemButton = new Button();
+            ImageView image = new ImageView();
+            image.setImage(i.getImage()); // Usar diretamente o Item i
+
+            image.setFitWidth(50);
+            image.setFitHeight(53);
+            itemButton.setPrefWidth(100);
+            itemButton.setPrefHeight(55);
+
+            // Configurar ação do botão para exibir detalhes do item ou equipá-lo
+            itemButton.setOnAction(event -> {
+                try {
+                    ItemSelecionado(i); // Passar o Item i
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            // Adicionar imagem ao botão
+            itemButton.setGraphic(image);
+            // Configurar ação do botão para exibir detalhes do item ou equipá-lo
+            if (i instanceof Peitoral) {
+                atualizarGridEquipavel(itemButton, 1);
+            } else if (i instanceof Capacete) {
+                atualizarGridEquipavel(itemButton, 0);
+            } else if (i instanceof Calca) {
+                atualizarGridEquipavel(itemButton, 2);
+            } else if (i instanceof Arma) {
+                atualizarGridEquipavel(itemButton, 3);
+
+            }
+        }
+    }
+    private void atualizarGridEquipavel(Button novoBotao, int linha) {
+        // Remove os botões existentes na linha
+        gridEquipaveis.getChildren().removeIf(node -> GridPane.getRowIndex(node) == linha);
+
+        // Adiciona o novo botão
+        gridEquipaveis.add(novoBotao, 0, linha);
+    }
+    private void configurarAcaoConsumivel(IConsumable consumable) {
+        btnUsar.setOnAction(event -> {
+            try {
+                consumable.Consumir();
+                limparTela();
+                Player.getPlayer().inventario.RemoverItem((Item) consumable);
+                AtualizarDados();
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    private void configurarBtnEquipar(IEquipable equipableItem) {
+        btnEquipar.setDisable(false);
+        btnEquipar.setOnAction(event -> {
+            try {
+                equipableItem.equipar();
+                AtualizarDados();
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+            btnEquipar.setDisable(true);
+        });
+
+        btnDesequipar.setDisable(true);
+    }
+
+    private void configurarBtnDesequipar(IEquipable equipableItem){
+        btnEquipar.setDisable(true);
+        btnDesequipar.setDisable(false);
+        btnDesequipar.setOnAction(event -> {
+            try {
+                equipableItem.desequipar(); //Analogo ao equipar, chama o metodo implementando
+                AtualizarDados();
+                limparTela();
+
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+            btnDesequipar.setDisable(true);
+        });
+    }
+    private boolean podeEquiparItem(IEquipable equipableItem) throws PlayerInexistenteException {
+        return !Player.getPlayer().getPeitoral().equals(equipableItem) &&
+                !Player.getPlayer().getCapacete().equals(equipableItem) &&
+                !Player.getPlayer().getCalca().equals(equipableItem) &&
+                !Player.getPlayer().getArma().equals(equipableItem);
+                //Compara se o item atual é igual ao atual inserido no player
+    }
+    private void configurarVenda(Item i){
         btnVender.setOnAction(event -> {
             try {
                 venderItem(i);
@@ -95,75 +221,17 @@ public class ControllerInventario implements Initializable {
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }
-
         });
-
-        if (i instanceof IConsumableOutBattle) {
-            botaoAcao.setOnAction(Event -> {
-                try {
-                    ((IConsumableOutBattle) i).Consumir();
-                    limparTela();
-                } catch (PlayerInexistenteException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
-                    Player.getPlayer().inventario.RemoverItem(i);
-                    AtualizarDados();
-                } catch (PlayerInexistenteException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        }
-
-        if (i instanceof IEquipable) {
-            IEquipable equipableItem = (IEquipable) i;
-
-            if (!Player.getPlayer().getPeitoral().equals(equipableItem) &&
-                    !Player.getPlayer().getCapacete().equals(equipableItem) &&
-                    !Player.getPlayer().getCalca().equals(equipableItem) &&
-                    !Player.getPlayer().getArma().equals(equipableItem) ) { //Compara se o item atual é igual ao atual inserido no player
-
-                btnEquipar.setDisable(false);
-                btnEquipar.setOnAction(event -> {
-                    try {
-                        equipableItem.equipar(); //Chama o equipar implementado da interface e aplica
-                        AtualizarDados(); //Atualizar os dados da tela novamente
-                    } catch (PlayerInexistenteException e) {
-                        throw new RuntimeException(e);
-                    }
-                    btnEquipar.setDisable(true); //Setar o botão pra ser disable novamente, impossibilitando o clique
-                });
-
-                btnDesequipar.setDisable(true);
-            } else {
-                btnEquipar.setDisable(true);
-                btnDesequipar.setDisable(false);
-                btnDesequipar.setOnAction(event -> {
-                    try {
-                        equipableItem.desequipar(); //Analogo ao equipar, chama o metodo implementando
-                        AtualizarDados();
-                        limparTela();
-                    } catch (PlayerInexistenteException e) {
-                        throw new RuntimeException(e);
-                    }
-                    btnDesequipar.setDisable(true);
-                });
-            }
-        } else {
-            btnEquipar.setDisable(true);
-            btnDesequipar.setDisable(true);
-        }
     }
-
     private void AtualizarDados() throws PlayerInexistenteException {
-        VelocidadePlayer.setText("Vel: " + Player.getPlayer().getVelocity());
-        ForcaPlayer.setText("Fr: " + Player.getPlayer().getForce());
+        VelocidadePlayer.setText("Velocidade: " + Player.getPlayer().getVelocity());
+        ForcaPlayer.setText("Força: " + Player.getPlayer().getForce());
         HpPlayer.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
         MpPlayer.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
-        InteligenciaPlayer.setText("Int: " + Player.getPlayer().getInteligence());
-        ResistenciaPlayer.setText("Res: " + Player.getPlayer().getResistencia());
-        DefesaPlayer.setText("Def: " + Player.getPlayer().getDefesaF());
-        DefesaMagicaPlayer.setText("DefMag: " + Player.getPlayer().getDefesaM());
+        InteligenciaPlayer.setText("Inteligência: " + Player.getPlayer().getInteligence());
+        ResistenciaPlayer.setText("Resistência: " + Player.getPlayer().getResistencia());
+        DefesaPlayer.setText("Defesa Física: " + Player.getPlayer().getDefesaF());
+        DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
         Grid.getChildren().clear();
         int j =0;
         for(int i = 0; i< Player.getPlayer().inventario.getItens().length; i++){
@@ -176,6 +244,7 @@ public class ControllerInventario implements Initializable {
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
+
                 image.setFitWidth(50);
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
@@ -190,10 +259,17 @@ public class ControllerInventario implements Initializable {
                 j++;
             }
         }
+        criaBotaoEquipavel(Player.getPlayer().getPeitoral());
+        criaBotaoEquipavel(Player.getPlayer().getCapacete());
+        criaBotaoEquipavel(Player.getPlayer().getCalca());
+        criaBotaoEquipavel(Player.getPlayer().getArma());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btnUsar.setDisable(true);
+        btnStatus.setDisable(false);
         try {
             NomePlayer.setText(Player.getPlayer().getName());
         } catch (PlayerInexistenteException e) {
@@ -232,5 +308,25 @@ public class ControllerInventario implements Initializable {
         txtDescricao.setText("");
         ImagemItem.setImage(null);
     }
-
+    @FXML
+    void onClickStatus(ActionEvent event) throws PlayerInexistenteException {
+        if (statusVisivel){
+            limparDadosStatus(); // Chama o método para limpar os dados
+            statusVisivel = false;
+        }else {
+            AtualizarDados();
+            statusVisivel = true;
+        }
+    }
+    // Método para limpar os dados
+    private void limparDadosStatus() {
+        VelocidadePlayer.setText("");
+        ForcaPlayer.setText("");
+        HpPlayer.setText("");
+        MpPlayer.setText("");
+        InteligenciaPlayer.setText("");
+        ResistenciaPlayer.setText("");
+        DefesaPlayer.setText("");
+        DefesaMagicaPlayer.setText("");
+    }
 }

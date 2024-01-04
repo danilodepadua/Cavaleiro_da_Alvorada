@@ -9,6 +9,8 @@ public class Calca extends Armadura implements IEquipable {
     public Calca(){
         this.aumentoDefesaFisica = 0;
         this.aumentoDefesaMagica= 0;
+        this.imagem = "/com.daniel.Images/Itens/FundoCalça.png";
+        this.nome = "";
     }
     @Override
     public void equipar() throws PlayerInexistenteException {

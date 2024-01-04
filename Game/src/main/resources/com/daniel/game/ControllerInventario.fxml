@@ -9,22 +9,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInventario">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" style="-fx-background-color: #262626;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInventario">
    <children>
-      <SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="640.0" prefWidth="712.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="248.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.4216791979949874" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="643.0" prefWidth="656.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="-3.0">
         <items>
-          <AnchorPane fx:id="PainelInfos" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane fx:id="PainelInfos" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="535.0" style="-fx-background-color: #262626;">
                <children>
-                  <ImageView fx:id="ImagemItem" fitHeight="121.0" fitWidth="122.0" layoutX="64.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="30.0" />
-                  <Text fx:id="NomeItem" layoutX="310.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: " AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="30.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#262626" height="176.0" layoutX="143.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+                  <ImageView fx:id="ImagemItem" fitHeight="152.0" fitWidth="97.0" layoutX="21.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="31.0" />
+                  <Text fx:id="NomeItem" fill="WHITE" layoutX="161.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: " AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="24.0">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <GridPane layoutX="270.0" layoutY="174.0" prefHeight="66.0" prefWidth="395.0">
+                  <GridPane layoutX="140.0" layoutY="180.0" prefHeight="86.0" prefWidth="539.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,24 +37,24 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="botaoAcao" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Button" GridPane.columnIndex="2" />
-                        <Button fx:id="btnEquipar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Equipar" />
-                        <Button fx:id="btnDesequipar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Desequipar" GridPane.columnIndex="1" />
-                        <Button fx:id="btnVender" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Vender" GridPane.columnIndex="3" />
+                        <Button fx:id="btnUsar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Button" GridPane.columnIndex="2" />
+                        <Button fx:id="btnEquipar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Equipar" />
+                        <Button fx:id="btnDesequipar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Desequipar" GridPane.columnIndex="1" />
+                        <Button fx:id="btnVender" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Vender" GridPane.columnIndex="3" />
                      </children>
                   </GridPane>
-                  <Text fx:id="txtDescricao" layoutX="270.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:&#10;&#10;&#10;" wrappingWidth="394.9254150390625">
+                  <Text fx:id="txtDescricao" fill="WHITE" layoutX="163.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:&#10;&#10;&#10;" wrappingWidth="415.9999633789064">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="666.0">
                <children>
-                  <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" prefHeight="380.0" prefWidth="712.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" prefHeight="369.0" prefWidth="685.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <GridPane fx:id="Grid" alignment="CENTER" gridLinesVisible="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="690.0">
+                        <GridPane fx:id="Grid" alignment="CENTER" gridLinesVisible="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="641.0" style="-fx-background-color: #a0a0a0;">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -84,59 +86,91 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <AnchorPane layoutX="712.0" layoutY="-2.0" prefHeight="640.0" prefWidth="249.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="712.0" layoutY="-2.0" prefHeight="640.0" prefWidth="303.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="ImgPlayer" fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="100.0" />
             <Text fx:id="NomePlayer" layoutX="20.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.topAnchor="25.0">
                <font>
                   <Font size="32.0" />
                </font>
             </Text>
-            <VBox layoutX="125.0" layoutY="300.576171875" prefWidth="97.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#202020" height="245.0" layoutX="38.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
+            <VBox layoutX="50.0" layoutY="337.0" prefHeight="236.0" prefWidth="200.0" AnchorPane.rightAnchor="53.19999999999999" AnchorPane.topAnchor="337.0">
                <children>
-                  <Text fx:id="HpPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: ">
+                  <Text fx:id="HpPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="MpPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="MP: ">
+                  <Text fx:id="MpPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="ForcaPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr: ">
+                  <Text fx:id="ForcaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="VelocidadePlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Vel: ">
+                  <Text fx:id="VelocidadePlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="InteligenciaPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Int: ">
+                  <Text fx:id="InteligenciaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="DefesaMagicaPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="DefMag: ">
+                  <Text fx:id="DefesaMagicaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="ResistenciaPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Res: ">
+                  <Text fx:id="ResistenciaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="DefesaPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Def: ">
+                  <Text fx:id="DefesaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
                </children>
             </VBox>
-            <Button fx:id="btnVoltar" layoutX="102.0" layoutY="561.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="30.0" prefWidth="98.0" style="-fx-background-radius: 10;" text="Voltar" />
+            <Button fx:id="btnVoltar" layoutX="179.0" layoutY="584.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Voltar" />
+            <GridPane fx:id="gridEquipaveis" layoutX="118.0" prefHeight="315.0" prefWidth="122.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <Text fill="WHITE" layoutX="38.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabeça">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="38.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Torso">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="38.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pernas">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="38.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arma ">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnStatus" layoutX="40.0" layoutY="582.0" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Status" />
          </children>
       </AnchorPane>
    </children>
