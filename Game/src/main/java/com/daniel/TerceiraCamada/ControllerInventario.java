@@ -234,11 +234,11 @@ public class ControllerInventario implements Initializable {
         DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
         Grid.getChildren().clear();
         int j =0;
-        for(int i = 0; i< Player.getPlayer().inventario.getInventario().length; i++){
-            if(Player.getPlayer().inventario.getInventario()[i] != null) {
+        for(int i = 0; i< Player.getPlayer().inventario.getItens().length; i++){
+            if(Player.getPlayer().inventario.getItens()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
-                image.setImage(Player.getPlayer().inventario.getInventario()[i].getImage());
+                image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
                 image.setFitWidth(50);
                 image.setFitHeight(50);
                 Grid.add(item, j % 10, j / 10);
@@ -251,7 +251,7 @@ public class ControllerInventario implements Initializable {
                 int finalI = i;
                 item.setOnAction(event -> {
                     try {
-                        ItemSelecionado(Player.getPlayer().inventario.getInventario()[finalI]);
+                        ItemSelecionado(Player.getPlayer().inventario.getItens()[finalI]);
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }

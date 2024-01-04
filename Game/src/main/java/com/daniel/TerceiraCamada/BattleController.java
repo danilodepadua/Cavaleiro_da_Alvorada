@@ -1,19 +1,32 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoExemplo1;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.GerenciadorDeBatalha;
+import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Personagem;
+import com.daniel.PrimeiraCamada.PersonagemLuta;
+import com.daniel.SegundaCamada.AnimationsAttack;
+import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 import java.net.URL;
@@ -22,9 +35,12 @@ import java.util.ResourceBundle;
 public class BattleController implements Initializable {
 
     GerenciadorDeBatalha gdb;
+    private ArrayList<Item> itens = new ArrayList<>();
+    int itemAtual = 0;
 
-    private Personagem[] Inimigos = new Personagem[1];
-    private Personagem Inimigo;
+    private Inimigo[] inimigos = {new InimigoExemplo1()};
+    PersonagemLuta Enimy;
+    PersonagemLuta player;
 
     @FXML
     private AnchorPane Back;
@@ -40,6 +56,9 @@ public class BattleController implements Initializable {
 
     @FXML
     private Button BtnMagias;
+
+    @FXML
+    private ImageView EnimyEffect;
 
     @FXML
     private ImageView EnimyImg;
@@ -60,6 +79,15 @@ public class BattleController implements Initializable {
     private Text InfoVida;
 
     @FXML
+    private AnchorPane InterfacePlayer;
+
+    @FXML
+    private AnchorPane PainelIntens;
+
+    @FXML
+    private ImageView PlayerEffect;
+
+    @FXML
     private ImageView PlayerImg;
 
     @FXML
@@ -69,30 +97,133 @@ public class BattleController implements Initializable {
     private AnchorPane Screen;
 
     @FXML
-    void Atacar(ActionEvent event) throws PlayerInexistenteException {
+    private Button SetaDescer;
 
+    @FXML
+    private Button SetaSubir;
+
+    @FXML
+    private VBox VBoxItens;
+
+    @FXML
+    void AbrirItens(ActionEvent event) {
+        PnlPrimeirasEscolhas.setDisable(true);
+        PainelIntens.setDisable(false);
+        PainelIntens.setOpacity(1);
+        ColocarItens();
+    }
+    @FXML
+    void SubirItens(ActionEvent event) {
+        itemAtual -= 3;
+        ColocarItens();
+    }
+    @FXML
+    void DescerItens(ActionEvent event) {
+        itemAtual += 3;
+        ColocarItens();
+    }
+    @FXML
+    void Sair(MouseEvent event) {
+        double x = event.getSceneX();
+        double y = event.getSceneY();
+        System.out.println("x: " + x + ", y: " + y);
+        Bounds boundsInScene = PainelIntens.localToScene(PainelIntens.getBoundsInLocal());
+        System.out.println("Minx: " + boundsInScene.getMinX() + ", Miny: " + boundsInScene.getMinY());
+        System.out.println("Maxx: " + boundsInScene.getMaxX() + ", Maxy: " + boundsInScene.getMaxY());
+        if (!boundsInScene.contains(x,y) && !PainelIntens.isDisable()) {
+            RetornarInicial();
+            System.out.println("Clique fora do painel!");
+        }
+    }
+
+    @FXML
+    void Atacar(ActionEvent event) throws PlayerInexistenteException {
+        gdb.Animacao(new SlashAnimation().INICIAR(EnimyEffect));
     }
 
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException {
         Random rand = new Random();
         int i = rand.nextInt(0, 100);
-        if(i >= 50-(Player.getPlayer().getVelocity()-Inimigo.getVelocity())){
+        if(i >= 50-(player.getVelocidade()-Enimy.getVelocidade())){
             Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
         }
+        else{
+            System.out.println("Player falhou em fugir");
+            gdb.MudarTurno();
+        }
+    }
+
+    public void Atualiazar(){
+        try {
+            InfoVida.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
+            InfoMp.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
+            InfoNome.setText(Player.getPlayer().getName());
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void ColocarItens(){
+        if(itemAtual == 0){
+            SetaSubir.setDisable(true);
+        }
+        else{
+            SetaSubir.setDisable(false);
+        }
+        if(itemAtual+3 > itens.size()){
+            SetaDescer.setDisable(true);
+        }
+        else{
+            SetaDescer.setDisable(false);
+        }
+        VBoxItens.getChildren().clear();
+        for(int i = itemAtual; i< itens.size() && i<(itemAtual+3); i++){
+            Button itemBtn = new Button();
+            itemBtn.setText(itens.get(i).getNome());
+            itemBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            itemBtn.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
+            int finalI = i;
+            itemBtn.setOnAction(event -> ((IConsumable)itens.get(finalI)).Consumir(player));
+            VBoxItens.getChildren().add(itemBtn);
+        }
+    }
+    public void RetornarInicial(){
+        PainelIntens.setDisable(true);
+        PainelIntens.setOpacity(0);
+        PnlPrimeirasEscolhas.setDisable(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Random rand = new Random();
-        Inimigo = Inimigos[rand.nextInt(0, Inimigos.length)];
-        EnimyImg.setImage(Inimigo.getImagem());
+        Inimigo inimigo = inimigos[rand.nextInt(0, inimigos.length)];
+        EnimyImg.setImage(inimigo.getImagem());
+        Enimy = new PersonagemLuta(inimigo);
         try {
-            InfoVida.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
-            InfoMp.setText("MP: " + Player.getPlayer() + "/" + Player.getPlayer().getMP());
-            InfoNome.setText(Player.getPlayer().getName());
+            player = new PersonagemLuta(Player.getPlayer());
+            for(Item i : Player.getPlayer().getInventario().getItens()){
+                if(i instanceof IConsumable){
+                    itens.add(i);
+                }
+            }
+            System.out.println(itens.size());
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
+        PainelIntens.setPickOnBounds(true);
+        ImageView seta = new ImageView();
+        seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
+        seta.setFitWidth(30);
+        seta.setPreserveRatio(true);
+        ImageView setaInv = new ImageView();
+        setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
+        setaInv.setFitWidth(30);
+        setaInv.setPreserveRatio(true);
+        setaInv.rotateProperty().set(180);
+        SetaDescer.setGraphic(seta);
+        SetaSubir.setGraphic(setaInv);
+        Atualiazar();
+        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer);
+        gdb.IniciarBatalha();
     }
 }

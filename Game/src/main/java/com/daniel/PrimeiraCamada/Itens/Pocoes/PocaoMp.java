@@ -4,6 +4,7 @@ import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.PersonagemLuta;
 
 public class PocaoMp extends Item implements IConsumable {
 
@@ -14,6 +15,12 @@ public class PocaoMp extends Item implements IConsumable {
         this.descricao = "Poção que concede recuperação de vida";
 
     }
+
+    @Override
+    public void Consumir(PersonagemLuta p) {
+
+    }
+
     @Override
     public void Consumir() throws PlayerInexistenteException {
         Player.getPlayer().RecuperarMana(100);
