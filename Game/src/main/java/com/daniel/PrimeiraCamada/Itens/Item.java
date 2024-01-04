@@ -12,6 +12,7 @@ public abstract class Item implements Serializable {
     protected int quant = 1;
     protected int preço;
     protected String descricao;
+
     public Image getImage(){
         return new Image (Main.class.getResource(imagem).toString());
     }
@@ -34,4 +35,9 @@ public abstract class Item implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    // Método para atualizar a imagem
+    public void setImagem(String novoCaminhoImagem) {
+        this.imagem = novoCaminhoImagem;
+    }
+
 }

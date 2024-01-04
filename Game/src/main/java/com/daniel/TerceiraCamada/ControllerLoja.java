@@ -2,6 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
@@ -117,7 +118,7 @@ public class ControllerLoja implements Initializable {
 
 
     @FXML
-    void onClickComprar(ActionEvent event) throws PlayerInexistenteException {
+    void onClickComprar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         if (Player.getPlayer() != null && itemSelecionado != null) {
             int precoItem = itemSelecionado.getPreco();
             if (Player.getPlayer().getCoins() >= precoItem) {

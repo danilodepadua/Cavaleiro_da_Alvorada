@@ -9,6 +9,8 @@ public class Capacete extends Armadura implements IEquipable {
     public Capacete(){
         this.aumentoDefesaFisica = 0;
         this.aumentoDefesaMagica = 0;
+        this.imagem = "/com.daniel.Images/Itens/FundoCapacete.png";
+        this.nome = "";
     }
     @Override
     public void equipar() throws PlayerInexistenteException {

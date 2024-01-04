@@ -1,6 +1,7 @@
 package com.daniel.SegundaCamada.CassinoRepositorio;
 
 import com.daniel.PrimeiraCamada.Cassino.Carta;
+import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,19 +16,23 @@ public class Baralho {
         Collections.shuffle(cartas);
     }
 
-    public Carta pegarCarta() {
+    public Carta pegarCarta() throws BaralhoVazioException {
         if (!cartas.isEmpty()) {
             return cartas.remove(cartas.size() - 1);
         } else {
-            System.out.println("Baralho vazio!");
-            return null;
+            throw new BaralhoVazioException();
         }
     }
+
 
     public void reiniciarBaralho() {
         // Limpa e reinicia o baralho
         cartas.clear();
         // Adicione as cartas novamente
+        criarBaralho("hearts");
+        criarBaralho("clubs");
+        criarBaralho("spades");
+        criarBaralho("diamonds");
     }
 
     public boolean vazio() {

@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
@@ -64,12 +65,11 @@ public class Player extends Personagem implements Serializable {
     public int getCoins() {
         return coins;
     }
-    public void removerCoins(int quantidade) {
-        if (quantidade > 0 && this.coins >= quantidade) {
-            this.coins -= quantidade;
-        } else {
-            System.out.println("Quantidade inválida ou moedas insuficientes.");
+    public void removerCoins(int quantidade) throws RemoverCoinsException {
+        if (quantidade <= 0 || this.coins < quantidade) {
+            throw new RemoverCoinsException();
         }
+        this.coins -= quantidade;
     }
     public void ganhaCoins(int quantidade) {
         this.coins += quantidade;
