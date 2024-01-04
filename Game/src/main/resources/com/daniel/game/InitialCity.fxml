@@ -119,6 +119,7 @@
             <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="200.0" text="Loja" />
             <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="200.0" text="Caçar" />
             <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefWidth="200.0" text="Salvar" />
+            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" prefWidth="200.0" text="Cassino" />
          </children>
          <opaqueInsets>
             <Insets />

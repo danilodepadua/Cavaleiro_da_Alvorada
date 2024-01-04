@@ -19,7 +19,6 @@ public  class Peitoral extends Armadura implements IEquipable {
     @Override
     public void desequipar() throws PlayerInexistenteException {
         Player.getPlayer().desequiparPeitoral();
-        System.out.println("Esse peitoral não está equipado.");
     }
 
 }

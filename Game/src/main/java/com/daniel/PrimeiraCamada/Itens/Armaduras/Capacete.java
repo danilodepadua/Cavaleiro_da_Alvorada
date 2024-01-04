@@ -18,7 +18,6 @@ public class Capacete extends Armadura implements IEquipable {
     @Override
     public void desequipar() throws PlayerInexistenteException {
         Player.getPlayer().desequiparCapacete();
-        System.out.println("Esse capacete não está equipado.");
     }
 
 }
