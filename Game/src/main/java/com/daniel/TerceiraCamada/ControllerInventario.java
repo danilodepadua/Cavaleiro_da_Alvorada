@@ -2,7 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
@@ -35,6 +35,10 @@ public class ControllerInventario implements Initializable {
 
     @FXML
     private Text ForcaPlayer;
+    @FXML
+    private Text AtqFPlayer;
+    @FXML
+    private Text AtqMPlayer;
 
     @FXML
     private GridPane Grid;
@@ -53,9 +57,6 @@ public class ControllerInventario implements Initializable {
 
     @FXML
     private Text NomeItem;
-
-    @FXML
-    private Text NomePlayer;
 
     @FXML
     private AnchorPane PainelInfos;
@@ -103,9 +104,9 @@ public class ControllerInventario implements Initializable {
 
         configurarVenda(i);
 
-        if (i instanceof IConsumable) {
+        if (i instanceof IConsumableOutBattle) {
             btnUsar.setDisable(false);
-            configurarAcaoConsumivel((IConsumable) i);
+            configurarAcaoConsumivel((IConsumableOutBattle) i);
         } else {
             btnUsar.setDisable(true);
         }
@@ -129,7 +130,7 @@ public class ControllerInventario implements Initializable {
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
             image.setFitWidth(50);
-            image.setFitHeight(53);
+            image.setPreserveRatio(true);
             itemButton.setPrefWidth(100);
             itemButton.setPrefHeight(55);
 
@@ -163,7 +164,7 @@ public class ControllerInventario implements Initializable {
         // Adiciona o novo botão
         gridEquipaveis.add(novoBotao, 0, linha);
     }
-    private void configurarAcaoConsumivel(IConsumable consumable) {
+    private void configurarAcaoConsumivel(IConsumableOutBattle consumable) {
         btnUsar.setOnAction(event -> {
             try {
                 consumable.Consumir();
@@ -232,6 +233,8 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("Resistência: " + Player.getPlayer().getResistencia());
         DefesaPlayer.setText("Defesa Física: " + Player.getPlayer().getDefesaF());
         DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
+        AtqFPlayer.setText("Ataque Físico: " + Player.getPlayer().getAtaqueF());
+        AtqMPlayer.setText("Ataque Mágico: " + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
         for(int i = 0; i< Player.getPlayer().inventario.getItens().length; i++){
@@ -270,11 +273,6 @@ public class ControllerInventario implements Initializable {
 
         btnUsar.setDisable(true);
         btnStatus.setDisable(false);
-        try {
-            NomePlayer.setText(Player.getPlayer().getName());
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();
