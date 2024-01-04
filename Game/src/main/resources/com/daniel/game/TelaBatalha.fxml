@@ -1,155 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.BattleController">
+<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Sair" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.BattleController">
    <children>
       <ImageView fx:id="EnimyImg" fitHeight="150.0" fitWidth="200.0" layoutX="656.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
       <ImageView fx:id="PlayerImg" fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0" />
-      <AnchorPane layoutX="510.0" layoutY="440.0" prefHeight="163.0" prefWidth="960.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="InterfacePlayer" layoutX="510.0" layoutY="440.0" prefHeight="163.0" prefWidth="960.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane fx:id="Back">
-                     <children>
-                        <Text fx:id="InfoNome" fill="WHITE" layoutX="624.0" layoutY="51.0" stroke="#0149b5" strokeType="OUTSIDE" text="Nome" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="20.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="InfoNivel" fill="WHITE" layoutX="832.0" layoutY="50.0" stroke="#0149b5" strokeType="OUTSIDE" text="LV:  1" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="20.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="InfoVida" fill="WHITE" layoutX="635.0" layoutY="52.0" stroke="#0149b5" strokeType="OUTSIDE" text="Hp: 50/100" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="70.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="InfoMp" fill="WHITE" layoutX="632.0" layoutY="132.0" stroke="#0149b5" strokeType="OUTSIDE" text="Hp: 50/100" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="100.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="113.0" fitWidth="135.0" layoutX="780.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="40.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="PnlPrimeirasEscolhas">
-                     <children>
-                        <GridPane fx:id="GridActions" alignment="CENTER" gridLinesVisible="true" hgap="10.0" layoutX="0.5" layoutY="0.5" prefHeight="200.0" prefWidth="406.0" vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Button fx:id="BtnItens" mnemonicParsing="false" prefHeight="94.0" prefWidth="275.0" text="Itens" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <textFill>
-                                    <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </textFill>
-                              </Button>
-                              <Button fx:id="BtnMagias" layoutX="10.0" layoutY="31.0" mnemonicParsing="false" prefHeight="348.0" prefWidth="275.0" text="Magias" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <textFill>
-                                    <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </textFill>
-                              </Button>
-                              <Button fx:id="BtnAtacar" layoutX="290.0" layoutY="31.0" mnemonicParsing="false" onAction="#Atacar" prefHeight="147.0" prefWidth="275.0" text="Atacar">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <textFill>
-                                    <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </textFill>
-                              </Button>
-                              <Button fx:id="BtnFugir" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onAction="#Fugir" prefHeight="94.0" prefWidth="275.0" text="Fugir" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <textFill>
-                                    <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </textFill>
-                              </Button>
-                           </children>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane disable="true" prefHeight="200.0" prefWidth="200.0" />
+                  <Text fx:id="InfoNome" fill="WHITE" layoutX="624.0" layoutY="51.0" stroke="#0149b5" strokeType="OUTSIDE" text="Nome" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="InfoNivel" fill="WHITE" layoutX="832.0" layoutY="50.0" stroke="#0149b5" strokeType="OUTSIDE" text="LV:  1" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="InfoVida" fill="WHITE" layoutX="635.0" layoutY="52.0" stroke="#0149b5" strokeType="OUTSIDE" text="Hp: 50/100" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="70.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="InfoMp" fill="WHITE" layoutX="632.0" layoutY="132.0" stroke="#0149b5" strokeType="OUTSIDE" text="Hp: 50/100" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="100.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="113.0" fitWidth="135.0" layoutX="780.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="40.0" />
                </children>
-            </StackPane>
+            </AnchorPane>
+            <AnchorPane fx:id="PnlPrimeirasEscolhas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <GridPane fx:id="GridActions" alignment="CENTER" gridLinesVisible="true" hgap="10.0" layoutX="0.5" layoutY="0.5" prefHeight="200.0" prefWidth="406.0" vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="BtnItens" mnemonicParsing="false" onAction="#AbrirItens" prefHeight="94.0" prefWidth="275.0" text="Itens" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Button>
+                        <Button fx:id="BtnMagias" layoutX="10.0" layoutY="31.0" mnemonicParsing="false" prefHeight="348.0" prefWidth="275.0" text="Magias" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Button>
+                        <Button fx:id="BtnAtacar" layoutX="290.0" layoutY="31.0" mnemonicParsing="false" onAction="#Atacar" prefHeight="147.0" prefWidth="275.0" text="Atacar">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Button>
+                        <Button fx:id="BtnFugir" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onAction="#Fugir" prefHeight="94.0" prefWidth="275.0" text="Fugir" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="0.13744075829383887" startX="1.0" startY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PainelIntens" disable="true" layoutX="280.0" layoutY="1.0" opacity="0.0" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="VBoxItens" prefHeight="200.0" prefWidth="215.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Button fx:id="SetaDescer" layoutX="223.0" layoutY="20.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <Button fx:id="SetaSubir" mnemonicParsing="false" onAction="#SubirItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
+      <ImageView fx:id="EnimyEffect" fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerEffect" fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -24,8 +24,8 @@ public class Main extends Application {
             CurrentStage.setScene(scene);
             CurrentStage.setFullScreen(isFull);
         }
-        catch(IOException ignored){
-            System.out.println(ignored);
+        catch(IOException i){
+            i.printStackTrace();
         }
     }
 

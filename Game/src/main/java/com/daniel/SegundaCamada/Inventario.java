@@ -3,13 +3,10 @@ package com.daniel.SegundaCamada;
 import com.daniel.PrimeiraCamada.Itens.Item;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Inventario implements Serializable {
 
-    private Item item;
     private Item[] itens= new Item[100];
 
 
@@ -39,7 +36,7 @@ public class Inventario implements Serializable {
             }
         }
     }
-    public Item[] getInventario() {
+    public Item[] getItens() {
         return itens;
     }
 }

@@ -9,13 +9,13 @@ public class SlashAnimation extends AnimationsAttack{
 
     public Timeline INICIAR(ImageView View) {
         System.out.println("Iniciou Preparação");
-        super.Images = new Image[11];
+        Image[] img = new Image[11];
         for(int i = 0; i<11; i++)
         {
-            super.Images[i] = new Image(Main.class.getResource("/com.daniel.Images/Slash/Slash" +(i+1)+".png").toString());
+            img[i] = new Image(Main.class.getResource("/com.daniel.Images/Slash/Slash" +(i+1)+".png").toString());
         }
         System.out.println("Finalizou Preparação");
-        System.out.println("Frames: " + super.Images.length);
-        return Play(View);
+        System.out.println("Frames: " + img.length);
+        return Play(View, 50, img);
     }
 }
