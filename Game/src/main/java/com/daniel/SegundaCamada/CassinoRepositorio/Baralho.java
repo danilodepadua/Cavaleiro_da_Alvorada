@@ -1,4 +1,6 @@
-package com.daniel.PrimeiraCamada.Cassino;
+package com.daniel.SegundaCamada.CassinoRepositorio;
+
+import com.daniel.PrimeiraCamada.Cassino.Carta;
 
 import java.util.ArrayList;
 import java.util.Collections;

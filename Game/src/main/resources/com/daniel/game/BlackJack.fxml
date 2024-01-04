@@ -21,8 +21,8 @@
       <Button fx:id="btnApostar" layoutX="440.0" layoutY="548.0" mnemonicParsing="false" onAction="#Apostar" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Apostar" />
       <TextField fx:id="textFieldAposta" layoutX="405.0" layoutY="489.0" prefHeight="20.0" prefWidth="150.0" />
       <Button fx:id="btnVoltar" layoutX="22.0" layoutY="548.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Voltar" />
-      <Button fx:id="btnPuxar" layoutX="739.0" layoutY="377.0" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="55.0" text="Puxar" />
-      <Button fx:id="btnManter" layoutX="815.0" layoutY="377.0" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="55.0" text="Manter" />
+      <Button fx:id="btnPuxar" layoutX="737.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="55.0" text="Puxar" />
+      <Button fx:id="btnManter" layoutX="816.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="55.0" text="Manter" />
       <GridPane fx:id="GridPaneDealer" layoutX="209.0" prefHeight="180.0" prefWidth="462.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,18 +32,6 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <ImageView fx:id="costasCartaUm" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Cartas/backside.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="costasCartaDois" fitHeight="150.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Cartas/backside.png" />
-               </image>
-            </ImageView>
-         </children>
       </GridPane>
       <GridPane fx:id="GridPanePlayer" layoutX="209.0" layoutY="210.0" prefHeight="180.0" prefWidth="462.0">
          <columnConstraints>
@@ -56,6 +44,31 @@
          </rowConstraints>
       </GridPane>
       <Text fill="WHITE" layoutX="374.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o valor a ser apostado">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtSeusPontos" fill="WHITE" layoutX="737.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtVoceGanhou" fill="WHITE" layoutX="737.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="110.60009765625">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="737.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu saldo:" wrappingWidth="80.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtSeuSaldo" fill="#e1ff00" layoutX="817.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtPontosDaCasa" fill="WHITE" layoutX="737.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.199951171875">
          <font>
             <Font name="Barlow Condensed SemiBold" size="21.0" />
          </font>

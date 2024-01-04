@@ -91,6 +91,7 @@ public class ControllerInventario implements Initializable {
             try {
                 venderItem(i);
                 AtualizarDados();
+                limparTela();
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }
@@ -101,6 +102,7 @@ public class ControllerInventario implements Initializable {
             botaoAcao.setOnAction(Event -> {
                 try {
                     ((IConsumable) i).Consumir();
+                    limparTela();
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
                 }
@@ -117,7 +119,10 @@ public class ControllerInventario implements Initializable {
             IEquipable equipableItem = (IEquipable) i;
 
             if (!Player.getPlayer().getPeitoral().equals(equipableItem) &&
-                    !Player.getPlayer().getCapacete().equals(equipableItem) && !Player.getPlayer().getCalca().equals(equipableItem) && !Player.getPlayer().getArma().equals(equipableItem) ) { //Compara se o item atual é igual ao atual inserido no player
+                    !Player.getPlayer().getCapacete().equals(equipableItem) &&
+                    !Player.getPlayer().getCalca().equals(equipableItem) &&
+                    !Player.getPlayer().getArma().equals(equipableItem) ) { //Compara se o item atual é igual ao atual inserido no player
+
                 btnEquipar.setDisable(false);
                 btnEquipar.setOnAction(event -> {
                     try {
@@ -137,6 +142,7 @@ public class ControllerInventario implements Initializable {
                     try {
                         equipableItem.desequipar(); //Analogo ao equipar, chama o metodo implementando
                         AtualizarDados();
+                        limparTela();
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }
@@ -151,7 +157,7 @@ public class ControllerInventario implements Initializable {
 
     private void AtualizarDados() throws PlayerInexistenteException {
         VelocidadePlayer.setText("Vel: " + Player.getPlayer().getVelocity());
-        ForcaPlayer.setText("Fr: " + Player.getPlayer().getAtaqueF());
+        ForcaPlayer.setText("Fr: " + Player.getPlayer().getForce());
         HpPlayer.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
         MpPlayer.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
         InteligenciaPlayer.setText("Int: " + Player.getPlayer().getInteligence());
@@ -221,4 +227,10 @@ public class ControllerInventario implements Initializable {
         Player.getPlayer().getInventario().RemoverItem(item); //Remove do inventario
 
     }
+    public void limparTela() {
+        NomeItem.setText("");
+        txtDescricao.setText("");
+        ImagemItem.setImage(null);
+    }
+
 }

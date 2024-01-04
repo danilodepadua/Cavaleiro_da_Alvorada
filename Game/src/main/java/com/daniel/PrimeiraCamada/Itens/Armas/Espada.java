@@ -1,4 +1,4 @@
-package com.daniel.PrimeiraCamada.Itens.Armaduras.Armas;
+package com.daniel.PrimeiraCamada.Itens.Armas;
 
 import com.daniel.PrimeiraCamada.Itens.Arma;
 

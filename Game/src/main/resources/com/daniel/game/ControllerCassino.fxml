@@ -7,24 +7,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerCassino">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerCassino">
    <children>
-      <ImageView fitHeight="640.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="640.0" fitWidth="960.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="56.1549072265625" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="3.0">
          <image>
             <Image url="@../../../com.daniel.Images/Cartas/Mesa.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnBlackJack" layoutX="429.0" layoutY="263.0" mnemonicParsing="false" onAction="#Jogar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Black Jack" />
-      <Text fill="WHITE" layoutX="403.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carteira: ">
-         <font>
-            <Font name="Bell MT Italic" size="26.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtMoedas" fill="#e5ff00" layoutX="516.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Button fx:id="btnBlackJack" layoutX="431.0" layoutY="247.0" mnemonicParsing="false" onAction="#Jogar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Black Jack" />
+      <Text fill="WHITE" layoutX="412.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carteira: ">
          <font>
             <Font name="Barlow Condensed SemiBold" size="26.0" />
          </font>
       </Text>
-      <Button fx:id="btnVoltar" layoutX="431.0" layoutY="461.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Voltar" />
+      <Text fx:id="txtMoedas" fill="#e5ff00" layoutX="505.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="26.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnVoltar" layoutX="431.0" layoutY="312.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Voltar" />
+      <Text fx:id="txtCassino" fill="#e5ff00" layoutX="291.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="61.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
