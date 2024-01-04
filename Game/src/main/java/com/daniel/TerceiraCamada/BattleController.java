@@ -5,11 +5,9 @@ import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.GerenciadorDeBatalha;
 import com.daniel.PrimeiraCamada.Inimigo;
-import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.PrimeiraCamada.PersonagemLuta;
-import com.daniel.SegundaCamada.AnimationsAttack;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -82,7 +80,7 @@ public class BattleController implements Initializable {
     private AnchorPane InterfacePlayer;
 
     @FXML
-    private AnchorPane PainelIntens;
+    private AnchorPane PnlItens;
 
     @FXML
     private ImageView PlayerEffect;
@@ -108,8 +106,8 @@ public class BattleController implements Initializable {
     @FXML
     void AbrirItens(ActionEvent event) {
         PnlPrimeirasEscolhas.setDisable(true);
-        PainelIntens.setDisable(false);
-        PainelIntens.setOpacity(1);
+        PnlItens.setDisable(false);
+        PnlItens.setOpacity(1);
         ColocarItens();
     }
     @FXML
@@ -127,10 +125,10 @@ public class BattleController implements Initializable {
         double x = event.getSceneX();
         double y = event.getSceneY();
         System.out.println("x: " + x + ", y: " + y);
-        Bounds boundsInScene = PainelIntens.localToScene(PainelIntens.getBoundsInLocal());
+        Bounds boundsInScene = PnlItens.localToScene(PnlItens.getBoundsInLocal());
         System.out.println("Minx: " + boundsInScene.getMinX() + ", Miny: " + boundsInScene.getMinY());
         System.out.println("Maxx: " + boundsInScene.getMaxX() + ", Maxy: " + boundsInScene.getMaxY());
-        if (!boundsInScene.contains(x,y) && !PainelIntens.isDisable()) {
+        if (!boundsInScene.contains(x,y) && !PnlItens.isDisable()) {
             RetornarInicial();
             System.out.println("Clique fora do painel!");
         }
@@ -179,17 +177,17 @@ public class BattleController implements Initializable {
         VBoxItens.getChildren().clear();
         for(int i = itemAtual; i< itens.size() && i<(itemAtual+3); i++){
             Button itemBtn = new Button();
-            itemBtn.setText(itens.get(i).getNome());
+            itemBtn.setText(itens.get(i).getNome() + " : X" + itens.get(i).getQuant());
             itemBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             itemBtn.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
             int finalI = i;
-            itemBtn.setOnAction(event -> ((IConsumable)itens.get(finalI)).Consumir(player));
+            itemBtn.setOnAction(event -> ((IConsumableInBattle)itens.get(finalI)).Consumir(player));
             VBoxItens.getChildren().add(itemBtn);
         }
     }
     public void RetornarInicial(){
-        PainelIntens.setDisable(true);
-        PainelIntens.setOpacity(0);
+        PnlItens.setDisable(true);
+        PnlItens.setOpacity(0);
         PnlPrimeirasEscolhas.setDisable(false);
     }
 
@@ -202,7 +200,7 @@ public class BattleController implements Initializable {
         try {
             player = new PersonagemLuta(Player.getPlayer());
             for(Item i : Player.getPlayer().getInventario().getItens()){
-                if(i instanceof IConsumable){
+                if(i instanceof IConsumableInBattle){
                     itens.add(i);
                 }
             }
@@ -210,7 +208,7 @@ public class BattleController implements Initializable {
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
-        PainelIntens.setPickOnBounds(true);
+        PnlItens.setPickOnBounds(true);
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
         seta.setFitWidth(30);

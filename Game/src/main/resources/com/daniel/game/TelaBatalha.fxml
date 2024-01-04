@@ -146,7 +146,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="PainelIntens" disable="true" layoutX="280.0" layoutY="1.0" opacity="0.0" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="PnlItens" disable="true" layoutX="280.0" layoutY="1.0" opacity="0.0" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <VBox fx:id="VBoxItens" prefHeight="200.0" prefWidth="215.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
@@ -163,7 +163,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="EnimyEffect" fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerEffect" fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EnimyEffect" fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
+      <ImageView fx:id="PlayerEffect" fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0" />
    </children>
 </AnchorPane>

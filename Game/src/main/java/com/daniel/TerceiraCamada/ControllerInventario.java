@@ -2,7 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
@@ -98,10 +98,10 @@ public class ControllerInventario implements Initializable {
 
         });
 
-        if (i instanceof IConsumable) {
+        if (i instanceof IConsumableOutBattle) {
             botaoAcao.setOnAction(Event -> {
                 try {
-                    ((IConsumable) i).Consumir();
+                    ((IConsumableOutBattle) i).Consumir();
                     limparTela();
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
