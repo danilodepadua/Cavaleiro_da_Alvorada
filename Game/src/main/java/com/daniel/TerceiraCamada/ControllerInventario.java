@@ -19,6 +19,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -29,7 +30,8 @@ public class ControllerInventario implements Initializable {
     private boolean botaoInicial = false;
     @FXML
     private Text DefesaMagicaPlayer;
-
+    @FXML
+    private Rectangle MldDescricao;
     @FXML
     private Text DefesaPlayer;
 
@@ -270,7 +272,7 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ((AnchorPane)MldDescricao.getParent()).widthProperty().addListener((obs, oldWidth, newWidth) -> resizeRectangle());
         btnUsar.setDisable(true);
         btnStatus.setDisable(false);
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
@@ -326,5 +328,9 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("");
         DefesaPlayer.setText("");
         DefesaMagicaPlayer.setText("");
+    }
+    private void resizeRectangle() {
+        // Redimensiona o Rectangle para ter a mesma largura e altura do AnchorPane
+        MldDescricao.setWidth(MldDescricao.getParent().getLayoutBounds().getWidth() - 150);
     }
 }
