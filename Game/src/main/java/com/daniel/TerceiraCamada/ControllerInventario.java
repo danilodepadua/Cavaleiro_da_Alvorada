@@ -2,7 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IConsumable;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
@@ -10,6 +10,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -103,9 +105,9 @@ public class ControllerInventario implements Initializable {
 
         configurarVenda(i);
 
-        if (i instanceof IConsumable) {
+        if (i instanceof IConsumableOutBattle) {
             btnUsar.setDisable(false);
-            configurarAcaoConsumivel((IConsumable) i);
+            configurarAcaoConsumivel((IConsumableOutBattle) i);
         } else {
             btnUsar.setDisable(true);
         }
@@ -129,9 +131,19 @@ public class ControllerInventario implements Initializable {
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
             image.setFitWidth(50);
-            image.setFitHeight(53);
+            image.setFitHeight(60);
             itemButton.setPrefWidth(100);
-            itemButton.setPrefHeight(55);
+            itemButton.setPrefHeight(60);
+            itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+
+            itemButton.setOnMousePressed(event -> {
+                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;");
+            });
+
+            itemButton.setOnMouseReleased(event -> {
+                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;");
+            });
+
 
             // Configurar ação do botão para exibir detalhes do item ou equipá-lo
             itemButton.setOnAction(event -> {
@@ -163,7 +175,7 @@ public class ControllerInventario implements Initializable {
         // Adiciona o novo botão
         gridEquipaveis.add(novoBotao, 0, linha);
     }
-    private void configurarAcaoConsumivel(IConsumable consumable) {
+    private void configurarAcaoConsumivel(IConsumableOutBattle consumable) {
         btnUsar.setOnAction(event -> {
             try {
                 consumable.Consumir();
@@ -234,20 +246,32 @@ public class ControllerInventario implements Initializable {
         DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
         Grid.getChildren().clear();
         int j =0;
-        for(int i = 0; i< Player.getPlayer().inventario.getItens().length; i++){
-            if(Player.getPlayer().inventario.getItens()[i] != null) {
+        for (int i = 0; i < Player.getPlayer().inventario.getItens().length; i++) {
+            if (Player.getPlayer().inventario.getItens()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
-                image.setFitWidth(50);
-                image.setFitHeight(50);
+                image.setFitWidth(40);
+                image.setFitHeight(40);
                 Grid.add(item, j % 10, j / 10);
+                Grid.setHgap(30); // Espaçamento horizontal
+                Grid.setVgap(30); // Espaçamento vertical
+
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
+                // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
+                item.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
-                image.setFitWidth(50);
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
+
+                item.setOnMousePressed(event -> {
+                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
+                });
+
+                item.setOnMouseReleased(event -> {
+                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;-fx-min-width: 60; -fx-min-height: 60");
+                });
                 int finalI = i;
                 item.setOnAction(event -> {
                     try {
@@ -259,6 +283,7 @@ public class ControllerInventario implements Initializable {
                 j++;
             }
         }
+
         criaBotaoEquipavel(Player.getPlayer().getPeitoral());
         criaBotaoEquipavel(Player.getPlayer().getCapacete());
         criaBotaoEquipavel(Player.getPlayer().getCalca());

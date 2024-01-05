@@ -13,6 +13,7 @@ public class Baralho {
     }
 
     public void embaralhar() {
+        System.out.println("Tamanho do baralho: " + tamanho());
         Collections.shuffle(cartas);
     }
 

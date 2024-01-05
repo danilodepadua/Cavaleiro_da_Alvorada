@@ -4,8 +4,12 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteFerro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
+import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -32,6 +36,11 @@ public class Player extends Personagem implements Serializable {
         this.capacete = new Capacete();
         this.calca = new Calca();
         this.arma = new Arma();
+        inventario.adicionarItem(new PeitoralFerro());
+        inventario.adicionarItem(new CalcaFerro());
+        inventario.adicionarItem(new CapaceteFerro());
+        inventario.adicionarItem(new Espada());
+
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
