@@ -94,8 +94,8 @@ public class CityController implements Initializable {
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
         }
-        btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerInventario.fxml"))));
-        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("LojaController.fxml"))));
+        btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml"))));
+        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml"))));
         btncacar.setOnAction(event -> Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"))));
 
 

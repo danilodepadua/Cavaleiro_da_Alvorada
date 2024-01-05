@@ -18,13 +18,15 @@ public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableIn
     }
 
     @Override
-    public void Consumir(PersonagemLuta p) {
-
+    public void Consumir(PersonagemLuta p) throws PlayerInexistenteException {
+        p.RecuperarMana(100);
+        Player.getPlayer().getInventario().RemoverItem(this);
     }
 
     @Override
     public void Consumir() throws PlayerInexistenteException {
         Player.getPlayer().RecuperarMana(100);
+        Player.getPlayer().getInventario().RemoverItem(this);
     }
 
 }

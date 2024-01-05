@@ -8,6 +8,7 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.PersonagemLuta;
+import com.daniel.PrimeiraCamada.TiposDano;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -42,6 +43,10 @@ public class BattleController implements Initializable {
 
     @FXML
     private AnchorPane Back;
+    @FXML
+    private AnchorPane boxMensagem;
+    @FXML
+    private Text txtMensagem;
 
     @FXML
     private Button BtnAtacar;
@@ -136,7 +141,7 @@ public class BattleController implements Initializable {
 
     @FXML
     void Atacar(ActionEvent event) throws PlayerInexistenteException {
-        gdb.Animacao(new SlashAnimation().INICIAR(EnimyEffect));
+        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase());
     }
 
     @FXML
@@ -144,11 +149,11 @@ public class BattleController implements Initializable {
         Random rand = new Random();
         int i = rand.nextInt(0, 100);
         if(i >= 50-(player.getVelocidade()-Enimy.getVelocidade())){
-            Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
         }
         else{
-            System.out.println("Player falhou em fugir");
-            gdb.MudarTurno();
+            gdb.ApagarUiPlayer();
+            gdb.mostrarResultado("Player falhou em fugir");
         }
     }
 
@@ -181,7 +186,17 @@ public class BattleController implements Initializable {
             itemBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             itemBtn.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
             int finalI = i;
-            itemBtn.setOnAction(event -> ((IConsumableInBattle)itens.get(finalI)).Consumir(player));
+            itemBtn.setOnAction(event -> {
+                try {
+                    ((IConsumableInBattle)itens.get(finalI)).Consumir(player);
+                    itens.get(finalI).MenosQuant();
+                    if(itens.get(finalI).getQuant() <=0){
+                        itens.remove(finalI);
+                    }
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             VBoxItens.getChildren().add(itemBtn);
         }
     }
@@ -221,7 +236,7 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer);
+        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem);
         gdb.IniciarBatalha();
     }
 }

@@ -91,6 +91,8 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Text txtDescricao;
     @FXML
+    private Text txtQtdItem;
+    @FXML
     private GridPane gridEquipaveis;
 
 
@@ -98,6 +100,7 @@ public class ControllerInventario implements Initializable {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
         txtDescricao.setText("Descrição: " + i.getDescricao());
+        txtQtdItem.setText("Qtd: " + i.getQuant());
         btnUsar.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
@@ -129,7 +132,7 @@ public class ControllerInventario implements Initializable {
             ImageView image = new ImageView();
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
-            image.setFitWidth(50);
+            image.setFitWidth(40);
             image.setPreserveRatio(true);
             itemButton.prefWidthProperty().bind(gridEquipaveis.prefWidthProperty());
             itemButton.prefHeightProperty().bind(gridEquipaveis.prefHeightProperty().divide(4));
@@ -179,7 +182,6 @@ public class ControllerInventario implements Initializable {
             try {
                 consumable.Consumir();
                 limparTela();
-                Player.getPlayer().inventario.RemoverItem((Item) consumable);
                 AtualizarDados();
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
@@ -252,8 +254,8 @@ public class ControllerInventario implements Initializable {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
-                image.setFitWidth(20);
-                image.setFitHeight(20);
+                image.setFitWidth(40);
+                image.setFitHeight(40);
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
@@ -312,7 +314,7 @@ public class ControllerInventario implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
     public void venderItem(Item item) throws PlayerInexistenteException {
         int precoItem = item.getPreco(); //Pega o preço
@@ -323,6 +325,7 @@ public class ControllerInventario implements Initializable {
     public void limparTela() {
         NomeItem.setText("");
         txtDescricao.setText("");
+        txtQtdItem.setText("");
         ImagemItem.setImage(null);
     }
     @FXML
