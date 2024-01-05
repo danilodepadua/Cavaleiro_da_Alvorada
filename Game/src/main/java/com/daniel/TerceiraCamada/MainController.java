@@ -24,7 +24,7 @@ public class MainController implements Initializable {
     void Carregar(ActionEvent event){
         System.out.println("Carregando");
         Main.saveManager.Carregar();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
 
     @Override

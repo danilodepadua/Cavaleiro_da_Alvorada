@@ -83,7 +83,7 @@ public class CharCreatorController implements Initializable {
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
         Player.CreatePlayer("/com.daniel.Images/Player.png", forca, Int, nomeDoJogador, velocidade, res, 10000);
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
 
     }
     @FXML

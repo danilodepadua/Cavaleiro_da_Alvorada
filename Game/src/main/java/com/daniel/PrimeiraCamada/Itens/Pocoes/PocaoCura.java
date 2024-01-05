@@ -17,11 +17,13 @@ public class PocaoCura extends Item implements IConsumableOutBattle, IConsumable
     }
 
     @Override
-    public void Consumir(PersonagemLuta p){
+    public void Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.RecuperarVida(100);
+        Player.getPlayer().getInventario().RemoverItem(this);
     }
     @Override
     public void Consumir() throws PlayerInexistenteException {
         Player.getPlayer().RecuperarVida(100);
+        Player.getPlayer().getInventario().RemoverItem(this);
     }
 }

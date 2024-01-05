@@ -16,10 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -92,6 +91,8 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Text txtDescricao;
     @FXML
+    private Text txtQtdItem;
+    @FXML
     private GridPane gridEquipaveis;
 
 
@@ -99,6 +100,7 @@ public class ControllerInventario implements Initializable {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
         txtDescricao.setText("Descrição: " + i.getDescricao());
+        txtQtdItem.setText("Qtd: " + i.getQuant());
         btnUsar.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
@@ -130,7 +132,7 @@ public class ControllerInventario implements Initializable {
             ImageView image = new ImageView();
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
-            image.setFitWidth(50);
+            image.setFitWidth(40);
             image.setPreserveRatio(true);
             itemButton.prefWidthProperty().bind(gridEquipaveis.prefWidthProperty());
             itemButton.prefHeightProperty().bind(gridEquipaveis.prefHeightProperty().divide(4));
@@ -180,7 +182,6 @@ public class ControllerInventario implements Initializable {
             try {
                 consumable.Consumir();
                 limparTela();
-                Player.getPlayer().inventario.RemoverItem((Item) consumable);
                 AtualizarDados();
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
@@ -337,7 +338,7 @@ public class ControllerInventario implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
     public void venderItem(Item item) throws PlayerInexistenteException {
         if (item instanceof IEquipable) {
@@ -364,6 +365,7 @@ public class ControllerInventario implements Initializable {
     public void limparTela() {
         NomeItem.setText("");
         txtDescricao.setText("");
+        txtQtdItem.setText("");
         ImagemItem.setImage(null);
     }
     @FXML

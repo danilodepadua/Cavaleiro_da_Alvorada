@@ -52,7 +52,7 @@ public class ControllerCassino implements Initializable {
 
     @FXML
     void Voltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
 
     @Override
