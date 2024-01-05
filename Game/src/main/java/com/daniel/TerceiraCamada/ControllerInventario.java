@@ -10,7 +10,6 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +19,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,12 +30,17 @@ public class ControllerInventario implements Initializable {
     private boolean botaoInicial = false;
     @FXML
     private Text DefesaMagicaPlayer;
-
+    @FXML
+    private Rectangle MldDescricao;
     @FXML
     private Text DefesaPlayer;
 
     @FXML
     private Text ForcaPlayer;
+    @FXML
+    private Text AtqFPlayer;
+    @FXML
+    private Text AtqMPlayer;
 
     @FXML
     private GridPane Grid;
@@ -55,9 +59,6 @@ public class ControllerInventario implements Initializable {
 
     @FXML
     private Text NomeItem;
-
-    @FXML
-    private Text NomePlayer;
 
     @FXML
     private AnchorPane PainelInfos;
@@ -131,19 +132,9 @@ public class ControllerInventario implements Initializable {
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
             image.setFitWidth(50);
-            image.setFitHeight(60);
+            image.setPreserveRatio(true);
             itemButton.setPrefWidth(100);
-            itemButton.setPrefHeight(60);
-            itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-
-            itemButton.setOnMousePressed(event -> {
-                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;");
-            });
-
-            itemButton.setOnMouseReleased(event -> {
-                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;");
-            });
-
+            itemButton.setPrefHeight(55);
 
             // Configurar ação do botão para exibir detalhes do item ou equipá-lo
             itemButton.setOnAction(event -> {
@@ -244,34 +235,24 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("Resistência: " + Player.getPlayer().getResistencia());
         DefesaPlayer.setText("Defesa Física: " + Player.getPlayer().getDefesaF());
         DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
+        AtqFPlayer.setText("Ataque Físico: " + Player.getPlayer().getAtaqueF());
+        AtqMPlayer.setText("Ataque Mágico: " + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
-        for (int i = 0; i < Player.getPlayer().inventario.getItens().length; i++) {
-            if (Player.getPlayer().inventario.getItens()[i] != null) {
+        for(int i = 0; i< Player.getPlayer().inventario.getItens().length; i++){
+            if(Player.getPlayer().inventario.getItens()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
-                image.setFitWidth(40);
-                image.setFitHeight(40);
+                image.setFitWidth(50);
+                image.setFitHeight(50);
                 Grid.add(item, j % 10, j / 10);
-                Grid.setHgap(30); // Espaçamento horizontal
-                Grid.setVgap(30); // Espaçamento vertical
-
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
-                // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
-                item.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
+                image.setFitWidth(50);
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
-
-                item.setOnMousePressed(event -> {
-                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
-                });
-
-                item.setOnMouseReleased(event -> {
-                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;-fx-min-width: 60; -fx-min-height: 60");
-                });
                 int finalI = i;
                 item.setOnAction(event -> {
                     try {
@@ -283,7 +264,6 @@ public class ControllerInventario implements Initializable {
                 j++;
             }
         }
-
         criaBotaoEquipavel(Player.getPlayer().getPeitoral());
         criaBotaoEquipavel(Player.getPlayer().getCapacete());
         criaBotaoEquipavel(Player.getPlayer().getCalca());
@@ -292,14 +272,9 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ((AnchorPane)MldDescricao.getParent()).widthProperty().addListener((obs, oldWidth, newWidth) -> resizeRectangle());
         btnUsar.setDisable(true);
         btnStatus.setDisable(false);
-        try {
-            NomePlayer.setText(Player.getPlayer().getName());
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();
@@ -353,5 +328,9 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("");
         DefesaPlayer.setText("");
         DefesaMagicaPlayer.setText("");
+    }
+    private void resizeRectangle() {
+        // Redimensiona o Rectangle para ter a mesma largura e altura do AnchorPane
+        MldDescricao.setWidth(MldDescricao.getParent().getLayoutBounds().getWidth() - 150);
     }
 }
