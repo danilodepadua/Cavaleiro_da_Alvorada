@@ -65,7 +65,7 @@ public class ControllerLoja implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
+            txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -106,12 +106,19 @@ public class ControllerLoja implements Initializable {
         imageView.setImage(item.getImage());
         button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
+        button.setOnMouseClicked(event -> {
+            desmarcarUltimoClicado();
+            destacarBotao(button);
+        });
+
         button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;");
+            escurecerCor(button);
         });
 
         button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;");
+            restaurarCor(button);
+            desmarcarUltimoClicado();
+            destacarBotao(button);
         });
         button.setOnAction(event -> {
             try {
@@ -137,7 +144,7 @@ public class ControllerLoja implements Initializable {
                 ItemSelecionado(itemSelecionado);
 
                 System.out.println("Compra realizada com sucesso!");
-                txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
+                txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas");
             } else {
                 System.out.println("Você não tem moedas suficientes para comprar este item.");
             }
@@ -154,7 +161,7 @@ public class ControllerLoja implements Initializable {
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         // Atualize o texto do nome do item
         txtNomeItem.setText("Nome: "+i.getNome());
-        txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas" );
+        txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas" );
         // Verifica o tipo de item antes de fazer o cast
         if (i instanceof PocaoCura) {
             PocaoCura pocaoCura = (PocaoCura) i;
