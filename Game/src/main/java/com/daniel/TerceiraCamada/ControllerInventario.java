@@ -252,12 +252,9 @@ public class ControllerInventario implements Initializable {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
-                image.setFitWidth(40);
-                image.setFitHeight(40);
+                image.setFitWidth(20);
+                image.setFitHeight(20);
                 Grid.add(item, j % 10, j / 10);
-                Grid.setHgap(30); // Espaçamento horizontal
-                Grid.setVgap(30); // Espaçamento vertical
-
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
                 // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
@@ -295,7 +292,7 @@ public class ControllerInventario implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnUsar.setDisable(true);
         btnStatus.setDisable(false);
-        Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
+        Grid.prefWidthProperty().bind(Scroll.widthProperty().subtract(20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();
         ColumnConstraints col = new ColumnConstraints();
