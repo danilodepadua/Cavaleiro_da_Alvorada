@@ -31,8 +31,6 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Text DefesaMagicaPlayer;
     @FXML
-    private Rectangle MldDescricao;
-    @FXML
     private Text DefesaPlayer;
 
     @FXML
@@ -132,9 +130,9 @@ public class ControllerInventario implements Initializable {
             image.setImage(i.getImage()); // Usar diretamente o Item i
 
             image.setFitWidth(50);
-            image.setFitHeight(60);
-            itemButton.setPrefWidth(100);
-            itemButton.setPrefHeight(60);
+            image.setPreserveRatio(true);
+            itemButton.prefWidthProperty().bind(gridEquipaveis.prefWidthProperty());
+            itemButton.prefHeightProperty().bind(gridEquipaveis.prefHeightProperty().divide(4));
             itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
             itemButton.setOnMousePressed(event -> {
@@ -245,6 +243,8 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("Resistência: " + Player.getPlayer().getResistencia());
         DefesaPlayer.setText("Defesa Física: " + Player.getPlayer().getDefesaF());
         DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
+        AtqFPlayer.setText("Ataque Físico: " + Player.getPlayer().getAtaqueF());
+        AtqMPlayer.setText("Ataque Mágico: " + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
         for (int i = 0; i < Player.getPlayer().inventario.getItens().length; i++) {
@@ -293,7 +293,6 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ((AnchorPane)MldDescricao.getParent()).widthProperty().addListener((obs, oldWidth, newWidth) -> resizeRectangle());
         btnUsar.setDisable(true);
         btnStatus.setDisable(false);
         Grid.prefWidthProperty().bind(Scroll.widthProperty().add(-20));
@@ -349,9 +348,5 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("");
         DefesaPlayer.setText("");
         DefesaMagicaPlayer.setText("");
-    }
-    private void resizeRectangle() {
-        // Redimensiona o Rectangle para ter a mesma largura e altura do AnchorPane
-        MldDescricao.setWidth(MldDescricao.getParent().getLayoutBounds().getWidth() - 150);
     }
 }
