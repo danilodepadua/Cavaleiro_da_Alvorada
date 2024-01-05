@@ -3,6 +3,7 @@ package com.daniel.TerceiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
+import com.daniel.PrimeiraCamada.Itens.Armas.Cajado;
 import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
@@ -31,12 +32,8 @@ import java.util.ResourceBundle;
 
 public class ControllerLoja implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
+    private Button lastClicked;
 
-    @FXML
-    private AnchorPane PainelCima;
-
-    @FXML
-    private AnchorPane PainelInfos;
     @FXML
     private SplitPane SplitTela;
 
@@ -82,6 +79,8 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new CalcaCouro(), 0, 3);
         criarBotaoItem(new CalcaFerro(), 1, 3);
         criarBotaoItem(new Espada(), 0 , 4);
+        criarBotaoItem(new Cajado(), 1, 4);
+
 
     }
 
@@ -105,7 +104,15 @@ public class ControllerLoja implements Initializable {
         button.setMaxSize(cellWidth, cellHeight);
 
         imageView.setImage(item.getImage());
+        button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;");
+        });
         button.setOnAction(event -> {
             try {
                 ItemSelecionado(item); // Chama o método ItemSelecionado com o item clicado
@@ -187,11 +194,30 @@ public class ControllerLoja implements Initializable {
             Espada espada = (Espada) i;
             txtInfoItem.setText("Descrição: " + espada.getDescricao());
             txtPreco.setText("Preço: " + espada.getPreco() + " Moedas");
+        } else if (i instanceof Cajado) {
+            Cajado cajado = (Cajado) i;
+            txtInfoItem.setText("Descrição: " + cajado.getDescricao());
+            txtPreco.setText("Preço: " + cajado.getPreco() + " Moedas");
         } else {
             txtInfoItem.setText("Descrição: N/A");
             txtPreco.setText("Preço: N/A");
         }
-        PainelInfos.setDisable(false);
-        PainelInfos.setOpacity(1);
+
+    }
+
+    private void escurecerCor(Button botao) {
+        botao.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
+    }
+    private void restaurarCor(Button botao) {
+        botao.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+    }
+    private void desmarcarUltimoClicado() {
+        if (lastClicked != null) {
+            lastClicked.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+        }
+    }
+    private void destacarBotao(Button button) {
+        button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
+        lastClicked = button;
     }
 }

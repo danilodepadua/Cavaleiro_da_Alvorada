@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" style="-fx-background-color: #071121;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInventario">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" style="-fx-background-color: #071121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInventario">
    <children>
-      <SplitPane dividerPositions="0.4216791979949874" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="643.0" prefWidth="468.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="-3.0">
+      <SplitPane dividerPositions="0.4216791979949874" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="643.0" prefWidth="558.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="-3.0">
         <items>
           <AnchorPane fx:id="PainelInfos" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="535.0" style="-fx-background-color: #071121;">
                <children>
@@ -53,7 +53,7 @@
                <children>
                   <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" prefHeight="368.0" prefWidth="558.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <GridPane fx:id="Grid" gridLinesVisible="true" hgap="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="542.0" style="-fx-background-color: white;" vgap="5.0">
+                        <GridPane fx:id="Grid" gridLinesVisible="true" hgap="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="542.0" style="-fx-background-color: #071121;" vgap="5.0">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -87,7 +87,7 @@
       </SplitPane>
       <AnchorPane layoutX="712.0" layoutY="-2.0" prefHeight="640.0" prefWidth="400.0" style="-fx-background-color: #071121;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#081936" height="260.0" layoutX="40.0" layoutY="291.0" stroke="BLACK" strokeType="INSIDE" width="330.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="40.0" />
+             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a234d" height="260.0" layoutX="40.0" layoutY="291.0" stroke="BLACK" strokeType="INSIDE" width="330.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="40.0" />
              <VBox layoutX="74.0" layoutY="296.0" prefHeight="241.0" prefWidth="310.0" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="50.0">
                <children>
                   <Text fx:id="HpPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -174,7 +174,7 @@
                   <Font name="Barlow Condensed SemiBold" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="btnStatus" layoutX="40.0" layoutY="582.0" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Status" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="40.0" />
+            <Button fx:id="btnStatus" layoutX="30.0" layoutY="590.0" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="34.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Status" AnchorPane.bottomAnchor="15.600000000000023" AnchorPane.leftAnchor="30.0" />
          </children>
       </AnchorPane>
    </children>

@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerInventario implements Initializable {
+    private Button lastClicked;
     private boolean statusVisivel = false; // Variável para controlar se os dados estão visíveis
     private boolean botaoInicial = false;
     @FXML
@@ -234,6 +235,7 @@ public class ControllerInventario implements Initializable {
             }
         });
     }
+
     private void AtualizarDados() throws PlayerInexistenteException {
         VelocidadePlayer.setText("Velocidade: " + Player.getPlayer().getVelocity());
         ForcaPlayer.setText("Força: " + Player.getPlayer().getForce());
@@ -252,8 +254,9 @@ public class ControllerInventario implements Initializable {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().inventario.getItens()[i].getImage());
-                image.setFitWidth(20);
-                image.setFitHeight(20);
+
+                image.setFitWidth(40);
+                image.setFitHeight(40);
                 Grid.add(item, j % 10, j / 10);
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
@@ -263,13 +266,21 @@ public class ControllerInventario implements Initializable {
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
 
+                item.setOnMouseClicked(event -> {
+                    desmarcarUltimoClicado();
+                    destacarBotao(item);
+                });
+
                 item.setOnMousePressed(event -> {
-                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
+                    escurecerCor(item);
                 });
 
                 item.setOnMouseReleased(event -> {
-                    item.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;-fx-min-width: 60; -fx-min-height: 60");
+                    restaurarCor(item);
+                    desmarcarUltimoClicado();
+                    destacarBotao(item);
                 });
+
                 int finalI = i;
                 item.setOnAction(event -> {
                     try {
@@ -287,7 +298,21 @@ public class ControllerInventario implements Initializable {
         criaBotaoEquipavel(Player.getPlayer().getCalca());
         criaBotaoEquipavel(Player.getPlayer().getArma());
     }
-
+    private void escurecerCor(Button botao) {
+        botao.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
+    }
+    private void restaurarCor(Button botao) {
+        botao.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+    }
+    private void desmarcarUltimoClicado() {
+        if (lastClicked != null) {
+            lastClicked.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+        }
+    }
+    private void destacarBotao(Button button) {
+        button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
+        lastClicked = button;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnUsar.setDisable(true);
@@ -315,10 +340,26 @@ public class ControllerInventario implements Initializable {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("InitialCity.fxml")));
     }
     public void venderItem(Item item) throws PlayerInexistenteException {
-        int precoItem = item.getPreco(); //Pega o preço
-        Player.getPlayer().ganhaCoins(precoItem * 70/100); //Adiciona as moedas com 70% do valor
-        Player.getPlayer().getInventario().RemoverItem(item); //Remove do inventario
+        if (item instanceof IEquipable) {
+            IEquipable equipableItem = (IEquipable) item;
+            desequiparItemSeEquipado(equipableItem);
+        }
 
+        int precoItem = item.getPreco();
+        Player.getPlayer().ganhaCoins(precoItem * 70 / 100);
+        Player.getPlayer().getInventario().RemoverItem(item);
+    }
+
+    private void desequiparItemSeEquipado(IEquipable equipableItem) throws PlayerInexistenteException {
+        if (Player.getPlayer().getArma().equals(equipableItem)) {
+            Player.getPlayer().desequiparArma();
+        } else if (Player.getPlayer().getPeitoral().equals(equipableItem)) {
+            Player.getPlayer().desequiparPeitoral();
+        } else if (Player.getPlayer().getCapacete().equals(equipableItem)) {
+            Player.getPlayer().desequiparCapacete();
+        } else if (Player.getPlayer().getCalca().equals(equipableItem)) {
+            Player.getPlayer().desequiparCalca();
+        }
     }
     public void limparTela() {
         NomeItem.setText("");
