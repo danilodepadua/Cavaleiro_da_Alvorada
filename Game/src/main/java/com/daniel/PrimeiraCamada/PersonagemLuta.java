@@ -111,6 +111,10 @@ public class PersonagemLuta{
         return tipoAtaqueBase;
     }
 
+
+    public void UpForca(int Up){
+        this.AtqF += Up;
+    }
     public void RecuperarMana(int i) {
         this.currentMp += i;
         if(currentMp > MP){

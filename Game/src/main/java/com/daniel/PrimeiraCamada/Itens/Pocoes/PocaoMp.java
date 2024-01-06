@@ -13,14 +13,14 @@ public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableIn
         this.nome = "Ether";
         this.imagem = "/com.daniel.Images/Itens/pt2.png";
         this.preço = 20; // Preço inicial
-        this.descricao = "Poção que concede recuperação de vida";
-
+        this.descricao = "Poção que recupera 100 de MP";
     }
 
     @Override
-    public void Consumir(PersonagemLuta p) throws PlayerInexistenteException {
+    public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.RecuperarMana(100);
         Player.getPlayer().getInventario().RemoverItem(this);
+        return "O jogador recuperou 100 de MP";
     }
 
     @Override
