@@ -188,11 +188,13 @@ public class BattleController implements Initializable {
             int finalI = i;
             itemBtn.setOnAction(event -> {
                 try {
-                    ((IConsumableInBattle)itens.get(finalI)).Consumir(player);
-                    itens.get(finalI).MenosQuant();
+                    String mensagem = ((IConsumableInBattle)itens.get(finalI)).Consumir(player);
                     if(itens.get(finalI).getQuant() <=0){
                         itens.remove(finalI);
                     }
+                    RetornarInicial();
+                    gdb.ApagarUiPlayer();
+                    gdb.mostrarResultado(mensagem);
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
                 }

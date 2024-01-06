@@ -12,14 +12,15 @@ public class PocaoCura extends Item implements IConsumableOutBattle, IConsumable
     public PocaoCura() {
         this.imagem = "/com.daniel.Images/Itens/pt1.png";
         this.nome = "Poção de cura";
-        this.descricao = "Poção que concede recuperação de vida";
+        this.descricao = "Poção que cura 100 de vida";
         this.preço = 50; // Preço inicial
     }
 
     @Override
-    public void Consumir(PersonagemLuta p) throws PlayerInexistenteException {
+    public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.RecuperarVida(100);
         Player.getPlayer().getInventario().RemoverItem(this);
+        return "O jogador recuperou 100 de vida";
     }
     @Override
     public void Consumir() throws PlayerInexistenteException {

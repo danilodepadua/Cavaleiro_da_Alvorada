@@ -14,6 +14,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,8 +81,7 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new CalcaFerro(), 1, 3);
         criarBotaoItem(new Espada(), 0 , 4);
         criarBotaoItem(new Cajado(), 1, 4);
-
-
+        criarBotaoItem(new TonicoDeForca(), 0,5);
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {
@@ -162,54 +162,8 @@ public class ControllerLoja implements Initializable {
         // Atualize o texto do nome do item
         txtNomeItem.setText("Nome: "+i.getNome());
         txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas" );
-        // Verifica o tipo de item antes de fazer o cast
-        if (i instanceof PocaoCura) {
-            PocaoCura pocaoCura = (PocaoCura) i;
-            // Restante do código para poção de cura
-            txtInfoItem.setText("Descrição: " + pocaoCura.getDescricao());
-            txtPreco.setText("Preço: " + pocaoCura.getPreco() + " Moedas");
-        } else if (i instanceof PocaoMp) {
-            PocaoMp pocaoMp = (PocaoMp) i;
-            // Restante do código para poção de MP
-            txtInfoItem.setText("Descrição: " + pocaoMp.getDescricao());
-            txtPreco.setText("Preço: " + pocaoMp.getPreco() + " Moedas");
-        } else if (i instanceof PeitoralCouro) {
-            PeitoralCouro peitoralCouro = (PeitoralCouro) i;
-            txtInfoItem.setText("Descrição: " + peitoralCouro.getDescricao());
-            txtPreco.setText("Preço: " + peitoralCouro.getPreco() + " Moedas");
-        } else if (i instanceof PeitoralFerro) {
-            PeitoralFerro peitoralFerro = (PeitoralFerro) i;
-            txtInfoItem.setText("Descrição: " + peitoralFerro.getDescricao());
-            txtPreco.setText("Preço: " + peitoralFerro.getPreco() + " Moedas");
-        } else if (i instanceof CapaceteFerro) {
-            CapaceteFerro capaceteFerro = (CapaceteFerro) i;
-            txtInfoItem.setText("Descrição: " + capaceteFerro.getDescricao());
-            txtPreco.setText("Preço: " + capaceteFerro.getPreco() + " Moedas");
-        } else if (i instanceof CapaceteCouro) {
-            CapaceteCouro capaceteCouro = (CapaceteCouro) i;
-            txtInfoItem.setText("Descrição: " + capaceteCouro.getDescricao());
-            txtPreco.setText("Preço: " + capaceteCouro.getPreco() + " Moedas");
-        } else if (i instanceof CalcaCouro) {
-            CalcaCouro calcaCouro = (CalcaCouro) i;
-            txtInfoItem.setText("Descrição: " + calcaCouro.getDescricao());
-            txtPreco.setText("Preço: " + calcaCouro.getPreco() + " Moedas");
-        } else if (i instanceof CalcaFerro) {
-            CalcaFerro calcaFerro = (CalcaFerro) i;
-            txtInfoItem.setText("Descrição: " + calcaFerro.getDescricao());
-            txtPreco.setText("Preço: " + calcaFerro.getPreco() + " Moedas");
-        } else if (i instanceof Espada) {
-            Espada espada = (Espada) i;
-            txtInfoItem.setText("Descrição: " + espada.getDescricao());
-            txtPreco.setText("Preço: " + espada.getPreco() + " Moedas");
-        } else if (i instanceof Cajado) {
-            Cajado cajado = (Cajado) i;
-            txtInfoItem.setText("Descrição: " + cajado.getDescricao());
-            txtPreco.setText("Preço: " + cajado.getPreco() + " Moedas");
-        } else {
-            txtInfoItem.setText("Descrição: N/A");
-            txtPreco.setText("Preço: N/A");
-        }
-
+        txtInfoItem.setText("Descrição: " + i.getDescricao());
+        txtPreco.setText("Preço: " + i.getPreco() + " Moedas");
     }
 
     private void escurecerCor(Button botao) {
