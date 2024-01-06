@@ -12,64 +12,67 @@
 
 <AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerBlackJack">
    <children>
-      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="514.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Voltar" AnchorPane.bottomAnchor="47.60000000000002" AnchorPane.leftAnchor="14.0" />
-      <Button fx:id="btnPuxar" layoutX="764.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="55.0" text="Puxar" AnchorPane.bottomAnchor="273.6" AnchorPane.rightAnchor="140.79999999999995" />
-      <Button fx:id="btnManter" layoutX="831.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="55.0" text="Manter" AnchorPane.bottomAnchor="273.6" AnchorPane.rightAnchor="73.79999999999995" />
-      <Text fx:id="txtSeusPontos" fill="WHITE" layoutX="761.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.2000675201416" AnchorPane.bottomAnchor="234.0" AnchorPane.rightAnchor="45.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="21.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtVoceGanhou" fill="WHITE" layoutX="764.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.2000675201416" AnchorPane.bottomAnchor="185.0" AnchorPane.rightAnchor="41.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="21.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="724.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu saldo:" wrappingWidth="80.0" AnchorPane.bottomAnchor="61.79999923706055" AnchorPane.rightAnchor="156.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="21.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtSeuSaldo" fill="#e1ff00" layoutX="804.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.800048828125" AnchorPane.bottomAnchor="62.79999923706055" AnchorPane.rightAnchor="27.199951171875">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="21.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtPontosDaCasa" fill="WHITE" layoutX="736.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.199951171875" AnchorPane.bottomAnchor="310.0" AnchorPane.rightAnchor="35.800048828125">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="21.0" />
-         </font>
-      </Text>
-      <VBox fx:id="vboxBaralho" layoutX="373.0" layoutY="415.0" prefHeight="154.0" prefWidth="206.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.rightAnchor="374.20000000000005">
+      <VBox fx:id="vboxCaixinha" layoutX="731.0" layoutY="300.0" prefHeight="121.0" prefWidth="189.0" AnchorPane.rightAnchor="39.39999999999998">
+         <children>
+            <Text fx:id="txtPontosDaCasa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.199951171875">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtSeusPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.2000675201416">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtVoceGanhou" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.2000675201416">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtSeuSaldo" fill="#e1ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.800048828125">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox fx:id="vboxTextos" alignment="CENTER" layoutX="373.0" layoutY="421.0" prefHeight="154.0" prefWidth="206.0" AnchorPane.bottomAnchor="24.599999999999994">
          <children>
             <Text fx:id="txtInsira" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o valor a ser apostado">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
             </Text>
-            <TextField fx:id="textFieldAposta" />
-            <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 10;" text="Apostar" />
+            <TextField fx:id="textFieldAposta" prefHeight="26.0" prefWidth="206.0" />
+            <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="26.0" prefWidth="100.0" text="Apostar" />
+            <Button fx:id="btnPuxar" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="100.0" text="Puxar" />
+            <Button fx:id="btnManter" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="100.0" text="Manter" />
+            <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="26.0" prefWidth="100.0" text="Voltar" />
          </children>
       </VBox>
-      <GridPane fx:id="GridPanePlayer" layoutX="249.0" layoutY="235.0" prefHeight="180.0" prefWidth="462.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="GridPaneDealer" layoutX="248.0" layoutY="24.0" prefHeight="180.0" prefWidth="462.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
+      <VBox fx:id="vboxBaralho" alignment="CENTER" layoutX="94.0" layoutY="14.0" prefHeight="400.0" prefWidth="630.0" AnchorPane.bottomAnchor="186.0">
+         <children>
+            <GridPane fx:id="GridPaneDealer" prefHeight="180.0" prefWidth="462.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="GridPanePlayer" prefHeight="180.0" prefWidth="245.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

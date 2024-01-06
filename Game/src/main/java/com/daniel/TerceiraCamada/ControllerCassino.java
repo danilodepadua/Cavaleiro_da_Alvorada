@@ -30,21 +30,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerCassino implements Initializable {
+    private String texto = "Cassinão";
 
     @FXML
     private AnchorPane anchorPane;
+
     @FXML
     private Button btnBlackJack;
-    private String texto = "Cassinão";
-    @FXML
-    private AnchorPane rootPane;
 
     @FXML
     private Button btnVoltar;
+
     @FXML
-    private TextFlow txtCassinoFlow;
+    private Text txtCassino;
+
     @FXML
     private Text txtMoedas;
+
+    @FXML
+    private VBox vboxTextos;
 
     @FXML
     void Jogar(ActionEvent event) {
@@ -78,6 +82,7 @@ public class ControllerCassino implements Initializable {
                         true,
                         true
                 ))));
+        vboxTextos.setSpacing(15);
 
     }
 

@@ -29,33 +29,53 @@ public class ControllerBlackJack  implements Initializable{
     private Mão jogador;
     private Mão dealer;
     @FXML
-    private Text txtVoceGanhou;
-    @FXML
     private GridPane GridPaneDealer;
+
     @FXML
     private GridPane GridPanePlayer;
+
     @FXML
     private AnchorPane PanePrincipal;
-    @FXML
-    private Button btnManter;
-    @FXML
-    private Button btnPuxar;
-    @FXML
-    private Text txtSeusPontos;
+
     @FXML
     private Button btnApostar;
+
+    @FXML
+    private Button btnManter;
+
+    @FXML
+    private Button btnPuxar;
+
     @FXML
     private Button btnVoltar;
+
     @FXML
     private TextField textFieldAposta;
-    @FXML
-    private VBox vboxBaralho;
+
     @FXML
     private Text txtInsira;
-    @FXML
-    private Text txtSeuSaldo;
+
     @FXML
     private Text txtPontosDaCasa;
+
+    @FXML
+    private Text txtSeuSaldo;
+
+    @FXML
+    private Text txtSeusPontos;
+
+    @FXML
+    private Text txtVoceGanhou;
+
+    @FXML
+    private VBox vboxBaralho;
+
+    @FXML
+    private VBox vboxCaixinha;
+
+    @FXML
+    private VBox vboxTextos;
+
     @FXML
     void onClickManter(ActionEvent event) throws BaralhoVazioException {
         determinarVencedor();
@@ -122,7 +142,7 @@ public class ControllerBlackJack  implements Initializable{
         txtVoceGanhou.setText(mensagem);
         try {
             Player.getPlayer().ganhaCoins(alteracaoSaldo);
-            txtSeuSaldo.setText("" + Player.getPlayer().getCoins() + " Moedas");
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException ex) {
             throw new RuntimeException(ex);
         }
@@ -217,18 +237,16 @@ public class ControllerBlackJack  implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // Centraliza o VBox verticalmente
         vboxBaralho.setAlignment(Pos.CENTER);
-
-        // Configuração para centralizar o VBox horizontalmente
-        HBox.setHgrow(vboxBaralho, Priority.ALWAYS);
-
-        // Define o espaçamento entre os nós dentro do VBox
-        vboxBaralho.setSpacing(10);
-
-        // Ajusta o tamanho preferido do TextField
+        vboxTextos.setAlignment(Pos.CENTER);
+        vboxTextos.setSpacing(10);
+        vboxCaixinha.setSpacing(10);
+        // Ajusta o tamanho do TextField
         textFieldAposta.setPrefColumnCount(5);
+
         // Desabilitar os botões no início
         btnPuxar.setDisable(true);
         btnManter.setDisable(true);
+
         this.baralho = new Baralho();
         this.baralho.criarBaralho("hearts");
         this.baralho.criarBaralho("clubs");
@@ -237,8 +255,9 @@ public class ControllerBlackJack  implements Initializable{
         this.baralho.embaralhar();
         this.jogador = new Mão();
         this.dealer = new Mão();
+
         try {
-            txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -255,5 +274,38 @@ public class ControllerBlackJack  implements Initializable{
                         true,
                         true
                 ))));
+
+        double offsetY = 500; // Ajuste conforme necessário
+        double novoTamanhoVBox = 200; // Ajuste conforme necessário
+
+        // Configurar o vboxTextos
+        AnchorPane.setTopAnchor(vboxTextos, ((PanePrincipal.getHeight() - novoTamanhoVBox) / 2) + offsetY);
+        AnchorPane.setBottomAnchor(vboxTextos, null); // Remova a âncora inferior para evitar conflitos
+        vboxTextos.setPrefHeight(novoTamanhoVBox);
+
+        // Se você quiser centralizar o vboxTextos horizontalmente, ajuste as âncoras esquerda e direita
+        AnchorPane.setLeftAnchor(vboxTextos, (PanePrincipal.getWidth() - vboxTextos.getWidth()) / 2);
+        AnchorPane.setRightAnchor(vboxTextos, (PanePrincipal.getWidth() - vboxTextos.getWidth()) / 2);
+
+        // Configurar o vboxBaralho acima do vboxTextos
+        AnchorPane.setTopAnchor(vboxBaralho, 30.0);
+        AnchorPane.setBottomAnchor(vboxBaralho, null);
+        double leftAnchorVBoxBaralho = 50.0; // Ajuste conforme necessário
+        AnchorPane.setLeftAnchor(vboxBaralho, leftAnchorVBoxBaralho);
+        AnchorPane.setRightAnchor(vboxBaralho, 200.0);
+
+        // Ajuste o espaçamento entre os nós dentro do VBox
+        vboxTextos.setSpacing(10);
+        vboxBaralho.setSpacing(0);
+
+        Button seuBotao = (Button) vboxTextos.getChildren().get(2);
+        seuBotao.setPrefWidth(100);
+        seuBotao.setPrefHeight(26);
+
+        TextField seuTextField = (TextField) vboxTextos.getChildren().get(1);
+        seuTextField.setPrefWidth(150);
+        seuTextField.setPrefHeight(10);
+        seuTextField.setMaxWidth(150);
     }
+
 }
