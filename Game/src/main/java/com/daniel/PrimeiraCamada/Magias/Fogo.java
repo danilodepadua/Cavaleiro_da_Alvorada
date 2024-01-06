@@ -9,17 +9,15 @@ import com.daniel.SegundaCamada.FireAnimation;
 import javafx.scene.image.ImageView;
 
 public class Fogo extends Magia implements IEffects {
-    public Fogo(ImageView imageView, GerenciadorDeBatalha gerenciadorDeBatalha) {
-        this.gerenciadorDeBatalha = gerenciadorDeBatalha;
+    public Fogo() {
         this.tiposDano = TiposDano.Fogo;
-        this.timeline = new FireAnimation().INICIAR(imageView);
-        this.dano = 30;
+        this.Animation = new FireAnimation();
+        this.custo = 10;
     }
 
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Defesa magica do Inimigo antes do ataque: "+ alvo.getDefM());
-        gerenciadorDeBatalha.Ataque(timeline, dano, tiposDano);
         alvo.reduzirDefesaMagica(10); // Reduz a defesa mágica do inimigo em 10
         System.out.println("Defesa magica do Inimigo apos o ataque: "+ alvo.getDefM());
     }

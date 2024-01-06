@@ -101,11 +101,11 @@ public class GerenciadorDeBatalha {
         ui.setOpacity(0);
         ui.setDisable(true);
     }
-    public void Ataque(Timeline t, int Dano, TiposDano tipo){
+    public void Ataque(Timeline t, int Dano, TiposDano tipo, boolean fisico){
         String Mensagem;
         if(state == States.turnoPlayer){
             ApagarUiPlayer();
-            int danoTomado = this.Inimigo.tomarDano(Dano, tipo);
+            int danoTomado = this.Inimigo.tomarDano(Dano, tipo, fisico);
             if(danoTomado == 0){
                 Mensagem = "O inimigo não sofreu dano";
             }
@@ -117,7 +117,7 @@ public class GerenciadorDeBatalha {
             }
         }
         else{
-            int danoTomado = this.Player.tomarDano(Dano, tipo);
+            int danoTomado = this.Player.tomarDano(Dano, tipo, fisico);
             if(danoTomado == 0){
                 Mensagem = "O jogador não sofreu dano";
             }

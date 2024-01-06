@@ -15,6 +15,7 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDoHeroi;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,6 +83,7 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new Espada(), 0 , 4);
         criarBotaoItem(new Cajado(), 1, 4);
         criarBotaoItem(new TonicoDeForca(), 0,5);
+        criarBotaoItem(new TonicoDoHeroi(),1,5);
     }
 
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex) {

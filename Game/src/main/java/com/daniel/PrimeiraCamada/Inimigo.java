@@ -5,8 +5,8 @@ public abstract class Inimigo extends Personagem{
     protected TiposDano tipoDano;
     public Inimigo(String Nome, String Imagem, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposDano tipoDn) {
         super(Nome, Imagem, fr, in, rs, vel);
-        this.Def += ModDef;
-        this.MagicDef += ModMagDef;
+        this.Def += rs + ModDef;
+        this.MagicDef += in + ModMagDef;
         this.atqF = ModAtqF;
         this.atqMag = ModAtqM;
         this.HP += ModHp;

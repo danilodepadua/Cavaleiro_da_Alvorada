@@ -43,27 +43,67 @@ public class PersonagemLuta{
     protected TiposDano[] absorcao;
     protected TiposDano tipoAtaqueBase;
 
-    public int tomarDano(int dano, TiposDano tipo){
+    public int tomarDano(int dano, TiposDano tipo, boolean fisico){
+        int danoTomado = 0;
         if(temTipo(fraquezas, tipo)){
-            this.currentHp -= dano*2;
-            return dano*2;
+            if(!fisico){
+                danoTomado = dano*2 - this.getDefM();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
+            else{
+                danoTomado = dano*2 - this.getDefF();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
         }
         else if(temTipo(resistencias, tipo)){
-            this.currentHp -= dano/2;
-            return dano/2;
+            if(!fisico){
+                danoTomado = dano/2 - this.getDefM();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
+            else{
+                danoTomado = dano/2 - this.getDefF();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
         }
         else if(temTipo(absorcao, tipo)){
-            this.currentHp += dano/2;
-            if(this.currentHp > this.HP){
-                this.currentHp = this.HP;
-            }
-            return dano/2;
+            danoTomado = -dano/2;
+            this.currentHp -= danoTomado;
         }
         else if(!temTipo(imunidades, tipo)){
-            this.currentHp -= dano;
-            return dano;
+            if(!fisico){
+                danoTomado = dano - this.getDefM();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
+            else{
+                danoTomado = dano - this.getDefF();
+                if(danoTomado <0){
+                    danoTomado = 0;
+                }
+                this.currentHp -= danoTomado;
+            }
         }
-        return 0;
+        return danoTomado;
+    }
+    public void usarMp(int i){
+        this.currentMp -= i;
+        if(this.currentMp <0){
+            this.currentMp = 0;
+        }
     }
 
     public boolean temTipo(TiposDano[] tipos, TiposDano tipo){
@@ -118,7 +158,7 @@ public class PersonagemLuta{
     public void RecuperarMana(int i) {
         this.currentMp += i;
         if(currentMp > MP){
-            currentMp = 0;
+            currentMp = MP;
         }
     }
     public void RecuperarVida(int i){

@@ -5,6 +5,7 @@ import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoExemplo1;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
+import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Magias.Fogo;
 import com.daniel.PrimeiraCamada.Magias.Gelo;
@@ -31,7 +32,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BattleController implements Initializable {
-    ArrayList<Magia> magiasDisponiveis = new ArrayList<>();
+    ArrayList<Magia> magiasDisponiveis = new ArrayList<Magia>();
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
@@ -86,10 +87,7 @@ public class BattleController implements Initializable {
     private ImageView PlayerImg;
 
     @FXML
-    private AnchorPane PnlItens;
-
-    @FXML
-    private AnchorPane PnlMagias;
+    private AnchorPane PnlOpcoes;
 
     @FXML
     private AnchorPane PnlPrimeirasEscolhas;
@@ -124,15 +122,15 @@ public class BattleController implements Initializable {
     @FXML
     void AbrirItens(ActionEvent event) {
         PnlPrimeirasEscolhas.setDisable(true);
-        PnlItens.setDisable(false);
-        PnlItens.setOpacity(1);
+        PnlOpcoes.setDisable(false);
+        PnlOpcoes.setOpacity(1);
         ColocarItens();
     }
     @FXML
     void AbrirMagias(ActionEvent event) {
         PnlPrimeirasEscolhas.setDisable(true);
-        PnlMagias.setDisable(false);
-        PnlMagias.setOpacity(1);
+        PnlOpcoes.setDisable(false);
+        PnlOpcoes.setOpacity(1);
         ColocarMagias();
     }
     @FXML
@@ -150,10 +148,10 @@ public class BattleController implements Initializable {
         double x = event.getSceneX();
         double y = event.getSceneY();
         System.out.println("x: " + x + ", y: " + y);
-        Bounds boundsInScene = PnlItens.localToScene(PnlItens.getBoundsInLocal());
+        Bounds boundsInScene = PnlOpcoes.localToScene(PnlOpcoes.getBoundsInLocal());
         System.out.println("Minx: " + boundsInScene.getMinX() + ", Miny: " + boundsInScene.getMinY());
         System.out.println("Maxx: " + boundsInScene.getMaxX() + ", Maxy: " + boundsInScene.getMaxY());
-        if (!boundsInScene.contains(x,y) && !PnlItens.isDisable() && !PnlMagias.isDisable()) {
+        if (!boundsInScene.contains(x,y) && !PnlOpcoes.isDisable()) {
             RetornarInicial();
             System.out.println("Clique fora do painel!");
         }
@@ -161,7 +159,7 @@ public class BattleController implements Initializable {
 
     @FXML
     void Atacar(ActionEvent event) throws PlayerInexistenteException {
-        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase());
+        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase(), true);
     }
 
     @FXML
@@ -179,53 +177,41 @@ public class BattleController implements Initializable {
 
     public void Atualiazar(){
         try {
-            InfoVida.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
-            InfoMp.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
+            InfoVida.setText("HP: " + player.getCurrentHp() + "/" + Player.getPlayer().getHP());
+            InfoMp.setText("MP: " + player.getCurrentMp() + "/" + Player.getPlayer().getMP());
             InfoNome.setText(Player.getPlayer().getName());
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
     }
     public void ColocarMagias() {
-        VboxMagias.getChildren().clear();
-
-        magiasDisponiveis.add(new Fogo(EnimyEffect, gdb));
-        magiasDisponiveis.add(new Gelo(EnimyEffect, gdb));
+        VerificarSetas(magiasDisponiveis.size());
 
         for (Magia magia : magiasDisponiveis) {
             Button magiaButton = new Button();
-            magiaButton.setText(magia.getClass().getSimpleName());
+            magiaButton.setText(magia.getClass().getSimpleName() + " : " + magia.getCusto() + "MP");
             magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
-            magiaButton.setDisable(false);
-
-            if (magia instanceof Fogo) {
-                Fogo fogo = (Fogo) magia;
-                magiaButton.setOnAction(event -> fogo.aplicarEfeito(Enimy));
+            if(player.getCurrentMp() < magia.getCusto()){
+                magiaButton.setDisable(true);
             }
-            if (magia instanceof Gelo) {
-                Gelo gelo = (Gelo) magia;
-                magiaButton.setOnAction(event -> gelo.aplicarEfeito(Enimy));
-            }
-            VboxMagias.getChildren().add(magiaButton);
+            magiaButton.setOnAction(event -> {
+                if(magia instanceof IEffects){
+                    ((IEffects) magia).aplicarEfeito(Enimy);
+                }
+                itemAtual =0;
+                RetornarInicial();
+                player.usarMp(magia.getCusto());
+                Atualiazar();
+                gdb.Ataque(magia.getAnimation().INICIAR(EnimyEffect), player.getAtqM(), magia.getTiposDano(), false);
+            });
+            VBoxItens.getChildren().add(magiaButton);
         }
     }
 
 
     public void ColocarItens(){
-        if(itemAtual == 0){
-            SetaSubir.setDisable(true);
-        }
-        else{
-            SetaSubir.setDisable(false);
-        }
-        if(itemAtual+3 > itens.size()){
-            SetaDescer.setDisable(true);
-        }
-        else{
-            SetaDescer.setDisable(false);
-        }
-        VBoxItens.getChildren().clear();
+        VerificarSetas(itens.size());
         for(int i = itemAtual; i< itens.size() && i<(itemAtual+3); i++){
             Button itemBtn = new Button();
             itemBtn.setText(itens.get(i).getNome() + " : X" + itens.get(i).getQuant());
@@ -238,8 +224,10 @@ public class BattleController implements Initializable {
                     if(itens.get(finalI).getQuant() <=0){
                         itens.remove(finalI);
                     }
+                    itemAtual =0;
                     RetornarInicial();
                     gdb.ApagarUiPlayer();
+                    Atualiazar();
                     gdb.mostrarResultado(mensagem);
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
@@ -248,14 +236,33 @@ public class BattleController implements Initializable {
             VBoxItens.getChildren().add(itemBtn);
         }
     }
+
+    private void VerificarSetas(int size) {
+        if(itemAtual == 0){
+            SetaSubir.setDisable(true);
+        }
+        else{
+            SetaSubir.setDisable(false);
+        }
+        if(itemAtual+3 > size){
+            SetaDescer.setDisable(true);
+        }
+        else{
+            SetaDescer.setDisable(false);
+        }
+        VBoxItens.getChildren().clear();
+    }
+
     public void RetornarInicial(){
-        PnlItens.setDisable(true);
-        PnlItens.setOpacity(0);
+        PnlOpcoes.setDisable(true);
+        PnlOpcoes.setOpacity(0);
         PnlPrimeirasEscolhas.setDisable(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        magiasDisponiveis.add(new Fogo());
+        magiasDisponiveis.add(new Gelo());
         Random rand = new Random();
         Inimigo inimigo = inimigos[rand.nextInt(0, inimigos.length)];
         EnimyImg.setImage(inimigo.getImagem());
@@ -271,7 +278,7 @@ public class BattleController implements Initializable {
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
-        PnlItens.setPickOnBounds(true);
+        PnlOpcoes.setPickOnBounds(true);
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
         seta.setFitWidth(30);
