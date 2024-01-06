@@ -15,27 +15,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Sair" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.BattleController">
+<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Sair" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.BattleController">
    <children>
       <ImageView fx:id="EnimyImg" fitHeight="150.0" fitWidth="200.0" layoutX="656.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
       <ImageView fx:id="PlayerImg" fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0" />
       <AnchorPane fx:id="InterfacePlayer" layoutX="510.0" layoutY="440.0" prefHeight="163.0" prefWidth="960.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <AnchorPane fx:id="PnlMagias" disable="true" layoutX="360.0" opacity="0.0" prefHeight="200.0" prefWidth="253.0">
-               <children>
-                  <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <VBox fx:id="VboxMagias" prefHeight="200.0" prefWidth="215.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </VBox>
-                  <Button fx:id="SetaDescer1" layoutX="223.0" layoutY="20.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                  <Button fx:id="SetaSubir1" mnemonicParsing="false" onAction="#SubirItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fx:id="InfoNome" fill="WHITE" layoutX="624.0" layoutY="51.0" stroke="#0149b5" strokeType="OUTSIDE" text="Nome" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="20.0">
@@ -59,6 +44,21 @@
                      </font>
                   </Text>
                   <ImageView fitHeight="113.0" fitWidth="135.0" layoutX="780.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="40.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PnlOpcoes" disable="true" opacity="0.0" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="359.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="VBoxItens" prefHeight="200.0" prefWidth="215.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Button fx:id="SetaDescer" layoutX="223.0" layoutY="20.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <Button fx:id="SetaSubir" mnemonicParsing="false" onAction="#SubirItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="PnlPrimeirasEscolhas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -159,21 +159,6 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <AnchorPane fx:id="PnlItens" disable="true" layoutX="341.0" opacity="0.0" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="359.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <VBox fx:id="VBoxItens" prefHeight="200.0" prefWidth="215.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-                           <padding>
-                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                           </padding>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </VBox>
-                        <Button fx:id="SetaDescer" layoutX="223.0" layoutY="20.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                        <Button fx:id="SetaSubir" mnemonicParsing="false" onAction="#SubirItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

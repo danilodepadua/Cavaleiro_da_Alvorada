@@ -10,16 +10,14 @@ import com.daniel.SegundaCamada.IceAnimation;
 import javafx.scene.image.ImageView;
 
 public class Gelo extends Magia implements IEffects {
-    public Gelo(ImageView imageView, GerenciadorDeBatalha gerenciadorDeBatalha) {
-        this.gerenciadorDeBatalha = gerenciadorDeBatalha;
+    public Gelo() {
         this.tiposDano = TiposDano.Gelo;
-        this.timeline = new IceAnimation().INICIAR(imageView);
-        this.dano = 15;
+        this.Animation = new IceAnimation();
+        this.custo = 10;
     }
 
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
-        gerenciadorDeBatalha.Ataque(timeline, dano, tiposDano);
         alvo.aplicarStun();
         System.out.println("Inimigo stunado");
     }

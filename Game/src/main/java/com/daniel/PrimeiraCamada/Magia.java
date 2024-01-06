@@ -1,24 +1,19 @@
 package com.daniel.PrimeiraCamada;
 
+import com.daniel.SegundaCamada.AnimationsAttack;
 import javafx.animation.Timeline;
 
-public class Magia {
-    protected int dano;
+public abstract class Magia {
+    protected int custo;
     protected TiposDano tiposDano;
-    protected Timeline timeline;
-    protected GerenciadorDeBatalha gerenciadorDeBatalha;
+    protected AnimationsAttack Animation;
 
     public TiposDano getTiposDano() {
         return tiposDano;
     }
 
-    public Timeline getTimeline() {
-        return timeline;
+    public AnimationsAttack getAnimation() {
+        return Animation;
     }
-
-
-    public int getDano() {
-        return dano;
-    }
-
+    public int getCusto(){return custo;}
 }
