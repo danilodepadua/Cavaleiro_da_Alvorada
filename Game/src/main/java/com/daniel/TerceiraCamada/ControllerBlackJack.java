@@ -12,11 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -47,6 +48,10 @@ public class ControllerBlackJack  implements Initializable{
     private Button btnVoltar;
     @FXML
     private TextField textFieldAposta;
+    @FXML
+    private VBox vboxBaralho;
+    @FXML
+    private Text txtInsira;
     @FXML
     private Text txtSeuSaldo;
     @FXML
@@ -100,7 +105,7 @@ public class ControllerBlackJack  implements Initializable{
         } else if (pontosDealer > 21 && pontosJogador <= 21) {
             handleResultado("Você venceu!", valorAposta);
         } else {
-            determinarVencedorSemEstouro(pontosJogador, pontosDealer, valorAposta);
+                determinarVencedorSemEstouro(pontosJogador, pontosDealer, valorAposta);
         }
     }
     private void determinarVencedorSemEstouro(int pontosJogador, int pontosDealer, int valorAposta) {
@@ -210,6 +215,17 @@ public class ControllerBlackJack  implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Centraliza o VBox verticalmente
+        vboxBaralho.setAlignment(Pos.CENTER);
+
+        // Configuração para centralizar o VBox horizontalmente
+        HBox.setHgrow(vboxBaralho, Priority.ALWAYS);
+
+        // Define o espaçamento entre os nós dentro do VBox
+        vboxBaralho.setSpacing(10);
+
+        // Ajusta o tamanho preferido do TextField
+        textFieldAposta.setPrefColumnCount(5);
         // Desabilitar os botões no início
         btnPuxar.setDisable(true);
         btnManter.setDisable(true);
@@ -226,5 +242,18 @@ public class ControllerBlackJack  implements Initializable{
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
+
+        PanePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.png").toString()),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(
+                        BackgroundSize.AUTO,
+                        BackgroundSize.AUTO,
+                        false,
+                        false,
+                        true,
+                        true
+                ))));
     }
 }

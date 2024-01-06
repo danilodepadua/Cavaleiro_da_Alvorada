@@ -1,14 +1,13 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.*;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoExemplo1;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.GerenciadorDeBatalha;
-import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.PersonagemLuta;
-import com.daniel.PrimeiraCamada.TiposDano;
+import com.daniel.PrimeiraCamada.Magias.Fogo;
+import com.daniel.PrimeiraCamada.Magias.Gelo;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -32,7 +31,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BattleController implements Initializable {
-
+    ArrayList<Magia> magiasDisponiveis = new ArrayList<>();
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
@@ -43,10 +42,6 @@ public class BattleController implements Initializable {
 
     @FXML
     private AnchorPane Back;
-    @FXML
-    private AnchorPane boxMensagem;
-    @FXML
-    private Text txtMensagem;
 
     @FXML
     private Button BtnAtacar;
@@ -85,13 +80,16 @@ public class BattleController implements Initializable {
     private AnchorPane InterfacePlayer;
 
     @FXML
-    private AnchorPane PnlItens;
-
-    @FXML
     private ImageView PlayerEffect;
 
     @FXML
     private ImageView PlayerImg;
+
+    @FXML
+    private AnchorPane PnlItens;
+
+    @FXML
+    private AnchorPane PnlMagias;
 
     @FXML
     private AnchorPane PnlPrimeirasEscolhas;
@@ -103,10 +101,25 @@ public class BattleController implements Initializable {
     private Button SetaDescer;
 
     @FXML
+    private Button SetaDescer1;
+
+    @FXML
     private Button SetaSubir;
 
     @FXML
+    private Button SetaSubir1;
+
+    @FXML
     private VBox VBoxItens;
+
+    @FXML
+    private VBox VboxMagias;
+
+    @FXML
+    private AnchorPane boxMensagem;
+
+    @FXML
+    private Text txtMensagem;
 
     @FXML
     void AbrirItens(ActionEvent event) {
@@ -114,6 +127,13 @@ public class BattleController implements Initializable {
         PnlItens.setDisable(false);
         PnlItens.setOpacity(1);
         ColocarItens();
+    }
+    @FXML
+    void AbrirMagias(ActionEvent event) {
+        PnlPrimeirasEscolhas.setDisable(true);
+        PnlMagias.setDisable(false);
+        PnlMagias.setOpacity(1);
+        ColocarMagias();
     }
     @FXML
     void SubirItens(ActionEvent event) {
@@ -133,7 +153,7 @@ public class BattleController implements Initializable {
         Bounds boundsInScene = PnlItens.localToScene(PnlItens.getBoundsInLocal());
         System.out.println("Minx: " + boundsInScene.getMinX() + ", Miny: " + boundsInScene.getMinY());
         System.out.println("Maxx: " + boundsInScene.getMaxX() + ", Maxy: " + boundsInScene.getMaxY());
-        if (!boundsInScene.contains(x,y) && !PnlItens.isDisable()) {
+        if (!boundsInScene.contains(x,y) && !PnlItens.isDisable() && !PnlMagias.isDisable()) {
             RetornarInicial();
             System.out.println("Clique fora do painel!");
         }
@@ -166,6 +186,32 @@ public class BattleController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void ColocarMagias() {
+        VboxMagias.getChildren().clear();
+
+        magiasDisponiveis.add(new Fogo(EnimyEffect, gdb));
+        magiasDisponiveis.add(new Gelo(EnimyEffect, gdb));
+
+        for (Magia magia : magiasDisponiveis) {
+            Button magiaButton = new Button();
+            magiaButton.setText(magia.getClass().getSimpleName());
+            magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
+            magiaButton.setDisable(false);
+
+            if (magia instanceof Fogo) {
+                Fogo fogo = (Fogo) magia;
+                magiaButton.setOnAction(event -> fogo.aplicarEfeito(Enimy));
+            }
+            if (magia instanceof Gelo) {
+                Gelo gelo = (Gelo) magia;
+                magiaButton.setOnAction(event -> gelo.aplicarEfeito(Enimy));
+            }
+            VboxMagias.getChildren().add(magiaButton);
+        }
+    }
+
+
     public void ColocarItens(){
         if(itemAtual == 0){
             SetaSubir.setDisable(true);
