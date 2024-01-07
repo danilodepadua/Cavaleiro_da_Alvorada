@@ -26,6 +26,10 @@ public class MainController implements Initializable {
         Main.saveManager.Carregar();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
+    @FXML
+    void Configurar(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

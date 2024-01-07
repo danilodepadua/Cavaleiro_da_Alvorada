@@ -7,6 +7,7 @@
    <children>
       <Button layoutX="446.0" layoutY="261.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Novo Jogo" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="120.0" />
       <Button layoutX="446.0" layoutY="355.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Carregar" prefHeight="26.0" prefWidth="120.0" text="Carregar" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="160.0" />
-      <Button layoutX="446.0" layoutY="450.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Sair" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
+      <Button layoutX="446.0" layoutY="450.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Configurar" prefHeight="26.0" prefWidth="120.0" text="Configurações" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
+      <Button layoutX="160.0" layoutY="210.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Sair" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="240.0" />
    </children>
 </AnchorPane>
