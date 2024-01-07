@@ -9,7 +9,7 @@ public class Espada extends Arma {
         this.aumentoDeAtaqueFisico = 30;
         this.tipoDano = TiposDano.Fisico;
         this.nome = "Espada de diamante";
-        this.descricao = "Concede aumento no ataque fisico";
+        this.descricao = "Concede aumento de "+this.aumentoDeAtaqueFisico+" no ataque físico";
         this.preço = 20;
     }
 }

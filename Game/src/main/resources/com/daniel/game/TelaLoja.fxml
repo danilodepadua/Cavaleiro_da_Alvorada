@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerLoja">
    <children>
-      <TabPane layoutY="290.0" prefHeight="350.0" prefWidth="654.0" style="-fx-background-color: #071121;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-0.39999999999997726" AnchorPane.leftAnchor="0.0">
+      <TabPane layoutY="290.0" prefHeight="350.0" prefWidth="654.0" style="-fx-background-color: #422e22;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-0.39999999999997726" AnchorPane.leftAnchor="0.0">
         <tabs>
           <Tab text="       Poções            ">
                <content>
@@ -24,9 +24,9 @@
                      <children>
                         <ScrollPane fx:id="scrollPocoes" prefHeight="322.0" prefWidth="654.0" style="-fx-background-color: #071121;">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="649.0" style="-fx-background-color: #071121;">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="649.0" style="-fx-background-color: #422e22;">
                                  <children>
-                                    <GridPane fx:id="gridPocoes" hgap="10.0" layoutX="-1.0" layoutY="-1.0" prefHeight="310.0" prefWidth="642.0" style="-fx-background-color: #071121;" vgap="10.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="17.0">
+                                    <GridPane fx:id="gridPocoes" hgap="10.0" layoutX="-1.0" layoutY="-1.0" prefHeight="310.0" prefWidth="642.0" style="-fx-background-color: #422e22;" vgap="10.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="17.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -48,13 +48,13 @@
           </Tab>
           <Tab text="         Armaduras           ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #071121;">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #422e22;">
                      <children>
                         <ScrollPane fx:id="scrollArmaduras" prefHeight="322.0" prefWidth="654.0" style="-fx-background-color: #071121;">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="651.0" style="-fx-background-color: #071121;">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="651.0" style="-fx-background-color: #422e22;">
                                  <children>
-                                    <GridPane fx:id="gridArmaduras" hgap="10.0" layoutX="-6.0" layoutY="-3.0" prefHeight="312.0" prefWidth="641.0" style="-fx-background-color: #071121;" vgap="10.0" AnchorPane.leftAnchor="0.0">
+                                    <GridPane fx:id="gridArmaduras" hgap="10.0" layoutX="-6.0" layoutY="-3.0" prefHeight="312.0" prefWidth="641.0" style="-fx-background-color: #422e22;" vgap="10.0" AnchorPane.leftAnchor="0.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -74,7 +74,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="         Armas              ">
+            <Tab text="          Armas             ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #071121;">
                      <children>
@@ -126,13 +126,13 @@
                   </AnchorPane>
                </content>
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #071121;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #422e22;">
                      <children>
                         <ScrollPane fx:id="scrollArmas" prefHeight="322.0" prefWidth="654.0" style="-fx-background-color: #071121;" AnchorPane.bottomAnchor="-0.7999999999999545" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="651.0" style="-fx-background-color: #071121;">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="651.0" style="-fx-background-color: #422e22;">
                                  <children>
-                                    <GridPane fx:id="gridArmas" hgap="10.0" layoutX="-3.0" layoutY="-3.0" prefHeight="324.0" prefWidth="654.0" style="-fx-background-color: #071121;" vgap="10.0">
+                                    <GridPane fx:id="gridArmas" hgap="10.0" layoutX="-3.0" layoutY="-3.0" prefHeight="324.0" prefWidth="654.0" style="-fx-background-color: #422e22;" vgap="10.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -154,7 +154,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Pane layoutX="663.0" layoutY="290.0" prefHeight="350.0" prefWidth="309.0" style="-fx-background-color: #071121;" AnchorPane.bottomAnchor="-0.39999999999997726" AnchorPane.leftAnchor="654.0" AnchorPane.rightAnchor="0.0">
+      <Pane layoutX="663.0" layoutY="290.0" prefHeight="350.0" prefWidth="309.0" style="-fx-background-color: #422e22;" AnchorPane.bottomAnchor="-0.39999999999997726" AnchorPane.leftAnchor="654.0" AnchorPane.rightAnchor="0.0">
          <children>
             <VBox layoutX="23.0" layoutY="23.0" prefHeight="236.0" prefWidth="257.0" spacing="30.0">
                <children>

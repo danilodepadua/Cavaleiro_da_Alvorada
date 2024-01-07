@@ -7,9 +7,10 @@ public class PeitoralCouro extends Peitoral  {
     public PeitoralCouro() {
         this.imagem = "/com.daniel.Images/Itens/PeitoralCouro.png";
         this.nome = "Armadura de Couro";
-        this.descricao = "Concede um aumento de defesa física";
         this.preço = 10;
         this.aumentoDefesaFisica = 30;
+        this.descricao = "Concede um  aumento de "+ this.aumentoDefesaFisica+ " na defesa física";
+
     }
 
 }

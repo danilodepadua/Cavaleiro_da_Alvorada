@@ -98,10 +98,11 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new TonicoDoHeroi(),0,1, gridPocoes);
 
         criarBotaoItem(new CapaceteCouro(), 0, 0, gridArmaduras);
-        criarBotaoItem(new CapaceteFerro(), 1, 0 , gridArmaduras);
-        criarBotaoItem(new PeitoralCouro(), 2, 0, gridArmaduras);
-        criarBotaoItem(new PeitoralFerro(), 0, 1, gridArmaduras);
-        criarBotaoItem(new CalcaCouro(), 1, 1, gridArmaduras);
+        criarBotaoItem(new PeitoralCouro(), 1, 0, gridArmaduras);
+        criarBotaoItem(new CalcaCouro(), 2, 0 , gridArmaduras);
+
+        criarBotaoItem(new CapaceteFerro(), 0, 1, gridArmaduras);
+        criarBotaoItem(new PeitoralFerro(), 1, 1, gridArmaduras);
         criarBotaoItem(new CalcaFerro(), 2, 1, gridArmaduras);
 
         criarBotaoItem(new Espada(), 0 , 0, gridArmas);
@@ -129,7 +130,7 @@ public class ControllerLoja implements Initializable {
         button.setMaxSize(cellWidth, cellHeight);
 
         imageView.setImage(item.getImage());
-        button.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+        button.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
 
         button.setOnMouseClicked(event -> {
             desmarcarUltimoClicado();
@@ -192,18 +193,18 @@ public class ControllerLoja implements Initializable {
     }
 
     private void escurecerCor(Button botao) {
-        botao.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
+        botao.setStyle("-fx-background-color: #705240; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
     }
     private void restaurarCor(Button botao) {
-        botao.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+        botao.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
     }
     private void desmarcarUltimoClicado() {
         if (lastClicked != null) {
-            lastClicked.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+            lastClicked.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
         }
     }
     private void destacarBotao(Button button) {
-        button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
+        button.setStyle("-fx-background-color: #705240; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
         lastClicked = button;
     }
 }

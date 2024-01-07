@@ -7,7 +7,7 @@ public class Cajado extends Arma {
         this.imagem = "/com.daniel.Images/Itens/Cajado.png";
         this.nome = "Cajado Mágico";
         this.aumentoDeAtaqueMagico = 10;
-        this.descricao = "Concede um aumento de "+this.aumentoDeAtaqueMagico+" mágico";
+        this.descricao = "Concede um aumento de "+this.aumentoDeAtaqueMagico+" no ataque mágico";
         this.preço = 10;
     }
 }
