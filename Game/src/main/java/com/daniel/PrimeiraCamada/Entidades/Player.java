@@ -16,7 +16,7 @@ import com.daniel.SegundaCamada.Inventario;
 import java.io.Serializable;
 
 public class Player extends Personagem implements Serializable {
-    public Inventario inventario;
+    private Inventario inventario;
     private Arma arma;
     private int coins;
     private Peitoral peitoral;

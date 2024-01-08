@@ -5,14 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerBlackJack">
+<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerBlackJack">
    <children>
-      <VBox fx:id="vboxCaixinha" layoutX="731.0" layoutY="300.0" prefHeight="121.0" prefWidth="189.0" AnchorPane.rightAnchor="39.39999999999998">
+      <VBox fx:id="vboxCaixinha" layoutX="904.0" layoutY="199.0" prefHeight="121.0" prefWidth="189.0" AnchorPane.rightAnchor="36.0">
          <children>
             <Text fx:id="txtPontosDaCasa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.199951171875">
                <font>
@@ -29,14 +30,14 @@
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="txtSeuSaldo" fill="#e1ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.800048828125">
+            <Text fx:id="txtSeuSaldo" fill="#e1ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.0">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
             </Text>
          </children>
       </VBox>
-      <VBox fx:id="vboxTextos" alignment="CENTER" layoutX="373.0" layoutY="421.0" prefHeight="154.0" prefWidth="206.0" AnchorPane.bottomAnchor="24.599999999999994">
+      <VBox fx:id="vboxTextos" alignment="CENTER" layoutX="462.0" layoutY="460.0" prefHeight="154.0" prefWidth="206.0" spacing="30.0" AnchorPane.bottomAnchor="24.600000000000023">
          <children>
             <Text fx:id="txtInsira" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o valor a ser apostado">
                <font>
@@ -44,13 +45,15 @@
                </font>
             </Text>
             <TextField fx:id="textFieldAposta" prefHeight="26.0" prefWidth="206.0" />
-            <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="26.0" prefWidth="100.0" text="Apostar" />
-            <Button fx:id="btnPuxar" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="100.0" text="Puxar" />
-            <Button fx:id="btnManter" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="100.0" text="Manter" />
-            <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="26.0" prefWidth="100.0" text="Voltar" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="26.0" prefWidth="100.0" text="Voltar" />
+                  <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="26.0" prefWidth="100.0" text="Apostar" />
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <VBox fx:id="vboxBaralho" alignment="CENTER" layoutX="94.0" layoutY="14.0" prefHeight="400.0" prefWidth="630.0" AnchorPane.bottomAnchor="186.0">
+      <VBox fx:id="vboxBaralho" alignment="CENTER" layoutX="217.0" layoutY="60.0" prefHeight="400.0" prefWidth="630.0" AnchorPane.bottomAnchor="179.0">
          <children>
             <GridPane fx:id="GridPaneDealer" prefHeight="180.0" prefWidth="462.0">
               <columnConstraints>
@@ -74,5 +77,11 @@
             </GridPane>
          </children>
       </VBox>
+      <HBox layoutX="902.0" layoutY="441.0" prefHeight="37.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="160.39999999999998" AnchorPane.rightAnchor="34.0">
+         <children>
+            <Button fx:id="btnPuxar" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="100.0" text="Puxar" />
+            <Button fx:id="btnManter" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="100.0" text="Manter" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

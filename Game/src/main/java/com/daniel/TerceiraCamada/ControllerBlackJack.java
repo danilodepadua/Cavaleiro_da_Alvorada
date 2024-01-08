@@ -151,6 +151,7 @@ public class ControllerBlackJack  implements Initializable{
     }
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
+
         resetarJogo();
         String valorStr = textFieldAposta.getText();
         try {
@@ -275,37 +276,7 @@ public class ControllerBlackJack  implements Initializable{
                         true
                 ))));
 
-        double offsetY = 500; // Ajuste conforme necessário
-        double novoTamanhoVBox = 200; // Ajuste conforme necessário
 
-        // Configurar o vboxTextos
-        AnchorPane.setTopAnchor(vboxTextos, ((PanePrincipal.getHeight() - novoTamanhoVBox) / 2) + offsetY);
-        AnchorPane.setBottomAnchor(vboxTextos, null); // Remova a âncora inferior para evitar conflitos
-        vboxTextos.setPrefHeight(novoTamanhoVBox);
-
-        // Se você quiser centralizar o vboxTextos horizontalmente, ajuste as âncoras esquerda e direita
-        AnchorPane.setLeftAnchor(vboxTextos, (PanePrincipal.getWidth() - vboxTextos.getWidth()) / 2);
-        AnchorPane.setRightAnchor(vboxTextos, (PanePrincipal.getWidth() - vboxTextos.getWidth()) / 2);
-
-        // Configurar o vboxBaralho acima do vboxTextos
-        AnchorPane.setTopAnchor(vboxBaralho, 30.0);
-        AnchorPane.setBottomAnchor(vboxBaralho, null);
-        double leftAnchorVBoxBaralho = 50.0; // Ajuste conforme necessário
-        AnchorPane.setLeftAnchor(vboxBaralho, leftAnchorVBoxBaralho);
-        AnchorPane.setRightAnchor(vboxBaralho, 200.0);
-
-        // Ajuste o espaçamento entre os nós dentro do VBox
-        vboxTextos.setSpacing(10);
-        vboxBaralho.setSpacing(0);
-
-        Button seuBotao = (Button) vboxTextos.getChildren().get(2);
-        seuBotao.setPrefWidth(100);
-        seuBotao.setPrefHeight(26);
-
-        TextField seuTextField = (TextField) vboxTextos.getChildren().get(1);
-        seuTextField.setPrefWidth(150);
-        seuTextField.setPrefHeight(10);
-        seuTextField.setMaxWidth(150);
     }
 
 }

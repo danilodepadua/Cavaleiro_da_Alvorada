@@ -31,7 +31,8 @@ import java.util.ResourceBundle;
 
 public class ControllerCassino implements Initializable {
     private String texto = "Cassinão";
-
+    @FXML
+    private Button btnMemoria;
     @FXML
     private AnchorPane anchorPane;
 
@@ -64,7 +65,7 @@ public class ControllerCassino implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             txtMoedas.setText("" + Player.getPlayer().getCoins() + " Moedas");
-            Point2D centro = new Point2D(240, 169);
+            Point2D centro = new Point2D(280, 169);
             desenharTexto(texto, 40, centro);
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
@@ -153,5 +154,10 @@ public class ControllerCassino implements Initializable {
         arco.setRadiusX(raio);
         arco.setRadiusY(raio);
         return arco;
+    }
+
+    @FXML
+    void JogarMemoria(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("JogoDaMemoria.fxml")));
     }
 }

@@ -13,10 +13,11 @@
             <Font name="Barlow Condensed SemiBold" size="61.0" />
          </font>
       </Text>
-      <VBox fx:id="vboxTextos" layoutX="430.0" layoutY="233.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="vboxTextos" layoutX="519.0" layoutY="235.0" prefHeight="200.0" prefWidth="100.0">
          <children>
             <Text fx:id="txtCassinao" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Button fx:id="btnBlackJack" mnemonicParsing="false" onAction="#Jogar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Black Jack" />
+            <Button fx:id="btnMemoria" mnemonicParsing="false" onAction="#JogarMemoria" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Memória" />
             <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="46.0" prefWidth="105.0" style="-fx-background-radius: 10;" text="Voltar" />
             <Text fx:id="txtMoedas" fill="#e5ff00" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>

@@ -49,4 +49,5 @@ public class Carta {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+
 }
