@@ -7,8 +7,10 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.Magias.Escuridao;
 import com.daniel.PrimeiraCamada.Magias.Fogo;
 import com.daniel.PrimeiraCamada.Magias.Gelo;
+import com.daniel.PrimeiraCamada.Magias.Luz;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 import java.net.URL;
@@ -117,6 +120,8 @@ public class BattleController implements Initializable {
     @FXML
     private Text txtMensagem;
 
+    boolean isItens;
+
     @FXML
     void AbrirItens(ActionEvent event) {
         PnlPrimeirasEscolhas.setDisable(true);
@@ -134,12 +139,22 @@ public class BattleController implements Initializable {
     @FXML
     void SubirItens(ActionEvent event) {
         itemAtual -= 3;
-        ColocarItens();
+        if(isItens) {
+            ColocarItens();
+        }
+        else{
+            ColocarMagias();
+        }
     }
     @FXML
     void DescerItens(ActionEvent event) {
         itemAtual += 3;
-        ColocarItens();
+        if(isItens) {
+            ColocarItens();
+        }
+        else{
+            ColocarMagias();
+        }
     }
     @FXML
     void Sair(MouseEvent event) {
@@ -183,25 +198,27 @@ public class BattleController implements Initializable {
         }
     }
     public void ColocarMagias() {
+        isItens = false;
         VerificarSetas(magiasDisponiveis.size());
 
-        for (Magia magia : magiasDisponiveis) {
+        for (int i = itemAtual; i< magiasDisponiveis.size() && i<(itemAtual+3); i++) {
             Button magiaButton = new Button();
-            magiaButton.setText(magia.getClass().getSimpleName() + " : " + magia.getCusto() + "MP");
+            magiaButton.setText(magiasDisponiveis.get(i).getClass().getSimpleName() + " : " + magiasDisponiveis.get(i).getCusto() + "MP");
             magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
-            if(player.getCurrentMp() < magia.getCusto()){
+            if(player.getCurrentMp() < magiasDisponiveis.get(i).getCusto()){
                 magiaButton.setDisable(true);
             }
+            int finalI = i;
             magiaButton.setOnAction(event -> {
-                if(magia instanceof IEffects){
-                    ((IEffects) magia).aplicarEfeito(Enimy);
+                if(magiasDisponiveis.get(finalI) instanceof IEffects){
+                    ((IEffects) magiasDisponiveis.get(finalI)).aplicarEfeito(Enimy);
                 }
                 itemAtual =0;
                 RetornarInicial();
-                player.usarMp(magia.getCusto());
+                player.usarMp(magiasDisponiveis.get(finalI).getCusto());
                 Atualiazar();
-                gdb.Ataque(magia.getAnimation().INICIAR(EnimyEffect), player.getAtqM(), magia.getTiposDano(), false);
+                gdb.Ataque(magiasDisponiveis.get(finalI).getAnimation().INICIAR(EnimyEffect), (int)(player.getAtqM()*magiasDisponiveis.get(finalI).getMultiplicador()), magiasDisponiveis.get(finalI).getTiposDano(), false);
             });
             VBoxItens.getChildren().add(magiaButton);
         }
@@ -209,6 +226,7 @@ public class BattleController implements Initializable {
 
 
     public void ColocarItens(){
+        isItens = true;
         VerificarSetas(itens.size());
         for(int i = itemAtual; i< itens.size() && i<(itemAtual+3); i++){
             Button itemBtn = new Button();
@@ -274,6 +292,8 @@ public class BattleController implements Initializable {
                 ))));
         magiasDisponiveis.add(new Fogo());
         magiasDisponiveis.add(new Gelo());
+        magiasDisponiveis.add(new Escuridao());
+        magiasDisponiveis.add(new Luz());
         Random rand = new Random();
         Inimigo inimigo = inimigos[rand.nextInt(0, inimigos.length)];
         EnimyImg.setImage(inimigo.getImagem());
