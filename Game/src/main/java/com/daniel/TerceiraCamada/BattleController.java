@@ -1,7 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.*;
-import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoExemplo1;
+import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoSlime;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
@@ -20,9 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -37,7 +35,7 @@ public class BattleController implements Initializable {
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
 
-    private Inimigo[] inimigos = {new InimigoExemplo1()};
+    private Inimigo[] inimigos;
     PersonagemLuta Enimy;
     PersonagemLuta player;
 
@@ -261,6 +259,19 @@ public class BattleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        inimigos = Main.cidadeAtual.getInimigos();
+        Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(
+                        BackgroundSize.AUTO,
+                        BackgroundSize.AUTO,
+                        false,
+                        false,
+                        true,
+                        true
+                ))));
         magiasDisponiveis.add(new Fogo());
         magiasDisponiveis.add(new Gelo());
         Random rand = new Random();
