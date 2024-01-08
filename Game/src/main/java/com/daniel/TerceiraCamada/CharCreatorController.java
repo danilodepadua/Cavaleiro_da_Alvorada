@@ -37,22 +37,22 @@ public class CharCreatorController implements Initializable {
     private ProgressBar BarraVel;
 
     @FXML
+    private GridPane Grid;
+
+    @FXML
     private TextField Nome;
 
     @FXML
     private Text Pontos;
 
     @FXML
-    private Text TxtDef;
-
-    @FXML
-    private Text TxtDefesaMagica;
-
-    @FXML
     private Text TxtForce;
 
     @FXML
     private Text TxtInt;
+
+    @FXML
+    private Text TxtRes;
 
     @FXML
     private Text TxtVel;
@@ -67,12 +67,6 @@ public class CharCreatorController implements Initializable {
     private ImageView imgBonecos;
 
     @FXML
-    private GridPane Grid;
-
-    @FXML
-    private Text TxtRes;
-
-    @FXML
     void Criar(ActionEvent event) {
         String nomeDoJogador = Nome.getText();
         System.out.println(nomeDoJogador);
@@ -82,7 +76,7 @@ public class CharCreatorController implements Initializable {
         int velocidade = calcularValorDaBarra(BarraVel);
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
-        Player.CreatePlayer("/com.daniel.Images/Player.png", forca, Int, nomeDoJogador, velocidade, res, 10000);
+        Player.CreatePlayer("/com.daniel.Images/Player.png", forca, Int, nomeDoJogador, velocidade, res, 10000, 10);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
 
     }
@@ -91,7 +85,7 @@ public class CharCreatorController implements Initializable {
         if(pontosDisp>0) {
             pontosDisp--;
             Pontos.setText(pontosDisp.toString());
-            BarraForca.setProgress(BarraForca.getProgress() + 0.05);
+            BarraForca.setProgress(BarraForca.getProgress() + 0.01);
         }
     }
     @FXML
@@ -99,7 +93,7 @@ public class CharCreatorController implements Initializable {
         if(pontosDisp>0) {
             pontosDisp--;
             Pontos.setText(pontosDisp.toString());
-            BarraVel.setProgress(BarraVel.getProgress() + 0.05);
+            BarraVel.setProgress(BarraVel.getProgress() + 0.01);
         }
     }
     @FXML
@@ -107,7 +101,7 @@ public class CharCreatorController implements Initializable {
         if(pontosDisp>0){
         pontosDisp--;
         Pontos.setText(pontosDisp.toString());
-        BarraRes.setProgress(BarraRes.getProgress() + 0.05);
+        BarraRes.setProgress(BarraRes.getProgress() + 0.01);
         }
     }
     @FXML
@@ -115,7 +109,7 @@ public class CharCreatorController implements Initializable {
         if(BarraForca.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraForca.setProgress(BarraForca.getProgress() - 0.05);
+            BarraForca.setProgress(BarraForca.getProgress() - 0.01);
         }
     }
     @FXML
@@ -123,7 +117,7 @@ public class CharCreatorController implements Initializable {
         if(BarraVel.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraVel.setProgress(BarraVel.getProgress() - 0.05);
+            BarraVel.setProgress(BarraVel.getProgress() - 0.01);
         }
     }
     @FXML
@@ -131,7 +125,7 @@ public class CharCreatorController implements Initializable {
         if(BarraRes.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraRes.setProgress(BarraRes.getProgress() - 0.05);
+            BarraRes.setProgress(BarraRes.getProgress() - 0.01);
         }
     }
     @FXML
@@ -139,7 +133,7 @@ public class CharCreatorController implements Initializable {
         if(BarraInt.getProgress() > 0.25) {
             pontosDisp++;
             Pontos.setText(pontosDisp.toString());
-            BarraInt.setProgress(BarraInt.getProgress() - 0.05);
+            BarraInt.setProgress(BarraInt.getProgress() - 0.01);
         }
     }
     @FXML
@@ -147,7 +141,7 @@ public class CharCreatorController implements Initializable {
         if(pontosDisp>0){
             pontosDisp--;
             Pontos.setText(pontosDisp.toString());
-            BarraInt.setProgress(BarraInt.getProgress() + 0.05);
+            BarraInt.setProgress(BarraInt.getProgress() + 0.01);
         }
     }
     private int calcularValorDaBarra(ProgressBar barra) {
@@ -157,16 +151,12 @@ public class CharCreatorController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configurarOuvinte(BarraInt, TxtInt);
-        configurarOuvinte(BarraInt, TxtDefesaMagica);
         configurarOuvinte(BarraVel, TxtVel);
         configurarOuvinte(BarraRes, TxtRes);
-        configurarOuvinte(BarraRes, TxtDef);
         configurarOuvinte(BarraForca, TxtForce);
 
         // Definir os textos iniciais com os valores iniciais das barras
-        TxtDef.setText(String.valueOf(calcularValorDaBarra(BarraRes)));
         TxtVel.setText(String.valueOf(calcularValorDaBarra(BarraVel)));
-        TxtDefesaMagica.setText(String.valueOf(calcularValorDaBarra(BarraInt)));
         TxtForce.setText(String.valueOf(calcularValorDaBarra(BarraForca)));
         TxtRes.setText(String.valueOf(calcularValorDaBarra(BarraRes)));
         TxtInt.setText(String.valueOf(calcularValorDaBarra(BarraInt)));

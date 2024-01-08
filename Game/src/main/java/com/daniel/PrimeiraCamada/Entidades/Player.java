@@ -26,29 +26,28 @@ public class Player extends Personagem implements Serializable {
     private int lvl;
     private int currentXp;
     private int currentMp, currentHp;
-    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
+    private int pontos;
+    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
         super(Name, Img, Force, Int, Res, Velocity);
         this.currentHp = this.getHP();
         this.currentMp = this.getMP();
         this.inventario = new Inventario();
         this.coins = coins;
+        this.pontos = pontos;
         this.peitoral = new Peitoral();
         this.capacete = new Capacete();
         this.calca = new Calca();
         this.arma = new Arma();
-        inventario.adicionarItem(new PeitoralFerro());
-        inventario.adicionarItem(new CalcaFerro());
-        inventario.adicionarItem(new CapaceteFerro());
-        inventario.adicionarItem(new Espada());
+
 
         player = this;
     }
-    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins){
+    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
         if(player != null){
             return player;
         }
         else{
-            return new Player(Img, Force, Int, Name, Velocity, Res, coins);
+            return new Player(Img, Force, Int, Name, Velocity, Res, coins, pontos);
         }
     }
     public Inventario getInventario() {
@@ -170,5 +169,21 @@ public class Player extends Personagem implements Serializable {
 
     public Calca getCalca() {
         return calca;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+    public void ganhaPontos(int quantidade){
+        this.pontos += quantidade;
+
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+
+    public int getLvl() {
+        return lvl;
     }
 }

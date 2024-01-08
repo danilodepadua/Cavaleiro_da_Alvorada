@@ -118,4 +118,9 @@ public class CityController implements Initializable {
 
     }
 
+    @FXML
+    void onClickStatus(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaStatus.fxml")));
+
+    }
 }

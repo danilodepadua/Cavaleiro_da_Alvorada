@@ -55,4 +55,20 @@ public abstract class Personagem implements Serializable {
     public Image getImagem() {
         return new Image(Main.class.getResource(ImagePath).toString());
     }
+
+    public void aumentaForcaProgress(int quantidade) {
+        Force = quantidade;
+    }
+
+    public void aumentaInteligenciaProgess(int quantidade) {
+        Inteligence = quantidade;
+    }
+
+    public void aumentaResistenciaProgress(int quantidade) {
+        Resistencia = quantidade;
+    }
+
+    public void aumentaVelocidadeProgress(int quantidade) {
+        Velocity = quantidade;
+    }
 }
