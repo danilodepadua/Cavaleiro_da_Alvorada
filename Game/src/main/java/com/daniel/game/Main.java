@@ -35,6 +35,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         cidadeAtual = new CidadeInicial();
         CurrentStage = stage;
+        stage.setResizable(false);
         FXMLLoader root = new FXMLLoader(Main.class.getResource("MainScene.fxml"));
         stage.setHeight(639);
         stage.setWidth(1136);
