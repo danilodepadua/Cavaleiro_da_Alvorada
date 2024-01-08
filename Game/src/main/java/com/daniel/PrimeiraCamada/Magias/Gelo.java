@@ -11,9 +11,7 @@ import javafx.scene.image.ImageView;
 
 public class Gelo extends Magia implements IEffects {
     public Gelo() {
-        this.tiposDano = TiposDano.Gelo;
-        this.Animation = new IceAnimation();
-        this.custo = 10;
+        super(10, 1, TiposDano.Gelo, new IceAnimation());
     }
 
     @Override

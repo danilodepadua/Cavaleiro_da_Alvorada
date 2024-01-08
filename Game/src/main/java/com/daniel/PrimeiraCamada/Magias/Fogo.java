@@ -10,9 +10,7 @@ import javafx.scene.image.ImageView;
 
 public class Fogo extends Magia implements IEffects {
     public Fogo() {
-        this.tiposDano = TiposDano.Fogo;
-        this.Animation = new FireAnimation();
-        this.custo = 10;
+        super(10, 1, TiposDano.Fogo, new FireAnimation());
     }
 
     @Override
