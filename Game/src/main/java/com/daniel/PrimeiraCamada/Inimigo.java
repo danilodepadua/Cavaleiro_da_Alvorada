@@ -2,8 +2,9 @@ package com.daniel.PrimeiraCamada;
 
 public abstract class Inimigo extends Personagem{
     int Def, MagicDef, atqF, atqMag;
-    protected TiposDano tipoDano;
-    public Inimigo(String Nome, String Imagem, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposDano tipoDn) {
+    private final Comportamentos comp;
+    protected TiposElementais tipoDano;
+    public Inimigo(String Nome, String Imagem, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp) {
         super(Nome, Imagem, fr, in, rs, vel);
         this.Def += rs + ModDef;
         this.MagicDef += in + ModMagDef;
@@ -11,16 +12,17 @@ public abstract class Inimigo extends Personagem{
         this.atqMag = ModAtqM;
         this.HP += ModHp;
         this.MP += ModMp;
-        this.fraquezas = new TiposDano[0];
-        this.resistencias = new TiposDano[0];
-        this.imunidades = new TiposDano[0];
-        this.absorcao = new TiposDano[0];
+        this.fraquezas = new TiposElementais[0];
+        this.resistencias = new TiposElementais[0];
+        this.imunidades = new TiposElementais[0];
+        this.absorcao = new TiposElementais[0];
         this.tipoDano = tipoDn;
+        this.comp = comp;
     }
-    protected TiposDano[] fraquezas;
-    protected TiposDano[] resistencias;
-    protected TiposDano[] imunidades;
-    protected TiposDano[] absorcao;
+    protected TiposElementais[] fraquezas;
+    protected TiposElementais[] resistencias;
+    protected TiposElementais[] imunidades;
+    protected TiposElementais[] absorcao;
 
     public int getDefesaM(){
         return MagicDef;
@@ -33,5 +35,9 @@ public abstract class Inimigo extends Personagem{
     }
     public int getAtaqueM(){
         return atqMag;
+    }
+
+    public Comportamentos getComp() {
+        return comp;
     }
 }

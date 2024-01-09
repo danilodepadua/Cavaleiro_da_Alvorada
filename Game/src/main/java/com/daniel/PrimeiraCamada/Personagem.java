@@ -4,6 +4,7 @@ import com.daniel.game.Main;
 import javafx.scene.image.Image;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class Personagem implements Serializable {
 
@@ -17,6 +18,7 @@ public abstract class Personagem implements Serializable {
         this.HP = this.Resistencia + 5;
         this.MP = this.Inteligence + 5;
     }
+    protected ArrayList<Magia> magias = new ArrayList<>();
     protected int HP = 0;
     protected String ImagePath;
     protected int MP = 0;

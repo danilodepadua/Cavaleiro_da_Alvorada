@@ -4,9 +4,12 @@ import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 public class GerenciadorDeBatalha {
 
@@ -14,23 +17,35 @@ public class GerenciadorDeBatalha {
     AnchorPane ui, mensagemBox;
     Text txtMensagem;
     States state;
+    ImageView pEffect, eEffect;
+    Comportamento comp;
 
     private enum States{
         turnoPlayer,
         turnoInimigo;
     }
 
-    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane UIActions, AnchorPane boxMensagem, Text txtMensagem){
+    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane UIActions, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, Comportamento Comp){
         this.Inimigo = i;
         this.Player = p;
         this.ui= UIActions;
         this.txtMensagem = txtMensagem;
         this.mensagemBox = boxMensagem;
+        pEffect = pe;
+        eEffect = ee;
+        comp = Comp;
     }
-    public void mostrarResultado(String mensagem){
+    public void mostrarResultado(ArrayList<String> mensagems){
         Timeline T = new Timeline();
-        T.getKeyFrames().add(new KeyFrame(Duration.seconds(0.2), event -> {mensagemBox.setOpacity(1); txtMensagem.setText(mensagem);}));
-        T.getKeyFrames().add(new KeyFrame(Duration.seconds(2.2), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
+        double time = 0.2;
+        for(String i : mensagems) {
+            T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {
+                mensagemBox.setOpacity(1);
+                txtMensagem.setText(i);
+            }));
+            time+=1;
+        }
+        T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
         T.setOnFinished(event -> MudarTurno());
         T.play();
     }
@@ -67,7 +82,9 @@ public class GerenciadorDeBatalha {
     public void turnoPlayer(){
         if(Player.stun > 0){
             Player.stun--;
-            MudarTurno();
+            ArrayList<String> mensagem = new ArrayList<>();
+            mensagem.add("Jogador esta stunado");
+            mostrarResultado(mensagem);
         }
         else{
         // logica do player
@@ -79,12 +96,21 @@ public class GerenciadorDeBatalha {
     public void turnoInimigo(){
         if(Inimigo.stun > 0){
             Inimigo.stun--;
-            MudarTurno();
+            ArrayList<String> mensagem = new ArrayList<>();
+            mensagem.add("Inimigo esta stunado");
+            mostrarResultado(mensagem);
         }
         else{
-        // logica do inimigo
-            System.out.println("Turno inimigo");
-            mostrarResultado("Turno do inimigo");
+            Comportamento.acoes acao = comp.EscolherAcao();
+            if(acao == Comportamento.acoes.fugir){
+                Inimigo.fugir(Player.getVelocidade());
+            }
+            else if(acao == Comportamento.acoes.usarMagia){
+                comp.EscolherMagia().Conjurar(this, Inimigo);
+            }
+            else{
+                this.Ataque(Inimigo.atqAnim.INICIAR(pEffect), Inimigo.getAtqM(),Inimigo.getTipoAtaqueBase(), true, null);
+            }
         }
     }
     public void Vitoria(){
@@ -101,34 +127,93 @@ public class GerenciadorDeBatalha {
         ui.setOpacity(0);
         ui.setDisable(true);
     }
-    public void Ataque(Timeline t, int Dano, TiposDano tipo, boolean fisico){
-        String Mensagem;
+    public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
         if(state == States.turnoPlayer){
+            if(Mensagem == null){
+                Mensagem = new ArrayList<String>();
+                Mensagem.add("Player atacou");
+            }
             ApagarUiPlayer();
             int danoTomado = this.Inimigo.tomarDano(Dano, tipo, fisico);
             if(danoTomado == 0){
-                Mensagem = "O inimigo não sofreu dano";
+                Mensagem.add("O inimigo não sofreu dano");
             }
             else if(danoTomado < 0){
-                Mensagem = "O inimigo recuperou " + danoTomado + " de vida";
+                Mensagem.add("O inimigo recuperou " + Math.abs(danoTomado) + " de vida");
             }
             else{
-                Mensagem = "O inimigo tomou " + danoTomado + " de dano";
+                Mensagem.add("O inimigo tomou " + danoTomado + " de dano");
             }
         }
         else{
+            if(Mensagem == null){
+                Mensagem = new ArrayList<String>();
+                Mensagem.add("Inimigo atacou");
+            }
             int danoTomado = this.Player.tomarDano(Dano, tipo, fisico);
             if(danoTomado == 0){
-                Mensagem = "O jogador não sofreu dano";
+                Mensagem.add("O jogador não sofreu dano");
             }
             else if(danoTomado < 0){
-                Mensagem = "O jogador recuperou " + danoTomado + " de vida";
+                Mensagem.add("O jogador recuperou " + Math.abs(danoTomado) + " de vida");
             }
             else{
-                Mensagem = "O jogador tomou " + danoTomado + " de dano";
+                Mensagem.add("O jogador tomou " + danoTomado + " de dano");
             }
         }
-        t.setOnFinished(event -> mostrarResultado(Mensagem));
+        ArrayList<String> finalMensagem = Mensagem;
+        t.setOnFinished(event -> mostrarResultado(finalMensagem));
         t.play();
+    }
+
+    public void acaoNaoAgreciva(Timeline t, ArrayList<String> mensagem){
+        t.setOnFinished(event -> mostrarResultado(mensagem));
+    }
+    public ImageView getAlvoView(boolean autoUsavel){
+        if(!autoUsavel){
+            if(this.state == States.turnoInimigo){
+                return pEffect;
+            }
+            else{
+                return eEffect;
+            }
+        }
+        else{
+            if(this.state == States.turnoInimigo){
+                return eEffect;
+            }
+            else{
+                return pEffect;
+            }
+        }
+    }
+
+    public PersonagemLuta getAlvo(boolean autoUsavel) {
+        if(state == States.turnoInimigo){
+            if(!autoUsavel){
+                return Player;
+            }
+            else{
+                return Inimigo;
+            }
+        }
+        else{
+            if(!autoUsavel){
+                return Inimigo;
+            }
+            else{
+                return Player;
+            }
+        }
+    }
+    public void fugir(boolean conseguiu){
+        if(conseguiu){
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        }
+        else{
+            ArrayList<String> i = new ArrayList<String>();
+            i.add("Falhou em fugir");
+            mostrarResultado(i);
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.daniel.PrimeiraCamada.Itens;
 
-import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.TiposDano;
+import com.daniel.PrimeiraCamada.TiposElementais;
 
 public abstract class Armadura extends Item {
     protected int aumentoDefesaFisica;
@@ -10,8 +9,8 @@ public abstract class Armadura extends Item {
         return aumentoDefesaFisica;
     }
     public int getAumentoDefesaM(){return aumentoDefesaMagica;}
-    protected TiposDano[] fraquezas;
-    protected TiposDano[] resistencias;
-    protected TiposDano[] imunidades;
-    protected TiposDano[] absorcao;
+    protected TiposElementais[] fraquezas;
+    protected TiposElementais[] resistencias;
+    protected TiposElementais[] imunidades;
+    protected TiposElementais[] absorcao;
 }

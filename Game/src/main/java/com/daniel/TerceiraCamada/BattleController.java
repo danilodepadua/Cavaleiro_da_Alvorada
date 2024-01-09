@@ -1,7 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.*;
-import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoSlime;
+import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoPadrao;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
@@ -15,7 +15,6 @@ import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
@@ -26,7 +25,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 import java.net.URL;
@@ -172,20 +170,13 @@ public class BattleController implements Initializable {
 
     @FXML
     void Atacar(ActionEvent event) throws PlayerInexistenteException {
-        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase(), true);
+        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase(), true, null);
     }
 
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException {
-        Random rand = new Random();
-        int i = rand.nextInt(0, 100);
-        if(i >= 50-(player.getVelocidade()-Enimy.getVelocidade())){
-            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
-        }
-        else{
-            gdb.ApagarUiPlayer();
-            gdb.mostrarResultado("Player falhou em fugir");
-        }
+        gdb.ApagarUiPlayer();
+        gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
 
     public void Atualiazar(){
@@ -216,9 +207,8 @@ public class BattleController implements Initializable {
                 }
                 itemAtual =0;
                 RetornarInicial();
-                player.usarMp(magiasDisponiveis.get(finalI).getCusto());
+                magiasDisponiveis.get(finalI).Conjurar(gdb, player);
                 Atualiazar();
-                gdb.Ataque(magiasDisponiveis.get(finalI).getAnimation().INICIAR(EnimyEffect), (int)(player.getAtqM()*magiasDisponiveis.get(finalI).getMultiplicador()), magiasDisponiveis.get(finalI).getTiposDano(), false);
             });
             VBoxItens.getChildren().add(magiaButton);
         }
@@ -236,7 +226,8 @@ public class BattleController implements Initializable {
             int finalI = i;
             itemBtn.setOnAction(event -> {
                 try {
-                    String mensagem = ((IConsumableInBattle)itens.get(finalI)).Consumir(player);
+                    ArrayList<String> mensagem = new ArrayList<>();
+                    mensagem.add(((IConsumableInBattle)itens.get(finalI)).Consumir(player));
                     if(itens.get(finalI).getQuant() <=0){
                         itens.remove(finalI);
                     }
@@ -322,7 +313,7 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem);
+        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect, new ComportamentoPadrao(Enimy, player));
         gdb.IniciarBatalha();
     }
 }

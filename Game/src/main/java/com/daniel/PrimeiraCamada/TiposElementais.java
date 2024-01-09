@@ -1,7 +1,7 @@
 package com.daniel.PrimeiraCamada;
 
-public enum TiposDano {
-    Fisico,
+public enum TiposElementais {
+    NaoElemental,
     Eletrico,
     Fogo,
     Gelo,

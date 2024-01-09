@@ -1,9 +1,17 @@
 package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.SegundaCamada.AnimationsAttack;
+import com.daniel.SegundaCamada.SlashAnimation;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class PersonagemLuta{
 
+    protected String Nome;
+    protected AnimationsAttack atqAnim;
+    protected ArrayList<Magia> magias;
     protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
     public PersonagemLuta(Inimigo i){
         this.HP = i.HP;
@@ -19,6 +27,8 @@ public class PersonagemLuta{
         this.resistencias = i.resistencias;
         this.imunidades = i.imunidades;
         this.absorcao = i.absorcao;
+        this.Nome = i.getName();
+        this.magias = i.magias;
     }
 
     public PersonagemLuta(Player p){
@@ -31,19 +41,22 @@ public class PersonagemLuta{
         this.currentHp = p.getcHP();
         this.currentMp = p.getcMp();
         this.velocidade = p.getVelocity();
-        this.fraquezas = new TiposDano[0];
-        this.resistencias = new TiposDano[0];
-        this.imunidades = new TiposDano[0];
-        this.absorcao = new TiposDano[0];
+        this.fraquezas = new TiposElementais[0];
+        this.resistencias = new TiposElementais[0];
+        this.imunidades = new TiposElementais[0];
+        this.absorcao = new TiposElementais[0];
         this.tipoAtaqueBase = p.getArma().getTipoDano();
+        this.atqAnim = new SlashAnimation();
+        this.Nome = p.getName();
+        this.magias = p.magias;
     }
-    protected TiposDano[] fraquezas;
-    protected TiposDano[] resistencias;
-    protected TiposDano[] imunidades;
-    protected TiposDano[] absorcao;
-    protected TiposDano tipoAtaqueBase;
+    protected TiposElementais[] fraquezas;
+    protected TiposElementais[] resistencias;
+    protected TiposElementais[] imunidades;
+    protected TiposElementais[] absorcao;
+    protected TiposElementais tipoAtaqueBase;
 
-    public int tomarDano(int dano, TiposDano tipo, boolean fisico){
+    public int tomarDano(int dano, TiposElementais tipo, boolean fisico){
         int danoTomado = 0;
         if(temTipo(fraquezas, tipo)){
             if(!fisico){
@@ -106,8 +119,8 @@ public class PersonagemLuta{
         }
     }
 
-    public boolean temTipo(TiposDano[] tipos, TiposDano tipo){
-        for(TiposDano T : tipos){
+    public boolean temTipo(TiposElementais[] tipos, TiposElementais tipo){
+        for(TiposElementais T : tipos){
             if(T == tipo){
                 return true;
             }
@@ -147,10 +160,29 @@ public class PersonagemLuta{
         return AtqF;
     }
 
-    public TiposDano getTipoAtaqueBase() {
+    public AnimationsAttack getAtqAnim() {
+        return atqAnim;
+    }
+
+    public ArrayList<Magia> getMagias() {
+        return magias;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public int getMP() {
+        return MP;
+    }
+
+    public TiposElementais getTipoAtaqueBase() {
         return tipoAtaqueBase;
     }
 
+    public String getNome() {
+        return Nome;
+    }
 
     public void UpForca(int Up){
         this.AtqF += Up;
@@ -177,5 +209,9 @@ public class PersonagemLuta{
 
     public void aplicarStun(){
         stun++;
+    }
+    public boolean fugir(int velC){
+        Random rand = new Random();
+        return !(velC * rand.nextDouble(0.5, 1.5) > this.velocidade);
     }
 }
