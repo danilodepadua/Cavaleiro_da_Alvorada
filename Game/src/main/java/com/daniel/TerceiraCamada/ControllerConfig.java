@@ -32,7 +32,7 @@ public class ControllerConfig implements Initializable {
     }
     @FXML
     void Voltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("MainScene.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }
 }
 

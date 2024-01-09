@@ -4,109 +4,243 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
+<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Pane fx:id="pane1" cache="true" focusTraversable="true" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Text fill="WHITE" layoutX="8.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LV: 1" wrappingWidth="67.1708984375">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="8.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="labelNome" layoutX="85.0" layoutY="12.0" text="Player" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Text fill="WHITE" layoutX="8.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinheiro:">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="lblDinheiro" layoutX="120.0" layoutY="78.0" text="Label" textFill="#ffee00">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Text fill="WHITE" layoutX="220.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida:" wrappingWidth="67.1708984375">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="lblDefesaMagica" layoutX="594.0" layoutY="46.0" text="Label" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblInteligencia" layoutX="565.0" layoutY="76.0" text="Label" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Text fill="WHITE" layoutX="415.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa Mágica:">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="415.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência:" wrappingWidth="137.4000244140625">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="LabelMP" layoutX="480.0" layoutY="12.0" text="Label" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Text fill="WHITE" layoutX="421.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MP:" wrappingWidth="58.779296875">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="220.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="LabelForca" layoutX="298.0" layoutY="75.0" text="Label" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LblDefesa" layoutX="318.0" layoutY="45.0" text="Label" textFill="#0090ff">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Label>
-                  <Text fill="WHITE" layoutX="220.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa:">
-                     <font>
-                        <Font name="Bell MT" size="26.0" />
-                     </font>
-                  </Text>
+                  <HBox layoutX="843.0" layoutY="22.0" prefHeight="88.0" prefWidth="267.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onClickStatus" prefHeight="75.0" prefWidth="75.0">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../com.daniel.Images/303184.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0">
+                           <graphic>
+                              <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../com.daniel.Images/farmtooliconscalciumtrice-ezgif.com-crop.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#Config" prefHeight="75.0" prefWidth="75.0">
+                           <graphic>
+                              <ImageView fitHeight="47.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../com.daniel.Images/IconConfig.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="14.0" layoutY="9.0" prefHeight="109.0" prefWidth="811.0" spacing="20.0">
+                     <children>
+                        <VBox prefHeight="103.0" prefWidth="169.0">
+                           <children>
+                              <HBox prefHeight="34.0" prefWidth="137.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="labelNome" text=" Player" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="21.0" prefWidth="170.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível:" wrappingWidth="61.570892333984375">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtNivel" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="28.0" prefWidth="165.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinheiro:">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="lblDinheiro" text="   Label" textFill="#ffee00">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="110.0" prefWidth="193.0">
+                           <children>
+                              <HBox prefHeight="20.0" prefWidth="140.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida:" wrappingWidth="52.7708854675293">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="labelVida" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="10.0" prefWidth="122.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:" wrappingWidth="64.5679817199707">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="LabelForca" prefHeight="34.0" prefWidth="123.0" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="34.0" prefWidth="132.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:" wrappingWidth="119.16796875">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtResistencia" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="110.0" prefWidth="193.0">
+                           <children>
+                              <HBox prefHeight="7.0" prefWidth="162.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" wrappingWidth="77.1920166015625">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtPontos" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="34.0" prefWidth="162.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:" wrappingWidth="115.92601013183594">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtVelocidade" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="41.0" prefWidth="172.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência:" wrappingWidth="127.00005340576172">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="lblInteligencia" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="110.0" prefWidth="220.0">
+                           <children>
+                              <HBox prefHeight="9.0" prefWidth="214.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MP:" wrappingWidth="47.57928466796875">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="LabelMP" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="11.0" prefWidth="214.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa Mágica:" wrappingWidth="149.9559555053711">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="lblDefesaMagica" prefHeight="34.0" prefWidth="66.0" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="214.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa:" wrappingWidth="81.37394714355469">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="LblDefesa" prefHeight="34.0" prefWidth="63.0" text="Label" textFill="#0090ff">
+                                       <font>
+                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children></Pane>
-            <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Inventario" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-            <Button mnemonicParsing="false" onAction="#onClickStatus" prefHeight="75.0" prefWidth="75.0" text="Status" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="20.0" />
-            <Label fx:id="labelVida" layoutX="284.0" layoutY="12.0" text="Label" textFill="#0090ff" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="12.0">
-               <font>
-                  <Font name="Bell MT" size="26.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutX="400.0" layoutY="190.0" prefHeight="260.0" prefWidth="154.0" spacing="10.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="190.0">
+      <VBox alignment="TOP_CENTER" layoutX="443.0" layoutY="190.0" prefHeight="260.0" prefWidth="154.0" spacing="10.0" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="190.0">
          <children>
             <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" prefWidth="200.0" text="Teste Animações">
                <VBox.margin>

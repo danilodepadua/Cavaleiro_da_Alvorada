@@ -10,28 +10,32 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CityController implements Initializable {
     @FXML
+    private Button AnimTest;
+
+    @FXML
+    private Label LabelForca;
+
+    @FXML
+    private Label LabelMP;
+
+    @FXML
+    private Label LblDefesa;
+
+    @FXML
     private AnchorPane Screen;
-    @FXML
-    private Label lblDefesaMagica;
-    @FXML
-    private Label lblDinheiro;
 
     @FXML
     private Button btnCassino;
+
     @FXML
-    private Label lblInteligencia;
-    @FXML
-    private Label LblDefesa;
-    @FXML
-    private Pane pane1;
-    @FXML
-    private Button AnimTest;
+    private Button btnInventario;
 
     @FXML
     private Button btnLoja;
@@ -41,20 +45,34 @@ public class CityController implements Initializable {
 
     @FXML
     private Button btncacar;
-    @FXML
-    private Button btnInventario;
 
     @FXML
     private Label labelNome;
 
     @FXML
-    private Label LabelForca;
-
-    @FXML
     private Label labelVida;
 
     @FXML
-    private Label LabelMP;
+    private Label lblDefesaMagica;
+
+    @FXML
+    private Label lblDinheiro;
+
+    @FXML
+    private Label lblInteligencia;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private Text txtPontos;
+
+    @FXML
+    private Text txtResistencia;
+    @FXML
+    private Text txtVelocidade;
+    @FXML
+    private Text txtNivel;
 
     @FXML
     void Mudar(ActionEvent event) throws PlayerInexistenteException {
@@ -73,23 +91,18 @@ public class CityController implements Initializable {
             System.out.println("2");
             System.out.println(Player.getPlayer() != null);
             // Método chamado automaticamente quando o controlador é inicializado
+            txtPontos.setText("" + Player.getPlayer().getPontos());
+            txtResistencia.setText(""+ Player.getPlayer().getResistencia());
             labelNome.setText(Player.getPlayer().getName());
-            System.out.println("nome colocado");
             LabelForca.setText("" + Player.getPlayer().getForce());
-            System.out.println("força colocada");
             LabelMP.setText("" + Player.getPlayer().getMP());
-            System.out.println("mp colocado");
             labelVida.setText("" + Player.getPlayer().getHP());
-            System.out.println("hp colocado");
             lblDefesaMagica.setText("" + Player.getPlayer().getDefesaM());
-            System.out.println("DefM colocada");
             lblInteligencia.setText("" + Player.getPlayer().getInteligence());
-            System.out.println("Int colocada");
             LblDefesa.setText("" + Player.getPlayer().getDefesaF());
-            System.out.println("DefF colocada");
             lblDinheiro.setText("" + Player.getPlayer().getCoins());
-            System.out.println("ouro colocado");
-            System.out.println("final");
+            txtNivel.setText(""+ Player.getPlayer().getLvl());
+            txtVelocidade.setText(""+ Player.getPlayer().getVelocity());
         }
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
@@ -121,6 +134,12 @@ public class CityController implements Initializable {
     @FXML
     void onClickStatus(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaStatus.fxml")));
+
+    }
+
+    @FXML
+    void Config(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
 
     }
 }
