@@ -13,7 +13,6 @@ public class Baralho {
     }
 
     public void embaralhar() {
-        System.out.println("Tamanho do baralho: " + tamanho());
         Collections.shuffle(cartas);
     }
 
@@ -48,7 +47,6 @@ public class Baralho {
         for (int valor = 2; valor <= 10; valor++) {
             String valorCarta = obterNomeCarta(valor);
             String caminho = "/com.daniel.Images/Cartas/" + valorCarta + "_of_" + naipe.toLowerCase() + ".png";
-            System.out.println("Caminho da imagem: " + caminho);
             cartas.add(new Carta(valorCarta, naipe, valor, caminho));
         }
 

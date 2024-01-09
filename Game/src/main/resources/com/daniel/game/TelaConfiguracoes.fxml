@@ -6,8 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerConfig">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerConfig">
    <children>
       <ChoiceBox fx:id="EscolhaResolucao" layoutX="71.0" layoutY="117.0" prefWidth="150.0" AnchorPane.leftAnchor="71.0" AnchorPane.topAnchor="117.0" />
       <Text layoutX="208.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurações" textAlignment="RIGHT" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
@@ -15,6 +14,7 @@
             <Font name="Barlow Condensed SemiBold" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="266.0" layoutY="349.0" mnemonicParsing="false" onAction="#Confirmar" text="Confirmar" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="265.0" />
+      <Button layoutX="243.0" layoutY="339.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="25.6" prefWidth="68.8" text="Voltar" AnchorPane.bottomAnchor="35.39999999999998" AnchorPane.leftAnchor="243.0" AnchorPane.rightAnchor="207.0" />
+      <Button layoutX="243.0" layoutY="291.0" mnemonicParsing="false" onAction="#Confirmar" prefWidth="150.0" text="Confirmar" AnchorPane.bottomAnchor="83.39999999999998" AnchorPane.leftAnchor="243.0" AnchorPane.rightAnchor="206.60000000000002" />
    </children>
 </AnchorPane>

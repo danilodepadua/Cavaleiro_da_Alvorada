@@ -3,6 +3,7 @@ package com.daniel.TerceiraCamada;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 
@@ -28,6 +29,10 @@ public class ControllerConfig implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EscolhaResolucao.getItems().addAll("1136x639","1200x675","1600x900");
         EscolhaResolucao.setValue("1136x639");
+    }
+    @FXML
+    void Voltar(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("MainScene.fxml")));
     }
 }
 

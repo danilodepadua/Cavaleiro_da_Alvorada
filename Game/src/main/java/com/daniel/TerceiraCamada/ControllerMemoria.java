@@ -23,16 +23,13 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ControllerMemoria implements Initializable {
-    //Armazenar as cartas salvar na hora de virar a carta de costas.
     private Baralho baralho;
-    private List<Carta> cartas = new ArrayList<>();
-    private List<Carta> limitarVirada = new ArrayList<>();
+    private List<Carta> cartas = new ArrayList<>(); //Para criar e salvar as referencias das cartas
+    private List<Carta> limitarVirada = new ArrayList<>(); //Para conseguir fazer a verificaçao e limitar
+    private boolean cliquesPermitidos = true;
     private int valorAcumulado;
     @FXML
     private AnchorPane anchorPane;
@@ -68,7 +65,7 @@ public class ControllerMemoria implements Initializable {
         btnDesistir.setDisable(false);
         txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
 
-        iniciarJogo();
+        reembaralhar();
         String valorStr = textFieldAposta.getText();
         try {
             int valorAposta = Integer.parseInt(valorStr);
@@ -77,7 +74,7 @@ public class ControllerMemoria implements Initializable {
 
             }
         } catch (NumberFormatException | PlayerInexistenteException e) {
-            System.out.println("Valor de aposta inválido");
+                System.out.println("Valor de aposta inválido");
         }
     }
     @FXML
@@ -104,7 +101,7 @@ public class ControllerMemoria implements Initializable {
         this.baralho.criarBaralho("spades");
         this.baralho.criarBaralho("diamonds");
         this.baralho.embaralhar();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 17; i++) {
             try {
                 cartas.add(baralho.pegarCarta());
             } catch (BaralhoVazioException e) {
@@ -113,6 +110,11 @@ public class ControllerMemoria implements Initializable {
         }
         int posicaoCoringa = (int) (Math.random() * (cartas.size() + 1));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+
+
         txtVitoria.setText("");
         txtAcumulado.setText("");
         try {
@@ -130,7 +132,6 @@ public class ControllerMemoria implements Initializable {
             Button button = new Button();
             button.setPrefWidth(150);
             button.setPrefHeight(160);
-            System.out.println("Carta: " + carta.getNome() + " - Virada: " + limitarVirada.contains(carta));
             // Verifique se a carta já foi virada
             if (limitarVirada.contains(carta)) {
                 // Adicione a imagem da carta de costas
@@ -140,7 +141,6 @@ public class ControllerMemoria implements Initializable {
                 button.setGraphic(imageView);
                 // Remova a carta da lista de viradas
                 limitarVirada.remove(carta);
-                System.out.println("Virando para costas.");
             } else {
                 // Adicione a imagem da carta virada
                 ImageView imageView = new ImageView(carta.getImage());
@@ -149,7 +149,6 @@ public class ControllerMemoria implements Initializable {
                 button.setGraphic(imageView);
                 // Adicione a carta à lista de viradas
                 limitarVirada.add(carta);
-                System.out.println("Virando para frente.");
             }
             button.setStyle("-fx-background-color: transparent");
             gridPane.add(button, coluna, linha);
@@ -173,8 +172,9 @@ public class ControllerMemoria implements Initializable {
         button.setOnAction(event -> {
             try {
                 handleCartaClick(coluna, linha);
+                btnDesistir.setDisable(true);
             } catch (BaralhoVazioException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         });
     }
@@ -187,59 +187,65 @@ public class ControllerMemoria implements Initializable {
     }
     @FXML
     void handleCartaClick(int coluna, int linha) throws BaralhoVazioException {
-        virarCarta(gridBaralho, coluna, linha);
-        String valorStr = textFieldAposta.getText();
-        int valorAposta = Integer.parseInt(valorStr);
-
-        // Verificar se duas cartas foram viradas
-        if (limitarVirada.size() == 2) {
-            // Aguarde um momento para que o jogador possa ver as cartas viradas
-            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-            pause.setOnFinished(event -> {
-                // Verifique se as duas cartas viradas são iguais
-                if (limitarVirada.get(0).getNome().equals(limitarVirada.get(1).getNome())) {
-                    System.out.println("Cartas iguais!");
-                    removerCartasDoGrid(gridBaralho, limitarVirada);
-                    valorAcumulado += valorAposta;
-                    txtAcumulado.setText("Valor acumulado: "+valorAcumulado+ " Moedas");
-
-                }else if (limitarVirada.get(0).getNome() == "Coringa" || limitarVirada.get(1).getNome() =="Coringa"){
-                    System.out.println("Você perdeu! O coringa foi virado.");
-                    txtVitoria.setText("Você perdeu: "+ textFieldAposta.getText());
-                    btnDesistir.setDisable(true);
-                    try {
-                        Player.getPlayer().removerCoins(valorAposta);
-                        txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
-                        valorAcumulado = 0;
-                    } catch (PlayerInexistenteException e) {
-                        throw new RuntimeException(e);
-                    } catch (RemoverCoinsException e) {
-                        throw new RuntimeException(e);
+        // Verificar se os cliques estão permitidos
+        if (cliquesPermitidos) {
+            virarCarta(gridBaralho, coluna, linha);
+            String valorStr = textFieldAposta.getText();
+            int valorAposta = Integer.parseInt(valorStr);
+            // Verificar se duas cartas foram viradas
+            if (limitarVirada.size() == 2) {
+                // Desativar cliques temporariamente
+                cliquesPermitidos = false;
+                // Aguarde um momento para que o jogador possa ver as cartas viradas
+                PauseTransition pause = new PauseTransition(Duration.seconds(1));
+                pause.setOnFinished(event -> {
+                    // Verificar se as duas cartas viradas são iguais
+                    if (limitarVirada.get(0).getNome().equals(limitarVirada.get(1).getNome())) {
+                        removerCartasDoGrid(gridBaralho, limitarVirada);
+                        valorAcumulado += valorAposta;
+                        txtAcumulado.setText("Valor acumulado: " + valorAcumulado + " Moedas");
+                    } else if (limitarVirada.get(0).getNome().equals("Coringa") || limitarVirada.get(1).getNome().equals("Coringa")) {
+                        btnDesistir.setDisable(true);
+                        try {
+                            if (valorAcumulado != 0) {
+                                txtVitoria.setText("Você perdeu: " + valorAcumulado+ " Moedas");
+                                Player.getPlayer().removerCoins(valorAcumulado);
+                            } else {
+                                txtVitoria.setText("Você perdeu: " + valorAposta+ " Moedas");
+                                Player.getPlayer().removerCoins(valorAposta);
+                            }
+                            txtSeuSaldo.setText("Carteira: " + Player.getPlayer().getCoins());
+                            valorAcumulado = 0;
+                        } catch (PlayerInexistenteException | RemoverCoinsException e) {
+                            throw new RuntimeException(e);
+                        }
+                        reiniciarJogo();
+                    } else {
+                        // Se não forem iguais, vire as cartas de volta para costas
+                        virarCartaCostas(gridBaralho, limitarVirada);
                     }
-                    reiniciarJogo();
-                }
-                else {
-                    System.out.println("Cartas diferentes.");
-                    // Se não forem iguais, vire as cartas de volta para costas
-                    virarCartaCostas(gridBaralho, limitarVirada);
-                }
-                // Limpe a lista de cartas viradas
-                limitarVirada.clear();
-            });
-            pause.play();
+                    // Limpar a lista de cartas viradas
+                    limitarVirada.clear();
+                    // Permitir cliques novamente
+                    cliquesPermitidos = true;
+                    btnDesistir.setDisable(false);
+                });
+                pause.play();
+            }
         }
     }
+
     private void removerCartasDoGrid(GridPane gridPane, List<Carta> cartas) {
-        List<Button> buttonsToRemove = new ArrayList<>();
+        List<Button> removerBotoes = new ArrayList<>();
         gridPane.getChildren().forEach(node -> {
             if (node instanceof Button && GridPane.getColumnIndex(node) != null && GridPane.getRowIndex(node) != null) {
                 int index = GridPane.getColumnIndex(node) * 3 + GridPane.getRowIndex(node);
                 if (index < this.cartas.size() && cartas.contains(this.cartas.get(index))) {
-                    buttonsToRemove.add((Button) node);
+                    removerBotoes.add((Button) node);
                 }
             }
         });
-        gridPane.getChildren().removeAll(buttonsToRemove);
+        gridPane.getChildren().removeAll(removerBotoes);
     }
     private void virarCartaCostas(GridPane gridPane, List<Carta> cartas) {
         Carta cartaCostas = new Carta("Costas", "", 0, "/com.daniel.Images/Cartas/backside.png");
@@ -274,7 +280,7 @@ public class ControllerMemoria implements Initializable {
         }
     }
     @FXML
-    void Desistir(ActionEvent event) throws PlayerInexistenteException {
+    void Desistir() throws PlayerInexistenteException {
         Player.getPlayer().ganhaCoins(valorAcumulado);
         txtVitoria.setText("Ganhou: "+ valorAcumulado+ " Moedas");
         txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
@@ -282,12 +288,33 @@ public class ControllerMemoria implements Initializable {
         btnDesistir.setDisable(true);
         reiniciarJogo();
     }
-    private void reiniciarJogo(){
+    private void reiniciarJogo() {
         gridBaralho.getChildren().clear();
         baralho.reiniciarBaralho();
         baralho.embaralhar();
+        valorAcumulado = 0;
         txtAcumulado.setText("");
         btnVoltar.setDisable(false);
         btnApostar.setDisable(false);
     }
+    private void reembaralhar(){
+        cartas.clear(); // Limpar a lista de cartas
+        for (int i = 0; i < 17; i++) {
+            try {
+                cartas.add(baralho.pegarCarta());
+            } catch (BaralhoVazioException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        int posicaoCoringa = (int) (Math.random() * (cartas.size() + 1));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
+
+        txtAcumulado.setText("");
+
+        iniciarJogo();
+    }
+
 }
