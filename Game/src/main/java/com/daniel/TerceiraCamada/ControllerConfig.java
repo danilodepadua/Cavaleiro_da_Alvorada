@@ -27,7 +27,7 @@ public class ControllerConfig implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        EscolhaResolucao.getItems().addAll("1136x639","1200x675","1600x900");
+        EscolhaResolucao.getItems().addAll("1136x639","1200x675","1280x720");
         EscolhaResolucao.setValue("1136x639");
     }
     @FXML
