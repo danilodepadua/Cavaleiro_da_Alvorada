@@ -25,6 +25,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.Random;
 
 import java.net.URL;
@@ -180,15 +181,11 @@ public class BattleController implements Initializable {
     }
 
     public void Atualiazar(){
-        try {
-            InfoVida.setText("HP: " + player.getCurrentHp() + "/" + Player.getPlayer().getHP());
-            InfoMp.setText("MP: " + player.getCurrentMp() + "/" + Player.getPlayer().getMP());
-            InfoNome.setText(Player.getPlayer().getName());
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
+        InfoVida.setText("HP: " + player.getCurrentHp() + "/" + player.getHP());
+        InfoMp.setText("MP: " + player.getCurrentMp() + "/" + player.getMP());
+        InfoNome.setText(player.getNome());
     }
-    public void ColocarMagias() {
+    private void ColocarMagias() {
         isItens = false;
         VerificarSetas(magiasDisponiveis.size());
 
@@ -208,14 +205,13 @@ public class BattleController implements Initializable {
                 itemAtual =0;
                 RetornarInicial();
                 magiasDisponiveis.get(finalI).Conjurar(gdb, player);
-                Atualiazar();
             });
             VBoxItens.getChildren().add(magiaButton);
         }
     }
 
 
-    public void ColocarItens(){
+    private void ColocarItens(){
         isItens = true;
         VerificarSetas(itens.size());
         for(int i = itemAtual; i< itens.size() && i<(itemAtual+3); i++){
@@ -260,7 +256,7 @@ public class BattleController implements Initializable {
         VBoxItens.getChildren().clear();
     }
 
-    public void RetornarInicial(){
+    private void RetornarInicial(){
         PnlOpcoes.setDisable(true);
         PnlOpcoes.setOpacity(0);
         PnlPrimeirasEscolhas.setDisable(false);
@@ -313,7 +309,7 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect, new ComportamentoPadrao(Enimy, player));
+        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,new ComportamentoPadrao(Enimy, player));
         gdb.IniciarBatalha();
     }
 }

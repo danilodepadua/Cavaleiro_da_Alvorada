@@ -21,7 +21,7 @@ public abstract class AnimationsAttack implements Serializable {
         Timeline timeline = new Timeline();
         for(int i = 0; i<Images.length; i++){
             final int j = i;
-            KeyFrame key = new KeyFrame(Duration.millis(i*tempo), event -> {System.out.println("Frame Passado: " + j); ;View.setImage(Images[j]);});
+            KeyFrame key = new KeyFrame(Duration.millis(i*tempo), event -> {View.setImage(Images[j]);});
             timeline.getKeyFrames().add(key);
         }
         KeyFrame key = new KeyFrame(Duration.millis(tempo * Images.length), event -> View.setImage(null));

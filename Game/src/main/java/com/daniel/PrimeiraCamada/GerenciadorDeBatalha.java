@@ -1,5 +1,6 @@
 package com.daniel.PrimeiraCamada;
 
+import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -19,21 +20,23 @@ public class GerenciadorDeBatalha {
     States state;
     ImageView pEffect, eEffect;
     Comportamento comp;
+    private BattleController BC;
 
     private enum States{
         turnoPlayer,
         turnoInimigo;
     }
 
-    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane UIActions, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, Comportamento Comp){
+    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane UIActions, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, BattleController bc,Comportamento Comp){
         this.Inimigo = i;
         this.Player = p;
         this.ui= UIActions;
         this.txtMensagem = txtMensagem;
         this.mensagemBox = boxMensagem;
-        pEffect = pe;
-        eEffect = ee;
-        comp = Comp;
+        this.pEffect = pe;
+        this.eEffect = ee;
+        this.comp = Comp;
+        this.BC = bc;
     }
     public void mostrarResultado(ArrayList<String> mensagems){
         Timeline T = new Timeline();
@@ -74,6 +77,7 @@ public class GerenciadorDeBatalha {
             }
             else{
                 state = States.turnoPlayer;
+                BC.Atualiazar();
                 turnoPlayer();
             }
         }
@@ -103,7 +107,7 @@ public class GerenciadorDeBatalha {
         else{
             Comportamento.acoes acao = comp.EscolherAcao();
             if(acao == Comportamento.acoes.fugir){
-                Inimigo.fugir(Player.getVelocidade());
+                this.fugir(Inimigo.fugir(Player.getVelocidade()));
             }
             else if(acao == Comportamento.acoes.usarMagia){
                 comp.EscolherMagia().Conjurar(this, Inimigo);

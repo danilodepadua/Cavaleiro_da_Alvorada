@@ -28,6 +28,7 @@ public class PersonagemLuta{
         this.imunidades = i.imunidades;
         this.absorcao = i.absorcao;
         this.Nome = i.getName();
+        this.atqAnim = new SlashAnimation();
         this.magias = i.magias;
     }
 

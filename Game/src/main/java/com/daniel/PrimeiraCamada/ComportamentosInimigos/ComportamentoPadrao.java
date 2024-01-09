@@ -22,15 +22,19 @@ public class ComportamentoPadrao extends Comportamento {
             }
         }
         if(this.controlado.getCurrentHp() < (this.controlado.getHP()/2)){
+            System.out.println("Fugir");
             return acoes.fugir;
         }
-        else if(this.controlado.getCurrentHp() == (this.controlado.getHP()/2)){
+        else if(this.controlado.getCurrentHp() == (this.controlado.getHP())){
+            System.out.println("Atacar");
             return acoes.atacar;
         }
         else{
             if(magiasPossiveis.isEmpty()){
+                System.out.println("Atacar");
                 return acoes.atacar;
             }
+            System.out.println("Usar magia");
             return acoes.usarMagia;
         }
     }
