@@ -20,14 +20,14 @@ public class ConfiguracoesUsuario {
         prefs.putDouble(VOLUME, volume);
     }
     public static int obterLarguraTelaPadrao() {
-        return prefs.getInt(LARGURA_TELA, 800);
+        return prefs.getInt(LARGURA_TELA, 1136);
     }
 
     public static int obterAlturaTelaPadrao() {
-        return prefs.getInt(ALTURA_TELA, 600);
+        return prefs.getInt(ALTURA_TELA, 639);
     }
 
     public static double obterVolumePadrao() {
-        return prefs.getDouble(VOLUME, 0.5);
+        return prefs.getDouble(VOLUME, 100);
     }
 }

@@ -3,6 +3,7 @@ package com.daniel.game;
 import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
 import com.daniel.PrimeiraCamada.Save.SaveManager;
+import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,13 +17,10 @@ public class Main extends Application {
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
 
-
     public static void ChangeScene(FXMLLoader Root){
         try {
-            boolean isFull = CurrentStage.isFullScreen();
             Scene scene = new Scene(Root.load(), CurrentStage.getWidth(), CurrentStage.getHeight());
             CurrentStage.setScene(scene);
-            CurrentStage.setFullScreen(isFull);
             System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
         }
         catch(IOException i){
@@ -33,15 +31,15 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setMinHeight(639);
+        stage.setMinWidth(1136);
         cidadeAtual = new CidadeInicial();
         CurrentStage = stage;
         stage.setResizable(false);
         FXMLLoader root = new FXMLLoader(Main.class.getResource("MainScene.fxml"));
-        stage.setHeight(639);
-        stage.setWidth(1136);
+        stage.setHeight(ConfiguracoesUsuario.obterAlturaTelaPadrao());
+        stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
-        stage.setMinHeight(639);
-        stage.setMinWidth(1136);
         stage.setScene(scene);
         stage.setTitle("teste");
         stage.show();

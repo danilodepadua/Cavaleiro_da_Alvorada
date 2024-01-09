@@ -1,11 +1,13 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Slider;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +16,8 @@ public class ControllerConfig implements Initializable {
 
     @FXML
     private ChoiceBox<String> EscolhaResolucao;
+    @FXML
+    private Slider SliderVolume;
 
     @FXML
     void Confirmar(ActionEvent event) {
@@ -23,12 +27,16 @@ public class ControllerConfig implements Initializable {
         int largura = Integer.parseInt(tamanho[0]);
         int altura = Integer.parseInt(tamanho[1]);
         Main.MudarTamanhoTela(largura, altura);
+        ConfiguracoesUsuario.salvarAlturaTela(altura);
+        ConfiguracoesUsuario.salvarLarguraTela(largura);
+        ConfiguracoesUsuario.salvarVolume(SliderVolume.getValue());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EscolhaResolucao.getItems().addAll("1136x639","1200x675","1280x720");
-        EscolhaResolucao.setValue("1136x639");
+        SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
+        EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
     }
     @FXML
     void Voltar(ActionEvent event) {
