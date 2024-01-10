@@ -17,9 +17,9 @@
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane fx:id="pane1" cache="true" focusTraversable="true" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #071121;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <HBox layoutX="843.0" layoutY="22.0" prefHeight="88.0" prefWidth="267.0" spacing="20.0">
+                  <HBox fx:id="vboxBotoes" layoutX="843.0" layoutY="22.0" prefHeight="78.0" prefWidth="267.0" spacing="20.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onClickStatus" prefHeight="75.0" prefWidth="75.0">
                            <graphic>
@@ -31,9 +31,9 @@
                            </graphic></Button>
                         <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0">
                            <graphic>
-                              <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="77.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../com.daniel.Images/farmtooliconscalciumtrice-ezgif.com-crop.png" />
+                                    <Image url="@../../../com.daniel.Images/Icons/backpack.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -42,7 +42,7 @@
                            <graphic>
                               <ImageView fitHeight="47.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../com.daniel.Images/IconConfig.png" />
+                                    <Image url="@../../../com.daniel.Images/Icons/IconConfig.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -55,12 +55,12 @@
                            <children>
                               <HBox prefHeight="34.0" prefWidth="137.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
                                     </Text>
-                                    <Label fx:id="labelNome" text=" Player" textFill="#0090ff">
+                                    <Label fx:id="labelNome" text="  Player" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -69,30 +69,30 @@
                               </HBox>
                               <HBox prefHeight="21.0" prefWidth="170.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível:" wrappingWidth="61.570892333984375">
+                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível:" wrappingWidth="61.570892333984375">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="txtNivel" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text fx:id="txtNivel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
                                     </Text>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="28.0" prefWidth="165.0">
+                              <HBox prefHeight="7.0" prefWidth="162.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinheiro:">
+                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" wrappingWidth="77.1920166015625">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
                                     </Text>
-                                    <Label fx:id="lblDinheiro" text="   Label" textFill="#ffee00">
+                                    <Text fx:id="txtPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children>
                               </HBox>
                            </children>
@@ -101,12 +101,12 @@
                            <children>
                               <HBox prefHeight="20.0" prefWidth="140.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida:" wrappingWidth="52.7708854675293">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Label fx:id="labelVida" text="Label" textFill="#0090ff">
+                                    <ImageView fx:id="imgVida" fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Vida.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="labelVida" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -115,12 +115,12 @@
                               </HBox>
                               <HBox prefHeight="10.0" prefWidth="122.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:" wrappingWidth="64.5679817199707">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Label fx:id="LabelForca" prefHeight="34.0" prefWidth="123.0" text="Label" textFill="#0090ff">
+                                    <ImageView fx:id="imgForca" fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Punch.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="LabelForca" prefHeight="34.0" prefWidth="123.0" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -129,12 +129,12 @@
                               </HBox>
                               <HBox prefHeight="34.0" prefWidth="132.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:" wrappingWidth="119.16796875">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="txtResistencia" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <ImageView fx:id="imgResistencia" fitHeight="30.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Resistencia.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="txtResistencia" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -145,28 +145,14 @@
                         </VBox>
                         <VBox prefHeight="110.0" prefWidth="193.0">
                            <children>
-                              <HBox prefHeight="7.0" prefWidth="162.0">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" wrappingWidth="77.1920166015625">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="txtPontos" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </HBox>
                               <HBox prefHeight="34.0" prefWidth="162.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:" wrappingWidth="115.92601013183594">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="txtVelocidade" fill="#0090ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <ImageView fx:id="imgVelocidade" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Velocidade.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="txtVelocidade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -175,12 +161,26 @@
                               </HBox>
                               <HBox prefHeight="41.0" prefWidth="172.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência:" wrappingWidth="127.00005340576172">
+                                    <ImageView fx:id="imgInteligencia" fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Inteligencia.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblInteligencia" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
-                                    </Text>
-                                    <Label fx:id="lblInteligencia" text="Label" textFill="#0090ff">
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="28.0" prefWidth="165.0">
+                                 <children>
+                                    <ImageView fx:id="imgMoeda" fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Moeda.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblDinheiro" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -193,12 +193,12 @@
                            <children>
                               <HBox prefHeight="9.0" prefWidth="214.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MP:" wrappingWidth="47.57928466796875">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Label fx:id="LabelMP" text="Label" textFill="#0090ff">
+                                    <ImageView fx:id="imgMana" fitHeight="30.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Mana.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="LabelMP" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -207,12 +207,12 @@
                               </HBox>
                               <HBox prefHeight="11.0" prefWidth="214.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa Mágica:" wrappingWidth="149.9559555053711">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Label fx:id="lblDefesaMagica" prefHeight="34.0" prefWidth="66.0" text="Label" textFill="#0090ff">
+                                    <ImageView fx:id="imgDefesaMagica" fitHeight="41.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/Magic%20defense.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblDefesaMagica" prefHeight="34.0" prefWidth="66.0" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -221,12 +221,12 @@
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="214.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa:" wrappingWidth="81.37394714355469">
-                                       <font>
-                                          <Font name="Barlow Condensed SemiBold" size="26.0" />
-                                       </font>
-                                    </Text>
-                                    <Label fx:id="LblDefesa" prefHeight="34.0" prefWidth="63.0" text="Label" textFill="#0090ff">
+                                    <ImageView fx:id="imgDefesaFisica" fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../com.daniel.Images/Icons/DefesaFisica.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="LblDefesa" prefHeight="34.0" prefWidth="63.0" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -240,24 +240,84 @@
                </children></Pane>
          </children>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutX="443.0" layoutY="190.0" prefHeight="260.0" prefWidth="154.0" spacing="10.0" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="190.0">
+      <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="99.0" prefHeight="322.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="99.0">
          <children>
-            <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" prefWidth="200.0" text="Teste Animações">
+            <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Teste Animações" textFill="GOLDENROD">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <tooltip>
                   <Tooltip text="Teste Animações" />
                </tooltip>
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
             </Button>
-            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="200.0" text="Loja" />
-            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="200.0" text="Caçar" />
-            <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefWidth="200.0" text="Salvar" />
-            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" prefWidth="200.0" text="Cassino" />
+            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Loja" textFill="GOLDENROD">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font></Button>
+            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Caçar" textFill="GOLDENROD">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font></Button>
+            <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Salvar" textFill="GOLDENROD">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font></Button>
+            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font></Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </VBox>
+      <Label fx:id="infoResistencia" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="resistencia" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoForca" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="forca" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoMana" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="mana" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoDefesaMagica" layoutX="568.0" layoutY="491.0" prefHeight="28.0" prefWidth="322.0" text="defesaMagica" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoDefesa" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="defesafisica" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoVelo" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="velocidade" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoInteligencia" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="inteligencia" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoCoin" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="coin" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoVida" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="Vida" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
