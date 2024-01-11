@@ -17,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #071121;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #071121; -fx-border-color: #daa520;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <HBox fx:id="vboxBotoes" layoutX="843.0" layoutY="22.0" prefHeight="78.0" prefWidth="267.0" spacing="20.0">
                      <children>
@@ -256,19 +256,23 @@
             <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Loja" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Caçar" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Salvar" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
          <opaqueInsets>
             <Insets />

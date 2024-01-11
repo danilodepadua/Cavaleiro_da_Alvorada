@@ -8,7 +8,7 @@ import com.daniel.PrimeiraCamada.Inimigo;
 
 public class CidadeInicial extends Cidade {
     public CidadeInicial(){
-        super("Cidade Inicial", "/com.daniel.Images/FundoCidade.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Cidade Inicial", "/com.daniel.Images/cidade-do-nevoeiro.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.inimigos = new Inimigo[]{new InimigoSlime(), new InimigoAbelha(), new InimigoTigerMan()};
     }
 }

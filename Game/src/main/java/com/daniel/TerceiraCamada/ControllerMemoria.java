@@ -6,6 +6,7 @@ import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
+import com.daniel.SegundaCamada.CassinoRepositorio.BaralhoMemoria;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
 import com.daniel.game.Main;
 import javafx.animation.PauseTransition;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.*;
 
 public class ControllerMemoria implements Initializable {
-    private Baralho baralho;
+    private BaralhoMemoria baralho;
     private List<Carta> cartas = new ArrayList<>(); //Para criar e salvar as referencias das cartas
     private List<Carta> limitarVirada = new ArrayList<>(); //Para conseguir fazer a verificaçao e limitar
     private boolean cliquesPermitidos = true;
@@ -74,7 +75,7 @@ public class ControllerMemoria implements Initializable {
 
             }
         } catch (NumberFormatException | PlayerInexistenteException e) {
-                System.out.println("Valor de aposta inválido");
+            System.out.println("Valor de aposta inválido");
         }
     }
     @FXML
@@ -95,11 +96,8 @@ public class ControllerMemoria implements Initializable {
                         true,
                         true
                 ))));
-        this.baralho = new Baralho();
-        this.baralho.criarBaralho("hearts");
-        this.baralho.criarBaralho("clubs");
-        this.baralho.criarBaralho("spades");
-        this.baralho.criarBaralho("diamonds");
+        this.baralho = new BaralhoMemoria();
+        this.baralho.criarBaralhoMemoria();
         this.baralho.embaralhar();
         for (int i = 0; i < 17; i++) {
             try {
@@ -230,6 +228,7 @@ public class ControllerMemoria implements Initializable {
                     cliquesPermitidos = true;
                     btnDesistir.setDisable(false);
                 });
+
                 pause.play();
             }
         }
@@ -299,7 +298,7 @@ public class ControllerMemoria implements Initializable {
     }
     private void reembaralhar(){
         cartas.clear(); // Limpar a lista de cartas
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 18; i++) {
             try {
                 cartas.add(baralho.pegarCarta());
             } catch (BaralhoVazioException e) {
@@ -307,7 +306,6 @@ public class ControllerMemoria implements Initializable {
             }
         }
         int posicaoCoringa = (int) (Math.random() * (cartas.size() + 1));
-        cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
