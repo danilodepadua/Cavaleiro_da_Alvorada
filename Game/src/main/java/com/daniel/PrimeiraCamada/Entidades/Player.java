@@ -11,9 +11,12 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Personagem;
+import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.SegundaCamada.Inventario;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Personagem implements Serializable {
     private Inventario inventario;
@@ -23,6 +26,7 @@ public class Player extends Personagem implements Serializable {
     private Capacete capacete;
     private Calca calca;
     private static Player player;
+    private List<Quests> questsAtuais;
     private int lvl;
     private int currentXp;
     private int currentMp, currentHp;
@@ -38,7 +42,7 @@ public class Player extends Personagem implements Serializable {
         this.capacete = new Capacete();
         this.calca = new Calca();
         this.arma = new Arma();
-
+        this.questsAtuais = new ArrayList<>();
 
         player = this;
     }
@@ -177,6 +181,27 @@ public class Player extends Personagem implements Serializable {
     public void ganhaPontos(int quantidade){
         this.pontos += quantidade;
 
+    }
+    public void aceitarQuest(Quests quests){
+        questsAtuais.add(quests);
+    }
+    public void completarQuest(Quests quest) {
+        if (questsAtuais.contains(quest)) {
+            questsAtuais.remove(quest);
+            ganharXp(quest.getRecompensaXP());
+            ganhaCoins(quest.getRecompensaMoedas());
+            ganhaPontos(quest.getPontosEvolucao());
+            System.out.println("Quest completada: " + quest.getNome());
+        }
+    }
+
+    public void updateQuests() throws PlayerInexistenteException {
+        for (Quests quest : new ArrayList<>(questsAtuais)) {
+            quest.updateQuestCompleted();
+        }
+    }
+    public List<Quests> getQuestsAtuais() {
+        return questsAtuais;
     }
 
     public void setPontos(int pontos) {
