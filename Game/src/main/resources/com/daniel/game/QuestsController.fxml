@@ -2,16 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #071121;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerQuest">
    <children>
-      <Text fill="WHITE" layoutX="43.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quests" wrappingWidth="175.64032745361328">
+      <Text fill="GOLDENROD" layoutX="36.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUESTS" wrappingWidth="200.44031524658203">
          <font>
             <Font name="Barlow Condensed SemiBold" size="67.0" />
          </font>
@@ -22,22 +20,25 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Pane fx:id="paneAceitarQuests" layoutX="217.0" layoutY="189.0" opacity="0.0" prefHeight="243.0" prefWidth="204.0" style="-fx-background-color: white;">
-         <children>
-            <Button layoutX="9.0" layoutY="71.0" mnemonicParsing="false" onAction="#aceitarQuest" prefHeight="25.0" prefWidth="56.0" text="Sim" />
-            <Button layoutX="126.0" layoutY="71.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Não" />
-            <Text fx:id="txtAceitarQuests" layoutX="18.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="13.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
-      <VBox fx:id="vboxQuests" layoutX="563.0" layoutY="143.0" prefHeight="409.0" prefWidth="431.0" />
+      <VBox fx:id="vboxQuests" layoutX="563.0" layoutY="143.0" prefHeight="402.0" prefWidth="365.0" />
       <Button layoutX="60.0" layoutY="542.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
+    <AnchorPane fx:id="paneTextos" disable="true" layoutX="194.0" layoutY="116.0" minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="307.0" style="-fx-background-color: #081936;">
+         <children>
+            <VBox fx:id="vboxAceitarQuests" layoutY="-4.0" prefHeight="355.0" prefWidth="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="bntSetaSubir1" layoutX="246.0" layoutY="25.0" mnemonicParsing="false" onAction="#SubirQuests" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btnSetaDescer1" layoutX="246.0" layoutY="300.0" mnemonicParsing="false" onAction="#DescerQuests" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" />
+         </children>
+      </AnchorPane>
+      <Text fill="GOLDENROD" layoutX="541.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MINHAS QUESTS" wrappingWidth="384.44031524658203">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="41.0" />
+         </font>
+      </Text>
+      <Button fx:id="bntSetaSubir" layoutX="945.0" layoutY="143.0" mnemonicParsing="false" onAction="#SubirItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btnSetaDescer" layoutX="945.0" layoutY="514.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" />
    </children>
 </AnchorPane>

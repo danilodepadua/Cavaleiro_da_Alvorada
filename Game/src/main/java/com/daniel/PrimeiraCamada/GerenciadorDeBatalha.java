@@ -1,5 +1,8 @@
 package com.daniel.PrimeiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
@@ -49,7 +52,13 @@ public class GerenciadorDeBatalha {
             time+=1;
         }
         T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
-        T.setOnFinished(event -> MudarTurno());
+        T.setOnFinished(event -> {
+            try {
+                MudarTurno();
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+        });
         T.play();
     }
 
@@ -63,7 +72,7 @@ public class GerenciadorDeBatalha {
             turnoPlayer();
         }
     }
-    public void MudarTurno(){
+    public void MudarTurno() throws PlayerInexistenteException {
         if(Player.currentHp <= 0){
             Derrota();
         }
@@ -117,8 +126,17 @@ public class GerenciadorDeBatalha {
             }
         }
     }
-    public void Vitoria(){
+    public void Vitoria() throws PlayerInexistenteException {
         //implementar
+        for (Quests quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
+            if (quest.getNomeInimigo().equals(Inimigo.getNome())) {
+                try {
+                    quest.updateQuestCompleted();
+                } catch (PlayerInexistenteException e) {
+                    System.err.println("Erro ao atualizar quests: " + e.getMessage());
+                }
+            }
+        }
         System.out.println("Player venceu");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
     }

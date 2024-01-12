@@ -3,27 +3,19 @@ package com.daniel.PrimeiraCamada.Quests;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Interfaces.IQuest;
 
 import java.io.Serializable;
 
-public  class Quests implements Serializable {
-    private String nome;
-    private String descricao;
-    private int recompensaXP;
-    private int recompensaMoedas;
-    private int pontosEvolucao;
-    private int objetivo;
-    private int progresso;
-    public Quests(String nome, String descricao, int recompensaXP, int recompensaMoedas, int pontosEvolucao, int objetivo) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.recompensaXP = recompensaXP;
-        this.recompensaMoedas = recompensaMoedas;
-        this.pontosEvolucao = pontosEvolucao;
-        this.progresso = 0;
-        this.objetivo = objetivo;
-    }
-
+public abstract class Quests implements Serializable, IQuest {
+    protected String nome;
+    protected String descricao;
+    protected int recompensaXP;
+    protected int recompensaMoedas;
+    protected int pontosEvolucao;
+    protected int objetivo;
+    protected int progresso;
+    protected String nomeInimigo;
     public String getNome() {
         return nome;
     }
@@ -43,22 +35,27 @@ public  class Quests implements Serializable {
     public int getPontosEvolucao() {
         return pontosEvolucao;
     }
-
+    @Override
     public  void updateQuestCompleted() throws PlayerInexistenteException{
         progresso++;
 
-        if (progresso >= objetivo) {
+        if (isCompleta()) {
             System.out.println("Quest concluída: " + getNome());
             Player.getPlayer().setPontos(this.getPontosEvolucao());
             Player.getPlayer().ganhaCoins(this.getRecompensaMoedas());
             Player.getPlayer().ganharXp(getRecompensaXP());
         }
     }
-
+    public boolean isCompleta() {
+        return progresso >= objetivo;
+    }
     public int getObjetivo() {
         return objetivo;
     }
 
+    public String getNomeInimigo() {
+        return nomeInimigo;
+    }
 
     public int getProgresso() {
         return progresso;

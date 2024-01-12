@@ -187,19 +187,15 @@ public class Player extends Personagem implements Serializable {
     }
     public void completarQuest(Quests quest) {
         if (questsAtuais.contains(quest)) {
-            questsAtuais.remove(quest);
             ganharXp(quest.getRecompensaXP());
             ganhaCoins(quest.getRecompensaMoedas());
             ganhaPontos(quest.getPontosEvolucao());
             System.out.println("Quest completada: " + quest.getNome());
+            questsAtuais.remove(quest);
+
         }
     }
 
-    public void updateQuests() throws PlayerInexistenteException {
-        for (Quests quest : new ArrayList<>(questsAtuais)) {
-            quest.updateQuestCompleted();
-        }
-    }
     public List<Quests> getQuestsAtuais() {
         return questsAtuais;
     }
