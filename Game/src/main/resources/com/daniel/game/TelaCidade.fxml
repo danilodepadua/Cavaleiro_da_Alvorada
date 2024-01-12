@@ -240,7 +240,7 @@
                </children></Pane>
          </children>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="99.0" prefHeight="322.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="99.0">
+      <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="58.0" prefHeight="409.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="58.0">
          <children>
             <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Teste Animações" textFill="GOLDENROD">
                <VBox.margin>
@@ -269,6 +269,11 @@
                </font>
             </Button>
             <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Quests" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>

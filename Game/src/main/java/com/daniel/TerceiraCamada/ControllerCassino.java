@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerCassino implements Initializable {
-    private String texto = "Cassinão";
+    private String texto = "Taverna";
     @FXML
     private Button btnMemoria;
     @FXML
@@ -71,7 +71,7 @@ public class ControllerCassino implements Initializable {
             throw new RuntimeException(e);
         }
 
-        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.png").toString()),
+        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.jpg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,

@@ -20,9 +20,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CityController implements Initializable {
+    private Button lastClicked;
     @FXML
     private Button AnimTest;
-    private Button lastClicked;
 
     @FXML
     private Label LabelForca;
@@ -44,6 +44,9 @@ public class CityController implements Initializable {
 
     @FXML
     private Button btnLoja;
+
+    @FXML
+    private Button btnQuests;
 
     @FXML
     private Button btnViajar;
@@ -91,6 +94,9 @@ public class CityController implements Initializable {
     private Label infoForca;
 
     @FXML
+    private Label infoInteligencia;
+
+    @FXML
     private Label infoMana;
 
     @FXML
@@ -134,9 +140,6 @@ public class CityController implements Initializable {
 
     @FXML
     private HBox vboxBotoes;
-
-    @FXML
-    private Label infoInteligencia;
 
     @FXML
     void Mudar(ActionEvent event) throws PlayerInexistenteException {
@@ -373,6 +376,12 @@ public class CityController implements Initializable {
     @FXML
     void Config(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
+
+    }
+    @FXML
+    void onClickQuests(ActionEvent event) {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("QuestsController.fxml")));
+
 
     }
 }

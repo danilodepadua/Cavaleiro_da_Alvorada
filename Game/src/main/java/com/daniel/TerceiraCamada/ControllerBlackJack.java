@@ -263,7 +263,7 @@ public class ControllerBlackJack  implements Initializable{
             throw new RuntimeException(e);
         }
 
-        PanePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.png").toString()),
+        PanePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.jpg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
