@@ -17,9 +17,8 @@
 
 <AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Sair" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.BattleController">
    <children>
-      <ImageView fx:id="EnimyImg" fitHeight="150.0" fitWidth="200.0" layoutX="656.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
       <ImageView fx:id="PlayerImg" fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0" />
-      <AnchorPane fx:id="InterfacePlayer" layoutX="510.0" layoutY="440.0" prefHeight="163.0" prefWidth="960.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="InterfacePlayer" disable="true" layoutX="510.0" layoutY="440.0" opacity="0.0" prefHeight="163.0" prefWidth="960.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <AnchorPane fx:id="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -163,7 +162,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="EnimyEffect" fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
       <ImageView fx:id="PlayerEffect" fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0" />
       <AnchorPane fx:id="boxMensagem" layoutX="380.0" opacity="0.0" prefHeight="113.0" prefWidth="200.0" style="-fx-background-color: #121312;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -176,6 +174,12 @@
                   </Text>
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="691.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="170.0">
+         <children>
+            <ImageView fx:id="EnimyImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fx:id="EnimyEffect" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

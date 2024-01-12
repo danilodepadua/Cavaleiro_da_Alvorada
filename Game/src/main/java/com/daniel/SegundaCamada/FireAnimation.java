@@ -7,6 +7,6 @@ import javafx.scene.image.ImageView;
 
 public class FireAnimation extends AnimationsAttack{
     public FireAnimation() {
-        super(32, 20,"/com.daniel.Images/Fire/Fire");
+        super(13, 25,"/com.daniel.Images/Magias/Explosao1Frames/Explosao");
     }
 }
