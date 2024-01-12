@@ -8,8 +8,8 @@ import com.daniel.PrimeiraCamada.Magias.Gelo;
 import com.daniel.PrimeiraCamada.Magias.Luz;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
-public class InimigoSlime extends Inimigo {
-    public InimigoSlime() {
+public class InimigoBabySlime extends Inimigo {
+    public InimigoBabySlime() {
         super("Slime", "/com.daniel.Images/Inimigos/Slime Blue.png", 5, 5, 10, 5, 5, 10, 10, 5, 30, 10, TiposElementais.NaoElemental, Comportamentos.padrao);
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new Fogo());
