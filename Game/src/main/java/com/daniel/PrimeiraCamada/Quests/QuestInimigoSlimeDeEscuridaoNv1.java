@@ -8,6 +8,7 @@ public class QuestInimigoSlimeDeEscuridaoNv1 extends Quests{
         this.objetivo = 3;
         this.recompensaMoedas= 100;
         this.recompensaXP = 500;
+        this.pontosEvolucao = 5;
         this.nomeInimigo = "Slime de escuridão pequeno";
     }
 }

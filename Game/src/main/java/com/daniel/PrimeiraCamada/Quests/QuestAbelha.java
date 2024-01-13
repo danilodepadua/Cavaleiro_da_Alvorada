@@ -7,7 +7,8 @@ public class QuestAbelha extends Quests{
         this.progresso = 0;
         this.objetivo = 2;
         this.recompensaMoedas= 100;
-        this.recompensaXP = 500;
+        this.recompensaXP = 10000;
+        this.pontosEvolucao = 5;
         this.nomeInimigo = "Abelha";
     }
 }
