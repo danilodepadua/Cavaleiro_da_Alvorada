@@ -10,7 +10,7 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoTigerMan extends Inimigo {
     public InimigoTigerMan() {
-        super("Tigrinho", "/com.daniel.Images/Inimigos/Weretiger Maxima.png", 50, 40, 25, 60, 20, 10, 40, 20, 500, 200, TiposElementais.NaoElemental, Comportamentos.padrao);
+        super("Tigrinho", "/com.daniel.Images/Inimigos/Weretiger Maxima.png", 33, 50, 40, 25, 60, 20, 10, 40, 20, 500, 200, TiposElementais.NaoElemental, Comportamentos.padrao);
         this.resistencias = new TiposElementais[]{TiposElementais.NaoElemental};
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};
         this.magias.add(new Fogo());

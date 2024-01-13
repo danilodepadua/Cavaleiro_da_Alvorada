@@ -74,10 +74,10 @@ public class GerenciadorDeBatalha {
     }
     public void MudarTurno() throws PlayerInexistenteException {
         if(Player.currentHp <= 0){
-            Derrota();
+            BC.Derrota();
         }
         else if(Inimigo.currentHp <= 0){
-            Vitoria();
+            BC.Vitoria();
         }
         else{
             if(state == States.turnoPlayer){
@@ -125,24 +125,6 @@ public class GerenciadorDeBatalha {
                 this.Ataque(Inimigo.atqAnim.INICIAR(pEffect), Inimigo.getAtqM(),Inimigo.getTipoAtaqueBase(), true, null);
             }
         }
-    }
-    public void Vitoria() throws PlayerInexistenteException {
-        //implementar
-        for (Quests quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
-            if (quest.getNomeInimigo().equals(Inimigo.getNome())) {
-                try {
-                    quest.updateQuestCompleted();
-                } catch (PlayerInexistenteException e) {
-                    System.err.println("Erro ao atualizar quests: " + e.getMessage());
-                }
-            }
-        }
-        System.out.println("Player venceu");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
-    }
-    public void Derrota(){
-        //implementar
-        System.out.println("Player perdeu");
     }
 
     public void ApagarUiPlayer(){

@@ -12,6 +12,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.PrimeiraCamada.Quests.Quests;
+import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
 
 import java.io.Serializable;
@@ -31,6 +32,8 @@ public class Player extends Personagem implements Serializable {
     private int currentXp;
     private int currentMp, currentHp;
     private int pontos;
+
+    private Bestiario bestiario = new Bestiario();
     private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
         super(Name, Img, Force, Int, Res, Velocity);
         this.currentHp = this.getHP();
@@ -129,6 +132,9 @@ public class Player extends Personagem implements Serializable {
     }
     public int getDefesaM(){
         return this.Inteligence + this.peitoral.getAumentoDefesaM() + this.capacete.getAumentoDefesaM() + this.calca.getAumentoDefesaM();
+    }
+    public Bestiario getBestiario(){
+        return this.bestiario;
     }
     public int getAtaqueF(){
         return Force + this.arma.getAumentoDeAtaqueFisico();
