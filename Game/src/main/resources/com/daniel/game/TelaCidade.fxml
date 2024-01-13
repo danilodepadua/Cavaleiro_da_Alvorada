@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
+<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #071121; -fx-border-color: #daa520;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #081936; -fx-border-color: #daa520;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <HBox fx:id="vboxBotoes" layoutX="843.0" layoutY="22.0" prefHeight="78.0" prefWidth="267.0" spacing="20.0">
                      <children>
@@ -242,7 +235,7 @@
       </AnchorPane>
       <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="58.0" prefHeight="409.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Teste Animações" textFill="GOLDENROD">
+            <Button fx:id="AnimTest" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Mudar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Teste Animações" textFill="GOLDENROD">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -253,32 +246,27 @@
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Loja" textFill="GOLDENROD">
+            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Loja" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Caçar" textFill="GOLDENROD">
+            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Caçar" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnSalvar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Salvar" textFill="GOLDENROD">
+            <Button fx:id="btnViajar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Salvar" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
+            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Quests" textFill="GOLDENROD">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnViajar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViajar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #071121; -fx-border-width: 1; -fx-border-color: #daa520;" text="Viajar" textFill="GOLDENROD">
+            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Quests" textFill="GOLDENROD">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>

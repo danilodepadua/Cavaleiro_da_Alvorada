@@ -11,6 +11,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Personagem;
+import com.daniel.PrimeiraCamada.Quests.ManejarQuests;
 import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.SegundaCamada.Inventario;
 
@@ -43,6 +44,7 @@ public class Player extends Personagem implements Serializable {
         this.calca = new Calca();
         this.arma = new Arma();
         this.questsAtuais = new ArrayList<>();
+
 
         player = this;
     }
@@ -136,6 +138,8 @@ public class Player extends Personagem implements Serializable {
     public int getAtaqueM(){
         return Inteligence;
     }
+
+
     public Peitoral getPeitoral() {
         return peitoral;
     }
@@ -194,10 +198,15 @@ public class Player extends Personagem implements Serializable {
             ganhaCoins(quest.getRecompensaMoedas());
             ganhaPontos(quest.getPontosEvolucao());
             System.out.println("Quest completada: " + quest.getNome());
+            System.out.println("Ganho de xp: "+ quest.getRecompensaXP());
+            System.out.println("Xp do player: "+ currentXp);
+            System.out.println(VereficarLevelUp());
             questsAtuais.remove(quest);
+
 
         }
     }
+
 
     public List<Quests> getQuestsAtuais() {
         return questsAtuais;
