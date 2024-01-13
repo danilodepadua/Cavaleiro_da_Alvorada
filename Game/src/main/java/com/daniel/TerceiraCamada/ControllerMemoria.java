@@ -84,7 +84,7 @@ public class ControllerMemoria implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.jpg").toString()),
+        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,

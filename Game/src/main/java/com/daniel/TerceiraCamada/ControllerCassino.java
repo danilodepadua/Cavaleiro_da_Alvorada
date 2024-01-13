@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Cidades.MontanhaDoNorte;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -71,7 +72,7 @@ public class ControllerCassino implements Initializable {
             throw new RuntimeException(e);
         }
 
-        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/Mesa.jpg").toString()),
+        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -84,6 +85,12 @@ public class ControllerCassino implements Initializable {
                         true
                 ))));
         vboxTextos.setSpacing(15);
+
+        try {
+            Main.mudarCidade(new MontanhaDoNorte());
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

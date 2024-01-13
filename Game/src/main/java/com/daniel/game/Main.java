@@ -2,6 +2,8 @@ package com.daniel.game;
 
 import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
+import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Save.SaveManager;
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
@@ -28,6 +30,10 @@ public class Main extends Application {
         }
     }
 
+    public static void mudarCidade(Cidade novaCidade) throws PlayerInexistenteException {
+        cidadeAtual = novaCidade;
+        Player.getPlayer().ativarQuests();
+    }
     
     @Override
     public void start(Stage stage) throws IOException {
