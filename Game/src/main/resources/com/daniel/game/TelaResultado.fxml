@@ -104,7 +104,7 @@
             <HBox layoutX="245.0" layoutY="320.0" prefHeight="26.0" prefWidth="110.0" spacing="15.0" AnchorPane.bottomAnchor="53.60000000000002" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="245.39999999999998" AnchorPane.topAnchor="320.0">
                <children>
                   <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#onClickVoltar" style="-fx-border-width: 1;" text="Voltar" />
-                  <Button mnemonicParsing="false" text="Caçar" />
+                  <Button fx:id="btnCacar" mnemonicParsing="false" onAction="#onClickCacar" text="Caçar" />
                </children>
             </HBox>
          </children>

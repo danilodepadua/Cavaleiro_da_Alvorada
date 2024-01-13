@@ -23,6 +23,8 @@ public class ControllerTelaResultado implements Initializable {
     private Label labelMoedas;
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnCacar;
     int xpInimigo = 5; // uso temporário
     int pontosInimigo = 5; // uso temporário
     int moedasInimigo = 5; // uso temporário
@@ -39,6 +41,13 @@ public class ControllerTelaResultado implements Initializable {
         Player.getPlayer().ganharXp(xpInimigo);
         System.out.println("seu xp e :" + Player.getPlayer().getXp());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+    }
+    @FXML
+    void onClickCacar (ActionEvent event) throws PlayerInexistenteException {
+        System.out.println("seu xp e :" + Player.getPlayer().getXp());
+        Player.getPlayer().ganharXp(xpInimigo);
+        System.out.println("seu xp e :" + Player.getPlayer().getXp());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")));
     }
 
 }
