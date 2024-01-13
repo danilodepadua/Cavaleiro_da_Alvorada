@@ -6,6 +6,6 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoTRex extends Inimigo {
     public InimigoTRex() {
-        super("T-Rex", "/com.daniel.Images/Inimigos/Colossal T-Rex Red.png", 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
+        super("T-Rex", "/com.daniel.Images/Inimigos/Colossal T-Rex Red.png", 32, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
     }
 }

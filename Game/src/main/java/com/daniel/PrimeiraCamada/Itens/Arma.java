@@ -13,7 +13,7 @@ public  class Arma extends Item implements IEquipable {
         this.aumentoDeAtaqueFisico = 0;
         this.aumentoDeAtaqueMagico = 0;
         this.imagem = "/com.daniel.Images/Itens/FundoArma.png";
-        this.nome = "";
+        this.nome = "Nenhum";
         this.tipoDano = TiposElementais.NaoElemental;
     }
     public int getAumentoDeAtaqueFisico() {

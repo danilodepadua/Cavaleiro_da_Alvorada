@@ -372,19 +372,15 @@ public class CityController implements Initializable {
 
     @FXML
     void onClickStatus(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaStatus.fxml")));
-
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
     }
 
     @FXML
     void Config(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
-
     }
     @FXML
     void onClickQuests(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("QuestsController.fxml")));
-
-
     }
 }

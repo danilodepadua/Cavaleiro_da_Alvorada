@@ -8,10 +8,12 @@ import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Magias.*;
+import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
@@ -35,6 +37,7 @@ public class BattleController implements Initializable {
     int itemAtual = 0;
 
     private Inimigo[] inimigos;
+    private Inimigo inimigo;
     PersonagemLuta Enimy;
     PersonagemLuta player;
 
@@ -177,6 +180,24 @@ public class BattleController implements Initializable {
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
 
+    public void Vitoria() throws PlayerInexistenteException {
+        for (Quests quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
+            if (quest.getNomeInimigo().equals(inimigo.getName())) {
+                try {
+                    quest.updateQuestCompleted();
+                } catch (PlayerInexistenteException e) {
+                    System.err.println("Erro ao atualizar quests: " + e.getMessage());
+                }
+            }
+        }
+        Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
+        System.out.println("Player venceu");
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+    }
+    public void Derrota(){
+
+    }
+
     public void Atualiazar(){
         InfoVida.setText("HP: " + player.getCurrentHp() + "/" + player.getHP());
         InfoMp.setText("MP: " + player.getCurrentMp() + "/" + player.getMP());
@@ -283,7 +304,7 @@ public class BattleController implements Initializable {
         magiasDisponiveis.add(new WaterSpyke());
         magiasDisponiveis.add(new Explosao());
         Random rand = new Random();
-        Inimigo inimigo = inimigos[rand.nextInt(0, inimigos.length)];
+        inimigo = inimigos[rand.nextInt(0, inimigos.length)];
         EnimyImg.setImage(inimigo.getImagem());
         Enimy = new PersonagemLuta(inimigo);
         try {

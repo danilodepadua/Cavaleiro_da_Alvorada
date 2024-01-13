@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class CharCreatorController implements Initializable {
     Integer pontosDisp = 10;
-    private List<Image> images;
+    private List<String> images;
     private int indiceAtual;
 
     @FXML
@@ -76,9 +76,8 @@ public class CharCreatorController implements Initializable {
         int velocidade = calcularValorDaBarra(BarraVel);
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
-        Player.CreatePlayer("/com.daniel.Images/Player.png", forca, Int, nomeDoJogador, velocidade, res, 10000, 10);
+        Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res, 10000, 10);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
-
     }
     @FXML
     void MaisForca(ActionEvent event) {
@@ -162,8 +161,9 @@ public class CharCreatorController implements Initializable {
         TxtInt.setText(String.valueOf(calcularValorDaBarra(BarraInt)));
 
         images = new ArrayList<>();
-        images.add(new Image(Main.class.getResource("/com.daniel.Images/Player2.png").toString()));
-        images.add(new Image(Main.class.getResource("/com.daniel.Images/Player.png").toString()));
+        images.add("/com.daniel.Images/Personagens/Homi.png");
+        images.add("/com.daniel.Images/Personagens/Muie.png");
+        atualizarSkin();
     }
     private void configurarOuvinte(ProgressBar barra, Text texto) {
         barra.progressProperty().addListener((observable, oldValue, newValue) -> {
@@ -184,6 +184,6 @@ public class CharCreatorController implements Initializable {
         atualizarSkin();
     }
     private void atualizarSkin() {
-        imgBonecos.setImage(images.get(indiceAtual));
+        imgBonecos.setImage(new Image(Main.class.getResource(images.get(indiceAtual)).toString()));
     }
 }

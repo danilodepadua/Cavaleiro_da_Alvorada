@@ -6,6 +6,6 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeAguaNv2 extends Inimigo {
     public InimigoSlimeDeAguaNv2() {
-        super("Slime de água médio", "/com.daniel.Images/Inimigos/Slime Waterii.png", 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
+        super("Slime de água médio", "/com.daniel.Images/Inimigos/Slime Waterii.png", 12, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
     }
 }

@@ -6,6 +6,6 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeVentoNv3 extends Inimigo {
     public InimigoSlimeDeVentoNv3() {
-        super("Slime de vento grande", "/com.daniel.Images/Inimigos/Slime Windiii.png", 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
+        super("Slime de vento grande", "/com.daniel.Images/Inimigos/Slime Windiii.png", 19, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
     }
 }

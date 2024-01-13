@@ -11,6 +11,8 @@ import com.daniel.PrimeiraCamada.Quest;
 import com.daniel.PrimeiraCamada.Quests.QuestAbelha;
 import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
 import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
+
+import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
 import com.daniel.game.Main;
 
@@ -27,10 +29,13 @@ public class Player extends Personagem implements Serializable {
     private Calca calca;
     private static Player player;
     private List<Quest> questAtuais;
-    private int lvl;
+    private List<Quest> questsAtuais;
+    private int lvl = 1;
     private int currentXp;
     private int currentMp, currentHp;
     private int pontos;
+
+    private Bestiario bestiario = new Bestiario();
     private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
         super(Name, Img, Force, Int, Res, Velocity);
         this.currentHp = this.getHP();
@@ -134,6 +139,9 @@ public class Player extends Personagem implements Serializable {
     public int getDefesaM(){
         return this.Inteligence + this.peitoral.getAumentoDefesaM() + this.capacete.getAumentoDefesaM() + this.calca.getAumentoDefesaM();
     }
+    public Bestiario getBestiario(){
+        return this.bestiario;
+    }
     public int getAtaqueF(){
         return Force + this.arma.getAumentoDeAtaqueFisico();
     }
@@ -146,7 +154,7 @@ public class Player extends Personagem implements Serializable {
         return peitoral;
     }
     private boolean VereficarLevelUp(){
-        int i = currentXp /1000*lvl;
+        int i = 1+(currentXp /1000*lvl);
         if(i>lvl){
             lvl = i;
             return true;
