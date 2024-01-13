@@ -11,7 +11,7 @@ public class Bestiario implements Serializable {
         return inimigosConhecidos;
     }
     public void adicionarInimigos(Inimigo i){
-        if(inimigosConhecidos[i.getPos()] != null){
+        if(inimigosConhecidos[i.getPos()] == null){
             inimigosConhecidos[i.getPos()] = i;
         }
     }

@@ -29,7 +29,7 @@ public class Player extends Personagem implements Serializable {
     private Calca calca;
     private static Player player;
     private List<Quests> questsAtuais;
-    private int lvl;
+    private int lvl = 1;
     private int currentXp;
     private int currentMp, currentHp;
     private int pontos;
@@ -150,7 +150,7 @@ public class Player extends Personagem implements Serializable {
         return peitoral;
     }
     private boolean VereficarLevelUp(){
-        int i = currentXp /1000*lvl;
+        int i = 1+(currentXp /1000*lvl);
         if(i>lvl){
             lvl = i;
             return true;

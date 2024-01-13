@@ -10,7 +10,7 @@ public  class Peitoral extends Armadura implements IEquipable {
         this.aumentoDefesaFisica = 0;
         this.aumentoDefesaMagica=0;
         this.imagem = "/com.daniel.Images/Itens/FundoPeitoral.png";
-        this.nome = "";
+        this.nome = "Nenhum";
     }
     @Override
     public void equipar() throws PlayerInexistenteException {
