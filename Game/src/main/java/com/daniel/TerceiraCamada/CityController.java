@@ -52,6 +52,8 @@ public class CityController implements Initializable {
     private Button btnViajar;
 
     @FXML
+    private Button btnSalvar;
+    @FXML
     private Button btncacar;
 
     @FXML
@@ -360,6 +362,10 @@ public class CityController implements Initializable {
     private void destacarBotao(Button button) {
         button.setStyle("-fx-background-color:  #081936; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 200; -fx-min-height: 50");
         lastClicked = button;
+    }
+    @FXML
+    void onClickViajar(ActionEvent event) {
+    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
     }
     @FXML
     void onClickCassino(ActionEvent event) {

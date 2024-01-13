@@ -151,6 +151,9 @@ public class Player extends Personagem implements Serializable {
         this.currentXp += xp;
         return this.VereficarLevelUp();
     }
+    public int getXp() {
+        return this.currentXp;
+    }
     public void RecuperarVida(int i){
         this.currentHp += i;
         if(this.currentHp > this.HP){
