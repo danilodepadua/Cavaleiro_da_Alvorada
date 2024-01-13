@@ -138,7 +138,6 @@ public class GerenciadorDeBatalha {
             }
         }
         System.out.println("Player venceu");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")));
     }
     public void Derrota(){
