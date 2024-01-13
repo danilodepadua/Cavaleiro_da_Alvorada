@@ -5,10 +5,7 @@ import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoBabySlime;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Inimigo;
-import com.daniel.PrimeiraCamada.Quests.QuestAbelha;
-import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
-import com.daniel.PrimeiraCamada.Quests.QuestInimigoSlimeDeEscuridaoNv1;
-import com.daniel.PrimeiraCamada.Quests.Quests;
+import com.daniel.PrimeiraCamada.Quests.*;
 import com.daniel.game.Main;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
@@ -41,9 +38,6 @@ public class ControllerQuest implements Initializable {
     private Button bntSetaSubir1;
 
     @FXML
-    private Button btnQuest;
-
-    @FXML
     private Button btnSetaDescer;
 
     @FXML
@@ -61,9 +55,8 @@ public class ControllerQuest implements Initializable {
     @FXML
     private VBox vboxQuests;
     private static final String FONT_FAMILY = "Barlow Condensed SemiBold";
-    private static final int FONT_SIZE = 20;
+    private static final int FONT_SIZE = 18;
     private static final String TEXT_FILL = "-fx-fill: white;";
-
 
     private void criarQuest(Quests quest) {
         SimpleIntegerProperty progressoProperty = new SimpleIntegerProperty(quest.getProgresso());
@@ -81,7 +74,11 @@ public class ControllerQuest implements Initializable {
         progressBar.setProgress((double) quest.getProgresso() / quest.getObjetivo());
 
         Button btnRecolher = new Button("Recolher");
-        btnRecolher.setVisible(quest.isCompleta());
+        btnRecolher.setStyle("-fx-background-color: #081936; -fx-border-color: #daa520; -fx-text-fill: #daa520;");
+
+        // Configurar propriedade disable com base na completude da quest
+        btnRecolher.setDisable(!quest.isCompleta());
+
         btnRecolher.setOnAction(e -> {
             try {
                 recolherRecompensas(quest);
@@ -90,42 +87,41 @@ public class ControllerQuest implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
-
-        // Adicione os elementos diretamente ao vboxQuests
-        vboxQuests.getChildren().addAll(texto, progressBar, btnRecolher);
+        HBox hBox = new HBox();
+        hBox.setSpacing(20);
+        hBox.getChildren().addAll(progressBar, btnRecolher);
+        vboxQuests.getChildren().addAll(texto,hBox);
+        vboxQuests.setAlignment(Pos.TOP_LEFT);
+        vboxQuests.setSpacing(20);
     }
-
-
     private void recolherRecompensas(Quests quest) throws PlayerInexistenteException {
         System.out.println("Recolher recompensas para a quest: " + quest.getNome());
         Player.getPlayer().completarQuest(quest);
     }
-
     private void atualizarInterfaceGrafica() {
         try {
             vboxQuests.getChildren().clear();
 
             int inicio = questAtual;
-            int fim = Math.min(questAtual + 3, Player.getPlayer().getQuestsAtuais().size());
+            int fim = Math.min(questAtual + 4, Player.getPlayer().getQuestsAtuais().size());
 
             for (int i = inicio; i < fim; i++) {
                 Quests quest = Player.getPlayer().getQuestsAtuais().get(i);
                 criarQuest(quest);
             }
         } catch (PlayerInexistenteException e) {
-            // Lide com a exceção de maneira apropriada para seu aplicativo
             e.printStackTrace();
         }
     }
-
-
     private void configurarSetas() {
         ImageView seta = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
-        seta.setFitWidth(30);
+        seta.setFitWidth(40);
+        seta.setFitHeight(40);
         seta.setPreserveRatio(true);
 
         ImageView setaInv = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
-        setaInv.setFitWidth(30);
+        setaInv.setFitWidth(40);
+        setaInv.setFitHeight(40);
         setaInv.setPreserveRatio(true);
         setaInv.setRotate(180);
 
@@ -134,79 +130,107 @@ public class ControllerQuest implements Initializable {
 
 
     }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         paneTextos.setVisible(false);
         atualizarInterfaceGrafica();
-        QuestBabySlime questBabySlime = new QuestBabySlime();
-        QuestAbelha questAbelha = new QuestAbelha();
-        QuestInimigoSlimeDeEscuridaoNv1 questInimigoSlimeDeEscuridaoNv1 = new QuestInimigoSlimeDeEscuridaoNv1();
-        questsDisponiveis.add(questBabySlime);
-        questsDisponiveis.add(questAbelha);
+
+        ManejarQuests questManager = ManejarQuests.getInstance();
+        questsDisponiveis.addAll(questManager.getQuestsDisponiveis());
+
         paneTextos.setPickOnBounds(true);
         configurarSetas();
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
-        seta.setFitWidth(30);
+        seta.setFitWidth(40);
+        seta.setFitHeight(40);
         seta.setPreserveRatio(true);
         ImageView setaInv = new ImageView();
         setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
-        setaInv.setFitWidth(30);
+        setaInv.setFitWidth(40);
+        setaInv.setFitHeight(40);
         setaInv.setPreserveRatio(true);
         setaInv.rotateProperty().set(180);
         btnSetaDescer1.setGraphic(seta);
         bntSetaSubir1.setGraphic(setaInv);
+        try {
+            questsDisponiveis();
+            verificarSetasQuests(questsDisponiveis.size());
+
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
+    private void verificarSetasQuests(int size) {
+        if (questDisponivel == 0) {
+            bntSetaSubir1.setDisable(true);
+            bntSetaSubir.setDisable(true);
+        } else {
+            bntSetaSubir1.setDisable(false);
+            bntSetaSubir.setDisable(false);
+        }
 
-    @FXML
-    void abrirPane() throws PlayerInexistenteException {
+        if (questDisponivel + 4 >= size) {
+            btnSetaDescer1.setDisable(true);
+            btnSetaDescer.setDisable(true);
+        } else {
+            btnSetaDescer1.setDisable(false);
+            btnSetaDescer.setDisable(false);
+        }
+    }
+    public void questsDisponiveis() throws PlayerInexistenteException {
         paneTextos.setVisible(true);
         paneTextos.setDisable(false);
         paneTextos.setOpacity(100);
         try {
             vboxAceitarQuests.getChildren().clear();
             int inicio = questDisponivel;
-            int fim = Math.min(questDisponivel + 3, questsDisponiveis.size());
+            int fim = Math.min(questDisponivel + 4, questsDisponiveis.size());
 
             for (int i = inicio; i < fim; i++) {
                 Quests quests = questsDisponiveis.get(i);
-
+                System.out.println("quests disponiveis: "+ quests);
                 Text texto = new Text(quests.getDescricao());
                 texto.setFont(Font.font(FONT_FAMILY, FONT_SIZE));
                 texto.setStyle(TEXT_FILL);
 
                 // Criar Botão
                 Button btnAceitar = new Button("Aceitar");
-
+                btnAceitar.setStyle("-fx-background-color: #081936; -fx-border-color: #daa520; -fx-text-fill: #daa520;");
+                btnAceitar.setDisable(Player.getPlayer().getQuestsAtuais().contains(quests));
                 // Adicionar ação ao botão
                 btnAceitar.setOnAction(e -> {
-                    aceitarQuest(quests);
+                        aceitarQuest(quests, btnAceitar);
+                        btnAceitar.setDisable(true);
+                    });
 
-                });
-                btnAceitar.setDisable(Player.getPlayer().getQuestsAtuais().contains(quests));
-
-                vboxAceitarQuests.getChildren().addAll(texto, btnAceitar);
-                vboxAceitarQuests.setSpacing(10);
+                HBox hBox = new HBox();
+                hBox.setSpacing(10);
+                hBox.getChildren().addAll(texto, btnAceitar);
+                vboxAceitarQuests.getChildren().addAll(hBox);
+                vboxAceitarQuests.setSpacing(30);
                 vboxAceitarQuests.setAlignment(Pos.TOP_CENTER);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        } finally {
+        verificarSetasQuests(questsDisponiveis.size());
+    }
     }
 
-    private void aceitarQuest(Quests quest) {
+    public void aceitarQuest(Quests quest, Button button) {
         try {
-            Player.getPlayer().aceitarQuest(quest);
-            atualizarInterfaceGrafica();
+            Player.getPlayer().getQuestsAtuais().add(quest);
             System.out.println("Quest aceita: " + quest.getNome());
+            atualizarInterfaceGrafica();
         } catch (PlayerInexistenteException ex) {
             System.err.println("Erro ao aceitar quest: " + ex.getMessage());
         }
     }
+
+
 
     @FXML
     void DescerItens(ActionEvent event) {
@@ -232,7 +256,7 @@ public class ControllerQuest implements Initializable {
     void SubirQuests(ActionEvent event) throws PlayerInexistenteException {
         if (questDisponivel > 0) {
             questDisponivel--;
-            abrirPane();
+            questsDisponiveis();
 
         }
     }
@@ -241,8 +265,12 @@ public class ControllerQuest implements Initializable {
     void DescerQuests(ActionEvent event) throws PlayerInexistenteException {
         if (questDisponivel < questsDisponiveis.size() - 1) {
             questDisponivel++;
-            abrirPane();
+            questsDisponiveis();
 
         }
+    }
+
+    public List<Quests> getQuestsDisponiveis() {
+        return questsDisponiveis;
     }
 }

@@ -8,6 +8,7 @@ public class QuestBabySlime extends Quests{
         this.objetivo = 10;
         this.recompensaMoedas= 100;
         this.recompensaXP = 500;
+        this.pontosEvolucao = 5;
         this.nomeInimigo = "Slime";
     }
 }

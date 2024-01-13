@@ -41,9 +41,7 @@ public abstract class Quests implements Serializable, IQuest {
 
         if (isCompleta()) {
             System.out.println("Quest concluída: " + getNome());
-            Player.getPlayer().setPontos(this.getPontosEvolucao());
-            Player.getPlayer().ganhaCoins(this.getRecompensaMoedas());
-            Player.getPlayer().ganharXp(getRecompensaXP());
+
         }
     }
     public boolean isCompleta() {
