@@ -34,7 +34,9 @@ public class Main extends Application {
         cidadeAtual = novaCidade;
         Player.getPlayer().ativarQuests();
     }
-    
+    public static double getLargura(){
+        return CurrentStage.getWidth();
+    }
     @Override
     public void start(Stage stage) throws IOException {
         stage.setMinHeight(639);
