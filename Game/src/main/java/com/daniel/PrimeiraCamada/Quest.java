@@ -1,13 +1,11 @@
-package com.daniel.PrimeiraCamada.Quests;
+package com.daniel.PrimeiraCamada;
 
-import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Interfaces.IQuest;
 
 import java.io.Serializable;
 
-public abstract class Quests implements Serializable, IQuest {
+public abstract class Quest implements Serializable, IQuest {
     protected String nome;
     protected String descricao;
     protected int recompensaXP;
@@ -16,6 +14,8 @@ public abstract class Quests implements Serializable, IQuest {
     protected int objetivo;
     protected int progresso;
     protected String nomeInimigo;
+    private boolean habilitada = true;
+
     public String getNome() {
         return nome;
     }
@@ -57,5 +57,12 @@ public abstract class Quests implements Serializable, IQuest {
 
     public int getProgresso() {
         return progresso;
+    }
+    public boolean isHabilitada() {
+        return habilitada;
+    }
+
+    public void setHabilitada(boolean habilitada) {
+        this.habilitada = habilitada;
     }
 }

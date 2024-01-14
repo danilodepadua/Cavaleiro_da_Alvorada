@@ -4,17 +4,17 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteFerro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
-import com.daniel.PrimeiraCamada.Itens.Armas.Espada;
 import com.daniel.PrimeiraCamada.Personagem;
-import com.daniel.PrimeiraCamada.Quests.ManejarQuests;
-import com.daniel.PrimeiraCamada.Quests.Quests;
+import com.daniel.PrimeiraCamada.Quest;
+import com.daniel.PrimeiraCamada.Quests.QuestAbelha;
+import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
+import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
+
 import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
+import com.daniel.game.Main;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +28,8 @@ public class Player extends Personagem implements Serializable {
     private Capacete capacete;
     private Calca calca;
     private static Player player;
-    private List<Quests> questsAtuais;
+    private List<Quest> questAtuais;
+    private List<Quest> questsAtuais;
     private int lvl = 1;
     private int currentXp;
     private int currentMp, currentHp;
@@ -46,7 +47,10 @@ public class Player extends Personagem implements Serializable {
         this.capacete = new Capacete();
         this.calca = new Calca();
         this.arma = new Arma();
-        this.questsAtuais = new ArrayList<>();
+        this.questAtuais = new ArrayList<>();
+        this.questAtuais.add(new QuestAbelha());
+        this.questAtuais.add(new QuestBabySlime());
+        this.questAtuais.add(new QuestSlimeDeEscuridaoNv1());
 
 
         player = this;
@@ -195,11 +199,8 @@ public class Player extends Personagem implements Serializable {
         this.pontos += quantidade;
 
     }
-    public void aceitarQuest(Quests quests){
-        questsAtuais.add(quests);
-    }
-    public void completarQuest(Quests quest) {
-        if (questsAtuais.contains(quest)) {
+    public void completarQuest(Quest quest) {
+        if (questAtuais.contains(quest)) {
             ganharXp(quest.getRecompensaXP());
             ganhaCoins(quest.getRecompensaMoedas());
             ganhaPontos(quest.getPontosEvolucao());
@@ -207,15 +208,30 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Ganho de xp: "+ quest.getRecompensaXP());
             System.out.println("Xp do player: "+ currentXp);
             System.out.println(VereficarLevelUp());
-            questsAtuais.remove(quest);
+            questAtuais.remove(quest);
 
 
         }
     }
+    public void desabilitarQuestsNaoComuns() {
+        List<Quest> questComuns = Main.cidadeAtual.getQuests();
 
+        for (Quest questJogador : getQuestsAtuais()) {
+            boolean questComum = questComuns.stream()
+                    .anyMatch(questCidade -> questJogador.getNome().equals(questCidade.getNome()));
 
-    public List<Quests> getQuestsAtuais() {
-        return questsAtuais;
+            if (!questComum) {
+                questJogador.setHabilitada(false);
+            }
+        }
+    }
+    public void ativarQuests(){
+        for (Quest quest : getQuestsAtuais()){
+            quest.setHabilitada(true);
+        }
+    }
+    public List<Quest> getQuestsAtuais() {
+        return questAtuais;
     }
 
     public void setPontos(int pontos) {

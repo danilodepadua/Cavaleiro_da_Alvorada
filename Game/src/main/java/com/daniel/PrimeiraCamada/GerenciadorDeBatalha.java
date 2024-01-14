@@ -1,8 +1,6 @@
 package com.daniel.PrimeiraCamada;
 
-import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
@@ -125,6 +123,26 @@ public class GerenciadorDeBatalha {
                 this.Ataque(Inimigo.atqAnim.INICIAR(pEffect), Inimigo.getAtqM(),Inimigo.getTipoAtaqueBase(), true, null);
             }
         }
+    }
+
+    public void Vitoria() throws PlayerInexistenteException {
+        //implementar
+        for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
+            if (quest.getNomeInimigo().equals(Inimigo.getNome())) {
+                try {
+                    quest.updateQuestCompleted();
+                    Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")));
+                } catch (PlayerInexistenteException e) {
+                    System.err.println("Erro ao atualizar quests: " + e.getMessage());
+                }
+            }
+        }
+        System.out.println("Player venceu");
+
+    }
+    public void Derrota(){
+        //implementar
+        System.out.println("Player perdeu");
     }
 
     public void ApagarUiPlayer(){

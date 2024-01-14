@@ -21,8 +21,7 @@ import java.util.ResourceBundle;
 
 public class CityController implements Initializable {
     private Button lastClicked;
-    @FXML
-    private Button AnimTest;
+
 
     @FXML
     private Label LabelForca;
@@ -144,11 +143,6 @@ public class CityController implements Initializable {
     private HBox vboxBotoes;
 
     @FXML
-    void Mudar(ActionEvent event) throws PlayerInexistenteException {
-        System.out.println("O nome do player é "+ Player.getPlayer().getName());
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("AnimationsTest.fxml")));
-    }
-    @FXML
     void Salvar(ActionEvent event) throws PlayerInexistenteException {
         Main.saveManager.Salvar();
     }
@@ -172,6 +166,9 @@ public class CityController implements Initializable {
             lblDinheiro.setText("" + Player.getPlayer().getCoins());
             txtNivel.setText(""+ Player.getPlayer().getLvl());
             txtVelocidade.setText(""+ Player.getPlayer().getVelocity());
+            String nomeFonte = txtVelocidade.getFont().getFamily();
+            System.out.println("Nome da Fonte: " + nomeFonte);
+
         }
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);

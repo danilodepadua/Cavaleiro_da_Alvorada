@@ -8,7 +8,6 @@ import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Magias.*;
-import com.daniel.PrimeiraCamada.Quests.Quests;
 import com.daniel.SegundaCamada.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -181,7 +180,7 @@ public class BattleController implements Initializable {
     }
 
     public void Vitoria() throws PlayerInexistenteException {
-        for (Quests quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
+        for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
                     quest.updateQuestCompleted();
