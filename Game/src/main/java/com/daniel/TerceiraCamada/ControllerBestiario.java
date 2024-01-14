@@ -3,14 +3,20 @@ package com.daniel.TerceiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.game.Main;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -19,6 +25,18 @@ import java.util.ResourceBundle;
 
 public class ControllerBestiario implements Initializable {
 
+    @FXML
+    private GridPane GridAbsorcoes;
+
+    @FXML
+    private GridPane GridFraquezas;
+
+    @FXML
+    private GridPane GridImunidades;
+    @FXML
+    private AnchorPane PnlInfos;
+    @FXML
+    private GridPane GridResistencias;
     @FXML
     private ImageView ImgBesta;
 
@@ -45,14 +63,69 @@ public class ControllerBestiario implements Initializable {
 
     @FXML
     private VBox VBoxBestas;
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     void OnActionVoltar(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
     }
+    private void AjustarElementos(Inimigo ini){
+        for(int i = 0; i<9;i++){
+            GridAbsorcoes.getChildren().get(i).setOpacity(0.2);
+            GridFraquezas.getChildren().get(i).setOpacity(0.2);
+            GridResistencias.getChildren().get(i).setOpacity(0.2);
+            GridImunidades.getChildren().get(i).setOpacity(0.2);
+        }
+        if(ini != null){
+            verificarTipos(ini.getAbsorcao(), GridAbsorcoes);
+            verificarTipos(ini.getResistencias(), GridResistencias);
+            verificarTipos(ini.getFraquezas(), GridFraquezas);
+            verificarTipos(ini.getImunidades(), GridImunidades);
+        }
+    }
+
+    private void verificarTipos(TiposElementais [] Te, GridPane pane) {
+        for (TiposElementais te : Te) {
+            switch (te) {
+                case Gelo:
+                    pane.getChildren().get(4).setOpacity(1);
+                    break;
+                case Luz:
+                    pane.getChildren().get(7).setOpacity(1);
+                    break;
+                case Terra:
+                    pane.getChildren().get(3).setOpacity(1);
+                    break;
+                case Fogo:
+                    pane.getChildren().get(0).setOpacity(1);
+                    break;
+                case Vento:
+                    pane.getChildren().get(2).setOpacity(1);
+                    break;
+                case Agua:
+                    pane.getChildren().get(1).setOpacity(1);
+                    break;
+                case Eletrico:
+                    pane.getChildren().get(5).setOpacity(1);
+                    break;
+                case Escuridao:
+                    pane.getChildren().get(6).setOpacity(1);
+                    break;
+                case NaoElemental:
+                    pane.getChildren().get(8).setOpacity(1);
+                    break;
+            }
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Antes: " + VBoxBestas.getPrefWidth());
+        System.out.println("Antes: " + scrollPane.getWidth());
+        VBoxBestas.setPrefWidth(Main.getLargura() - 510);
+        System.out.println("Depois: " + VBoxBestas.getPrefWidth());
+        System.out.println("Depois: " + scrollPane.getWidth());
         try {
             Inimigo[] bestas = Player.getPlayer().getBestiario().getInimigos();
             for(Inimigo i : bestas){
@@ -67,7 +140,9 @@ public class ControllerBestiario implements Initializable {
                         TxtRes.setText("Resistência: ???");
                         TxtInt.setText("Inteligência: ???");
                         TxtVel.setText("Velocidade: ???");
+                        PnlInfos.setOpacity(1);
                         ImgBesta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Interrogacao.png").toString()));
+                        AjustarElementos(i);
                     });
                 }
                 else{
@@ -81,9 +156,11 @@ public class ControllerBestiario implements Initializable {
                         TxtInt.setText("Inteligência: " + i.getInteligence());
                         TxtVel.setText("Velocidade: " + i.getVelocity());
                         ImgBesta.setImage(i.getImagem());
+                        PnlInfos.setOpacity(1);
+                        AjustarElementos(i);
                     });
                 }
-                btnBesta.setMaxWidth(Double.MAX_VALUE);
+                btnBesta.setPrefWidth(Double.MAX_VALUE);
                 VBoxBestas.getChildren().add(btnBesta);
             }
         } catch (PlayerInexistenteException e) {

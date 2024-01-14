@@ -43,4 +43,20 @@ public abstract class Inimigo extends Personagem{
     public Comportamentos getComp() {
         return comp;
     }
+
+    public TiposElementais[] getFraquezas() {
+        return fraquezas;
+    }
+
+    public TiposElementais[] getResistencias() {
+        return resistencias;
+    }
+
+    public TiposElementais[] getImunidades() {
+        return imunidades;
+    }
+
+    public TiposElementais[] getAbsorcao() {
+        return absorcao;
+    }
 }

@@ -7,5 +7,7 @@ public enum TiposElementais {
     Gelo,
     Terra,
     Escuridao,
+    Vento,
+    Agua,
     Luz;
 }
