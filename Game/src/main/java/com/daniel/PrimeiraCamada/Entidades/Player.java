@@ -10,6 +10,7 @@ import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.PrimeiraCamada.Quest;
 import com.daniel.PrimeiraCamada.Quests.*;
 
+import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
 import com.daniel.game.Main;
@@ -148,7 +149,70 @@ public class Player extends Personagem implements Serializable {
         return Inteligence;
     }
 
+    public TiposElementais[] getFraquezas(){
+        int tamanho = this.getPeitoral().getFraquezas().length + this.getCalca().getFraquezas().length + this.getCapacete().getFraquezas().length;
+        TiposElementais[] tipos = new TiposElementais[tamanho];
+        for (int i = 0; i < this.peitoral.getFraquezas().length; i++) {
+            tipos[i] = this.peitoral.getFraquezas()[i];
+        }
 
+        for (int i = 0; i < this.getCalca().getFraquezas().length; i++) {
+            tipos[i + this.peitoral.getFraquezas().length] = this.getCalca().getFraquezas()[i];
+        }
+
+        for (int i = 0; i < this.getCapacete().getFraquezas().length; i++) {
+            tipos[i + this.peitoral.getFraquezas().length + this.getCalca().getFraquezas().length] = this.getCapacete().getFraquezas()[i];
+        }
+        return tipos;
+    }
+    public TiposElementais[] getResistencias(){
+        int tamanho = this.getPeitoral().getResistencias().length + this.getCalca().getResistencias().length + this.getCapacete().getResistencias().length;
+        TiposElementais[] tipos = new TiposElementais[tamanho];
+        for (int i = 0; i < this.peitoral.getResistencias().length; i++) {
+            tipos[i] = this.peitoral.getResistencias()[i];
+        }
+
+        for (int i = 0; i < this.getCalca().getResistencias().length; i++) {
+            tipos[i + this.peitoral.getResistencias().length] = this.getCalca().getResistencias()[i];
+        }
+
+        for (int i = 0; i < this.getCapacete().getResistencias().length; i++) {
+            tipos[i + this.peitoral.getResistencias().length + this.getCalca().getResistencias().length] = this.getCapacete().getResistencias()[i];
+        }
+        return tipos;
+    }
+    public TiposElementais[] getImundades(){
+        int tamanho = this.getPeitoral().getImunidades().length + this.getCalca().getImunidades().length + this.getCapacete().getImunidades().length;
+        TiposElementais[] tipos = new TiposElementais[tamanho];
+        for (int i = 0; i < this.peitoral.getImunidades().length; i++) {
+            tipos[i] = this.peitoral.getImunidades()[i];
+        }
+
+        for (int i = 0; i < this.getCalca().getImunidades().length; i++) {
+            tipos[i + this.peitoral.getImunidades().length] = this.getCalca().getImunidades()[i];
+        }
+
+        for (int i = 0; i < this.getCapacete().getImunidades().length; i++) {
+            tipos[i + this.peitoral.getImunidades().length + this.getCalca().getImunidades().length] = this.getCapacete().getImunidades()[i];
+        }
+        return tipos;
+    }
+    public TiposElementais[] getAbsorcoes(){
+        int tamanho = this.getPeitoral().getAbsorcao().length + this.getCalca().getAbsorcao().length + this.getCapacete().getAbsorcao().length;
+        TiposElementais[] tipos = new TiposElementais[tamanho];
+        for (int i = 0; i < this.peitoral.getAbsorcao().length; i++) {
+            tipos[i] = this.peitoral.getAbsorcao()[i];
+        }
+
+        for (int i = 0; i < this.getCalca().getAbsorcao().length; i++) {
+            tipos[i + this.peitoral.getAbsorcao().length] = this.getCalca().getAbsorcao()[i];
+        }
+
+        for (int i = 0; i < this.getCapacete().getAbsorcao().length; i++) {
+            tipos[i + this.peitoral.getAbsorcao().length + this.getCalca().getAbsorcao().length] = this.getCapacete().getAbsorcao()[i];
+        }
+        return tipos;
+    }
     public Peitoral getPeitoral() {
         return peitoral;
     }

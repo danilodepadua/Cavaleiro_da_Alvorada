@@ -9,8 +9,24 @@ public abstract class Armadura extends Item {
         return aumentoDefesaFisica;
     }
     public int getAumentoDefesaM(){return aumentoDefesaMagica;}
-    protected TiposElementais[] fraquezas;
-    protected TiposElementais[] resistencias;
-    protected TiposElementais[] imunidades;
-    protected TiposElementais[] absorcao;
+    protected TiposElementais[] fraquezas = new TiposElementais[0];
+    protected TiposElementais[] resistencias = new TiposElementais[0];
+    protected TiposElementais[] imunidades = new TiposElementais[0];
+    protected TiposElementais[] absorcao = new TiposElementais[0];
+
+    public TiposElementais[] getFraquezas() {
+        return fraquezas;
+    }
+
+    public TiposElementais[] getResistencias() {
+        return resistencias;
+    }
+
+    public TiposElementais[] getImunidades() {
+        return imunidades;
+    }
+
+    public TiposElementais[] getAbsorcao() {
+        return absorcao;
+    }
 }

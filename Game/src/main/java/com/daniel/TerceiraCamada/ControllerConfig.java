@@ -40,7 +40,7 @@ public class ControllerConfig implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        EscolhaResolucao.getItems().addAll("1136x639","1200x675","1280x720");
+        EscolhaResolucao.getItems().addAll("1200x675","1280x720");
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
         configurarBotoes(btnConfirmar);
