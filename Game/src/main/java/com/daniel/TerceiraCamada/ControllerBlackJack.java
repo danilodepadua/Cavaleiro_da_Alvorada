@@ -237,6 +237,10 @@ public class ControllerBlackJack  implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Centraliza o VBox verticalmente
+        configurarBotoes(btnApostar);
+        configurarBotoes(btnManter);
+        configurarBotoes(btnPuxar);
+        contornarBotaoVoltar();
         vboxBaralho.setAlignment(Pos.CENTER);
         vboxTextos.setAlignment(Pos.CENTER);
         vboxTextos.setSpacing(10);
@@ -278,5 +282,40 @@ public class ControllerBlackJack  implements Initializable{
 
 
     }
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
 
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+    }
+
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+    }
 }

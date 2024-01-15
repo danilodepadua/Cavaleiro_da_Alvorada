@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -30,7 +32,7 @@
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="txtSeuSaldo" fill="#e1ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.0">
+            <Text fx:id="txtSeuSaldo" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.0">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
@@ -39,18 +41,17 @@
       </VBox>
       <VBox fx:id="vboxTextos" alignment="CENTER" layoutX="462.0" layoutY="460.0" prefHeight="154.0" prefWidth="206.0" spacing="30.0" AnchorPane.bottomAnchor="24.600000000000023">
          <children>
-            <Text fx:id="txtInsira" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o valor a ser apostado">
+            <Text fx:id="txtInsira" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o valor a ser apostado">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="21.0" />
                </font>
             </Text>
             <TextField fx:id="textFieldAposta" prefHeight="26.0" prefWidth="206.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="26.0" prefWidth="100.0" text="Voltar" />
-                  <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="26.0" prefWidth="100.0" text="Apostar" />
-               </children>
-            </HBox>
+            <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="34.0" prefWidth="100.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Apostar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <VBox fx:id="vboxBaralho" alignment="CENTER" layoutX="217.0" layoutY="60.0" prefHeight="400.0" prefWidth="630.0" AnchorPane.bottomAnchor="179.0">
@@ -79,9 +80,27 @@
       </VBox>
       <HBox layoutX="902.0" layoutY="441.0" prefHeight="37.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="160.39999999999998" AnchorPane.rightAnchor="34.0">
          <children>
-            <Button fx:id="btnPuxar" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="26.0" prefWidth="100.0" text="Puxar" />
-            <Button fx:id="btnManter" mnemonicParsing="false" onAction="#onClickManter" prefHeight="26.0" prefWidth="100.0" text="Manter" />
+            <Button fx:id="btnPuxar" mnemonicParsing="false" onAction="#onClickPuxar" prefHeight="34.0" prefWidth="100.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Puxar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font></Button>
+            <Button fx:id="btnManter" mnemonicParsing="false" onAction="#onClickManter" prefHeight="34.0" prefWidth="100.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Manter" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font></Button>
          </children>
       </HBox>
+      <Button fx:id="btnVoltar" layoutY="8.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

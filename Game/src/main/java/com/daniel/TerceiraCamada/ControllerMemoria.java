@@ -84,6 +84,9 @@ public class ControllerMemoria implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        contornarBotaoVoltar();
+        configurarBotoes(btnApostar);
+        configurarBotoes(btnDesistir);
         anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -314,5 +317,40 @@ public class ControllerMemoria implements Initializable {
 
         iniciarJogo();
     }
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
 
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+    }
+
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+    }
 }
