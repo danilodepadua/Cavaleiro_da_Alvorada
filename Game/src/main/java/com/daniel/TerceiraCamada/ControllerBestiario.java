@@ -5,6 +5,7 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.game.Main;
+import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +20,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerBestiario implements Initializable {
@@ -85,6 +88,14 @@ public class ControllerBestiario implements Initializable {
         }
     }
 
+    public Transition AnimarQueda(Node node){
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(500), node);
+        scaleTransition.setToY(1);
+        scaleTransition.setToX(1);
+        scaleTransition.setFromX(0.1);
+        scaleTransition.setFromY(0.1);
+        return scaleTransition;
+    }
     private void verificarTipos(TiposElementais [] Te, GridPane pane) {
         for (TiposElementais te : Te) {
             switch (te) {
@@ -128,6 +139,8 @@ public class ControllerBestiario implements Initializable {
         System.out.println("Depois: " + scrollPane.getWidth());
         try {
             Inimigo[] bestas = Player.getPlayer().getBestiario().getInimigos();
+            ParallelTransition sequenciaTransicoes = new ParallelTransition();
+            int j = 0;
             for(Inimigo i : bestas){
                 Button btnBesta = new Button();
                 if(i == null){
@@ -162,7 +175,12 @@ public class ControllerBestiario implements Initializable {
                 }
                 btnBesta.setPrefWidth(Double.MAX_VALUE);
                 VBoxBestas.getChildren().add(btnBesta);
+                SequentialTransition transition = new SequentialTransition();
+                transition.getChildren().addAll(new PauseTransition(Duration.millis(j*50)),AnimarQueda(btnBesta));
+                sequenciaTransicoes.getChildren().add(transition);
+                j++;
             }
+            sequenciaTransicoes.play();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
