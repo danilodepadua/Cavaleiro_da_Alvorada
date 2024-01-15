@@ -21,7 +21,7 @@
       </Button>
       <ScrollPane fx:id="scrollPane" layoutX="-2.0" layoutY="2.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox fx:id="VBoxBestas" alignment="CENTER" prefHeight="703.0" prefWidth="445.0" />
+            <VBox fx:id="VBoxBestas" alignment="CENTER_LEFT" prefHeight="703.0" prefWidth="445.0" />
          </content>
       </ScrollPane>
       <AnchorPane layoutX="620.0" layoutY="202.0" prefHeight="590.0" prefWidth="500.0" style="-fx-background-color: #E6A500;" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
