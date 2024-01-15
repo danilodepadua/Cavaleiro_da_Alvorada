@@ -5,9 +5,7 @@ import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
-import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.SegundaCamada.CassinoRepositorio.BaralhoMemoria;
-import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
 import com.daniel.game.Main;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -17,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -25,6 +22,8 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.*;
+
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class ControllerMemoria implements Initializable {
     private BaralhoMemoria baralho;
@@ -84,21 +83,10 @@ public class ControllerMemoria implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contornarBotaoVoltar();
+        contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnApostar);
         configurarBotoes(btnDesistir);
-        anchorPane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        false,
-                        false,
-                        true,
-                        true
-                ))));
+        definirBackground(anchorPane, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         this.baralho = new BaralhoMemoria();
         this.baralho.criarBaralhoMemoria();
         this.baralho.embaralhar();
@@ -316,41 +304,5 @@ public class ControllerMemoria implements Initializable {
         txtAcumulado.setText("");
 
         iniciarJogo();
-    }
-    private void contornarBotaoVoltar() {
-        btnVoltar.setOnMouseEntered(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
-        });
-
-        btnVoltar.setOnMouseExited(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-
-        btnVoltar.setOnMousePressed(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        btnVoltar.setOnMouseReleased(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-    }
-
-    private void configurarBotoes(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
-
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
     }
 }

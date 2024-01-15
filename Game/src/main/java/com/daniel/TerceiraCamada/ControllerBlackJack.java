@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -23,6 +22,8 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class ControllerBlackJack  implements Initializable{
     private Baralho baralho;
@@ -88,19 +89,20 @@ public class ControllerBlackJack  implements Initializable{
 
     }
     public void determinarVencedor() throws BaralhoVazioException {
-        String valorStr = textFieldAposta.getText();
-        int valorAposta = Integer.parseInt(valorStr);
+        String valorStr = textFieldAposta.getText(); //Pega o valor da aposta no textField
+        int valorAposta = Integer.parseInt(valorStr);  //Armazenando em uma variável inteira
 
+        //Chamar o método de adicionar carta aos jogadores
         adicionarCarta(GridPaneDealer, dealer, 0);
         adicionarCarta(GridPaneDealer, dealer, 1);
-        txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+        txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos()); //Setar o texto para uma imersão maior
 
-        //Criar um pause pra imersão
+        //Criar um pause pra determinar o vencedor
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> processarVencedor(valorAposta));
         pause.play();
 
-        btnManter.setDisable(true);
+        btnManter.setDisable(true); //Desabilita os botões
         btnPuxar.setDisable(true);
     }
 
@@ -141,7 +143,7 @@ public class ControllerBlackJack  implements Initializable{
     private void handleResultado(String mensagem, int alteracaoSaldo) {
         txtVoceGanhou.setText(mensagem);
         try {
-            Player.getPlayer().ganhaCoins(alteracaoSaldo);
+            Player.getPlayer().ganhaCoins(alteracaoSaldo); // adicionar o valor ao player
             txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException ex) {
             throw new RuntimeException(ex);
@@ -151,7 +153,6 @@ public class ControllerBlackJack  implements Initializable{
     }
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
-
         resetarJogo();
         String valorStr = textFieldAposta.getText();
         try {
@@ -159,7 +160,7 @@ public class ControllerBlackJack  implements Initializable{
 
             if (valorAposta > Player.getPlayer().getCoins() ) {
                 System.out.println("Você não possui esse saldo");
-
+                btnApostar.setDisable(true);
             } else {
                 adicionarCartaCostas(GridPaneDealer, 0);
                 adicionarCartaCostas(GridPaneDealer, 1);
@@ -240,7 +241,7 @@ public class ControllerBlackJack  implements Initializable{
         configurarBotoes(btnApostar);
         configurarBotoes(btnManter);
         configurarBotoes(btnPuxar);
-        contornarBotaoVoltar();
+        contornarBotaoVoltar(btnVoltar);
         vboxBaralho.setAlignment(Pos.CENTER);
         vboxTextos.setAlignment(Pos.CENTER);
         vboxTextos.setSpacing(10);
@@ -267,55 +268,6 @@ public class ControllerBlackJack  implements Initializable{
             throw new RuntimeException(e);
         }
 
-        PanePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        false,
-                        false,
-                        true,
-                        true
-                ))));
-
-
-    }
-    private void contornarBotaoVoltar() {
-        btnVoltar.setOnMouseEntered(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
-        });
-
-        btnVoltar.setOnMouseExited(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-
-        btnVoltar.setOnMousePressed(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        btnVoltar.setOnMouseReleased(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-    }
-
-    private void configurarBotoes(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
-
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
+        definirBackground(PanePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
     }
 }

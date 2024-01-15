@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
+
 public class MainController implements Initializable {
 
     @FXML
@@ -65,22 +67,9 @@ public class MainController implements Initializable {
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
     }
-    private void configurarBotoes(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
 
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
+    @FXML
+    void Sair(ActionEvent event) {
+        System.exit(0);
     }
 }

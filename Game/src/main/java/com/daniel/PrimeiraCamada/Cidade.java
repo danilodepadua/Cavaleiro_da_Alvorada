@@ -35,4 +35,8 @@ public abstract class Cidade {
     public String getNome() {
         return Nome;
     }
+    public String getCaminhoImagem(){
+        return Fundo;
+    }
+
 }
