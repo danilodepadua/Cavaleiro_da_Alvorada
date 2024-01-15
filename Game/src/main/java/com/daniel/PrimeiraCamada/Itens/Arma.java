@@ -8,7 +8,7 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 public  class Arma extends Item implements IEquipable {
     protected int aumentoDeAtaqueFisico;
     protected int aumentoDeAtaqueMagico;
-    protected TiposElementais tipoDano;
+    protected TiposElementais tipoDano = TiposElementais.NaoElemental;
     public Arma(){
         this.aumentoDeAtaqueFisico = 0;
         this.aumentoDeAtaqueMagico = 0;
