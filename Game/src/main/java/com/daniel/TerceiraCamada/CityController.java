@@ -7,17 +7,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CityController implements Initializable {
     private Button lastClicked;
@@ -54,6 +54,12 @@ public class CityController implements Initializable {
     private Button btnSalvar;
     @FXML
     private Button btncacar;
+
+    @FXML
+    private Button btnStatus;
+
+    @FXML
+    private Button btnConfig;
 
     @FXML
     private ImageView imgDefesaFisica;
@@ -172,9 +178,6 @@ public class CityController implements Initializable {
             lblDinheiro.setText("" + Player.getPlayer().getCoins());
             txtNivel.setText(""+ Player.getPlayer().getLvl());
             txtVelocidade.setText(""+ Player.getPlayer().getVelocity());
-            String nomeFonte = txtVelocidade.getFont().getFamily();
-            System.out.println("Nome da Fonte: " + nomeFonte);
-
         }
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
@@ -184,18 +187,7 @@ public class CityController implements Initializable {
         btncacar.setOnAction(event -> Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"))));
 
 
-        Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundo(),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        false,
-                        false,
-                        true,
-                        true
-                ))));
+        definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
 
         configurarBotoes(btncacar);
         configurarBotoes(btnCassino);
@@ -203,137 +195,47 @@ public class CityController implements Initializable {
         configurarBotoes(btnViajar);
         configurarBotoes(btnSalvar);
         configurarBotoes(btnQuests);
+        configurarBotoes(btnStatus);
+        configurarBotoes(btnInventario);
+        configurarBotoes(btnConfig);
 
-        // Inicializar o Label de informações
-        infoCoin.setVisible(false);
-        infoDefesa.setVisible(false);
-        infoForca.setVisible(false);
-        infoDefesaMagica.setVisible(false);
-        infoMana.setVisible(false);
-        infoVelo.setVisible(false);
-        infoVida.setVisible(false);
-        infoInteligencia.setVisible(false);
-        infoResistencia.setVisible(false);
+        // Configurar os estilos para os Labels de informações
+        configurarEstiloLabel(infoCoin, infoResistencia, infoForca, infoDefesa, infoMana, infoVelo, infoVida, infoInteligencia, infoDefesaMagica);
 
-        infoCoin.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoCoin.setPadding(new Insets(5));
+        // Configurar os eventos para as ImageViews
+        configurarEventoMouseEntered(imgVida, infoVida, "Informação sobre o HP");
+        configurarEventoMouseEntered(imgDefesaFisica, infoDefesa, "Informação sobre a defesa física");
+        configurarEventoMouseEntered(imgForca, infoForca, "Informação sobre a força");
+        configurarEventoMouseEntered(imgInteligencia, infoInteligencia, "Informações sobre a Inteligência");
+        configurarEventoMouseEntered(imgMana, infoMana, "Informações sobre a Mana");
+        configurarEventoMouseEntered(imgMoeda, infoCoin, "Informações sobre as Moedas");
+        configurarEventoMouseEntered(imgResistencia, infoResistencia, "Informações sobre a Resistência");
+        configurarEventoMouseEntered(imgVelocidade, infoVelo, "Informações sobre a Velocidade");
+        configurarEventoMouseEntered(imgDefesaMagica, infoDefesaMagica, "Informações sobre a defesa mágica");
 
-        infoResistencia.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoResistencia.setPadding(new Insets(5));
-
-        infoInteligencia.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoInteligencia.setPadding(new Insets(5));
-
-        infoVelo.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoVelo.setPadding(new Insets(5));
-
-        infoForca.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoForca.setPadding(new Insets(5));
-
-        infoDefesaMagica.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoDefesaMagica.setPadding(new Insets(5));
-
-        infoMana.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoMana.setPadding(new Insets(5));
-
-        infoDefesa.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoDefesa.setPadding(new Insets(5));
-
-        infoVida.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
-        infoVida.setPadding(new Insets(5));
-
-
-        // Configurar os eventos para as ImageView
-        imgVida.setOnMouseEntered(event -> mostrarInfoVida(event, imgVida));
-        imgDefesaFisica.setOnMouseEntered(event -> mostrarInfoDefesaFisica(event, imgDefesaFisica));
-        imgForca.setOnMouseEntered(event -> mostrarInfoForca(event, imgForca));
-        imgInteligencia.setOnMouseEntered(event -> mostrarInfoInteligencia(event, imgInteligencia));
-        imgMana.setOnMouseEntered(event -> mostrarInfoMana(event, imgMana));
-        imgMoeda.setOnMouseEntered(event -> mostrarInfoMoeda(event, imgMoeda));
-        imgResistencia.setOnMouseEntered(event -> mostrarInfoResistencia(event, imgResistencia));
-        imgVelocidade.setOnMouseEntered(event -> mostrarInfoVelocidade(event, imgVelocidade));
-        imgDefesaMagica.setOnMouseEntered(event -> mostrarInfoDefesaMagica(event, imgDefesaMagica));
-        // Configurar os eventos para esconder o Label de informações ao sair da ImageView
-        imgVida.setOnMouseExited(event -> infoVida.setVisible(false));
-        imgDefesaFisica.setOnMouseExited(event -> infoDefesa.setVisible(false));
-        imgForca.setOnMouseExited(event -> infoForca.setVisible(false));
-        imgInteligencia.setOnMouseExited(event -> infoInteligencia.setVisible(false));
-        imgMana.setOnMouseExited(event -> infoMana.setVisible(false));
-        imgMoeda.setOnMouseExited(event -> infoCoin.setVisible(false));
-        imgResistencia.setOnMouseExited(event -> infoResistencia.setVisible(false));
-        imgVelocidade.setOnMouseExited(event -> infoVelo.setVisible(false));
-        imgDefesaMagica.setOnMouseExited(event -> infoDefesaMagica.setVisible(false));
-    }
-    private void configurarBotoes(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
-
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-    }
-    // Métodos específicos para cada atributo
-    private void mostrarInfoVida(MouseEvent event, ImageView imageView) {
-        infoVida.setText("Informação sobre o HP");
-        infoVida.setVisible(true);
-    }
-    private void mostrarInfoDefesaFisica(MouseEvent event, ImageView imageView) {
-        infoDefesa.setText("Informação sobre a defesa física");
-        infoDefesa.setVisible(true);
-    }
-    private void mostrarInfoForca(MouseEvent event, ImageView imageView) {
-        infoForca.setText("Informação sobre a força");
-        infoForca.setVisible(true);
-    }
-    private void mostrarInfoInteligencia(MouseEvent event, ImageView imageView) {
-        infoInteligencia.setText("Informações sobre a Inteligência");
-        infoInteligencia.setVisible(true);
-    }
-    private void mostrarInfoMana(MouseEvent event, ImageView imageView) {
-        infoMana.setText("Informações sobre a Mana");
-        infoMana.setVisible(true);
-    }
-    private void mostrarInfoMoeda(MouseEvent event, ImageView imageView) {
-        infoCoin.setText("Informações sobre as Moedas");
-        infoCoin.setVisible(true);
-    }
-    private void mostrarInfoResistencia(MouseEvent event, ImageView imageView) {
-        infoResistencia.setText("Informações sobre a Resistência");
-        infoResistencia.setVisible(true);
-    }
-    private void mostrarInfoVelocidade(MouseEvent event, ImageView imageView) {
-        infoVelo.setText("Informações sobre a Velocidade");
-        infoVelo.setVisible(true);
-    }
-    private void mostrarInfoDefesaMagica(MouseEvent event, ImageView imageView) {
-        infoDefesaMagica.setText("Informações sobre a defesa mágica");
-        infoDefesaMagica.setVisible(true);
+        // Configurar os eventos para esconder os Labels de informações ao sair das ImageViews
+        configurarEventoMouseExited(imgVida, infoVida);
+        configurarEventoMouseExited(imgDefesaFisica, infoDefesa);
+        configurarEventoMouseExited(imgForca, infoForca);
+        configurarEventoMouseExited(imgInteligencia, infoInteligencia);
+        configurarEventoMouseExited(imgMana, infoMana);
+        configurarEventoMouseExited(imgMoeda, infoCoin);
+        configurarEventoMouseExited(imgResistencia, infoResistencia);
+        configurarEventoMouseExited(imgVelocidade, infoVelo);
+        configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
     }
     @FXML
     void onClickViajar(ActionEvent event) {
-    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
+    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaGameOver.fxml")))); // pra testar mais rapidamente
     }
     @FXML
     void onClickCassino(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")));
-
     }
-
     @FXML
     void onClickStatus(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
     }
-
     @FXML
     void Config(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));

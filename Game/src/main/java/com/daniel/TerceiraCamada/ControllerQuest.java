@@ -21,6 +21,9 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
+import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
+
 public class ControllerQuest implements Initializable {
     int questAtual = 0;
     int questDisponivel = 0;
@@ -42,7 +45,7 @@ public class ControllerQuest implements Initializable {
     private static final String FONT_FAMILY = "Barlow Condensed SemiBold";
     private static final int FONT_SIZE = 24;
     private static final String TEXT_FILL = "-fx-fill: #eccb7e;";
-    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #eccb7e; ";
+    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
 
 
     private void criarQuest(Quest quest) throws PlayerInexistenteException {
@@ -123,23 +126,9 @@ public class ControllerQuest implements Initializable {
 
 
     }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        panePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        false,
-                        false,
-                        true,
-                        true
-                ))));
+        definirBackground(panePrincipal,"/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         configurarSetas();
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
@@ -152,7 +141,7 @@ public class ControllerQuest implements Initializable {
         setaInv.setFitHeight(60);
         setaInv.setPreserveRatio(true);
         setaInv.rotateProperty().set(180);
-        contornarBotaoVoltar();
+        contornarBotaoVoltar(btnVoltar);
         try {
             Player.getPlayer().desabilitarQuestsNaoComuns();
             atualizarInterfaceGrafica();
@@ -190,29 +179,9 @@ public class ControllerQuest implements Initializable {
             atualizarInterfaceGrafica();
         }
     }
-
     @FXML
     void Voltar(ActionEvent event) {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
-    }
-
-
-    private void contornarBotaoVoltar() {
-        btnVoltar.setOnMouseEntered(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
-        });
-
-        btnVoltar.setOnMouseExited(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-
-        btnVoltar.setOnMousePressed(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        btnVoltar.setOnMouseReleased(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
     }
 
 }

@@ -32,7 +32,7 @@
             <Font name="Barlow Condensed SemiBold" size="18.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="388.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade">
+      <Text fill="#eccb7e" layoutX="388.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade">
          <font>
             <Font name="Barlow Condensed SemiBold" size="18.0" />
          </font>
@@ -137,14 +137,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnSalvar" layoutX="479.0" layoutY="490.0" mnemonicParsing="false" onAction="#onClickSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e" AnchorPane.topAnchor="490.0">
+      <Button fx:id="btnSalvar" layoutX="517.0" layoutY="485.0" mnemonicParsing="false" onAction="#onClickSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e" AnchorPane.topAnchor="485.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="654.0" layoutY="170.0" prefHeight="280.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="170.0">
+      <Pane layoutX="834.0" layoutY="204.0" prefHeight="220.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="204.0">
          <children>
-            <VBox layoutX="14.0" layoutY="19.0" prefHeight="242.0" prefWidth="233.0" spacing="20.0">
+            <VBox layoutX="14.0" layoutY="14.0" prefHeight="242.0" prefWidth="233.0" spacing="20.0">
                <children>
                   <HBox prefHeight="12.0" prefWidth="200.0" spacing="10.0">
                      <children>
@@ -154,20 +154,6 @@
                            </font>
                         </Text>
                         <Text fx:id="txtLevel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="7.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -239,5 +225,19 @@
             <Font name="Barlow Condensed SemiBold" size="43.0" />
          </font>
       </Text>
+      <HBox layoutX="388.0" layoutY="125.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

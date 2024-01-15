@@ -8,8 +8,13 @@
 
 <AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MainController">
    <children>
-      <VBox layoutX="460.0" layoutY="182.0" prefHeight="298.0" prefWidth="242.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="416.0" layoutY="86.0" prefHeight="396.0" prefWidth="357.0" spacing="30.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="366.0">
          <children>
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="NOME DO JOGO">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="60.0" />
+               </font>
+            </Text>
             <Button fx:id="btnNovoJogo" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Novo Jogo" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
@@ -25,17 +30,12 @@
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnSair" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sair" textFill="#eccb7e">
+            <Button fx:id="btnSair" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Sair" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sair" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Text fill="#eccb7e" layoutX="427.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="NOME DO JOGO">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="60.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

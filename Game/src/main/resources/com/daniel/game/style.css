@@ -22,6 +22,7 @@
 .tab .tab-label {
     -fx-text-fill: #eccb7e;
     -fx-alignment: CENTER;
+    -fx-font-size: 18;
 }
 /* Cor da barra de rolagem */
 .scroll-bar:vertical {

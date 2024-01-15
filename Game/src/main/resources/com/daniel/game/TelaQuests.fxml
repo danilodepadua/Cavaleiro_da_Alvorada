@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerQuest">
    <children>
-      <Text fill="#eccb7e" layoutX="86.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="QUESTS DISPONÍVEIS" wrappingWidth="289.04029083251953" AnchorPane.rightAnchor="763.9597091674805">
+      <Text fill="#eccb7e" layoutX="86.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="QUESTS DISPONÍVEIS" wrappingWidth="289.04029083251953" AnchorPane.leftAnchor="85.44029083251951" AnchorPane.rightAnchor="763.9597091674805">
          <font>
             <Font name="Barlow Condensed SemiBold" size="34.0" />
          </font>
@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Pane layoutX="86.0" layoutY="81.0" prefHeight="476.0" prefWidth="966.0" style="-fx-background-color: #140e0a;" AnchorPane.rightAnchor="86.60000000000002">
+      <Pane layoutX="86.0" layoutY="81.0" prefHeight="476.0" prefWidth="966.0" style="-fx-background-color: #140e0a;" AnchorPane.leftAnchor="86.00000000000011" AnchorPane.rightAnchor="86.60000000000002">
          <children>
             <VBox fx:id="vboxQuests" layoutX="22.0" layoutY="13.0" prefHeight="450.0" prefWidth="778.0" />
             <Button fx:id="btnSetaDescer" layoutX="883.0" layoutY="416.0" mnemonicParsing="false" onAction="#DescerItens" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" />

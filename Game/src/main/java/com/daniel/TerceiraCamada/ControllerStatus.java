@@ -9,16 +9,19 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.*;
+
 public class ControllerStatus implements Initializable {
     private Integer  pontosDisp;
-
+    @FXML
+    private AnchorPane panePrincipal;
     @FXML
     private Button btnMaisForca;
 
@@ -79,7 +82,7 @@ public class ControllerStatus implements Initializable {
     @FXML
     private Text txtVelocidade;
 
-    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #eccb7e; ";
+    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
 
     @FXML
     void onClickMaisForca(ActionEvent event) throws PlayerInexistenteException {
@@ -166,7 +169,7 @@ public class ControllerStatus implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            contornarBotaoVoltar();
+            contornarBotaoVoltar(btnVoltar);
             configurarBotoes(btnSalvar);
             configurarBotoes(btnMaisForca);
             configurarBotoes(btnMaisInt);
@@ -236,40 +239,5 @@ public class ControllerStatus implements Initializable {
         double progresso = barra.getProgress() * 100;
         return (int) Math.round(progresso);
     }
-    private void contornarBotaoVoltar() {
-        btnVoltar.setOnMouseEntered(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
-        });
 
-        btnVoltar.setOnMouseExited(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-
-        btnVoltar.setOnMousePressed(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        btnVoltar.setOnMouseReleased(event -> {
-            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
-        });
-    }
-
-    private void configurarBotoes(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
-
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-    }
 }

@@ -33,7 +33,7 @@
                </graphic>
             </Button>
          </children></AnchorPane>
-      <AnchorPane layoutY="290.0" opacity="0.95" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutY="290.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <TabPane fx:id="tabPane" prefHeight="322.0" prefWidth="654.0" style="-fx-background-color: #47362c;" styleClass="tab-header-background" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
               <tabs>

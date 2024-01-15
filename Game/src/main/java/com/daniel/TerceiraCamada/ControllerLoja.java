@@ -30,9 +30,12 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
+import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
+
 public class ControllerLoja implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
-    private Button lastClicked;
+
     @FXML
     private Button btnComprar;
     @FXML
@@ -82,8 +85,8 @@ public class ControllerLoja implements Initializable {
     private TabPane tabPane;
     public void initialize(URL location, ResourceBundle resources) {
 
-        configurarBotoesMarrom(btnComprar);
-        contornarBotaoVoltar();
+        configurarBotoes(btnComprar);
+        contornarBotaoVoltar(btnVoltar);
         try {
             txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException e) {
@@ -142,7 +145,7 @@ public class ControllerLoja implements Initializable {
         imageView.setImage(item.getImage());
         button.setStyle("-fx-background-color:  #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e");
 
-        configurarBotoesMarrom(button);
+        configurarBotoes(button);
         button.setOnAction(event -> {
             try {
                 ItemSelecionado(item); // Chama o método ItemSelecionado com o item clicado
@@ -189,41 +192,4 @@ public class ControllerLoja implements Initializable {
         txtPreco.setText("" + i.getPreco() + " Moedas");
     }
 
-    private void contornarBotaoVoltar() {
-        btnVoltar.setOnMouseEntered(event -> {
-            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color:  #eccb7e;");
-        });
-
-        btnVoltar.setOnMouseExited(event -> {
-            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color: transparent;");
-        });
-
-        btnVoltar.setOnMousePressed(event -> {
-            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        btnVoltar.setOnMouseReleased(event -> {
-            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color: transparent;");
-        });
-    }
-
-
-    private void configurarBotoesMarrom(Button button) {
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
-        });
-
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-        button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
-        });
-
-        button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
-        });
-
-    }
 }
