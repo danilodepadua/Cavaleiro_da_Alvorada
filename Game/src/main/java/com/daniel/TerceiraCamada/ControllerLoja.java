@@ -21,9 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -69,13 +67,25 @@ public class ControllerLoja implements Initializable {
     private Text txtSeuSaldo;
     @FXML
     private AnchorPane panelImage;
-
+    @FXML
+    private Tab tabArma;
 
     @FXML
+    private Tab tabArmaduras;
+    @FXML
+    private Pane paneInfos;
+    @FXML
+    private Tab tabPocoes;
+    @FXML
     private AnchorPane PanePrincipal;
+    @FXML
+    private TabPane tabPane;
     public void initialize(URL location, ResourceBundle resources) {
+
+        configurarBotoesMarrom(btnComprar);
+        contornarBotaoVoltar();
         try {
-            txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas");
+            txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -118,7 +128,7 @@ public class ControllerLoja implements Initializable {
         ImageView imageView = new ImageView();
         imageView.setPreserveRatio(true);
         imageView.setFitWidth(90);
-        imageView.setFitHeight(40);
+        imageView.setFitHeight(55);
 
         double cellWidth = grid.getPrefWidth() / columns;
         double cellHeight = grid.getPrefHeight() / rows;
@@ -130,22 +140,9 @@ public class ControllerLoja implements Initializable {
         button.setMaxSize(cellWidth, cellHeight);
 
         imageView.setImage(item.getImage());
-        button.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+        button.setStyle("-fx-background-color:  #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e");
 
-        button.setOnMouseClicked(event -> {
-            desmarcarUltimoClicado();
-            destacarBotao(button);
-        });
-
-        button.setOnMousePressed(event -> {
-            escurecerCor(button);
-        });
-
-        button.setOnMouseReleased(event -> {
-            restaurarCor(button);
-            desmarcarUltimoClicado();
-            destacarBotao(button);
-        });
+        configurarBotoesMarrom(button);
         button.setOnAction(event -> {
             try {
                 ItemSelecionado(item); // Chama o método ItemSelecionado com o item clicado
@@ -186,25 +183,47 @@ public class ControllerLoja implements Initializable {
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         // Atualize o texto do nome do item
-        txtNomeItem.setText("Nome: "+i.getNome());
-        txtSeuSaldo.setText("Seu saldo: "+ Player.getPlayer().getCoins() + " Moedas" );
-        txtInfoItem.setText("Descrição: " + i.getDescricao());
-        txtPreco.setText("Preço: " + i.getPreco() + " Moedas");
+        txtNomeItem.setText(""+i.getNome());
+        txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas" );
+        txtInfoItem.setText("" + i.getDescricao());
+        txtPreco.setText("" + i.getPreco() + " Moedas");
     }
 
-    private void escurecerCor(Button botao) {
-        botao.setStyle("-fx-background-color: #705240; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color:  #eccb7e;");
+        });
+
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color:  #140e0a; -fx-border-color: transparent;");
+        });
     }
-    private void restaurarCor(Button botao) {
-        botao.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-    }
-    private void desmarcarUltimoClicado() {
-        if (lastClicked != null) {
-            lastClicked.setStyle("-fx-background-color: #705240; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-        }
-    }
-    private void destacarBotao(Button button) {
-        button.setStyle("-fx-background-color: #705240; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
-        lastClicked = button;
+
+
+    private void configurarBotoesMarrom(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
     }
 }

@@ -31,4 +31,8 @@ public abstract class Cidade {
     public ArrayList<Quest> getQuests() {
         return quests;
     }
+
+    public String getNome() {
+        return Nome;
+    }
 }

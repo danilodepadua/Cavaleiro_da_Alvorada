@@ -3,22 +3,45 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerConfig">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerConfig">
    <children>
-      <ChoiceBox fx:id="EscolhaResolucao" layoutX="71.0" layoutY="117.0" prefWidth="150.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="117.0" />
-      <Text layoutX="208.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurações" textAlignment="RIGHT" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
+      <ChoiceBox fx:id="EscolhaResolucao" layoutX="487.0" layoutY="203.0" prefHeight="26.0" prefWidth="215.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="203.0" />
+      <Text fill="#eccb7e" layoutX="487.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" textAlignment="RIGHT" AnchorPane.leftAnchor="487.0" AnchorPane.rightAnchor="446.0800018310547" AnchorPane.topAnchor="19.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="243.0" layoutY="339.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="25.6" prefWidth="68.8" text="Voltar" AnchorPane.bottomAnchor="35.39999999999998" AnchorPane.leftAnchor="243.0" AnchorPane.rightAnchor="207.0" />
-      <Button layoutX="243.0" layoutY="291.0" mnemonicParsing="false" onAction="#Confirmar" prefWidth="150.0" text="Confirmar" AnchorPane.bottomAnchor="83.39999999999998" AnchorPane.leftAnchor="243.0" AnchorPane.rightAnchor="206.60000000000002" />
-      <Slider fx:id="SliderVolume" layoutX="76.0" layoutY="172.0" prefHeight="14.0" prefWidth="150.0" value="100.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="170.0" />
-      <Text layoutX="70.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="150.0" />
-      <Text layoutX="70.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="95.0" />
+      <Slider fx:id="SliderVolume" layoutX="487.0" layoutY="320.0" prefHeight="14.0" prefWidth="150.0" value="100.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="320.0" />
+      <Text fill="#eccb7e" layoutX="487.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="275.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="29.0" />
+         </font></Text>
+      <Text fill="#eccb7e" layoutX="483.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="148.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="29.0" />
+         </font></Text>
+      <Button fx:id="btnVoltar" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnConfirmar" layoutX="495.0" layoutY="527.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Confirmar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

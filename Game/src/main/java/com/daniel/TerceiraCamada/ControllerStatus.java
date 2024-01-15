@@ -6,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -17,21 +19,29 @@ import java.util.ResourceBundle;
 public class ControllerStatus implements Initializable {
     private Integer  pontosDisp;
 
+    @FXML
+    private Button btnMaisForca;
 
     @FXML
-    private GridPane Grid;
+    private Button btnMaisInt;
 
     @FXML
-    private Text TxtForce;
+    private Button btnMaisRes;
 
     @FXML
-    private Text TxtInt;
+    private Button btnMaisVel;
 
     @FXML
-    private Text TxtRes;
+    private Button btnMenosForce;
 
     @FXML
-    private Text TxtVel;
+    private Button btnMenosInt;
+
+    @FXML
+    private Button btnMenosRes;
+
+    @FXML
+    private Button btnMenosVel;
 
     @FXML
     private Button btnSalvar;
@@ -52,18 +62,31 @@ public class ControllerStatus implements Initializable {
     private ProgressBar progBarVel;
 
     @FXML
+    private Text txtForce;
+
+    @FXML
+    private Text txtInt;
+
+    @FXML
     private Text txtLevel;
 
     @FXML
     private Text txtPontos;
 
+    @FXML
+    private Text txtRes;
+
+    @FXML
+    private Text txtVelocidade;
+
+    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #eccb7e; ";
 
     @FXML
     void onClickMaisForca(ActionEvent event) throws PlayerInexistenteException {
         if(pontosDisp>0) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: "+ pontosDisp);
+            txtPontos.setText(""+ pontosDisp);
             progBarForca.setProgress(progBarForca.getProgress() + 0.01);
         }
     }
@@ -73,7 +96,7 @@ public class ControllerStatus implements Initializable {
         if(pontosDisp>0) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: "+ pontosDisp);
+            txtPontos.setText(""+ pontosDisp);
             progBarInt.setProgress(progBarInt.getProgress() + 0.01);
         }
     }
@@ -83,7 +106,7 @@ public class ControllerStatus implements Initializable {
         if(pontosDisp>0) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: "+ pontosDisp);
+            txtPontos.setText(""+ pontosDisp);
             progBarRes.setProgress(progBarRes.getProgress() + 0.01);
         }
     }
@@ -93,7 +116,7 @@ public class ControllerStatus implements Initializable {
         if(pontosDisp>0) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: "+ pontosDisp);
+            txtPontos.setText(""+ pontosDisp);
             progBarVel.setProgress(progBarVel.getProgress() + 0.01);
         }
     }
@@ -103,7 +126,7 @@ public class ControllerStatus implements Initializable {
         if (progBarForca.getProgress() > 0.25 && progBarForca.getProgress() > (Player.getPlayer().getForce() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: " + pontosDisp);
+            txtPontos.setText("" + pontosDisp);
             progBarForca.setProgress(progBarForca.getProgress() - 0.01);
         }
     }
@@ -113,7 +136,7 @@ public class ControllerStatus implements Initializable {
         if (progBarInt.getProgress() > 0.25 && progBarInt.getProgress() > (Player.getPlayer().getInteligence() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: " + pontosDisp);
+            txtPontos.setText("" + pontosDisp);
             progBarInt.setProgress(progBarInt.getProgress() - 0.01);
         }
     }
@@ -123,8 +146,9 @@ public class ControllerStatus implements Initializable {
         if (progBarRes.getProgress() > 0.25 && progBarRes.getProgress() > (Player.getPlayer().getResistencia() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: " + pontosDisp);
+            txtPontos.setText("" + pontosDisp);
             progBarRes.setProgress(progBarRes.getProgress() - 0.01);
+
         }
     }
 
@@ -133,28 +157,46 @@ public class ControllerStatus implements Initializable {
         if (progBarVel.getProgress() > 0.25 && progBarVel.getProgress() > (Player.getPlayer().getVelocity() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
-            txtPontos.setText("Pontos: " + pontosDisp);
+            txtPontos.setText("" + pontosDisp);
             progBarVel.setProgress(progBarVel.getProgress() - 0.01);
+
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            contornarBotaoVoltar();
+            configurarBotoes(btnSalvar);
+            configurarBotoes(btnMaisForca);
+            configurarBotoes(btnMaisInt);
+            configurarBotoes(btnMaisRes);
+            configurarBotoes(btnMaisVel);
 
-            configurarOuvinte(progBarForca, TxtForce);
-            configurarOuvinte(progBarInt, TxtInt);
-            configurarOuvinte(progBarRes, TxtRes);
-            configurarOuvinte(progBarVel, TxtVel);
+            configurarBotoes(btnMenosForce);
+            configurarBotoes(btnMenosRes);
+            configurarBotoes(btnMenosInt);
+            configurarBotoes(btnMenosVel);
 
-            TxtVel.setText(String.valueOf(calcularValorDaBarra(progBarVel)));
-            TxtForce.setText(String.valueOf(calcularValorDaBarra(progBarForca)));
-            TxtRes.setText(String.valueOf(calcularValorDaBarra(progBarRes)));
-            TxtInt.setText(String.valueOf(calcularValorDaBarra(progBarInt)));
+            progBarInt.setStyle(PROGRESS_BAR_COLOR);
+            progBarRes.setStyle(PROGRESS_BAR_COLOR);
+            progBarVel.setStyle(PROGRESS_BAR_COLOR);
+            progBarForca.setStyle(PROGRESS_BAR_COLOR);
+
+            btnSalvar.setAlignment(Pos.CENTER);
+            configurarOuvinte(progBarForca, txtForce);
+            configurarOuvinte(progBarInt, txtInt);
+            configurarOuvinte(progBarRes, txtRes);
+            configurarOuvinte(progBarVel, txtVelocidade);
+
+            txtVelocidade.setText(""+calcularValorDaBarra(progBarVel));
+            txtForce.setText(""+calcularValorDaBarra(progBarForca));
+            txtRes.setText(""+ calcularValorDaBarra(progBarRes));
+            txtInt.setText(""+calcularValorDaBarra(progBarInt));
 
             pontosDisp = Player.getPlayer().getPontos();
-            txtPontos.setText("Pontos: "+ pontosDisp);
-            txtLevel.setText("Level: "+ Player.getPlayer().getLvl());
+            txtPontos.setText(""+ pontosDisp);
+            txtLevel.setText(""+ Player.getPlayer().getLvl());
 
             progBarForca.setProgress(Player.getPlayer().getForce()/100.0);
             progBarInt.setProgress(Player.getPlayer().getInteligence()/100.0);
@@ -193,5 +235,41 @@ public class ControllerStatus implements Initializable {
     private int calcularValorDaBarra(ProgressBar barra) {
         double progresso = barra.getProgress() * 100;
         return (int) Math.round(progresso);
+    }
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
+
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+    }
+
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
     }
 }

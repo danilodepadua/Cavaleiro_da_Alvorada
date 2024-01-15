@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MontanhaDoNorte extends Cidade {
     public MontanhaDoNorte(){
-        super("MontanhaDoNorte","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
+        super("Montanha Do Norte","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();

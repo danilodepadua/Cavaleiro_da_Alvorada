@@ -15,8 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -25,20 +27,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerInventario implements Initializable {
-    private Button lastClicked;
     private boolean statusVisivel = false; // Variável para controlar se os dados estão visíveis
-    private boolean botaoInicial = false;
+
+    @FXML
+    private Text AtqFPlayer;
+
+    @FXML
+    private Text AtqMPlayer;
+
     @FXML
     private Text DefesaMagicaPlayer;
+
     @FXML
     private Text DefesaPlayer;
 
     @FXML
     private Text ForcaPlayer;
-    @FXML
-    private Text AtqFPlayer;
-    @FXML
-    private Text AtqMPlayer;
 
     @FXML
     private GridPane Grid;
@@ -70,12 +74,14 @@ public class ControllerInventario implements Initializable {
     @FXML
     private Text VelocidadePlayer;
 
-
     @FXML
     private Button btnDesequipar;
 
     @FXML
     private Button btnEquipar;
+
+    @FXML
+    private Button btnStatus;
 
     @FXML
     private Button btnUsar;
@@ -87,24 +93,53 @@ public class ControllerInventario implements Initializable {
     private Button btnVoltar;
 
     @FXML
-    private Button btnStatus;
-    @FXML
-    private Text txtDescricao;
-    @FXML
-    private Text txtQtdItem;
-    @FXML
     private GridPane gridEquipaveis;
 
+    @FXML
+    private Text txt1;
+
+    @FXML
+    private Text txt10;
+
+    @FXML
+    private Text txt2;
+
+    @FXML
+    private Text txt3;
+
+    @FXML
+    private Text txt4;
+
+    @FXML
+    private Text txt5;
+
+    @FXML
+    private Text txt6;
+
+    @FXML
+    private Text txt7;
+
+    @FXML
+    private Text txt8;
+
+    @FXML
+    private Text txt9;
+
+    @FXML
+    private Text txtDescricao;
+
+    @FXML
+    private Text txtQtdItem;
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
         NomeItem.setText("Nome: " + i.getNome());
         txtDescricao.setText("Descrição: " + i.getDescricao());
-        txtQtdItem.setText("Qtd: " + i.getQuant());
+        txtQtdItem.setText("Quantidade: " + i.getQuant());
         btnUsar.setText("Usar");
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
-
+        btnVender.setDisable(false);
         configurarVenda(i);
 
         if (i instanceof IConsumableOutBattle) {
@@ -136,15 +171,8 @@ public class ControllerInventario implements Initializable {
             image.setPreserveRatio(true);
             itemButton.prefWidthProperty().bind(gridEquipaveis.prefWidthProperty());
             itemButton.prefHeightProperty().bind(gridEquipaveis.prefHeightProperty().divide(4));
-            itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-
-            itemButton.setOnMousePressed(event -> {
-                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;");
-            });
-
-            itemButton.setOnMouseReleased(event -> {
-                itemButton.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: transparent;");
-            });
+            itemButton.setStyle("-fx-border-color:  #eccb7e; -fx-background-color:  #241811");
+            configurarBotoes(itemButton);
 
 
             // Configurar ação do botão para exibir detalhes do item ou equipá-lo
@@ -231,6 +259,7 @@ public class ControllerInventario implements Initializable {
                 venderItem(i);
                 AtualizarDados();
                 limparTela();
+                btnVender.setDisable(true);
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }
@@ -238,16 +267,26 @@ public class ControllerInventario implements Initializable {
     }
 
     private void AtualizarDados() throws PlayerInexistenteException {
-        VelocidadePlayer.setText("Velocidade: " + Player.getPlayer().getVelocity());
-        ForcaPlayer.setText("Força: " + Player.getPlayer().getForce());
-        HpPlayer.setText("HP: " + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
-        MpPlayer.setText("MP: " + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
-        InteligenciaPlayer.setText("Inteligência: " + Player.getPlayer().getInteligence());
-        ResistenciaPlayer.setText("Resistência: " + Player.getPlayer().getResistencia());
-        DefesaPlayer.setText("Defesa Física: " + Player.getPlayer().getDefesaF());
-        DefesaMagicaPlayer.setText("Defesa Mágica: " + Player.getPlayer().getDefesaM());
-        AtqFPlayer.setText("Ataque Físico: " + Player.getPlayer().getAtaqueF());
-        AtqMPlayer.setText("Ataque Mágico: " + Player.getPlayer().getAtaqueM());
+        txt1.setText("HP:");
+        txt2.setText("MP:");
+        txt3.setText("Força: ");
+        txt4.setText("Ataque físico:");
+        txt5.setText("Velocidade:");
+        txt6.setText("Inteligência:");
+        txt7.setText("Ataque mágico:");
+        txt8.setText("Defesa mágica:");
+        txt9.setText("Resistência:");
+        txt10.setText("Defesa física:");
+        VelocidadePlayer.setText("" + Player.getPlayer().getVelocity());
+        ForcaPlayer.setText("" + Player.getPlayer().getForce());
+        HpPlayer.setText("" + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
+        MpPlayer.setText("" + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
+        InteligenciaPlayer.setText("" + Player.getPlayer().getInteligence());
+        ResistenciaPlayer.setText("" + Player.getPlayer().getResistencia());
+        DefesaPlayer.setText("" + Player.getPlayer().getDefesaF());
+        DefesaMagicaPlayer.setText("" + Player.getPlayer().getDefesaM());
+        AtqFPlayer.setText("" + Player.getPlayer().getAtaqueF());
+        AtqMPlayer.setText("" + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
         for (int i = 0; i < Player.getPlayer().getInventario().getItens().length; i++) {
@@ -262,25 +301,12 @@ public class ControllerInventario implements Initializable {
                 item.prefWidthProperty().bind(Grid.prefWidthProperty().divide(Grid.getColumnCount()));
                 item.prefHeightProperty().bind(Grid.prefHeightProperty().divide(Grid.getRowCount()));
                 // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
-                item.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
+                item.setStyle("-fx-background-color: #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color:  #eccb7e");
 
                 image.setPreserveRatio(true);
                 item.setGraphic(image);
 
-                item.setOnMouseClicked(event -> {
-                    desmarcarUltimoClicado();
-                    destacarBotao(item);
-                });
-
-                item.setOnMousePressed(event -> {
-                    escurecerCor(item);
-                });
-
-                item.setOnMouseReleased(event -> {
-                    restaurarCor(item);
-                    desmarcarUltimoClicado();
-                    destacarBotao(item);
-                });
+                configurarBotoes(item);
 
                 int finalI = i;
                 item.setOnAction(event -> {
@@ -299,24 +325,15 @@ public class ControllerInventario implements Initializable {
         criaBotaoEquipavel(Player.getPlayer().getCalca());
         criaBotaoEquipavel(Player.getPlayer().getArma());
     }
-    private void escurecerCor(Button botao) {
-        botao.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60; -fx-opacity: 0.8");
-    }
-    private void restaurarCor(Button botao) {
-        botao.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-    }
-    private void desmarcarUltimoClicado() {
-        if (lastClicked != null) {
-            lastClicked.setStyle("-fx-background-color: #0a234d; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-        }
-    }
-    private void destacarBotao(Button button) {
-        button.setStyle("-fx-background-color: #0a234d; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 60; -fx-min-height: 60");
-        lastClicked = button;
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        contornarBotaoVoltar();
         btnUsar.setDisable(true);
+        btnDesequipar.setDisable(true);
+        btnEquipar.setDisable(true);
+        btnVender.setDisable(true);
         btnStatus.setDisable(false);
         Grid.prefWidthProperty().bind(Scroll.widthProperty().subtract(20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
@@ -324,6 +341,11 @@ public class ControllerInventario implements Initializable {
         ColumnConstraints col = new ColumnConstraints();
         col.setPercentWidth(100f/Grid.getColumnCount());
         row.setPrefHeight(Grid.getColumnConstraints().get(0).getPrefWidth());
+        configurarBotoes(btnDesequipar);
+        configurarBotoes(btnEquipar);
+        configurarBotoes(btnStatus);
+        configurarBotoes(btnUsar);
+        configurarBotoes(btnVender);
         for(int i = 0; i< Grid.getColumnCount(); i++){
             Grid.getRowConstraints().set(i,row);
             Grid.getColumnConstraints().set(i,col);
@@ -332,6 +354,7 @@ public class ControllerInventario implements Initializable {
         Grid.setLayoutY(0);
         try {
             AtualizarDados();
+            limparDadosStatus();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -388,5 +411,53 @@ public class ControllerInventario implements Initializable {
         ResistenciaPlayer.setText("");
         DefesaPlayer.setText("");
         DefesaMagicaPlayer.setText("");
+        AtqFPlayer.setText("");
+        AtqMPlayer.setText("");
+        txt1.setText("");
+        txt2.setText("");
+        txt3.setText("");
+        txt4.setText("");
+        txt5.setText("");
+        txt6.setText("");
+        txt7.setText("");
+        txt8.setText("");
+        txt9.setText("");
+        txt10.setText("");
+    }
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
+
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+    }
+
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
     }
 }

@@ -189,7 +189,7 @@ public class ControllerBlackJack  implements Initializable{
     }
     @FXML
     void Voltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerCassino.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")));
     }
     private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
         Carta carta = baralho.pegarCarta();

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
@@ -15,6 +16,19 @@ public class MainController implements Initializable {
 
     @FXML
     private AnchorPane Screen;
+
+    @FXML
+    private Button btnCarregar;
+
+    @FXML
+    private Button btnConfig;
+
+    @FXML
+    private Button btnNovoJogo;
+
+    @FXML
+    private Button btnSair;
+
     @FXML
     void Iniciar(ActionEvent event){
         System.out.println("Iniciou");
@@ -33,7 +47,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Screen.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Senhordosaneis61.jpg").toString()),
+        Screen.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Capa.jpg").toString()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -44,9 +58,29 @@ public class MainController implements Initializable {
                         false,
                         true,
                         true
-                )
-        )
-        )
+                )))
         );
+        configurarBotoes(btnCarregar);
+        configurarBotoes(btnConfig);
+        configurarBotoes(btnSair);
+        configurarBotoes(btnNovoJogo);
+    }
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
     }
 }

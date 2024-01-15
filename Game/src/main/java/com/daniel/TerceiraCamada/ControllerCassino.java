@@ -84,8 +84,9 @@ public class ControllerCassino implements Initializable {
                         true,
                         true
                 ))));
-        vboxTextos.setSpacing(15);
-
+        contornarBotaoVoltar();
+        configurarBotoes(btnBlackJack);
+        configurarBotoes(btnMemoria);
         try {
             Main.mudarCidade(new MontanhaDoNorte());
         } catch (PlayerInexistenteException e) {
@@ -165,6 +166,42 @@ public class ControllerCassino implements Initializable {
 
     @FXML
     void JogarMemoria(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("JogoDaMemoria.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")));
+    }
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
+
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+    }
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
     }
 }

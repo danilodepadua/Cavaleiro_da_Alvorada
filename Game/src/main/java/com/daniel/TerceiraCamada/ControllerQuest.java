@@ -35,9 +35,15 @@ public class ControllerQuest implements Initializable {
 
     @FXML
     private VBox vboxQuests;
+
+    @FXML
+    private Button btnVoltar;
+
     private static final String FONT_FAMILY = "Barlow Condensed SemiBold";
     private static final int FONT_SIZE = 24;
-    private static final String TEXT_FILL = "-fx-fill: white;";
+    private static final String TEXT_FILL = "-fx-fill: #eccb7e;";
+    private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #eccb7e; ";
+
 
     private void criarQuest(Quest quest) throws PlayerInexistenteException {
         SimpleIntegerProperty progressoProperty = new SimpleIntegerProperty(quest.getProgresso());
@@ -53,9 +59,11 @@ public class ControllerQuest implements Initializable {
                 progressBar.setProgress((double) newValue / quest.getObjetivo()));
 
         progressBar.setProgress((double) quest.getProgresso() / quest.getObjetivo());
-
+        progressBar.setStyle(PROGRESS_BAR_COLOR);
         Button btnRecolher = new Button("Recolher");
-        btnRecolher.setStyle("-fx-background-color: #081936; -fx-border-color: #daa520; -fx-text-fill: #daa520;");
+        btnRecolher.setStyle("-fx-background-color: #241811; -fx-border-color:  #eccb7e; -fx-text-fill:  #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
+        btnRecolher.setPrefWidth(100);
+        btnRecolher.setPrefHeight(30);
 
         // Configurar propriedade disable com base na completude da quest
         btnRecolher.setDisable(!quest.isCompleta());
@@ -70,10 +78,11 @@ public class ControllerQuest implements Initializable {
         });
         HBox hBox = new HBox();
         hBox.setSpacing(20);
+        hBox.setPrefWidth(500.0);
         hBox.getChildren().addAll(progressBar, btnRecolher);
         vboxQuests.getChildren().addAll(texto,hBox);
         vboxQuests.setAlignment(Pos.TOP_LEFT);
-        vboxQuests.setSpacing(20);
+        vboxQuests.setSpacing(25);
     }
     private void recolherRecompensas(Quest quest) throws PlayerInexistenteException {
         System.out.println("Recolher recompensas para a quest: " + quest.getNome());
@@ -84,7 +93,7 @@ public class ControllerQuest implements Initializable {
             vboxQuests.getChildren().clear();
 
             int inicio = questAtual;
-            int fim = Math.min(questAtual + 4, Player.getPlayer().getQuestsAtuais().size());
+            int fim = Math.min(questAtual + 5, Player.getPlayer().getQuestsAtuais().size());
 
             for (int i = inicio; i < fim; i++) {
                 Quest quest = Player.getPlayer().getQuestsAtuais().get(i);
@@ -119,21 +128,31 @@ public class ControllerQuest implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        panePrincipal.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Cartas/MesaTaverna.jpeg").toString()),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(
+                        BackgroundSize.AUTO,
+                        BackgroundSize.AUTO,
+                        false,
+                        false,
+                        true,
+                        true
+                ))));
         configurarSetas();
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
         seta.setFitWidth(40);
-        seta.setFitHeight(40);
+        seta.setFitHeight(60);
         seta.setPreserveRatio(true);
         ImageView setaInv = new ImageView();
         setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
         setaInv.setFitWidth(40);
-        setaInv.setFitHeight(40);
+        setaInv.setFitHeight(60);
         setaInv.setPreserveRatio(true);
         setaInv.rotateProperty().set(180);
-
+        contornarBotaoVoltar();
         try {
             Player.getPlayer().desabilitarQuestsNaoComuns();
             atualizarInterfaceGrafica();
@@ -141,7 +160,6 @@ public class ControllerQuest implements Initializable {
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
-
     }
     private void verificarSetasQuests(int size) {
         if (questDisponivel == 0) {
@@ -150,7 +168,7 @@ public class ControllerQuest implements Initializable {
             bntSetaSubir.setDisable(false);
         }
 
-        if (questDisponivel + 4 >= size) {
+        if (questDisponivel + 5 >= size) {
             btnSetaDescer.setDisable(true);
         } else {
             btnSetaDescer.setDisable(false);
@@ -179,5 +197,22 @@ public class ControllerQuest implements Initializable {
     }
 
 
+    private void contornarBotaoVoltar() {
+        btnVoltar.setOnMouseEntered(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
+        });
+
+        btnVoltar.setOnMouseExited(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+
+        btnVoltar.setOnMousePressed(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        btnVoltar.setOnMouseReleased(event -> {
+            btnVoltar.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color: transparent;");
+        });
+    }
 
 }

@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #081936; -fx-border-color: #daa520;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Pane fx:id="pane1" cache="true" focusTraversable="true" opacity="0.95" prefHeight="122.0" prefWidth="1024.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <HBox fx:id="vboxBotoes" layoutX="843.0" layoutY="22.0" prefHeight="78.0" prefWidth="267.0" spacing="20.0">
                      <children>
@@ -54,7 +54,7 @@
                            <children>
                               <HBox prefHeight="34.0" prefWidth="137.0">
                                  <children>
-                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                                    <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Nome:">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -68,7 +68,7 @@
                               </HBox>
                               <HBox prefHeight="21.0" prefWidth="170.0">
                                  <children>
-                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível:" wrappingWidth="61.570892333984375">
+                                    <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Nível:" wrappingWidth="61.570892333984375">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -82,7 +82,7 @@
                               </HBox>
                               <HBox prefHeight="7.0" prefWidth="162.0">
                                  <children>
-                                    <Text fill="GOLDENROD" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:" wrappingWidth="77.1920166015625">
+                                    <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:" wrappingWidth="77.1920166015625">
                                        <font>
                                           <Font name="Barlow Condensed SemiBold" size="26.0" />
                                        </font>
@@ -239,34 +239,39 @@
                </children></Pane>
          </children>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="58.0" prefHeight="409.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="58.0">
+      <VBox alignment="TOP_CENTER" layoutX="461.0" layoutY="21.0" prefHeight="386.0" prefWidth="214.0" spacing="15.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="21.0">
          <children>
-            <Button fx:id="btnViajar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViajar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Viajar" textFill="GOLDENROD">
+            <Text fx:id="txtCidade" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADE ATUAL: ">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="25.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnViajar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViajar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Viajar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Caçar" textFill="GOLDENROD">
+            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Caçar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnSalvar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Salvar" textFill="GOLDENROD">
+            <Button fx:id="btnSalvar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Quests" textFill="GOLDENROD">
+            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Quests" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Loja" textFill="GOLDENROD">
+            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Loja" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #081936; -fx-border-width: 1; -fx-border-color: #daa520;" text="Cassino" textFill="GOLDENROD">
+            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Cassino" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
@@ -321,5 +326,6 @@
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
+      <Pane prefHeight="200.0" prefWidth="298.0" />
    </children>
 </AnchorPane>

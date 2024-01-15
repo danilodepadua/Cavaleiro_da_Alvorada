@@ -1,0 +1,53 @@
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #eccb7e;
+    -fx-border-color: #eccb7e;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-effect: null;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+.tab-pane .tab {
+    -fx-background-color: #140e0a; /* Cor desejada para as abas */
+    -fx-text-fill: white; /* Cor do texto nas abas, ajuste conforme necessário */
+    -fx-font-family: "Barlow Condensed SemiBold";
+    -fx-fill: white;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #140e0a; /* Cor de fundo da aba selecionada */
+    -fx-text-fill: #eccb7e; /* Cor do texto na aba selecionada */
+}
+.tab .tab-label {
+    -fx-text-fill: #eccb7e;
+    -fx-alignment: CENTER;
+}
+/* Cor da barra de rolagem */
+.scroll-bar:vertical {
+    -fx-background-color: black; /* Cor de fundo da barra de rolagem vertical */
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: black; /* Cor de fundo da barra de rolagem horizontal */
+}
+
+/* Cor da alça (thumb) da barra de rolagem */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #47362c; /* Cor da alça da barra de rolagem vertical */
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #47362c; /* Cor da alça da barra de rolagem horizontal */
+}
+
+/* Cor da alça ao passar o mouse sobre ela */
+.scroll-bar .thumb:hover {
+    -fx-background-color: #241811; /* Cor da alça ao passar o mouse sobre ela */
+}
+
+/* Cor do rastreamento (track) da barra de rolagem */
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    -fx-background-color: #140e0a; /* Cor do rastreamento da barra de rolagem */
+}

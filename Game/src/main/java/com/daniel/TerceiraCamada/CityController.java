@@ -141,6 +141,8 @@ public class CityController implements Initializable {
 
     @FXML
     private HBox vboxBotoes;
+    @FXML
+    private Text txtCidade;
 
     @FXML
     void Salvar(ActionEvent event) throws PlayerInexistenteException {
@@ -150,6 +152,10 @@ public class CityController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("1");
+        txtCidade.setText(Main.cidadeAtual.getNome());
+        txtCidade.setStroke(Color.BLACK);
+        txtCidade.setStrokeWidth(2);
+
         try {
             System.out.println("2");
             System.out.println(Player.getPlayer() != null);
@@ -191,61 +197,12 @@ public class CityController implements Initializable {
                         true
                 ))));
 
-        btncacar.setOnMouseClicked(event -> {
-            desmarcarUltimoClicado();
-            destacarBotao(btncacar);
-        });
-        btncacar.setOnMousePressed(event -> {
-            escurecerCor(btncacar);
-        });
-
-        btncacar.setOnMouseReleased(event -> {
-            restaurarCor(btncacar);
-            desmarcarUltimoClicado();
-            destacarBotao(btncacar);
-        });
-
-        btnCassino.setOnMouseClicked(event -> {
-            desmarcarUltimoClicado();
-            destacarBotao(btnCassino);
-        });
-        btnCassino.setOnMousePressed(event -> {
-            escurecerCor(btnCassino);
-        });
-
-        btnCassino.setOnMouseReleased(event -> {
-            restaurarCor(btnCassino);
-            desmarcarUltimoClicado();
-            destacarBotao(btnCassino);
-        });
-
-        btnLoja.setOnMouseClicked(event -> {
-            desmarcarUltimoClicado();
-            destacarBotao(btnLoja);
-        });
-        btnLoja.setOnMousePressed(event -> {
-            escurecerCor(btnLoja);
-        });
-
-        btnLoja.setOnMouseReleased(event -> {
-            restaurarCor(btnLoja);
-            desmarcarUltimoClicado();
-            destacarBotao(btnLoja);
-        });
-
-        btnViajar.setOnMouseClicked(event -> {
-            desmarcarUltimoClicado();
-            destacarBotao(btnViajar);
-        });
-        btnViajar.setOnMousePressed(event -> {
-            escurecerCor(btnViajar);
-        });
-
-        btnViajar.setOnMouseReleased(event -> {
-            restaurarCor(btnViajar);
-            desmarcarUltimoClicado();
-            destacarBotao(btnViajar);
-        });
+        configurarBotoes(btncacar);
+        configurarBotoes(btnCassino);
+        configurarBotoes(btnLoja);
+        configurarBotoes(btnViajar);
+        configurarBotoes(btnSalvar);
+        configurarBotoes(btnQuests);
 
         // Inicializar o Label de informações
         infoCoin.setVisible(false);
@@ -258,31 +215,31 @@ public class CityController implements Initializable {
         infoInteligencia.setVisible(false);
         infoResistencia.setVisible(false);
 
-        infoCoin.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoCoin.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoCoin.setPadding(new Insets(5));
 
-        infoResistencia.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoResistencia.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoResistencia.setPadding(new Insets(5));
 
-        infoInteligencia.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoInteligencia.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoInteligencia.setPadding(new Insets(5));
 
-        infoVelo.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoVelo.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoVelo.setPadding(new Insets(5));
 
-        infoForca.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoForca.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoForca.setPadding(new Insets(5));
 
-        infoDefesaMagica.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoDefesaMagica.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoDefesaMagica.setPadding(new Insets(5));
 
-        infoMana.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoMana.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoMana.setPadding(new Insets(5));
 
-        infoDefesa.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoDefesa.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoDefesa.setPadding(new Insets(5));
 
-        infoVida.setBackground(new Background(new BackgroundFill(Color.web("#081936"), new CornerRadii(5), Insets.EMPTY)));
+        infoVida.setBackground(new Background(new BackgroundFill(Color.web("#241811"), new CornerRadii(5), Insets.EMPTY)));
         infoVida.setPadding(new Insets(5));
 
 
@@ -307,7 +264,24 @@ public class CityController implements Initializable {
         imgVelocidade.setOnMouseExited(event -> infoVelo.setVisible(false));
         imgDefesaMagica.setOnMouseExited(event -> infoDefesaMagica.setVisible(false));
     }
+    private void configurarBotoes(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+        });
 
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+        });
+
+    }
     // Métodos específicos para cada atributo
     private void mostrarInfoVida(MouseEvent event, ImageView imageView) {
         infoVida.setText("Informação sobre o HP");
@@ -345,28 +319,13 @@ public class CityController implements Initializable {
         infoDefesaMagica.setText("Informações sobre a defesa mágica");
         infoDefesaMagica.setVisible(true);
     }
-    private void escurecerCor(Button botao) {
-        botao.setStyle("-fx-background-color:  #081936; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 200; -fx-min-height: 50; -fx-opacity: 0.8");
-    }
-    private void restaurarCor(Button botao) {
-        botao.setStyle("-fx-background-color:  #081936; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-    }
-    private void desmarcarUltimoClicado() {
-        if (lastClicked != null) {
-            lastClicked.setStyle("-fx-background-color:  #081936; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;");
-        }
-    }
-    private void destacarBotao(Button button) {
-        button.setStyle("-fx-background-color:  #081936; -fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 2; -fx-focus-traversable: false;-fx-border-color: #ADD8E6;-fx-min-width: 200; -fx-min-height: 50");
-        lastClicked = button;
-    }
     @FXML
     void onClickViajar(ActionEvent event) {
     Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
     }
     @FXML
     void onClickCassino(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerCassino.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")));
 
     }
 
@@ -381,6 +340,6 @@ public class CityController implements Initializable {
     }
     @FXML
     void onClickQuests(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("QuestsController.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")));
     }
 }

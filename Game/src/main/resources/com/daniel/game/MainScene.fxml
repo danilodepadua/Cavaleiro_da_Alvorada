@@ -2,12 +2,40 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MainController">
+<AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MainController">
    <children>
-      <Button layoutX="446.0" layoutY="261.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Novo Jogo" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="120.0" />
-      <Button layoutX="446.0" layoutY="355.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Carregar" prefHeight="26.0" prefWidth="120.0" text="Carregar" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="160.0" />
-      <Button layoutX="446.0" layoutY="450.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Configurar" prefHeight="26.0" prefWidth="120.0" text="Configurações" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0" />
-      <Button layoutX="160.0" layoutY="210.0" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="26.0" prefWidth="120.0" text="Sair" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="240.0" />
+      <VBox layoutX="460.0" layoutY="182.0" prefHeight="298.0" prefWidth="242.0" spacing="30.0">
+         <children>
+            <Button fx:id="btnNovoJogo" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Novo Jogo" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCarregar" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Carregar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Carregar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnConfig" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Configurar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Configurações" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSair" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Iniciar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sair" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Text fill="#eccb7e" layoutX="427.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="NOME DO JOGO">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="60.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

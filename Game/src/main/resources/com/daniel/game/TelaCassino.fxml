@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerCassino">
+   <children>
+      <Text fx:id="txtCassino" fill="#e5ff00" layoutX="291.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="61.0" />
+         </font>
+      </Text>
+      <VBox fx:id="vboxTextos" layoutX="473.0" layoutY="237.0" prefHeight="244.0" prefWidth="214.0" spacing="20.0">
+         <children>
+            <Text fx:id="txtCassinao" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Button fx:id="btnBlackJack" mnemonicParsing="false" onAction="#Jogar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="21" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font></Button>
+            <Button fx:id="btnMemoria" mnemonicParsing="false" onAction="#JogarMemoria" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Memória" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font></Button>
+            <Text fx:id="txtMoedas" fill="#e5ff00" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <Button fx:id="btnVoltar" layoutY="-11.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

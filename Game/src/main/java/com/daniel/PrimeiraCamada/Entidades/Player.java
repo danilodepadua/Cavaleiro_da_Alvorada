@@ -8,9 +8,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.PrimeiraCamada.Quest;
-import com.daniel.PrimeiraCamada.Quests.QuestAbelha;
-import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
-import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
+import com.daniel.PrimeiraCamada.Quests.*;
 
 import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
@@ -29,7 +27,6 @@ public class Player extends Personagem implements Serializable {
     private Calca calca;
     private static Player player;
     private List<Quest> questAtuais;
-    private List<Quest> questsAtuais;
     private int lvl = 1;
     private int currentXp;
     private int currentMp, currentHp;
@@ -51,6 +48,8 @@ public class Player extends Personagem implements Serializable {
         this.questAtuais.add(new QuestAbelha());
         this.questAtuais.add(new QuestBabySlime());
         this.questAtuais.add(new QuestSlimeDeEscuridaoNv1());
+        this.questAtuais.add(new QuestCobraGigante());
+        this.questAtuais.add(new QuestSnowMan());
 
 
         player = this;

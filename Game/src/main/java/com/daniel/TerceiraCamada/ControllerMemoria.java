@@ -80,7 +80,7 @@ public class ControllerMemoria implements Initializable {
     }
     @FXML
     void Voltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("ControllerCassino.fxml")));
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")));
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
