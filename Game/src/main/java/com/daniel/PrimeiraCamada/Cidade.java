@@ -3,11 +3,14 @@ package com.daniel.PrimeiraCamada;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static com.daniel.TerceiraCamada.Utilidades.estiloBotao;
 
 public abstract class Cidade implements Serializable {
     public abstract void ajustarBotoes() throws PlayerInexistenteException;
@@ -54,9 +57,10 @@ public abstract class Cidade implements Serializable {
         return  this.getBotoes().get(pos).getFunc();
     }
     protected Botao criarBotao(String nome, Runnable run){
+
         return new Botao(nome, run);
     }
-    protected Botao criarBotaoSlavar() throws PlayerInexistenteException {
+    protected Botao criarBotaoSalvar() throws PlayerInexistenteException {
         return criarBotao("Salvar", () -> {
             try {
                 Main.saveManager.Salvar();
@@ -68,16 +72,43 @@ public abstract class Cidade implements Serializable {
     protected  Botao criarBotaoCacar(){
         return criarBotao("Caçar", () -> {
             try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha")).load());
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
-    protected Botao criarBotaoCassino(){
-        return criarBotao("Cassino", () -> {
+    protected  Botao criarBotaoLoja(){
+        return criarBotao("Loja", () -> {
             try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino")).load());
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    protected  Botao criarBotaoQuest(){
+        return criarBotao("Quest", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    protected  Botao criarBotaoViajar(){
+        return criarBotao("Viajar", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    protected Botao criarBotaoTaverna(){
+        return criarBotao("Taverna", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -101,4 +132,6 @@ class Botao{
     public Runnable getFunc() {
         return func;
     }
+
+
 }

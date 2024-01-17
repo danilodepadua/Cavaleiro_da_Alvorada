@@ -40,6 +40,13 @@ public class CidadeInicial extends Cidade{
     public void ajustarBotoes() throws PlayerInexistenteException {
         this.botoes = new ArrayList<>();
         // Adiciona botões específicos da CidadeInicial
-        this.botoes.add(criarBotaoSlavar());
+        this.botoes.add(criarBotaoViajar());
+        this.botoes.add(criarBotaoCacar());
+        this.botoes.add(criarBotaoSalvar());
+        this.botoes.add(criarBotaoLoja());
+        this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoTaverna());
+
+
     }
 }

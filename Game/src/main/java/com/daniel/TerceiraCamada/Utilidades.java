@@ -84,4 +84,26 @@ public class Utilidades {
         label.setText(informacao);
         label.setVisible(true);
     }
+    public static void estiloBotao(Button button) {
+        button.setStyle("-fx-background-color:  #241811; -fx-min-width: 200; -fx-min-height: 50; -fx-background-insets: 0; -fx-background-radius: 0; -fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
+    }
+
+    public static void configurarBotoesTelaCidade(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
+        });
+
+    }
 }

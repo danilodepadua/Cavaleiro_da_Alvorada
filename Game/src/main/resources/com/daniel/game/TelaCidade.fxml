@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
+<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CityController">
    <children>
       <AnchorPane prefHeight="120.0" prefWidth="1136.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -243,36 +243,6 @@
                   <Font name="Barlow Condensed SemiBold" size="25.0" />
                </font>
             </Text>
-            <Button fx:id="btnViajar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViajar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Viajar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btncacar" layoutX="35.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Caçar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnSalvar" layoutX="35.0" layoutY="80.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnQuests" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickQuests" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Quests" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnLoja" layoutX="35.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Loja" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
          </children>
          <opaqueInsets>
             <Insets />

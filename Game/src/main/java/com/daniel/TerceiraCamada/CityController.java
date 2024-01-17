@@ -33,25 +33,11 @@ public class CityController implements Initializable {
     @FXML
     private AnchorPane Screen;
 
-    @FXML
-    private Button btnCassino;
+
 
     @FXML
     private Button btnInventario;
 
-    @FXML
-    private Button btnLoja;
-
-    @FXML
-    private Button btnQuests;
-
-    @FXML
-    private Button btnViajar;
-
-    @FXML
-    private Button btnSalvar;
-    @FXML
-    private Button btncacar;
 
     @FXML
     private Button btnStatus;
@@ -160,9 +146,13 @@ public class CityController implements Initializable {
 
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
             Button b = new Button();
+
             int finalI = i;
             b.setText(Main.cidadeAtual.getBotaoNome(finalI));
             b.setOnAction(event -> Main.cidadeAtual.getBotaoFunc(finalI).run());
+            configurarBotoesTelaCidade(b);
+            estiloBotao(b);
+
             VBox.getChildren().add(b);
         }
         txtCidade.setText(Main.cidadeAtual.getNome());
@@ -197,30 +187,8 @@ public class CityController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-        btnLoja.setOnAction(event-> {
-            try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        btncacar.setOnAction(event -> {
-            try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
 
         definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
-
-        configurarBotoes(btncacar);
-        configurarBotoes(btnCassino);
-        configurarBotoes(btnLoja);
-        configurarBotoes(btnViajar);
-        configurarBotoes(btnSalvar);
-        configurarBotoes(btnQuests);
         configurarBotoes(btnStatus);
         configurarBotoes(btnInventario);
         configurarBotoes(btnConfig);

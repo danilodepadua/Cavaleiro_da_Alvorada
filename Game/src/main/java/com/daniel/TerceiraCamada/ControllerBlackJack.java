@@ -112,7 +112,7 @@ public class ControllerBlackJack  implements Initializable{
         int pontosDealer = dealer.getPontos();
 
         // Se o dealer tem menos de 14 pontos, ele puxa uma carta
-        if (pontosDealer <= 14) {
+        if (pontosDealer <= 14 && pontosDealer <= pontosJogador) {
             try {
                 adicionarCarta(GridPaneDealer, dealer, 2);
             } catch (BaralhoVazioException ex) {
