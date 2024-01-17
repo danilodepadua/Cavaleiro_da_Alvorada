@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -69,23 +70,23 @@ public class ControllerInfos implements Initializable {
     private Text TxtXPProx;
 
     @FXML
-    void OnActionBestiario(ActionEvent event) {
-        Main.ChangeScene("TelaBestiario.fxml");
+    void OnActionBestiario(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBestiario.fxml")).load());
     }
 
     @FXML
-    void OnActionInventario(ActionEvent event) {
-        Main.ChangeScene("TelaInventario.fxml");
+    void OnActionInventario(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
     }
 
     @FXML
-    void OnActionPontos(ActionEvent event) {
-        Main.ChangeScene("TelaStatus.fxml");
+    void OnActionPontos(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaStatus.fxml")).load());
     }
 
     @FXML
-    void OnActionVoltar(ActionEvent event) {
-        Main.ChangeScene("TelaCidade.fxml");
+    void OnActionVoltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
     private void AnimarBarras(Rectangle rectangle, int valor) {

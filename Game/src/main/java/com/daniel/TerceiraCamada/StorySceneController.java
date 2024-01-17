@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,8 +30,8 @@ public class StorySceneController implements Initializable {
         adicionarCaracteresComAtraso();
     }
 
-    public void Mudar(){
-        Main.ChangeScene("CharCreatorScene.fxml");
+    public void Mudar() throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")).load());
     }
 
     public void MudarBackGround(Image imagem){
@@ -74,7 +75,13 @@ public class StorySceneController implements Initializable {
                 timeline.getKeyFrames().add(keyFrame);
             }
         }
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Time + 100), event -> Mudar()));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Time + 100), event -> {
+            try {
+                Mudar();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }));
         timeline.play();
     }
 }

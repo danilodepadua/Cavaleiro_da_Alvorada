@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,8 +51,8 @@ public class ControllerConfig implements Initializable {
         contornarBotaoVoltar(btnVoltar);
     }
     @FXML
-    void Voltar(ActionEvent event) {
-        Main.ChangeScene("TelaCidade.fxml");
+    void Voltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
 }

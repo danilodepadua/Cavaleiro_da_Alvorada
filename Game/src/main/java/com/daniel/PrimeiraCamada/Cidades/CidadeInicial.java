@@ -16,20 +16,24 @@ import com.daniel.PrimeiraCamada.Quests.QuestSnowMan;
 import com.daniel.game.Main;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CidadeInicial extends Cidade {
+public class CidadeInicial extends Cidade{
     public CidadeInicial() throws PlayerInexistenteException {
         super("Cidade Inicial", "/com.daniel.Images/CidadeNoturna.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha()};
+
+        // Inicializa a lista de inimigos corretamente
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
-        this.botoes.add(criarBotaoSlavar());
+
         // Adiciona quests à lista de quests disponíveis da cidade
-        this.quests = new ArrayList<>();
         quests.add(new QuestAbelha());
         quests.add(new QuestBabySlime());
         quests.add(new QuestCobraGigante());
         quests.add(new QuestSnowMan());
         quests.add(new QuestTigerMan());
+
+        // Adiciona botões específicos da CidadeInicial
+        this.botoes.add(criarBotaoSlavar());
     }
 }

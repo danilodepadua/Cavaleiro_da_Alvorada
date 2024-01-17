@@ -8,6 +8,7 @@ import com.daniel.PrimeiraCamada.Save.SaveManager;
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -21,15 +22,10 @@ public class Main extends Application {
     public static int xpGanhoInimigo;
 
 
-    public static void ChangeScene(String nome){
-        try {
-            Scene scene = new Scene(new FXMLLoader(Main.class.getResource(nome)).load(), CurrentStage.getWidth(), CurrentStage.getHeight());
-            CurrentStage.setScene(scene);
-            System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
-        }
-        catch(IOException i){
-            i.printStackTrace();
-        }
+    public static void ChangeScene(Parent root){
+        Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
+        CurrentStage.setScene(scene);
+        System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
     }
 
     public static void mudarCidade(Cidade novaCidade) throws PlayerInexistenteException {

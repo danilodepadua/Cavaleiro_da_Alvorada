@@ -25,13 +25,17 @@ public class SaveManager {
     }
     public void Salvar() throws PlayerInexistenteException {
         Save save = new Save(Player.getPlayer(), Main.cidadeAtual);
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(CaminhoSave.toFile()));
+        Path caminhoSave = CaminhoSave;  // Substitua isso pela lógica real para obter o caminho do arquivo
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(caminhoSave.toFile()))) {
             out.writeObject(save);
             System.out.println("Arquivo criado/atualizado com sucesso");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Falha ao salvar/atualizar arquivo");
+            System.out.println("Falha ao salvar/atualizar arquivo: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro inesperado ao salvar/atualizar arquivo: " + e.getMessage());
         }
     }
     public void Carregar(){

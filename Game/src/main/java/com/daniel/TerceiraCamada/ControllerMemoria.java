@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -78,8 +79,8 @@ public class ControllerMemoria implements Initializable {
         }
     }
     @FXML
-    void Voltar(ActionEvent event) {
-        Main.ChangeScene("TelaCassino.fxml");
+    void Voltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

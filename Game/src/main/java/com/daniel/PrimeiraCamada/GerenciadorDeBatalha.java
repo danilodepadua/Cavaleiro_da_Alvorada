@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GerenciadorDeBatalha {
@@ -53,14 +54,14 @@ public class GerenciadorDeBatalha {
         T.setOnFinished(event -> {
             try {
                 MudarTurno();
-            } catch (PlayerInexistenteException e) {
+            } catch (PlayerInexistenteException | IOException e) {
                 throw new RuntimeException(e);
             }
         });
         T.play();
     }
 
-    public void IniciarBatalha(){
+    public void IniciarBatalha() throws IOException {
         if(Inimigo.velocidade > Player.velocidade){
             state = States.turnoInimigo;
             turnoInimigo();
@@ -70,7 +71,7 @@ public class GerenciadorDeBatalha {
             turnoPlayer();
         }
     }
-    public void MudarTurno() throws PlayerInexistenteException {
+    public void MudarTurno() throws PlayerInexistenteException, IOException {
         if(Player.currentHp <= 0){
             BC.Derrota();
         }
@@ -104,7 +105,7 @@ public class GerenciadorDeBatalha {
             System.out.println("Turno player");
         }
     }
-    public void turnoInimigo(){
+    public void turnoInimigo() throws IOException {
         if(Inimigo.stun > 0){
             Inimigo.stun--;
             ArrayList<String> mensagem = new ArrayList<>();
@@ -208,9 +209,9 @@ public class GerenciadorDeBatalha {
             }
         }
     }
-    public void fugir(boolean conseguiu){
+    public void fugir(boolean conseguiu) throws IOException {
         if(conseguiu){
-            Main.ChangeScene("TelaCidade.fxml");
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
         }
         else{
             ArrayList<String> i = new ArrayList<String>();

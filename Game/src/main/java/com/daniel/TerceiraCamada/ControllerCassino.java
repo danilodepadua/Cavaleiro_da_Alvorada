@@ -23,6 +23,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,13 +52,13 @@ public class ControllerCassino implements Initializable {
     private VBox vboxTextos;
 
     @FXML
-    void Jogar(ActionEvent event) {
-        Main.ChangeScene("BlackJack.fxml");
+    void Jogar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("BlackJack.fxml")).load());
     }
 
     @FXML
-    void Voltar(ActionEvent event) {
-        Main.ChangeScene("TelaCidade.fxml");
+    void Voltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
     @Override
@@ -147,7 +148,7 @@ public class ControllerCassino implements Initializable {
     }
 
     @FXML
-    void JogarMemoria(ActionEvent event) {
-        Main.ChangeScene("TelaJogoDaMemoria.fxml");
+    void JogarMemoria(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")).load());
     }
 }

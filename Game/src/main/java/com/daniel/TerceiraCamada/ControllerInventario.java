@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -360,8 +361,8 @@ public class ControllerInventario implements Initializable {
         }
     }
     @FXML
-    void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene("TelaCidade.fxml");
+    void onClickVoltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     public void venderItem(Item item) throws PlayerInexistenteException {
         if (item instanceof IEquipable) {

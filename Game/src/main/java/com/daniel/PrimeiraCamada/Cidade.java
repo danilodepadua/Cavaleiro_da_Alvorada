@@ -2,16 +2,19 @@ package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Cidade {
+public abstract class Cidade implements Serializable {
     protected String Fundo, FundoBatalha;
     protected String Nome;
     protected Inimigo[] inimigos;
-    protected ArrayList<Quest> quests; // Usando ArrayList
-    protected ArrayList<Botao> botoes = new ArrayList<>();
+    protected ArrayList<Quest> quests = new ArrayList<>(); // Usando ArrayList
+    protected transient ArrayList<Botao> botoes = new ArrayList<>();
     public Cidade(String nome, String fundo, String fundoB) {
         this.Fundo = fundo;
         this.FundoBatalha = fundoB;
@@ -54,10 +57,22 @@ public abstract class Cidade {
         });
     }
     protected  Botao criarBotaoCacar(){
-        return criarBotao("Caçar", () -> Main.ChangeScene("TelaBatalha"));
+        return criarBotao("Caçar", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     protected Botao criarBotaoCassino(){
-        return criarBotao("Cassino", () -> Main.ChangeScene("TelaCassino"));
+        return criarBotao("Cassino", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
 

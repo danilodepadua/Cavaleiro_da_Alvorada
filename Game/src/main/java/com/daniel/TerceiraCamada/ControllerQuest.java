@@ -18,6 +18,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -180,8 +181,8 @@ public class ControllerQuest implements Initializable {
         }
     }
     @FXML
-    void Voltar(ActionEvent event) {
-        Main.ChangeScene("TelaCidade.fxml");
+    void Voltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
 }

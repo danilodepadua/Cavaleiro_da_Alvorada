@@ -13,6 +13,7 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -226,8 +227,8 @@ public class ControllerStatus implements Initializable {
         System.out.println("Salvo com sucesso");
     }
     @FXML
-    void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene("TelaInfosPlayer.fxml");
+    void onClickVoltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
     private void configurarOuvinte(ProgressBar barra, Text texto) {
         barra.progressProperty().addListener((observable, oldValue, newValue) -> {

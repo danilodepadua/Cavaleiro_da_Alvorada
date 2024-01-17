@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,19 +34,19 @@ public class MainController implements Initializable {
     private Button btnSair;
 
     @FXML
-    void Iniciar(ActionEvent event){
+    void Iniciar(ActionEvent event) throws IOException {
         System.out.println("Iniciou");
-        Main.ChangeScene("StoryScene.fxml");
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
     }
     @FXML
-    void Carregar(ActionEvent event){
+    void Carregar(ActionEvent event) throws IOException {
         System.out.println("Carregando");
         Main.saveManager.Carregar();
-        Main.ChangeScene("TelaCidade.fxml");
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
-    void Configurar(ActionEvent event) {
-        Main.ChangeScene("TelaConfiguracoes.fxml");
+    void Configurar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
 
     @Override

@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -70,8 +71,8 @@ public class ControllerBestiario implements Initializable {
     private ScrollPane scrollPane;
 
     @FXML
-    void OnActionVoltar(ActionEvent event) {
-        Main.ChangeScene("TelaInfosPlayer.fxml");
+    void OnActionVoltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
     private void AjustarElementos(Inimigo ini){
         for(int i = 0; i<9;i++){

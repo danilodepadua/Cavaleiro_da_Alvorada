@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -189,8 +190,8 @@ public class ControllerBlackJack  implements Initializable{
         gridPane.add(imageView, coluna, 0);
     }
     @FXML
-    void Voltar(ActionEvent event) {
-        Main.ChangeScene("TelaCassino.fxml");
+    void Voltar(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
     }
     private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
         Carta carta = baralho.pegarCarta();

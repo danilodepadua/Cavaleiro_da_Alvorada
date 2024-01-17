@@ -14,6 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -180,9 +181,27 @@ public class CityController implements Initializable {
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
         }
-        btnInventario.setOnAction(event->Main.ChangeScene("TelaInventario.fxml"));
-        btnLoja.setOnAction(event->Main.ChangeScene("TelaLoja.fxml"));
-        btncacar.setOnAction(event -> Main.ChangeScene("TelaBatalha.fxml"));
+        btnInventario.setOnAction(event-> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        btnLoja.setOnAction(event-> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        btncacar.setOnAction(event -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
 
         definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
@@ -223,27 +242,23 @@ public class CityController implements Initializable {
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
     }
     @FXML
-    void onClickViajar(ActionEvent event) {
-<<<<<<< Updated upstream
-    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
-=======
-    Main.ChangeScene("TelaGameOver.fxml"); // pra testar mais rapidamente
->>>>>>> Stashed changes
+    void onClickViajar(ActionEvent event) throws IOException {
+    Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")).load()); // pra testar mais rapidamente
     }
     @FXML
-    void onClickCassino(ActionEvent event) {
-        Main.ChangeScene("TelaCassino.fxml");
+    void onClickCassino(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
     }
     @FXML
-    void onClickStatus(ActionEvent event) {
-        Main.ChangeScene("TelaInfosPlayer.fxml");
+    void onClickStatus(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
     @FXML
-    void Config(ActionEvent event) {
-        Main.ChangeScene("TelaConfiguracoes.fxml");
+    void Config(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
     @FXML
-    void onClickQuests(ActionEvent event) {
-        Main.ChangeScene("TelaQuests.fxml");
+    void onClickQuests(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")).load());
     }
 }

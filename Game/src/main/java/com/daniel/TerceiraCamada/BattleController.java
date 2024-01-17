@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.Random;
@@ -173,12 +174,12 @@ public class BattleController implements Initializable {
     }
 
     @FXML
-    void Fugir(ActionEvent event) throws PlayerInexistenteException {
+    void Fugir(ActionEvent event) throws PlayerInexistenteException, IOException {
         gdb.ApagarUiPlayer();
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
 
-    public void Vitoria() throws PlayerInexistenteException {
+    public void Vitoria() throws PlayerInexistenteException, IOException {
         for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
@@ -193,7 +194,7 @@ public class BattleController implements Initializable {
         }
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
         System.out.println("Player venceu");
-        Main.ChangeScene("TelaCidade.fxml");
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     public void Derrota(){
 
@@ -332,6 +333,10 @@ public class BattleController implements Initializable {
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
         gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,new ComportamentoPadrao(Enimy, player));
-        gdb.IniciarBatalha();
+        try {
+            gdb.IniciarBatalha();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

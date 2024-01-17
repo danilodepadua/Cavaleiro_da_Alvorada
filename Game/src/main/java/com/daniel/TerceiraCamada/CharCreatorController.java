@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
 import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class CharCreatorController implements Initializable {
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
 
     @FXML
-    void Criar(ActionEvent event) {
+    void Criar(ActionEvent event) throws IOException {
         String nomeDoJogador = Nome.getText();
         System.out.println(nomeDoJogador);
 
@@ -105,7 +106,7 @@ public class CharCreatorController implements Initializable {
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
         Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res, 10000, 10);
-        Main.ChangeScene("TelaCidade.fxml");
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
     void MaisForca(ActionEvent event) {
