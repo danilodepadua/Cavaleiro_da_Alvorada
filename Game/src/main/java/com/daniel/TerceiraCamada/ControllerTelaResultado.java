@@ -38,14 +38,14 @@ public class ControllerTelaResultado implements Initializable {
         System.out.println("seu xp e :" + Player.getPlayer().getXp());
         Player.getPlayer().ganharXp(Main.getXpGanho());
         System.out.println("seu xp e :" + Player.getPlayer().getXp());
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
     @FXML
     void onClickCacar (ActionEvent event) throws PlayerInexistenteException {
         System.out.println("seu xp e :" + Player.getPlayer().getXp());
         Player.getPlayer().ganharXp(Main.getXpGanho());
         System.out.println("seu xp e :" + Player.getPlayer().getXp());
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")));
+        Main.ChangeScene("TelaBatalha.fxml");
     }
 
 }

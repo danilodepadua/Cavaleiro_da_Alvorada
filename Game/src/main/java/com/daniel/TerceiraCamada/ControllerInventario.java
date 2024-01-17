@@ -361,7 +361,7 @@ public class ControllerInventario implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
     public void venderItem(Item item) throws PlayerInexistenteException {
         if (item instanceof IEquipable) {

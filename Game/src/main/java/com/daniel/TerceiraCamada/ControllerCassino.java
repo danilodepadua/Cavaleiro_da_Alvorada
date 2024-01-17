@@ -52,12 +52,12 @@ public class ControllerCassino implements Initializable {
 
     @FXML
     void Jogar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("BlackJack.fxml")));
+        Main.ChangeScene("BlackJack.fxml");
     }
 
     @FXML
     void Voltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
 
     @Override
@@ -148,6 +148,6 @@ public class ControllerCassino implements Initializable {
 
     @FXML
     void JogarMemoria(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")));
+        Main.ChangeScene("TelaJogoDaMemoria.fxml");
     }
 }

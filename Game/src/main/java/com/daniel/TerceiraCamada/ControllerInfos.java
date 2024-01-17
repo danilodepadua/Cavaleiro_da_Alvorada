@@ -70,22 +70,22 @@ public class ControllerInfos implements Initializable {
 
     @FXML
     void OnActionBestiario(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBestiario.fxml")));
+        Main.ChangeScene("TelaBestiario.fxml");
     }
 
     @FXML
     void OnActionInventario(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")));
+        Main.ChangeScene("TelaInventario.fxml");
     }
 
     @FXML
     void OnActionPontos(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaStatus.fxml")));
+        Main.ChangeScene("TelaStatus.fxml");
     }
 
     @FXML
     void OnActionVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
 
     private void AnimarBarras(Rectangle rectangle, int valor) {

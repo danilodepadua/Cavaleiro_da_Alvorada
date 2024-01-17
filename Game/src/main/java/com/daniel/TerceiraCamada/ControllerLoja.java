@@ -187,7 +187,7 @@ public class ControllerLoja implements Initializable {
 
     @FXML
     void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {

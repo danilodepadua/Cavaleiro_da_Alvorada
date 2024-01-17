@@ -71,7 +71,7 @@ public class ControllerBestiario implements Initializable {
 
     @FXML
     void OnActionVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
+        Main.ChangeScene("TelaInfosPlayer.fxml");
     }
     private void AjustarElementos(Inimigo ini){
         for(int i = 0; i<9;i++){

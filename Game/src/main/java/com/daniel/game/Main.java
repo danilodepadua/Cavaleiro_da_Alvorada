@@ -21,9 +21,9 @@ public class Main extends Application {
     public static int xpGanhoInimigo;
 
 
-    public static void ChangeScene(FXMLLoader Root){
+    public static void ChangeScene(String nome){
         try {
-            Scene scene = new Scene(Root.load(), CurrentStage.getWidth(), CurrentStage.getHeight());
+            Scene scene = new Scene(new FXMLLoader(Main.class.getResource(nome)).load(), CurrentStage.getWidth(), CurrentStage.getHeight());
             CurrentStage.setScene(scene);
             System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
         }
@@ -40,7 +40,7 @@ public class Main extends Application {
         return CurrentStage.getWidth();
     }
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, PlayerInexistenteException {
         stage.setMinHeight(639);
         stage.setMinWidth(1136);
         cidadeAtual = new CidadeInicial();

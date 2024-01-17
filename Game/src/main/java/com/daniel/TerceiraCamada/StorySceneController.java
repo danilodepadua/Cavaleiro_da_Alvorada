@@ -30,7 +30,7 @@ public class StorySceneController implements Initializable {
     }
 
     public void Mudar(){
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")));
+        Main.ChangeScene("CharCreatorScene.fxml");
     }
 
     public void MudarBackGround(Image imagem){

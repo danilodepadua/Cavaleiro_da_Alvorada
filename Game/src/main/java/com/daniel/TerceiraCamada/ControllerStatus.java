@@ -227,7 +227,7 @@ public class ControllerStatus implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
+        Main.ChangeScene("TelaInfosPlayer.fxml");
     }
     private void configurarOuvinte(ProgressBar barra, Text texto) {
         barra.progressProperty().addListener((observable, oldValue, newValue) -> {

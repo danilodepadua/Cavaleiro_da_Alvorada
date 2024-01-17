@@ -193,7 +193,7 @@ public class BattleController implements Initializable {
         }
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
         System.out.println("Player venceu");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
     public void Derrota(){
 

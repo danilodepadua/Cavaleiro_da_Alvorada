@@ -180,9 +180,9 @@ public class CityController implements Initializable {
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
         }
-        btnInventario.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml"))));
-        btnLoja.setOnAction(event->Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml"))));
-        btncacar.setOnAction(event -> Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"))));
+        btnInventario.setOnAction(event->Main.ChangeScene("TelaInventario.fxml"));
+        btnLoja.setOnAction(event->Main.ChangeScene("TelaLoja.fxml"));
+        btncacar.setOnAction(event -> Main.ChangeScene("TelaBatalha.fxml"));
 
 
         definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
@@ -224,22 +224,26 @@ public class CityController implements Initializable {
     }
     @FXML
     void onClickViajar(ActionEvent event) {
+<<<<<<< Updated upstream
     Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
+=======
+    Main.ChangeScene("TelaGameOver.fxml"); // pra testar mais rapidamente
+>>>>>>> Stashed changes
     }
     @FXML
     void onClickCassino(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")));
+        Main.ChangeScene("TelaCassino.fxml");
     }
     @FXML
     void onClickStatus(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")));
+        Main.ChangeScene("TelaInfosPlayer.fxml");
     }
     @FXML
     void Config(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
+        Main.ChangeScene("TelaConfiguracoes.fxml");
     }
     @FXML
     void onClickQuests(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")));
+        Main.ChangeScene("TelaQuests.fxml");
     }
 }

@@ -35,17 +35,17 @@ public class MainController implements Initializable {
     @FXML
     void Iniciar(ActionEvent event){
         System.out.println("Iniciou");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")));
+        Main.ChangeScene("StoryScene.fxml");
     }
     @FXML
     void Carregar(ActionEvent event){
         System.out.println("Carregando");
         Main.saveManager.Carregar();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
     @FXML
     void Configurar(ActionEvent event) {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")));
+        Main.ChangeScene("TelaConfiguracoes.fxml");
     }
 
     @Override

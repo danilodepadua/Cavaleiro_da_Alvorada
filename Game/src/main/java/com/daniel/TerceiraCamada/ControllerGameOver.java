@@ -26,7 +26,7 @@ public class ControllerGameOver implements Initializable {
     @FXML
     void onClickCarregar(ActionEvent event) {
         Main.saveManager.Carregar();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+        Main.ChangeScene("TelaCidade.fxml");
     }
 
     @FXML
