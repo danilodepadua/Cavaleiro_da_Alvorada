@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Cidade implements Serializable {
+    public abstract void ajustarBotoes() throws PlayerInexistenteException;
     protected String Fundo, FundoBatalha;
     protected String Nome;
     protected Inimigo[] inimigos;
@@ -44,6 +45,14 @@ public abstract class Cidade implements Serializable {
         return Fundo;
     }
 
+    public ArrayList<Botao> getBotoes(){return  this.botoes;}
+
+    public String getBotaoNome(int pos){
+        return this.getBotoes().get(pos).getNome();
+    }
+    public Runnable getBotaoFunc(int pos){
+        return  this.getBotoes().get(pos).getFunc();
+    }
     protected Botao criarBotao(String nome, Runnable run){
         return new Botao(nome, run);
     }

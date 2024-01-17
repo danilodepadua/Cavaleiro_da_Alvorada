@@ -33,6 +33,12 @@ public class CidadeInicial extends Cidade{
         quests.add(new QuestSnowMan());
         quests.add(new QuestTigerMan());
 
+        ajustarBotoes();
+    }
+
+    @Override
+    public void ajustarBotoes() throws PlayerInexistenteException {
+        this.botoes = new ArrayList<>();
         // Adiciona botões específicos da CidadeInicial
         this.botoes.add(criarBotaoSlavar());
     }

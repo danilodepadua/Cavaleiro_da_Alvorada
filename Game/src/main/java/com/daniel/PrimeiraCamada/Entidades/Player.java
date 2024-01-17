@@ -1,18 +1,16 @@
 package com.daniel.PrimeiraCamada.Entidades;
 
+import com.daniel.PrimeiraCamada.*;
+import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
-import com.daniel.PrimeiraCamada.Magia;
 import com.daniel.PrimeiraCamada.Magias.*;
-import com.daniel.PrimeiraCamada.Personagem;
-import com.daniel.PrimeiraCamada.Quest;
 import com.daniel.PrimeiraCamada.Quests.*;
 
-import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
 import com.daniel.game.Main;
@@ -20,6 +18,7 @@ import com.daniel.game.Main;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.daniel.PrimeiraCamada.Quests.ManejarQuests.iniciarQuests;
 
@@ -38,8 +37,10 @@ public class Player extends Personagem implements Serializable {
     private int currentMp, currentHp;
     private int pontos;
 
+    private ArrayList<Cidade> cidadesConehcidas = new ArrayList<>();
+
     private Bestiario bestiario = new Bestiario();
-    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
+    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {
         super(Name, Img, Force, Int, Res, Velocity);
         this.currentHp = this.getHP();
         this.currentMp = this.getMP();
@@ -53,9 +54,10 @@ public class Player extends Personagem implements Serializable {
         this.questAtuais = iniciarQuests();
         this.magias = new ArrayList<>();
         this.magias.add(new Fogo());
+        this.cidadesConehcidas.add(new CidadeInicial());
         player = this;
     }
-    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
+    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {
         if(player != null){
             return player;
         }
@@ -328,5 +330,15 @@ public class Player extends Personagem implements Serializable {
 
     public ArrayList<Magia> getMagias() {
         return magias;
+    }
+
+    public ArrayList<Cidade> getCidadesConehcidas(){return this.cidadesConehcidas;}
+    public void adicionarCidade(Cidade cidade){
+        for(Cidade c : cidadesConehcidas){
+            if(Objects.equals(c.getNome(), cidade.getNome())){
+                return;
+            }
+            cidadesConehcidas.add(cidade);
+        }
     }
 }

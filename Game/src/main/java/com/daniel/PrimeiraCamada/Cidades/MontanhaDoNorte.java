@@ -17,4 +17,9 @@ public class MontanhaDoNorte extends Cidade {
         this.quests = new ArrayList<>();
         quests.add(new QuestSlimeDeEscuridaoNv1());
     }
+
+    @Override
+    public void ajustarBotoes() {
+        this.botoes = new ArrayList<>();
+    }
 }

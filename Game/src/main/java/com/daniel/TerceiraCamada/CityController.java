@@ -117,6 +117,8 @@ public class CityController implements Initializable {
     private Label labelNome;
 
     @FXML
+    private VBox VBox;
+    @FXML
     private Label labelVida;
 
     @FXML
@@ -156,6 +158,13 @@ public class CityController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
+            Button b = new Button();
+            int finalI = i;
+            b.setText(Main.cidadeAtual.getBotaoNome(finalI));
+            b.setOnAction(event -> Main.cidadeAtual.getBotaoFunc(finalI).run());
+            VBox.getChildren().add(b);
+        }
         txtCidade.setText(Main.cidadeAtual.getNome());
         txtCidade.setStroke(Color.BLACK);
         txtCidade.setStrokeWidth(2);

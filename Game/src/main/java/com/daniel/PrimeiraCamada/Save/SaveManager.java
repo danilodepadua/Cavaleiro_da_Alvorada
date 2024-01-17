@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada.Save;
 
 
+import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -42,7 +43,11 @@ public class SaveManager {
         try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(CaminhoSave.toFile()));
             Save save = (Save) in.readObject();
+            for(Cidade c : save.player.getCidadesConehcidas()){
+                c.ajustarBotoes();
+            }
             Player.setPlayer(save.player);
+            save.cidade.ajustarBotoes();
             Main.cidadeAtual = save.cidade;
             System.out.println(Player.getPlayer().getName());
             System.out.println(save.player.getName());

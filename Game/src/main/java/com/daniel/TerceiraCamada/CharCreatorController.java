@@ -1,6 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,7 +97,7 @@ public class CharCreatorController implements Initializable {
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
 
     @FXML
-    void Criar(ActionEvent event) throws IOException {
+    void Criar(ActionEvent event) throws IOException, PlayerInexistenteException {
         String nomeDoJogador = Nome.getText();
         System.out.println(nomeDoJogador);
 
