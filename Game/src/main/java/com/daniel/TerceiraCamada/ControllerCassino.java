@@ -64,7 +64,7 @@ public class ControllerCassino implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             txtMoedas.setText("" + Player.getPlayer().getCoins() + " Moedas");
-            Point2D centro = new Point2D(280, 169);
+            Point2D centro = new Point2D(315, 169);
             desenharTexto(texto, 40, centro);
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);

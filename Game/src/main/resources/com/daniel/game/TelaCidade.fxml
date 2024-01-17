@@ -268,7 +268,7 @@
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Cassino" textFill="#eccb7e">
+            <Button fx:id="btnCassino" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCassino" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
@@ -278,47 +278,47 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <Label fx:id="infoResistencia" disable="true" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="resistencia" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoResistencia" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="resistencia" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoForca" disable="true" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="forca" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoForca" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="forca" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoMana" disable="true" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="mana" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoMana" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="mana" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoDefesaMagica" disable="true" layoutX="568.0" layoutY="491.0" prefHeight="28.0" prefWidth="322.0" text="defesaMagica" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoDefesaMagica" layoutX="568.0" layoutY="491.0" prefHeight="28.0" prefWidth="322.0" text="defesaMagica" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoDefesa" disable="true" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="defesafisica" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoDefesa" layoutX="568.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="defesafisica" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoVelo" disable="true" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="velocidade" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoVelo" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="velocidade" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoInteligencia" disable="true" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="inteligencia" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoInteligencia" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="inteligencia" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoCoin" disable="true" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="coin" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoCoin" layoutX="328.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="coin" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="infoVida" disable="true" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="Vida" textFill="WHITE" AnchorPane.bottomAnchor="120.0">
+      <Label fx:id="infoVida" layoutX="156.0" layoutY="491.0" prefHeight="18.0" prefWidth="267.0" text="Vida" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="120.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="22.0" />
          </font>

@@ -13,6 +13,7 @@ public class PersonagemLuta{
     protected AnimationsAttack atqAnim;
     protected ArrayList<Magia> magias;
     protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
+    protected int xpDrop;
     public PersonagemLuta(Inimigo i){
         this.HP = i.HP;
         this.MP = i.MP;
@@ -30,6 +31,7 @@ public class PersonagemLuta{
         this.Nome = i.getName();
         this.atqAnim = new SlashAnimation();
         this.magias = i.magias;
+        this.xpDrop = i.getDropXp();
     }
 
     public PersonagemLuta(Player p){
@@ -49,7 +51,7 @@ public class PersonagemLuta{
         this.tipoAtaqueBase = p.getArma().getTipoDano();
         this.atqAnim = new SlashAnimation();
         this.Nome = p.getName();
-        this.magias = p.magias;
+        this.magias = p.getMagias();
     }
     protected TiposElementais[] fraquezas;
     protected TiposElementais[] resistencias;
@@ -175,6 +177,10 @@ public class PersonagemLuta{
 
     public int getMP() {
         return MP;
+    }
+
+    public int getXpDrop() {
+        return xpDrop;
     }
 
     public TiposElementais getTipoAtaqueBase() {

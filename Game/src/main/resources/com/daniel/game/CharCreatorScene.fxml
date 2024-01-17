@@ -12,10 +12,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CharCreatorController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CharCreatorController">
    <children>
-      <ProgressBar fx:id="BarraForca" layoutX="492.0" layoutY="224.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
-      <Button fx:id="btnMenosForca" layoutX="441.0" layoutY="218.0" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <ProgressBar fx:id="BarraForca" layoutX="516.0" layoutY="224.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
+      <Button fx:id="btnMenosForca" layoutX="459.0" layoutY="217.0" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnMaisForca" layoutX="711.0" layoutY="219.0" mnemonicParsing="false" onAction="#MaisForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <Button fx:id="btnMaisForca" layoutX="729.0" layoutY="218.0" mnemonicParsing="false" onAction="#MaisForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,13 +33,13 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="492.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
+      <Text fill="#eccb7e" layoutX="516.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="BarraRes" layoutX="493.0" layoutY="283.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
-      <Button fx:id="btnMenosRes" layoutX="441.0" layoutY="277.0" mnemonicParsing="false" onAction="#MenosRes" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <ProgressBar fx:id="BarraRes" layoutX="516.0" layoutY="283.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
+      <Button fx:id="btnMenosRes" layoutX="459.0" layoutY="276.0" mnemonicParsing="false" onAction="#MenosRes" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +48,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnMaisRes" layoutX="711.0" layoutY="277.0" mnemonicParsing="false" onAction="#MaisRes" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <Button fx:id="btnMaisRes" layoutX="729.0" layoutY="277.0" mnemonicParsing="false" onAction="#MaisRes" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,13 +57,13 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="492.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
+      <Text fill="#eccb7e" layoutX="518.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="BarraInt" layoutX="493.0" layoutY="342.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
-      <Button fx:id="btnMaisInt" layoutX="711.0" layoutY="337.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisInt" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <ProgressBar fx:id="BarraInt" layoutX="516.0" layoutY="343.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
+      <Button fx:id="btnMaisInt" layoutX="729.0" layoutY="337.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisInt" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -72,7 +72,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnMenosInt" layoutX="441.0" layoutY="337.0" mnemonicParsing="false" onAction="#MenosInt" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <Button fx:id="btnMenosInt" layoutX="459.0" layoutY="336.0" mnemonicParsing="false" onAction="#MenosInt" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -81,13 +81,13 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="493.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
+      <Text fill="#eccb7e" layoutX="516.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="BarraVel" layoutX="493.0" layoutY="401.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
-      <Button fx:id="btnMaisVel" layoutX="711.0" layoutY="396.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisVel" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <ProgressBar fx:id="BarraVel" layoutX="516.0" layoutY="401.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
+      <Button fx:id="btnMaisVel" layoutX="729.0" layoutY="395.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisVel" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -96,7 +96,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnMenosVel" layoutX="441.0" layoutY="395.0" mnemonicParsing="false" onAction="#MenosVel" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+      <Button fx:id="btnMenosVel" layoutX="459.0" layoutY="394.0" mnemonicParsing="false" onAction="#MenosVel" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -105,7 +105,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="493.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
+      <Text fill="#eccb7e" layoutX="516.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -174,7 +174,7 @@
             </VBox>
          </children>
       </Pane>
-      <HBox layoutX="493.0" layoutY="135.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
+      <HBox layoutX="510.0" layoutY="135.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
          <children>
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
                <font>
@@ -188,7 +188,7 @@
             </Text>
          </children>
       </HBox>
-      <Button fx:id="btnCriar" layoutX="493.0" layoutY="502.0" mnemonicParsing="false" onAction="#Criar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e">
+      <Button fx:id="btnCriar" layoutX="516.0" layoutY="500.0" mnemonicParsing="false" onAction="#Criar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
@@ -198,7 +198,7 @@
             <Font name="Barlow Condensed SemiBold" size="36.0" />
          </font>
       </Text>
-      <Pane layoutX="125.0" layoutY="161.0" prefHeight="267.0" prefWidth="234.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="161.0">
+      <Pane layoutX="144.0" layoutY="158.0" prefHeight="267.0" prefWidth="234.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="158.0">
          <children>
             <ImageView fx:id="imgBonecos" fitHeight="311.0" fitWidth="119.0" layoutX="50.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -207,7 +207,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Button fx:id="btnProxSkin" layoutX="317.0" layoutY="443.0" minWidth="41.0" mnemonicParsing="false" onAction="#onClickAvancar" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="317.0" AnchorPane.topAnchor="443.0">
+      <Button fx:id="btnProxSkin" layoutX="338.0" layoutY="443.0" minWidth="41.0" mnemonicParsing="false" onAction="#onClickAvancar" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="443.0">
          <font>
             <Font name="System Bold" size="7.0" />
          </font>
@@ -219,7 +219,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnSkinAnterior" layoutX="125.0" layoutY="443.0" minWidth="41.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="443.0">
+      <Button fx:id="btnSkinAnterior" layoutX="144.0" layoutY="443.0" minWidth="41.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="443.0">
          <font>
             <Font name="System Bold" size="7.0" />
          </font>
@@ -231,17 +231,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="222.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SKIN" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="443.0">
+      <Text fill="#eccb7e" layoutX="241.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SKIN" AnchorPane.leftAnchor="241.0" AnchorPane.topAnchor="444.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="122.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="121.0">
+      <Text fill="#eccb7e" layoutX="141.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="121.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="Nome" layoutX="189.0" layoutY="122.0" prefHeight="26.0" prefWidth="169.0" AnchorPane.leftAnchor="189.0" AnchorPane.topAnchor="122.0" />
+      <TextField fx:id="Nome" layoutX="208.0" layoutY="122.0" prefHeight="26.0" prefWidth="169.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="122.0" />
       <Text fill="#eccb7e" layoutX="837.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Com seus pontos, distribua-os da forma que preferir entre seus atributos. &#10;&#10;No entanto, lembre-se de que investir &#10;exclusivamente em um único atributo &#10;pode resultar em situações desfavoráveis no futuro." wrappingWidth="274.4000000000001">
          <font>
             <Font name="Barlow Condensed SemiBold" size="18.0" />

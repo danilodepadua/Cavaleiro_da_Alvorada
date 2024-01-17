@@ -18,6 +18,8 @@ public class Main extends Application {
     static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
+    public static int xpGanhoInimigo;
+
 
     public static void ChangeScene(FXMLLoader Root){
         try {
@@ -58,5 +60,12 @@ public class Main extends Application {
     public static void MudarTamanhoTela(int largura, int altura){
         CurrentStage.setWidth(largura);
         CurrentStage.setHeight(altura);
+    }
+    public static void setXpGanho(int xpGanho) {
+        Main.xpGanhoInimigo = xpGanho;
+    }
+
+    public static int getXpGanho() {
+        return xpGanhoInimigo;
     }
 }

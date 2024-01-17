@@ -30,7 +30,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BattleController implements Initializable {
-    ArrayList<Magia> magiasDisponiveis = new ArrayList<Magia>();
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
@@ -128,14 +127,14 @@ public class BattleController implements Initializable {
         ColocarItens();
     }
     @FXML
-    void AbrirMagias(ActionEvent event) {
+    void AbrirMagias(ActionEvent event) throws PlayerInexistenteException {
         PnlPrimeirasEscolhas.setDisable(true);
         PnlOpcoes.setDisable(false);
         PnlOpcoes.setOpacity(1);
         ColocarMagias();
     }
     @FXML
-    void SubirItens(ActionEvent event) {
+    void SubirItens(ActionEvent event) throws PlayerInexistenteException {
         itemAtual -= 3;
         if(isItens) {
             ColocarItens();
@@ -145,7 +144,7 @@ public class BattleController implements Initializable {
         }
     }
     @FXML
-    void DescerItens(ActionEvent event) {
+    void DescerItens(ActionEvent event) throws PlayerInexistenteException {
         itemAtual += 3;
         if(isItens) {
             ColocarItens();
@@ -184,6 +183,9 @@ public class BattleController implements Initializable {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
                     quest.updateQuestCompleted();
+                    int xpDrop = Enimy.getXpDrop();
+                    Player.getPlayer().ganharXp(xpDrop);
+                    Main.setXpGanho(xpDrop);
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
                 }
@@ -202,26 +204,33 @@ public class BattleController implements Initializable {
         InfoMp.setText("MP: " + player.getCurrentMp() + "/" + player.getMP());
         InfoNome.setText(player.getNome());
     }
-    private void ColocarMagias() {
+    private void ColocarMagias() throws PlayerInexistenteException {
         isItens = false;
-        VerificarSetas(magiasDisponiveis.size());
+        VerificarSetas(Player.getPlayer().getMagias().size());
 
-        for (int i = itemAtual; i< magiasDisponiveis.size() && i<(itemAtual+3); i++) {
+        for (int i = itemAtual; i< Player.getPlayer().getMagias().size() && i<(itemAtual+3); i++) {
             Button magiaButton = new Button();
-            magiaButton.setText(magiasDisponiveis.get(i).getClass().getSimpleName() + " : " + magiasDisponiveis.get(i).getCusto() + "MP");
+            magiaButton.setText(Player.getPlayer().getMagias().get(i).getClass().getSimpleName() + " : " + Player.getPlayer().getMagias().get(i).getCusto() + "MP");
             magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
-            if(player.getCurrentMp() < magiasDisponiveis.get(i).getCusto()){
+            if(player.getCurrentMp() < Player.getPlayer().getMagias().get(i).getCusto()){
                 magiaButton.setDisable(true);
             }
             int finalI = i;
             magiaButton.setOnAction(event -> {
-                if(magiasDisponiveis.get(finalI) instanceof IEffects){
-                    ((IEffects) magiasDisponiveis.get(finalI)).aplicarEfeito(Enimy);
+
+                try {
+                    if(Player.getPlayer().getMagias().get(finalI) instanceof IEffects){
+                        ((IEffects) Player.getPlayer().getMagias().get(finalI)).aplicarEfeito(Enimy);
+                    }
+                    itemAtual =0;
+                    RetornarInicial();
+                    Player.getPlayer().getMagias().get(finalI).Conjurar(gdb, player);
+
+                } catch (PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
                 }
-                itemAtual =0;
-                RetornarInicial();
-                magiasDisponiveis.get(finalI).Conjurar(gdb, player);
+
             });
             VBoxItens.getChildren().add(magiaButton);
         }
@@ -294,14 +303,6 @@ public class BattleController implements Initializable {
                         true,
                         true
                 ))));
-        magiasDisponiveis.add(new Fogo());
-        magiasDisponiveis.add(new Gelo());
-        magiasDisponiveis.add(new Escuridao());
-        magiasDisponiveis.add(new Luz());
-        magiasDisponiveis.add(new Redemoinho());
-        magiasDisponiveis.add(new Splash());
-        magiasDisponiveis.add(new WaterSpyke());
-        magiasDisponiveis.add(new Explosao());
         Random rand = new Random();
         inimigo = inimigos[rand.nextInt(0, inimigos.length)];
         EnimyImg.setImage(inimigo.getImagem());

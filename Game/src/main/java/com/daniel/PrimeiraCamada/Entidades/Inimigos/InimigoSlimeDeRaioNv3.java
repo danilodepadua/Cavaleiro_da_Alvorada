@@ -6,6 +6,6 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeRaioNv3 extends Inimigo {
     public InimigoSlimeDeRaioNv3() {
-        super("Slime de raio grande", "/com.daniel.Images/Inimigos/Slime Thunderiii.png", 16, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao);
+        super("Slime de raio grande", "/com.daniel.Images/Inimigos/Slime Thunderiii.png", 16, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 100);
     }
 }

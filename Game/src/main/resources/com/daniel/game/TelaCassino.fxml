@@ -8,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerCassino">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerCassino">
    <children>
       <Text fx:id="txtCassino" fill="#e5ff00" layoutX="291.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="61.0" />
          </font>
       </Text>
-      <VBox fx:id="vboxTextos" layoutX="473.0" layoutY="237.0" prefHeight="244.0" prefWidth="214.0" spacing="20.0">
+      <VBox fx:id="vboxTextos" layoutX="535.0" layoutY="229.0" prefHeight="244.0" prefWidth="202.0" spacing="20.0" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="463.0">
          <children>
             <Text fx:id="txtCassinao" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Button fx:id="btnBlackJack" mnemonicParsing="false" onAction="#Jogar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="21" textFill="#eccb7e">

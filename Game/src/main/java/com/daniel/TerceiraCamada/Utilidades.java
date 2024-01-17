@@ -76,6 +76,7 @@ public class Utilidades {
     // Método para configurar o evento de MouseExited para uma ImageView
     public static void configurarEventoMouseExited(ImageView imageView, Label label) {
         imageView.setOnMouseExited(event -> label.setVisible(false));
+        label.setOpacity(1);
     }
 
     // Método genérico para mostrar a informação

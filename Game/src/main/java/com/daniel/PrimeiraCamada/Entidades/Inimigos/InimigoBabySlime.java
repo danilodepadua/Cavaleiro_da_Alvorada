@@ -10,7 +10,7 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoBabySlime extends Inimigo {
     public InimigoBabySlime() {
-        super("Slime", "/com.daniel.Images/Inimigos/Slime Blue.png", 1, 5, 5, 10, 5, 5, 10, 10, 5, 30, 10, TiposElementais.NaoElemental, Comportamentos.padrao);
+        super("Slime", "/com.daniel.Images/Inimigos/Slime Blue.png", 1, 5, 5, 10, 5, 5, 10, 10, 5, 30, 10, TiposElementais.NaoElemental, Comportamentos.padrao, 200);
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new Fogo());
         this.magias.add(new Gelo());

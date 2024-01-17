@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
+import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
 
 public class MainController implements Initializable {
 
@@ -49,19 +50,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Screen.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource("/com.daniel.Images/Capa.jpg").toString()),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        false,
-                        false,
-                        true,
-                        true
-                )))
-        );
+        definirBackground(Screen, "/com.daniel.Images/Calabouso.jpg");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);

@@ -152,7 +152,7 @@ public class ControllerInventario implements Initializable {
             IEquipable equipableItem = (IEquipable) i;
 
             if (podeEquiparItem(equipableItem)) {
-                configurarBtnEquipar(equipableItem);
+                configurarBtnEquipar(equipableItem, i);
             } else {
                 configurarBtnDesequipar(equipableItem);
             }
@@ -216,12 +216,13 @@ public class ControllerInventario implements Initializable {
             }
         });
     }
-    private void configurarBtnEquipar(IEquipable equipableItem) {
+    private void configurarBtnEquipar(IEquipable equipableItem, Item i) {
         btnEquipar.setDisable(false);
         btnEquipar.setOnAction(event -> {
             try {
                 equipableItem.equipar();
                 AtualizarDados();
+                ItemSelecionado(i);
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }
@@ -328,7 +329,6 @@ public class ControllerInventario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         contornarBotaoVoltar(btnVoltar);
         btnUsar.setDisable(true);
         btnDesequipar.setDisable(true);

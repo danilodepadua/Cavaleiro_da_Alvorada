@@ -20,9 +20,6 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CityController implements Initializable {
-    private Button lastClicked;
-
-
     @FXML
     private Label LabelForca;
 
@@ -157,14 +154,15 @@ public class CityController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("1");
+
         txtCidade.setText(Main.cidadeAtual.getNome());
         txtCidade.setStroke(Color.BLACK);
         txtCidade.setStrokeWidth(2);
 
         try {
-            System.out.println("2");
             System.out.println(Player.getPlayer() != null);
+            System.out.println("XP DO PLAYER: "+ Player.getPlayer().getXp());
+
             // Método chamado automaticamente quando o controlador é inicializado
             txtPontos.setText("" + Player.getPlayer().getPontos());
             txtResistencia.setText(""+ Player.getPlayer().getResistencia());
@@ -226,7 +224,7 @@ public class CityController implements Initializable {
     }
     @FXML
     void onClickViajar(ActionEvent event) {
-    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaGameOver.fxml")))); // pra testar mais rapidamente
+    Main.ChangeScene(new FXMLLoader((Main.class.getResource("TelaResultado.fxml")))); // pra testar mais rapidamente
     }
     @FXML
     void onClickCassino(ActionEvent event) {

@@ -1,11 +1,10 @@
 package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Interfaces.IQuest;
 
 import java.io.Serializable;
 
-public abstract class Quest implements Serializable, IQuest {
+public abstract class Quest implements Serializable {
     protected String nome;
     protected String descricao;
     protected int recompensaXP;
@@ -15,7 +14,14 @@ public abstract class Quest implements Serializable, IQuest {
     protected int progresso;
     protected String nomeInimigo;
     private boolean habilitada = true;
+    public  void updateQuestCompleted() throws PlayerInexistenteException{
+        progresso++;
 
+        if (isCompleta()) {
+            System.out.println("Quest concluída: " + getNome());
+
+        }
+    }
     public String getNome() {
         return nome;
     }
@@ -35,15 +41,7 @@ public abstract class Quest implements Serializable, IQuest {
     public int getPontosEvolucao() {
         return pontosEvolucao;
     }
-    @Override
-    public  void updateQuestCompleted() throws PlayerInexistenteException{
-        progresso++;
 
-        if (isCompleta()) {
-            System.out.println("Quest concluída: " + getNome());
-
-        }
-    }
     public boolean isCompleta() {
         return progresso >= objetivo;
     }

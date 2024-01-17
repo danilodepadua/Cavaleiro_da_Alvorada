@@ -6,6 +6,8 @@ import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
+import com.daniel.PrimeiraCamada.Magia;
+import com.daniel.PrimeiraCamada.Magias.*;
 import com.daniel.PrimeiraCamada.Personagem;
 import com.daniel.PrimeiraCamada.Quest;
 import com.daniel.PrimeiraCamada.Quests.*;
@@ -19,6 +21,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.daniel.PrimeiraCamada.Quests.ManejarQuests.iniciarQuests;
+
 public class Player extends Personagem implements Serializable {
     private Inventario inventario;
     private Arma arma;
@@ -28,6 +32,7 @@ public class Player extends Personagem implements Serializable {
     private Calca calca;
     private static Player player;
     private List<Quest> questAtuais;
+    private ArrayList<Magia> magias;
     private int lvl = 1;
     private int currentXp;
     private int currentMp, currentHp;
@@ -45,14 +50,9 @@ public class Player extends Personagem implements Serializable {
         this.capacete = new Capacete();
         this.calca = new Calca();
         this.arma = new Arma();
-        this.questAtuais = new ArrayList<>();
-        this.questAtuais.add(new QuestAbelha());
-        this.questAtuais.add(new QuestBabySlime());
-        this.questAtuais.add(new QuestSlimeDeEscuridaoNv1());
-        this.questAtuais.add(new QuestCobraGigante());
-        this.questAtuais.add(new QuestSnowMan());
-
-
+        this.questAtuais = iniciarQuests();
+        this.magias = new ArrayList<>();
+        this.magias.add(new Fogo());
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos){
@@ -146,7 +146,7 @@ public class Player extends Personagem implements Serializable {
         return Force + this.arma.getAumentoDeAtaqueFisico();
     }
     public int getAtaqueM(){
-        return Inteligence;
+        return Inteligence + this.arma.getAumentoDeAtaqueMagico();
     }
 
     public TiposElementais[] getFraquezas(){
@@ -220,6 +220,7 @@ public class Player extends Personagem implements Serializable {
         int i = 1+(currentXp /1000*lvl);
         if(i>lvl){
             lvl = i;
+            aprenderMagia();
             return true;
         }
         return false;
@@ -228,6 +229,28 @@ public class Player extends Personagem implements Serializable {
         this.currentXp += xp;
         return this.VereficarLevelUp();
     }
+
+    private void aprenderMagia(){
+        switch (lvl){
+            case 2:
+                magias.add(new Gelo());
+                break;
+            case 3:
+                magias.add(new Luz());
+                break;
+            case 4:
+                magias.add(new Escuridao());
+                break;
+            case 5:
+                magias.add(new Redemoinho());
+                break;
+            case 6:
+                magias.add(new WaterSpyke());
+            default:
+                break;
+        }
+    }
+
     public int getXp() {
         return this.currentXp;
     }
@@ -272,8 +295,6 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Xp do player: "+ currentXp);
             System.out.println(VereficarLevelUp());
             questAtuais.remove(quest);
-
-
         }
     }
     public void desabilitarQuestsNaoComuns() {
@@ -303,5 +324,9 @@ public class Player extends Personagem implements Serializable {
 
     public int getLvl() {
         return lvl;
+    }
+
+    public ArrayList<Magia> getMagias() {
+        return magias;
     }
 }
