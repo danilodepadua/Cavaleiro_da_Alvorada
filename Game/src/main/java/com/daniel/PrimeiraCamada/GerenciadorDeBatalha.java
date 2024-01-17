@@ -210,7 +210,7 @@ public class GerenciadorDeBatalha {
     }
     public void fugir(boolean conseguiu){
         if(conseguiu){
-            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")));
+            Main.ChangeScene("TelaCidade.fxml");
         }
         else{
             ArrayList<String> i = new ArrayList<String>();
