@@ -218,14 +218,7 @@ public class CityController implements Initializable {
         configurarEventoMouseExited(imgVelocidade, infoVelo);
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
     }
-    @FXML
-    void onClickViajar(ActionEvent event) throws IOException {
-    Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")).load()); // pra testar mais rapidamente
-    }
-    @FXML
-    void onClickCassino(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
-    }
+
     @FXML
     void onClickStatus(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
@@ -234,8 +227,5 @@ public class CityController implements Initializable {
     void Config(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
-    @FXML
-    void onClickQuests(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")).load());
-    }
+
 }

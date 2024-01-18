@@ -18,13 +18,12 @@ public class Mão {
         this.mao.add(carta);
     }
 
+
     public ArrayList<Carta> getMao() {
         return mao;
     }
 
-    public void setMao(ArrayList<Carta> mao) {
-        this.mao = mao;
-    }
+
 
     public int getPontos() {
         return pontos;

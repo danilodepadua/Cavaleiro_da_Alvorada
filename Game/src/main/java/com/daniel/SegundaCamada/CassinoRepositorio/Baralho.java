@@ -34,6 +34,15 @@ public class Baralho {
         criarBaralho("spades");
         criarBaralho("diamonds");
     }
+    public void reiniciarBaralhoPoker() {
+        // Limpa e reinicia o baralho
+        cartas.clear();
+        // Adicione as cartas novamente
+        criarBaralhoPoker("hearts");
+        criarBaralhoPoker("clubs");
+        criarBaralhoPoker("spades");
+        criarBaralhoPoker("diamonds");
+    }
 
     public boolean vazio() {
         return cartas.isEmpty();
@@ -57,7 +66,20 @@ public class Baralho {
         cartas.add(new Carta("Rei", naipe, 10, "/com.daniel.Images/Cartas/king_of_" + naipe.toLowerCase() + ".png"));
 
     }
+    public void criarBaralhoPoker(String naipe) {
+        for (int valor = 2; valor <= 10; valor++) {
+            String valorCarta = obterNomeCarta(valor);
+            String caminho = "/com.daniel.Images/Cartas/" + valorCarta + "_of_" + naipe.toLowerCase() + ".png";
+            cartas.add(new Carta(valorCarta, naipe, valor, caminho));
+        }
 
+        // Adiciona Ás, Valete, Dama e Rei
+        cartas.add(new Carta("Ás", naipe, 1, "/com.daniel.Images/Cartas/ace_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Valete", naipe, 11, "/com.daniel.Images/Cartas/jack_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Dama", naipe, 12, "/com.daniel.Images/Cartas/queen_of_" + naipe.toLowerCase() + ".png"));
+        cartas.add(new Carta("Rei", naipe, 13, "/com.daniel.Images/Cartas/king_of_" + naipe.toLowerCase() + ".png"));
+
+    }
     private String obterNomeCarta(int valor) {
         switch (valor) {
             case 2: return "two";

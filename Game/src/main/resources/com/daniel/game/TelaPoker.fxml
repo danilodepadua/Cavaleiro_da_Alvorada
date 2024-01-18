@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerPoker">
    <children>
-      <GridPane layoutX="131.0" layoutY="357.0" prefHeight="279.0" prefWidth="774.0">
+      <GridPane fx:id="gridJogador" layoutX="131.0" layoutY="460.0" prefHeight="187.0" prefWidth="774.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <GridPane layoutX="131.0" layoutY="35.0" prefHeight="279.0" prefWidth="774.0">
+      <GridPane fx:id="gridDealer" layoutX="131.0" layoutY="16.0" prefHeight="187.0" prefWidth="774.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,5 +40,90 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <VBox fx:id="vboxTextos" alignment="CENTER" layoutX="953.0" layoutY="125.0" prefHeight="463.0" prefWidth="218.0" spacing="30.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="177.0" spacing="15.0">
+               <children>
+                  <Text fx:id="txtAposta" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 1;" text="Aposta: ">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtSeuResultado" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 1;">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtResultadoCasa" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 1;">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="21.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Text fx:id="txtInsira" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 1;" text="Insira o valor a ser apostado">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textFieldAposta" prefHeight="26.0" prefWidth="206.0" />
+            <HBox prefHeight="47.0" prefWidth="218.0" spacing="20.0">
+               <children>
+                  <Button fx:id="btnDesistir" mnemonicParsing="false" onAction="#Desistir" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Desistir" textFill="#eccb7e">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnApostar" mnemonicParsing="false" onAction="#Apostar" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Apostar" textFill="#eccb7e">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Continuar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <GridPane fx:id="gridCartasNoCentro" layoutX="131.0" layoutY="239.0" prefHeight="187.0" prefWidth="774.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#Voltar" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="GOLDENROD">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <AnchorPane fx:id="boxMensagem" layoutY="222.0" opacity="0.0" prefHeight="113.0" prefWidth="1200.0" style="-fx-background-color: #121312;">
+         <children>
+            <AnchorPane prefHeight="113.0" prefWidth="200.0" style="-fx-background-color: #343D38;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Text fx:id="txtMensagem" fill="WHITE" fontSmoothingType="LCD" layoutX="482.0" layoutY="55.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="O inimigo tomou 450 de dano" textAlignment="JUSTIFY" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="31.0">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

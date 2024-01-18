@@ -43,6 +43,8 @@ public class ControllerCassino implements Initializable {
     private Button btnVoltar;
 
     @FXML
+    private Button btnPoker;
+    @FXML
     private Text txtCassino;
 
     @FXML
@@ -76,6 +78,7 @@ public class ControllerCassino implements Initializable {
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnBlackJack);
         configurarBotoes(btnMemoria);
+        configurarBotoes(btnPoker);
     }
 
     public void desenharTexto(String palavra, double rotacaoInicial, Point2D centro) {
@@ -150,5 +153,11 @@ public class ControllerCassino implements Initializable {
     @FXML
     void JogarMemoria(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")).load());
+    }
+
+    @FXML
+    void JogarPoker(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaPoker.fxml")).load());
+
     }
 }
