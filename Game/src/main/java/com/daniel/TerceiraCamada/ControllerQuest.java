@@ -89,7 +89,6 @@ public class ControllerQuest implements Initializable {
         vboxQuests.setSpacing(25);
     }
     private void recolherRecompensas(Quest quest) throws PlayerInexistenteException {
-        System.out.println("Recolher recompensas para a quest: " + quest.getNome());
         Player.getPlayer().completarQuest(quest);
     }
     private void atualizarInterfaceGrafica() {
@@ -111,12 +110,12 @@ public class ControllerQuest implements Initializable {
     }
 
     private void configurarSetas() {
-        ImageView seta = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
+        ImageView seta = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/Setas/SetaBaixoAmarela.png").toString()));
         seta.setFitWidth(40);
         seta.setFitHeight(40);
         seta.setPreserveRatio(true);
 
-        ImageView setaInv = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
+        ImageView setaInv = new ImageView(new Image(Main.class.getResource("/com.daniel.Images/Setas/SetaBaixoAmarela.png").toString()));
         setaInv.setFitWidth(40);
         setaInv.setFitHeight(40);
         setaInv.setPreserveRatio(true);

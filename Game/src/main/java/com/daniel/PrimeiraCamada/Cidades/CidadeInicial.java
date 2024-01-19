@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class CidadeInicial extends Cidade{
     public CidadeInicial() throws PlayerInexistenteException {
-        super("Cidade Inicial", "/com.daniel.Images/CidadeNoturna.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Cidade Inicial", "/com.daniel.Images/Fundos/CidadeNoturna.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
         // Inicializa a lista de inimigos corretamente
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};

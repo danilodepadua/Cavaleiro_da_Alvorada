@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.*;
+
 public class ControllerBestiario implements Initializable {
 
     @FXML
@@ -41,6 +43,8 @@ public class ControllerBestiario implements Initializable {
     private AnchorPane PnlInfos;
     @FXML
     private GridPane GridResistencias;
+    @FXML
+    private GridPane gridFraquezas;
     @FXML
     private ImageView ImgBesta;
 
@@ -69,7 +73,10 @@ public class ControllerBestiario implements Initializable {
     private VBox VBoxBestas;
     @FXML
     private ScrollPane scrollPane;
-
+    @FXML
+    private Button btnVoltar;
+    @FXML
+    private AnchorPane paneDireita;
     @FXML
     void OnActionVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
@@ -133,19 +140,19 @@ public class ControllerBestiario implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Antes: " + VBoxBestas.getPrefWidth());
-        System.out.println("Antes: " + scrollPane.getWidth());
-        VBoxBestas.setPrefWidth(Main.getLargura() - 510);
-        System.out.println("Depois: " + VBoxBestas.getPrefWidth());
-        System.out.println("Depois: " + scrollPane.getWidth());
+        gridFraquezas.setStyle("-fx-grid-lines-color: #eccb7e;");
+
+        contornarBotaoVoltar(btnVoltar);
         try {
             Inimigo[] bestas = Player.getPlayer().getBestiario().getInimigos();
             ParallelTransition sequenciaTransicoes = new ParallelTransition();
             int j = 0;
             for(Inimigo i : bestas){
                 Button btnBesta = new Button();
+                btnBesta.setStyle("-fx-border-color: #eccb7e; -fx-background-color:   #140e0a; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15; -fx-text-fill: #eccb7e");
+                configurarBotoesTelaBestiario(btnBesta);
                 if(i == null){
-                    btnBesta.setText("?????");
+                    btnBesta.setText("???");
                     btnBesta.setOnAction(event -> {
                         TxtFr.setText("Força: ???");
                         TxtHP.setText("HP: ???");

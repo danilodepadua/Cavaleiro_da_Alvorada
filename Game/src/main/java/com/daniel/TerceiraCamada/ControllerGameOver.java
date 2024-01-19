@@ -37,7 +37,7 @@ public class ControllerGameOver implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        definirBackground(panePrincipal, "/com.daniel.Images/Fundo.png");
+        definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fundo.png");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnSair);
     }

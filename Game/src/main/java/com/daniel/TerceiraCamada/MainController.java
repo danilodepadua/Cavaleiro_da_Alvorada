@@ -51,7 +51,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        definirBackground(Screen, "/com.daniel.Images/Calabouso.jpg");
+        definirBackground(Screen, "/com.daniel.Images/Fundos/Calabouso.jpg");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);

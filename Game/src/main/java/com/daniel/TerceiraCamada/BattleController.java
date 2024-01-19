@@ -321,11 +321,11 @@ public class BattleController implements Initializable {
         }
         PnlOpcoes.setPickOnBounds(true);
         ImageView seta = new ImageView();
-        seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
+        seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Setas/Seta.png").toString()));
         seta.setFitWidth(30);
         seta.setPreserveRatio(true);
         ImageView setaInv = new ImageView();
-        setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/Seta.png").toString()));
+        setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/Setas/Seta.png").toString()));
         setaInv.setFitWidth(30);
         setaInv.setPreserveRatio(true);
         setaInv.rotateProperty().set(180);

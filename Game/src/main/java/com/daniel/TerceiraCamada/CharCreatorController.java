@@ -216,7 +216,7 @@ public class CharCreatorController implements Initializable {
         configurarBotoes(btnMenosInt);
         configurarBotoes(btnMenosVel);
         txtPontos.setText(""+pontosDisp);
-        definirBackground(panePrincipal, "/com.daniel.Images/Castelo.jpg");
+        definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
         configurarOuvinte(BarraInt, txtInt);
         configurarOuvinte(BarraVel, txtVelocidade);
         configurarOuvinte(BarraRes, txtRes);

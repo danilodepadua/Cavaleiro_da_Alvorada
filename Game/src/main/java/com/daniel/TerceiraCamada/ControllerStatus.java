@@ -170,6 +170,7 @@ public class ControllerStatus implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
             contornarBotaoVoltar(btnVoltar);
             configurarBotoes(btnSalvar);
             configurarBotoes(btnMaisForca);

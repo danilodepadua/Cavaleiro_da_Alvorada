@@ -52,3 +52,6 @@
 .scroll-bar:horizontal .track {
     -fx-background-color: #140e0a; /* Cor do rastreamento da barra de rolagem */
 }
+.mygridStyle Line {
+    -fx-stroke   : #eccb7e;
+}

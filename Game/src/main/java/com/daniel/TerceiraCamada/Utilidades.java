@@ -106,4 +106,22 @@ public class Utilidades {
         });
 
     }
+    public static void configurarBotoesTelaBestiario(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:    #140e0a; -fx-border-color: #ADD8E6;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:   #140e0a; -fx-border-color: #eccb7e;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:   #140e0a; -fx-border-color: #eccb7e; -fx-opacity: 0.7;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:   #140e0a; -fx-border-color: #eccb7e;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
+        });
+
+    }
 }

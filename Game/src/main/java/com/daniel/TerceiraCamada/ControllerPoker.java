@@ -24,6 +24,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -80,19 +81,23 @@ public class ControllerPoker implements Initializable {
 
     @FXML
     private VBox vboxTextos;
-    int aposta;
+    private int aposta;
+    private int rodada = 1;
+    private int coluna = 3;
     @FXML
     void Apostar(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
+        limparMesa();
         String valorStr = textFieldAposta.getText();
+        btnVoltar.setDisable(true);
+
         try {
             int valorAposta = Integer.parseInt(valorStr);
             int saldoDisponivel = Player.getPlayer().getCoins();
             aposta = valorAposta;
             if (valorAposta > saldoDisponivel) {
-                System.out.println("Você não possui esse saldo");
                 btnApostar.setDisable(true);
             } else {
-                mostrarResultado("Rodada: 1");
+                mostrarResultado("Rodada: "+ rodada);
                 txtAposta.setText("Aposta: "+ aposta);
                 btnContinuar.setDisable(false);
                 try {
@@ -105,12 +110,11 @@ public class ControllerPoker implements Initializable {
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 1);
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 2);
 
-
                     adicionarCartaCostas(gridDealer, 0);
                     adicionarCartaCostas(gridDealer, 1);
 
-                    System.out.println("Deseja continuar?");
                     btnApostar.setDisable(true);
+                    textFieldAposta.setText(null);
                 } catch (BaralhoVazioException e) {
                     throw new RuntimeException(e);
                 }
@@ -125,6 +129,7 @@ public class ControllerPoker implements Initializable {
     @FXML
     void Desistir(ActionEvent event) {
         limparMesa();
+        btnVoltar.setDisable(false);
         btnApostar.setDisable(false);
         btnContinuar.setDisable(true);
     }
@@ -152,14 +157,15 @@ public class ControllerPoker implements Initializable {
         this.jogador = new Mão();
         this.casa = new Mão();
 
-        AtomicInteger coluna = new AtomicInteger(2);
-        btnContinuar.setOnAction(event -> {
-            mostrarResultado("Rodada: " + (coluna.get() + 1));
-            try {
-                continuarAposta(coluna.get());
-                // Verifica se o texto do textFieldAposta não é nulo
-                String apostaTexto = textFieldAposta.getText();
 
+        btnContinuar.setOnAction(event -> {
+            mostrarResultado("Rodada: " + rodada+1);
+            mensagensDaMaquina();
+            try {
+                continuarAposta();
+                // Verifica se o texto do textFieldAposta não é nulo
+
+                String apostaTexto = textFieldAposta.getText();
                 if (apostaTexto != null) {
                     aposta += Integer.parseInt(apostaTexto);
                 }
@@ -182,10 +188,14 @@ public class ControllerPoker implements Initializable {
                     imageView2.setFitWidth(106);
                     imageView2.setFitHeight(150);
                     gridDealer.add(imageView2, 1, 0);
+                    btnVoltar.setDisable(true);
                 }
-                coluna.getAndIncrement();
+                rodada++;
+                coluna++;
                 textFieldAposta.setText(null);
                 txtAposta.setText("Aposta: "+aposta);
+
+
             } catch (BaralhoVazioException e) {
                 throw new RuntimeException(e);
             } catch (PlayerInexistenteException e) {
@@ -205,9 +215,6 @@ public class ControllerPoker implements Initializable {
         imageView.setFitHeight(150);
         // Adicione a imagem da carta de costas ao GridPane na coluna especificada
         gridPane.add(imageView, coluna, 0);
-
-
-
     }
     //Metodo para desenhar a carta
     private Carta adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
@@ -216,17 +223,14 @@ public class ControllerPoker implements Initializable {
             ImageView imageView = new ImageView(carta.getImage());
             imageView.setFitWidth(106);
             imageView.setFitHeight(150);
-            // Adiciona a imagem da carta ao GridPane na coluna especificada
             gridPane.add(imageView, coluna, 0);
-            // Adiciona a carta à mão do jogador ou dealer
             mao.addCarta(carta);
         }
         return carta;
     }
 
-    private void continuarAposta(int coluna) throws BaralhoVazioException {
-       adicionarCarta(gridCartasNoCentro, cartasCentro ,coluna+1);
-
+    private void continuarAposta() throws BaralhoVazioException {
+       adicionarCarta(gridCartasNoCentro, cartasCentro ,coluna);
     }
 
     private void determinarVencedor() throws PlayerInexistenteException {
@@ -245,9 +249,7 @@ public class ControllerPoker implements Initializable {
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
             System.out.println("Cartas da casa: "+ casa.getMao().size());
-            for (Carta carta: casa.getMao()){
-                System.out.println("cartas: "+ carta.getNome());
-            }
+            btnVoltar.setDisable(false);
         } else if (forcaJogador < forcaCasa) {
             System.out.println("Casa vence!");
             mostrarResultado("Você perdeu!");
@@ -257,18 +259,14 @@ public class ControllerPoker implements Initializable {
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
             System.out.println("Cartas da casa: "+ casa.getMao().size());
-            for (Carta carta: casa.getMao()){
-                System.out.println("cartas: "+ carta.getNome());
-            }
+            btnVoltar.setDisable(false);
         } else {
             System.out.println("Empate!");
             mostrarResultado("Empate");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             btnContinuar.setDisable(true);
-            for (Carta carta: casa.getMao()){
-                System.out.println("cartas: "+ carta.getNome());
-            }
+            btnVoltar.setDisable(false);
 
         }
     }
@@ -276,18 +274,22 @@ public class ControllerPoker implements Initializable {
     private void mostrarResultado(String mensagem) {
         txtMensagem.setText(mensagem);
 
-        // Torna o pane visível
-        boxMensagem.setOpacity(1);
+        // Animação de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
 
-        // Adiciona um evento para ser executado após o período de pausa
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(event -> {
-            // Torna o pane invisível após o período de pausa
-            boxMensagem.setOpacity(0);
-        });
+        // Animação de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(2)); // Adiciona um atraso de 2 segundos
 
-        // Inicia a pausa
-        pause.play();
+        // Combinação das animações
+        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
+
+        // Inicia a sequência de animação
+        sequence.play();
     }
 
     private void limparMesa() {
@@ -301,11 +303,25 @@ public class ControllerPoker implements Initializable {
         txtResultadoCasa.setText("");
         txtSeuResultado.setText("");
         baralho.reiniciarBaralhoPoker();
-
+        baralho.embaralhar();
+        this.rodada = 1;
+        this.coluna = 3;
+    }
+    private void mensagensDaMaquina(){
+        String mensagem = obterMensagemAleatoria();
+        mostrarResultado(mensagem);
     }
 
-    private void testeBaralhos(){
-        Carta carta2 = new Carta("Two", "hearts", 2, "/com.daniel.Images/Cartas/two_of_hearts.png");
+    private String obterMensagemAleatoria() {
+        String[] mensagens = {
+                "Essa ta ganha!",
+                "Você não perde por esperar",
+                "Essa ta ganha!",
+                "Droga! ta dificinho"
+        };
 
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(mensagens.length);
+        return mensagens[indiceAleatorio];
     }
 }

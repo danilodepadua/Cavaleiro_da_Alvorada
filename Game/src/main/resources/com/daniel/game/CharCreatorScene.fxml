@@ -19,7 +19,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic>
@@ -28,7 +28,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic>
@@ -43,7 +43,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic>
@@ -52,12 +52,12 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="518.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
+      <Text fill="#eccb7e" layoutX="518.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistência">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -67,7 +67,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic>
@@ -76,12 +76,12 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="516.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
+      <Text fill="#eccb7e" layoutX="516.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligência">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -91,7 +91,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic>
@@ -100,7 +100,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic>
@@ -193,7 +193,7 @@
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
       </Button>
-      <Text fill="#eccb7e" layoutX="432.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRIAÇÃO DE PERSONAGEM">
+      <Text fill="#eccb7e" layoutX="449.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRIAÇÃO DE PERSONAGEM">
          <font>
             <Font name="Barlow Condensed SemiBold" size="36.0" />
          </font>
@@ -202,7 +202,7 @@
          <children>
             <ImageView fx:id="imgBonecos" fitHeight="311.0" fitWidth="119.0" layoutX="50.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/Player.png" />
+                  <Image url="@../../../com.daniel.Images/Personagens/Homi.png" />
                </image>
             </ImageView>
          </children>
@@ -214,7 +214,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic>
@@ -226,7 +226,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic>

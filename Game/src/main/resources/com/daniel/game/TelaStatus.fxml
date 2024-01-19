@@ -11,30 +11,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerStatus">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerStatus">
    <children>
       <ProgressBar fx:id="progBarVel" layoutX="389.0" layoutY="404.0" minWidth="100.0" prefHeight="18.0" prefWidth="274.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="404.0" />
       <ProgressBar fx:id="progBarRes" layoutX="387.0" layoutY="273.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="273.0" />
       <ProgressBar fx:id="progBarInt" layoutX="389.0" layoutY="335.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="335.0" />
       <ProgressBar fx:id="progBarForca" layoutX="387.0" layoutY="211.0" minWidth="100.0" prefHeight="18.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="211.0" />
-      <Text fill="#eccb7e" layoutX="386.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Força">
+      <Text fill="#eccb7e" layoutX="386.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
          <font>
-            <Font name="Barlow Condensed SemiBold" size="18.0" />
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="387.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistecia">
+      <Text fill="#eccb7e" layoutX="387.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
          <font>
-            <Font name="Barlow Condensed SemiBold" size="18.0" />
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="386.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia">
+      <Text fill="#eccb7e" layoutX="386.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
          <font>
-            <Font name="Barlow Condensed SemiBold" size="18.0" />
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="388.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade">
+      <Text fill="#eccb7e" layoutX="388.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
          <font>
-            <Font name="Barlow Condensed SemiBold" size="18.0" />
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
       <Button fx:id="btnMenosForce" layoutX="334.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickMenosForca" prefHeight="26.0" prefWidth="36.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
@@ -44,7 +44,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -55,7 +55,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -66,7 +66,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -77,7 +77,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -88,7 +88,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -99,7 +99,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -110,7 +110,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -121,7 +121,7 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaBaixoAmarelaDireita%20(1)%20(1).png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -132,7 +132,7 @@
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../com.daniel.Images/SetaPraEsquerda.png" />
+                  <Image url="@../../../com.daniel.Images/Setas/SetaPraEsquerda.png" />
                </image>
             </ImageView>
          </graphic>
@@ -220,21 +220,21 @@
             </VBox>
          </children>
       </Pane>
-      <Text fill="#eccb7e" layoutX="517.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EVOLUÇÃO">
+      <Text fill="#eccb7e" layoutX="517.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="EVOLUÇÃO">
          <font>
             <Font name="Barlow Condensed SemiBold" size="43.0" />
          </font>
       </Text>
-      <HBox layoutX="388.0" layoutY="125.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
+      <HBox layoutX="382.0" layoutY="116.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="23.0" />
+                  <Font name="Barlow Condensed SemiBold" size="28.0" />
                </font>
             </Text>
-            <Text fx:id="txtPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
+            <Text fx:id="txtPontos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="23.0" />
+                  <Font name="Barlow Condensed SemiBold" size="28.0" />
                </font>
             </Text>
          </children>

@@ -96,7 +96,7 @@ public class ControllerLoja implements Initializable {
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
-        definirBackground(panelImage, "/com.daniel.Images/Veio Balconista.jpeg");
+        definirBackground(panelImage, "/com.daniel.Images/Fundos/Veio Balconista.jpeg");
 
         criarBotaoItem(new PocaoCura(), 0, 0, gridPocoes);
         criarBotaoItem(new PocaoMp(), 1, 0, gridPocoes);

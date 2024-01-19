@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -19,71 +20,355 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInfos">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerInfos">
    <children>
-      <ImageView fx:id="ImgPlayer" fitHeight="300.0" fitWidth="200.0" layoutX="214.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="200.0">
-         <viewport>
-            <Rectangle2D minX="10.0" minY="10.0" />
-         </viewport>
-      </ImageView>
-      <Text fx:id="TxtNome" fill="WHITE" layoutX="100.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="24.0" />
-         </font>
-      </Text>
-      <VBox layoutX="344.0" layoutY="179.0" prefHeight="200.0" prefWidth="100.0" spacing="50.0" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="179.0">
+      <Group layoutX="82.0" layoutY="36.0" AnchorPane.leftAnchor="79.7155294418335" AnchorPane.topAnchor="20.0">
          <children>
-            <Text fx:id="TxtNomeCapacete" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacete">
+            <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Fis.">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="22.0" />
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="TxtNomePeitoral" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Peitoral">
+            <Text fill="#eccb7e" layoutY="30.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Mag.">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="22.0" />
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="TxtNomeArma" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Arma">
+            <Text fill="#eccb7e" layoutY="60.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Fis.">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="22.0" />
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="TxtNomeCalca" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pernas">
+            <Text fill="#eccb7e" layoutY="90.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Mag.">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="22.0" />
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
+            <Rectangle fx:id="GrafAF" arcHeight="5.0" arcWidth="5.0" fill="#eccb7e" height="16.0" layoutX="70.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
+            <Rectangle fx:id="GrafAM" arcHeight="5.0" arcWidth="5.0" fill="#eccb7e" height="16.0" layoutX="70.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
+            <Rectangle fx:id="GrafDF" arcHeight="5.0" arcWidth="5.0" fill="#eccb7e" height="16.0" layoutX="70.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
+            <Rectangle fx:id="GrafDM" arcHeight="5.0" arcWidth="5.0" fill="#eccb7e" height="16.0" layoutX="70.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
          </children>
-      </VBox>
-      <Line endX="73.0" endY="-1.0" fill="BLACK" layoutX="269.0" layoutY="215.0" startX="-62.0" startY="10.0" strokeWidth="2.0" AnchorPane.leftAnchor="205.58578491210938" AnchorPane.topAnchor="212.58578634262085" />
-      <Line endX="53.0" endY="1.0" fill="BLACK" layoutX="283.0" layoutY="286.0" startX="-69.0" startY="8.0" strokeWidth="2.0" AnchorPane.leftAnchor="212.58578491210938" AnchorPane.topAnchor="285.5857864320278" />
-      <Line endX="52.0" endY="75.0" fill="BLACK" layoutX="283.0" layoutY="365.0" startX="-67.0" startY="55.0" strokeWidth="2.0" AnchorPane.leftAnchor="213.0" AnchorPane.topAnchor="420.0" />
-      <Line endX="55.0" endY="-1.0" fill="BLACK" layoutX="283.0" layoutY="363.0" smooth="false" startX="-131.0" startY="-1.0" strokeWidth="2.0" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="365.0" />
-      <VBox layoutX="802.0" layoutY="267.0" prefHeight="340.0" prefWidth="100.0" spacing="20.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#OnActionPontos" prefHeight="100.0" prefWidth="100.0" text="Pontos">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnActionBestiario" prefHeight="100.0" prefWidth="100.0" text="Bestiário">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="120.0" mnemonicParsing="false" onAction="#OnActionInventario" prefHeight="100.0" prefWidth="100.0" text="Inventário">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <Button layoutX="74.0" layoutY="577.0" mnemonicParsing="false" onAction="#OnActionVoltar" text="Voltar" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="70.0">
+      </Group>
+      <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#OnActionVoltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD">
          <font>
-            <Font name="Barlow Condensed SemiBold" size="24.0" />
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
-      <Circle fx:id="SinalPontos" fill="RED" layoutX="910.0" layoutY="150.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="143.0">
+      <AnchorPane layoutX="80.0" layoutY="151.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;">
+         <children>
+            <ImageView fx:id="ImgPlayer" fitHeight="309.0" fitWidth="169.0" layoutX="7.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="49.0">
+               <viewport>
+                  <Rectangle2D minX="10.0" minY="10.0" />
+               </viewport>
+            </ImageView>
+            <Line endX="103.0" endY="-48.03166961669922" fill="BLACK" layoutX="165.0" layoutY="249.0" smooth="false" startX="-131.0" startY="-13.20001220703125" stroke="#eccb7e" strokeWidth="2.0" AnchorPane.leftAnchor="32.585784912109375" AnchorPane.topAnchor="199.55411529541016" />
+            <VBox layoutX="270.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0" spacing="50.0" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="35.0">
+               <children>
+                  <Text fx:id="TxtNomeCapacete" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Capacete">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="TxtNomePeitoral" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Peitoral">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="TxtNomeArma" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Arma">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="TxtNomeCalca" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pernas">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Line endX="52.0" endY="75.0" fill="BLACK" layoutX="215.0" layoutY="205.0" startX="-67.0" startY="55.0" stroke="#eccb7e" strokeWidth="2.0" AnchorPane.leftAnchor="146.58578491210938" AnchorPane.topAnchor="258.5857849121094" />
+            <Line endX="53.0" endY="1.0" fill="BLACK" layoutX="216.0" layoutY="127.0" startX="-69.0" startY="8.0" stroke="#eccb7e" strokeWidth="2.0" AnchorPane.leftAnchor="145.58578491210938" AnchorPane.topAnchor="126.58578643202782" />
+            <Line endX="73.0" endY="-1.0" fill="BLACK" layoutX="184.0" layoutY="65.0" startX="-62.0" startY="10.0" stroke="#eccb7e" strokeWidth="2.0" AnchorPane.leftAnchor="120.58578491210938" AnchorPane.topAnchor="62.58578634262085" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="659.0" layoutY="152.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;">
+         <children>
+            <GridPane fx:id="GridElementos" gridLinesVisible="true" layoutX="19.0" layoutY="24.0" prefHeight="160.0" prefWidth="431.0" styleClass="mygridStyle" stylesheets="@style.css" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="24.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Fraquezas">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="16.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="330.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Resistências" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="16.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="210.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="250.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="290.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="330.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="370.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Imunidades" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="16.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="170.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Absorções" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="16.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+            <Text fx:id="TxtNome" fill="#eccb7e" layoutX="20.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="204.0">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="22.0" />
+               </font>
+            </Text>
+            <Group layoutX="22.0" layoutY="253.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="231.0">
+               <children>
+                  <Text fx:id="TxtLvl" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Lvl: ">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="TxtXPAtual" fill="#eccb7e" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp. Atual: ">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="TxtXPProx" fill="#eccb7e" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp. Prox: ">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+         </children>
+      </AnchorPane>
+      <HBox layoutX="397.0" layoutY="549.0" prefHeight="55.0" prefWidth="406.0" spacing="30.0">
+         <children>
+            <Button fx:id="btnPontos" mnemonicParsing="false" onAction="#OnActionPontos" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Pontos" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnInventario" mnemonicParsing="false" onAction="#OnActionInventario" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Inventário" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBestiario" mnemonicParsing="false" onAction="#OnActionBestiario" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Bestiário" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Circle fx:id="SinalPontos" fill="RED" layoutX="515.0" layoutY="549.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5">
          <effect>
             <Lighting diffuseConstant="1.4" specularConstant="1.5" specularExponent="40.0" surfaceScale="1.1">
                <bumpInput>
@@ -95,274 +380,5 @@
             </Lighting>
          </effect>
       </Circle>
-      <Group layoutX="585.0" layoutY="286.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="50.0">
-         <children>
-            <Text fx:id="TxtLvl" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Lvl: ">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="TxtXPAtual" fill="WHITE" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp. Atual: ">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="TxtXPProx" fill="WHITE" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp. Prox: ">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="24.0" />
-               </font>
-            </Text>
-         </children>
-      </Group>
-      <Group layoutX="600.0" layoutY="180.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Atq. Fis.">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atq. Mag.">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Def. Fis.">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Def. Mag.">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <Rectangle fx:id="GrafAF" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="70.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
-            <Rectangle fx:id="GrafAM" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="70.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
-            <Rectangle fx:id="GrafDF" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="70.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
-            <Rectangle fx:id="GrafDM" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="70.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="10.0" y="-16.0" />
-         </children>
-      </Group>
-      <GridPane fx:id="GridElementos" layoutX="519.0" layoutY="350.0" prefHeight="160.0" prefWidth="431.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="300.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fraquezas">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="330.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistências" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="210.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="250.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="290.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="330.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="370.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imunidades" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="170.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absorções" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/FogoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/AguaIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/VentoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/TerraIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/GeloIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/RaioIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/EscuridaoIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/LuzIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
    </children>
 </AnchorPane>

@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -25,10 +27,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.Utilidades.*;
+
 public class ControllerInfos implements Initializable {
 
-    @FXML
-    private GridPane GridElementos;
     @FXML
     private Rectangle GrafAF;
 
@@ -40,8 +42,13 @@ public class ControllerInfos implements Initializable {
 
     @FXML
     private Rectangle GrafDM;
+
+    @FXML
+    private GridPane GridElementos;
+
     @FXML
     private ImageView ImgPlayer;
+
     @FXML
     private Circle SinalPontos;
 
@@ -69,6 +76,19 @@ public class ControllerInfos implements Initializable {
     @FXML
     private Text TxtXPProx;
 
+    @FXML
+    private Button btnBestiario;
+
+    @FXML
+    private Button btnInventario;
+
+    @FXML
+    private Button btnPontos;
+
+    @FXML
+    private Button btnVoltar;
+    @FXML
+    private AnchorPane panePrincipal;
     @FXML
     void OnActionBestiario(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBestiario.fxml")).load());
@@ -150,6 +170,12 @@ public class ControllerInfos implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            configurarBotoes(btnBestiario);
+            configurarBotoes(btnInventario);
+            configurarBotoes(btnPontos);
+            contornarBotaoVoltar(btnVoltar);
+            definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
+
             if (Player.getPlayer().getPontos() > 0){
                 SinalPontos.setOpacity(1);
             }
