@@ -3,6 +3,10 @@ package com.daniel.TerceiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
+import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
+import com.daniel.PrimeiraCamada.Itens.Arma;
+import com.daniel.PrimeiraCamada.Itens.Armadura;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaMalha;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteMalha;
@@ -98,7 +102,22 @@ public class ControllerLoja implements Initializable {
         }
         definirBackground(panelImage, "/com.daniel.Images/Veio Balconista.jpeg");
 
-        criarBotaoItem(new PocaoCura(), 0, 0, gridPocoes);
+        int pocoes = 0, armaduras = 0, armas = 0;
+        for(Item i : Main.cidadeAtual.getItens()){
+            if(i instanceof Armadura){
+                criarBotaoItem(i, armaduras%3, (int)armaduras/3, gridArmaduras);
+                armaduras++;
+            }
+            else if(i instanceof Arma){
+                criarBotaoItem(i, armas%3, (int)armas/3, gridArmas);
+                armas++;
+            }
+            else if(i instanceof IConsumableOutBattle || i instanceof IConsumableInBattle){
+                criarBotaoItem(i, pocoes%3, (int)pocoes/3, gridPocoes);
+                pocoes++;
+            }
+        }
+        /*criarBotaoItem(new PocaoCura(), 0, 0, gridPocoes);
         criarBotaoItem(new PocaoMp(), 1, 0, gridPocoes);
         criarBotaoItem(new TonicoDeForca(), 2,0, gridPocoes);
         criarBotaoItem(new TonicoDoHeroi(),0,1, gridPocoes);
@@ -124,7 +143,7 @@ public class ControllerLoja implements Initializable {
         criarBotaoItem(new EspadaSombria(), 2, 0,gridArmas);
         criarBotaoItem(new EspadaLuz(), 0, 1, gridArmas);
         criarBotaoItem(new Katana(), 1, 1, gridArmas);
-        criarBotaoItem(new Tridente(), 2, 1, gridArmas);
+        criarBotaoItem(new Tridente(), 2, 1, gridArmas);*/
 
 
 
