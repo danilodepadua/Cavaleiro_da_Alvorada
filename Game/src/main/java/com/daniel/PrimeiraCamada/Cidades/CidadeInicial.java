@@ -3,6 +3,15 @@ package com.daniel.PrimeiraCamada.Cidades;
 import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.*;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Itens.Arma;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombria;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
 import com.daniel.PrimeiraCamada.Quests.*;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoAbelha;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoBabySlime;
@@ -33,6 +42,16 @@ public class CidadeInicial extends Cidade{
         quests.add(new QuestSnowMan());
         quests.add(new QuestTigerMan());
 
+        // Adiciona os itens da loja
+        this.itens.add(new EspadaInicial());
+        this.itens.add(new PocaoCura());
+        this.itens.add(new EspadaSombria());
+        this.itens.add(new PocaoMp());
+        this.itens.add(new TonicoDeForca());
+        this.itens.add(new CalcaCouro());
+        this.itens.add(new CapaceteCouro());
+        this.itens.add(new PeitoralCouro());
+
         ajustarBotoes();
     }
 
@@ -42,11 +61,9 @@ public class CidadeInicial extends Cidade{
         // Adiciona botões específicos da CidadeInicial
         this.botoes.add(criarBotaoViajar());
         this.botoes.add(criarBotaoCacar());
-        this.botoes.add(criarBotaoSalvar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoTaverna());
-
-
+        this.botoes.add(criarBotaoSalvar());
     }
 }

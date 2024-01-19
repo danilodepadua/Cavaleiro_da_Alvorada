@@ -2,6 +2,7 @@ package com.daniel.PrimeiraCamada.Entidades;
 
 import com.daniel.PrimeiraCamada.*;
 import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
+import com.daniel.PrimeiraCamada.Cidades.MontanhaDoNorte;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
@@ -55,6 +56,7 @@ public class Player extends Personagem implements Serializable {
         this.magias = new ArrayList<>();
         this.magias.add(new Fogo());
         this.cidadesConehcidas.add(new CidadeInicial());
+        this.cidadesConehcidas.add(new MontanhaDoNorte());
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {

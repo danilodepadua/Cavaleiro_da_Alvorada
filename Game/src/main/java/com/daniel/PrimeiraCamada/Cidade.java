@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ public abstract class Cidade implements Serializable {
     protected String Nome;
     protected Inimigo[] inimigos;
     protected ArrayList<Quest> quests = new ArrayList<>(); // Usando ArrayList
+    protected ArrayList<Item> itens = new ArrayList<>();
     protected transient ArrayList<Botao> botoes = new ArrayList<>();
     public Cidade(String nome, String fundo, String fundoB) {
         this.Fundo = fundo;
@@ -55,6 +57,9 @@ public abstract class Cidade implements Serializable {
     }
     public Runnable getBotaoFunc(int pos){
         return  this.getBotoes().get(pos).getFunc();
+    }
+    public ArrayList<Item> getItens(){
+        return this.itens;
     }
     protected Botao criarBotao(String nome, Runnable run){
 
@@ -99,7 +104,7 @@ public abstract class Cidade implements Serializable {
     protected  Botao criarBotaoViajar(){
         return criarBotao("Viajar", () -> {
             try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("MapaDeViagem.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

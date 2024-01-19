@@ -35,6 +35,9 @@ public class Main extends Application {
     public static double getLargura(){
         return CurrentStage.getWidth();
     }
+    public static double getAltura(){
+        return CurrentStage.getHeight();
+    }
     @Override
     public void start(Stage stage) throws IOException, PlayerInexistenteException {
         stage.setMinHeight(639);
