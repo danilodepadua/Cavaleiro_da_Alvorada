@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
 import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
 
-public class ControllerConfig implements Initializable {
+public class ConfigController implements Initializable {
 
     @FXML
     private ChoiceBox<String> EscolhaResolucao;

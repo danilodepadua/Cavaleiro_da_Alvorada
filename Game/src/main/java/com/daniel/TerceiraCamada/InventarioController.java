@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
 import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
 
-public class ControllerInventario implements Initializable {
+public class InventarioController implements Initializable {
     private boolean statusVisivel = false; // Variável para controlar se os dados estão visíveis
 
     @FXML

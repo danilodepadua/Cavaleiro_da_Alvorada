@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CharCreatorController implements Initializable {
+public class CriarPersonagemController implements Initializable {
     Integer pontosDisp = 10;
     private List<String> images;
     private int indiceAtual;

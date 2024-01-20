@@ -1,5 +1,4 @@
 package com.daniel.TerceiraCamada;
-import com.daniel.PrimeiraCamada.Cassino.AvaliadorPoker;
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
@@ -23,16 +22,14 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.daniel.PrimeiraCamada.Cassino.AvaliadorPoker.avaliarForcaMao;
 import static com.daniel.PrimeiraCamada.Cassino.AvaliadorPoker.avaliarMao;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerPoker implements Initializable {
+public class PokerController implements Initializable {
     private Baralho baralho;
     private Mão jogador;
     private Mão casa;
@@ -124,8 +121,6 @@ public class ControllerPoker implements Initializable {
             System.out.println("Valor de aposta inválido");
         }
     }
-
-
     @FXML
     void Desistir(ActionEvent event) {
         limparMesa();
@@ -241,27 +236,22 @@ public class ControllerPoker implements Initializable {
         int forcaCasa = avaliarForcaMao(casa, cartasCentro);
 
         if (forcaJogador > forcaCasa ) {
-            System.out.println("Jogador vence!");
             mostrarResultado("Você ganhou! ");
             Player.getPlayer().ganhaCoins(aposta);
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
-            System.out.println("Cartas da casa: "+ casa.getMao().size());
             btnVoltar.setDisable(false);
         } else if (forcaJogador < forcaCasa) {
-            System.out.println("Casa vence!");
             mostrarResultado("Você perdeu!");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             Player.getPlayer().ganhaCoins(-aposta);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
-            System.out.println("Cartas da casa: "+ casa.getMao().size());
             btnVoltar.setDisable(false);
         } else {
-            System.out.println("Empate!");
             mostrarResultado("Empate");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);

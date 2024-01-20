@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -19,7 +18,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerStatus implements Initializable {
+public class EvoluçaoController implements Initializable {
     private Integer  pontosDisp;
     @FXML
     private AnchorPane panePrincipal;

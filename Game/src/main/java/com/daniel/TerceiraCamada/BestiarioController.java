@@ -6,7 +6,6 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.game.Main;
 import javafx.animation.*;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +23,11 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerBestiario implements Initializable {
+public class BestiarioController implements Initializable {
 
     @FXML
     private GridPane GridAbsorcoes;

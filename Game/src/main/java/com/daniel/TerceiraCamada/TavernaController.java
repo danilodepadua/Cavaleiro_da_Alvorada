@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerCassino implements Initializable {
+public class TavernaController implements Initializable {
     private String texto = "Taverna";
     @FXML
     private Button btnMemoria;

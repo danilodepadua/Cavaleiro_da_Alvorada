@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerTelaResultado implements Initializable {
+public class TelaResultadoController implements Initializable {
     @FXML
     private Label labelXP;
     @FXML

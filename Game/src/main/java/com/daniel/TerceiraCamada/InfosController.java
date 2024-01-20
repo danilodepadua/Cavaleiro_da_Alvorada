@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerInfos implements Initializable {
+public class InfosController implements Initializable {
 
     @FXML
     private Rectangle GrafAF;

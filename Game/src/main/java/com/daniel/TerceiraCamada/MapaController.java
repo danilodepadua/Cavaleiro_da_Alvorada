@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerMapa extends Utilidades implements Initializable {
+public class MapaController extends Utilidades implements Initializable {
 
     @FXML
     private AnchorPane Fundo;

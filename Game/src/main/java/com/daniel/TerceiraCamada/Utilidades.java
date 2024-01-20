@@ -124,4 +124,25 @@ public class Utilidades {
         });
 
     }
+
+    public static void contornarBotaoVoltarLoja(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle(" -fx-border-color:  #eccb7e; -fx-background-color: #140e0a ");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-border-color: transparent;-fx-background-color: #140e0a");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-border-color:  #eccb7e; -fx-opacity: 0.7;-fx-background-color: #140e0a");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-border-color: transparent;-fx-background-color: #140e0a");
+        });
+    }
+
+
+
 }

@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerBlackJack  implements Initializable{
+public class VinteUmController implements Initializable{
     private Baralho baralho;
     private Mão jogador;
     private Mão dealer;

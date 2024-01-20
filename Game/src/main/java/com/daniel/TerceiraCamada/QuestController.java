@@ -25,9 +25,8 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
 import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
 
-public class ControllerQuest implements Initializable {
+public class QuestController implements Initializable {
     int questAtual = 0;
-    int questDisponivel = 0;
     @FXML
     private Button bntSetaSubir;
 
@@ -131,17 +130,19 @@ public class ControllerQuest implements Initializable {
         definirBackground(panePrincipal,"/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         configurarSetas();
         ImageView seta = new ImageView();
-        seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
+        seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Setas/SetaBaixoAmarela.png").toString()));
         seta.setFitWidth(40);
         seta.setFitHeight(60);
         seta.setPreserveRatio(true);
         ImageView setaInv = new ImageView();
-        setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/SetaBaixoAmarela.png").toString()));
+        setaInv.setImage(new Image(Main.class.getResource("/com.daniel.Images/Setas/SetaBaixoAmarela.png").toString()));
         setaInv.setFitWidth(40);
         setaInv.setFitHeight(60);
         setaInv.setPreserveRatio(true);
         setaInv.rotateProperty().set(180);
         contornarBotaoVoltar(btnVoltar);
+        contornarBotaoVoltar(btnSetaDescer);
+        contornarBotaoVoltar(bntSetaSubir);
         try {
             Player.getPlayer().desabilitarQuestsNaoComuns();
             atualizarInterfaceGrafica();
@@ -151,13 +152,13 @@ public class ControllerQuest implements Initializable {
         }
     }
     private void verificarSetasQuests(int size) {
-        if (questDisponivel == 0) {
+        if (questAtual == 0) {
             bntSetaSubir.setDisable(true);
         } else {
             bntSetaSubir.setDisable(false);
         }
 
-        if (questDisponivel + 5 >= size) {
+        if (questAtual + 5 >= size) {
             btnSetaDescer.setDisable(true);
         } else {
             btnSetaDescer.setDisable(false);

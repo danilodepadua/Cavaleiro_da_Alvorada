@@ -7,24 +7,7 @@ import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaMalha;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteMalha;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralMalha;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
-import com.daniel.PrimeiraCamada.Itens.Armas.*;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaFerro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteFerro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
-import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralFerro;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDoHeroi;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,7 +24,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerLoja implements Initializable {
+public class LojaController implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
 
     @FXML
@@ -94,7 +77,7 @@ public class ControllerLoja implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         configurarBotoes(btnComprar);
-        contornarBotaoVoltar(btnVoltar);
+        contornarBotaoVoltarLoja(btnVoltar);
         try {
             txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException e) {

@@ -26,7 +26,7 @@ import java.util.*;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class ControllerMemoria implements Initializable {
+public class MemoriaController implements Initializable {
     private BaralhoMemoria baralho;
     private List<Carta> cartas = new ArrayList<>(); //Para criar e salvar as referencias das cartas
     private List<Carta> limitarVirada = new ArrayList<>(); //Para conseguir fazer a verificaçao e limitar

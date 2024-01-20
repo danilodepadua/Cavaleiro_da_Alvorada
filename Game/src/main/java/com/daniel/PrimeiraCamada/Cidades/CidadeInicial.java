@@ -5,8 +5,11 @@ import com.daniel.PrimeiraCamada.Entidades.Inimigos.*;
 import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombria;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
@@ -48,9 +51,9 @@ public class CidadeInicial extends Cidade{
         this.itens.add(new EspadaSombria());
         this.itens.add(new PocaoMp());
         this.itens.add(new TonicoDeForca());
-        this.itens.add(new CalcaCouro());
-        this.itens.add(new CapaceteCouro());
-        this.itens.add(new PeitoralCouro());
+        this.itens.add(new CapacetePano());
+        this.itens.add(new PeitoralPano());
+        this.itens.add(new CalcaPano());
 
         ajustarBotoes();
     }

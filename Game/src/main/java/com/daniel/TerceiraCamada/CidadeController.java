@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
-public class CityController implements Initializable {
+public class CidadeController implements Initializable {
     @FXML
     private Label LabelForca;
 

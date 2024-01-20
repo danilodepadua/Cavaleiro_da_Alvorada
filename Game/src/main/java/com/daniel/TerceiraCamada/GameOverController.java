@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
 import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
 
-public class ControllerGameOver implements Initializable {
+public class GameOverController implements Initializable {
     @FXML
     private Button btnCarregar;
 

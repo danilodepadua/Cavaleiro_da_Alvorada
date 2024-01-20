@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerConfig">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ConfigController">
    <children>
       <ChoiceBox fx:id="EscolhaResolucao" layoutX="487.0" layoutY="203.0" prefHeight="26.0" prefWidth="215.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="203.0" />
       <Text fill="#eccb7e" layoutX="487.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" textAlignment="RIGHT" AnchorPane.leftAnchor="487.0" AnchorPane.rightAnchor="446.0800018310547" AnchorPane.topAnchor="19.0">
