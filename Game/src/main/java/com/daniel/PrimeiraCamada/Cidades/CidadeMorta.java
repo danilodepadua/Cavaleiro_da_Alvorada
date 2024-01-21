@@ -10,16 +10,15 @@ import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
 
 import java.util.ArrayList;
 
-public class MontanhaDoNorte extends Cidade {
-    public MontanhaDoNorte() throws PlayerInexistenteException {
-        super("Montanha Do Norte","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
+public class CidadeMorta extends Cidade {
+    public CidadeMorta() throws PlayerInexistenteException {
+        super("Cidade morta","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();
         quests.add(new QuestSlimeDeEscuridaoNv1());
         ajustarBotoes();
     }
-
     @Override
     public void ajustarBotoes() throws PlayerInexistenteException {
         this.botoes = new ArrayList<>();
