@@ -8,14 +8,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< Updated upstream
-
 <AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MapaController">
-=======
-<AnchorPane fx:id="Fundo" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.ControllerMapa">
->>>>>>> Stashed changes
    <children>
-      <ImageView fx:id="ImgMapa" fitWidth="765.0" layoutX="342.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+      <ImageView fx:id="ImgMapa" fitHeight="575.0" fitWidth="778.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <image>
             <Image url="@../../../com.daniel.Images/Fundos/Game%20Map.jpg" />
          </image>
@@ -30,9 +25,9 @@
                   <Font name="Barlow Condensed SemiBold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="463.0" layoutY="12.0" mnemonicParsing="false" onAction="#OnActionViajar" text="Viajar" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
+            <Button layoutX="659.0" layoutY="12.0" mnemonicParsing="false" onAction="#OnActionViajar" text="Viajar" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
-      <Circle fx:id="Circulo" fill="#ffffff00" layoutX="888.0" layoutY="105.0" radius="30.0" stroke="RED" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="Circulo" fill="#1f93ff00" layoutX="746.0" layoutY="205.0" radius="15.0" stroke="RED" strokeType="INSIDE" strokeWidth="3.0" />
    </children>
 </AnchorPane>
