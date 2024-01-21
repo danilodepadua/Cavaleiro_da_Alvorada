@@ -10,17 +10,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.daniel.game.Main.CurrentStage;
+import static com.daniel.game.Main.cidadeAtual;
 
 public class MapaController extends Utilidades implements Initializable {
 
@@ -38,9 +47,92 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @FXML
     void OnActionViajar(ActionEvent event) throws IOException {
+        // Configura a cidade atual
         Main.cidadeAtual = cidadeTroca;
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+
+        // Exibe a cutscene
+        exibirCutscene();
+
     }
+
+    private void exibirCutscene() {
+        if (cidadeTroca.isDialogoAtivo()){
+            AnchorPane cutsceneContainer = criarAnchorPane();
+
+            // Obtém a mensagem de cutscene da cidade atual
+            String mensagemCutscene = Main.cidadeAtual.getDialogoCutscene();
+
+            // Verifica se a mensagem não é nula ou vazia antes de proceder pra evitar erro de nullPoint
+            if (mensagemCutscene != null && !mensagemCutscene.isEmpty()) {
+                // Adiciona um VBox como filho do AnchorPane
+                VBox vbox = new VBox();
+                vbox.setLayoutX(100);
+                vbox.setLayoutY(50);
+                cutsceneContainer.getChildren().add(vbox);
+
+                // Adiciona um Text para exibir a mensagem
+                Text mensagemText = new Text();
+                mensagemText.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-fill: #eccb7e; -fx-font-size: 40; -fx-stroke: black; -fx-stroke-width: 1");
+                mensagemText.setWrappingWidth(1100);
+
+                vbox.getChildren().add(mensagemText);
+                cidadeTroca.mudarDialogo(false);
+                // Chama o método para adicionar caracteres com atraso
+                adicionarCaracteresComAtraso(mensagemCutscene, mensagemText, () -> {
+                    // Muda para a cena da cidade após a animação da cutscene
+                    try {
+                        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+            });
+            }
+        } else {
+            AnchorPane cutsceneContainer = criarAnchorPane();
+            // Adiciona um Texto de loading
+            Text textoLoading = new Text();
+            textoLoading.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-fill: #eccb7e; -fx-font-size: 40; -fx-stroke: black; -fx-stroke-width: 1");
+            textoLoading.setText("LOADING");
+            VBox vBox = new VBox();
+            vBox.setLayoutX(570);
+            vBox.setLayoutY(200);
+            vBox.getChildren().add(textoLoading);
+
+            // Adiciona um retângulo com animação de escala (crescimento) como indicador de carregamento
+            Rectangle quadradoLoading = new Rectangle(100, 20, Color.web("#eccb7e"));
+            quadradoLoading.setStroke(Color.BLACK);
+            vBox.getChildren().add(quadradoLoading);
+
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(2), quadradoLoading);
+            scaleTransition.setToX(3); // Ajuste conforme necessário
+            scaleTransition.setCycleCount(Timeline.INDEFINITE);
+            scaleTransition.play();
+            cutsceneContainer.getChildren().add(vBox);
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> {
+                try {
+                    Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            pause.play();
+        }
+    }
+
+    private AnchorPane criarAnchorPane() {
+        AnchorPane cutsceneContainer = new AnchorPane();
+        definirBackground(cutsceneContainer, cidadeAtual.getCaminhoImagem());
+
+        cutsceneContainer.setStyle("-fx-padding: 20;");
+        Scene cutsceneScene = new Scene(cutsceneContainer, CurrentStage.getWidth(), CurrentStage.getHeight());
+        cutsceneScene.setFill(Color.WHITE);
+        CurrentStage.setScene(cutsceneScene);
+
+        return cutsceneContainer;
+    }
+
     private Timeline CriarAnimacaoQueda(Node n, double d) {
         KeyValue keyValue = new KeyValue(n.layoutYProperty(), d, Interpolator.EASE_BOTH);
         KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);

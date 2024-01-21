@@ -11,12 +11,14 @@ import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
 import java.util.ArrayList;
 
 public class MontanhaDoNorte extends Cidade {
+
     public MontanhaDoNorte() throws PlayerInexistenteException {
-        super("Montanha Do Norte","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
+        super("Montanha Do Norte","/com.daniel.Images/Fundos/Montanha do norte.jpg", "/com.daniel.Images/Fundos/Montanha do norte.jpg");
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();
         quests.add(new QuestSlimeDeEscuridaoNv1());
+        this.dialogoCutscene = "E então o guerreiro seguiu sua jornada passando por uma cidade sombria e sem vida";
         ajustarBotoes();
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Ilha extends Cidade {
     public Ilha() throws PlayerInexistenteException {
-        super("Ilha","/com.daniel.Images/montanhadonorte.jpg", "/com.daniel.Images/montanhadonorte.jpg");
+        super("Ilha","/com.daniel.Images/Fundos/Montanha do norte.jpg", "/com.daniel.Images/Fundos/Montanha do norte.jpg");
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();

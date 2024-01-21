@@ -4,14 +4,11 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.game.Main;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import static com.daniel.TerceiraCamada.Utilidades.estiloBotao;
 
 public abstract class Cidade implements Serializable {
     public abstract void ajustarBotoes() throws PlayerInexistenteException;
@@ -20,6 +17,8 @@ public abstract class Cidade implements Serializable {
     protected Inimigo[] inimigos;
     protected ArrayList<Quest> quests = new ArrayList<>(); // Usando ArrayList
     protected ArrayList<Item> itens = new ArrayList<>();
+    protected String  dialogoCutscene;
+    protected boolean dialogoAtivo;
     protected transient ArrayList<Botao> botoes = new ArrayList<>();
     public Cidade(String nome, String fundo, String fundoB) {
         this.Fundo = fundo;
@@ -39,6 +38,10 @@ public abstract class Cidade implements Serializable {
         return inimigos;
     }
 
+    public String getDialogoCutscene() {
+        return dialogoCutscene;
+    }
+
     public ArrayList<Quest> getQuests() {
         return quests;
     }
@@ -51,6 +54,14 @@ public abstract class Cidade implements Serializable {
     }
 
     public ArrayList<Botao> getBotoes(){return  this.botoes;}
+
+    public boolean isDialogoAtivo() {
+        return dialogoAtivo;
+    }
+
+    public void mudarDialogo(boolean dialogoAtivo) {
+        this.dialogoAtivo = dialogoAtivo;
+    }
 
     public String getBotaoNome(int pos){
         return this.getBotoes().get(pos).getNome();

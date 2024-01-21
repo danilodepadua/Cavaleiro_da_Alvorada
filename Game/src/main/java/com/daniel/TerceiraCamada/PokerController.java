@@ -107,7 +107,7 @@ public class PokerController implements Initializable {
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 1);
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 2);
 
-                    adicionarCartaCostas(gridDealer, 0);
+                    adicionarCartaCostas(gridDealer, 0); //substituir as cartas inicias
                     adicionarCartaCostas(gridDealer, 1);
 
                     btnApostar.setDisable(true);

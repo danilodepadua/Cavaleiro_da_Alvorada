@@ -1,6 +1,8 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.game.Main;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class Utilidades {
+
     public static void contornarBotaoVoltar(Button button) {
         button.setOnMouseEntered(event -> {
             button.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
@@ -142,6 +149,40 @@ public class Utilidades {
             button.setStyle("-fx-border-color: transparent;-fx-background-color: #140e0a");
         });
     }
+    public static void adicionarCaracteresComAtraso(String mensagem, Text texto, Runnable onCompletion) {
+        Timeline timeline = new Timeline();
+        double time = 50;
+
+        // Adiciona KeyFrames para cada caractere com atraso
+        for (int i = 0; i < mensagem.length(); i++) {
+            final int finalI = i;
+
+            // Adiciona um KeyFrame para adicionar o caractere
+            timeline.getKeyFrames().add(new KeyFrame(
+                    Duration.millis(time),
+                    event -> texto.setText(texto.getText() + mensagem.charAt(finalI))
+            ));
+
+            // Adiciona um KeyFrame para limpar o texto se for o último caractere da mensagem
+            if (finalI == mensagem.length() - 1) {
+                time += 1000;
+                timeline.getKeyFrames().add(new KeyFrame(Duration.millis(time), event -> {
+                    texto.setText("");  // Limpa o Text ao final da animação
+                    // Chama o evento de conclusão quando a animação estiver concluída
+                    onCompletion.run();
+                }));
+            }
+
+            // Incrementa o tempo para o próximo caractere
+            time += 100;
+        }
+
+        // Inicia a animação
+        timeline.play();
+    }
+
+
+
 
 
 

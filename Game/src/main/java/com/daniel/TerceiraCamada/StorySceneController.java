@@ -19,8 +19,17 @@ public class StorySceneController implements Initializable {
 
     @FXML
     private AnchorPane Screen;
-    String[] Dialogo = {"Dialogo1", "Dialogo2", "Dialogo3"};
-    Image[] Fundos = { new Image(Main.class.getResource("/com.daniel.Images/Rua.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Predios.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Trens.jpg").toString())};
+    String[] Dialogo = {
+            "Há eras, quando a passagem das coisas era incerta, um povo, não muito diferente do que agora chamamos de humanidade e do qual descendemos, compartilhava um antigo mundo com outro povo de natureza nefasta, inclinado a fazer nada além do mal. Hoje, os chamaríamos de demônios. Houve vários conflitos intermináveis entre os dois povos. Eventualmente, o lado maligno cedeu, e os vitoriosos forjaram um novo mundo a partir do antigo, que foi separado dos demônios. O tempo passou, e em um passado não muito distante, alcançamos um ponto de transição.",
+
+            "Três selos ao longo do novo mundo, arquitetados para a preservação das estruturas fundamentais da nossa realidade, enfraqueceram, abrindo passagens que provocaram um abalo nas terras humanas. Isso permitiu a invasão demoníaca e nos colocou em rota de colisão iminente com o caos primordial.",
+
+            "Você é o morador de uma pequena vila em um vasto continente, formado por vários reinos. Seu sonho sempre foi se tornar um cavaleiro e fazer do nome da sua pobre família algo grandioso e honroso. Em um dia nublado, notícias chegam à sua vila por viajantes passageiros, informando que um grande mal foi libertado na Montanha do Norte e está se espalhando pelas terras ao redor. Você vê isso como uma oportunidade de receber reconhecimento para o seu reino e parte em uma jornada para a capital, a fim de descobrir como pode ajudar e exigir reconhecimento caso vença o mal que foi libertado."
+    };
+
+
+
+    Image[] Fundos = { new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo1.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo2.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo3.jpg").toString())};
 
     @FXML
     private Text Texto;
@@ -53,6 +62,8 @@ public class StorySceneController implements Initializable {
     }
     private void adicionarCaracteresComAtraso() {
         Timeline timeline = new Timeline();
+        Texto.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 35; -fx-fill: white");
+        Texto.setWrappingWidth(1100);
         double Time = 50;
         for (int i = 0; i < Dialogo.length; i++) {
             final int finalI = i;

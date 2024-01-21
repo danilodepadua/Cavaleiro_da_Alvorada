@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 public class Main extends Application {
-    static Stage CurrentStage;
+    public static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
     public static int xpGanhoInimigo;
