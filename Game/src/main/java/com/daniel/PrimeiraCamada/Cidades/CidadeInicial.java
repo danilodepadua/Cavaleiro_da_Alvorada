@@ -39,12 +39,10 @@ public class CidadeInicial extends Cidade{
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
 
         // Adiciona quests à lista de quests disponíveis da cidade
-        quests.add(new QuestAbelha());
-        quests.add(new QuestBabySlime());
-        quests.add(new QuestCobraGigante());
-        quests.add(new QuestSnowMan());
-        quests.add(new QuestTigerMan());
-
+        this.quests.add(new QuestBabySlime());
+        this.quests.add(new QuestSnowMan());
+        this.quests.add(new QuestSlimeDeEscuridaoNv1());
+        this.quests.add(new QuestCorvoGigante());
         // Adiciona os itens da loja
         this.itens.add(new EspadaInicial());
         this.itens.add(new PocaoCura());

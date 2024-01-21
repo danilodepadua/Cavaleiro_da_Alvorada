@@ -301,23 +301,22 @@ public class Player extends Personagem implements Serializable {
             questAtuais.remove(quest);
         }
     }
-    public void desabilitarQuestsNaoComuns() {
+
+    public List<Quest> obterQuestsComuns() {
         List<Quest> questComuns = Main.cidadeAtual.getQuests();
+        List<Quest> questsComuns = new ArrayList<>();
 
         for (Quest questJogador : getQuestsAtuais()) {
-            boolean questComum = questComuns.stream()
-                    .anyMatch(questCidade -> questJogador.getNome().equals(questCidade.getNome()));
+            boolean questComum = questComuns.stream().anyMatch(questCidade -> questJogador.getNome().equals(questCidade.getNome()));
 
-            if (!questComum) {
-                questJogador.setHabilitada(false);
+            if (questComum) {
+                questsComuns.add(questJogador);  // Adiciona a quest comum à lista
             }
         }
+
+        return new ArrayList<>(questsComuns);  // Retorna uma nova lista contendo as quests comuns
     }
-    public void ativarQuests(){
-        for (Quest quest : getQuestsAtuais()){
-            quest.setHabilitada(true);
-        }
-    }
+
     public List<Quest> getQuestsAtuais() {
         return questAtuais;
     }

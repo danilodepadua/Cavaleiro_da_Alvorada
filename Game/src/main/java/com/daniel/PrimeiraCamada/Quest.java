@@ -13,7 +13,6 @@ public abstract class Quest implements Serializable {
     protected int objetivo;
     protected int progresso;
     protected String nomeInimigo;
-    private boolean habilitada = true;
     public  void updateQuestCompleted() throws PlayerInexistenteException{
         progresso++;
 
@@ -56,11 +55,5 @@ public abstract class Quest implements Serializable {
     public int getProgresso() {
         return progresso;
     }
-    public boolean isHabilitada() {
-        return habilitada;
-    }
 
-    public void setHabilitada(boolean habilitada) {
-        this.habilitada = habilitada;
-    }
 }

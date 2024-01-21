@@ -16,6 +16,8 @@ public class ManejarQuests {
         quests.add(new QuestTRex());
         quests.add(new QuestSlimeRei());
         quests.add(new QuestTigerMan());
+        quests.add(new QuestCorvoGigante());
+        quests.add(new QuestSlimeNv3());
         return quests;
     }
 }

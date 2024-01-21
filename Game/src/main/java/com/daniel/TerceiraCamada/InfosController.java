@@ -174,7 +174,7 @@ public class InfosController implements Initializable {
             configurarBotoes(btnInventario);
             configurarBotoes(btnPontos);
             contornarBotaoVoltar(btnVoltar);
-            definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
+            definirBackground(panePrincipal, "/com.daniel.Images/Fundos/fundoPedra.jpg");
 
             if (Player.getPlayer().getPontos() > 0){
                 SinalPontos.setOpacity(1);

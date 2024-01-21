@@ -95,13 +95,12 @@ public class QuestController implements Initializable {
             vboxQuests.getChildren().clear();
 
             int inicio = questAtual;
-            int fim = Math.min(questAtual + 5, Player.getPlayer().getQuestsAtuais().size());
+            int fim = Math.min(questAtual + 4, Player.getPlayer().obterQuestsComuns().size());
 
             for (int i = inicio; i < fim; i++) {
-                Quest quest = Player.getPlayer().getQuestsAtuais().get(i);
-                if (quest.isHabilitada()) {
-                    criarQuest(quest);
-                }
+                Quest quest = Player.getPlayer().obterQuestsComuns().get(i);
+                criarQuest(quest);
+
             }
         } catch (PlayerInexistenteException e) {
             e.printStackTrace();
@@ -143,31 +142,12 @@ public class QuestController implements Initializable {
         contornarBotaoVoltar(btnVoltar);
         contornarBotaoVoltar(btnSetaDescer);
         contornarBotaoVoltar(bntSetaSubir);
-        try {
-            Player.getPlayer().desabilitarQuestsNaoComuns();
-            atualizarInterfaceGrafica();
+        atualizarInterfaceGrafica();
 
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
     }
-    private void verificarSetasQuests(int size) {
-        if (questAtual == 0) {
-            bntSetaSubir.setDisable(true);
-        } else {
-            bntSetaSubir.setDisable(false);
-        }
-
-        if (questAtual + 5 >= size) {
-            btnSetaDescer.setDisable(true);
-        } else {
-            btnSetaDescer.setDisable(false);
-        }
-    }
-
     @FXML
     void DescerItens(ActionEvent event) throws PlayerInexistenteException {
-        if (questAtual < Player.getPlayer().getQuestsAtuais().size() - 1) {
+        if (questAtual < Player.getPlayer().obterQuestsComuns().size() - 1) {
             questAtual++;
             atualizarInterfaceGrafica();
         }

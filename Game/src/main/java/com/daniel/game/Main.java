@@ -28,10 +28,7 @@ public class Main extends Application {
         System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
     }
 
-    public static void mudarCidade(Cidade novaCidade) throws PlayerInexistenteException {
-        cidadeAtual = novaCidade;
-        Player.getPlayer().ativarQuests();
-    }
+
     public static double getLargura(){
         return CurrentStage.getWidth();
     }
