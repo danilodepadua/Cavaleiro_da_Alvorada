@@ -81,6 +81,8 @@ public class PokerController implements Initializable {
     private int aposta;
     private int rodada = 1;
     private int coluna = 3;
+    private boolean tresCartas = true;
+    private boolean continuar = false;
     @FXML
     void Apostar(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
         limparMesa();
@@ -103,9 +105,6 @@ public class PokerController implements Initializable {
                     adicionarCarta(gridDealer, casa, 0);
                     adicionarCarta(gridDealer, casa, 1);
 
-                    adicionarCarta(gridCartasNoCentro, cartasCentro, 0);
-                    adicionarCarta(gridCartasNoCentro, cartasCentro, 1);
-                    adicionarCarta(gridCartasNoCentro, cartasCentro, 2);
 
                     adicionarCartaCostas(gridDealer, 0); //substituir as cartas inicias
                     adicionarCartaCostas(gridDealer, 1);
@@ -154,12 +153,20 @@ public class PokerController implements Initializable {
 
 
         btnContinuar.setOnAction(event -> {
-            mostrarResultado("Rodada: " + rodada+1);
             mensagensDaMaquina();
             try {
-                continuarAposta();
+                if (tresCartas){
+                    adicionarCarta(gridCartasNoCentro, cartasCentro, 0);
+                    adicionarCarta(gridCartasNoCentro, cartasCentro, 1);
+                    adicionarCarta(gridCartasNoCentro, cartasCentro, 2);
+                }
+                if (continuar){
+                    adicionarCarta(gridCartasNoCentro, cartasCentro ,coluna);
+                    coluna++;
+                }
+                continuar = true;
+                tresCartas = false;
                 // Verifica se o texto do textFieldAposta não é nulo
-
                 String apostaTexto = textFieldAposta.getText();
                 if (apostaTexto != null) {
                     aposta += Integer.parseInt(apostaTexto);
@@ -183,10 +190,8 @@ public class PokerController implements Initializable {
                     imageView2.setFitWidth(106);
                     imageView2.setFitHeight(150);
                     gridDealer.add(imageView2, 1, 0);
-                    btnVoltar.setDisable(true);
                 }
                 rodada++;
-                coluna++;
                 textFieldAposta.setText(null);
                 txtAposta.setText("Aposta: "+aposta);
 
@@ -225,7 +230,6 @@ public class PokerController implements Initializable {
     }
 
     private void continuarAposta() throws BaralhoVazioException {
-       adicionarCarta(gridCartasNoCentro, cartasCentro ,coluna);
     }
 
     private void determinarVencedor() throws PlayerInexistenteException {
@@ -234,6 +238,7 @@ public class PokerController implements Initializable {
 
         int forcaJogador = avaliarForcaMao(jogador, cartasCentro);
         int forcaCasa = avaliarForcaMao(casa, cartasCentro);
+        btnVoltar.setDisable(false);
 
         if (forcaJogador > forcaCasa ) {
             mostrarResultado("Você ganhou! ");
@@ -242,7 +247,8 @@ public class PokerController implements Initializable {
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
-            btnVoltar.setDisable(false);
+            tresCartas = true;
+            continuar = false;
         } else if (forcaJogador < forcaCasa) {
             mostrarResultado("Você perdeu!");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
@@ -250,13 +256,15 @@ public class PokerController implements Initializable {
             Player.getPlayer().ganhaCoins(-aposta);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
-            btnVoltar.setDisable(false);
+            tresCartas = true;
+            continuar = false;
         } else {
             mostrarResultado("Empate");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             btnContinuar.setDisable(true);
-            btnVoltar.setDisable(false);
+            tresCartas = true;
+            continuar = false;
 
         }
     }

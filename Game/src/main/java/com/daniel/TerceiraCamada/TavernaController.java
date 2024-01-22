@@ -157,7 +157,7 @@ public class TavernaController implements Initializable {
 
     @FXML
     void JogarPoker(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaPoker.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaTutorialPoker.fxml")).load());
 
     }
 }

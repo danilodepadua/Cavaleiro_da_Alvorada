@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaResultadoController implements Initializable {
+public class ResultadoController implements Initializable {
     @FXML
     private Label labelXP;
     @FXML
@@ -26,8 +26,8 @@ public class TelaResultadoController implements Initializable {
     private Button btnVoltar;
     @FXML
     private Button btnCacar;
-    int pontosInimigo = 5; // uso temporário
-    int moedasInimigo = 5; // uso temporário
+    int pontosInimigo; // uso temporário
+    int moedasInimigo; // uso temporário
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelXP.setText("" + Main.getXpGanho());
@@ -36,17 +36,18 @@ public class TelaResultadoController implements Initializable {
     }
     @FXML
     void onClickVoltar (ActionEvent event) throws PlayerInexistenteException, IOException {
-        System.out.println("seu xp e :" + Player.getPlayer().getXp());
-        Player.getPlayer().ganharXp(Main.getXpGanho());
-        System.out.println("seu xp e :" + Player.getPlayer().getXp());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
     void onClickCacar (ActionEvent event) throws PlayerInexistenteException, IOException {
-        System.out.println("seu xp e :" + Player.getPlayer().getXp());
-        Player.getPlayer().ganharXp(Main.getXpGanho());
-        System.out.println("seu xp e :" + Player.getPlayer().getXp());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
     }
 
+    public int getPontosInimigo() {
+        return pontosInimigo;
+    }
+
+    public int getMoedasInimigo() {
+        return moedasInimigo;
+    }
 }

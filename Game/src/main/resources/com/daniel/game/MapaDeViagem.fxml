@@ -5,10 +5,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MapaController">
+<AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MapaController">
    <children>
       <ImageView fx:id="ImgMapa" fitHeight="575.0" fitWidth="778.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <image>
@@ -20,14 +21,29 @@
       </ImageView>
       <AnchorPane layoutX="168.0" layoutY="-50.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: Black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="43.0" layoutY="13.0" mnemonicParsing="false" onAction="#OnActionVoltar" text="Voltar">
+            <Button fx:id="btnVoltar" layoutX="8.0" layoutY="-9.0" mnemonicParsing="false" onAction="#OnActionVoltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="12.0" />
+                  <Font name="Barlow Condensed SemiBold" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Setas/SetaPraEsquerda.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button layoutX="659.0" layoutY="12.0" mnemonicParsing="false" onAction="#OnActionViajar" text="Viajar" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
       <Circle fx:id="Circulo" fill="#1f93ff00" layoutX="746.0" layoutY="205.0" radius="15.0" stroke="RED" strokeType="INSIDE" strokeWidth="3.0" />
+      <VBox layoutX="520.0" layoutY="587.0" prefHeight="75.0" prefWidth="219.0" AnchorPane.rightAnchor="460.79999999999995">
+         <children>
+            <Button fx:id="btnViajar" mnemonicParsing="false" onAction="#OnActionViajar" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Viajar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

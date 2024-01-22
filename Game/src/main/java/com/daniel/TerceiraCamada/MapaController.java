@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -40,6 +41,11 @@ public class MapaController extends Utilidades implements Initializable {
     @FXML
     private ImageView ImgMapa;
     private Cidade cidadeTroca;
+    @FXML
+    private Button btnViajar;
+
+    @FXML
+    private Button btnVoltar;
 
     @FXML
     void OnActionVoltar(ActionEvent event) throws IOException {
@@ -55,11 +61,9 @@ public class MapaController extends Utilidades implements Initializable {
 
     }
 
-    private void exibirCutscene() {
+    private void exibirCutscene() throws IOException {
         if (cidadeTroca.isDialogoAtivo()){
-            AnchorPane cutsceneContainer = criarAnchorPane();
-
-            // Obtém a mensagem de cutscene da cidade atual
+            AnchorPane cutsceneContainer = criarAnchorPane(); //cria um AnchorPane pro dialogo junto de um scene
             String mensagemCutscene = Main.cidadeAtual.getDialogoCutscene();
 
             // Verifica se a mensagem não é nula ou vazia antes de proceder pra evitar erro de nullPoint
@@ -77,7 +81,6 @@ public class MapaController extends Utilidades implements Initializable {
 
                 vbox.getChildren().add(mensagemText);
                 cidadeTroca.mudarDialogo(false);
-                // Chama o método para adicionar caracteres com atraso
                 adicionarCaracteresComAtraso(mensagemCutscene, mensagemText, () -> {
                     // Muda para a cena da cidade após a animação da cutscene
                     try {
@@ -88,27 +91,7 @@ public class MapaController extends Utilidades implements Initializable {
             });
             }
         } else {
-            AnchorPane cutsceneContainer = criarAnchorPane();
-            // Adiciona um Texto de loading
-            Text textoLoading = new Text();
-            textoLoading.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-fill: #eccb7e; -fx-font-size: 40; -fx-stroke: black; -fx-stroke-width: 1");
-            textoLoading.setText("LOADING");
-            VBox vBox = new VBox();
-            vBox.setLayoutX(570);
-            vBox.setLayoutY(200);
-            vBox.getChildren().add(textoLoading);
-
-            // Adiciona um retângulo com animação de escala (crescimento) como indicador de carregamento
-            Rectangle quadradoLoading = new Rectangle(100, 20, Color.web("#eccb7e"));
-            quadradoLoading.setStroke(Color.BLACK);
-            vBox.getChildren().add(quadradoLoading);
-
-            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(2), quadradoLoading);
-            scaleTransition.setToX(3); // Ajuste conforme necessário
-            scaleTransition.setCycleCount(Timeline.INDEFINITE);
-            scaleTransition.play();
-            cutsceneContainer.getChildren().add(vBox);
-
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
             PauseTransition pause = new PauseTransition(Duration.seconds(3));
             pause.setOnFinished(event -> {
                 try {
@@ -151,6 +134,8 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        contornarBotaoVoltar(btnVoltar);
+        configurarBotoes(btnViajar);
         ImgMapa.setFitHeight(Main.getAltura() - 100);
         ImgMapa.setFitWidth(ImgMapa.getBoundsInLocal().getWidth());
         definirBackground(Fundo, "/com.daniel.Images/Fundos/Mar.jpg");

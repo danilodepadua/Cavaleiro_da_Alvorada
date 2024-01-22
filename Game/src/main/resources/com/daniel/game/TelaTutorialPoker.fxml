@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.RegrasPokerController">
+   <children>
+      <Text fill="#eccb7e" layoutX="24.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O pôquer opera da seguinte maneira: cada jogador e a casa recebem inicialmente duas cartas, &#10;e cabe a você decidir se deseja prosseguir ou desistir.&#10; Para continuar, basta pressionar o botão &quot;Continuar&quot; localizado abaixo do botão de aposta.&#10; Cada vez que o jogador opta por continuar, o valor da aposta é reiniciado, &#10;permitindo aumentar a aposta inicial, pois o valor será acumulado.&#10;&#10;Regras do pôquer:&#10;&#10;Distribuição de Cartas: O jogador recebe duas cartas, e após decidir continuar, &#10;três cartas comunitárias são adicionadas ao centro da mesa. A cada rodada subsequente, &#10;uma carta adicional é incluída até um total de cinco cartas.&#10;&#10;Finalização da Rodada: Ao final de cada rodada, quem possuir a melhor mão ganha o jogo.&#10;&#10;" wrappingWidth="562.986572265625">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#eccb7e" layoutX="580.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipos de Mãos:&#10;One Pair (Par):&#10;Descrição: O jogador forma um par com as cartas do centro.&#10;Condição: Uma carta na mão do jogador faz par com uma do centro ou as duas cartas na mão são iguais.&#10;Observação: Par refere-se a cartas do mesmo valor.&#10;Two Pair (Dois Pares):&#10;Descrição: O jogador forma dois pares com as cartas do centro.&#10;Three of a Kind (Trinca):&#10;Descrição: Três cartas do mesmo valor.&#10;Straight (Sequência):&#10;Descrição: O jogador forma uma sequência de cinco cartas consecutivas usando as cartas do centro.&#10;Flush (Cores):&#10;Descrição: Todas as cartas têm o mesmo naipe.&#10;Full House (Full House):&#10;Descrição: O jogador possui um par e uma trinca simultaneamente.&#10;Condição: Uma carta na mão do jogador faz par com uma do centro, e as outras duas cartas da mão&#10;formam uma trinca ou vice-versa.&#10;Four of a Kind (Quadra):&#10;Descrição: O jogador possui quatro cartas do mesmo valor.&#10;Condição: Duas cartas na mão do jogador são iguais, e há mais duas cartas do mesmo valor no centro.&#10;Straight Flush (Sequência de Cores):&#10;Descrição: O jogador forma uma sequência de cinco cartas consecutivas do mesmo naipe.&#10;Condição: As cartas na mão do jogador e as do centro formam uma sequência e têm o mesmo naipe.&#10;Royal Flush (Sequência Real):&#10;Descrição: O jogador possui as cartas 10, Valete, Dama, Rei e Ás do mesmo naipe.&#10;Condição: As cartas na mão do jogador mais as do centro tem que formar uma sequência de 10, valete,&#10;Dama, Rei e Ás do mesmo naipe.">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnProsseguir" layoutX="528.0" layoutY="580.0" mnemonicParsing="false" onAction="#onClickContinuar" prefHeight="50.0" prefWidth="130.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" text="Prosseguir" textFill="#eccb7e">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVoltar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaPraEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
