@@ -24,7 +24,7 @@
                      <children>
                         <AnchorPane prefHeight="208.0" prefWidth="200.0">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="26.0" prefHeight="70.0" prefWidth="174.0">
+                              <VBox alignment="CENTER_LEFT" layoutX="26.0" prefHeight="111.0" prefWidth="174.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="160.0">
                                        <children>
@@ -41,24 +41,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox layoutX="26.0" layoutY="65.0" prefHeight="70.0" prefWidth="174.0">
-                                 <children>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="230.0">
-                                       <children>
-                                          <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos:">
-                                             <font>
-                                                <Font name="Papyrus" size="20.0" />
-                                             </font>
-                                          </Text>
-                                          <Label fx:id="labelPontos" textFill="WHITE">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="26.0" layoutY="129.0" prefHeight="70.0" prefWidth="174.0">
+                              <VBox layoutX="26.0" layoutY="106.0" prefHeight="93.0" prefWidth="174.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="180.0">
                                        <children>

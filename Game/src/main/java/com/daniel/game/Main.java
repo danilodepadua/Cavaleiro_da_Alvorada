@@ -19,11 +19,6 @@ public class Main extends Application {
     public static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
-    public static int xpGanhoInimigo;
-
-    public static int moedasGanhoInimigo;
-
-
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
@@ -59,15 +54,4 @@ public class Main extends Application {
         CurrentStage.setWidth(largura);
         CurrentStage.setHeight(altura);
     }
-    public static void setXpGanho(int xpGanho) {
-        Main.xpGanhoInimigo = xpGanho;
-    }
-
-    public static int getXpGanho() {
-        return xpGanhoInimigo;
-    }
-    public static void setMoedasGanho(int moedasGanho) {
-        Main.moedasGanhoInimigo = moedasGanho;
-    }
-    public static int getMoedasGanhoInimigo() {return moedasGanhoInimigo;}
 }
