@@ -32,6 +32,7 @@ public class Main extends Application {
                 if(tecla.getCode()== KeyCode.F) {
                     try {
                         Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")).load());
+                        historia = false;
                     } catch (IOException e) {
                         throw new RuntimeException(e); };}});
         }
