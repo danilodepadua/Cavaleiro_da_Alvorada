@@ -6,14 +6,21 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.stage.Window;
 
 public class StorySceneController implements Initializable {
 
@@ -36,6 +43,7 @@ public class StorySceneController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Main.historia = true;
         adicionarCaracteresComAtraso();
     }
 

@@ -31,7 +31,7 @@ public class ResultadoController implements Initializable {
     @FXML
     private AnchorPane Screen;
 
-    static int moedasInimigo; // uso temporário
+    static int moedasInimigo;
     static int xpInimigo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
