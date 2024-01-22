@@ -10,10 +10,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class ResultadoController implements Initializable {
     @FXML
@@ -26,13 +29,21 @@ public class ResultadoController implements Initializable {
     private Button btnVoltar;
     @FXML
     private Button btnCacar;
+    @FXML
+    private AnchorPane Screen;
     int pontosInimigo; // uso temporário
     int moedasInimigo; // uso temporário
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelXP.setText("" + Main.getXpGanho());
-        labelPontos.setText("" + pontosInimigo);
-        labelMoedas.setText("" + moedasInimigo);
+        labelPontos.setText("" + getPontosInimigo());
+        labelMoedas.setText("" + getMoedasInimigo());
+
+        definirBackground(Screen, "/com.daniel.Images/Fundos/FundoSalaDeTesouro.jpg");
+        estiloBotao(btnCacar);
+        estiloBotao(btnVoltar);
+        /*configurarBotoes(btnCacar);
+        configurarBotoes(btnVoltar);*/
     }
     @FXML
     void onClickVoltar (ActionEvent event) throws PlayerInexistenteException, IOException {
