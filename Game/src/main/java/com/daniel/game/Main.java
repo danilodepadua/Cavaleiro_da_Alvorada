@@ -21,6 +21,8 @@ public class Main extends Application {
     public static SaveManager saveManager = new SaveManager();
     public static int xpGanhoInimigo;
 
+    public static int moedasGanhoInimigo;
+
 
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
@@ -64,4 +66,8 @@ public class Main extends Application {
     public static int getXpGanho() {
         return xpGanhoInimigo;
     }
+    public static void setMoedasGanho(int moedasGanho) {
+        Main.moedasGanhoInimigo = moedasGanho;
+    }
+    public static int getMoedasGanhoInimigo() {return moedasGanhoInimigo;}
 }

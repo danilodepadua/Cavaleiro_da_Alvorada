@@ -3,6 +3,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.PersonagemLuta;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,13 +32,14 @@ public class ResultadoController implements Initializable {
     private Button btnCacar;
     @FXML
     private AnchorPane Screen;
+
     int pontosInimigo; // uso temporário
     int moedasInimigo; // uso temporário
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelXP.setText("" + Main.getXpGanho());
-        labelPontos.setText("" + getPontosInimigo());
-        labelMoedas.setText("" + getMoedasInimigo());
+        labelPontos.setText("" + Main.getXpGanho());
+        labelMoedas.setText("" + Main.getMoedasGanhoInimigo());
 
         definirBackground(Screen, "/com.daniel.Images/Fundos/FundoSalaDeTesouro.jpg");
         estiloBotao(btnCacar);

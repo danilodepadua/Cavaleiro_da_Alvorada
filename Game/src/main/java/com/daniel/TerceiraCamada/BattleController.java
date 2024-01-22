@@ -185,13 +185,17 @@ public class BattleController implements Initializable {
                 try {
                     quest.updateQuestCompleted();
                     int xpDrop = Enimy.getXpDrop();
+                    int moedas = Enimy.getMoedas();
                     Player.getPlayer().ganharXp(xpDrop);
+                    Player.getPlayer().ganharMoedas(moedas);
                     Main.setXpGanho(xpDrop);
+                    Main.setMoedasGanho(moedas);
 
                     FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
                     ResultadoController resultadoController = new ResultadoController();
                     loader.setController(resultadoController);
                     resultadoController.setPontosInimigo(xpDrop);
+                    resultadoController.setMoedasInimigo(moedas);
 
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
