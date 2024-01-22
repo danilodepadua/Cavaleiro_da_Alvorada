@@ -50,4 +50,12 @@ public class ResultadoController implements Initializable {
     public int getMoedasInimigo() {
         return moedasInimigo;
     }
+
+    public void setPontosInimigo(int pontosInimigo) {
+        this.pontosInimigo = pontosInimigo;
+    }
+
+    public void setMoedasInimigo(int moedasInimigo) {
+        this.moedasInimigo = moedasInimigo;
+    }
 }

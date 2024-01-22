@@ -187,16 +187,23 @@ public class BattleController implements Initializable {
                     int xpDrop = Enimy.getXpDrop();
                     Player.getPlayer().ganharXp(xpDrop);
                     Main.setXpGanho(xpDrop);
+
+                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
+                    ResultadoController resultadoController = new ResultadoController();
+                    loader.setController(resultadoController);
+                    resultadoController.setPontosInimigo(xpDrop);
+
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
                 }
             }
         }
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")).load());
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
         System.out.println("Player venceu");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
-    public void Derrota(){
+    public void Derrota() throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
 
     }
 
