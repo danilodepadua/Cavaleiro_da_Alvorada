@@ -69,15 +69,13 @@ public class CraftingController implements Initializable {
 
                 image.setFitWidth(40);
                 image.setFitHeight(40);
-                gridItensPlayer.add(b, j % 10, j / 10);
+                gridItensPlayer.add(b, j % 4, j / 4);
                 b.prefWidthProperty().bind(gridItensPlayer.prefWidthProperty().divide(gridItensPlayer.getColumnCount()));
                 b.prefHeightProperty().bind(gridItensPlayer.prefHeightProperty().divide(gridItensPlayer.getRowCount()));
                 // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
                 b.setStyle("-fx-background-color: #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color:  #eccb7e");
-
                 image.setPreserveRatio(true);
                 b.setGraphic(image);
-
                 configurarBotoes(b);
                 int finalI = i;
                 b.setOnAction(event -> {
@@ -87,7 +85,6 @@ public class CraftingController implements Initializable {
                             itemSelecionado(itemSelecionado, btnSlot1);
                         } else if (itemSelecionado2 == null) {
                             itemSelecionado2 = Player.getPlayer().getInventario().getItens()[finalI];
-
                             // Adiciona item ao btnSlot2 apenas se for diferente do itemSelecionado
                             // ou se a quantidade for maior que 1
                             if (!itemSelecionado2.equals(itemSelecionado) || itemSelecionado2.getQuant() > 1) {

@@ -33,8 +33,8 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException, PlayerInexistenteException {
-        stage.setMinHeight(639);
-        stage.setMinWidth(1136);
+        stage.setMinHeight(675);
+        stage.setMinWidth(1200);
         cidadeAtual = new CidadeInicial();
         CurrentStage = stage;
         stage.setResizable(false);

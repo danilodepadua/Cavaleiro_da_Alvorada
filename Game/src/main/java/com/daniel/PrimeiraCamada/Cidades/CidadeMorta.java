@@ -18,8 +18,8 @@ public class CidadeMorta extends Cidade {
         this.quests = new ArrayList<>();
         quests.add(new QuestSlimeDeEscuridaoNv1());
         this.dialogoCutscene = "E então o guerreiro seguiu sua jornada passando por uma cidade sombria e sem vida";
-        ajustarBotoes();
         this.dialogoAtivo = true;
+        ajustarBotoes();
     }
     @Override
     public void ajustarBotoes() throws PlayerInexistenteException {
