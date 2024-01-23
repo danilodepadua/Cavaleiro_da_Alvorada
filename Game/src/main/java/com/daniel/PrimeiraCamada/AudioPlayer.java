@@ -1,5 +1,8 @@
 package com.daniel.PrimeiraCamada;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +10,7 @@ import java.net.URL;
 public class AudioPlayer {
 
     private Clip clip;
+
 
     public void play(String audioPath, boolean loop){
         stop();
@@ -48,6 +52,12 @@ public class AudioPlayer {
         }
 
 
+    }
+
+    public void somMouseClick(Button button, String audioPath) {
+        button.setOnMouseClicked(event -> {
+            play(audioPath, false);
+        });
     }
 
 }
