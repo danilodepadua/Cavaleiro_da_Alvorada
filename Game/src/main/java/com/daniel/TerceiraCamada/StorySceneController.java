@@ -27,6 +27,8 @@ import javafx.stage.Window;
 
 public class StorySceneController implements Initializable {
 
+
+    private Timeline timeL;
     @FXML
     private AnchorPane Screen;
     String[] Dialogo = {
@@ -47,7 +49,7 @@ public class StorySceneController implements Initializable {
     private Button btnSkip;
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        adicionarCaracteresComAtraso();
+        timeL = adicionarCaracteresComAtraso();
         btnSkip.rotateProperty().set(180);
         btnSkip.setOnAction(this::skipDialog);
         contornarBotaoVoltar(btnSkip);
@@ -74,7 +76,7 @@ public class StorySceneController implements Initializable {
                 )
         );
     }
-    private void adicionarCaracteresComAtraso() {
+    private Timeline adicionarCaracteresComAtraso() {
         Timeline timeline = new Timeline();
         Texto.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 35; -fx-fill: white");
         Texto.setWrappingWidth(1100);
@@ -108,10 +110,12 @@ public class StorySceneController implements Initializable {
             }
         }));
         timeline.play();
+        return timeline;
     }
     @FXML
     void skipDialog(ActionEvent event) {
         try {
+            timeL.stop();
             Mudar();
         } catch (IOException e) {
             throw new RuntimeException(e);
