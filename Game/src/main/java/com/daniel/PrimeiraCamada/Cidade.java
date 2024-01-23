@@ -74,8 +74,12 @@ public abstract class Cidade implements Serializable {
         return this.itens;
     }
     public ArrayList<Item> getRandomItens() {
-        Collections.shuffle(itens);
-        return new ArrayList<>(itens.subList(0, 3));
+        if (!itens.isEmpty()) {
+            Collections.shuffle(itens);
+            return new ArrayList<>(itens.subList(0, Math.min(3, itens.size())));
+        } else {
+            return new ArrayList<>();
+        }
     }
     protected Botao criarBotao(String nome, Runnable run){
 
