@@ -54,7 +54,7 @@ public class ResultadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         atualizarInterface();
-        definirBackground(Screen, "/com.daniel.Images/Fundos/FundoSalaDeTesouro.jpg");
+        definirBackground(Screen, "/com.daniel.Images/Fundos/FundoVitoria.jpg");
         estiloBotao(btnCacar);
         estiloBotao(btnVoltar);
         configurarBotoesTelaResultado(btnCacar);
