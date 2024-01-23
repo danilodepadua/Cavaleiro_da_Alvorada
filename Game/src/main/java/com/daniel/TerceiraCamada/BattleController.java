@@ -189,7 +189,11 @@ public class BattleController implements Initializable {
                     int xpDrop = Enimy.getXpDrop();
                     Player.getPlayer().ganharXp(xpDrop);
                     Player.getPlayer().ganhaCoins(moedas);
+                    ArrayList<Item> itensDrop = Main.cidadeAtual.getRandomItens();
+                    for (Item i : itensDrop) {Player.getPlayer().getInventario().adicionarItem(i);}
+
                     resultadoController.setInfoInimigos(moedas, xpDrop);
+                    resultadoController.setItensDrop(itensDrop);
 
 
                     FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));

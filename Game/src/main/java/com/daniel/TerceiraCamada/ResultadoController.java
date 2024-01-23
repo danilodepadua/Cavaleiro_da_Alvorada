@@ -23,6 +23,7 @@ import javafx.scene.layout.RowConstraints;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
@@ -48,6 +49,8 @@ public class ResultadoController implements Initializable {
     private static int xp;
     private static int moedas;
 
+    private static ArrayList<Item> itensGanhos;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         atualizarInterface();
@@ -63,7 +66,7 @@ public class ResultadoController implements Initializable {
         gridItens.setMaxHeight(Double.MAX_VALUE);
         scrollItens.setContent(gridItens);
         int itemnum = 0;
-        for (Item i : Main.cidadeAtual.getItens()) {
+        for (Item i : itensGanhos) {
             if(i instanceof Armadura){
                 criarBotaoItem(i, itemnum, gridItens);
                 itemnum++;
@@ -126,7 +129,7 @@ public class ResultadoController implements Initializable {
     void onClickCacar (ActionEvent event) throws PlayerInexistenteException, IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
     }
-    public  void setInfoInimigos(int moedas, int xp) {
+    public void setInfoInimigos(int moedas, int xp) {
         ResultadoController.moedas = moedas;
         ResultadoController.xp = xp;
     }
@@ -134,5 +137,9 @@ public class ResultadoController implements Initializable {
     public void atualizarInterface() {
         labelXP.setText("" + xp);
         labelMoedas.setText("" + moedas);
+    }
+
+    public void setItensDrop(ArrayList<Item> itensGanhos) {
+        ResultadoController.itensGanhos = itensGanhos;
     }
 }

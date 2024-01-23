@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class Cidade implements Serializable {
     public abstract void ajustarBotoes() throws PlayerInexistenteException;
@@ -71,6 +72,10 @@ public abstract class Cidade implements Serializable {
     }
     public ArrayList<Item> getItens(){
         return this.itens;
+    }
+    public ArrayList<Item> getRandomItens() {
+        Collections.shuffle(itens);
+        return new ArrayList<>(itens.subList(0, 3));
     }
     protected Botao criarBotao(String nome, Runnable run){
 
