@@ -20,22 +20,10 @@ public class Main extends Application {
     public static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
-    public static Scene CurrentScene;
-    public static boolean historia = false;
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
-        CurrentScene = scene;
         CurrentStage.setScene(scene);
         System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
-        if (Main.historia) {
-            Main.CurrentScene.addEventHandler(KeyEvent.KEY_PRESSED, (tecla) -> {
-                if(tecla.getCode()== KeyCode.F) {
-                    try {
-                        Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")).load());
-                        historia = false;
-                    } catch (IOException e) {
-                        throw new RuntimeException(e); };}});
-        }
     }
     public static double getLargura(){
         return CurrentStage.getWidth();
@@ -54,11 +42,10 @@ public class Main extends Application {
         stage.setHeight(ConfiguracoesUsuario.obterAlturaTelaPadrao());
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
-        CurrentScene = scene;
+
         stage.setScene(scene);
         stage.setTitle("teste");
         stage.show();
-        System.out.println(Main.CurrentScene);
     }
     public static void main(String[] args) {
         launch(args);
