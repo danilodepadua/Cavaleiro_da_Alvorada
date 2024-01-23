@@ -2,13 +2,14 @@ package com.daniel.game;
 
 import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
-import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Save.SaveManager;
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -19,16 +20,11 @@ public class Main extends Application {
     public static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
-    public static int xpGanhoInimigo;
-
-
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
         System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
     }
-
-
     public static double getLargura(){
         return CurrentStage.getWidth();
     }
@@ -46,6 +42,7 @@ public class Main extends Application {
         stage.setHeight(ConfiguracoesUsuario.obterAlturaTelaPadrao());
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
+
         stage.setScene(scene);
         stage.setTitle("teste");
         stage.show();
@@ -57,11 +54,6 @@ public class Main extends Application {
         CurrentStage.setWidth(largura);
         CurrentStage.setHeight(altura);
     }
-    public static void setXpGanho(int xpGanho) {
-        Main.xpGanhoInimigo = xpGanho;
-    }
 
-    public static int getXpGanho() {
-        return xpGanhoInimigo;
-    }
+
 }

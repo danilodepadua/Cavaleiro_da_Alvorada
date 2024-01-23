@@ -1,10 +1,10 @@
 package com.daniel.PrimeiraCamada;
 
 public abstract class Inimigo extends Personagem{
-    int Def, MagicDef, atqF, atqMag, pos,  dropXp;
+    int Def, MagicDef, atqF, atqMag, pos,  dropXp, moedas;
     private final Comportamentos comp;
     protected TiposElementais tipoDano;
-    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp) {
+    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
         super(Nome, Imagem, fr, in, rs, vel);
         this.Def += rs + ModDef;
         this.MagicDef += in + ModMagDef;
@@ -20,6 +20,7 @@ public abstract class Inimigo extends Personagem{
         this.comp = comp;
         this.pos = posicao;
         this.dropXp = dropXp;
+        this.moedas = moedas;
     }
     protected TiposElementais[] fraquezas;
     protected TiposElementais[] resistencias;
@@ -41,6 +42,10 @@ public abstract class Inimigo extends Personagem{
 
     public int getDropXp() {
         return dropXp;
+    }
+
+    public int getMoedas() {
+        return moedas;
     }
 
     public int getPos(){return pos;}

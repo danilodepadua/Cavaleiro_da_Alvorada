@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class InimigoAbelha extends Inimigo {
     public InimigoAbelha( ) {
-        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 15, 5, 10, 20, 5, 5, 10, 5, 100, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 100);
+        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 15, 5, 10, 20, 5, 5, 10, 5, 100, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 100, 5);
         this.fraquezas = new TiposElementais[]{TiposElementais.NaoElemental, TiposElementais.Terra};
         this.magias.add(new Fogo());
         this.magias.add(new Gelo());

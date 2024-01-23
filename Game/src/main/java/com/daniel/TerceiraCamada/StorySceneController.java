@@ -7,17 +7,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.control.Button;
+=======
+import javafx.scene.Scene;
+>>>>>>> 45281baf73da7872aa28689e9d24285a186270d2
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
 import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
+=======
+import javafx.stage.Window;
+>>>>>>> 45281baf73da7872aa28689e9d24285a186270d2
 
 public class StorySceneController implements Initializable {
 

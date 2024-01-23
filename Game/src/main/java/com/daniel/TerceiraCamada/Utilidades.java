@@ -132,6 +132,26 @@ public class Utilidades {
 
     }
 
+    public static void configurarBotoesTelaResultado(Button button) {
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6; -fx-min-width: 200; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-min-height: 50;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-min-width: 200; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-min-height: 50;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7; -fx-min-width: 200; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-min-height: 50;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-min-width: 200; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-min-height: 50;" );
+        });
+
+
+    }
+
     public static void contornarBotaoVoltarLoja(Button button) {
         button.setOnMouseEntered(event -> {
             button.setStyle(" -fx-border-color:  #eccb7e; -fx-background-color: #140e0a ");

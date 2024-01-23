@@ -40,6 +40,8 @@ public class Player extends Personagem implements Serializable {
     private int currentMp, currentHp;
     private int pontos;
 
+    private int currentMoedas;
+
     private ArrayList<Cidade> cidadesConehcidas = new ArrayList<>();
 
     private Bestiario bestiario = new Bestiario();
@@ -240,6 +242,10 @@ public class Player extends Personagem implements Serializable {
         return this.VereficarLevelUp();
     }
 
+    public void ganharMoedas(int moedas) {
+        this.currentMoedas += moedas;
+    }
+
     private void aprenderMagia(){
         switch (lvl){
             case 2:
@@ -264,6 +270,7 @@ public class Player extends Personagem implements Serializable {
     public int getXp() {
         return this.currentXp;
     }
+    public int getMoedas() {return this.currentMoedas;}
     public void RecuperarVida(int i){
         this.currentHp += i;
         if(this.currentHp > this.HP){
@@ -303,6 +310,7 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Quest completada: " + quest.getNome());
             System.out.println("Ganho de xp: "+ quest.getRecompensaXP());
             System.out.println("Xp do player: "+ currentXp);
+            System.out.println("moedas do player: "+ currentMoedas);
             System.out.println(VereficarLevelUp());
             questAtuais.remove(quest);
         }

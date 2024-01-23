@@ -6,6 +6,6 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeFogoNv2 extends Inimigo {
     public InimigoSlimeDeFogoNv2() {
-        super("Slime de fogo médio", "/com.daniel.Images/Inimigos/Slime Fireii.png", 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 100);
+        super("Slime de fogo médio", "/com.daniel.Images/Inimigos/Slime Fireii.png", 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 100, 5);
     }
 }
