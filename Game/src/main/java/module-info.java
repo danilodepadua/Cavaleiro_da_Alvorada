@@ -2,6 +2,7 @@ module com.daniel.game {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.prefs;
+    requires java.desktop;
 
 
     opens com.daniel.game to javafx.fxml;
