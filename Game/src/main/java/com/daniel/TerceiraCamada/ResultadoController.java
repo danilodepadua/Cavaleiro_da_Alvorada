@@ -18,12 +18,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class ResultadoController implements Initializable {
     @FXML
@@ -54,6 +57,11 @@ public class ResultadoController implements Initializable {
         configurarBotoesTelaResultado(btnCacar);
         configurarBotoesTelaResultado(btnVoltar);
 
+        gridItens.setVgap(10);
+        scrollItens.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollItens.setFitToWidth(true);
+        gridItens.setMaxHeight(Double.MAX_VALUE);
+        scrollItens.setContent(gridItens);
         int itemnum = 0;
         for (Item i : Main.cidadeAtual.getItens()) {
             if(i instanceof Armadura){
@@ -69,11 +77,11 @@ public class ResultadoController implements Initializable {
                 criarBotaoItem(i, itemnum, gridItens);
                 itemnum++;
             }
+            System.out.println("ItemNum: " + itemnum);
         }
     }
     private void criarBotaoItem(Item item, int rowIndex, GridPane grid) {
         int columns = grid.getColumnConstraints().size();
-        int rows = grid.getRowConstraints().size();
 
         Button button = new Button();
         ImageView imageView = new ImageView();
@@ -82,13 +90,12 @@ public class ResultadoController implements Initializable {
         imageView.setFitHeight(55);
 
         double cellWidth = grid.getPrefWidth() / columns;
-        double cellHeight = grid.getPrefHeight() / rows;
 
         button.setGraphic(imageView);
-        button.setPrefSize(cellWidth, cellHeight);
+        button.setPrefSize(cellWidth, cellWidth);
         grid.add(button, 0, rowIndex);
 
-        button.setMaxSize(cellWidth, cellHeight);
+        button.setMaxSize(cellWidth, cellWidth);
 
         imageView.setImage(item.getImage());
         button.setStyle("-fx-background-color:  #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e");
