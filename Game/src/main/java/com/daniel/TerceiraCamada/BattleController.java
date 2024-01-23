@@ -187,7 +187,7 @@ public class BattleController implements Initializable {
                     int xpDrop = Enimy.getXpDrop();
                     int moedas = Enimy.getMoedas();
                     Player.getPlayer().ganharXp(xpDrop);
-                    Player.getPlayer().ganharMoedas(moedas);
+                    Player.getPlayer().ganhaCoins(moedas);
                     ResultadoController.setXpInimigo(xpDrop);
                     ResultadoController.setMoedasInimigo(moedas);
 
