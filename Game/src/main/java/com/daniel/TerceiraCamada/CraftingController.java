@@ -1,6 +1,5 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Crafting;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
