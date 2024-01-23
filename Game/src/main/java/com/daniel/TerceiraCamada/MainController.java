@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,31 +39,34 @@ public class MainController implements Initializable {
 
     @FXML
     private Button btnSair;
-    private Clip clip;
+
+    private AudioPlayer audioPlayer = new AudioPlayer();
+
+
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
-        pararMusica();
+        audioPlayer.stop();
         System.out.println("Iniciou");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
 
     }
     @FXML
     void Carregar(ActionEvent event) throws IOException {
-        pararMusica();
+        audioPlayer.stop();
         System.out.println("Carregando");
         Main.saveManager.Carregar();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
-        pararMusica();
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        iniciarMusica("/com.daniel.audios/musica_menu.wav");
+        audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/Calabouso.jpg");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
@@ -79,35 +83,5 @@ public class MainController implements Initializable {
         System.exit(0);
 
     }
-
-    private void iniciarMusica(String caminhoMusica) {
-        try {
-            URL resourceUrl = getClass().getResource(caminhoMusica);
-            // debug
-            if (resourceUrl == null) {
-                System.err.println("arquivo de áudio não encontrado: ");
-                return;
-            }
-
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(resourceUrl);
-
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-            clip.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void pararMusica() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-            clip.close();
-        }
-    }
-
 
 }
