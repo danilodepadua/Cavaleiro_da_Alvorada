@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Crafting;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -19,8 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
-import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CraftingController implements Initializable {
     @FXML
@@ -42,10 +42,14 @@ public class CraftingController implements Initializable {
 
     private Item itemSelecionado;
     private Item itemSelecionado2;
+    private Crafting crafting;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fornalha.jpg");
+        contornarBotaoVoltarLoja(btnVoltar);
+        configurarBotoes(btnCriar);
+        this.crafting = new Crafting();
         try {
             atualizarInterface();
         } catch (PlayerInexistenteException e) {
@@ -83,16 +87,25 @@ public class CraftingController implements Initializable {
                             itemSelecionado(itemSelecionado, btnSlot1);
                         } else if (itemSelecionado2 == null) {
                             itemSelecionado2 = Player.getPlayer().getInventario().getItens()[finalI];
-                            if (!itemSelecionado2.equals(itemSelecionado)){
-                            itemSelecionado(itemSelecionado2, btnSlot2);
-                            }else {
-                                if (itemSelecionado2.getQuant() >1){
-                                    itemSelecionado(itemSelecionado2, btnSlot2);
-                                }
+
+                            // Adiciona item ao btnSlot2 apenas se for diferente do itemSelecionado
+                            // ou se a quantidade for maior que 1
+                            if (!itemSelecionado2.equals(itemSelecionado) || itemSelecionado2.getQuant() > 1) {
+                                itemSelecionado(itemSelecionado2, btnSlot2);
+                                // Chama a função updateCraft() após adicionar o item ao btnSlot2
+                                updateCraft();
+                            } else {
+                                // Se o itemSelecionado2 for igual ao itemSelecionado, limpa o slot2
+                                itemSelecionado2 = null;
                             }
-                        } else if (itemSelecionado != null || itemSelecionado2 != null) {
+                        } else {
+                            // Se ambos os slots já estão ocupados, limpa os slots e desabilita o botão de criação
                             itemSelecionado = null;
                             itemSelecionado2 = null;
+                            btnSlot1.setGraphic(null);
+                            btnSlot2.setGraphic(null);
+                            btnSlot3.setGraphic(null);
+                            btnCriar.setDisable(true);
                         }
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
@@ -120,21 +133,16 @@ public class CraftingController implements Initializable {
         }
     }
     private Item updateCraft() throws PlayerInexistenteException {
-        if (itemSelecionado != null && itemSelecionado2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro (ou sua lógica específica)
-            if (itemSelecionado instanceof Ferro && itemSelecionado2 instanceof Ferro) {
-                btnCriar.setDisable(false);
-                BarraFerro barraFerro = new BarraFerro();
-                btnSlot3.setGraphic(new ImageView(barraFerro.getImage()));
-                return barraFerro;
-            }
-        } else {
-            // Se não houver um par de itens selecionados, limpe o slot3
-            btnSlot3.setGraphic(null);
-            btnCriar.setDisable(true);
+        if (crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar) != null) {
+            return crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar);
+        } else if (crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar) != null) {
+            return crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar);
         }
-        return null;
+        else {
+            return null;
+        }
     }
+
 
 
     private void itemSelecionado(Item item, Button button) {

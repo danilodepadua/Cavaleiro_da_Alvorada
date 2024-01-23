@@ -192,7 +192,7 @@ public class CidadeController implements Initializable {
         configurarBotoes(btnStatus);
         configurarBotoes(btnInventario);
         configurarBotoes(btnConfig);
-
+        configurarBotoes(btnCraft);
         // Configurar os estilos para os Labels de informações
         configurarEstiloLabel(infoCoin, infoResistencia, infoForca, infoDefesa, infoMana, infoVelo, infoVida, infoInteligencia, infoDefesaMagica);
 

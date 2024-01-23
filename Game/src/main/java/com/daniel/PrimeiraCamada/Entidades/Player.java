@@ -64,7 +64,8 @@ public class Player extends Personagem implements Serializable {
         this.cidadesConehcidas.add(new CidadeMorta());
         this.inventario.adicionarItem(new Ferro());
         this.inventario.adicionarItem(new Ferro());
-
+        this.inventario.adicionarItem(new Ferro());
+        this.inventario.adicionarItem(new Ferro());
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {
