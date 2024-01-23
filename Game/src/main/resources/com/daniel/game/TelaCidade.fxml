@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CidadeController">
+<AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CidadeController">
    <children>
       <AnchorPane prefHeight="120.0" prefWidth="1136.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -203,7 +203,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox fx:id="vboxBotoes" layoutX="838.0" layoutY="19.0" prefHeight="78.0" prefWidth="267.0" spacing="20.0" AnchorPane.rightAnchor="30.799999999999955">
+            <HBox fx:id="vboxBotoes" layoutX="766.0" layoutY="20.0" prefHeight="78.0" prefWidth="355.0" spacing="20.0" AnchorPane.rightAnchor="14.799999999999955">
                <children>
                   <Button fx:id="btnStatus" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
                      <graphic>
@@ -232,6 +232,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button fx:id="btnCraft" mnemonicParsing="false" onAction="#Craft" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
                </children>
             </HBox>
          </children>

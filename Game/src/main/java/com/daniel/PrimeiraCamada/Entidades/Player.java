@@ -10,6 +10,7 @@ import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
+import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
 import com.daniel.PrimeiraCamada.Magias.*;
 import com.daniel.PrimeiraCamada.Quests.*;
 
@@ -59,6 +60,9 @@ public class Player extends Personagem implements Serializable {
         this.cidadesConehcidas.add(new CidadeInicial());
         this.cidadesConehcidas.add(new MontanhaDoNorte());
         this.cidadesConehcidas.add(new CidadeMorta());
+        this.inventario.adicionarItem(new Ferro());
+        this.inventario.adicionarItem(new Ferro());
+
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {

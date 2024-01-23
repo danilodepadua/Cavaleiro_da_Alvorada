@@ -33,7 +33,8 @@ public class CidadeController implements Initializable {
     @FXML
     private AnchorPane Screen;
 
-
+    @FXML
+    private Button btnCraft;
 
     @FXML
     private Button btnInventario;
@@ -226,5 +227,9 @@ public class CidadeController implements Initializable {
     void Config(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
+    @FXML
+    void Craft(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCraft.fxml")).load());
 
+    }
 }
