@@ -7,12 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 
-import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,6 +42,7 @@ public class MainController implements Initializable {
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
+        audioPlayer.somMouseClick(btnNovoJogo, "/com.daniel.audios/musica_menu.wav");
         audioPlayer.stop();
         System.out.println("Iniciou");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
@@ -60,7 +57,6 @@ public class MainController implements Initializable {
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
 
@@ -73,9 +69,6 @@ public class MainController implements Initializable {
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
 
-
-
-
     }
 
     @FXML
@@ -83,5 +76,7 @@ public class MainController implements Initializable {
         System.exit(0);
 
     }
+
+
 
 }
