@@ -55,3 +55,7 @@
 .mygridStyle Line {
     -fx-stroke   : #eccb7e;
 }
+.scroll-pane{
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+}

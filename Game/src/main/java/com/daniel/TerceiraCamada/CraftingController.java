@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +26,8 @@ import static com.daniel.TerceiraCamada.Utilidades.*;
 public class CraftingController implements Initializable {
     @FXML
     private Button btnSlot1;
-
+    @FXML
+    private Text txtProbSucesso;
     @FXML
     private Button btnVoltar;
     @FXML
@@ -96,13 +98,9 @@ public class CraftingController implements Initializable {
                                 itemSelecionado2 = null;
                             }
                         } else {
-                            // Se ambos os slots já estão ocupados, limpa os slots e desabilita o botão de criação
-                            itemSelecionado = null;
-                            itemSelecionado2 = null;
-                            btnSlot1.setGraphic(null);
-                            btnSlot2.setGraphic(null);
-                            btnSlot3.setGraphic(null);
-                            btnCriar.setDisable(true);
+                            limparTela();
+                            txtProbSucesso.setText(null);
+
                         }
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
@@ -115,12 +113,7 @@ public class CraftingController implements Initializable {
                         Player.getPlayer().getInventario().RemoverItem(itemSelecionado2);
                         atualizarInterface();
                         // Limpa os slots e desabilita o botão de criação
-                        itemSelecionado = null;
-                        itemSelecionado2 = null;
-                        btnCriar.setDisable(true);
-                        btnSlot1.setGraphic(null);
-                        btnSlot2.setGraphic(null);
-                        btnSlot3.setGraphic(null);
+                        limparTela();
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }
@@ -130,17 +123,29 @@ public class CraftingController implements Initializable {
         }
     }
     private Item updateCraft() throws PlayerInexistenteException {
-        if (crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar) != null) {
-            return crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar);
-        } else if (crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar) != null) {
-            return crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar);
-        }
-        else {
+        if (crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03) != null) {
+            // Formata a porcentagem sem a parte inteira
+            String porcentagemFormatada = String.format("%.0f%%", crafting.getChanceBase() * 100);
+            txtProbSucesso.setText(porcentagemFormatada);
+            return crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03);
+        } else if (crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.05) != null) {
+            String porcentagemFormatada = String.format("%.0f%%", crafting.getChanceBase() * 100);
+            txtProbSucesso.setText(porcentagemFormatada);
+            return crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar,0.05);
+        } else {
             return null;
         }
     }
 
 
+    private void limparTela(){
+        itemSelecionado = null;
+        itemSelecionado2 = null;
+        btnSlot1.setGraphic(null);
+        btnSlot2.setGraphic(null);
+        btnSlot3.setGraphic(null);
+        btnCriar.setDisable(true);
+    }
 
     private void itemSelecionado(Item item, Button button) {
         ImageView view = new ImageView();

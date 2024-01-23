@@ -12,18 +12,19 @@ public class Inventario implements Serializable {
 
     public void adicionarItem(Item item){
         Integer nullIndex = null;
-        for(int i = 0; i<itens.length; i++){
-            if(itens[i] == null && nullIndex == null){
-                nullIndex = i;
+        if (item != null) {
+            for (int i = 0; i < itens.length; i++) {
+                if (itens[i] == null && nullIndex == null) {
+                    nullIndex = i;
+                } else if (itens[i] != null && Objects.equals(itens[i].getNome(), item.getNome())) {
+                    itens[i].MaisQuant();
+                    nullIndex = null;
+                    break;
+                }
             }
-            else if(itens[i] != null && Objects.equals(itens[i].getNome(), item.getNome())){
-                itens[i].MaisQuant();
-                nullIndex = null;
-                break;
+            if (nullIndex != null) {
+                itens[nullIndex] = item;
             }
-        }
-        if(nullIndex != null) {
-            itens[nullIndex] = item;
         }
     }
     public void RemoverItem(Item i){

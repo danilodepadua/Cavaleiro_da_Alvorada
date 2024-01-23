@@ -2,6 +2,9 @@ package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
 import com.daniel.PrimeiraCamada.Comportamentos;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Itens.Comidas.Banana;
+import com.daniel.PrimeiraCamada.Itens.Comidas.CoxaFrango;
+import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
 import com.daniel.PrimeiraCamada.Magias.Escuridao;
 import com.daniel.PrimeiraCamada.Magias.Fogo;
 import com.daniel.PrimeiraCamada.Magias.Gelo;
@@ -18,5 +21,7 @@ public class InimigoAbelha extends Inimigo {
         this.magias.add(new Gelo());
         this.magias.add(new Luz());
         this.magias.add(new Escuridao());
+        this.itens.add(new CoxaFrango());
+        this.itens.add(new BarraFerro());
     }
 }

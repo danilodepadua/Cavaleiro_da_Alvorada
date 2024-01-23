@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CraftingController">
    <children>
@@ -46,23 +46,47 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <AnchorPane layoutX="761.0" layoutY="117.0" prefHeight="402.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="761.0">
+      <AnchorPane layoutX="761.0" layoutY="117.0" prefHeight="481.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="761.0">
          <children>
-            <HBox layoutX="45.0" layoutY="117.0" prefHeight="100.0" prefWidth="269.0" spacing="30.0">
-               <children>
-                  <Button fx:id="btnSlot1" mnemonicParsing="false" prefHeight="66.0" prefWidth="122.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
-                  <Button fx:id="btnSlot2" mnemonicParsing="false" prefHeight="66.0" prefWidth="118.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
-               </children>
-            </HBox>
-            <Button fx:id="btnSlot3" layoutX="122.0" layoutY="250.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="118.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
-            <Text fill="#eccb7e" layoutX="44.0" layoutY="64.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="FORJAR">
+            <Text fill="#eccb7e" layoutX="15.0" layoutY="66.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="FORJAR">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="44.0" />
                </font>
             </Text>
+            <VBox alignment="CENTER" layoutX="120.0" layoutY="62.0" prefHeight="334.0" prefWidth="130.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnSlot1" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
+                  <ImageView fitHeight="31.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Setas/+.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnSlot2" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
+                  <ImageView fitHeight="54.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarela.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnSlot3" mnemonicParsing="false" prefHeight="64.0" prefWidth="118.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" />
+               </children>
+            </VBox>
+            <HBox layoutX="12.0" layoutY="418.0" prefHeight="38.0" prefWidth="242.0" spacing="5.0">
+               <children>
+                  <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Probabilidade de Sucesso:">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtProbSucesso" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
-      <Button fx:id="btnCriar" disable="true" layoutX="870.0" layoutY="573.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e" AnchorPane.leftAnchor="870.0">
+      <Button fx:id="btnCriar" disable="true" layoutX="871.0" layoutY="615.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e" AnchorPane.leftAnchor="871.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>

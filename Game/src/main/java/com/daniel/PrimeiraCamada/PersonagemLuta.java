@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.SegundaCamada.AnimationsAttack;
 import com.daniel.SegundaCamada.SlashAnimation;
 
@@ -18,6 +19,7 @@ public class PersonagemLuta{
     protected int xpDrop;
 
     protected int moedas;
+    protected ArrayList<Item> itens = new ArrayList<>();
     public PersonagemLuta(Inimigo i){
         this.HP = i.HP;
         this.MP = i.MP;
@@ -37,6 +39,7 @@ public class PersonagemLuta{
         this.magias = i.magias;
         this.xpDrop = i.getDropXp();
         this.moedas = i.getMoedas();
+        this.itens = i.getItens();
     }
 
     public PersonagemLuta(Player p){
@@ -186,6 +189,10 @@ public class PersonagemLuta{
 
     public int getMP() {
         return MP;
+    }
+
+    public ArrayList<Item> getItens() {
+        return itens;
     }
 
     public int getXpDrop() {

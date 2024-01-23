@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -183,32 +184,23 @@ public class BattleController implements Initializable {
         for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
-                    ResultadoController resultadoController = new ResultadoController();
                     quest.updateQuestCompleted();
-                    int moedas = Enimy.getMoedas();
-                    int xpDrop = Enimy.getXpDrop();
-                    Player.getPlayer().ganharXp(xpDrop);
-                    Player.getPlayer().ganhaCoins(moedas);
-                    ArrayList<Item> itensDrop = Main.cidadeAtual.getRandomItens();
-                    for (Item i : itensDrop) {Player.getPlayer().getInventario().adicionarItem(i);}
-
-                    resultadoController.setInfoInimigos(moedas, xpDrop);
-                    resultadoController.setItensDrop(itensDrop);
-
-
                     FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
-                    loader.setController(resultadoController);
+                    Parent root = loader.load();
 
+                    ResultadoController resultadoController = loader.getController();
+                    resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getItens());
 
+                    Main.ChangeScene(root);
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
                 }
             }
         }
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaResultado.fxml")).load());
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
         System.out.println("Player venceu");
     }
+
     public void Derrota() throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
 
