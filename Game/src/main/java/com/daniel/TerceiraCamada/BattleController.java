@@ -30,11 +30,11 @@ import java.util.Random;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class BattleController implements Initializable {
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
-
     private Inimigo[] inimigos;
     private Inimigo inimigo;
     PersonagemLuta Enimy;
@@ -183,18 +183,18 @@ public class BattleController implements Initializable {
         for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
+                    ResultadoController resultadoController = new ResultadoController();
                     quest.updateQuestCompleted();
-                    int xpDrop = Enimy.getXpDrop();
                     int moedas = Enimy.getMoedas();
+                    int xpDrop = Enimy.getXpDrop();
                     Player.getPlayer().ganharXp(xpDrop);
                     Player.getPlayer().ganhaCoins(moedas);
-                    ResultadoController.setXpInimigo(xpDrop);
-                    ResultadoController.setMoedasInimigo(moedas);
+                    resultadoController.setInfoInimigos(moedas, xpDrop);
 
 
                     FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
-                    ResultadoController resultadoController = new ResultadoController();
                     loader.setController(resultadoController);
+
 
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
