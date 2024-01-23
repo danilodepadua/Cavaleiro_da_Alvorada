@@ -7,15 +7,8 @@ import com.daniel.PrimeiraCamada.PersonagemLuta;
 import com.daniel.PrimeiraCamada.TiposElementais;
 import com.daniel.SegundaCamada.IceAnimation;
 
-public class Gelo extends Magia implements IEffects {
+public class Gelo extends Magia{
     public Gelo() {
-        super("Gelo",10, 1, TiposElementais.Gelo, new IceAnimation(), true);
-    }
-
-    @Override
-    public void aplicarEfeito(PersonagemLuta alvo) {
-        alvo.aplicarStun();
-        this.mensagem.add(alvo.getNome() + " foi stunado");
-        System.out.println("Inimigo stunado");
+        super("Glacies",10, 1, TiposElementais.Gelo, new IceAnimation(), true);
     }
 }

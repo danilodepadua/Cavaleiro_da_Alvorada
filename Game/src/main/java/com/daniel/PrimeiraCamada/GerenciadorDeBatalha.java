@@ -13,6 +13,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GerenciadorDeBatalha {
 
@@ -40,7 +41,7 @@ public class GerenciadorDeBatalha {
         this.comp = Comp;
         this.BC = bc;
     }
-    public void mostrarResultado(ArrayList<String> mensagems){
+    public void mostrarResultado(ArrayList<String> mensagems, boolean passar){
         Timeline T = new Timeline();
         double time = 0.2;
         for(String i : mensagems) {
@@ -51,6 +52,7 @@ public class GerenciadorDeBatalha {
             time+=1;
         }
         T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
+        if(passar){
         T.setOnFinished(event -> {
             try {
                 MudarTurno();
@@ -58,6 +60,7 @@ public class GerenciadorDeBatalha {
                 throw new RuntimeException(e);
             }
         });
+        }
         T.play();
     }
 
@@ -92,11 +95,18 @@ public class GerenciadorDeBatalha {
     }
 
     public void turnoPlayer(){
+        ArrayList<String> mensagem = new ArrayList<>();
+        if(Player.envenenado){
+            mensagem.add(Player.TomarDanoVeneno());
+        }
         if(Player.stun > 0){
             Player.stun--;
-            ArrayList<String> mensagem = new ArrayList<>();
-            mensagem.add("Jogador esta stunado");
-            mostrarResultado(mensagem);
+            mensagem.add(Player.getNome() + " esta stunado");
+            mostrarResultado(mensagem, true);
+        }
+        else if(Player.dormindo){
+            mensagem.add(Player.getNome() + " esta dormindo");
+            mostrarResultado(mensagem, true);
         }
         else{
         // logica do player
@@ -110,7 +120,7 @@ public class GerenciadorDeBatalha {
             Inimigo.stun--;
             ArrayList<String> mensagem = new ArrayList<>();
             mensagem.add("Inimigo esta stunado");
-            mostrarResultado(mensagem);
+            mostrarResultado(mensagem, true);
         }
         else{
             Comportamento.acoes acao = comp.EscolherAcao();
@@ -131,46 +141,79 @@ public class GerenciadorDeBatalha {
         ui.setDisable(true);
     }
     public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
+        boolean acertou = true;
         if(state == States.turnoPlayer){
             if(Mensagem == null){
                 Mensagem = new ArrayList<String>();
-                Mensagem.add("Player atacou");
+                Mensagem.add(Player.getNome() + " atacou");
+            }
+            if(Inimigo.dormindo){
+                Mensagem.add(Inimigo.getNome() + " acordou");
             }
             ApagarUiPlayer();
-            int danoTomado = this.Inimigo.tomarDano(Dano, tipo, fisico);
-            if(danoTomado == 0){
-                Mensagem.add("O inimigo não sofreu dano");
+            Random rand = new Random();
+            double taxaAcerto = 1/(1+Math.exp(-5*(Player.getVelocidade() - Inimigo.getVelocidade())));
+            if(Player.cegado){
+                taxaAcerto /= 2;
             }
-            else if(danoTomado < 0){
-                Mensagem.add("O inimigo recuperou " + Math.abs(danoTomado) + " de vida");
+            if(!(taxaAcerto > rand.nextDouble(0,1))){
+                acertou = false;
+            }
+            if(acertou){
+                int danoTomado = this.Inimigo.tomarDano(Dano, tipo, fisico);
+                if(danoTomado == 0){
+                    Mensagem.add("O inimigo não sofreu dano");
+                }
+                else if(danoTomado < 0){
+                    Mensagem.add("O inimigo recuperou " + Math.abs(danoTomado) + " de vida");
+                }
+                else{
+                    Mensagem.add("O inimigo tomou " + danoTomado + " de dano");
+                }
             }
             else{
-                Mensagem.add("O inimigo tomou " + danoTomado + " de dano");
+                Mensagem.add(Player.getNome() + " errou o ataque");
             }
         }
         else{
             if(Mensagem == null){
                 Mensagem = new ArrayList<String>();
-                Mensagem.add("Inimigo atacou");
+                Mensagem.add(Inimigo.getNome() + " atacou");
             }
-            int danoTomado = this.Player.tomarDano(Dano, tipo, fisico);
-            if(danoTomado == 0){
-                Mensagem.add("O jogador não sofreu dano");
+            if(Player.dormindo){
+                Mensagem.add(Player.getNome() + " acordou");
             }
-            else if(danoTomado < 0){
-                Mensagem.add("O jogador recuperou " + Math.abs(danoTomado) + " de vida");
+            Random rand = new Random();
+            double taxaAcerto = 1/(1+Math.exp(-5*(Inimigo.getVelocidade() - Player.getVelocidade())));
+            if(Inimigo.cegado){
+                taxaAcerto /= 2;
+            }
+            if(!(taxaAcerto > rand.nextDouble(0,1))){
+                acertou = false;
+            }
+            if(acertou){
+                int danoTomado = this.Player.tomarDano(Dano, tipo, fisico);
+                if(danoTomado == 0){
+                    Mensagem.add("O jogador não sofreu dano");
+                }
+                else if(danoTomado < 0){
+                    Mensagem.add("O jogador recuperou " + Math.abs(danoTomado) + " de vida");
+                }
+                else{
+                    Mensagem.add("O jogador tomou " + danoTomado + " de dano");
+                }
             }
             else{
-                Mensagem.add("O jogador tomou " + danoTomado + " de dano");
+                Mensagem.add(Inimigo.getNome() + " errou o ataque");
             }
         }
         ArrayList<String> finalMensagem = Mensagem;
-        t.setOnFinished(event -> mostrarResultado(finalMensagem));
+        t.setOnFinished(event -> mostrarResultado(finalMensagem,true));
         t.play();
     }
 
     public void acaoNaoAgreciva(Timeline t, ArrayList<String> mensagem){
-        t.setOnFinished(event -> mostrarResultado(mensagem));
+        t.setOnFinished(event -> mostrarResultado(mensagem, true));
     }
     public ImageView getAlvoView(boolean autoUsavel){
         if(!autoUsavel){
@@ -216,7 +259,7 @@ public class GerenciadorDeBatalha {
         else{
             ArrayList<String> i = new ArrayList<String>();
             i.add("Falhou em fugir");
-            mostrarResultado(i);
+            mostrarResultado(i, true);
         }
     }
 }

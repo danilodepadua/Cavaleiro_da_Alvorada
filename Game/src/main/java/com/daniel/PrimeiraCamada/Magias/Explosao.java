@@ -7,6 +7,6 @@ import com.daniel.SegundaCamada.ExplosaoAnimation;
 
 public class Explosao extends Magia {
     public Explosao() {
-        super("Explosão", 15, 1.5, TiposElementais.Fogo, new ExplosaoAnimation(), true);
+        super("Magnus ignis", 15, 1.5, TiposElementais.Fogo, new ExplosaoAnimation(), true);
     }
 }

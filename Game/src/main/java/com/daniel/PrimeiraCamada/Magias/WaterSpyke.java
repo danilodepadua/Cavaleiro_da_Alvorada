@@ -7,6 +7,6 @@ import com.daniel.SegundaCamada.WaterSpykeAnimation;
 
 public class WaterSpyke extends Magia {
     public WaterSpyke() {
-        super("Água2", 15, 1.5, TiposElementais.Gelo, new WaterSpykeAnimation(), true);
+        super("Aqua", 15, 1.5, TiposElementais.Gelo, new WaterSpykeAnimation(), true);
     }
 }

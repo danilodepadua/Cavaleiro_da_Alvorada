@@ -12,6 +12,8 @@ public class PersonagemLuta{
     protected String Nome;
     protected AnimationsAttack atqAnim;
     protected ArrayList<Magia> magias;
+
+    protected boolean envenenado = false, dormindo= false, silenciado= false, cegado= false;
     protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
     protected int xpDrop;
 
@@ -64,6 +66,7 @@ public class PersonagemLuta{
 
     public int tomarDano(int dano, TiposElementais tipo, boolean fisico){
         int danoTomado = 0;
+        this.dormindo = false;
         if(temTipo(fraquezas, tipo)){
             if(!fisico){
                 danoTomado = dano*2 - this.getDefM();
@@ -133,6 +136,13 @@ public class PersonagemLuta{
         }
         return false;
     }
+    public String TomarDanoVeneno(){
+        this.currentHp -= this.HP/10;
+        if(this.currentHp<=0){
+            this.currentHp = 1;
+        }
+        return "Tomou dano por envenenamento";
+    }
 
     public int getCurrentHp() {
         return currentHp;
@@ -144,10 +154,6 @@ public class PersonagemLuta{
 
     public int getVelocidade() {
         return velocidade;
-    }
-
-    public int getStun() {
-        return stun;
     }
 
     public int getDefF() {
@@ -198,6 +204,64 @@ public class PersonagemLuta{
 
     public void UpForca(int Up){
         this.AtqF += Up;
+    }
+    public void UpInt(int Up){
+        this.AtqM += Up;
+        this.DefM += Up;
+    }
+    public void UpVel(int Up){
+        this.velocidade += Up;
+    }
+    public void UpRes(int Up){
+        this.DefF += Up;
+    }
+    public String Envenenar(){
+        Random rand = new Random();
+        int i = rand.nextInt(0,100);
+        if(i > 50){
+            this.envenenado = true;
+            return this.getNome()+" foi envenenado";
+        }
+        return this.getNome()+" não foi envenenado";
+    }
+    public String Desenvenenar(){
+        this.envenenado = false;
+        return this.getNome()+" se recuperou";
+    }
+    public String Dormir(){
+        Random rand = new Random();
+        int i = rand.nextInt(0,100);
+        if(i > 50){
+            this.dormindo = true;
+            return this.getNome()+" caiu no sono";
+        }
+        return this.getNome()+" não caiu no sono";
+    }
+    public String Silenciar(){
+        Random rand = new Random();
+        int i = rand.nextInt(0,100);
+        if(i > 50){
+            this.silenciado = true;
+            return this.getNome()+" foi silenciado";
+        }
+        return this.getNome()+" não foi silenciado";
+    }
+    public String dessilenciar(){
+        this.silenciado = false;
+        return this.getNome()+" voltou a falar";
+    }
+    public String Cegar(){
+        Random rand = new Random();
+        int i = rand.nextInt(0,100);
+        if(i > 50){
+            this.cegado = true;
+            return this.getNome()+" foi cegado";
+        }
+        return this.getNome()+" não foi cegado";
+    }
+    public String descegar(){
+        this.cegado = false;
+        return this.getNome()+" voltou a enchegar";
     }
     public void RecuperarMana(int i) {
         this.currentMp += i;

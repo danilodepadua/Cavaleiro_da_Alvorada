@@ -7,6 +7,6 @@ import com.daniel.SegundaCamada.RedemoinhoAnimation;
 
 public class Redemoinho extends Magia {
     public Redemoinho() {
-        super("Redemoinho", 20, 2, TiposElementais.Gelo, new RedemoinhoAnimation(), true);
+        super("Magna aqua", 20, 2, TiposElementais.Gelo, new RedemoinhoAnimation(), true);
     }
 }

@@ -8,6 +8,6 @@ import com.daniel.SegundaCamada.HolyAnimation;
 
 public class Luz extends Magia {
     public Luz() {
-        super("Holy",20, 1.5, TiposElementais.Luz, new HolyAnimation(), true);
+        super("Lux",20, 1.5, TiposElementais.Luz, new HolyAnimation(), true);
     }
 }

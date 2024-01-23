@@ -272,7 +272,7 @@ public class BattleController implements Initializable {
                     RetornarInicial();
                     gdb.ApagarUiPlayer();
                     Atualiazar();
-                    gdb.mostrarResultado(mensagem);
+                    gdb.mostrarResultado(mensagem, true);
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
                 }
