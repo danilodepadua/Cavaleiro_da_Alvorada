@@ -189,7 +189,7 @@ public class BattleController implements Initializable {
                     Parent root = loader.load();
 
                     ResultadoController resultadoController = loader.getController();
-                    resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getItens());
+                    resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getLootTable());
 
                     Main.ChangeScene(root);
                 } catch (PlayerInexistenteException e) {

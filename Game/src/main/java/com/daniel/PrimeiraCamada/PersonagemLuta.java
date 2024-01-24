@@ -3,6 +3,7 @@ package com.daniel.PrimeiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.SegundaCamada.AnimationsAttack;
+import com.daniel.SegundaCamada.LootTable;
 import com.daniel.SegundaCamada.SlashAnimation;
 
 import java.util.ArrayList;
@@ -13,13 +14,11 @@ public class PersonagemLuta{
     protected String Nome;
     protected AnimationsAttack atqAnim;
     protected ArrayList<Magia> magias;
-
     protected boolean envenenado = false, dormindo= false, silenciado= false, cegado= false;
     protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
     protected int xpDrop;
-
     protected int moedas;
-    protected ArrayList<Item> itens = new ArrayList<>();
+    protected LootTable lootTable = new LootTable();
     public PersonagemLuta(Inimigo i){
         this.HP = i.HP;
         this.MP = i.MP;
@@ -39,7 +38,7 @@ public class PersonagemLuta{
         this.magias = i.magias;
         this.xpDrop = i.getDropXp();
         this.moedas = i.getMoedas();
-        this.itens = i.getItens();
+        this.lootTable = i.getLootTable();
     }
 
     public PersonagemLuta(Player p){
@@ -191,8 +190,8 @@ public class PersonagemLuta{
         return MP;
     }
 
-    public ArrayList<Item> getItens() {
-        return itens;
+    public LootTable getLootTable() {
+        return lootTable;
     }
 
     public int getXpDrop() {

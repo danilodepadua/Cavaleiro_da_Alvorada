@@ -7,6 +7,8 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
 import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
 import com.daniel.game.Main;
+import javafx.animation.FadeTransition;
+import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,24 +27,45 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CraftingController implements Initializable {
+
     @FXML
-    private Button btnSlot1;
-    @FXML
-    private Text txtProbSucesso;
-    @FXML
-    private Button btnVoltar;
-    @FXML
-    private Button btnSlot2;
-    @FXML
-    private Button btnSlot3;
-    @FXML
-    private GridPane gridItensPlayer;
-    @FXML
-    private AnchorPane panePrincipal;
+    private AnchorPane boxMensagem;
 
     @FXML
     private Button btnCriar;
 
+    @FXML
+    private Button btnSlot1;
+
+    @FXML
+    private Button btnSlot2;
+
+    @FXML
+    private Button btnSlot3;
+
+    @FXML
+    private Button btnVoltar;
+
+    @FXML
+    private GridPane gridItensPlayer;
+
+    @FXML
+    private ImageView imgItem;
+
+    @FXML
+    private AnchorPane panePrincipal;
+
+    @FXML
+    private Text txtMensagem;
+
+    @FXML
+    private Text txtNomeItem;
+
+    @FXML
+    private Text txtProbSucesso;
+
+    @FXML
+    private Text txtQuantidade;
     private Item itemSelecionado;
     private Item itemSelecionado2;
     private Crafting crafting;
@@ -62,82 +86,109 @@ public class CraftingController implements Initializable {
 
     private void atualizarInterface() throws PlayerInexistenteException {
         gridItensPlayer.getChildren().clear();
-        int j =0;
-        for (int i = 0; i < Player.getPlayer().getInventario().getItens().length; i++) {
-            if (Player.getPlayer().getInventario().getItens()[i] != null) {
-                Button b = new Button();
-                ImageView image = new ImageView();
-                image.setImage(Player.getPlayer().getInventario().getItens()[i].getImage());
-
-                image.setFitWidth(40);
-                image.setFitHeight(40);
-                gridItensPlayer.add(b, j % 4, j / 4);
-                b.prefWidthProperty().bind(gridItensPlayer.prefWidthProperty().divide(gridItensPlayer.getColumnCount()));
-                b.prefHeightProperty().bind(gridItensPlayer.prefHeightProperty().divide(gridItensPlayer.getRowCount()));
-                // Defina a cor de fundo do botão, bordas arredondadas e tamanho mínimo do botão
-                b.setStyle("-fx-background-color: #241811; -fx-min-width: 60; -fx-min-height: 60;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color:  #eccb7e");
-                image.setPreserveRatio(true);
-                b.setGraphic(image);
-                configurarBotoes(b);
-                int finalI = i;
-                b.setOnAction(event -> {
-                    try {
-                        if (itemSelecionado == null) {
-                            itemSelecionado = Player.getPlayer().getInventario().getItens()[finalI];
+        int coluna = 0;
+        int linha = 0;
+        for (Item item : Player.getPlayer().getInventario().getItens()){
+            if (item != null){
+                Button botao = new Button();
+                ImageView imageView = new ImageView();
+                imageView.setImage(item.getImage());
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                botao.setGraphic(imageView);
+                botao.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                botao.setStyle("-fx-background-color:  #241811;-fx-border-width: 1;-fx-border-color: #eccb7e");
+                configurarBotoes(botao);
+                gridItensPlayer.add(botao, coluna, linha);
+                coluna++;
+                if (coluna >= 4){
+                    coluna=0;
+                    linha++;
+                }
+                botao.setOnAction(event -> {
+                    if (itemSelecionado != null && itemSelecionado2 !=null){
+                        limparTela();  //Se os slots nao tao preenchidos, limpa a tela quando clicar novamente
+                    }else {
+                        if (itemSelecionado == null){
+                            itemSelecionado = item;
                             itemSelecionado(itemSelecionado, btnSlot1);
-                        } else if (itemSelecionado2 == null) {
-                            itemSelecionado2 = Player.getPlayer().getInventario().getItens()[finalI];
-                            // Adiciona item ao btnSlot2 apenas se for diferente do itemSelecionado
-                            // ou se a quantidade for maior que 1
-                            if (!itemSelecionado2.equals(itemSelecionado) || itemSelecionado2.getQuant() > 1) {
+                        }else {
+                            if (itemSelecionado.getNome().equals(item.getNome())){
+                                if (itemSelecionado.getQuant() > 1){ //Fazer com que o player nao coloque dois itens juntos
+                                    itemSelecionado2 = item;
+                                    itemSelecionado(itemSelecionado2, btnSlot2);
+                                }
+                            }else {
+                                itemSelecionado2 = item;
                                 itemSelecionado(itemSelecionado2, btnSlot2);
-                                // Chama a função updateCraft() após adicionar o item ao btnSlot2
-                                updateCraft();
-                            } else {
-                                // Se o itemSelecionado2 for igual ao itemSelecionado, limpa o slot2
-                                itemSelecionado2 = null;
                             }
-                        } else {
-                            limparTela();
-                            txtProbSucesso.setText(null);
-
                         }
-                    } catch (PlayerInexistenteException e) {
-                        throw new RuntimeException(e);
+                        if (itemSelecionado != null && itemSelecionado2 != null){
+                            try {
+                                updateCraft();
+                            } catch (PlayerInexistenteException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
                     }
                 });
                 btnCriar.setOnAction(event -> {
                     try {
-                        Player.getPlayer().getInventario().adicionarItem(updateCraft());
+                        Player.getPlayer().getInventario().adicionarItem(criarCraft());
                         Player.getPlayer().getInventario().RemoverItem(itemSelecionado);
-                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado2);
-                        atualizarInterface();
-                        // Limpa os slots e desabilita o botão de criação
+                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado);
+                        atualizarInterface(); //Chamando de forma recursiva para atualizar a tela a partir do clique
                         limparTela();
+
                     } catch (PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }
+
                 });
-                j++;
+
             }
         }
     }
     private Item updateCraft() throws PlayerInexistenteException {
-        if (crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03) != null) {
-            // Formata a porcentagem sem a parte inteira
-            String porcentagemFormatada = String.format("%.0f%%", crafting.getChanceBase() * 100);
+        Item resultado = crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
+
+        if (resultado != null) {
+            String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
             txtProbSucesso.setText(porcentagemFormatada);
-            return crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03);
-        } else if (crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.05) != null) {
-            String porcentagemFormatada = String.format("%.0f%%", crafting.getChanceBase() * 100);
-            txtProbSucesso.setText(porcentagemFormatada);
-            return crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar,0.05);
-        } else {
-            return null;
+            return resultado;
         }
+
+        resultado = crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03);
+
+        if (resultado != null) {
+            String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
+            txtProbSucesso.setText(porcentagemFormatada);
+            return resultado;
+        }
+
+        return null;
     }
 
+    private Item criarCraft() throws PlayerInexistenteException {
+        Item craftResult = updateCraft();
+        if (craftResult != null) {
 
+            double random =Math.random();
+            if (calcularChance() > random) {
+                mostrarResultado("Item Forjado!");
+                return craftResult;
+            }else {
+                mostrarResultado("Falhou");
+            }
+        }
+        return null;
+    }
+    private double calcularChance() throws PlayerInexistenteException {
+        int inteligencia = Player.getPlayer().getInteligence();
+        double chance = crafting.getChanceBase();
+        double sucesso = chance + (inteligencia * 0.01);
+        return sucesso;
+    }
     private void limparTela(){
         itemSelecionado = null;
         itemSelecionado2 = null;
@@ -145,6 +196,10 @@ public class CraftingController implements Initializable {
         btnSlot2.setGraphic(null);
         btnSlot3.setGraphic(null);
         btnCriar.setDisable(true);
+        txtProbSucesso.setText("");
+        imgItem.setImage(null);
+        txtQuantidade.setText("");
+        txtNomeItem.setText("");
     }
 
     private void itemSelecionado(Item item, Button button) {
@@ -153,17 +208,34 @@ public class CraftingController implements Initializable {
         view.setFitHeight(35);
         view.setFitWidth(35);
         button.setGraphic(view);
+        imgItem.setImage(item.getImage());
+        txtQuantidade.setText("Quantidade: "+ item.getQuant());
+        txtNomeItem.setText("Nome: "+ item.getNome());
 
-        try {
-            // Atualiza o craft sempre que um item é selecionado
-            updateCraft();
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @FXML
     void onClickVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+    }
+    private void mostrarResultado(String mensagem) {
+        txtMensagem.setText(mensagem);
+
+        // Animação de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+
+        // Animação de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(2));
+
+        // Combinação das animações
+        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
+
+        // Inicia a sequência de animação
+        sequence.play();
     }
 }

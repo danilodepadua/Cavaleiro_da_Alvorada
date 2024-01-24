@@ -56,8 +56,6 @@ public class Utilidades {
             button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e;");
         });
 
-        // Adiciona o evento de clique do mouse separadamente
-
     }
 
     public static void definirBackground(AnchorPane pane, String caminhoDaImagem){

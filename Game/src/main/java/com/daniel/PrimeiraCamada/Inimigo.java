@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.SegundaCamada.LootTable;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ public abstract class Inimigo extends Personagem{
     int Def, MagicDef, atqF, atqMag, pos,  dropXp, moedas;
     private final Comportamentos comp;
     protected TiposElementais tipoDano;
-    protected ArrayList<Item> itens = new ArrayList<>();
+    protected LootTable lootTable = new LootTable();
     public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
         super(Nome, Imagem, fr, in, rs, vel);
         this.Def += rs + ModDef;
@@ -49,14 +50,15 @@ public abstract class Inimigo extends Personagem{
         return dropXp;
     }
 
-    public ArrayList<Item> getItens() {
-        return itens;
-    }
     public int getMoedas() {
         return moedas;
     }
 
     public int getPos(){return pos;}
+
+    public LootTable getLootTable() {
+        return lootTable;
+    }
 
     public Comportamentos getComp() {
         return comp;

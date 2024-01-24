@@ -4,6 +4,7 @@ package com.daniel.TerceiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.SegundaCamada.LootTable;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -88,13 +89,10 @@ public class ResultadoController implements Initializable {
         configurarBotoes(btnRecolher);
     }
 
-    public void atualizarValores(int novoXp, int novasMoedas, ArrayList<Item> itens) throws PlayerInexistenteException {
+    public void atualizarValores(int novoXp, int novasMoedas, LootTable itens) throws PlayerInexistenteException {
         xpInimigo = novoXp;
         moedasInimigo = novasMoedas;
-
-        // Se itens for nulo, inicialize uma nova lista vazia
-        itensDoInimigo = (itens != null) ? itens : new ArrayList<>();
-
+        itensDoInimigo = itens.drop();
         atualizarInterface();
     }
 

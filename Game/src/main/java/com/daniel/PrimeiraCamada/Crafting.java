@@ -12,41 +12,25 @@ import javafx.scene.control.Button;
 public class Crafting {
     private double chanceBase;
     public Item criarBarraFerro(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
-        if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro (ou sua lógica específica)
-            if (item instanceof Ferro && item2 instanceof Ferro) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof Ferro && item2 instanceof Ferro) { //depois se ambos são ferro
                 btnCriar.setDisable(false);
                 BarraFerro barraFerro = new BarraFerro();
                 ImageView view = new ImageView(barraFerro.getImage());
                 view.setFitWidth(35);
                 view.setFitHeight(35);
-                btnSlot3.setGraphic(view);
+                btnSlot3.setGraphic(view);  //Cria o botao do ferro
+                this.chanceBase = chance;
+                return barraFerro;
 
-                // Ajuste na lógica para calcular a chance com base na inteligência
-                int inteligencia = Player.getPlayer().getInteligence();
-                chanceBase = chance;
-                // Ajuste na lógica para calcular a chance de sucesso
-                double chanceSucesso = chanceBase + (inteligencia * 0.01);
-                setChanceBase(chanceSucesso);
-                // Gera um número aleatório entre 0 e 1 para comparar com a chance de sucesso
-                double random = Math.random();
-
-                // Se o número aleatório for menor que a chance de sucesso, o item é criado
-                if (random < chanceSucesso) {
-                    return barraFerro;
-                }
             }
-        } else {
-            // Se não houver um par de itens selecionados, limpe o slot3
-            btnSlot3.setGraphic(null);
-            btnCriar.setDisable(true);
         }
         return null;
     }
 
     public  Item criarEspadaInicial(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro (ou sua lógica específica)
+            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof BarraFerro && item2 instanceof BarraFerro) {
                 btnCriar.setDisable(false);
                 EspadaInicial espadaInicial = new EspadaInicial();
@@ -54,23 +38,10 @@ public class Crafting {
                 view.setFitWidth(35);
                 view.setFitHeight(35);
                 btnSlot3.setGraphic(view);
-                int inteligencia = Player.getPlayer().getInteligence();
-                chanceBase = chance;
-                // Ajuste na lógica para calcular a chance de sucesso
-                double chanceSucesso = chanceBase + (inteligencia * 0.01);
-                setChanceBase(chanceSucesso);
-                // Gera um número aleatório entre 0 e 1 para comparar com a chance de sucesso
-                double random = Math.random();
+                this.chanceBase = chance;
+                return espadaInicial;
 
-                // Se o número aleatório for menor que a chance de sucesso, o item é criado
-                if (random < chanceSucesso) {
-                    return espadaInicial;
-                }
             }
-        } else {
-            // Se não houver um par de itens selecionados, limpe o slot3
-            btnSlot3.setGraphic(null);
-            btnCriar.setDisable(true);
         }
         return null;
     }
@@ -82,4 +53,5 @@ public class Crafting {
     public double getChanceBase() {
         return chanceBase;
     }
+
 }

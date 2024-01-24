@@ -147,19 +147,6 @@ public class CidadeController implements Initializable {
     void onActionInventario(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
     }
-    public  void printButtonProperties(Button button) {
-        System.out.println("Button Properties:");
-        System.out.println("Text: " + button.getText());
-        System.out.println("Id: " + button.getId());
-        System.out.println("Style: " + button.getStyle());
-        System.out.println("OnMouseEntered: " + button.getOnMouseEntered());
-        System.out.println("OnMouseExited: " + button.getOnMouseExited());
-        System.out.println("OnMousePressed: " + button.getOnMousePressed());
-        System.out.println("OnMouseReleased: " + button.getOnMouseReleased());
-        System.out.println("OnMouseClicked: " + button.getOnMouseClicked());
-        System.out.println("------------------------------------------------");
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
@@ -229,7 +216,6 @@ public class CidadeController implements Initializable {
         configurarEventoMouseExited(imgVelocidade, infoVelo);
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
 
-        printButtonProperties(btnCraft);
 
     }
 
