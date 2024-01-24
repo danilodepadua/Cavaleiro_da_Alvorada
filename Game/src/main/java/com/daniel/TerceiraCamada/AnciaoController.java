@@ -75,6 +75,8 @@ public class AnciaoController implements Initializable {
     }
 
     private void handleButtonClick(String buttonText) {
+        System.out.println("handleButtonClick: " + buttonText);
+
         Hbox.getChildren().clear();
 
         if ("Dicas".equals(buttonText)) {
@@ -91,11 +93,27 @@ public class AnciaoController implements Initializable {
             handleArrayButtonClick("Lore", "Voltar", "Próxima Lore",
                     "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
         }
+        if ("Próxima Dica".equals(buttonText)) {
+            handleArrayButtonClick("Dicas", "Voltar", "Próxima Dica",
+                    "A dica é que o mal nunca vence", "Outra dica...", "More dicas...");
+        }
+
+        if ("Próxima Função".equals(buttonText)) {
+            handleArrayButtonClick("Como funciona", "Voltar", "Próxima Função",
+                    "funciona daquele jeito rapaz", "entre uma função e outra", "ksksk função");
+        }
+
+        if ("Próxima Lore".equals(buttonText)) {
+            handleArrayButtonClick("Lore", "Voltar", "Próxima Lore",
+                    "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
+        }
 
         Hbox.getChildren().add(currentVBox);
     }
 
     private void handleArrayButtonClick(String arrayType, String botaoVoltarLabel, String botaoProxLabel, String... arrayItens) {
+        System.out.println("handleArrayButtonClick - arrayType: " + arrayType + ", botaoProxLabel: " + botaoProxLabel);
+
         if (arrayItens.length == 0) {
             System.out.println("Empty array for " + arrayType);
             return;
@@ -103,20 +121,26 @@ public class AnciaoController implements Initializable {
 
         switch (arrayType) {
             case "Dicas":
-                currentDicaIndex = (currentDicaIndex + 1) % arrayItens.length;
-                System.out.println("Current Dicas Index: " + currentDicaIndex);
+                if ("Próxima Dica".equals(botaoProxLabel)) {
+                    currentDicaIndex = (currentDicaIndex + 1) % arrayItens.length;
+                    System.out.println("Current Dicas Index: " + currentDicaIndex);
+                }
                 currentVBox = criarVboxTextBotoes(arrayItens[currentDicaIndex], botaoVoltarLabel, botaoProxLabel);
                 break;
 
             case "Como funciona":
-                currentFuncaoIndex = (currentFuncaoIndex + 1) % arrayItens.length;
-                System.out.println("Current Como funciona Index: " + currentFuncaoIndex);
+                if ("Próxima Função".equals(botaoProxLabel)) {
+                    currentFuncaoIndex = (currentFuncaoIndex + 1) % arrayItens.length;
+                    System.out.println("Current Como funciona Index: " + currentFuncaoIndex);
+                }
                 currentVBox = criarVboxTextBotoes(arrayItens[currentFuncaoIndex], botaoVoltarLabel, botaoProxLabel);
                 break;
 
             case "Lore":
-                currentLoreIndex = (currentLoreIndex + 1) % arrayItens.length;
-                System.out.println("Current Lore Index: " + currentLoreIndex);
+                if ("Próxima Lore".equals(botaoProxLabel)) {
+                    currentLoreIndex = (currentLoreIndex + 1) % arrayItens.length;
+                    System.out.println("Current Lore Index: " + currentLoreIndex);
+                }
                 currentVBox = criarVboxTextBotoes(arrayItens[currentLoreIndex], botaoVoltarLabel, botaoProxLabel);
                 break;
 
@@ -138,7 +162,7 @@ public class AnciaoController implements Initializable {
             System.out.println("Button Clicked: " + buttonText);
             if ("Voltar".equals(buttonText)) {
                 formaInicial();
-            } else {
+            }  else {
                 handleButtonClick(buttonText);
             }
         });
