@@ -52,7 +52,7 @@ public class ConfigController implements Initializable {
     }
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("MainScene.fxml")).load());
     }
 
 }

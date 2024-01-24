@@ -82,14 +82,14 @@ public class AnciaoController implements Initializable {
         veioImg.setFitHeight(500);
     }
 
-    private void handleButtonClick(String buttonText) {
+    private void handleButtonClick(String buttonText) { // confere qual botão inicial foi clicado e chama o metodo enviando seus valores correspondentes
         System.out.println("handleButtonClick: " + buttonText);
 
         Hbox.getChildren().clear();
 
         if ("Dicas".equals(buttonText)) {
             handleArrayButtonClick("Dicas", "Voltar", "Próxima Dica",
-                    "A dica é que o mal nunca vence", "Outra dica...", "More dicas...");
+                    "A dica é que o mal nunca vence afdfsdfsdsdgsdgsdgdsgsdgsg", "Outra dica...", "More dicas...");
         }
 
         if ("Como funciona".equals(buttonText)) {
@@ -158,7 +158,7 @@ public class AnciaoController implements Initializable {
         }
     }
 
-    private void adicionarBotao(HBox innerHBox, String buttonText, Pos alignment) {
+    private void adicionarBotao(HBox innerHBox, String buttonText, Pos alignment) { //cria, posiciona e estiliza o botão
         Button button = new Button(buttonText);
         innerHBox.getChildren().add(button);
         HBox.setMargin(button, new Insets(5));
@@ -169,7 +169,7 @@ public class AnciaoController implements Initializable {
         configurarBotaoAcao(button, buttonText);
     }
 
-    private void configurarBotaoAcao(Button button, String buttonText) {
+    private void configurarBotaoAcao(Button button, String buttonText) { // se o botão voltar for clicado, ele volta ao estado inicial da tela
         button.setOnAction(event -> {
             System.out.println("Button Clicked: " + buttonText);
             if ("Voltar".equals(buttonText)) {
@@ -180,13 +180,13 @@ public class AnciaoController implements Initializable {
         });
     }
 
-    private Text criarTexto(String labelTexto) {
+    private Text criarTexto(String labelTexto) { // cria o texto e dá estilo
         Text text = new Text(labelTexto);
-        text.setStyle("-fx-font-size: 20px; -fx-fill: #000000; -fx-font-weight: bold; -fx-background-color: rgba(255, 255, 255, 1);");
+        text.setStyle("-fx-font-size: 20px; -fx-fill: #ffffff; -fx-font-weight: bold; -fx-background-color: rgba(255, 255, 255, 1);");
         return text;
     }
 
-    private HBox criarHBoxBotoes(String... botaoLabels) {
+    private HBox criarHBoxBotoes(String... botaoLabels) { // cria os botões
         HBox botoesHBox = new HBox();
         for (String buttonLabel : botaoLabels) {
             adicionarBotao(botoesHBox, buttonLabel, Pos.CENTER);
@@ -195,7 +195,7 @@ public class AnciaoController implements Initializable {
         return botoesHBox;
     }
 
-    private VBox criarVboxTextBotoes(String labelTexto, String... botaoLabels) {
+    private VBox criarVboxTextBotoes(String labelTexto, String... botaoLabels) { // chama os métodos de criação dos botões e textos associados com o botão recebido
         VBox vBox = new VBox();
         vBox.getChildren().add(criarTexto(labelTexto));
         vBox.getChildren().add(criarHBoxBotoes(botaoLabels));
@@ -204,7 +204,7 @@ public class AnciaoController implements Initializable {
     }
 
 
-    private void formaInicial() {
+    private void formaInicial() { // limpa os botões atuais e pega os botões iniciais
         Hbox.getChildren().clear();
         Hbox.getChildren().addAll(botoesOriginais);
     }

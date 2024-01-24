@@ -38,6 +38,7 @@ public class MainController implements Initializable {
 
     private AudioPlayer audioPlayer = new AudioPlayer();
 
+    private static boolean mainSceneMusicaTocando = false;
 
 
     @FXML
@@ -62,7 +63,8 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);
+        if (!mainSceneMusicaTocando) { audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);}
+        mainSceneMusicaTocando = true;
         definirBackground(Screen, "/com.daniel.Images/Fundos/Calabouso.jpg");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
