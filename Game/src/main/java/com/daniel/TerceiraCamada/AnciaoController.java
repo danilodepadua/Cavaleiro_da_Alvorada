@@ -32,20 +32,17 @@ public class AnciaoController implements Initializable {
     @FXML
     ImageView veioImg;
     private final List<Node> botoesOriginais = new ArrayList<>();
-    private int currentDicaIndex = 0;
-    private int currentLoreIndex = 0;
-    private int currentFuncaoIndex = 0;
+    private int indiceDicaAtual = 0;
+    private int indiceLoreAtual = 0;
+    private int indiceFuncaoAtual = 0;
 
-    private VBox currentVBox = null;
+    private VBox VBoxAtual = null;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
-        Image veioImage = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
-        veioImg.setImage(veioImage);
-        veioImg.setFitWidth(500);
-        veioImg.setFitHeight(500);
+        carregarImagemVeio();
 
         Button botaoVoltar = new Button("Voltar");
         botaoVoltar.setOnAction(new EventHandler<ActionEvent>() {
@@ -56,22 +53,33 @@ public class AnciaoController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println("Clicou o botao de voltar");
+                System.out.println("Clicou no botao de voltar");
             }
         });
         estiloBotao(botaoVoltar);
         AnchorPane.setBottomAnchor(botaoVoltar, 10.0);
         AnchorPane.setLeftAnchor(botaoVoltar, 10.0);
         Screen.getChildren().add(botaoVoltar);
-        currentDicaIndex = 0;
-        currentFuncaoIndex = 0;
-        currentLoreIndex = 0;
+        indiceDicaAtual = 0;
+        indiceFuncaoAtual = 0;
+        indiceLoreAtual = 0;
 
-        addButton(Hbox, "Dicas", Pos.CENTER);
-        addButton(Hbox, "Como funciona", Pos.CENTER);
-        addButton(Hbox, "Lore", Pos.CENTER);
+        adicionarBotao(Hbox, "Dicas", Pos.CENTER);
+        adicionarBotao(Hbox, "Como funciona", Pos.CENTER);
+        adicionarBotao(Hbox, "Lore", Pos.CENTER);
         botoesOriginais.addAll(Hbox.getChildren());
 
+    }
+
+    private void carregarImagemVeio() {
+        Image imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
+        configurarImagemVeio(imagemVeio);
+    }
+
+    private void configurarImagemVeio(Image image) {
+        veioImg.setImage(image);
+        veioImg.setFitWidth(500);
+        veioImg.setFitHeight(500);
     }
 
     private void handleButtonClick(String buttonText) {
@@ -108,13 +116,13 @@ public class AnciaoController implements Initializable {
                     "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
         }
 
-        Hbox.getChildren().add(currentVBox);
+        Hbox.getChildren().add(VBoxAtual);
     }
 
-    private void handleArrayButtonClick(String arrayType, String botaoVoltarLabel, String botaoProxLabel, String... arrayItens) {
+    private void handleArrayButtonClick(String arrayType, String botaoVoltarLabel, String botaoProxLabel, String... itensArray) {
         System.out.println("handleArrayButtonClick - arrayType: " + arrayType + ", botaoProxLabel: " + botaoProxLabel);
 
-        if (arrayItens.length == 0) {
+        if (itensArray.length == 0) {
             System.out.println("Empty array for " + arrayType);
             return;
         }
@@ -122,26 +130,26 @@ public class AnciaoController implements Initializable {
         switch (arrayType) {
             case "Dicas":
                 if ("Próxima Dica".equals(botaoProxLabel)) {
-                    currentDicaIndex = (currentDicaIndex + 1) % arrayItens.length;
-                    System.out.println("Current Dicas Index: " + currentDicaIndex);
+                    indiceDicaAtual = (indiceDicaAtual + 1) % itensArray.length;
+                    System.out.println("Current Dicas Index: " + indiceDicaAtual);
                 }
-                currentVBox = criarVboxTextBotoes(arrayItens[currentDicaIndex], botaoVoltarLabel, botaoProxLabel);
+                VBoxAtual = criarVboxTextBotoes(itensArray[indiceDicaAtual], botaoVoltarLabel, botaoProxLabel);
                 break;
 
             case "Como funciona":
                 if ("Próxima Função".equals(botaoProxLabel)) {
-                    currentFuncaoIndex = (currentFuncaoIndex + 1) % arrayItens.length;
-                    System.out.println("Current Como funciona Index: " + currentFuncaoIndex);
+                    indiceFuncaoAtual = (indiceFuncaoAtual + 1) % itensArray.length;
+                    System.out.println("Current Como funciona Index: " + indiceFuncaoAtual);
                 }
-                currentVBox = criarVboxTextBotoes(arrayItens[currentFuncaoIndex], botaoVoltarLabel, botaoProxLabel);
+                VBoxAtual = criarVboxTextBotoes(itensArray[indiceFuncaoAtual], botaoVoltarLabel, botaoProxLabel);
                 break;
 
             case "Lore":
                 if ("Próxima Lore".equals(botaoProxLabel)) {
-                    currentLoreIndex = (currentLoreIndex + 1) % arrayItens.length;
-                    System.out.println("Current Lore Index: " + currentLoreIndex);
+                    indiceLoreAtual = (indiceLoreAtual + 1) % itensArray.length;
+                    System.out.println("Current Lore Index: " + indiceLoreAtual);
                 }
-                currentVBox = criarVboxTextBotoes(arrayItens[currentLoreIndex], botaoVoltarLabel, botaoProxLabel);
+                VBoxAtual = criarVboxTextBotoes(itensArray[indiceLoreAtual], botaoVoltarLabel, botaoProxLabel);
                 break;
 
             default:
@@ -150,7 +158,7 @@ public class AnciaoController implements Initializable {
         }
     }
 
-    private void addButton(HBox innerHBox, String buttonText, Pos alignment) {
+    private void adicionarBotao(HBox innerHBox, String buttonText, Pos alignment) {
         Button button = new Button(buttonText);
         innerHBox.getChildren().add(button);
         HBox.setMargin(button, new Insets(5));
@@ -158,33 +166,43 @@ public class AnciaoController implements Initializable {
         innerHBox.setAlignment(alignment);
         estiloBotao(button);
 
+        configurarBotaoAcao(button, buttonText);
+    }
+
+    private void configurarBotaoAcao(Button button, String buttonText) {
         button.setOnAction(event -> {
             System.out.println("Button Clicked: " + buttonText);
             if ("Voltar".equals(buttonText)) {
                 formaInicial();
-            }  else {
+            } else {
                 handleButtonClick(buttonText);
             }
         });
     }
 
+    private Text criarTexto(String labelTexto) {
+        Text text = new Text(labelTexto);
+        text.setStyle("-fx-font-size: 20px; -fx-fill: #000000; -fx-font-weight: bold; -fx-background-color: rgba(255, 255, 255, 1);");
+        return text;
+    }
+
+    private HBox criarHBoxBotoes(String... botaoLabels) {
+        HBox botoesHBox = new HBox();
+        for (String buttonLabel : botaoLabels) {
+            adicionarBotao(botoesHBox, buttonLabel, Pos.CENTER);
+        }
+        botoesHBox.setAlignment(Pos.CENTER);
+        return botoesHBox;
+    }
+
     private VBox criarVboxTextBotoes(String labelTexto, String... botaoLabels) {
         VBox vBox = new VBox();
-        Text text = new Text(labelTexto);
-        text.setStyle("-fx-font-size: 16px;");
-        vBox.getChildren().add(text);
-
-        HBox buttonsHBox = new HBox();
-        for (String buttonLabel : botaoLabels) {
-            addButton(buttonsHBox, buttonLabel, Pos.CENTER);
-        }
-        buttonsHBox.setAlignment(Pos.CENTER);
-
-        vBox.getChildren().add(buttonsHBox);
+        vBox.getChildren().add(criarTexto(labelTexto));
+        vBox.getChildren().add(criarHBoxBotoes(botaoLabels));
         vBox.setAlignment(Pos.CENTER);
-
         return vBox;
     }
+
 
     private void formaInicial() {
         Hbox.getChildren().clear();
