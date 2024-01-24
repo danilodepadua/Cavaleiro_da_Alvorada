@@ -125,7 +125,7 @@ public class ResultadoController implements Initializable {
             gridItens.add(button, columnIndex, rowIndex);
 
             columnIndex++;
-            if (columnIndex >= 3) {
+            if (columnIndex >= 2) {
                 columnIndex = 0;
                 rowIndex++;
             }
