@@ -4,12 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 
 public class CalcaMalha extends Calca {
     public CalcaMalha() {
-        this.imagem = "/com.daniel.Images/Itens/Calca malha.png";
-        this.nome ="Calça de Malha";
-        this.preço = 280;
-        this.aumentoDefesaFisica = 100;
-        this.aumentoDefesaMagica = 28;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
+        super("/com.daniel.Images/Itens/Calca malha.png", "Calça de Malha", 1, 280, "Concede um aumento de 100 na defesa física e um aumento de 28 na defesa mágica", 100, 28);
+    }
 
+    public CalcaMalha(int quant) {
+        super("/com.daniel.Images/Itens/Calca malha.png", "Calça de Malha", quant, 280, "Concede um aumento de 100 na defesa física e um aumento de 28 na defesa mágica", 100, 28);
     }
 }

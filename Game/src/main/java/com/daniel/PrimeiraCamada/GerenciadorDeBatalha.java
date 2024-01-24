@@ -53,13 +53,13 @@ public class GerenciadorDeBatalha {
         }
         T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
         if(passar){
-        T.setOnFinished(event -> {
-            try {
-                MudarTurno();
-            } catch (PlayerInexistenteException | IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+            T.setOnFinished(event -> {
+                try {
+                    MudarTurno();
+                } catch (PlayerInexistenteException | IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
         T.play();
     }
@@ -214,6 +214,7 @@ public class GerenciadorDeBatalha {
 
     public void acaoNaoAgreciva(Timeline t, ArrayList<String> mensagem){
         t.setOnFinished(event -> mostrarResultado(mensagem, true));
+        t.play();
     }
     public ImageView getAlvoView(boolean autoUsavel){
         if(!autoUsavel){

@@ -8,11 +8,12 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.PersonagemLuta;
 
 public class CoxaFrango extends Item implements IConsumableOutBattle, IConsumableInBattle {
-    public CoxaFrango(){
-        this.imagem = "/com.daniel.Images/Itens/Comidas/tile017.png";
-        this.nome = "Coxa de frango";
-        this.descricao = "Recupera 40 de vida";
-        this.preço = 7; // Preço inicial
+    public CoxaFrango() {
+        super("/com.daniel.Images/Itens/Comidas/tile017.png", "Coxa de frango", 1, 7, "Recupera 40 de vida");
+    }
+
+    public CoxaFrango(int quant) {
+        super("/com.daniel.Images/Itens/Comidas/tile017.png", "Coxa de frango", quant, 7, "Recupera 40 de vida");
     }
     @Override
     public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {

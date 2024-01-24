@@ -8,11 +8,12 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.PersonagemLuta;
 
 public class Maça extends Item implements IConsumableOutBattle, IConsumableInBattle {
-    public Maça(){
-        this.imagem = "/com.daniel.Images/Itens/Comidas/tile001.png";
-        this.nome = "Maça";
-        this.descricao = "Recupera 15 de vida";
-        this.preço = 7; // Preço inicial
+    public Maça() {
+        super("/com.daniel.Images/Itens/Comidas/tile001.png", "Maça", 1, 7, "Recupera 15 de vida");
+    }
+
+    public Maça(int quant) {
+        super("/com.daniel.Images/Itens/Comidas/tile001.png", "Maça", quant, 7, "Recupera 15 de vida");
     }
     @Override
     public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {

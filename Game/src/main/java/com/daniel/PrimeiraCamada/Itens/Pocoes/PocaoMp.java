@@ -10,10 +10,11 @@ import com.daniel.PrimeiraCamada.PersonagemLuta;
 public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableInBattle {
 
     public PocaoMp(){
-        this.nome = "Ether";
-        this.imagem = "/com.daniel.Images/Itens/pt2.png";
-        this.preço = 20; // Preço inicial
-        this.descricao = "Poção que recupera 100 de MP";
+        super("/com.daniel.Images/Itens/pt2.png", "Ether", 1,20,"Poção que recupera 100 de MP");
+    }
+
+    public PocaoMp(int quant) {
+        super("/com.daniel.Images/Itens/pt2.png", "Ether", quant,20,"Poção que recupera 100 de MP");
     }
 
     @Override

@@ -4,12 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 
 public class CapacetePano extends Capacete {
     public CapacetePano() {
-        this.imagem = "/com.daniel.Images/Itens/Capacete Pano.png";
-        this.nome ="Capacete de Pano";
-        this.preço = 50;
-        this.aumentoDefesaFisica = 15;
-        this.aumentoDefesaMagica = 3;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
+        super("/com.daniel.Images/Itens/Capacete Pano.png", "Capacete de Pano", 1, 50, "Concede um aumento de 15 na defesa física e um aumento de 3 na defesa mágica", 15, 3);
+    }
 
+    public CapacetePano(int quant) {
+        super("/com.daniel.Images/Itens/Capacete Pano.png", "Capacete de Pano", quant, 50, "Concede um aumento de 15 na defesa física e um aumento de 3 na defesa mágica", 15, 3);
     }
 }

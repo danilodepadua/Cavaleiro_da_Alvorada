@@ -4,12 +4,11 @@ import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class Tridente extends Arma {
-    public Tridente(){
-        this.imagem = "/com.daniel.Images/Armas/w_trident.png";
-        this.aumentoDeAtaqueFisico = 90;
-        this.tipoDano = TiposElementais.NaoElemental;
-        this.nome = "Tridente";
-        this.descricao = "Concede aumento de "+this.aumentoDeAtaqueFisico+" no ataque físico";
-        this.preço = 150;
+    public Tridente() {
+        super("/com.daniel.Images/Armas/w_trident.png", "Tridente", 1, 150, "Concede aumento de 90 no ataque físico", 90, 0, TiposElementais.NaoElemental);
+    }
+
+    public Tridente(int quant) {
+        super("/com.daniel.Images/Armas/w_trident.png", "Tridente", quant, 150, "Concede aumento de 90 no ataque físico", 90, 0, TiposElementais.NaoElemental);
     }
 }

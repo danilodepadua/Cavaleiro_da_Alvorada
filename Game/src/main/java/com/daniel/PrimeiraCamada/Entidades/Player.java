@@ -8,8 +8,12 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.NullCalca;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.NullCapacete;
+import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.NullPeitoral;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
+import com.daniel.PrimeiraCamada.Itens.Armas.NullArma;
 import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
 import com.daniel.PrimeiraCamada.Magias.*;
 import com.daniel.PrimeiraCamada.Quests.*;
@@ -52,10 +56,10 @@ public class Player extends Personagem implements Serializable {
         this.inventario = new Inventario();
         this.coins = coins;
         this.pontos = pontos;
-        this.peitoral = new Peitoral();
-        this.capacete = new Capacete();
-        this.calca = new Calca();
-        this.arma = new Arma();
+        this.peitoral = new NullPeitoral();
+        this.capacete = new NullCapacete();
+        this.calca = new NullCalca();
+        this.arma = new NullArma();
         this.questAtuais = iniciarQuests();
         this.magias = new ArrayList<>();
         this.magias.add(new Fogo());
@@ -115,7 +119,7 @@ public class Player extends Personagem implements Serializable {
         System.out.println("Arma equipada");
     }
     public void desequiparArma(){
-        this.arma = new Arma();
+        this.arma = new NullArma();
         System.out.println("Arma desequipada");
 
     }
@@ -125,7 +129,7 @@ public class Player extends Personagem implements Serializable {
         System.out.println("Calça equipada.");
     }
     public void desequiparCalca(){
-        this.calca = new Calca();
+        this.calca = new NullCalca();
         System.out.println("Calça desequipada");
     }
     public void equiparPeitoral(Peitoral peitoral) {
@@ -134,7 +138,7 @@ public class Player extends Personagem implements Serializable {
         System.out.println("Peitoral equipado.");
     }
     public void desequiparPeitoral() {
-        this.peitoral = new Peitoral();
+        this.peitoral = new NullPeitoral();
         System.out.println("Peitoral desequipado.");
     }
     public void equiparCapacete(Capacete capacete){
@@ -143,7 +147,7 @@ public class Player extends Personagem implements Serializable {
         System.out.println("Capacete equipado.");
     }
     public void desequiparCapacete(){
-        this.capacete = new Capacete();
+        this.capacete = new NullCapacete();
         System.out.println("Capacete desequipado.");
     }
     public int getDefesaF(){

@@ -4,12 +4,11 @@ import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class EspadaInicial extends Arma {
-    public EspadaInicial(){
-        this.imagem = "/com.daniel.Images/Armas/w_longsword02.png";
-        this.aumentoDeAtaqueFisico = 30;
-        this.tipoDano = TiposElementais.NaoElemental;
-        this.nome = "Espada básica";
-        this.descricao = "Concede aumento de "+this.aumentoDeAtaqueFisico+" no ataque físico";
-        this.preço = 20;
+    public EspadaInicial() {
+        super("/com.daniel.Images/Armas/w_longsword02.png", "Espada básica", 1, 20, "Concede aumento de 30 no ataque físico", 30, 0, TiposElementais.NaoElemental);
+    }
+
+    public EspadaInicial(int quant) {
+        super("/com.daniel.Images/Armas/w_longsword02.png", "Espada básica", quant, 20, "Concede aumento de 30 no ataque físico", 30, 0, TiposElementais.NaoElemental);
     }
 }

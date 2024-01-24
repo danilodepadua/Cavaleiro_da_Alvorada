@@ -282,14 +282,6 @@ public class PersonagemLuta{
             this.currentHp = this.HP;
         }
     }
-
-    public void reduzirDefesaMagica(int diminuicao) {
-        DefM -= diminuicao;
-        if (DefM < 0) {
-            DefM = 0;
-        }
-    }
-
     public void aplicarStun(){
         stun++;
     }

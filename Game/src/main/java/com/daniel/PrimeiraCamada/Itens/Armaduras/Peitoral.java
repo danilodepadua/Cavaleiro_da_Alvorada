@@ -5,13 +5,12 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
 
-public  class Peitoral extends Armadura implements IEquipable {
-    public Peitoral(){
-        this.aumentoDefesaFisica = 0;
-        this.aumentoDefesaMagica=0;
-        this.imagem = "/com.daniel.Images/Itens/FundoPeitoral.png";
-        this.nome = "Nenhum";
+public abstract class Peitoral extends Armadura implements IEquipable {
+
+    public Peitoral(String imgPath, String nome, int quant, int preco, String desc, int aumentoDanoFisico, int aumentoDanoMagico) {
+        super(imgPath, nome, quant, preco, desc, aumentoDanoFisico, aumentoDanoMagico);
     }
+
     @Override
     public void equipar() throws PlayerInexistenteException {
         Player.getPlayer().desequiparPeitoral();

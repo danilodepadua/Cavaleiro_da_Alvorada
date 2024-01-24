@@ -4,8 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 
 public class BarraFerro extends Item {
     public BarraFerro(){
-        this.nome = "Barra de Ferro";
-        this.descricao = "Barra refinada de Ferro";
-        this.imagem = "/com.daniel.Images/Itens/Minerios/BarraFerro.png";
+        super("/com.daniel.Images/Itens/Minerios/BarraFerro.png", "Barra de Ferro", 1, 50, "Barra refinada de Ferro");
+    }
+
+    public BarraFerro(int quant) {
+        super("/com.daniel.Images/Itens/Minerios/BarraFerro.png", "Barra de Ferro", quant, 50, "Barra refinada de Ferro");
     }
 }

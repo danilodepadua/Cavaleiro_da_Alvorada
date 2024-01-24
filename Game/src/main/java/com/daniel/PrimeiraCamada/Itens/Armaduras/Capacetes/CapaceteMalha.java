@@ -4,12 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 
 public class CapaceteMalha extends Capacete {
     public CapaceteMalha() {
-        this.imagem = "/com.daniel.Images/Itens/Capacete malha.png";
-        this.nome ="Capacete de Malha";
-        this.preço = 200;
-        this.aumentoDefesaFisica = 60;
-        this.aumentoDefesaMagica = 15;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
+        super("/com.daniel.Images/Itens/Capacete malha.png", "Capacete de Malha", 1, 200, "Concede um aumento de 60 na defesa física e um aumento de 15 na defesa mágica", 60, 15);
+    }
 
+    public CapaceteMalha(int quant) {
+        super("/com.daniel.Images/Itens/Capacete malha.png", "Capacete de Malha", quant, 200, "Concede um aumento de 60 na defesa física e um aumento de 15 na defesa mágica", 60, 15);
     }
 }

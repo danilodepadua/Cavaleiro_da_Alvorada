@@ -4,12 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 
 public class CalcaCouro extends Calca {
     public CalcaCouro() {
-        this.imagem = "/com.daniel.Images/Itens/CalcaCouro.png";
-        this.nome ="Calça de Couro";
-        this.preço = 140;
-        this.aumentoDefesaFisica = 50;
-        this.aumentoDefesaMagica = 14;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
+        super("/com.daniel.Images/Itens/CalcaCouro.png","Calça de Couro", 1, 140, "Concede um aumento de 50 na defesa física e um aumento de 14 na defesa mágica", 50, 14);
+    }
 
+    public CalcaCouro(int quant) {
+        super("/com.daniel.Images/Itens/CalcaCouro.png","Calça de Couro", quant, 140, "Concede um aumento de 50 na defesa física e um aumento de 14 na defesa mágica", 50, 14);
     }
 }

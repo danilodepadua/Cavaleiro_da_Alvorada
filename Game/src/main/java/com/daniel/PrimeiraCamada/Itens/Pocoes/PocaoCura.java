@@ -10,10 +10,12 @@ import com.daniel.PrimeiraCamada.PersonagemLuta;
 public class PocaoCura extends Item implements IConsumableOutBattle, IConsumableInBattle {
 
     public PocaoCura() {
-        this.imagem = "/com.daniel.Images/Itens/pt1.png";
-        this.nome = "Poção de cura";
-        this.descricao = "Poção que cura 100 de vida";
-        this.preço = 50; // Preço inicial
+        super("/com.daniel.Images/Itens/pt1.png", "Poção de cura", 1, 50, "Poção que cura 100 de vida");
+    }
+
+    public PocaoCura(int quant) {
+        super("/com.daniel.Images/Itens/pt1.png", "Poção de cura", quant, 50, "Poção que cura 100 de vida");
+
     }
 
     @Override

@@ -10,9 +10,16 @@ public abstract class Item implements Serializable {
     protected String imagem;
     protected String nome;
     protected int quant = 1;
-    protected int preço;
+    protected int preco;
     protected String descricao;
 
+    public Item(String imgPath, String nome, int quant, int preco, String desc){
+        this.imagem = imgPath;
+        this.descricao = desc;
+        this.quant = quant;
+        this.nome = nome;
+        this.preco = preco;
+    }
     public Image getImage(){
         return new Image (Main.class.getResource(imagem).toString());
     }
@@ -21,7 +28,7 @@ public abstract class Item implements Serializable {
     }
     public int getQuant(){return quant;}
     public int getPreco() {
-        return preço;
+        return preco;
     }
     public String getDescricao() {
         return descricao;
@@ -32,12 +39,4 @@ public abstract class Item implements Serializable {
     public void MenosQuant(){
         this.quant--;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    // Método para atualizar a imagem
-    public void setImagem(String novoCaminhoImagem) {
-        this.imagem = novoCaminhoImagem;
-    }
-
 }

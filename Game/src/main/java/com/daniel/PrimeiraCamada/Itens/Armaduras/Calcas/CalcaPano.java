@@ -4,12 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Calca;
 
 public class CalcaPano extends Calca {
     public CalcaPano() {
-        this.imagem = "/com.daniel.Images/Itens/Calca Pano.png";
-        this.nome ="Calça de Pano";
-        this.preço = 70;
-        this.aumentoDefesaFisica = 25;
-        this.aumentoDefesaMagica = 7;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
+        super("/com.daniel.Images/Itens/Calca Pano.png", "Calça de Pano", 1, 70, "Concede um aumento de 25 na defesa física e um aumento de 7 na defesa mágica", 25, 7);
+    }
 
+    public CalcaPano(int quant) {
+        super("/com.daniel.Images/Itens/Calca Pano.png", "Calça de Pano", quant, 70, "Concede um aumento de 25 na defesa física e um aumento de 7 na defesa mágica", 25, 7);
     }
 }

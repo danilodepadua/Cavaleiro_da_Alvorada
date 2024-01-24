@@ -26,10 +26,10 @@ public abstract class Magia implements Serializable {
         if(agre){
             autoUsavel = false;
         }
-        this.mensagem.add("Usou " + this.nome);
     }
     public void Conjurar(GerenciadorDeBatalha GB, PersonagemLuta c){
         this.mensagem.clear();
+        this.mensagem.add("Usou " + this.nome);
         ImageView img = GB.getAlvoView(this.autoUsavel);
         c.usarMp(this.custo);
         if(this instanceof IEffects){

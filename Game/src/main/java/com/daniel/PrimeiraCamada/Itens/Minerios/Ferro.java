@@ -4,8 +4,10 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 
 public class Ferro extends Item {
     public Ferro(){
-        this.nome = "Minério de Ferro";
-        this.descricao = "Minério Bruto de Ferro";
-        this.imagem = "/com.daniel.Images/Itens/Minerios/Ferro.png";
+        super("/com.daniel.Images/Itens/Minerios/Ferro.png", "Minério de Ferro", 1, 10, "Minério Bruto de Ferro");
+    }
+
+    public Ferro(int quant) {
+        super("/com.daniel.Images/Itens/Minerios/Ferro.png", "Minério de Ferro", quant, 10, "Minério Bruto de Ferro");
     }
 }

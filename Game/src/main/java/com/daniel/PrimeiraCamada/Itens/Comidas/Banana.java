@@ -8,11 +8,12 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.PersonagemLuta;
 
 public class Banana extends Item implements IConsumableOutBattle, IConsumableInBattle {
-    public Banana(){
-        this.imagem = "/com.daniel.Images/Itens/Comidas/tile000.png";
-        this.nome = "Banana";
-        this.descricao = "Recupera 20 de vida";
-        this.preço = 10; // Preço inicial
+    public Banana() {
+        super("/com.daniel.Images/Itens/Comidas/tile000.png", "Banana", 1, 10, "Recupera 20 de vida");
+    }
+
+    public Banana(int quant) {
+        super("/com.daniel.Images/Itens/Comidas/tile000.png", "Banana", quant, 10, "Recupera 20 de vida");
     }
     @Override
     public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {

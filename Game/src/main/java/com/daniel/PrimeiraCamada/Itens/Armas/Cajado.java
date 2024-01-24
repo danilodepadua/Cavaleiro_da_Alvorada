@@ -1,13 +1,14 @@
 package com.daniel.PrimeiraCamada.Itens.Armas;
 
 import com.daniel.PrimeiraCamada.Itens.Arma;
+import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class Cajado extends Arma {
     public Cajado() {
-        this.imagem = "/com.daniel.Images/Itens/Cajado.png";
-        this.nome = "Cajado Mágico";
-        this.aumentoDeAtaqueMagico = 10;
-        this.descricao = "Concede um aumento de "+this.aumentoDeAtaqueMagico+" no ataque mágico";
-        this.preço = 10;
+        super("/com.daniel.Images/Itens/Cajado.png", "Cajado Mágico", 1, 10, "Concede um aumento de 10 no ataque mágico", 0, 10, TiposElementais.NaoElemental);
+    }
+
+    public Cajado(int quant) {
+        super("/com.daniel.Images/Itens/Cajado.png", "Cajado Mágico", quant, 10, "Concede um aumento de 10 no ataque mágico", 0, 10, TiposElementais.NaoElemental);
     }
 }

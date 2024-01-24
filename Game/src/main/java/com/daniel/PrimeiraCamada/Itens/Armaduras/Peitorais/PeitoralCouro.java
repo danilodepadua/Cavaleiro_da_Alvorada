@@ -5,13 +5,10 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 public class PeitoralCouro extends Peitoral  {
 
     public PeitoralCouro() {
-        this.imagem = "/com.daniel.Images/Itens/PeitoralCouro.png";
-        this.nome = "Armadura de Couro";
-        this.preço = 200;
-        this.aumentoDefesaFisica = 60;
-        this.aumentoDefesaMagica = 20;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
-
+        super("/com.daniel.Images/Itens/PeitoralCouro.png", "Armadura de Couro", 1, 200, "Concede um aumento de 60 na defesa física e um aumento de 20 na defesa mágica", 60, 20);
     }
 
+    public PeitoralCouro(int quant) {
+        super("/com.daniel.Images/Itens/PeitoralCouro.png", "Armadura de Couro", quant, 200, "Concede um aumento de 60 na defesa física e um aumento de 20 na defesa mágica", 60, 20);
+    }
 }

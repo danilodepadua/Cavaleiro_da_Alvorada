@@ -15,7 +15,7 @@ public class Stop extends Magia implements IEffects {
 
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
-        System.out.println("Alvo: " + alvo.getNome());
+        System.out.println("Alvo: " + alvo.getNome() + "/" + this.getClass().getName());
         alvo.aplicarStun();
         this.mensagem.add(alvo.getNome() + " foi paralizado");
     }

@@ -5,17 +5,17 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
-public  class Arma extends Item implements IEquipable {
+public abstract class Arma extends Item implements IEquipable {
     protected int aumentoDeAtaqueFisico;
     protected int aumentoDeAtaqueMagico;
-    protected TiposElementais tipoDano = TiposElementais.NaoElemental;
-    public Arma(){
-        this.aumentoDeAtaqueFisico = 0;
-        this.aumentoDeAtaqueMagico = 0;
-        this.imagem = "/com.daniel.Images/Itens/FundoArma.png";
-        this.nome = "Nenhum";
-        this.tipoDano = TiposElementais.NaoElemental;
+    protected TiposElementais tipoDano;
+    public Arma(String imgPath, String nome, int quant, int preco, String desc, int aumentoDeAtaqueFisico, int aumentoDeAtaqueMagico, TiposElementais tipoDano) {
+        super(imgPath, nome, quant, preco, desc);
+        this.aumentoDeAtaqueFisico = aumentoDeAtaqueFisico;
+        this.aumentoDeAtaqueMagico = aumentoDeAtaqueMagico;
+        this.tipoDano = tipoDano;
     }
+
     public int getAumentoDeAtaqueFisico() {
         return aumentoDeAtaqueFisico;
     }

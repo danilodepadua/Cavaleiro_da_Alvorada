@@ -4,12 +4,11 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 
 public class PeitoralPano extends Peitoral {
     public PeitoralPano() {
-        this.imagem = "/com.daniel.Images/Itens/Peitoral Pano.png";
-        this.nome ="Peitoral de Pano";
-        this.preço = 100;
-        this.aumentoDefesaFisica = 30;
-        this.aumentoDefesaMagica = 10;
-        this.descricao = "Concede um aumento de "+this.aumentoDefesaFisica+ " na defesa física e um aumento de " + this.aumentoDefesaMagica+ " na defesa mágica";
-
+        super("/com.daniel.Images/Itens/Peitoral Pano.png", "Peitoral de Pano", 1, 100, "Concede um aumento de 30 na defesa física e um aumento de 10 na defesa mágica", 30, 10);
     }
+
+    public PeitoralPano(int quant) {
+        super("/com.daniel.Images/Itens/Peitoral Pano.png", "Peitoral de Pano", quant, 100, "Concede um aumento de 30 na defesa física e um aumento de 10 na defesa mágica", 30, 10);
+    }
+
 }

@@ -4,12 +4,11 @@ import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class EspadaLuz extends Arma {
-    public EspadaLuz(){
-        this.imagem = "/com.daniel.Images/Armas/w_sword_roman_lightning.png";
-        this.aumentoDeAtaqueMagico = 50;
-        this.tipoDano = TiposElementais.Luz;
-        this.nome = "Espada da Luz";
-        this.descricao = "Concede aumento de "+this.aumentoDeAtaqueMagico+" no ataque mágico";
-        this.preço = 200;
+    public EspadaLuz() {
+        super("/com.daniel.Images/Armas/w_sword_roman_lightning.png", "Espada da Luz", 1, 200, "Concede aumento de 50 no ataque mágico", 0, 50, TiposElementais.Luz);
+    }
+
+    public EspadaLuz(int quant) {
+        super("/com.daniel.Images/Armas/w_sword_roman_lightning.png", "Espada da Luz", quant, 200, "Concede aumento de 50 no ataque mágico", 0, 50, TiposElementais.Luz);
     }
 }

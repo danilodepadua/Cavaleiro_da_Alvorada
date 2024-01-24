@@ -9,11 +9,13 @@ import com.daniel.PrimeiraCamada.PersonagemLuta;
 
 public class TonicoDeForca extends Item implements IConsumableInBattle {
     public TonicoDeForca(){
-        this.nome = "Tônico de força";
-        this.imagem = "/com.daniel.Images/Itens/pt3.png";
-        this.preço = 100; // Preço inicial
-        this.descricao = "Poção que concede 5 pontos de força durante a batalha";
+        super("/com.daniel.Images/Itens/pt3.png","Tônico de força", 1, 100, "Poção que concede 5 pontos de força durante a batalha");
     }
+
+    public TonicoDeForca(int quant) {
+        super("/com.daniel.Images/Itens/pt3.png","Tônico de força", quant, 100, "Poção que concede 5 pontos de força durante a batalha");
+    }
+
     @Override
     public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.UpForca(5);

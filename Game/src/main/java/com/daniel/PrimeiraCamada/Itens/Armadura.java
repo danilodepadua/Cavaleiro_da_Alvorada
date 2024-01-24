@@ -5,6 +5,13 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 public abstract class Armadura extends Item {
     protected int aumentoDefesaFisica;
     protected int aumentoDefesaMagica;
+
+    public Armadura(String imgPath, String nome, int quant, int preco, String desc, int aumentoDefesaFisica, int aumentoDefesaMagica) {
+        super(imgPath, nome, quant, preco, desc);
+        this.aumentoDefesaFisica = aumentoDefesaFisica;
+        this.aumentoDefesaMagica = aumentoDefesaMagica;
+    }
+
     public int getAumentoDefesaF() {
         return aumentoDefesaFisica;
     }
