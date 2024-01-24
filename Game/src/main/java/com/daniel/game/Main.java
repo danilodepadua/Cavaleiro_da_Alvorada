@@ -1,5 +1,6 @@
 package com.daniel.game;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Cidade;
 import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
@@ -20,11 +21,16 @@ public class Main extends Application {
     public static Stage CurrentStage;
     public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
+    public static AudioPlayer audioPlayer = new AudioPlayer();
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
         System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
+
+        // Adicione a chamada para reprodução de som após a mudança de cena
+        audioPlayer.play("/com.daniel.audios/som_click.wav", false);
     }
+
     public static double getLargura(){
         return CurrentStage.getWidth();
     }

@@ -165,9 +165,21 @@ public class EvoluçaoController implements Initializable {
 
         }
     }
-
+    public  void printButtonProperties(Button button) {
+        System.out.println("Button Properties:");
+        System.out.println("Text: " + button.getText());
+        System.out.println("Id: " + button.getId());
+        System.out.println("Style: " + button.getStyle());
+        System.out.println("OnMouseEntered: " + button.getOnMouseEntered());
+        System.out.println("OnMouseExited: " + button.getOnMouseExited());
+        System.out.println("OnMousePressed: " + button.getOnMousePressed());
+        System.out.println("OnMouseReleased: " + button.getOnMouseReleased());
+        System.out.println("OnMouseClicked: " + button.getOnMouseClicked());
+        System.out.println("------------------------------------------------");
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         try {
             definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
             contornarBotaoVoltar(btnVoltar);
@@ -206,6 +218,9 @@ public class EvoluçaoController implements Initializable {
             progBarInt.setProgress(Player.getPlayer().getInteligence()/100.0);
             progBarRes.setProgress(Player.getPlayer().getResistencia()/100.0);
             progBarVel.setProgress(Player.getPlayer().getVelocity()/100.0);
+
+
+            printButtonProperties(btnSalvar);
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }

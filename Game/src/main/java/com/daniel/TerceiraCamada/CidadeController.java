@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CidadeController implements Initializable {
+    private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
     private Label LabelForca;
 
@@ -141,10 +143,25 @@ public class CidadeController implements Initializable {
     void Salvar(ActionEvent event) throws PlayerInexistenteException {
         Main.saveManager.Salvar();
     }
+    @FXML
+    void onActionInventario(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
+    }
+    public  void printButtonProperties(Button button) {
+        System.out.println("Button Properties:");
+        System.out.println("Text: " + button.getText());
+        System.out.println("Id: " + button.getId());
+        System.out.println("Style: " + button.getStyle());
+        System.out.println("OnMouseEntered: " + button.getOnMouseEntered());
+        System.out.println("OnMouseExited: " + button.getOnMouseExited());
+        System.out.println("OnMousePressed: " + button.getOnMousePressed());
+        System.out.println("OnMouseReleased: " + button.getOnMouseReleased());
+        System.out.println("OnMouseClicked: " + button.getOnMouseClicked());
+        System.out.println("------------------------------------------------");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
             Button b = new Button();
 
@@ -180,13 +197,7 @@ public class CidadeController implements Initializable {
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);
         }
-        btnInventario.setOnAction(event-> {
-            try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+
 
         definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
         configurarBotoes(btnStatus);
@@ -217,6 +228,9 @@ public class CidadeController implements Initializable {
         configurarEventoMouseExited(imgResistencia, infoResistencia);
         configurarEventoMouseExited(imgVelocidade, infoVelo);
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
+
+        printButtonProperties(btnCraft);
+
     }
 
     @FXML

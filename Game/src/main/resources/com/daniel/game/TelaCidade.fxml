@@ -214,7 +214,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
+                  <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionInventario" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
                      <graphic>
                         <ImageView fitHeight="77.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -239,12 +239,13 @@
                               <Image url="@../../../com.daniel.Images/Icons/martelo.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
          </children>
       </AnchorPane>
-      <VBox fx:id="VBox" alignment="TOP_CENTER" layoutX="488.0" layoutY="14.0" prefHeight="386.0" prefWidth="214.0" spacing="15.0" AnchorPane.bottomAnchor="201.0" AnchorPane.leftAnchor="488.0" AnchorPane.rightAnchor="434.0">
+      <VBox fx:id="VBox" alignment="TOP_CENTER" layoutX="488.0" layoutY="92.0" prefHeight="386.0" prefWidth="214.0" spacing="15.0" AnchorPane.bottomAnchor="160.60000000000002" AnchorPane.leftAnchor="488.0" AnchorPane.rightAnchor="434.0">
          <children>
             <Text fx:id="txtCidade" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADE ATUAL: ">
                <font>

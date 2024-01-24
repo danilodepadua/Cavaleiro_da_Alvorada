@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,7 +18,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class Utilidades {
-
+    private static AudioPlayer audioPlayer = new AudioPlayer();
     public static void contornarBotaoVoltar(Button button) {
         button.setOnMouseEntered(event -> {
             button.setStyle("-fx-background-color: transparent; -fx-background-radius: 100; -fx-border-color:  #eccb7e;");
@@ -37,23 +38,28 @@ public class Utilidades {
     }
 
     public static void configurarBotoes(Button button) {
+        audioPlayer.somMouseClick(button, "/com.daniel.audios/som_click.wav");
+
         button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color:   #241811; -fx-border-color: #ADD8E6;");
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #ADD8E6;");
         });
 
         button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e;");
         });
 
         button.setOnMousePressed(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;");
         });
 
         button.setOnMouseReleased(event -> {
-            button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;");
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e;");
         });
 
+        // Adiciona o evento de clique do mouse separadamente
+
     }
+
     public static void definirBackground(AnchorPane pane, String caminhoDaImagem){
         pane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource(caminhoDaImagem).toString()),
                 BackgroundRepeat.NO_REPEAT,
@@ -111,7 +117,9 @@ public class Utilidades {
         button.setOnMouseReleased(event -> {
             button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
         });
-
+        button.setOnMouseClicked(event -> {
+            audioPlayer.play("/com.daniel.audios/som_click.wav", false);
+        });
     }
     public static void configurarBotoesTelaBestiario(Button button) {
         button.setOnMouseEntered(event -> {
@@ -129,7 +137,9 @@ public class Utilidades {
         button.setOnMouseReleased(event -> {
             button.setStyle("-fx-background-color:   #140e0a; -fx-border-color: #eccb7e;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
         });
-
+        button.setOnMouseClicked(event -> {
+            audioPlayer.play("/com.daniel.audios/som_click.wav", false);
+        });
     }
 
     public static void configurarBotoesTelaResultado(Button button) {
