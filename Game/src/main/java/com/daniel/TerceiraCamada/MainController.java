@@ -45,6 +45,7 @@ public class MainController implements Initializable {
     void Iniciar(ActionEvent event) throws IOException {
         audioPlayer.somMouseClick(btnNovoJogo, "/com.daniel.audios/musica_menu.wav");
         audioPlayer.stop();
+        mainSceneMusicaTocando = false;
         System.out.println("Iniciou");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
 
