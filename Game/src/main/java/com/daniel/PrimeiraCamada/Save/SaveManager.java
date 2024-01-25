@@ -15,6 +15,7 @@ public class SaveManager {
     public SaveManager(){
         String CaminhoAppData = System.getenv("AppData");
 
+
         CaminhoSave = Paths.get(CaminhoAppData, "..","Local", "NomeProvisorio", "Saves", "Save.dat").normalize();
         System.out.println("Caminho do diretório a ser criado: " + CaminhoSave.getParent());
         try {
