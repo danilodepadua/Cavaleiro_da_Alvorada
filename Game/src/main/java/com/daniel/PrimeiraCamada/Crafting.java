@@ -46,10 +46,6 @@ public class Crafting {
         return null;
     }
 
-    public void setChanceBase(double chanceBase) {
-        this.chanceBase = chanceBase;
-    }
-
     public double getChanceBase() {
         return chanceBase;
     }

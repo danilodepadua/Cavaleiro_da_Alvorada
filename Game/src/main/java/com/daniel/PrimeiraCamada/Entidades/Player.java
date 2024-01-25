@@ -358,7 +358,7 @@ public class Player extends Personagem implements Serializable {
             if(Objects.equals(c.getNome(), cidade.getNome())){
                 return;
             }
-            cidadesConehcidas.add(cidade);
         }
+        cidadesConehcidas.add(cidade);
     }
 }

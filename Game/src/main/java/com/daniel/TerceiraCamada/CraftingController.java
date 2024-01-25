@@ -4,8 +4,6 @@ import com.daniel.PrimeiraCamada.Crafting;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
-import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;

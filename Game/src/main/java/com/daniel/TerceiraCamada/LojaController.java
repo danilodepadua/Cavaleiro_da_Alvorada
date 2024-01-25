@@ -5,6 +5,7 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
+import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -26,19 +27,29 @@ import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class LojaController implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
+    private ModoLoja modoLoja = ModoLoja.COMPRAR; // Modo inicial é comprar
+
+    private enum ModoLoja {
+        COMPRAR,
+        VENDER
+    }
+    @FXML
+    private AnchorPane PanePrincipal;
 
     @FXML
     private Button btnComprar;
-    @FXML
-    private ScrollPane scrollArmaduras;
 
     @FXML
-    private ScrollPane scrollArmas;
+    private Button btnVender;
 
-    @FXML
-    private ScrollPane scrollPocoes;
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnModo;
+
+    @FXML
+    private Button btnModo1;
+
 
     @FXML
     private GridPane gridArmaduras;
@@ -48,6 +59,31 @@ public class LojaController implements Initializable {
 
     @FXML
     private GridPane gridPocoes;
+
+    @FXML
+    private AnchorPane panelImage;
+
+    @FXML
+    private ScrollPane scrollArmaduras;
+
+    @FXML
+    private ScrollPane scrollArmas;
+
+    @FXML
+    private ScrollPane scrollPocoes;
+
+    @FXML
+    private Tab tabArma;
+
+    @FXML
+    private Tab tabArmaduras;
+
+    @FXML
+    private TabPane tabPane;
+
+    @FXML
+    private Tab tabPocoes;
+
     @FXML
     private Text txtInfoItem;
 
@@ -59,24 +95,12 @@ public class LojaController implements Initializable {
 
     @FXML
     private Text txtSeuSaldo;
-    @FXML
-    private AnchorPane panelImage;
-    @FXML
-    private Tab tabArma;
 
-    @FXML
-    private Tab tabArmaduras;
-    @FXML
-    private Pane paneInfos;
-    @FXML
-    private Tab tabPocoes;
-    @FXML
-    private AnchorPane PanePrincipal;
-    @FXML
-    private TabPane tabPane;
     public void initialize(URL location, ResourceBundle resources) {
-
+        configurarBotoes(btnModo);
+        configurarBotoes(btnModo1);
         configurarBotoes(btnComprar);
+        configurarBotoes(btnVender);
         contornarBotaoVoltarLoja(btnVoltar);
         try {
             txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
@@ -84,9 +108,61 @@ public class LojaController implements Initializable {
             throw new RuntimeException(e);
         }
         definirBackground(panelImage, "/com.daniel.Images/Fundos/Veio Balconista.jpeg");
+        btnVender.setOnAction(event -> {
+            try {
+                venderItem(itemSelecionado);
+                itemSelecionado = null;
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        btnComprar.setOnAction(event -> {
+            try {
+                comprarItem();
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            } catch (RemoverCoinsException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
 
+    @FXML
+    void onActionVender(ActionEvent event) throws PlayerInexistenteException {
+        configModoVenda();
+    }
+    private void desequiparItemSeEquipado(IEquipable equipableItem) throws PlayerInexistenteException {
+        if (Player.getPlayer().getArma().equals(equipableItem)) {
+            Player.getPlayer().desequiparArma();
+        } else if (Player.getPlayer().getPeitoral().equals(equipableItem)) {
+            Player.getPlayer().desequiparPeitoral();
+        } else if (Player.getPlayer().getCapacete().equals(equipableItem)) {
+            Player.getPlayer().desequiparCapacete();
+        } else if (Player.getPlayer().getCalca().equals(equipableItem)) {
+            Player.getPlayer().desequiparCalca();
+        }
+    }
+    public void venderItem(Item item) throws PlayerInexistenteException {
+        if (item instanceof IEquipable) {
+            IEquipable equipableItem = (IEquipable) item;
+            desequiparItemSeEquipado(equipableItem);
+        }
+
+        int precoItem = item.getPreco();
+        Player.getPlayer().ganhaCoins(precoItem * 70 / 100);
+        Player.getPlayer().getInventario().RemoverItem(item);
+        configModoVenda();
+    }
+
+    public void configModoVenda() throws PlayerInexistenteException {
+        btnVender.setDisable(false);
+        btnComprar.setDisable(true);
+
+        gridArmaduras.getChildren().clear();
+        gridArmas.getChildren().clear();
+        gridPocoes.getChildren().clear();
         int pocoes = 0, armaduras = 0, armas = 0;
-        for(Item i : Main.cidadeAtual.getItens()){
+        for(Item i : Player.getPlayer().getInventario().getItens()){
             if(i instanceof Armadura){
                 criarBotaoItem(i, armaduras%3, (int)armaduras/3, gridArmaduras);
                 armaduras++;
@@ -100,38 +176,7 @@ public class LojaController implements Initializable {
                 pocoes++;
             }
         }
-        /*criarBotaoItem(new PocaoCura(), 0, 0, gridPocoes);
-        criarBotaoItem(new PocaoMp(), 1, 0, gridPocoes);
-        criarBotaoItem(new TonicoDeForca(), 2,0, gridPocoes);
-        criarBotaoItem(new TonicoDoHeroi(),0,1, gridPocoes);
-
-        criarBotaoItem(new CapacetePano(), 0, 0, gridArmaduras);
-        criarBotaoItem(new PeitoralPano(), 1, 0, gridArmaduras);
-        criarBotaoItem(new CalcaPano(), 2, 0 , gridArmaduras);
-
-        criarBotaoItem(new CapaceteCouro(), 0, 1, gridArmaduras);
-        criarBotaoItem(new PeitoralCouro(), 1, 1, gridArmaduras);
-        criarBotaoItem(new CalcaCouro(), 2, 1, gridArmaduras);
-
-        criarBotaoItem(new CapaceteMalha(), 0, 2, gridArmaduras);
-        criarBotaoItem(new PeitoralMalha(), 1, 2, gridArmaduras);
-        criarBotaoItem(new CalcaMalha(), 2, 2, gridArmaduras);
-
-        criarBotaoItem(new CapaceteFerro(), 0, 3, gridArmaduras);
-        criarBotaoItem(new PeitoralFerro(), 1, 3, gridArmaduras);
-        criarBotaoItem(new CalcaFerro(), 2, 3, gridArmaduras);
-
-        criarBotaoItem(new EspadaInicial(), 0 , 0, gridArmas);
-        criarBotaoItem(new Cajado(), 1, 0, gridArmas);
-        criarBotaoItem(new EspadaSombria(), 2, 0,gridArmas);
-        criarBotaoItem(new EspadaLuz(), 0, 1, gridArmas);
-        criarBotaoItem(new Katana(), 1, 1, gridArmas);
-        criarBotaoItem(new Tridente(), 2, 1, gridArmas);*/
-
-
-
     }
-
     private void criarBotaoItem(Item item, int columnIndex, int rowIndex, GridPane grid) {
         int columns = grid.getColumnConstraints().size();
         int rows = grid.getRowConstraints().size();
@@ -165,9 +210,33 @@ public class LojaController implements Initializable {
         });
     }
 
-
+    public void modoCompra(){
+        btnComprar.setDisable(false);
+        btnVender.setDisable(true);
+        gridArmaduras.getChildren().clear();
+        gridArmas.getChildren().clear();
+        gridPocoes.getChildren().clear();
+        int pocoes = 0, armaduras = 0, armas = 0;
+        for(Item i : Main.cidadeAtual.getItens()){
+            if(i instanceof Armadura){
+                criarBotaoItem(i, armaduras%3, (int)armaduras/3, gridArmaduras);
+                armaduras++;
+            }
+            else if(i instanceof Arma){
+                criarBotaoItem(i, armas%3, (int)armas/3, gridArmas);
+                armas++;
+            }
+            else if(i instanceof IConsumableOutBattle || i instanceof IConsumableInBattle){
+                criarBotaoItem(i, pocoes%3, (int)pocoes/3, gridPocoes);
+                pocoes++;
+            }
+        }
+    }
     @FXML
     void onClickComprar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
+        modoCompra();
+    }
+    public void comprarItem() throws PlayerInexistenteException, RemoverCoinsException {
         if (Player.getPlayer() != null && itemSelecionado != null) {
             int precoItem = itemSelecionado.getPreco();
             if (Player.getPlayer().getCoins() >= precoItem) {
@@ -187,7 +256,6 @@ public class LojaController implements Initializable {
             System.out.println("Erro ao processar a compra. Certifique-se de que um jogador e um item estão selecionados.");
         }
     }
-
     @FXML
     void onClickVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
@@ -199,6 +267,7 @@ public class LojaController implements Initializable {
         txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas" );
         txtInfoItem.setText("" + i.getDescricao());
         txtPreco.setText("" + i.getPreco() + " Moedas");
+        itemSelecionado = i;
     }
 
 }

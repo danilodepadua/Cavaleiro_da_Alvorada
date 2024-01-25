@@ -139,6 +139,15 @@ public abstract class Cidade implements Serializable {
             }
         });
     }
+    protected Botao criarBotaoEstalagem(){
+        return criarBotao("Estalagem", () -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
     protected Botao criarBotaoAnciao(){
         return criarBotao("Anciao", () -> {
             try {
