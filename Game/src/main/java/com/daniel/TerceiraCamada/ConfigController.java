@@ -2,6 +2,8 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import com.daniel.game.Main;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +47,16 @@ public class ConfigController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EscolhaResolucao.getItems().addAll("1200x675","1280x720");
+
+
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
+        SliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number volumeAntigo, Number novoVolume) {
+                Main.audioPlayer.configVolume(novoVolume.doubleValue());
+
+            }
+        });
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
         configurarBotoes(btnConfirmar);
         contornarBotaoVoltar(btnVoltar);
