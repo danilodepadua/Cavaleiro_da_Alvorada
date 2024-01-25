@@ -49,12 +49,13 @@ public class ConfigController implements Initializable {
         EscolhaResolucao.getItems().addAll("1200x675","1280x720");
 
 
+        // Configurar o Slider de Volume
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
         SliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number volumeAntigo, Number novoVolume) {
-                Main.audioPlayer.configVolume(novoVolume.doubleValue());
-
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                // Alterar o volume conforme o valor do Slider
+                Main.audioPlayer.configVolume(newValue.doubleValue());
             }
         });
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());

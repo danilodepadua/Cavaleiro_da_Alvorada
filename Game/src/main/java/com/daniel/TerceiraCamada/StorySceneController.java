@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -47,8 +48,11 @@ public class StorySceneController implements Initializable {
     private Text Texto;
     @FXML
     private Button btnSkip;
+    private AudioPlayer audioPlayer = new AudioPlayer();
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        audioPlayer.play("/com.daniel.audios/msc_historia.wav",false);
+
         timeL = adicionarCaracteresComAtraso();
         btnSkip.rotateProperty().set(180);
         btnSkip.setOnAction(this::skipDialog);
