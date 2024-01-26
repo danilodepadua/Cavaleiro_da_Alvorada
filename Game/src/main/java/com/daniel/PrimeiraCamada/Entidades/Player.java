@@ -16,7 +16,6 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
 import com.daniel.PrimeiraCamada.Itens.Armas.NullArma;
 import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
 import com.daniel.PrimeiraCamada.Magias.*;
-import com.daniel.PrimeiraCamada.Quests.*;
 
 import com.daniel.SegundaCamada.Bestiario;
 import com.daniel.SegundaCamada.Inventario;
@@ -32,7 +31,7 @@ import static com.daniel.PrimeiraCamada.Quests.ManejarQuests.iniciarQuests;
 public class Player extends Personagem implements Serializable {
     private Inventario inventario;
     private Arma arma;
-    private int coins;
+    private int coins, xpProx;
     private Peitoral peitoral;
     private Capacete capacete;
     private Calca calca;
@@ -49,13 +48,14 @@ public class Player extends Personagem implements Serializable {
     private ArrayList<Cidade> cidadesConehcidas = new ArrayList<>();
 
     private Bestiario bestiario = new Bestiario();
-    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {
+    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {
         super(Name, Img, Force, Int, Res, Velocity);
         this.currentHp = this.getHP();
         this.currentMp = this.getMP();
         this.inventario = new Inventario();
-        this.coins = coins;
-        this.pontos = pontos;
+        this.coins = 100;
+        this.pontos = 0;
+        this.xpProx = 1000;
         this.peitoral = new NullPeitoral();
         this.capacete = new NullCapacete();
         this.calca = new NullCalca();
@@ -72,12 +72,12 @@ public class Player extends Personagem implements Serializable {
         this.inventario.adicionarItem(new Ferro());
         player = this;
     }
-    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int coins, int pontos) throws PlayerInexistenteException {
+    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {
         if(player != null){
             return player;
         }
         else{
-            return new Player(Img, Force, Int, Name, Velocity, Res, coins, pontos);
+            return new Player(Img, Force, Int, Name, Velocity, Res);
         }
     }
     public Inventario getInventario() {
@@ -233,18 +233,19 @@ public class Player extends Personagem implements Serializable {
     public Peitoral getPeitoral() {
         return peitoral;
     }
-    private boolean VereficarLevelUp(){
-        int i = 1+(currentXp /1000*lvl);
-        if(i>lvl){
-            lvl = i;
+    private boolean VerificarLevelUp(){
+        if(xpProx < currentXp){
+            lvl ++;
+            xpProx += lvl * 1000;
             aprenderMagia();
+            VerificarLevelUp();
             return true;
         }
         return false;
     }
     public boolean ganharXp(int xp){
         this.currentXp += xp;
-        return this.VereficarLevelUp();
+        return this.VerificarLevelUp();
     }
 
     public void ganharMoedas(int moedas) {
@@ -318,7 +319,6 @@ public class Player extends Personagem implements Serializable {
             System.out.println("Ganho de xp: "+ quest.getRecompensaXP());
             System.out.println("Xp do player: "+ currentXp);
             System.out.println("moedas do player: "+ currentMoedas);
-            System.out.println(VereficarLevelUp());
             questAtuais.remove(quest);
         }
     }

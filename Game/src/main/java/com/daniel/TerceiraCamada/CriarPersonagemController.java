@@ -106,7 +106,7 @@ public class CriarPersonagemController implements Initializable {
         int velocidade = calcularValorDaBarra(BarraVel);
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
-        Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res, 10000, 10);
+        Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML

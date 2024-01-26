@@ -133,11 +133,6 @@ public class GerenciadorDeBatalha {
             }
         }
     }
-
-    public void ApagarUiPlayer(){
-        //ui.setOpacity(0); TO DO INSTANCIAR O NODE!
-       // ui.setDisable(true); TO DO INSTANCIAR O NODE!
-    }
     public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
         boolean acertou = true;
         if(state == States.turnoPlayer){
@@ -148,7 +143,7 @@ public class GerenciadorDeBatalha {
             if(Inimigo.dormindo){
                 Mensagem.add(Inimigo.getNome() + " acordou");
             }
-            ApagarUiPlayer();
+            BC.EsconderInterfacePlayer();
             Random rand = new Random();
             double taxaAcerto = 1/(1+Math.exp(-5*(Player.getVelocidade() - Inimigo.getVelocidade())));
             if(Player.cegado){

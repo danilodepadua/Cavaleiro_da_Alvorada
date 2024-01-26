@@ -176,7 +176,7 @@ public class BattleController implements Initializable {
 
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException, IOException {
-        gdb.ApagarUiPlayer();
+        EsconderInterfacePlayer();
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
 
@@ -260,7 +260,7 @@ public class BattleController implements Initializable {
                     }
                     itemAtual =0;
                     RetornarInicial();
-                    gdb.ApagarUiPlayer();
+                    EsconderInterfacePlayer();
                     Atualiazar();
                     gdb.mostrarResultado(mensagem, true);
                 } catch (PlayerInexistenteException e) {
@@ -287,6 +287,10 @@ public class BattleController implements Initializable {
         InterfacePlayer.setOpacity(1);
         InterfacePlayer.setDisable(false);
         BtnMagias.setDisable(player.getSilenciado());
+    }
+    public void EsconderInterfacePlayer(){
+        InterfacePlayer.setOpacity(0);
+        InterfacePlayer.setDisable(true);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

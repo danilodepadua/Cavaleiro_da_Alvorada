@@ -15,12 +15,8 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoBabySlime extends Inimigo {
     public InimigoBabySlime() {
-        super("Slime", "/com.daniel.Images/Inimigos/Slime Blue.png", 1, 5, 2, 10, 15, 10, 10, TiposElementais.NaoElemental, Comportamentos.padrao, 100, 5);
+        super("Slime", "/com.daniel.Images/Inimigos/Slime Blue.png", 1, 5, 2, 10, 15, 10, 10, TiposElementais.NaoElemental, Comportamentos.padrao, 100, 15);
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
-        this.magias.add(new Fogo());
-        this.magias.add(new Gelo());
-        this.magias.add(new Luz());
-        this.magias.add(new Escuridao());
         this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
         this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
         this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);
