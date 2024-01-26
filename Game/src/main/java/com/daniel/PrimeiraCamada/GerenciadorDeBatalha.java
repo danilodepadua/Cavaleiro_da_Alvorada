@@ -18,7 +18,7 @@ import java.util.Random;
 public class GerenciadorDeBatalha {
 
     PersonagemLuta Player, Inimigo;
-    AnchorPane ui, mensagemBox;
+    AnchorPane mensagemBox;
     Text txtMensagem;
     States state;
     ImageView pEffect, eEffect;
@@ -30,10 +30,9 @@ public class GerenciadorDeBatalha {
         turnoInimigo;
     }
 
-    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane UIActions, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, BattleController bc,Comportamento Comp){
+    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, BattleController bc,Comportamento Comp){
         this.Inimigo = i;
         this.Player = p;
-        this.ui= UIActions;
         this.txtMensagem = txtMensagem;
         this.mensagemBox = boxMensagem;
         this.pEffect = pe;
@@ -110,8 +109,7 @@ public class GerenciadorDeBatalha {
         }
         else{
         // logica do player
-            ui.setOpacity(1);
-            ui.setDisable(false);
+            BC.MostrarInterfacePlayer();
             System.out.println("Turno player");
         }
     }
