@@ -135,8 +135,8 @@ public class GerenciadorDeBatalha {
     }
 
     public void ApagarUiPlayer(){
-        ui.setOpacity(0);
-        ui.setDisable(true);
+        //ui.setOpacity(0); TO DO INSTANCIAR O NODE!
+       // ui.setDisable(true); TO DO INSTANCIAR O NODE!
     }
     public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
         boolean acertou = true;
