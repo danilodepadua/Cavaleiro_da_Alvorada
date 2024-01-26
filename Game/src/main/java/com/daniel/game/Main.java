@@ -47,7 +47,6 @@ public class Main extends Application {
         stage.setHeight(ConfiguracoesUsuario.obterAlturaTelaPadrao());
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
-
         stage.setScene(scene);
         stage.setTitle("teste");
         stage.show();

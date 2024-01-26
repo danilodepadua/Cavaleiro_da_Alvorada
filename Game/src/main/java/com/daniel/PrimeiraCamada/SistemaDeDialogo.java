@@ -11,13 +11,13 @@ import javafx.scene.layout.VBox;
 
 import java.util.stream.Collectors;
 
-public class sistemaDeDialogo extends VBox {
+public class SistemaDeDialogo extends VBox {
     private ComboBox<String> opcoesdeAcaoComboBox;
     private TextArea areaDialogo;
 
     private NPC npcAtual;
 
-    public sistemaDeDialogo(NPC npc) {
+    public SistemaDeDialogo(NPC npc) {
         npcAtual = npc;
 
         ObservableList<String> opcoesdeAcao = FXCollections.observableArrayList( // cria a lista de opções de ação
@@ -25,12 +25,14 @@ public class sistemaDeDialogo extends VBox {
                         .map(String::toLowerCase)
                         .collect(Collectors.toList())
         );
-
         opcoesdeAcaoComboBox = new ComboBox<>(opcoesdeAcao); // cria o combobox
         opcoesdeAcaoComboBox.setPromptText("Escolha sua ação");
 
         areaDialogo = new TextArea(); // cria o textarea
         areaDialogo.setEditable(false);
+
+        opcoesdeAcaoComboBox.setStyle("-fx-background-color: #ffffff; -fx-border-color: #eccb7e; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold';");
+        areaDialogo.setStyle("-fx-background-color: #241811; -fx-text-fill: #000000; -fx-border-color: #eccb7e; -fx-font-size: 17; -fx-font-family: 'Barlow Condensed SemiBold';");
 
         opcoesdeAcaoComboBox.setOnAction(event -> {
             try {

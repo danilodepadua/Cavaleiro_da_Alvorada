@@ -1,7 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.NPC;
-import com.daniel.PrimeiraCamada.sistemaDeDialogo;
+import com.daniel.PrimeiraCamada.SistemaDeDialogo;
 import com.daniel.game.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,7 +56,7 @@ public class AnciaoController implements Initializable {
         StackPane pane = new StackPane();
         NPC veioNPC = new NPC("Veio");
         veioNPC.setMaisOpcao("abluble teste");
-        sistemaDeDialogo dialogo = new sistemaDeDialogo(veioNPC);
+        SistemaDeDialogo dialogo = new SistemaDeDialogo(veioNPC);
         pane.getChildren().add(dialogo);
 
 
