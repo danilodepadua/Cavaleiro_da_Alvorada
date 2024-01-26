@@ -2,6 +2,10 @@ package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.Magias.Escuridao;
+import com.daniel.PrimeiraCamada.Magias.Fogo;
+import com.daniel.PrimeiraCamada.Magias.Gelo;
+import com.daniel.PrimeiraCamada.Magias.Terra;
 import com.daniel.SegundaCamada.AnimationsAttack;
 import com.daniel.SegundaCamada.LootTable;
 import com.daniel.SegundaCamada.SlashAnimation;

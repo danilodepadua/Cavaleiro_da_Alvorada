@@ -121,6 +121,7 @@ public class StorySceneController implements Initializable {
         try {
             timeL.stop();
             Mudar();
+            audioPlayer.stop();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

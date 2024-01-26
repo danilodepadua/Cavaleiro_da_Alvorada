@@ -31,7 +31,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <AnchorPane layoutY="224.0" opacity="0.9" prefHeight="140.0" prefWidth="262.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0">
+            <AnchorPane layoutY="177.0" opacity="0.9" prefHeight="140.0" prefWidth="262.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="0.0">
                <children>
                   <HBox layoutX="16.0" layoutY="70.0" prefHeight="48.0" prefWidth="230.0" spacing="20.0">
                      <children>

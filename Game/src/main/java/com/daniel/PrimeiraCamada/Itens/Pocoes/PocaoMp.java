@@ -10,23 +10,23 @@ import com.daniel.PrimeiraCamada.PersonagemLuta;
 public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableInBattle {
 
     public PocaoMp(){
-        super("/com.daniel.Images/Itens/pt2.png", "Ether", 1,20,"Poção que recupera 100 de MP");
+        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", "Ether", 1,20,"Poção que recupera 15 de MP");
     }
 
     public PocaoMp(int quant) {
-        super("/com.daniel.Images/Itens/pt2.png", "Ether", quant,20,"Poção que recupera 100 de MP");
+        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", "Ether", quant,20,"Poção que recupera 15 de MP");
     }
 
     @Override
     public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
-        p.RecuperarMana(100);
+        p.RecuperarMana(15);
         Player.getPlayer().getInventario().RemoverItem(this);
-        return "O jogador recuperou 100 de MP";
+        return "O jogador recuperou 15 de MP";
     }
 
     @Override
     public void Consumir() throws PlayerInexistenteException {
-        Player.getPlayer().RecuperarMana(100);
+        Player.getPlayer().RecuperarMana(15);
         Player.getPlayer().getInventario().RemoverItem(this);
     }
 

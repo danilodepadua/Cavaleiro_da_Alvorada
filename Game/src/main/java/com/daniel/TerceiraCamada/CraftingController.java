@@ -151,21 +151,71 @@ public class CraftingController implements Initializable {
         Item resultado = crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
 
         if (resultado != null) {
-            String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
-            txtProbSucesso.setText(porcentagemFormatada);
+            editarTexto();
             return resultado;
         }
 
-        resultado = crafting.criarEspadaInicial(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.03);
+        resultado = crafting.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
 
         if (resultado != null) {
-            String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
-            txtProbSucesso.setText(porcentagemFormatada);
+            editarTexto();
             return resultado;
         }
 
+        resultado = crafting.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.5);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.05);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        // Se chegou até aqui, nenhum resultado foi encontrado
         return null;
     }
+
+
 
     private Item criarCraft() throws PlayerInexistenteException {
         Item craftResult = updateCraft();
@@ -186,6 +236,10 @@ public class CraftingController implements Initializable {
         double chance = crafting.getChanceBase();
         double sucesso = chance + (inteligencia * 0.01);
         return sucesso;
+    }
+    private void editarTexto() throws PlayerInexistenteException {
+        String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
+        txtProbSucesso.setText(porcentagemFormatada);
     }
     private void limparTela(){
         itemSelecionado = null;

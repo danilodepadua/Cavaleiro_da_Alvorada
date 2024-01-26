@@ -267,6 +267,8 @@ public class Player extends Personagem implements Serializable {
                 break;
             case 6:
                 magias.add(new WaterSpyke());
+            case 7:
+                magias.add(new Terra());
             default:
                 break;
         }

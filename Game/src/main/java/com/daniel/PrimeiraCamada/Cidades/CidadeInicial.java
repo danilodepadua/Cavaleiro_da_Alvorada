@@ -6,11 +6,9 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombria;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.PrimeiraCamada.Itens.MapaMythágoras;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
-import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
+import com.daniel.PrimeiraCamada.Itens.Pocoes.*;
 import com.daniel.PrimeiraCamada.Quests.*;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoAbelha;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoBabySlime;
@@ -37,13 +35,15 @@ public class CidadeInicial extends Cidade{
         // Adiciona os itens da loja
         this.itens.add(new EspadaInicial());
         this.itens.add(new PocaoCura());
-        this.itens.add(new EspadaSombria());
+        this.itens.add(new EspadaSombriaAperfeicoada());
         this.itens.add(new PocaoMp());
         this.itens.add(new TonicoDeForca());
         this.itens.add(new CapacetePano());
         this.itens.add(new PeitoralPano());
         this.itens.add(new CalcaPano());
         this.itens.add(new MapaMythágoras());
+
+
 
         ajustarBotoes();
     }

@@ -196,6 +196,7 @@ public class BattleController implements Initializable {
         resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getLootTable());
         Main.ChangeScene(root);
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
+        Player.getPlayer().ganharXp(Enimy.getXpDrop());
         System.out.println("Player venceu");
     }
 

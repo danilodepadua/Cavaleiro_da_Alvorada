@@ -57,4 +57,8 @@ public abstract class Magia implements Serializable {
     public String getNome() {
         return nome;
     }
+    public void aumentarMultiplicador(double multiplicador){
+        this.multiplicador *= multiplicador;
+    }
+
 }

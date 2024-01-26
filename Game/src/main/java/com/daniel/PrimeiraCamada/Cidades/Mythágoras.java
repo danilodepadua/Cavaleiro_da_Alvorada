@@ -7,8 +7,8 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaEletrica;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombria;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaEletricaAperfeicoada;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
@@ -22,9 +22,9 @@ public class Mythágoras extends Cidade {
         this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeEscuridaoNv2(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeFogoNv2()};
 
         // Adiciona os itens da loja
-        this.itens.add(new EspadaEletrica());
+        this.itens.add(new EspadaEletricaAperfeicoada());
         this.itens.add(new PocaoCura());
-        this.itens.add(new EspadaSombria());
+        this.itens.add(new EspadaSombriaAperfeicoada());
         this.itens.add(new PocaoMp());
         this.itens.add(new TonicoDeForca());
         this.itens.add(new CapaceteCouro());
