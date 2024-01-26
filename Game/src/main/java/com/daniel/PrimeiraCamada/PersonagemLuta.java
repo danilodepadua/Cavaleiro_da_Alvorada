@@ -25,10 +25,10 @@ public class PersonagemLuta{
         this.MP = i.MP;
         this.currentHp = HP;
         this.currentMp = MP;
-        this.DefF = i.getDefesaF();
-        this.DefM = i.getDefesaM();
-        this.AtqF = i.getAtaqueF();
-        this.AtqM = i.getAtaqueM();
+        this.DefF = i.getResistencia();
+        this.DefM = i.getInteligence();
+        this.AtqF = i.getForce();
+        this.AtqM = i.getInteligence();
         this.velocidade = i.getVelocity();
         this.fraquezas = i.fraquezas;
         this.resistencias = i.resistencias;
@@ -52,10 +52,10 @@ public class PersonagemLuta{
         this.currentHp = p.getcHP();
         this.currentMp = p.getcMp();
         this.velocidade = p.getVelocity();
-        this.fraquezas = new TiposElementais[0];
-        this.resistencias = new TiposElementais[0];
-        this.imunidades = new TiposElementais[0];
-        this.absorcao = new TiposElementais[0];
+        this.fraquezas = p.getFraquezas();
+        this.resistencias = p.getResistencias();
+        this.imunidades = p.getImundades();
+        this.absorcao = p.getAbsorcoes();
         this.tipoAtaqueBase = p.getArma().getTipoDano();
         this.atqAnim = new SlashAnimation();
         this.Nome = p.getName();
@@ -130,7 +130,15 @@ public class PersonagemLuta{
             this.currentMp = 0;
         }
     }
-
+    public boolean getEnvenenado(){
+        return envenenado;
+    }
+    public boolean setCegado(){
+        return cegado;
+    }
+    public boolean getSilenciado(){
+        return silenciado;
+    }
     public boolean temTipo(TiposElementais[] tipos, TiposElementais tipo){
         for(TiposElementais T : tipos){
             if(T == tipo){

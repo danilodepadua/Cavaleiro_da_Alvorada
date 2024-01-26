@@ -203,7 +203,6 @@ public class BattleController implements Initializable {
 
     public void Derrota() throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
-
     }
 
     public void Atualiazar(){
@@ -217,7 +216,7 @@ public class BattleController implements Initializable {
 
         for (int i = itemAtual; i< Player.getPlayer().getMagias().size() && i<(itemAtual+3); i++) {
             Button magiaButton = new Button();
-            magiaButton.setText(Player.getPlayer().getMagias().get(i).getClass().getSimpleName() + " : " + Player.getPlayer().getMagias().get(i).getCusto() + "MP");
+            magiaButton.setText(Player.getPlayer().getMagias().get(i).getNome() + " : " + Player.getPlayer().getMagias().get(i).getCusto() + "MP");
             magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
             if(player.getCurrentMp() < Player.getPlayer().getMagias().get(i).getCusto()){
@@ -274,18 +273,8 @@ public class BattleController implements Initializable {
     }
 
     private void VerificarSetas(int size) {
-        if(itemAtual == 0){
-            SetaSubir.setDisable(true);
-        }
-        else{
-            SetaSubir.setDisable(false);
-        }
-        if(itemAtual+3 > size){
-            SetaDescer.setDisable(true);
-        }
-        else{
-            SetaDescer.setDisable(false);
-        }
+        SetaSubir.setDisable(itemAtual == 0);
+        SetaDescer.setDisable(itemAtual + 3 > size);
         VBoxItens.getChildren().clear();
     }
 
@@ -295,6 +284,11 @@ public class BattleController implements Initializable {
         PnlPrimeirasEscolhas.setDisable(false);
     }
 
+    public void MostrarInterfacePlayer(){
+        InterfacePlayer.setOpacity(1);
+        InterfacePlayer.setDisable(false);
+        BtnMagias.setDisable(player.getSilenciado());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inimigos = Main.cidadeAtual.getInimigos();
@@ -338,7 +332,7 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        gdb = new GerenciadorDeBatalha(player, Enimy, InterfacePlayer, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,new ComportamentoPadrao(Enimy, player));
+        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,new ComportamentoPadrao(Enimy, player));
         try {
             gdb.IniciarBatalha();
         } catch (IOException e) {

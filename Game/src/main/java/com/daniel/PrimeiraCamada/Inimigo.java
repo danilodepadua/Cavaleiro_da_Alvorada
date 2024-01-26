@@ -5,18 +5,14 @@ import com.daniel.PrimeiraCamada.Itens.Item;
 import java.util.ArrayList;
 
 public abstract class Inimigo extends Personagem{
-    int Def, MagicDef, atqF, atqMag, pos,  dropXp, moedas;
+    int pos,  dropXp, moedas;
     private final Comportamentos comp;
     protected TiposElementais tipoDano;
     protected ArrayList<Item> itens = new ArrayList<>();
-    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModDef, int ModMagDef, int ModAtqF, int ModAtqM, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
+    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
         super(Nome, Imagem, fr, in, rs, vel);
-        this.Def += rs + ModDef;
-        this.MagicDef += in + ModMagDef;
-        this.atqF = ModAtqF;
-        this.atqMag = ModAtqM;
-        this.HP += ModHp;
-        this.MP += ModMp;
+        this.HP += rs + ModHp;
+        this.MP += in + ModMp;
         this.fraquezas = new TiposElementais[0];
         this.resistencias = new TiposElementais[0];
         this.imunidades = new TiposElementais[0];
@@ -31,19 +27,6 @@ public abstract class Inimigo extends Personagem{
     protected TiposElementais[] resistencias;
     protected TiposElementais[] imunidades;
     protected TiposElementais[] absorcao;
-
-    public int getDefesaM(){
-        return MagicDef;
-    }
-    public int getDefesaF(){
-        return Def;
-    }
-    public int getAtaqueF(){
-        return atqF;
-    }
-    public int getAtaqueM(){
-        return atqMag;
-    }
 
     public int getDropXp() {
         return dropXp;

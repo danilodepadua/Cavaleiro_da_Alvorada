@@ -30,7 +30,7 @@ public class ComportamentoPadrao extends Comportamento {
             return acoes.atacar;
         }
         else{
-            if(magiasPossiveis.isEmpty()){
+            if(magiasPossiveis.isEmpty() || this.controlado.getSilenciado()){
                 System.out.println("Atacar");
                 return acoes.atacar;
             }
