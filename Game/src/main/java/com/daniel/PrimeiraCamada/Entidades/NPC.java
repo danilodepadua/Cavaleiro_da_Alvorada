@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class NPC {
     private Map<String, ObservableList<String>> MapOpcoesNPC;
+    ObservableList<String> itens = FXCollections.observableArrayList();
 
     private String name;
 
@@ -17,11 +18,24 @@ public class NPC {
         this.MapOpcoesNPC = new HashMap<>();
         setOpcoesPredefinidas();
     }
-
-    private void setOpcoesPredefinidas() { // isso define as opções predefinidas baseado no npc
+    public void setMaisOpcao(String opcao) { // isso define as opções predefinidas baseado no npc
         switch (name) {
             case "Veio":
-                MapOpcoesNPC.put(name, FXCollections.observableArrayList("Olá, veio!", "Me dê uma dica", "Tem dinheiro?"));
+                itens.add(opcao);
+                break;
+
+            default:
+                MapOpcoesNPC.put(name, FXCollections.observableArrayList());
+        }
+    }
+
+    private void setOpcoesPredefinidas() { // isso permite adicionar coisas na lista do npc
+        switch (name) {
+            case "Veio":
+                itens.add("Olá, veio!");
+                itens.add("Me dê uma dica");
+                itens.add("Tem dinheiro?");
+                MapOpcoesNPC.put(name, itens);
                 break;
 
             default:
@@ -50,7 +64,7 @@ public class NPC {
 
         switch (name) { // aqui você puxa as escolhas específicas de cada  NPC
             case "Veio":
-                resposta = generateVeioResponse(escolhaEmUpperCase);
+                resposta = gerarRespostaVeio(escolhaEmUpperCase);
                 break;
             default:
                 resposta = "Resposta padrão";
@@ -60,8 +74,8 @@ public class NPC {
         return resposta;
     }
 
-    private String generateVeioResponse(String userInput) { // aqui gera as respostas especificas do velho
-        switch (userInput) {
+    private String gerarRespostaVeio(String escolhaPlayer) { // aqui gera as respostas especificas do velho
+        switch (escolhaPlayer) {
             case "OLÁ, VEIO!":
                 return "Olá! Bem vindo a " + Main.cidadeAtual.getNome();
             case "ME DÊ UMA DICA":

@@ -50,16 +50,18 @@ public class AnciaoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
         carregarImagemVeio();
-        configurarVoltarButton();
+        configurarBotaoVoltar();
         configurarBotoesIniciais();
 
         StackPane pane = new StackPane();
         NPC veioNPC = new NPC("Veio");
+        veioNPC.setMaisOpcao("abluble teste");
         sistemaDeDialogo dialogo = new sistemaDeDialogo(veioNPC);
         pane.getChildren().add(dialogo);
 
+
         BorderPane.setAlignment(pane, Pos.CENTER);
-        BorderPane.setMargin(pane, new Insets(50)); // Adjust margin as needed
+        BorderPane.setMargin(pane, new Insets(50));
 
         BorderPane root = new BorderPane();
         root.setBottom(pane);
@@ -67,7 +69,7 @@ public class AnciaoController implements Initializable {
         Screen.getChildren().add(root);
     }
 
-    private Button criarVoltarButton() {
+    private Button criarBotaoVoltar() {
         Button botaoVoltar = new Button(VOLTAR);
         botaoVoltar.setOnAction(event -> {
             try {
@@ -85,8 +87,8 @@ public class AnciaoController implements Initializable {
         return botaoVoltar;
     }
 
-    private void configurarVoltarButton() {
-        Button botaoVoltar = criarVoltarButton();
+    private void configurarBotaoVoltar() {
+        Button botaoVoltar = criarBotaoVoltar();
         Screen.getChildren().add(botaoVoltar);
     }
 
