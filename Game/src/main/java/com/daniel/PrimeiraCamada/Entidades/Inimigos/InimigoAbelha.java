@@ -16,7 +16,9 @@ public class InimigoAbelha extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.NaoElemental, TiposElementais.Terra};
         this.magias.add(new Veneno());
         this.magias.add(new Escuridao());
-        this.itens.add(new CoxaFrango());
-        this.itens.add(new BarraFerro());
+        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
+        this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);
+        this.lootTable.AdicionarEntrada(new Ferro(), 1, 2, 0.8);
     }
 }

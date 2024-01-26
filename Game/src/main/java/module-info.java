@@ -3,6 +3,7 @@ module com.daniel.game {
     requires javafx.fxml;
     requires java.prefs;
     requires java.desktop;
+    requires javafx.media;
 
 
     opens com.daniel.game to javafx.fxml;

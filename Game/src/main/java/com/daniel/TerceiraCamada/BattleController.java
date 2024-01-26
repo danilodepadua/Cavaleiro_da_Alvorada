@@ -185,19 +185,18 @@ public class BattleController implements Initializable {
             if (quest.getNomeInimigo().equals(inimigo.getName())) {
                 try {
                     quest.updateQuestCompleted();
-                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
-                    Parent root = loader.load();
-
-                    ResultadoController resultadoController = loader.getController();
-                    resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getItens());
-
-                    Main.ChangeScene(root);
                 } catch (PlayerInexistenteException e) {
                     System.err.println("Erro ao atualizar quests: " + e.getMessage());
                 }
             }
         }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
+        Parent root = loader.load();
+        ResultadoController resultadoController = loader.getController();
+        resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getLootTable());
+        Main.ChangeScene(root);
         Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
+        Player.getPlayer().ganharXp(Enimy.getXpDrop());
         System.out.println("Player venceu");
     }
 

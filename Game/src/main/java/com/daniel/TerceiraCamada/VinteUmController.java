@@ -1,13 +1,16 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
+import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +33,7 @@ public class VinteUmController implements Initializable{
     private Baralho baralho;
     private Mão jogador;
     private Mão dealer;
+
     @FXML
     private GridPane GridPaneDealer;
 
@@ -38,6 +42,9 @@ public class VinteUmController implements Initializable{
 
     @FXML
     private AnchorPane PanePrincipal;
+
+    @FXML
+    private AnchorPane boxMensagem;
 
     @FXML
     private Button btnApostar;
@@ -56,6 +63,9 @@ public class VinteUmController implements Initializable{
 
     @FXML
     private Text txtInsira;
+
+    @FXML
+    private Text txtMensagem;
 
     @FXML
     private Text txtPontosDaCasa;
@@ -100,14 +110,20 @@ public class VinteUmController implements Initializable{
 
         //Criar um pause pra determinar o vencedor
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(e -> processarVencedor(valorAposta));
+        pause.setOnFinished(e -> {
+            try {
+                processarVencedor(valorAposta);
+            } catch (PlayerInexistenteException | RemoverCoinsException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         pause.play();
 
         btnManter.setDisable(true); //Desabilita os botões
         btnPuxar.setDisable(true);
     }
 
-    private void processarVencedor(int valorAposta) {
+    private void processarVencedor(int valorAposta) throws PlayerInexistenteException, RemoverCoinsException {
         int pontosJogador = jogador.getPontos();
         int pontosDealer = dealer.getPontos();
 
@@ -124,27 +140,39 @@ public class VinteUmController implements Initializable{
 
         // Verifica se alguém ultrapassou 21 (bust)
         if (pontosJogador > 21 && pontosDealer <= 21) {
-            handleResultado("Você perdeu!", -valorAposta);
+            handleResultado("Você perdeu!");
+            Player.getPlayer().removerCoins(valorAposta);
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else if (pontosDealer > 21 && pontosJogador <= 21) {
-            handleResultado("Você venceu!", valorAposta);
+            handleResultado("Você venceu!");
+            Player.getPlayer().ganhaCoins(valorAposta);
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else {
                 determinarVencedorSemEstouro(pontosJogador, pontosDealer, valorAposta);
         }
     }
-    private void determinarVencedorSemEstouro(int pontosJogador, int pontosDealer, int valorAposta) {
+    private void determinarVencedorSemEstouro(int pontosJogador, int pontosDealer, int valorAposta) throws PlayerInexistenteException, RemoverCoinsException {
         // Verifica quem tem mais pontos sem ultrapassar 21
         if (pontosJogador > pontosDealer) {
-            handleResultado("Você venceu!", valorAposta);
+            handleResultado("Você venceu!");
+            Player.getPlayer().ganhaCoins(valorAposta);
+            mostrarResultado("VITÓRIA");
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else if (pontosDealer > pontosJogador) {
-            handleResultado("Você perdeu!", -valorAposta);
+            handleResultado("Você perdeu!");
+            Player.getPlayer().removerCoins(valorAposta);
+            mostrarResultado("DERROTA!");
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else {
-            handleResultado("Empate!", 0);
+            handleResultado("Empate!");
+            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
+            mostrarResultado("Empate!");
+
         }
     }
-    private void handleResultado(String mensagem, int alteracaoSaldo) {
+    private void handleResultado(String mensagem) {
         txtVoceGanhou.setText(mensagem);
         try {
-            Player.getPlayer().ganhaCoins(alteracaoSaldo); // adicionar o valor ao player
             txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } catch (PlayerInexistenteException ex) {
             throw new RuntimeException(ex);
@@ -270,5 +298,25 @@ public class VinteUmController implements Initializable{
         }
 
         definirBackground(PanePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
+    }
+    private void mostrarResultado(String mensagem) {
+        txtMensagem.setText(mensagem);
+
+        // Animação de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+
+        // Animação de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), boxMensagem);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(2));
+
+        // Combinação das animações
+        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
+
+        // Inicia a sequência de animação
+        sequence.play();
     }
 }

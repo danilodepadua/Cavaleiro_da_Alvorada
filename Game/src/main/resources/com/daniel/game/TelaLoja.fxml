@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -32,6 +31,29 @@
                   </ImageView>
                </graphic>
             </Button>
+            <AnchorPane layoutY="177.0" opacity="0.9" prefHeight="140.0" prefWidth="262.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="0.0">
+               <children>
+                  <HBox layoutX="16.0" layoutY="70.0" prefHeight="48.0" prefWidth="230.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="btnModo" mnemonicParsing="false" onAction="#onClickComprar" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="COMPRA" textFill="#eccb7e">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnModo1" mnemonicParsing="false" onAction="#onActionVender" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="VENDA" textFill="#eccb7e">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Text fill="#eccb7e" layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECIONE O MODO:" wrappingWidth="191.342041015625">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane layoutY="290.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -176,7 +198,7 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <Pane fx:id="paneInfos" layoutX="654.0" prefHeight="322.0" prefWidth="483.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="651.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane layoutX="654.0" layoutY="111.0" prefHeight="322.0" prefWidth="483.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.20000000000004547" AnchorPane.leftAnchor="654.0" AnchorPane.rightAnchor="-3.1999999999999886">
                <children>
                   <VBox layoutX="18.0" layoutY="23.0" prefHeight="202.0" prefWidth="458.0" spacing="20.0">
                      <children>
@@ -238,13 +260,22 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Button fx:id="btnComprar" layoutX="158.0" layoutY="244.0" mnemonicParsing="false" onAction="#onClickComprar" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Comprar" textFill="#eccb7e">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="17.0" />
-                     </font>
-                  </Button>
+                  <HBox layoutX="36.0" layoutY="242.0" prefHeight="48.0" prefWidth="426.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="btnComprar" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Comprar" textFill="#eccb7e">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnVender" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Vender" textFill="#eccb7e">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </Pane>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

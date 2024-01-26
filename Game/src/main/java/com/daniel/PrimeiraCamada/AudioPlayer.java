@@ -1,56 +1,54 @@
 package com.daniel.PrimeiraCamada;
 
-import javafx.event.ActionEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.control.Button;
 
-import javax.sound.sampled.*;
-import java.io.IOException;
 import java.net.URL;
 
 public class AudioPlayer {
 
-    private Clip clip;
+    private MediaPlayer mediaPlayer;
 
 
     public void play(String audioPath, boolean loop){
         stop();
 
-        try{
-            URL audioUrl = getClass().getResource(audioPath);
 
-            // debug
-            if(audioUrl == null){
-                System.err.println("arquivo de audio nao encontrado");
-                return;
-            }
+        URL audioUrl = getClass().getResource(audioPath);
 
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioUrl);
-
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-
-            if(loop == true){
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-
-            clip.start();
-
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e){
-
-            e.printStackTrace();
+        // debug
+        if(audioUrl == null){
+            System.err.println("arquivo de audio nao encontrado");
+            return;
         }
 
+        Media media = new Media(audioUrl.toString());
+        mediaPlayer = new MediaPlayer(media);
+
+        if(loop == true){
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        }
+
+        mediaPlayer.setVolume(1.0);
+        mediaPlayer.play();
 
     }
 
     public void stop() {
 
-        if(clip != null && clip.isRunning()){
-            clip.stop();
-            clip.close();
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
 
         }
+    }
 
+    public void configVolume(double volume){
+
+        if(mediaPlayer != null){
+            mediaPlayer.setVolume(volume);
+        }
 
     }
 

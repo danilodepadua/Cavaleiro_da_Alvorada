@@ -1,8 +1,8 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.NPC;
+import com.daniel.PrimeiraCamada.sistemaDeDialogo;
 import com.daniel.game.Main;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
-import static com.daniel.TerceiraCamada.Utilidades.estiloBotao;
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class AnciaoController implements Initializable {
     @FXML
@@ -38,37 +37,66 @@ public class AnciaoController implements Initializable {
 
     private VBox VBoxAtual = null;
 
+    private static final String DICAS = "Dicas";
+    private static final String COMO_FUNCIONA = "Como funciona";
+    private static final String LORE = "Lore";
+    private static final String VOLTAR = "Voltar";
+    private static final String PROXIMA_DICA = "Próxima Dica";
+    private static final String PROXIMA_FUNCAO = "Próxima Função";
+    private static final String PROXIMA_LORE = "Próxima Lore";
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
         carregarImagemVeio();
+        configurarBotaoVoltar();
+        configurarBotoesIniciais();
 
-        Button botaoVoltar = new Button("Voltar");
-        botaoVoltar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println("Clicou no botao de voltar");
+        StackPane pane = new StackPane();
+        NPC veioNPC = new NPC("Veio");
+        veioNPC.setMaisOpcao("abluble teste");
+        sistemaDeDialogo dialogo = new sistemaDeDialogo(veioNPC);
+        pane.getChildren().add(dialogo);
+
+
+        BorderPane.setAlignment(pane, Pos.CENTER);
+        BorderPane.setMargin(pane, new Insets(50));
+
+        BorderPane root = new BorderPane();
+        root.setBottom(pane);
+        root.setAlignment(dialogo, Pos.CENTER);
+        Screen.getChildren().add(root);
+    }
+
+    private Button criarBotaoVoltar() {
+        Button botaoVoltar = new Button(VOLTAR);
+        botaoVoltar.setOnAction(event -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+            System.out.println("Clicou no botao de voltar");
         });
         estiloBotao(botaoVoltar);
+        configurarBotoes(botaoVoltar);
+        configurarBotoesTelaCidade(botaoVoltar);
         AnchorPane.setBottomAnchor(botaoVoltar, 10.0);
         AnchorPane.setLeftAnchor(botaoVoltar, 10.0);
+        return botaoVoltar;
+    }
+
+    private void configurarBotaoVoltar() {
+        Button botaoVoltar = criarBotaoVoltar();
         Screen.getChildren().add(botaoVoltar);
-        indiceDicaAtual = 0;
-        indiceFuncaoAtual = 0;
-        indiceLoreAtual = 0;
+    }
 
-        adicionarBotao(Hbox, "Dicas", Pos.CENTER);
-        adicionarBotao(Hbox, "Como funciona", Pos.CENTER);
-        adicionarBotao(Hbox, "Lore", Pos.CENTER);
+    private void configurarBotoesIniciais() {
+        adicionarBotao(Hbox, DICAS, Pos.CENTER);
+        adicionarBotao(Hbox, COMO_FUNCIONA, Pos.CENTER);
+        adicionarBotao(Hbox, LORE, Pos.CENTER);
         botoesOriginais.addAll(Hbox.getChildren());
-
     }
 
     private void carregarImagemVeio() {
@@ -87,32 +115,32 @@ public class AnciaoController implements Initializable {
 
         Hbox.getChildren().clear();
 
-        if ("Dicas".equals(buttonText)) {
-            handleArrayButtonClick("Dicas", "Voltar", "Próxima Dica",
+        if (DICAS.equals(buttonText)) {
+            handleArrayButtonClick(DICAS, VOLTAR, PROXIMA_DICA,
                     "A dica é que o mal nunca vence afdfsdfsdsdgsdgsdgdsgsdgsg", "Outra dica...", "More dicas...");
         }
 
-        if ("Como funciona".equals(buttonText)) {
-            handleArrayButtonClick("Como funciona", "Voltar", "Próxima Função",
+        if (COMO_FUNCIONA.equals(buttonText)) {
+            handleArrayButtonClick(COMO_FUNCIONA, VOLTAR, PROXIMA_FUNCAO,
                     "funciona daquele jeito rapaz", "entre uma função e outra", "ksksk função");
         }
 
-        if ("Lore".equals(buttonText)) {
-            handleArrayButtonClick("Lore", "Voltar", "Próxima Lore",
+        if (LORE.equals(buttonText)) {
+            handleArrayButtonClick(LORE, VOLTAR, PROXIMA_LORE,
                     "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
         }
-        if ("Próxima Dica".equals(buttonText)) {
-            handleArrayButtonClick("Dicas", "Voltar", "Próxima Dica",
+        if (PROXIMA_DICA.equals(buttonText)) {
+            handleArrayButtonClick(DICAS, VOLTAR, PROXIMA_DICA,
                     "A dica é que o mal nunca vence", "Outra dica...", "More dicas...");
         }
 
-        if ("Próxima Função".equals(buttonText)) {
-            handleArrayButtonClick("Como funciona", "Voltar", "Próxima Função",
+        if (PROXIMA_FUNCAO.equals(buttonText)) {
+            handleArrayButtonClick(COMO_FUNCIONA, VOLTAR, PROXIMA_FUNCAO,
                     "funciona daquele jeito rapaz", "entre uma função e outra", "ksksk função");
         }
 
-        if ("Próxima Lore".equals(buttonText)) {
-            handleArrayButtonClick("Lore", "Voltar", "Próxima Lore",
+        if (PROXIMA_LORE.equals(buttonText)) {
+            handleArrayButtonClick(LORE, VOLTAR, PROXIMA_LORE,
                     "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
         }
 
@@ -128,24 +156,24 @@ public class AnciaoController implements Initializable {
         }
 
         switch (arrayType) {
-            case "Dicas":
-                if ("Próxima Dica".equals(botaoProxLabel)) {
+            case DICAS:
+                if (PROXIMA_DICA.equals(botaoProxLabel)) {
                     indiceDicaAtual = (indiceDicaAtual + 1) % itensArray.length;
                     System.out.println("Current Dicas Index: " + indiceDicaAtual);
                 }
                 VBoxAtual = criarVboxTextBotoes(itensArray[indiceDicaAtual], botaoVoltarLabel, botaoProxLabel);
                 break;
 
-            case "Como funciona":
-                if ("Próxima Função".equals(botaoProxLabel)) {
+            case COMO_FUNCIONA:
+                if (PROXIMA_FUNCAO.equals(botaoProxLabel)) {
                     indiceFuncaoAtual = (indiceFuncaoAtual + 1) % itensArray.length;
                     System.out.println("Current Como funciona Index: " + indiceFuncaoAtual);
                 }
                 VBoxAtual = criarVboxTextBotoes(itensArray[indiceFuncaoAtual], botaoVoltarLabel, botaoProxLabel);
                 break;
 
-            case "Lore":
-                if ("Próxima Lore".equals(botaoProxLabel)) {
+            case LORE:
+                if (PROXIMA_LORE.equals(botaoProxLabel)) {
                     indiceLoreAtual = (indiceLoreAtual + 1) % itensArray.length;
                     System.out.println("Current Lore Index: " + indiceLoreAtual);
                 }
@@ -164,15 +192,17 @@ public class AnciaoController implements Initializable {
         HBox.setMargin(button, new Insets(5));
         HBox.setHgrow(button, Priority.ALWAYS);
         innerHBox.setAlignment(alignment);
-        estiloBotao(button);
 
+        estiloBotao(button);
+        configurarBotoes(button);
+        configurarBotoesTelaCidade(button);
         configurarBotaoAcao(button, buttonText);
     }
 
     private void configurarBotaoAcao(Button button, String buttonText) { // se o botão voltar for clicado, ele volta ao estado inicial da tela
         button.setOnAction(event -> {
             System.out.println("Button Clicked: " + buttonText);
-            if ("Voltar".equals(buttonText)) {
+            if (VOLTAR.equals(buttonText)) {
                 formaInicial();
             } else {
                 handleButtonClick(buttonText);

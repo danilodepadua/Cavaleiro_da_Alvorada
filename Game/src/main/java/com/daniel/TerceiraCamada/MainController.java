@@ -52,6 +52,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void Carregar(ActionEvent event) throws IOException {
+        audioPlayer.somMouseClick(btnCarregar, "/com.daniel.audios/musica_menu.wav");
         audioPlayer.stop();
         System.out.println("Carregando");
         Main.saveManager.Carregar();
@@ -59,6 +60,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
+        audioPlayer.somMouseClick(btnConfig, "/com.daniel.audios/musica_menu.wav");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
 
@@ -76,6 +78,7 @@ public class MainController implements Initializable {
 
     @FXML
     void Sair(ActionEvent event) {
+        audioPlayer.somMouseClick(btnSair, "/com.daniel.audios/musica_menu.wav");
         System.exit(0);
 
     }

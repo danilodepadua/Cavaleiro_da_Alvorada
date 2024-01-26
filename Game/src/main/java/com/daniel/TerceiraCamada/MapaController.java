@@ -70,9 +70,16 @@ public class MapaController extends Utilidades implements Initializable {
             if (mensagemCutscene != null && !mensagemCutscene.isEmpty()) {
                 // Adiciona um VBox como filho do AnchorPane
                 VBox vbox = new VBox();
-                vbox.setLayoutX(100);
-                vbox.setLayoutY(50);
-                cutsceneContainer.getChildren().add(vbox);
+                vbox.setLayoutX(25);
+                vbox.setLayoutY(25);
+                AnchorPane anchorPane = new AnchorPane();
+                anchorPane.setStyle("-fx-background-color:  #140e0a; -fx-border-color: #eccb7e");
+                anchorPane.getChildren().add(vbox);
+                anchorPane.setPrefWidth(1150);
+                anchorPane.setLayoutX(50);
+                anchorPane.setLayoutY(200);
+
+                cutsceneContainer.getChildren().add(anchorPane);
 
                 // Adiciona um Text para exibir a mensagem
                 Text mensagemText = new Text();
@@ -163,6 +170,8 @@ public class MapaController extends Utilidades implements Initializable {
                                 break;
                             case "Cidade morta":
                                 MostraMarca(0.73, 0.195);
+                            case "Mythágoras":
+                                MostraMarca(0.82,0.65);
                         }
                         cidadeTroca = cidade;
                     });

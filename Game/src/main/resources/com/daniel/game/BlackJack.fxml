@@ -102,5 +102,18 @@
             </ImageView>
          </graphic>
       </Button>
+      <AnchorPane fx:id="boxMensagem" layoutX="300.0" layoutY="212.0" opacity="0.0" prefHeight="114.0" prefWidth="521.0" style="-fx-background-color: #121312;">
+         <children>
+            <AnchorPane prefHeight="113.0" prefWidth="200.0" style="-fx-background-color: #343D38;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Text fx:id="txtMensagem" fill="WHITE" fontSmoothingType="LCD" layoutX="192.0" layoutY="57.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="O inimigo tomou 450 de dano" textAlignment="JUSTIFY" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="33.0">
+                     <font>
+                        <Font name="Barlow Condensed SemiBold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -2,12 +2,13 @@ package com.daniel.SegundaCamada;
 
 import com.daniel.PrimeiraCamada.Itens.Item;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LootTable {
+public class LootTable implements Serializable {
     ArrayList<LootEntry> itensDropaveis = new ArrayList<>();
 
     public void AdicionarEntrada(Item item, int Min, int Max, double Probabilidade){
@@ -36,7 +37,7 @@ public class LootTable {
     }
 }
 
-class LootEntry{
+class LootEntry implements Serializable{
     protected Item item;
     protected int[] quantidade = new int[2];
     protected double probabilidade;

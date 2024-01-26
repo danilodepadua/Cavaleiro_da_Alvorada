@@ -6,6 +6,14 @@ import com.daniel.PrimeiraCamada.Magias.Amolecer;
 import com.daniel.PrimeiraCamada.Magias.Enfraquecer;
 import com.daniel.PrimeiraCamada.Magias.Escuridao;
 import com.daniel.PrimeiraCamada.Magias.IntDown;
+import com.daniel.PrimeiraCamada.Itens.Comidas.Banana;
+import com.daniel.PrimeiraCamada.Itens.Comidas.CoxaFrango;
+import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
+import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
+import com.daniel.PrimeiraCamada.Magias.Escuridao;
+import com.daniel.PrimeiraCamada.Magias.Fogo;
+import com.daniel.PrimeiraCamada.Magias.Gelo;
+import com.daniel.PrimeiraCamada.Magias.Luz;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeEscuridaoNv2 extends Inimigo {
@@ -18,5 +26,9 @@ public class InimigoSlimeDeEscuridaoNv2 extends Inimigo {
         this.magias.add(new Amolecer());
         this.magias.add(new Enfraquecer());
         this.magias.add(new IntDown());
+        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
+        this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);
+        this.lootTable.AdicionarEntrada(new Ferro(), 1, 2, 0.8);
     }
 }

@@ -2,6 +2,8 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import com.daniel.game.Main;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,14 +47,24 @@ public class ConfigController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EscolhaResolucao.getItems().addAll("1200x675","1280x720");
+
+
+        // Configurar o Slider de Volume
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
+        SliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                // Alterar o volume conforme o valor do Slider
+                Main.audioPlayer.configVolume(newValue.doubleValue());
+            }
+        });
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
         configurarBotoes(btnConfirmar);
         contornarBotaoVoltar(btnVoltar);
     }
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("MainScene.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
 }
