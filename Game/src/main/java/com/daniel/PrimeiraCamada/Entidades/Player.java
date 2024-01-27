@@ -213,6 +213,9 @@ public class Player extends Personagem implements Serializable {
         for (int i = 0; i < this.getCapacete().getImunidades().length; i++) {
             tipos[i + this.peitoral.getImunidades().length + this.getCalca().getImunidades().length] = this.getCapacete().getImunidades()[i];
         }
+        for(TiposElementais t :tipos){
+            System.out.println("Imune: " + t.name());
+        }
         return tipos;
     }
     public TiposElementais[] getAbsorcoes(){

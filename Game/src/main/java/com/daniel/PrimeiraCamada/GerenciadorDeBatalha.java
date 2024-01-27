@@ -145,24 +145,23 @@ public class GerenciadorDeBatalha {
             }
             BC.EsconderInterfacePlayer();
             Random rand = new Random();
-            double taxaAcerto = 1/(1+Math.exp(-5*(Player.getVelocidade() - Inimigo.getVelocidade())));
+            double taxaAcerto = 1/(1+Math.exp(-0.0310*(Player.getVelocidade() - Inimigo.getVelocidade())));
+            System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + Player.getVelocidade() + "/nInimigo: " + Inimigo.getVelocidade());
             if(Player.cegado){
                 taxaAcerto /= 2;
             }
+            if(taxaAcerto < 0.05){
+                taxaAcerto = 0.05;
+            }
+            else if(taxaAcerto > 0.95){
+                taxaAcerto = 0.95;
+            }
+            System.out.println("Taxa de acerto: " + taxaAcerto);
             if(!(taxaAcerto > rand.nextDouble(0,1))){
                 acertou = false;
             }
             if(acertou){
-                int danoTomado = this.Inimigo.tomarDano(Dano, tipo, fisico);
-                if(danoTomado == 0){
-                    Mensagem.add("O inimigo não sofreu dano");
-                }
-                else if(danoTomado < 0){
-                    Mensagem.add("O inimigo recuperou " + Math.abs(danoTomado) + " de vida");
-                }
-                else{
-                    Mensagem.add("O inimigo tomou " + danoTomado + " de dano");
-                }
+                Mensagem.add(this.Inimigo.tomarDano(Dano, tipo, fisico));
             }
             else{
                 Mensagem.add(Player.getNome() + " errou o ataque");
@@ -185,16 +184,7 @@ public class GerenciadorDeBatalha {
                 acertou = false;
             }
             if(acertou){
-                int danoTomado = this.Player.tomarDano(Dano, tipo, fisico);
-                if(danoTomado == 0){
-                    Mensagem.add("O jogador não sofreu dano");
-                }
-                else if(danoTomado < 0){
-                    Mensagem.add("O jogador recuperou " + Math.abs(danoTomado) + " de vida");
-                }
-                else{
-                    Mensagem.add("O jogador tomou " + danoTomado + " de dano");
-                }
+                Mensagem.add(this.Player.tomarDano(Dano, tipo, fisico));
             }
             else{
                 Mensagem.add(Inimigo.getNome() + " errou o ataque");

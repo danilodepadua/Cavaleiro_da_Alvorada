@@ -70,62 +70,61 @@ public class PersonagemLuta{
     protected TiposElementais[] absorcao;
     protected TiposElementais tipoAtaqueBase;
 
-    public int tomarDano(int dano, TiposElementais tipo, boolean fisico){
+    public String tomarDano(int dano, TiposElementais tipo, boolean fisico){
+        String mensagem = this.Nome + " é imune a esse tipo de dano";;
         int danoTomado = 0;
+        Random rand = new Random();
+        dano = (int)(dano * rand.nextDouble(0.8, 1.2));
+        System.out.println("Dano: " + dano);
         this.dormindo = false;
         if(temTipo(fraquezas, tipo)){
             if(!fisico){
-                danoTomado = dano*2 - this.getDefM();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int)(dano*2 * Math.exp(-0.005*this.getDefM()));
             }
             else{
-                danoTomado = dano*2 - this.getDefF();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int) (dano*2 * Math.exp(-0.005*this.getDefF()));
             }
+            if(danoTomado <0){
+                danoTomado = 0;
+            }
+            this.currentHp -= danoTomado;
+            mensagem = this.Nome + " tomou " + danoTomado;
         }
         else if(temTipo(resistencias, tipo)){
             if(!fisico){
-                danoTomado = dano/2 - this.getDefM();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int) (dano/2 * Math.exp(-0.005*this.getDefM()));
             }
             else{
-                danoTomado = dano/2 - this.getDefF();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int) (dano/2 * Math.exp(-0.005*this.getDefF()));
             }
+            if(danoTomado <0){
+                danoTomado = 0;
+                mensagem = this.Nome + " não tomou dano tomou ";
+            }
+            else {
+                mensagem = this.Nome + " tomou " + danoTomado;
+            }
+            this.currentHp -= danoTomado;
         }
         else if(temTipo(absorcao, tipo)){
             danoTomado = -dano/2;
             this.currentHp -= danoTomado;
+            mensagem = this.Nome + " recuperou " + -danoTomado + " de vida";
         }
         else if(!temTipo(imunidades, tipo)){
             if(!fisico){
-                danoTomado = dano - this.getDefM();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int) (dano * Math.exp(-0.005*this.getDefM()));
             }
             else{
-                danoTomado = dano - this.getDefF();
-                if(danoTomado <0){
-                    danoTomado = 0;
-                }
-                this.currentHp -= danoTomado;
+                danoTomado = (int) (dano * Math.exp(-0.005*this.getDefF()));
             }
+            if(danoTomado <0){
+                danoTomado = 0;
+            }
+            this.currentHp -= danoTomado;
+            mensagem = this.Nome + " tomou "+danoTomado+" de dano";
         }
-        return danoTomado;
+        return mensagem;
     }
     public void usarMp(int i){
         this.currentMp -= i;

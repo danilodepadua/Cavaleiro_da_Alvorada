@@ -41,9 +41,13 @@ public class ComportamentoPadrao extends Comportamento {
 
     @Override
     public Magia EscolherMagia() {
-        Random rand = new Random();
-        int i = rand.nextInt(0, magiasPossiveis.size()-1);
-        System.out.println(magiasPossiveis.get(i).getNome());
-        return magiasPossiveis.get(i);
+        System.out.println(magiasPossiveis.size());
+        if(!(magiasPossiveis.size() == 1)) {
+            Random rand = new Random();
+            int i = rand.nextInt(0, magiasPossiveis.size() - 1);
+            System.out.println(magiasPossiveis.get(i).getNome());
+            return magiasPossiveis.get(i);
+        }
+        return magiasPossiveis.get(0);
     }
 }
