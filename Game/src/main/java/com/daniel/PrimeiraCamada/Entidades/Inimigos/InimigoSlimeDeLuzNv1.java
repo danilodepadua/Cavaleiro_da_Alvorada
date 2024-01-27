@@ -2,10 +2,16 @@ package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
 import com.daniel.PrimeiraCamada.Comportamentos;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Magias.*;
 import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeLuzNv1 extends Inimigo {
     public InimigoSlimeDeLuzNv1() {
-        super("Slime de luz pequeno", "/com.daniel.Images/Inimigos/Slime Holyi.png", 26, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 100, 5);
+        super("Slime de luz pequeno", "/com.daniel.Images/Inimigos/Slime Holyi.png", 26, 20, 35, 15, 25, 45, 50, TiposElementais.Luz, Comportamentos.padrao, 250, 150);
+        this.magias.add(new Luz());
+        this.magias.add(new Cure());
+        this.absorcao = new TiposElementais[]{TiposElementais.Luz};
+        this.fraquezas = new TiposElementais[]{TiposElementais.Escuridao};
+        this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
     }
 }

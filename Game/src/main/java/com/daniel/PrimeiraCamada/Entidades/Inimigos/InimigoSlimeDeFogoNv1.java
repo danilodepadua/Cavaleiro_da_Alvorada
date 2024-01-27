@@ -14,12 +14,11 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSlimeDeFogoNv1 extends Inimigo {
     public InimigoSlimeDeFogoNv1() {
-        super("Slime de fogo pequeno", "/com.daniel.Images/Inimigos/Slime Firei.png", 5, 5, 5, 5, 5, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 100, 5);
+        super("Slime de fogo pequeno", "/com.daniel.Images/Inimigos/Slime Firei.png", 5, 35, 15, 15, 15, 25, 28, TiposElementais.Fogo, Comportamentos.padrao, 150, 50);
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
+        this.absorcao = new TiposElementais[]{TiposElementais.Fogo};
+        this.fraquezas = new TiposElementais[]{TiposElementais.Agua, TiposElementais.Gelo};
         this.magias.add(new Fogo());
-        this.magias.add(new Gelo());
-        this.magias.add(new Luz());
-        this.magias.add(new Escuridao());
         this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
         this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
         this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);

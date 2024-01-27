@@ -1,9 +1,11 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.*;
+import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoFugitivo;
 import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoPadrao;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -335,7 +337,13 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,new ComportamentoPadrao(Enimy, player));
+        Comportamento comp;
+        if(inimigo.getComp() == Comportamentos.fugitivo){
+            comp = new ComportamentoFugitivo(Enimy, player);
+        } else{
+            comp = new ComportamentoPadrao(Enimy, player);
+        }
+        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,comp);
         try {
             gdb.IniciarBatalha();
         } catch (IOException e) {

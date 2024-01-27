@@ -8,7 +8,7 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoSnowMan extends Inimigo {
     public InimigoSnowMan() {
-        super("Abominavel boneco das neves", "/com.daniel.Images/Inimigos/Xmas Snowman.png", 34, 50, 25, 15, 25, 485, 105, TiposElementais.Gelo, Comportamentos.padrao, 5000, 500);
+        super("Abominavel boneco das neves", "/com.daniel.Images/Inimigos/Xmas Snowman.png", 35, 50, 25, 15, 25, 485, 105, TiposElementais.Gelo, Comportamentos.padrao, 5000, 500);
         this.magias.add(new Gelo());
         this.magias.add(new Slow());
         this.magias.add(new Slow());

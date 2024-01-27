@@ -7,7 +7,7 @@ import com.daniel.PrimeiraCamada.TiposElementais;
 
 public class InimigoCobraGigante extends Inimigo {
     public InimigoCobraGigante() {
-        super("Cobra gigante", "/com.daniel.Images/Inimigos/Colossal Snake Black.png", 30, 50, 45, 45, 45, 500, 250, TiposElementais.NaoElemental, Comportamentos.padrao, 25000, 3500);
+        super("Cobra gigante", "/com.daniel.Images/Inimigos/Colossal Snake Black.png", 31, 50, 45, 45, 45, 500, 250, TiposElementais.NaoElemental, Comportamentos.padrao, 25000, 3500);
         this.magias.add(new Veneno());
     }
 }
