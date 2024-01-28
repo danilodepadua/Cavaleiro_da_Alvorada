@@ -9,11 +9,6 @@
 
 <AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.StorySceneController">
     <children>
-        <Text fx:id="Texto" fill="WHITE" layoutX="50.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0">
-            <font>
-                <Font name="Comic Sans MS Bold" size="25.0" />
-            </font>
-        </Text>
       <Button fx:id="btnSkip" layoutX="534.0" mnemonicParsing="false" onAction="#skipDialog" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
@@ -26,5 +21,14 @@
             </ImageView>
          </graphic>
       </Button>
+      <AnchorPane layoutX="15.0" layoutY="70.0" prefHeight="50.0" prefWidth="570.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="70.0">
+         <children>
+              <Text fx:id="Texto" fill="WHITE" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.0" AnchorPane.topAnchor="7.44873046875">
+                  <font>
+                      <Font name="Comic Sans MS Bold" size="25.0" />
+                  </font>
+              </Text>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

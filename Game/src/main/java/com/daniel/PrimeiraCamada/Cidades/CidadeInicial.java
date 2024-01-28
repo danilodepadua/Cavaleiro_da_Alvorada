@@ -7,7 +7,7 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
-import com.daniel.PrimeiraCamada.Itens.MapaMythágoras;
+import com.daniel.PrimeiraCamada.Itens.Mapas.MapaDasópoles;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.*;
 import com.daniel.PrimeiraCamada.Quests.*;
 import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoAbelha;
@@ -41,7 +41,7 @@ public class CidadeInicial extends Cidade{
         this.itens.add(new CapacetePano());
         this.itens.add(new PeitoralPano());
         this.itens.add(new CalcaPano());
-        this.itens.add(new MapaMythágoras());
+        this.itens.add(new MapaDasópoles());
 
 
 

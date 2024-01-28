@@ -58,7 +58,7 @@ public class ResultadoController implements Initializable {
         txtXpObitdo.setText(String.valueOf(xpInimigo));
         txtMoedas.setText(String.valueOf(moedasInimigo));
         txtXpPlayer.setText(String.valueOf(Player.getPlayer().getXp()));
-        txtSuasMoedas.setText(String.valueOf(moedasInimigo));
+        txtSuasMoedas.setText(String.valueOf(Player.getPlayer().getCoins()));
         criarItens();
         btnRecolher.setOnAction(event -> {
             try {
