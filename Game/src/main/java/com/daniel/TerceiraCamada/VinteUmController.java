@@ -2,6 +2,7 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
+import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
@@ -188,8 +189,8 @@ public class VinteUmController implements Initializable{
             int valorAposta = Integer.parseInt(valorStr);
 
             if (valorAposta > Player.getPlayer().getCoins() ) {
-                System.out.println("Você não possui esse saldo");
                 btnApostar.setDisable(true);
+                throw new SemMoedasException();
             } else {
                 adicionarCartaCostas(GridPaneDealer, 0);
                 adicionarCartaCostas(GridPaneDealer, 1);
@@ -205,6 +206,8 @@ public class VinteUmController implements Initializable{
             }
         } catch (NumberFormatException | BaralhoVazioException e) {
             System.out.println("Valor de aposta inválido");
+        } catch (SemMoedasException e) {
+            throw new RuntimeException(e);
         }
     }
     private void adicionarCartaCostas(GridPane gridPane, int coluna) {

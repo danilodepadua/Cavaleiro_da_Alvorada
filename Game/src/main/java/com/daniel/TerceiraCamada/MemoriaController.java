@@ -5,6 +5,7 @@ import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
+import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
 import com.daniel.SegundaCamada.CassinoRepositorio.BaralhoMemoria;
 import com.daniel.game.Main;
 import javafx.animation.PauseTransition;
@@ -71,11 +72,12 @@ public class MemoriaController implements Initializable {
         try {
             int valorAposta = Integer.parseInt(valorStr);
             if (valorAposta > Player.getPlayer().getCoins() ) {
-                System.out.println("Você não possui esse saldo");
-
+                throw new SemMoedasException();
             }
         } catch (NumberFormatException | PlayerInexistenteException e) {
             System.out.println("Valor de aposta inválido");
+        } catch (SemMoedasException e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML

@@ -30,5 +30,7 @@ module com.daniel.game {
     opens com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais to javafx.fxml;
     exports com.daniel.PrimeiraCamada.Quests;
     opens com.daniel.PrimeiraCamada.Quests to javafx.fxml;
+    exports com.daniel.PrimeiraCamada.Itens.Mapas;
+    opens com.daniel.PrimeiraCamada.Itens.Mapas to javafx.fxml;
 
 }

@@ -34,8 +34,6 @@ public class ConfigController implements Initializable {
     @FXML
     void Confirmar(ActionEvent event) {
         String[] tamanho = EscolhaResolucao.getValue().split("x");
-        System.out.println("Largura = " + tamanho[0]);
-        System.out.println("Altura = " + tamanho[1]);
         int largura = Integer.parseInt(tamanho[0]);
         int altura = Integer.parseInt(tamanho[1]);
         Main.MudarTamanhoTela(largura, altura);

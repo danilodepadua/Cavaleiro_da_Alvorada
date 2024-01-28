@@ -113,45 +113,34 @@ public class Player extends Personagem implements Serializable {
         this.coins -= quantidade;
     }
     public void ganhaCoins(int quantidade) {
-        this.coins += quantidade;
-        System.out.println("Ganhou " + quantidade + " moedas. Novo saldo: " + this.coins);
-    }
+        this.coins += quantidade;}
     public void equiparArma(Arma arma){
         desequiparArma();
         this.arma = arma;
-        System.out.println("Arma equipada");
     }
     public void desequiparArma(){
         this.arma = new NullArma();
-        System.out.println("Arma desequipada");
-
     }
     public void equiparCalca(Calca calca){
         desequiparCalca();
         this.calca = calca;
-        System.out.println("Calça equipada.");
     }
     public void desequiparCalca(){
         this.calca = new NullCalca();
-        System.out.println("Calça desequipada");
     }
     public void equiparPeitoral(Peitoral peitoral) {
         desequiparPeitoral();
         this.peitoral = peitoral;
-        System.out.println("Peitoral equipado.");
     }
     public void desequiparPeitoral() {
         this.peitoral = new NullPeitoral();
-        System.out.println("Peitoral desequipado.");
     }
     public void equiparCapacete(Capacete capacete){
         desequiparCapacete();
         this.capacete = capacete;
-        System.out.println("Capacete equipado.");
     }
     public void desequiparCapacete(){
         this.capacete = new NullCapacete();
-        System.out.println("Capacete desequipado.");
     }
     public int getDefesaF(){
         return this.Resistencia + this.peitoral.getAumentoDefesaF() + this.capacete.getAumentoDefesaF() + this.calca.getAumentoDefesaF();
@@ -322,10 +311,6 @@ public class Player extends Personagem implements Serializable {
             ganharXp(quest.getRecompensaXP());
             ganhaCoins(quest.getRecompensaMoedas());
             ganhaPontos(quest.getPontosEvolucao());
-            System.out.println("Quest completada: " + quest.getNome());
-            System.out.println("Ganho de xp: "+ quest.getRecompensaXP());
-            System.out.println("Xp do player: "+ currentXp);
-            System.out.println("moedas do player: "+ currentMoedas);
             questAtuais.remove(quest);
         }
     }

@@ -1,8 +1,10 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
+import com.daniel.PrimeiraCamada.Exceptions.CompraErroException;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
+import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
@@ -123,6 +125,10 @@ public class LojaController implements Initializable {
                 throw new RuntimeException(e);
             } catch (RemoverCoinsException e) {
                 throw new RuntimeException(e);
+            } catch (SemMoedasException e) {
+                throw new RuntimeException(e);
+            } catch (CompraErroException e) {
+                throw new RuntimeException(e);
             }
         });
     }
@@ -236,7 +242,7 @@ public class LojaController implements Initializable {
     void onClickComprar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         modoCompra();
     }
-    public void comprarItem() throws PlayerInexistenteException, RemoverCoinsException {
+    public void comprarItem() throws PlayerInexistenteException, RemoverCoinsException, SemMoedasException, CompraErroException {
         if (Player.getPlayer() != null && itemSelecionado != null) {
             int precoItem = itemSelecionado.getPreco();
             if (Player.getPlayer().getCoins() >= precoItem) {
@@ -250,10 +256,10 @@ public class LojaController implements Initializable {
                 System.out.println("Compra realizada com sucesso!");
                 txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
             } else {
-                System.out.println("Você não tem moedas suficientes para comprar este item.");
+                throw new SemMoedasException();
             }
         } else {
-            System.out.println("Erro ao processar a compra. Certifique-se de que um jogador e um item estão selecionados.");
+            throw new CompraErroException();
         }
     }
     @FXML

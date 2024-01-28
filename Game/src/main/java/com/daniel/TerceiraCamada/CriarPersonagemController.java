@@ -99,7 +99,6 @@ public class CriarPersonagemController implements Initializable {
     @FXML
     void Criar(ActionEvent event) throws IOException, PlayerInexistenteException {
         String nomeDoJogador = Nome.getText();
-        System.out.println(nomeDoJogador);
 
         // Configurando as características do jogador
         int forca = calcularValorDaBarra(BarraForca);

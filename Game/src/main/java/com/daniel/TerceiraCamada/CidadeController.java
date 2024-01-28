@@ -165,9 +165,6 @@ public class CidadeController implements Initializable {
         txtCidade.setStrokeWidth(2);
 
         try {
-            System.out.println(Player.getPlayer() != null);
-            System.out.println("XP DO PLAYER: "+ Player.getPlayer().getXp());
-            // Método chamado automaticamente quando o controlador é inicializado
             txtPontos.setText("" + Player.getPlayer().getPontos());
             txtResistencia.setText(""+ Player.getPlayer().getResistencia());
             labelNome.setText(Player.getPlayer().getName());

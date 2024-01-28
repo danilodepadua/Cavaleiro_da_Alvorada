@@ -99,9 +99,8 @@ public class TavernaController implements Initializable {
 
             Text parte = new Text(String.valueOf(arrayPalavra[i]));
 
-            // Defina a fonte e a cor aqui
             parte.setFont(Font.font("Barlow Condensed SemiBold", FontWeight.SEMI_BOLD, 90));
-            parte.setFill(Paint.valueOf("yellow")); // Amarelo
+            parte.setFill(Paint.valueOf("yellow"));
 
             partes.add(parte);
 
