@@ -84,7 +84,7 @@ public class PokerController implements Initializable {
     private boolean tresCartas = true;
     private boolean continuar = false;
     @FXML
-    void Apostar(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
+    void Apostar(ActionEvent event) throws PlayerInexistenteException {
         limparMesa();
         String valorStr = textFieldAposta.getText();
         btnVoltar.setDisable(true);
@@ -239,7 +239,6 @@ public class PokerController implements Initializable {
         int forcaJogador = avaliarForcaMao(jogador, cartasCentro);
         int forcaCasa = avaliarForcaMao(casa, cartasCentro);
         btnVoltar.setDisable(false);
-
         if (forcaJogador > forcaCasa ) {
             mostrarResultado("Você ganhou! ");
             Player.getPlayer().ganhaCoins(aposta);
@@ -259,9 +258,15 @@ public class PokerController implements Initializable {
             tresCartas = true;
             continuar = false;
         } else {
-            mostrarResultado("Empate");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
+            int pontosJogador = jogador.getPontos();
+            int pontosCasa = casa.getPontos();
+            if (pontosJogador >= pontosCasa){
+                mostrarResultado("Você ganhou!");
+            }else {
+                mostrarResultado("Você perdeu!");
+            }
             btnContinuar.setDisable(true);
             tresCartas = true;
             continuar = false;
@@ -281,7 +286,7 @@ public class PokerController implements Initializable {
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), boxMensagem);
         fadeOut.setFromValue(1);
         fadeOut.setToValue(0);
-        fadeOut.setDelay(Duration.seconds(2)); // Adiciona um atraso de 2 segundos
+        fadeOut.setDelay(Duration.seconds(1)); // Adiciona um atraso de 2 segundos
 
         // Combinação das animações
         SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);

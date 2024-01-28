@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.MapaController">
    <children>
@@ -45,5 +46,34 @@
             </Button>
          </children>
       </VBox>
+      <AnchorPane fx:id="paneAceitar" disable="true" layoutX="417.0" layoutY="307.0" opacity="0.0" prefHeight="255.0" prefWidth="343.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="439.8">
+         <children>
+            <Text fill="#eccb7e" layoutX="77.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deseja pagar a &#10;passagem para a ilha?" textAlignment="CENTER">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="22.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="165.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50 Moedas">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <Text fill="#eccb7e" layoutX="107.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Custo:" wrappingWidth="47.43899917602539">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="21.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnSim" layoutX="179.0" layoutY="174.0" mnemonicParsing="false" onAction="#onActionSim" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sim" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNao" layoutX="49.0" layoutY="174.0" mnemonicParsing="false" onAction="#onActionNao" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Não" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

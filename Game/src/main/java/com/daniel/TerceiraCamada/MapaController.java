@@ -1,8 +1,10 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Cidade;
+import com.daniel.PrimeiraCamada.Cidades.Ilha;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.game.Main;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -46,18 +48,31 @@ public class MapaController extends Utilidades implements Initializable {
 
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnNao;
 
+    @FXML
+    private Button btnSim;
+    @FXML
+    private AnchorPane paneAceitar;
     @FXML
     void OnActionVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
-    void OnActionViajar(ActionEvent event) throws IOException {
+    void OnActionViajar(ActionEvent event) throws IOException, PlayerInexistenteException, RemoverCoinsException {
         // Configura a cidade atual
-        Main.cidadeAtual = cidadeTroca;
+        if (cidadeTroca.getNome().equals("Ilha")){
+            paneAceitar.setDisable(false);
+            paneAceitar.setOpacity(1.0);
 
-        // Exibe a cutscene
-        exibirCutscene();
+        }else{
+            System.out.println("Viajando sem passagem");
+            Main.cidadeAtual = cidadeTroca;
+            // Exibe a cutscene
+            exibirCutscene();
+        }
+
 
     }
 
@@ -141,6 +156,8 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        configurarBotoes(btnNao);
+        configurarBotoes(btnSim);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnViajar);
         ImgMapa.setFitHeight(Main.getAltura() - 100);
@@ -168,16 +185,20 @@ public class MapaController extends Utilidades implements Initializable {
                             case "Cidade Inicial":
                                 MostraMarca(0.924, 0.55);
                                 break;
-                            case "Cidade morta":
-                                MostraMarca(0.73, 0.195);
                             case "Mythágoras":
                                 MostraMarca(0.82,0.65);
+                            case "Cidade morta":
+                                MostraMarca(0.305, 0.52);
+                                break;
+                            case "Ilha":
+                                MostraMarca(0.35, 0.83);
                         }
                         cidadeTroca = cidade;
                     });
                     butao.setLayoutX(10);
                     butao.setLayoutY(-50);
                     estiloBotao(butao);
+                    configurarBotoesMapa(butao);
                     Fundo.getChildren().add(butao);
 
                     SequentialTransition sequentialTransition = new SequentialTransition();
@@ -192,6 +213,25 @@ public class MapaController extends Utilidades implements Initializable {
             parallelTransition.play();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    void onActionNao(ActionEvent event) {
+        paneAceitar.setDisable(true);
+        paneAceitar.setOpacity(0);
+    }
+
+    @FXML
+    void onActionSim(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException, IOException {
+        Main.cidadeAtual = cidadeTroca;
+        int passagem = 50;
+        int dinheiro =  Player.getPlayer().getCoins();
+        if (dinheiro >= passagem){
+            Player.getPlayer().removerCoins(passagem);
+            exibirCutscene();
+            System.out.println("Viajando com passagem");
+        }else {
+            System.out.println("Voce nao possui saldo");
         }
     }
 }

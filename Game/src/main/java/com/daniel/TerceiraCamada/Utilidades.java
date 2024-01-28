@@ -57,6 +57,26 @@ public class Utilidades {
         });
 
     }
+    public static void configurarBotoesMapa(Button button) {
+        audioPlayer.somMouseClick(button, "/com.daniel.audios/som_click.wav");
+
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #ADD8E6; -fx-pref-width: 200; -fx-pref-height: 50; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17; -fx-text-fill: #eccb7e;");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e; -fx-pref-width: 200; -fx-pref-height: 50;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17; -fx-text-fill: #eccb7e;");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7; -fx-pref-width: 200; -fx-pref-height: 50;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17; -fx-text-fill: #eccb7e;");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e; -fx-pref-width: 200; -fx-pref-height: 50;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17; -fx-text-fill: #eccb7e;");
+        });
+
+    }
 
     public static void definirBackground(AnchorPane pane, String caminhoDaImagem){
         pane.setBackground(new Background(new BackgroundImage(new Image(Main.class.getResource(caminhoDaImagem).toString()),
