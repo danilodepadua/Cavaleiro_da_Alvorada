@@ -87,8 +87,6 @@ public class InventarioController implements Initializable {
     @FXML
     private Button btnUsar;
 
-    @FXML
-    private Button btnVender;
 
     @FXML
     private Button btnVoltar;
@@ -134,14 +132,12 @@ public class InventarioController implements Initializable {
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
-        NomeItem.setText("Nome: " + i.getNome());
-        txtDescricao.setText("Descrição: " + i.getDescricao());
-        txtQtdItem.setText("Quantidade: " + i.getQuant());
         btnUsar.setText("Usar");
+        NomeItem.setText(i.getNome());
+        txtDescricao.setText(i.getDescricao());
+        txtQtdItem.setText(""+i.getQuant());
         PainelInfos.setDisable(false);
         PainelInfos.setOpacity(1);
-        btnVender.setDisable(false);
-        configurarVenda(i);
 
         if (i instanceof IConsumableOutBattle) {
             btnUsar.setDisable(false);
@@ -255,18 +251,6 @@ public class InventarioController implements Initializable {
                 !Player.getPlayer().getArma().equals(equipableItem);
                 //Compara se o item atual é igual ao atual inserido no player
     }
-    private void configurarVenda(Item i){
-        btnVender.setOnAction(event -> {
-            try {
-                venderItem(i);
-                AtualizarDados();
-                limparTela();
-                btnVender.setDisable(true);
-            } catch (PlayerInexistenteException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
     private void AtualizarDados() throws PlayerInexistenteException {
         txt1.setText("HP:");
@@ -334,7 +318,6 @@ public class InventarioController implements Initializable {
         btnUsar.setDisable(true);
         btnDesequipar.setDisable(true);
         btnEquipar.setDisable(true);
-        btnVender.setDisable(true);
         btnStatus.setDisable(false);
         Grid.prefWidthProperty().bind(Scroll.widthProperty().subtract(20));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
@@ -346,7 +329,6 @@ public class InventarioController implements Initializable {
         configurarBotoes(btnEquipar);
         configurarBotoes(btnStatus);
         configurarBotoes(btnUsar);
-        configurarBotoes(btnVender);
         for(int i = 0; i< Grid.getColumnCount(); i++){
             Grid.getRowConstraints().set(i,row);
             Grid.getColumnConstraints().set(i,col);

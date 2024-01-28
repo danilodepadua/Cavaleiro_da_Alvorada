@@ -32,22 +32,49 @@
                </graphic></Button>
             <VBox layoutX="147.0" layoutY="41.0" prefHeight="186.0" prefWidth="553.0" spacing="20.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="39.0">
                <children>
-                      <Text fx:id="NomeItem" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
-                          <font>
+                  <HBox prefHeight="10.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
+                           <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
-                          </font>
-                      </Text>
-                      <Text fx:id="txtDescricao" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição: " wrappingWidth="553.1332946777345">
-                          <font>
+                           </font>
+                        </Text>
+                            <Text fx:id="NomeItem" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                <font>
+                                    <Font name="Barlow Condensed SemiBold" size="20.0" />
+                                </font>
+                            </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="22.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição: " wrappingWidth="90.73328552246107">
+                           <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
-                          </font>
-                      </Text>
-                      <Text fx:id="txtQtdItem" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
-                          <font>
+                           </font>
+                        </Text>
+                            <Text fx:id="txtDescricao" fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="461.93328247070326">
+                                <font>
+                                    <Font name="Barlow Condensed SemiBold" size="20.0" />
+                                </font>
+                            </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="146.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
+                           <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
-                          </font>
-                      </Text>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                           </font>
+                        </Text>
+                            <Text fx:id="txtQtdItem" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                <font>
+                                    <Font name="Barlow Condensed SemiBold" size="20.0" />
+                                </font>
+                            </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                      <children>
                               <Button fx:id="btnEquipar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Equipar" textFill="#eccb7e">
                            <font>
@@ -64,7 +91,7 @@
                               <Font name="Barlow Condensed SemiBold" size="15.0" />
                            </font>
                         </Button>
-                              <Button fx:id="btnVender" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Vender" textFill="#eccb7e">
+                            <Button fx:id="btnStatus" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Status" textFill="#eccb7e">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="15.0" />
                            </font>
@@ -142,10 +169,6 @@
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>
                 </Text>
-                <Button fx:id="btnStatus" layoutX="35.0" layoutY="303.0" mnemonicParsing="false" onAction="#onClickStatus" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Status" textFill="#eccb7e" AnchorPane.bottomAnchor="302.6" AnchorPane.leftAnchor="35.0">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="15.0" />
-               </font></Button>
             <Pane layoutX="35.0" layoutY="352.0" prefHeight="260.0" prefWidth="330.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="34.60000000000002">
                <children>
                       <VBox layoutX="10.0" layoutY="10.0" prefHeight="241.0" prefWidth="310.0">

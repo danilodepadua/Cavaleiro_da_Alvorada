@@ -266,6 +266,19 @@ public class Player extends Personagem implements Serializable {
                 magias.add(new WaterSpyke());
             case 7:
                 magias.add(new Terra());
+                break;
+            case 8:
+                magias.add(new Vento());
+                break;
+            case 9:
+                magias.add(new Adormecer());
+                break;
+            case 10:
+                magias.add(new Cura());
+                break;
+            case 11:
+                magias.add(new Fortalecer());
+                break;
             default:
                 break;
         }
