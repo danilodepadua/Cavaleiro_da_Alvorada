@@ -20,9 +20,6 @@ public class PersonagemLuta{
     protected ArrayList<Magia> magias;
     protected boolean envenenado = false, dormindo= false, silenciado= false, cegado= false;
     protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
-    protected int xpDrop;
-    protected int moedas;
-    protected LootTable lootTable = new LootTable();
     public PersonagemLuta(Inimigo i){
         this.HP = i.HP;
         this.MP = i.MP;
@@ -40,9 +37,6 @@ public class PersonagemLuta{
         this.Nome = i.getName();
         this.atqAnim = new SlashAnimation();
         this.magias = i.magias;
-        this.xpDrop = i.getDropXp();
-        this.moedas = i.getMoedas();
-        this.lootTable = i.getLootTable();
     }
 
     public PersonagemLuta(Player p){
@@ -200,16 +194,6 @@ public class PersonagemLuta{
     public int getMP() {
         return MP;
     }
-
-    public LootTable getLootTable() {
-        return lootTable;
-    }
-
-    public int getXpDrop() {
-        return xpDrop;
-    }
-
-    public int getMoedas() {return moedas;}
 
     public TiposElementais getTipoAtaqueBase() {
         return tipoAtaqueBase;

@@ -13,8 +13,9 @@ public class ComportamentoPadrao extends Comportamento {
     }
 
     ArrayList<Magia> magiasPossiveis;
+
     @Override
-    public acoes EscolherAcao() {
+    public acoes LogicaEscolhaAcao() {
         magiasPossiveis = new ArrayList<>();
         for(Magia m : this.controlado.getMagias()){
             if(this.controlado.getCurrentMp() >= m.getCusto()){

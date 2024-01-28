@@ -36,6 +36,7 @@ public abstract class Item implements Serializable {
     public void MaisQuant(){
         this.quant++;
     }
+    public void MaisQuant(int i){this.quant+= i;}
     public void MenosQuant(){
         this.quant--;
     }

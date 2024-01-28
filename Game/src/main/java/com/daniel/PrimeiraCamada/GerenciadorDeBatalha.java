@@ -1,5 +1,6 @@
 package com.daniel.PrimeiraCamada;
 
+import com.daniel.PrimeiraCamada.Exceptions.ErroUsarMagiaExptions;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
@@ -63,7 +64,7 @@ public class GerenciadorDeBatalha {
         T.play();
     }
 
-    public void IniciarBatalha() throws IOException {
+    public void IniciarBatalha() throws IOException{
         if(Inimigo.velocidade > Player.velocidade){
             state = States.turnoInimigo;
             turnoInimigo();
@@ -73,7 +74,7 @@ public class GerenciadorDeBatalha {
             turnoPlayer();
         }
     }
-    public void MudarTurno() throws PlayerInexistenteException, IOException {
+    public void MudarTurno() throws PlayerInexistenteException, IOException{
         if(Player.currentHp <= 0){
             BC.Derrota();
         }
@@ -113,7 +114,7 @@ public class GerenciadorDeBatalha {
             System.out.println("Turno player");
         }
     }
-    public void turnoInimigo() throws IOException {
+    public void turnoInimigo() throws IOException{
         if(Inimigo.stun > 0){
             Inimigo.stun--;
             ArrayList<String> mensagem = new ArrayList<>();
@@ -122,7 +123,7 @@ public class GerenciadorDeBatalha {
         }
         else{
             Comportamento.acoes acao = comp.EscolherAcao();
-            if(acao == Comportamento.acoes.fugir){
+            if(acao == Comportamento.acoes.fugir && BC.tipoBatalha.escapavel){
                 this.fugir(Inimigo.fugir(Player.getVelocidade()));
             }
             else if(acao == Comportamento.acoes.usarMagia){
@@ -237,13 +238,17 @@ public class GerenciadorDeBatalha {
         }
     }
     public void fugir(boolean conseguiu) throws IOException {
-        if(conseguiu){
-            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        ArrayList<String> i = new ArrayList<String>();
+        if(BC.tipoBatalha.escapavel) {
+            if (conseguiu) {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+            } else {
+                i.add("Falhou em fugir");
+            }
         }
         else{
-            ArrayList<String> i = new ArrayList<String>();
-            i.add("Falhou em fugir");
-            mostrarResultado(i, true);
+            i.add("Não é possível fugir desta batalha");
         }
+        mostrarResultado(i, true);
     }
 }

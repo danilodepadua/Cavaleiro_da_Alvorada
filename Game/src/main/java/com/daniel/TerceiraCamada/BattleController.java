@@ -5,12 +5,12 @@ import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoFugitivo;
 import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoPadrao;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.PrimeiraCamada.Itens.Item;
-import com.daniel.PrimeiraCamada.Magias.*;
+import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaComum;
 import com.daniel.SegundaCamada.SlashAnimation;
+import com.daniel.PrimeiraCamada.TipoBatalha;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +27,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.Random;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,10 +36,10 @@ public class BattleController implements Initializable {
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
-    private Inimigo[] inimigos;
-    private Inimigo inimigo;
     PersonagemLuta Enimy;
     PersonagemLuta player;
+
+    public TipoBatalha tipoBatalha;
 
     @FXML
     private AnchorPane Back;
@@ -183,27 +181,11 @@ public class BattleController implements Initializable {
     }
 
     public void Vitoria() throws PlayerInexistenteException, IOException {
-        for (Quest quest : com.daniel.PrimeiraCamada.Entidades.Player.getPlayer().getQuestsAtuais()) {
-            if (quest.getNomeInimigo().equals(inimigo.getName())) {
-                try {
-                    quest.updateQuestCompleted();
-                } catch (PlayerInexistenteException e) {
-                    System.err.println("Erro ao atualizar quests: " + e.getMessage());
-                }
-            }
-        }
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
-        Parent root = loader.load();
-        ResultadoController resultadoController = loader.getController();
-        resultadoController.atualizarValores(Enimy.getXpDrop(),  Enimy.getMoedas(), Enimy.getLootTable());
-        Main.ChangeScene(root);
-        Player.getPlayer().getBestiario().adicionarInimigos(inimigo);
-        Player.getPlayer().ganharXp(Enimy.getXpDrop());
-        System.out.println("Player venceu");
+        tipoBatalha.Vitoria();
     }
 
     public void Derrota() throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaGameOver.fxml")).load());
+        tipoBatalha.Derrota();
     }
 
     public void Atualiazar(){
@@ -294,9 +276,33 @@ public class BattleController implements Initializable {
         InterfacePlayer.setOpacity(0);
         InterfacePlayer.setDisable(true);
     }
+    public void ShowMensage(String s){
+        ArrayList<String> mensagem = new ArrayList<>();
+        mensagem.add(s);
+        gdb.mostrarResultado(mensagem, false);
+    }
+    public void Inicializar(){
+        if(tipoBatalha == null){
+            tipoBatalha = new BatalhaComum();
+        }
+        tipoBatalha.Inicializar();
+        EnimyImg.setImage(tipoBatalha.inimigo.getImagem());
+        Enimy = new PersonagemLuta(tipoBatalha.inimigo);
+        Comportamento comp;
+        if(tipoBatalha.inimigo.getComp() == Comportamentos.fugitivo){
+            comp = new ComportamentoFugitivo(Enimy, player);
+        } else{
+            comp = new ComportamentoPadrao(Enimy, player);
+        }
+        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,comp);
+        try {
+            gdb.IniciarBatalha();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        inimigos = Main.cidadeAtual.getInimigos();
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -309,10 +315,6 @@ public class BattleController implements Initializable {
                         true,
                         true
                 ))));
-        Random rand = new Random();
-        inimigo = inimigos[rand.nextInt(0, inimigos.length)];
-        EnimyImg.setImage(inimigo.getImagem());
-        Enimy = new PersonagemLuta(inimigo);
         try {
             player = new PersonagemLuta(Player.getPlayer());
             for(Item i : Player.getPlayer().getInventario().getItens()){
@@ -337,17 +339,5 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
-        Comportamento comp;
-        if(inimigo.getComp() == Comportamentos.fugitivo){
-            comp = new ComportamentoFugitivo(Enimy, player);
-        } else{
-            comp = new ComportamentoPadrao(Enimy, player);
-        }
-        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,comp);
-        try {
-            gdb.IniciarBatalha();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

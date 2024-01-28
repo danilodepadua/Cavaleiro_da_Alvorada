@@ -74,7 +74,6 @@ public class ResultadoController implements Initializable {
                 }
             }
         });
-
     }
 
     @Override
@@ -89,10 +88,11 @@ public class ResultadoController implements Initializable {
         configurarBotoes(btnRecolher);
     }
 
-    public void atualizarValores(int novoXp, int novasMoedas, LootTable itens) throws PlayerInexistenteException {
+    public void atualizarValores(int novoXp, int novasMoedas, ArrayList<Item> itens) throws PlayerInexistenteException {
         xpInimigo = novoXp;
         moedasInimigo = novasMoedas;
-        itensDoInimigo = itens.drop();
+        itensDoInimigo = itens;
+        Player.getPlayer().ganharXp(novoXp);
         atualizarInterface();
     }
 

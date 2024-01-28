@@ -14,9 +14,8 @@ public class ComportamentoFugitivo extends Comportamento {
     public ComportamentoFugitivo(PersonagemLuta controlado, PersonagemLuta adversario) {
         super(controlado, adversario);
     }
-
     @Override
-    public acoes EscolherAcao() {
+    public acoes LogicaEscolhaAcao() {
         Random rand = new Random();
         if(rand.nextInt(0, 100) < 33*turnos){
             return acoes.fugir;

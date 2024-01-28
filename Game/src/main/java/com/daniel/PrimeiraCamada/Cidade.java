@@ -2,14 +2,19 @@ package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaComum;
+import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaSequencial;
+import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public abstract class Cidade implements Serializable {
     public abstract void ajustarBotoes() throws PlayerInexistenteException;
@@ -97,7 +102,17 @@ public abstract class Cidade implements Serializable {
     protected  Botao criarBotaoCacar(){
         return criarBotao("Caçar", () -> {
             try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
+                FXMLLoader loader =new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
+                Parent root = loader.load();
+                BattleController battleController = loader.getController();
+                ArrayList<Inimigo> inimigs = new ArrayList<>();
+                for(int i =0; i< 2;i++){
+                    Random random = new Random();
+                    inimigs.add(this.inimigos[random.nextInt(0, this.inimigos.length-1)]);
+                }
+                battleController.tipoBatalha = new BatalhaSequencial(inimigs, battleController);
+                Main.ChangeScene(root);
+                battleController.Inicializar();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
