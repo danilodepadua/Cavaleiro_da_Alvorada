@@ -15,11 +15,6 @@ public abstract class Quest implements Serializable {
     protected String nomeInimigo;
     public  void updateQuestCompleted() throws PlayerInexistenteException{
         progresso++;
-
-        if (isCompleta()) {
-            System.out.println("Quest concluída: " + getNome());
-
-        }
     }
     public String getNome() {
         return nome;

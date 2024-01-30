@@ -16,7 +16,7 @@
    <children>
       <ScrollPane fx:id="scrollPane" layoutY="40.0" prefHeight="635.0" prefWidth="513.0" style="-fx-background-color: #140e0a;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <content>
-            <VBox fx:id="VBoxBestas" alignment="CENTER_LEFT" prefHeight="703.0" prefWidth="498.0" style="-fx-background-color: #140e0a;" />
+            <VBox fx:id="VBoxBestas" alignment="CENTER_LEFT" prefHeight="703.0" prefWidth="500.0" style="-fx-background-color: #140e0a;" />
          </content>
       </ScrollPane>
       <AnchorPane fx:id="paneDireita" layoutX="620.0" layoutY="202.0" prefHeight="675.0" prefWidth="686.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="513.6" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

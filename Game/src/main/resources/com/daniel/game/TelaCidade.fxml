@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="Screen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CidadeController">
    <children>
-      <AnchorPane prefHeight="120.0" prefWidth="1136.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane opacity="0.85" prefHeight="120.0" prefWidth="1136.0" style="-fx-background-color: #140e0a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <HBox layoutX="14.0" layoutY="8.0" prefHeight="103.0" prefWidth="796.0" spacing="20.0" AnchorPane.bottomAnchor="8.799999999999997" AnchorPane.leftAnchor="14.0">
                <children>
@@ -216,18 +216,9 @@
                   </Button>
                   <Button fx:id="btnInventario" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionInventario" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
                      <graphic>
-                        <ImageView fitHeight="77.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="71.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../com.daniel.Images/Icons/backpack.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnConfig" mnemonicParsing="false" onAction="#Config" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
-                     <graphic>
-                        <ImageView fitHeight="47.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../com.daniel.Images/Icons/IconConfig.png" />
+                              <Image url="@../../../com.daniel.Images/Icons/Estalagem.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -241,6 +232,15 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button fx:id="btnConfig" mnemonicParsing="false" onAction="#Config" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
+                     <graphic>
+                        <ImageView fitHeight="47.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../com.daniel.Images/Icons/IconConfig.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
          </children>
@@ -249,7 +249,7 @@
          <children>
             <Text fx:id="txtCidade" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADE ATUAL: ">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="25.0" />
+                  <Font name="Barlow Condensed SemiBold" size="31.0" />
                </font>
             </Text>
          </children>

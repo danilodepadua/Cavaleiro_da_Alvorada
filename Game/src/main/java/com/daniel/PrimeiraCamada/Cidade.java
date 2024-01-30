@@ -121,7 +121,7 @@ public abstract class Cidade implements Serializable {
     protected  Botao criarBotaoLoja(){
         return criarBotao("Loja", () -> {
             try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoja.fxml")).load());
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCompraOuVenda.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -149,15 +149,6 @@ public abstract class Cidade implements Serializable {
         return criarBotao("Taverna", () -> {
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-    protected Botao criarBotaoEstalagem(){
-        return criarBotao("Estalagem", () -> {
-            try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

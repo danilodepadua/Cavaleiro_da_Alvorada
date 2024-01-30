@@ -145,7 +145,7 @@ public class CidadeController implements Initializable {
     }
     @FXML
     void onActionInventario(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInventario.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

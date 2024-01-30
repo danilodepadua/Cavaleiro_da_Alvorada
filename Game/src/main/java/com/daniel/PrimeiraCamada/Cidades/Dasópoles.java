@@ -15,6 +15,7 @@ import com.daniel.PrimeiraCamada.Itens.Mapas.MapaMonteClaro;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
+import com.daniel.PrimeiraCamada.Quests.*;
 
 import java.util.ArrayList;
 
@@ -22,8 +23,12 @@ public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
         super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
-        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeEscuridaoNv2(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeFogoNv2()};
-
+        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeTerraNv1(), new InimigoSlimeDeLuzNv1(), new InimigoSlimeDeAguaNv2()};
+        this.quests.add(new QuestSlimeDeFogoNv1());
+        this.quests.add(new QuestSlimeDeFogoNv2());
+        this.quests.add(new QuestSlimeDeGeloNv1());
+        this.quests.add(new QuestSlimeDeLuzNv1());
+        this.quests.add(new QuestSlimeDeAguaNv2());
         // Adiciona os itens da loja
         this.itens.add(new EspadaEletricaBasica());
         this.itens.add(new PocaoCura());
@@ -49,6 +54,5 @@ public class Dasópoles extends Cidade {
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoSalvar());
         this.botoes.add(criarBotaoAnciao());
-        this.botoes.add(criarBotaoEstalagem());
     }
 }

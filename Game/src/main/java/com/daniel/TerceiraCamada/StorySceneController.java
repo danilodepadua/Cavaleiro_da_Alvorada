@@ -82,7 +82,7 @@ public class StorySceneController implements Initializable {
     }
     private Timeline adicionarCaracteresComAtraso() {
         Timeline timeline = new Timeline();
-        Texto.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 35; -fx-fill: white");
+        Texto.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 35; -fx-fill: black");
         Texto.setWrappingWidth(1100);
         double Time = 50;
         for (int i = 0; i < Dialogo.length; i++) {

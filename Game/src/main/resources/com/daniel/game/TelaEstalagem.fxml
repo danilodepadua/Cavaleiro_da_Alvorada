@@ -137,17 +137,17 @@
       </AnchorPane>
       <VBox layoutX="498.0" layoutY="186.0" prefHeight="287.0" prefWidth="204.0" spacing="43.0" AnchorPane.leftAnchor="498.0" AnchorPane.rightAnchor="498.0">
          <children>
-            <Button fx:id="btnDescanso" mnemonicParsing="false" onAction="#onActionDescanso" opacity="0.9" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Descansar" textFill="#eccb7e">
+            <Button fx:id="btnDescanso" mnemonicParsing="false" onAction="#onActionDescanso" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Descansar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnTaverna" mnemonicParsing="false" onAction="#onActionTaverna" opacity="0.9" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
+            <Button fx:id="btnTaverna" mnemonicParsing="false" onAction="#onActionTaverna" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnRestaurar" mnemonicParsing="false" onAction="#onActionRestaurar" opacity="0.9" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Restaurar" textFill="#eccb7e" visible="false">
+            <Button fx:id="btnRestaurar" mnemonicParsing="false" onAction="#onActionRestaurar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Recuperar" textFill="#eccb7e" visible="false">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
