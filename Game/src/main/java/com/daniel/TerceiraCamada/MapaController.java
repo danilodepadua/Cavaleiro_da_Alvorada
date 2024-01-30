@@ -197,6 +197,8 @@ public class MapaController extends Utilidades implements Initializable {
                                 break;
                             case "Ilha":
                                 MostraMarca(0.35, 0.83);
+                            case "Cidade Portuária":
+                                MostraMarca(0.305,0.52);
                                 break;
 
                         }
