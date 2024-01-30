@@ -88,7 +88,8 @@ public class MapaController extends Utilidades implements Initializable {
                 vbox.setLayoutX(25);
                 vbox.setLayoutY(25);
                 AnchorPane anchorPane = new AnchorPane();
-                anchorPane.setStyle("-fx-background-color:  #140e0a; -fx-border-color: #eccb7e");
+                anchorPane.setStyle("-fx-background-color:  white; -fx-border-color: black; -fx-opacity: 0.7");
+
                 anchorPane.getChildren().add(vbox);
                 anchorPane.setPrefWidth(1150);
                 anchorPane.setLayoutX(50);
@@ -98,7 +99,7 @@ public class MapaController extends Utilidades implements Initializable {
 
                 // Adiciona um Text para exibir a mensagem
                 Text mensagemText = new Text();
-                mensagemText.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-fill: #eccb7e; -fx-font-size: 40; -fx-stroke: black; -fx-stroke-width: 1");
+                mensagemText.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-fill: black; -fx-font-size: 40;-fx-opacity: 1");
                 mensagemText.setWrappingWidth(1100);
 
                 vbox.getChildren().add(mensagemText);
@@ -156,7 +157,7 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        configurarBotoes(btnNao);
+        contornarBotaoVoltar(btnNao);
         configurarBotoes(btnSim);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnViajar);

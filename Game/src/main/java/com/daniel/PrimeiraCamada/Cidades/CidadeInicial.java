@@ -1,6 +1,7 @@
 package com.daniel.PrimeiraCamada.Cidades;
 
 import com.daniel.PrimeiraCamada.Cidade;
+import com.daniel.PrimeiraCamada.Entidades.Inimigos.*;
 import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
@@ -10,9 +11,6 @@ import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.PrimeiraCamada.Itens.Mapas.MapaDasópoles;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.*;
 import com.daniel.PrimeiraCamada.Quests.*;
-import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoAbelha;
-import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoBabySlime;
-import com.daniel.PrimeiraCamada.Entidades.Inimigos.InimigoSlimeDeEscuridaoNv1;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
 import com.daniel.PrimeiraCamada.Quests.QuestSnowMan;
@@ -25,13 +23,14 @@ public class CidadeInicial extends Cidade{
         super("Cidade Inicial", "/com.daniel.Images/Fundos/CidadeNoturna.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
         // Inicializa a lista de inimigos corretamente
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
+        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeEscuridaoNv1(), new InimigoSlimeDeRaioNv1(), new InimigoLadrao()};
 
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests.add(new QuestBabySlime());
-        this.quests.add(new QuestSnowMan());
+        this.quests.add(new QuestAbelha());
+        this.quests.add(new QuestSlimeDeAguaNv1());
         this.quests.add(new QuestSlimeDeEscuridaoNv1());
-        this.quests.add(new QuestCorvoGigante());
+        this.quests.add(new QuestSlimeDeRaioNv1());
         // Adiciona os itens da loja
         this.itens.add(new EspadaInicial());
         this.itens.add(new PocaoCura());
@@ -58,6 +57,5 @@ public class CidadeInicial extends Cidade{
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoSalvar());
         this.botoes.add(criarBotaoAnciao());
-        this.botoes.add(criarBotaoEstalagem());
     }
 }

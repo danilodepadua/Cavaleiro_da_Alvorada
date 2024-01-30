@@ -21,9 +21,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="15.0" layoutY="70.0" prefHeight="50.0" prefWidth="570.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="70.0">
+      <AnchorPane layoutX="15.0" layoutY="70.0" opacity="0.8" prefHeight="50.0" prefWidth="570.0" style="-fx-background-color: white; -fx-border-color: black;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="70.0">
          <children>
-              <Text fx:id="Texto" fill="WHITE" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.0" AnchorPane.topAnchor="7.44873046875">
+              <Text fx:id="Texto" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.0" AnchorPane.topAnchor="7.44873046875">
                   <font>
                       <Font name="Comic Sans MS Bold" size="25.0" />
                   </font>

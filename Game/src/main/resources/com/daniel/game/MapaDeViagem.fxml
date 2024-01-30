@@ -54,14 +54,9 @@
                   <Font name="Barlow Condensed SemiBold" size="22.0" />
                </font>
             </Text>
-            <HBox layoutX="38.0" layoutY="181.0" prefHeight="59.0" prefWidth="268.0" spacing="30.0">
+            <HBox layoutX="107.0" layoutY="169.0" prefHeight="59.0" prefWidth="116.0" spacing="30.0">
                <children>
                   <Button fx:id="btnSim" mnemonicParsing="false" onAction="#onActionSim" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sim" textFill="#eccb7e">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnNao" mnemonicParsing="false" onAction="#onActionNao" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Não" textFill="#eccb7e">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="16.0" />
                      </font>
@@ -82,6 +77,18 @@
                   </Text>
                </children>
             </HBox>
+            <Button fx:id="btnNao" layoutX="290.0" layoutY="1.0" mnemonicParsing="false" onAction="#onActionNao" prefHeight="43.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="#eccb7e" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Setas/X.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

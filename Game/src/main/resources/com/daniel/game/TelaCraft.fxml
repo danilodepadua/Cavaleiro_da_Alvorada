@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CraftingController">
    <children>
-      <Text fill="#eccb7e" layoutX="478.0" layoutY="58.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS">
+      <Text fill="#eccb7e" layoutX="495.0" layoutY="54.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS" AnchorPane.leftAnchor="494.62803344726564" AnchorPane.rightAnchor="426.1719665527344">
          <font>
             <Font name="Barlow Condensed SemiBold" size="44.0" />
          </font>
@@ -46,7 +46,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <AnchorPane layoutX="758.0" layoutY="215.0" prefHeight="412.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="758.0">
+      <AnchorPane layoutX="820.0" layoutY="215.0" prefHeight="412.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="21.600000000000023">
          <children>
             <VBox alignment="CENTER" layoutX="123.0" layoutY="7.0" prefHeight="334.0" prefWidth="126.0" spacing="5.0">
                <children>
@@ -86,7 +86,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Button fx:id="btnCriar" disable="true" layoutX="542.0" layoutY="581.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e" AnchorPane.leftAnchor="542.0">
+      <Button fx:id="btnCriar" disable="true" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e" AnchorPane.leftAnchor="578.0" AnchorPane.rightAnchor="471.6">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
@@ -103,7 +103,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="758.0" layoutY="109.0" prefHeight="96.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;">
+      <AnchorPane layoutX="820.0" layoutY="109.0" prefHeight="96.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="21.59999999999991">
          <children>
             <ImageView fx:id="imgItem" fitHeight="79.0" fitWidth="100.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
             <VBox layoutX="122.0" layoutY="16.0" prefHeight="29.0" prefWidth="100.0" spacing="10.0">

@@ -1,10 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Entidades.Player;
-import com.daniel.PrimeiraCamada.Exceptions.CompraErroException;
-import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
-import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
+import com.daniel.PrimeiraCamada.Exceptions.*;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableOutBattle;
 import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
@@ -46,12 +43,6 @@ public class LojaController implements Initializable {
 
     @FXML
     private Button btnVoltar;
-    @FXML
-    private Button btnModo;
-
-    @FXML
-    private Button btnModo1;
-
 
     @FXML
     private GridPane gridArmaduras;
@@ -97,10 +88,10 @@ public class LojaController implements Initializable {
 
     @FXML
     private Text txtSeuSaldo;
+    private boolean ativarCompra = false;
+    private boolean ativarVenda = false;
 
     public void initialize(URL location, ResourceBundle resources) {
-        configurarBotoes(btnModo);
-        configurarBotoes(btnModo1);
         configurarBotoes(btnComprar);
         configurarBotoes(btnVender);
         contornarBotaoVoltarLoja(btnVoltar);
@@ -121,22 +112,17 @@ public class LojaController implements Initializable {
         btnComprar.setOnAction(event -> {
             try {
                 comprarItem();
-            } catch (PlayerInexistenteException e) {
-                throw new RuntimeException(e);
-            } catch (RemoverCoinsException e) {
-                throw new RuntimeException(e);
-            } catch (SemMoedasException e) {
-                throw new RuntimeException(e);
-            } catch (CompraErroException e) {
+            } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |
+                     SemMoedasParaLojaException e) {
                 throw new RuntimeException(e);
             }
         });
+
+        if (ativarCompra){
+            modoCompra();
+        }
     }
 
-    @FXML
-    void onActionVender(ActionEvent event) throws PlayerInexistenteException {
-        configModoVenda();
-    }
     private void desequiparItemSeEquipado(IEquipable equipableItem) throws PlayerInexistenteException {
         if (Player.getPlayer().getArma().equals(equipableItem)) {
             Player.getPlayer().desequiparArma();
@@ -238,11 +224,7 @@ public class LojaController implements Initializable {
             }
         }
     }
-    @FXML
-    void onClickComprar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
-        modoCompra();
-    }
-    public void comprarItem() throws PlayerInexistenteException, RemoverCoinsException, SemMoedasException, CompraErroException {
+    public void comprarItem() throws PlayerInexistenteException, RemoverCoinsException, CompraErroException, SemMoedasParaLojaException {
         if (Player.getPlayer() != null && itemSelecionado != null) {
             int precoItem = itemSelecionado.getPreco();
             if (Player.getPlayer().getCoins() >= precoItem) {
@@ -256,7 +238,7 @@ public class LojaController implements Initializable {
                 System.out.println("Compra realizada com sucesso!");
                 txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
             } else {
-                throw new SemMoedasException();
+                throw new SemMoedasParaLojaException();
             }
         } else {
             throw new CompraErroException();
@@ -264,7 +246,7 @@ public class LojaController implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCompraOuVenda.fxml")).load());
     }
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
@@ -276,4 +258,19 @@ public class LojaController implements Initializable {
         itemSelecionado = i;
     }
 
+    public void setAtivado(boolean ativado) {
+        this.ativarCompra = ativado;
+        if (ativado) {
+            ativarVenda = false;
+            modoCompra();
+        }
+    }
+
+    public void setAtivarVenda(boolean ativarVenda) throws PlayerInexistenteException {
+        this.ativarVenda = ativarVenda;
+        if (ativarVenda) {
+            ativarCompra = false;
+            configModoVenda();
+        }
+    }
 }
