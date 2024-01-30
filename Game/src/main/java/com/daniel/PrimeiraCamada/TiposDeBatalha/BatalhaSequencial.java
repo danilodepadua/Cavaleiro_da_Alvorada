@@ -22,14 +22,13 @@ public class BatalhaSequencial extends TipoBatalha {
     }
     @Override
     public void Inicializar() {
-        inimigo = sequenciaInimigos.get(0);
+        inimigo = sequenciaInimigos.get(pos);
     }
 
     @Override
     public void LogicaVitoria() throws IOException, PlayerInexistenteException {
         pos++;
         if(pos<sequenciaInimigos.size()){
-            inimigo = sequenciaInimigos.get(pos);
             System.out.println("Nova batalha em sequência");
             bc.ShowMensage("Um novo inimigo apareceu");
             bc.Inicializar();

@@ -2,6 +2,7 @@ package com.daniel.PrimeiraCamada;
 
 import com.daniel.PrimeiraCamada.Interfaces.IEffects;
 import com.daniel.SegundaCamada.AnimationsAttack;
+import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 
 import java.io.Serializable;
@@ -31,15 +32,20 @@ public abstract class Magia implements Serializable {
         this.mensagem.clear();
         this.mensagem.add("Usou " + this.nome);
         ImageView img = GB.getAlvoView(this.autoUsavel);
-        c.usarMp(this.custo);
-        if(this instanceof IEffects){
-            ((IEffects)this).aplicarEfeito(GB.getAlvo(this.autoUsavel));
-        }
-        if(this.agressivo){
-            GB.Ataque(this.Animation.INICIAR(img), (int)(c.getAtqM()*multiplicador), this.tiposElementais, false, this.mensagem);
+        boolean pode = c.usarMp(this.custo);
+        if(pode) {
+            if (this instanceof IEffects) {
+                ((IEffects) this).aplicarEfeito(GB.getAlvo(this.autoUsavel));
+            }
+            if (this.agressivo) {
+                GB.Ataque(this.Animation.INICIAR(img), (int) (c.getAtqM() * multiplicador), this.tiposElementais, false, this.mensagem);
+            } else {
+                GB.acaoNaoAgreciva(this.Animation.INICIAR(img), this.mensagem);
+            }
         }
         else{
-            GB.acaoNaoAgreciva(this.Animation.INICIAR(img), this.mensagem);
+            this.mensagem.add(c.getNome() + " não conseguiu usar a magia");
+            GB.acaoNaoAgreciva(new Timeline(), this.mensagem);
         }
     }
 

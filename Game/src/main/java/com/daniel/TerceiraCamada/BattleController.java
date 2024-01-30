@@ -1,6 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.*;
+import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoBossFinal1;
 import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoFugitivo;
 import com.daniel.PrimeiraCamada.ComportamentosInimigos.ComportamentoPadrao;
 import com.daniel.PrimeiraCamada.Entidades.Player;
@@ -291,7 +292,11 @@ public class BattleController implements Initializable {
         Comportamento comp;
         if(tipoBatalha.inimigo.getComp() == Comportamentos.fugitivo){
             comp = new ComportamentoFugitivo(Enimy, player);
-        } else{
+        }
+        else if(tipoBatalha.inimigo.getComp() == Comportamentos.BossFinal1){
+            comp = new ComportamentoBossFinal1(Enimy, player);
+        }
+        else{
             comp = new ComportamentoPadrao(Enimy, player);
         }
         gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,comp);

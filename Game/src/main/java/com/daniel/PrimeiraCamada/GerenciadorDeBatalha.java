@@ -127,7 +127,7 @@ public class GerenciadorDeBatalha {
                 this.fugir(Inimigo.fugir(Player.getVelocidade()));
             }
             else if(acao == Comportamento.acoes.usarMagia){
-                comp.EscolherMagia().Conjurar(this, Inimigo);
+                comp.magiaEscolhida.Conjurar(this, Inimigo);
             }
             else{
                 this.Ataque(Inimigo.atqAnim.INICIAR(pEffect), Inimigo.getAtqM(),Inimigo.getTipoAtaqueBase(), true, null);

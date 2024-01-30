@@ -120,10 +120,17 @@ public class PersonagemLuta{
         }
         return mensagem;
     }
-    public void usarMp(int i){
-        this.currentMp -= i;
-        if(this.currentMp <0){
-            this.currentMp = 0;
+    public int TomarDanoVerdadeiro(int dano){
+        this.currentHp -= dano;
+        return dano;
+    }
+    public boolean usarMp(int i){
+        if(this.currentMp >= i && !silenciado){
+            this.currentMp -= i;
+            return true;
+        }
+        else{
+            return false;
         }
     }
     public boolean getEnvenenado(){
@@ -282,5 +289,21 @@ public class PersonagemLuta{
     public boolean fugir(int velC){
         Random rand = new Random();
         return !(velC * rand.nextDouble(0.5, 1.5) > this.velocidade);
+    }
+
+    public void setFraquezas(TiposElementais[] fraquezas) {
+        this.fraquezas = fraquezas;
+    }
+
+    public void setResistencias(TiposElementais[] resistencias) {
+        this.resistencias = resistencias;
+    }
+
+    public void setImunidades(TiposElementais[] imunidades) {
+        this.imunidades = imunidades;
+    }
+
+    public void setAbsorcao(TiposElementais[] absorcao) {
+        this.absorcao = absorcao;
     }
 }

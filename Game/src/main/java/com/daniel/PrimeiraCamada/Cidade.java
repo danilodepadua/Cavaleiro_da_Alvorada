@@ -1,8 +1,11 @@
 package com.daniel.PrimeiraCamada;
 
+import com.daniel.PrimeiraCamada.Entidades.Inimigos.BossFinal1;
+import com.daniel.PrimeiraCamada.Entidades.Inimigos.BossFinal2;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
 import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaComum;
+import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaPredefinida;
 import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaSequencial;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
@@ -105,12 +108,7 @@ public abstract class Cidade implements Serializable {
                 FXMLLoader loader =new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
                 Parent root = loader.load();
                 BattleController battleController = loader.getController();
-                ArrayList<Inimigo> inimigs = new ArrayList<>();
-                for(int i =0; i< 2;i++){
-                    Random random = new Random();
-                    inimigs.add(this.inimigos[random.nextInt(0, this.inimigos.length-1)]);
-                }
-                battleController.tipoBatalha = new BatalhaSequencial(inimigs, battleController);
+                battleController.tipoBatalha = new BatalhaComum();
                 Main.ChangeScene(root);
                 battleController.Inicializar();
             } catch (IOException e) {
