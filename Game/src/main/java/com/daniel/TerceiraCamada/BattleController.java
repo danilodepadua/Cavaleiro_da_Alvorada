@@ -193,6 +193,7 @@ public class BattleController implements Initializable {
 
     public void Derrota() throws IOException {
         tipoBatalha.Derrota();
+        audioPlayer.play("/com.daniel.audios/som_derrota.wav", false);
     }
 
     public void Atualiazar(){
