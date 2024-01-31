@@ -122,6 +122,7 @@ public class BattleController implements Initializable {
     private Text txtMensagem;
 
     boolean isItens;
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     void AbrirItens(ActionEvent event) {
@@ -173,7 +174,10 @@ public class BattleController implements Initializable {
 
     @FXML
     void Atacar(ActionEvent event) throws PlayerInexistenteException {
-        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(), player.getTipoAtaqueBase(), true, null);
+        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(),
+                player.getTipoAtaqueBase(), true, null);
+
+        audioPlayer.play("/com.daniel.audios/som_swordSlash.wav", false);
     }
 
     @FXML
