@@ -49,8 +49,8 @@ public class AnciaoController implements Initializable {
     }
 
     private void configurarNPCdaCidade() {
-        if (Objects.equals(Main.cidadeAtual.getNome(), "Cidade Inicial")) {
-            carregarImagemVeio("veio");
+        if (Objects.equals(Main.cidadeAtual.getNome(), "Auroraville")) {
+            carregarImagemVeio("Veio");
             NPC veioNPC = new NPC("Veio");
             if (irmaoVisitado) {
             veioNPC.setMaisOpcao("Seu Irmão?");
@@ -62,7 +62,7 @@ public class AnciaoController implements Initializable {
             dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
         } else if (Objects.equals(Main.cidadeAtual.getNome(), "Montanha Do Norte")) {
-            carregarImagemVeio("veio");
+            carregarImagemVeio("Veio");
             NPC veiacoNPC = new NPC("Veiaco");
             SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
             paneCentral.getChildren().add(dialogo);
@@ -89,7 +89,7 @@ public class AnciaoController implements Initializable {
     }
     private void carregarImagemVeio(String nome) {
         Image imagemVeio;
-        if(nome.equals("veio")) {
+        if(nome.equals("Veio")) {
             imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
         } else if(nome.equals("Ardan")) {
             imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/magoestiloso.png"));
