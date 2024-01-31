@@ -106,11 +106,13 @@ public class Player extends Personagem implements Serializable {
     public int getCoins() {
         return coins;
     }
-    public void removerCoins(int quantidade) throws RemoverCoinsException {
+    public String removerCoins(int quantidade, boolean compra) throws RemoverCoinsException {
+        int inicial = this.coins;
         if (quantidade <= 0 || this.coins < quantidade) {
             throw new RemoverCoinsException();
         }
         this.coins -= quantidade;
+        return Integer.toString(inicial-this.coins);
     }
     public void ganhaCoins(int quantidade) {
         this.coins += quantidade;}

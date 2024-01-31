@@ -71,7 +71,7 @@ public class EstalagemController implements Initializable {
     void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
         Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
-        Player.getPlayer().removerCoins(50);
+        Player.getPlayer().removerCoins(50,true);
         txtOuroTotal.setText(""+Player.getPlayer().getCoins()+" Moedas");
         txtHpTotal.setText(""+Player.getPlayer().getHP());
         txtManaTotal.setText(""+Player.getPlayer().getMP());

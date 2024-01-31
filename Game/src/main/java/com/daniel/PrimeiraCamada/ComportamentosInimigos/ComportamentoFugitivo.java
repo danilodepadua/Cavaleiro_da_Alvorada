@@ -36,7 +36,7 @@ public class ComportamentoFugitivo extends Comportamento {
     @Override
     public Magia EscolherMagia() {
         Random rand = new Random();
-        int i = rand.nextInt(0, magiasPossiveis.size()-1);
+        int i = rand.nextInt(magiasPossiveis.size());
         System.out.println(magiasPossiveis.get(i).getNome());
         return magiasPossiveis.get(i);
     }

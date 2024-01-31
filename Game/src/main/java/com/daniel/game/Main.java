@@ -37,7 +37,7 @@ public class Main extends Application {
         return CurrentStage.getHeight();
     }
     @Override
-    public void start(Stage stage) throws IOException, PlayerInexistenteException {
+    public void start(Stage stage) throws IOException, PlayerInexistenteException {;
         stage.setMinHeight(675);
         stage.setMinWidth(1200);
         cidadeAtual = new CidadeInicial();

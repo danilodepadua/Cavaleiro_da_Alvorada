@@ -4,5 +4,6 @@ public enum Comportamentos {
     padrao,
     fugitivo,
     BossFinal1,
-    BossFinal2;
+    BossFinal2,
+    BossAquatico,
 }

@@ -11,13 +11,14 @@ import java.io.Serializable;
 
 public abstract class AnimationsAttack implements Serializable {
     String ImagesPath;
-    int Quant, Duracao;
-    public AnimationsAttack(int Q, int duracao, String path){
+    int Quant;
+    double Duracao;
+    public AnimationsAttack(int Q, String path){
         ImagesPath = path;
         Quant = Q;
-        Duracao = duracao;
+        Duracao = (double) 1000/15;
     }
-    Timeline Play(ImageView View, int tempo, Image[] Images){
+    Timeline Play(ImageView View, double tempo, Image[] Images){
         Timeline timeline = new Timeline();
         for(int i = 0; i<Images.length; i++){
             final int j = i;

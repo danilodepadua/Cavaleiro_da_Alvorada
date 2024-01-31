@@ -21,7 +21,7 @@ public abstract class Comportamento {
                 magiaEscolhida = this.EscolherMagia();
             }
             catch (Exception e){
-                ErroUsarMagiaExptions erro = new ErroUsarMagiaExptions(adversario.getNome(), this);
+                ErroUsarMagiaExptions erro = new ErroUsarMagiaExptions(controlado.getNome(), this);
                 System.out.println(erro.getMessage());
             }
         }
