@@ -37,10 +37,14 @@ public class NPC {
             itens.add("Tem dinheiro?");
             MapOpcoesNPC.put(name, itens);
         }
-            if (Objects.equals(name, "Veiaco")) {
+        if (Objects.equals(name, "Veiaco")) {
                 itens.add("Você de novo?");
                 MapOpcoesNPC.put(name, itens);
             }
+        if (Objects.equals(name, "Ardan")) {
+            itens.add("O mar está agitado?");
+            MapOpcoesNPC.put(name, itens);
+        }
         }
 
 
@@ -71,7 +75,11 @@ public class NPC {
                 String resposta = gerarRespostaVeiaco(escolhaEmUpperCase);
                 System.out.println("Resposta gerada: " + resposta);
             return resposta;
-            } else {
+            } else if (Objects.equals(name, "Ardan")) {
+            String resposta = gerarRespostaArdan(escolhaEmUpperCase);
+            System.out.println("Resposta gerada: " + resposta);
+            return resposta;
+        } else {
             return "Resposta padrão";
         }
         }
@@ -84,6 +92,8 @@ public class NPC {
                 return "Não viaje para locais difíceis no início";
             case "TEM DINHEIRO?":
                 return "Sou aposentado";
+            case "SEU IRMÃO?":
+                return "O da Montanha do Norte? Ele se acha muito";
             default:
                 return "Resposta padrão do veio";
         }
@@ -92,6 +102,14 @@ public class NPC {
         switch (escolhaPlayer) {
             case "VOCÊ DE NOVO?":
                 return "Aquele era meu irmão mais novo, eu sou mais sábio";
+            default:
+                return "resposta padrão do veiaco";
+        }
+    }
+    private String gerarRespostaArdan(String escolhaPlayer) {
+        switch (escolhaPlayer) {
+            case "O MAR ESTÁ AGITADO?":
+                return "Como sempre";
             default:
                 return "resposta padrão do veiaco";
         }

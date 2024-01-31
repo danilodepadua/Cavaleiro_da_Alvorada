@@ -4,6 +4,7 @@ import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.NPC;
 import com.daniel.PrimeiraCamada.SistemaDeDialogo;
 import com.daniel.game.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,35 +35,26 @@ public class AnciaoController implements Initializable {
     ImageView veioImg;
     @FXML
     Pane paneCentral;
-    private final List<Node> botoesOriginais = new ArrayList<>();
-    private int indiceDicaAtual = 0;
-    private int indiceLoreAtual = 0;
-    private int indiceFuncaoAtual = 0;
-
-    private VBox VBoxAtual = null;
-
-    private static final String DICAS = "Dicas";
-    private static final String COMO_FUNCIONA = "Como funciona";
-    private static final String LORE = "Lore";
-    private static final String VOLTAR = "Voltar";
-    private static final String PROXIMA_DICA = "Próxima Dica";
-    private static final String PROXIMA_FUNCAO = "Próxima Função";
-    private static final String PROXIMA_LORE = "Próxima Lore";
+    @FXML
+    private Button btnVoltar;
     private AudioPlayer audioPlayer = new AudioPlayer();
-
-
+    private static boolean irmaoVisitado = false;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Main.cidadeAtual.audioPlayer.stop();
-
         audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
-        configurarBotaoVoltar();
-        /*configurarBotoesIniciais();*/
+        contornarBotaoVoltar(btnVoltar);
+        configurarNPCdaCidade();
+    }
+
+    private void configurarNPCdaCidade() {
         if (Objects.equals(Main.cidadeAtual.getNome(), "Cidade Inicial")) {
-            carregarImagemVeio();
+            carregarImagemVeio("veio");
             NPC veioNPC = new NPC("Veio");
-            veioNPC.setMaisOpcao("abluble teste");
+            if (irmaoVisitado) {
+            veioNPC.setMaisOpcao("Seu Irmão?");
+            }
             SistemaDeDialogo dialogo = new SistemaDeDialogo(veioNPC);
             paneCentral.getChildren().add(dialogo);
             dialogo.setPrefWidth(400);
@@ -70,189 +62,51 @@ public class AnciaoController implements Initializable {
             dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
         } else if (Objects.equals(Main.cidadeAtual.getNome(), "Montanha Do Norte")) {
-                carregarImagemVeio();
-                NPC veiacoNPC = new NPC("Veiaco");
-                SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
-                paneCentral.getChildren().add(dialogo);
-                dialogo.setPrefWidth(400);
-                dialogo.setPrefHeight(200);
-                dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
-                dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
+            carregarImagemVeio("veio");
+            NPC veiacoNPC = new NPC("Veiaco");
+            SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
+            paneCentral.getChildren().add(dialogo);
+            dialogo.setPrefWidth(400);
+            dialogo.setPrefHeight(200);
+            dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
+            dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
+            irmaoVisitado = true;
+        } else if (Objects.equals(Main.cidadeAtual.getNome(), "Cidade Portuária")) {
+            carregarImagemVeio("Ardan");
+            NPC ardanNPC = new NPC("Ardan");
+            SistemaDeDialogo dialogo = new SistemaDeDialogo(ardanNPC);
+            paneCentral.getChildren().add(dialogo);
+            dialogo.setPrefWidth(400);
+            dialogo.setPrefHeight(200);
+            dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
+            dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
         }
-
-
-
-
     }
-
-    private Button criarBotaoVoltar() {
-        Button botaoVoltar = new Button(VOLTAR);
-        botaoVoltar.setOnAction(event -> {
-            try {
-                audioPlayer.stop();
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("Clicou no botao de voltar");
-        });
-        estiloBotao(botaoVoltar);
-        configurarBotoes(botaoVoltar);
-        configurarBotoesTelaCidade(botaoVoltar);
-        AnchorPane.setBottomAnchor(botaoVoltar, 10.0);
-        AnchorPane.setLeftAnchor(botaoVoltar, 10.0);
-        return botaoVoltar;
+    @FXML
+    void OnActionVoltar(ActionEvent event) throws IOException {
+        audioPlayer.stop();
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
-
-    private void configurarBotaoVoltar() {
-        Button botaoVoltar = criarBotaoVoltar();
-        Screen.getChildren().add(botaoVoltar);
+    private void carregarImagemVeio(String nome) {
+        Image imagemVeio;
+        if(nome.equals("veio")) {
+            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
+        } else if(nome.equals("Ardan")) {
+            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/magoestiloso.png"));
+        } else {
+            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
+        }
+        configurarImagemVeio(imagemVeio, nome);
     }
-
-    /*private void configurarBotoesIniciais() {
-        adicionarBotao(Hbox, DICAS, Pos.CENTER);
-        adicionarBotao(Hbox, COMO_FUNCIONA, Pos.CENTER);
-        adicionarBotao(Hbox, LORE, Pos.CENTER);
-        botoesOriginais.addAll(Hbox.getChildren());
-    }*/
-
-    private void carregarImagemVeio() {
-        Image imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
-        configurarImagemVeio(imagemVeio);
-    }
-
-    private void configurarImagemVeio(Image image) {
+    private void configurarImagemVeio(Image image, String nome) {
+        if (nome.equals("Ardan")) {
+            veioImg.setImage(image);
+            veioImg.setFitWidth(600);
+            veioImg.setFitHeight(800);
+        } else {
         veioImg.setImage(image);
         veioImg.setFitWidth(500);
         veioImg.setFitHeight(500);
-    }
-
-    private void handleButtonClick(String buttonText) { // confere qual botão inicial foi clicado e chama o metodo enviando seus valores correspondentes
-        System.out.println("handleButtonClick: " + buttonText);
-
-        Hbox.getChildren().clear();
-
-        if (DICAS.equals(buttonText)) {
-            handleArrayButtonClick(DICAS, VOLTAR, PROXIMA_DICA,
-                    "A dica é que o mal nunca vence afdfsdfsdsdgsdgsdgdsgsdgsg", "Outra dica...", "More dicas...");
         }
-
-        if (COMO_FUNCIONA.equals(buttonText)) {
-            handleArrayButtonClick(COMO_FUNCIONA, VOLTAR, PROXIMA_FUNCAO,
-                    "funciona daquele jeito rapaz", "entre uma função e outra", "ksksk função");
-        }
-
-        if (LORE.equals(buttonText)) {
-            handleArrayButtonClick(LORE, VOLTAR, PROXIMA_LORE,
-                    "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
-        }
-        if (PROXIMA_DICA.equals(buttonText)) {
-            handleArrayButtonClick(DICAS, VOLTAR, PROXIMA_DICA,
-                    "A dica é que o mal nunca vence", "Outra dica...", "More dicas...");
-        }
-
-        if (PROXIMA_FUNCAO.equals(buttonText)) {
-            handleArrayButtonClick(COMO_FUNCIONA, VOLTAR, PROXIMA_FUNCAO,
-                    "funciona daquele jeito rapaz", "entre uma função e outra", "ksksk função");
-        }
-
-        if (PROXIMA_LORE.equals(buttonText)) {
-            handleArrayButtonClick(LORE, VOLTAR, PROXIMA_LORE,
-                    "A lore é grande rapaz", "a lore n acaba", "nunca nunca");
-        }
-
-        Hbox.getChildren().add(VBoxAtual);
-    }
-
-    private void handleArrayButtonClick(String arrayType, String botaoVoltarLabel, String botaoProxLabel, String... itensArray) {
-        System.out.println("handleArrayButtonClick - arrayType: " + arrayType + ", botaoProxLabel: " + botaoProxLabel);
-
-        if (itensArray.length == 0) {
-            System.out.println("Empty array for " + arrayType);
-            return;
-        }
-
-        switch (arrayType) {
-            case DICAS:
-                if (PROXIMA_DICA.equals(botaoProxLabel)) {
-                    indiceDicaAtual = (indiceDicaAtual + 1) % itensArray.length;
-                    System.out.println("Current Dicas Index: " + indiceDicaAtual);
-                }
-                VBoxAtual = criarVboxTextBotoes(itensArray[indiceDicaAtual], botaoVoltarLabel, botaoProxLabel);
-                break;
-
-            case COMO_FUNCIONA:
-                if (PROXIMA_FUNCAO.equals(botaoProxLabel)) {
-                    indiceFuncaoAtual = (indiceFuncaoAtual + 1) % itensArray.length;
-                    System.out.println("Current Como funciona Index: " + indiceFuncaoAtual);
-                }
-                VBoxAtual = criarVboxTextBotoes(itensArray[indiceFuncaoAtual], botaoVoltarLabel, botaoProxLabel);
-                break;
-
-            case LORE:
-                if (PROXIMA_LORE.equals(botaoProxLabel)) {
-                    indiceLoreAtual = (indiceLoreAtual + 1) % itensArray.length;
-                    System.out.println("Current Lore Index: " + indiceLoreAtual);
-                }
-                VBoxAtual = criarVboxTextBotoes(itensArray[indiceLoreAtual], botaoVoltarLabel, botaoProxLabel);
-                break;
-
-            default:
-                System.out.println("Invalid arrayType: " + arrayType);
-                break;
-        }
-    }
-
-    private void adicionarBotao(HBox innerHBox, String buttonText, Pos alignment) { //cria, posiciona e estiliza o botão
-        Button button = new Button(buttonText);
-        innerHBox.getChildren().add(button);
-        HBox.setMargin(button, new Insets(5));
-        HBox.setHgrow(button, Priority.ALWAYS);
-        innerHBox.setAlignment(alignment);
-
-        estiloBotao(button);
-        configurarBotoes(button);
-        configurarBotoesTelaCidade(button);
-        configurarBotaoAcao(button, buttonText);
-    }
-
-    private void configurarBotaoAcao(Button button, String buttonText) { // se o botão voltar for clicado, ele volta ao estado inicial da tela
-        button.setOnAction(event -> {
-            System.out.println("Button Clicked: " + buttonText);
-            if (VOLTAR.equals(buttonText)) {
-                formaInicial();
-            } else {
-                handleButtonClick(buttonText);
-            }
-        });
-    }
-
-    private Text criarTexto(String labelTexto) { // cria o texto e dá estilo
-        Text text = new Text(labelTexto);
-        text.setStyle("-fx-font-size: 20px; -fx-fill: #ffffff; -fx-font-weight: bold; -fx-background-color: rgba(255, 255, 255, 1);");
-        return text;
-    }
-
-    private HBox criarHBoxBotoes(String... botaoLabels) { // cria os botões
-        HBox botoesHBox = new HBox();
-        for (String buttonLabel : botaoLabels) {
-            adicionarBotao(botoesHBox, buttonLabel, Pos.CENTER);
-        }
-        botoesHBox.setAlignment(Pos.CENTER);
-        return botoesHBox;
-    }
-
-    private VBox criarVboxTextBotoes(String labelTexto, String... botaoLabels) { // chama os métodos de criação dos botões e textos associados com o botão recebido
-        VBox vBox = new VBox();
-        vBox.getChildren().add(criarTexto(labelTexto));
-        vBox.getChildren().add(criarHBoxBotoes(botaoLabels));
-        vBox.setAlignment(Pos.CENTER);
-        return vBox;
-    }
-
-
-    private void formaInicial() { // limpa os botões atuais e pega os botões iniciais
-        Hbox.getChildren().clear();
-        Hbox.getChildren().addAll(botoesOriginais);
     }
 }

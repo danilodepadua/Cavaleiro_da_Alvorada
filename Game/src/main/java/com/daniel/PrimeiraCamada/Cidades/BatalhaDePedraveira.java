@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class BatalhaDePedraveira extends Cidade {
     public BatalhaDePedraveira() throws PlayerInexistenteException{
         super("Pedraveira", "/com.daniel.Images/Fundos/BatalhaDePedraveira.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        this.musicPath = "/com.daniel.audios/msc_pedraveira.wav";
 
         this.inimigos = new Inimigo[]{new InimigoSlimeDeLuzNv3(), new InimigoSlimeDeRaioNv3(), new InimigoSlimeDeTerraNv3(), new InimigoSlimeDeVentoNv3(), new InimigoCobraGigante(), new InimigoCorvoGigante()};
 

@@ -18,7 +18,10 @@ import java.util.ArrayList;
 
 public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
-        super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg",
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+
+        this.musicPath = "/com.daniel.audios/msc_dasopoles.wav";
 
         this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeTerraNv1(), new InimigoSlimeDeLuzNv1(), new InimigoSlimeDeAguaNv2()};
         this.quests.add(new QuestSlimeDeFogoNv1());
