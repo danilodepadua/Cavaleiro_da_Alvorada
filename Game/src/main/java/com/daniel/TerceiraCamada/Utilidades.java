@@ -208,8 +208,10 @@ public class Utilidades {
             // Adiciona um KeyFrame para adicionar o caractere
             timeline.getKeyFrames().add(new KeyFrame(
                     Duration.millis(time),
-                    event -> texto.setText(texto.getText() + mensagem.charAt(finalI))
-            ));
+                    event -> {
+                        texto.setText(texto.getText() + mensagem.charAt(finalI));
+                        audioPlayer.play("/com.daniel.audios/som_beep2.wav", false);
+                    }));
 
             // Adiciona um KeyFrame para limpar o texto se for o último caractere da mensagem
             if (finalI == mensagem.length() - 1) {
@@ -228,6 +230,7 @@ public class Utilidades {
         // Inicia a animação
         timeline.play();
     }
+
 
 
 
