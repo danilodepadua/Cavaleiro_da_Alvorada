@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -95,6 +96,7 @@ public class CriarPersonagemController implements Initializable {
     @FXML
     private Button btnMenosVel;
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     void Criar(ActionEvent event) throws IOException, PlayerInexistenteException {
@@ -107,6 +109,7 @@ public class CriarPersonagemController implements Initializable {
         int Int = calcularValorDaBarra(BarraInt);
         Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        audioPlayer.stop();
     }
     @FXML
     void MaisForca(ActionEvent event) {
@@ -193,6 +196,7 @@ public class CriarPersonagemController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        audioPlayer.play("/com.daniel.audios/msc_criacaodepersonagem.wav", true);
         btnCriar.setDisable(true);
 
 
