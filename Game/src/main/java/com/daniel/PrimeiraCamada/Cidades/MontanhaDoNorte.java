@@ -18,8 +18,13 @@ import java.util.ArrayList;
 public class MontanhaDoNorte extends Cidade {
 
     public MontanhaDoNorte() throws PlayerInexistenteException {
-        super("Montanha Do Norte","/com.daniel.Images/Fundos/Montanha do norte.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
-        this.inimigos = new Inimigo[]{new InimigoSnowMan(), new InimigoTRex(), new InimigoTigerMan(), new InimigoSlimeDeGeloNv3()};
+        super("Montanha Do Norte","/com.daniel.Images/Fundos/Montanha do norte.jpg",
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        this.inimigos = new Inimigo[]{new InimigoSnowMan(), new InimigoTRex(),
+                new InimigoTigerMan(), new InimigoSlimeDeGeloNv3()};
+
+        this.musicPath = "/com.daniel.audios/msc_montanhaDoNorte.wav";
+
         // Adiciona quests à lista de quests disponíveis da cidade
         this.itens.add(new EspadaGeloBasica());
         this.itens.add(new EspadaGeloAperfeicoada());
