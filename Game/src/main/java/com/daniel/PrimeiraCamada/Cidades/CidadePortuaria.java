@@ -19,7 +19,9 @@ import java.util.ArrayList;
 public class CidadePortuaria extends Cidade {
 
     public CidadePortuaria() throws PlayerInexistenteException{
-        super("Cidade Portuária", "/com.daniel.Images/Fundos/CidadePortuaria.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Cidade Portuária", "/com.daniel.Images/Fundos/CidadePortuaria.jpg",
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        this.musicPath = "com.daniel.audios/msc_cidadePortuaria.wav";
 
         this.inimigos = new Inimigo[]{new InimigoLadrao(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeAguaNv3(), new InimigoCorvoGigante()};
 
