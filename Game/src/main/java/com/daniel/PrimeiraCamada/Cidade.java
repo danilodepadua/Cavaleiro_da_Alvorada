@@ -168,7 +168,7 @@ public abstract class Cidade implements Serializable {
         return criarBotao("Anciao", () -> {
             try {
                 this.audioPlayer.stop();
-                
+
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
 
                 PauseTransition pauseTransition = new PauseTransition(Duration.seconds(7));
