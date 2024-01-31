@@ -140,10 +140,6 @@ public class CidadeController implements Initializable {
     private Text txtCidade;
 
     @FXML
-    void Salvar(ActionEvent event) throws PlayerInexistenteException {
-        Main.saveManager.Salvar();
-    }
-    @FXML
     void onActionInventario(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
     }
@@ -231,14 +227,18 @@ public class CidadeController implements Initializable {
 
     @FXML
     void onClickStatus(ActionEvent event) throws IOException {
+        audioPlayer.stop();
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
     @FXML
     void Config(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
     @FXML
     void Craft(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCraft.fxml")).load());
 
     }

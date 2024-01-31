@@ -97,7 +97,6 @@ public class ConfigController implements Initializable {
     void onClickConfirmar(ActionEvent event) throws PlayerInexistenteException, SenhaIncorretaException {
         String senha = "santiago";
         if (txtTextfield.getText().equals(senha)){
-            if (Player.getPlayer() != null){
                 Player.getPlayer().ganhaCoins(10000);
                 Player.getPlayer().adicionarCidade(new Ilha());
                 Player.getPlayer().adicionarCidade(new Dasópoles());
@@ -109,9 +108,6 @@ public class ConfigController implements Initializable {
                 Player.getPlayer().aumentaInteligenciaProgess(999);
                 paneAdmin.setOpacity(0);
                 paneAdmin.setDisable(true);
-            }else {
-                throw  new PlayerInexistenteException();
-            }
         }else {
             throw new SenhaIncorretaException();
         }

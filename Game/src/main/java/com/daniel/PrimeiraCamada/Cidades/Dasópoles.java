@@ -48,7 +48,7 @@ public class Dasópoles extends Cidade {
     @Override
     public void ajustarBotoes() throws PlayerInexistenteException {
         this.botoes = new ArrayList<>();
-        // Adiciona botões específicos da CidadeInicial
+        // Adiciona botões específicos da Auroraville
         this.botoes.add(criarBotaoViajar());
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());

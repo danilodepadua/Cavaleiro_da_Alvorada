@@ -2,15 +2,13 @@ package com.daniel.game;
 
 import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Cidade;
-import com.daniel.PrimeiraCamada.Cidades.CidadeInicial;
+import com.daniel.PrimeiraCamada.Cidades.Auroraville;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Save.SaveManager;
 import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -40,7 +38,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException, PlayerInexistenteException {
         stage.setMinHeight(675);
         stage.setMinWidth(1200);
-        cidadeAtual = new CidadeInicial();
+        cidadeAtual = new Auroraville();
         CurrentStage = stage;
         stage.setResizable(false);
         FXMLLoader root = new FXMLLoader(Main.class.getResource("MainScene.fxml"));

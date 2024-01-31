@@ -184,7 +184,7 @@ public class MapaController extends Utilidades implements Initializable {
                             case "Montanha Do Norte":
                                 MostraMarca(0.445, 0.15);
                                 break;
-                            case "Cidade Inicial":
+                            case "Auroraville":
                                 MostraMarca(0.924, 0.55);
                                 break;
                             case "Dasópoles":

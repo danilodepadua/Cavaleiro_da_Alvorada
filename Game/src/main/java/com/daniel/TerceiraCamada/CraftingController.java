@@ -259,6 +259,9 @@ public class CraftingController implements Initializable {
         int inteligencia = Player.getPlayer().getInteligence();
         double chance = crafting.getChanceBase();
         double sucesso = chance + (inteligencia * 0.01);
+        if( sucesso >= 1){
+            sucesso=1;
+        }
         return sucesso;
     }
     private void editarTexto() throws PlayerInexistenteException {

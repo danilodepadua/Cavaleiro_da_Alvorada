@@ -6,21 +6,18 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaFogoBasica;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.PrimeiraCamada.Itens.Mapas.MapaDasópoles;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.*;
 import com.daniel.PrimeiraCamada.Quests.*;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Quests.QuestBabySlime;
-import com.daniel.PrimeiraCamada.Quests.QuestSnowMan;
 
 
 import java.util.ArrayList;
 
-public class CidadeInicial extends Cidade{
-    public CidadeInicial() throws PlayerInexistenteException {
+public class Auroraville extends Cidade{
+    public Auroraville() throws PlayerInexistenteException {
         super("Auroraville", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
@@ -53,7 +50,7 @@ public class CidadeInicial extends Cidade{
     public void ajustarBotoes() throws PlayerInexistenteException {
 
         this.botoes = new ArrayList<>();
-        // Adiciona botões específicos da CidadeInicial
+        // Adiciona botões específicos da Auroraville
         this.botoes.add(criarBotaoViajar());
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
