@@ -31,5 +31,6 @@ public class MontanhaDoNorte extends Cidade {
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoTaverna());
         this.botoes.add(criarBotaoSalvar());
+        this.botoes.add(criarBotaoAnciao());
     }
 }

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
@@ -31,6 +32,8 @@ public class AnciaoController implements Initializable {
     HBox Hbox;
     @FXML
     ImageView veioImg;
+    @FXML
+    Pane paneCentral;
     private final List<Node> botoesOriginais = new ArrayList<>();
     private int indiceDicaAtual = 0;
     private int indiceLoreAtual = 0;
@@ -52,24 +55,32 @@ public class AnciaoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
-        carregarImagemVeio();
         configurarBotaoVoltar();
-        configurarBotoesIniciais();
+        /*configurarBotoesIniciais();*/
+        if (Objects.equals(Main.cidadeAtual.getNome(), "Cidade Inicial")) {
+            carregarImagemVeio();
+            NPC veioNPC = new NPC("Veio");
+            veioNPC.setMaisOpcao("abluble teste");
+            SistemaDeDialogo dialogo = new SistemaDeDialogo(veioNPC);
+            paneCentral.getChildren().add(dialogo);
+            dialogo.setPrefWidth(400);
+            dialogo.setPrefHeight(200);
+            dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
+            dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
+        } else if (Objects.equals(Main.cidadeAtual.getNome(), "Montanha Do Norte")) {
+                carregarImagemVeio();
+                NPC veiacoNPC = new NPC("Veiaco");
+                SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
+                paneCentral.getChildren().add(dialogo);
+                dialogo.setPrefWidth(400);
+                dialogo.setPrefHeight(200);
+                dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
+                dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
+        }
 
-        StackPane pane = new StackPane();
-        NPC veioNPC = new NPC("Veio");
-        veioNPC.setMaisOpcao("abluble teste");
-        SistemaDeDialogo dialogo = new SistemaDeDialogo(veioNPC);
-        pane.getChildren().add(dialogo);
 
 
-        BorderPane.setAlignment(pane, Pos.CENTER);
-        BorderPane.setMargin(pane, new Insets(50));
 
-        BorderPane root = new BorderPane();
-        root.setBottom(pane);
-        root.setAlignment(dialogo, Pos.CENTER);
-        Screen.getChildren().add(root);
     }
 
     private Button criarBotaoVoltar() {
@@ -96,12 +107,12 @@ public class AnciaoController implements Initializable {
         Screen.getChildren().add(botaoVoltar);
     }
 
-    private void configurarBotoesIniciais() {
+    /*private void configurarBotoesIniciais() {
         adicionarBotao(Hbox, DICAS, Pos.CENTER);
         adicionarBotao(Hbox, COMO_FUNCIONA, Pos.CENTER);
         adicionarBotao(Hbox, LORE, Pos.CENTER);
         botoesOriginais.addAll(Hbox.getChildren());
-    }
+    }*/
 
     private void carregarImagemVeio() {
         Image imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
