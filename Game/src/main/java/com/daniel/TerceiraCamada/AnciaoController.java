@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.NPC;
 import com.daniel.PrimeiraCamada.SistemaDeDialogo;
 import com.daniel.game.Main;
@@ -44,10 +45,12 @@ public class AnciaoController implements Initializable {
     private static final String PROXIMA_DICA = "Próxima Dica";
     private static final String PROXIMA_FUNCAO = "Próxima Função";
     private static final String PROXIMA_LORE = "Próxima Lore";
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
         carregarImagemVeio();
         configurarBotaoVoltar();
@@ -73,6 +76,7 @@ public class AnciaoController implements Initializable {
         Button botaoVoltar = new Button(VOLTAR);
         botaoVoltar.setOnAction(event -> {
             try {
+                audioPlayer.stop();
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
