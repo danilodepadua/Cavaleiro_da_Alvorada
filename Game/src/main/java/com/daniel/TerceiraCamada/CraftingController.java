@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Crafting;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
@@ -67,6 +68,7 @@ public class CraftingController implements Initializable {
     private Item itemSelecionado;
     private Item itemSelecionado2;
     private Crafting crafting;
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -248,6 +250,7 @@ public class CraftingController implements Initializable {
             double random =Math.random();
             if (calcularChance() > random) {
                 mostrarResultado("Item Forjado!");
+                audioPlayer.play("/com.daniel.audios/som_craft.wav", false);
                 return craftResult;
             }else {
                 mostrarResultado("Falhou");
