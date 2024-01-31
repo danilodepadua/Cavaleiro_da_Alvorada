@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -54,6 +55,7 @@ public class TavernaController implements Initializable {
     @FXML
     private VBox vboxTextos;
 
+    private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
     void Jogar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("BlackJack.fxml")).load());
@@ -68,6 +70,7 @@ public class TavernaController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             txtMoedas.setText("Carteira: " + Player.getPlayer().getCoins() + " Moedas");
+            audioPlayer.play("/com.daniel.audios/msc_taverna.wav", true);
             Point2D centro = new Point2D(315, 169);
             desenharTexto(texto, 40, centro);
         } catch (PlayerInexistenteException e) {
