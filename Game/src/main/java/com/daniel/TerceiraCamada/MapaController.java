@@ -157,6 +157,7 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cidadeAtual.pararMusica();
         contornarBotaoVoltar(btnNao);
         configurarBotoes(btnSim);
         contornarBotaoVoltar(btnVoltar);
