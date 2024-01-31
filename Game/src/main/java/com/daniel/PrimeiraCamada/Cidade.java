@@ -168,22 +168,18 @@ public abstract class Cidade implements Serializable {
         return criarBotao("Anciao", () -> {
             try {
                 this.audioPlayer.stop();
-
-                // Mudar para a tela de carregamento
+                
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
 
-                // Criar uma transição de pausa de 5 segundos
                 PauseTransition pauseTransition = new PauseTransition(Duration.seconds(7));
                 pauseTransition.setOnFinished(event -> {
                     try {
-                        // Após a pausa, mudar para a tela do Ancião
                         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 });
 
-                // Iniciar a transição de pausa
                 pauseTransition.play();
 
             } catch (IOException e) {
