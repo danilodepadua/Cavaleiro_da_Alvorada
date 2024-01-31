@@ -20,7 +20,7 @@ public class CidadePortuaria extends Cidade {
     public CidadePortuaria() throws PlayerInexistenteException{
         super("Cidade Portuária", "/com.daniel.Images/Fundos/CidadePortuaria.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
-        this.musicPath = "com.daniel.audios/msc_cidadePortuaria.wav";
+        this.musicPath = "/com.daniel.audios/msc_cidadePortuaria.wav";
 
         this.inimigos = new Inimigo[]{new InimigoSlimeDeTerraNv2(), new InimigoSlimeDeRaioNv2(), new InimigoSlimeDeAguaNv3(), new InimigoLadrao(), new InimigoSlimeDeFogoNv3(), new InimigoSlimeDeEscuridaoNv3()};
 

@@ -164,7 +164,7 @@ public class CidadeController implements Initializable {
             configurarBotoesTelaCidade(b);
             estiloBotao(b);
 
-            if (!b.getText().equals("Salvar")){
+            if (!b.getText().equals("Salvar") && !b.getText().equals("Quest")){
                 b.setOnMousePressed(event -> {
                     audioPlayer.stop();
                 });
