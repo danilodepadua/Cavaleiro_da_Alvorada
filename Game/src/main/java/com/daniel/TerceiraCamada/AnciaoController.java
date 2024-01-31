@@ -53,6 +53,8 @@ public class AnciaoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Main.cidadeAtual.audioPlayer.stop();
+
         audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
         configurarBotaoVoltar();

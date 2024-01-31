@@ -20,7 +20,9 @@ import java.util.ArrayList;
 
 public class CidadeInicial extends Cidade{
     public CidadeInicial() throws PlayerInexistenteException {
-        super("Cidade Inicial", "/com.daniel.Images/Fundos/CidadeNoturna.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Cidade Inicial", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 
         // Inicializa a lista de inimigos corretamente
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeEscuridaoNv1(), new InimigoSlimeDeRaioNv1(), new InimigoLadrao()};
@@ -49,6 +51,7 @@ public class CidadeInicial extends Cidade{
 
     @Override
     public void ajustarBotoes() throws PlayerInexistenteException {
+
         this.botoes = new ArrayList<>();
         // Adiciona botões específicos da CidadeInicial
         this.botoes.add(criarBotaoViajar());

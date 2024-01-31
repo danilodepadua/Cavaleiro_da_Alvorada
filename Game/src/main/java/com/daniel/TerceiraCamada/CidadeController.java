@@ -149,6 +149,9 @@ public class CidadeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        audioPlayer.stop();
+        audioPlayer.play(Main.cidadeAtual.getMusicPath(), true);
+
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
             Button b = new Button();
 
@@ -212,6 +215,7 @@ public class CidadeController implements Initializable {
         configurarEventoMouseExited(imgResistencia, infoResistencia);
         configurarEventoMouseExited(imgVelocidade, infoVelo);
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
+
 
 
     }

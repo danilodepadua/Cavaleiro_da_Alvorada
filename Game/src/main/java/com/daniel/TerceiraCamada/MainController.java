@@ -66,6 +66,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if (!mainSceneMusicaTocando) { audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);}
         mainSceneMusicaTocando = true;
         definirBackground(Screen, "/com.daniel.Images/Fundos/Calabouso.jpg");
