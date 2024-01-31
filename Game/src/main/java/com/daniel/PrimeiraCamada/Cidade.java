@@ -9,9 +9,11 @@ import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaPredefinida;
 import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaSequencial;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -162,12 +164,28 @@ public abstract class Cidade implements Serializable {
             }
         });
     }
-    protected Botao criarBotaoAnciao(){
+    protected Botao criarBotaoAnciao() {
         return criarBotao("Anciao", () -> {
             try {
-                this.pararMusica();
+                this.audioPlayer.stop();
 
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
+                // Mudar para a tela de carregamento
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
+
+                // Criar uma transição de pausa de 5 segundos
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(7));
+                pauseTransition.setOnFinished(event -> {
+                    try {
+                        // Após a pausa, mudar para a tela do Ancião
+                        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+                // Iniciar a transição de pausa
+                pauseTransition.play();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
