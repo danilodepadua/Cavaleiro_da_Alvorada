@@ -97,17 +97,21 @@ public class ConfigController implements Initializable {
     void onClickConfirmar(ActionEvent event) throws PlayerInexistenteException, SenhaIncorretaException {
         String senha = "santiago";
         if (txtTextfield.getText().equals(senha)){
-            Player.getPlayer().ganhaCoins(10000);
-            Player.getPlayer().adicionarCidade(new Ilha());
-            Player.getPlayer().adicionarCidade(new Dasópoles());
-            Player.getPlayer().adicionarCidade(new MonteClaro());
-            Player.getPlayer().ganharXp(100000);
-            Player.getPlayer().aumentaForcaProgress(999);
-            Player.getPlayer().aumentaVelocidadeProgress(999);
-            Player.getPlayer().aumentaResistenciaProgress(999);
-            Player.getPlayer().aumentaInteligenciaProgess(999);
-            paneAdmin.setOpacity(0);
-            paneAdmin.setDisable(true);
+            if (Player.getPlayer() != null){
+                Player.getPlayer().ganhaCoins(10000);
+                Player.getPlayer().adicionarCidade(new Ilha());
+                Player.getPlayer().adicionarCidade(new Dasópoles());
+                Player.getPlayer().adicionarCidade(new MonteClaro());
+                Player.getPlayer().ganharXp(100000);
+                Player.getPlayer().aumentaForcaProgress(999);
+                Player.getPlayer().aumentaVelocidadeProgress(999);
+                Player.getPlayer().aumentaResistenciaProgress(999);
+                Player.getPlayer().aumentaInteligenciaProgess(999);
+                paneAdmin.setOpacity(0);
+                paneAdmin.setDisable(true);
+            }else {
+                throw  new PlayerInexistenteException();
+            }
         }else {
             throw new SenhaIncorretaException();
         }

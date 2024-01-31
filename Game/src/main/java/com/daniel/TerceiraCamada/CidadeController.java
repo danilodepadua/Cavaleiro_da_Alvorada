@@ -149,14 +149,26 @@ public class CidadeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        audioPlayer.stop();
+        if(Main.cidadeAtual.getMusicPath() != null){
+            audioPlayer.play(Main.cidadeAtual.getMusicPath(), true);
+        }
+
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
             Button b = new Button();
 
             int finalI = i;
             b.setText(Main.cidadeAtual.getBotaoNome(finalI));
             b.setOnAction(event -> Main.cidadeAtual.getBotaoFunc(finalI).run());
+
             configurarBotoesTelaCidade(b);
             estiloBotao(b);
+
+            if (!b.getText().equals("Salvar") && !b.getText().equals("Quest")){
+                b.setOnMousePressed(event -> {
+                    audioPlayer.stop();
+                });
+            }
 
             VBox.getChildren().add(b);
         }
@@ -212,6 +224,7 @@ public class CidadeController implements Initializable {
         configurarEventoMouseExited(imgResistencia, infoResistencia);
         configurarEventoMouseExited(imgVelocidade, infoVelo);
         configurarEventoMouseExited(imgDefesaMagica, infoDefesaMagica);
+
 
 
     }

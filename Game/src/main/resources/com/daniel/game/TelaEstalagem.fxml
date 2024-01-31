@@ -24,63 +24,22 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="62.0" layoutY="186.0" opacity="0.9" prefHeight="236.0" prefWidth="360.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="62.0">
-         <children>
-            <VBox layoutX="12.0" layoutY="12.0" prefHeight="214.0" prefWidth="204.0" spacing="30.0">
-               <children>
-                  <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="ATRIBUTO TOTAL">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="24.0" />
-                     </font>
-                  </Text>
-                  <HBox prefHeight="26.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="HP Total:">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtHpTotal" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="26.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Mana Total:">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtManaTotal" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="26.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Ouro Total:">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtOuroTotal" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="Barlow Condensed SemiBold" size="25.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
       <HBox layoutX="62.0" layoutY="458.0" prefHeight="72.0" prefWidth="432.0" spacing="30.0" />
-      <AnchorPane fx:id="paneInfos" layoutX="790.0" layoutY="186.0" opacity="0.9" prefHeight="236.0" prefWidth="360.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" visible="false" AnchorPane.leftAnchor="772.0">
+      <VBox layoutX="95.0" layoutY="161.0" prefHeight="287.0" prefWidth="204.0" spacing="43.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="901.0">
+         <children>
+            <Button fx:id="btnDescanso" mnemonicParsing="false" onAction="#onActionDescanso" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Descansar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnTaverna" mnemonicParsing="false" onAction="#onActionTaverna" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="paneInfos" layoutX="431.0" layoutY="161.0" prefHeight="312.0" prefWidth="360.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" visible="false" AnchorPane.leftAnchor="431.0">
          <children>
             <VBox layoutX="12.0" layoutY="12.0" prefHeight="214.0" prefWidth="274.0" spacing="30.0">
                <children>
@@ -133,26 +92,21 @@
                   </HBox>
                </children>
             </VBox>
+            <Button fx:id="btnRestaurar" layoutX="99.0" layoutY="259.0" mnemonicParsing="false" onAction="#onActionRestaurar" prefHeight="38.0" prefWidth="142.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Recuperar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSair" layoutX="294.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickFechar" prefHeight="38.0" prefWidth="55.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../com.daniel.Images/Setas/X.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <VBox layoutX="498.0" layoutY="186.0" prefHeight="287.0" prefWidth="204.0" spacing="43.0" AnchorPane.leftAnchor="498.0" AnchorPane.rightAnchor="498.0">
-         <children>
-            <Button fx:id="btnDescanso" mnemonicParsing="false" onAction="#onActionDescanso" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Descansar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnTaverna" mnemonicParsing="false" onAction="#onActionTaverna" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Taverna" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnRestaurar" mnemonicParsing="false" onAction="#onActionRestaurar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Recuperar" textFill="#eccb7e" visible="false">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
    </children>
 </AnchorPane>

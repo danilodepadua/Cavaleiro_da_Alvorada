@@ -31,7 +31,7 @@
                <font>
                   <Font name="Barlow Condensed SemiBold" size="15.0" />
                </font></Button>
-            <Text fx:id="txtMoedas" fill="#e5ff00" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="txtMoedas" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="26.0" />
                </font>

@@ -38,37 +38,28 @@ public class MainController implements Initializable {
 
     private AudioPlayer audioPlayer = new AudioPlayer();
 
-    private static boolean mainSceneMusicaTocando = false;
-
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
-        audioPlayer.somMouseClick(btnNovoJogo, "/com.daniel.audios/musica_menu.wav");
         audioPlayer.stop();
-        mainSceneMusicaTocando = false;
-        System.out.println("Iniciou");
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
 
     }
     @FXML
     void Carregar(ActionEvent event) throws IOException {
-        audioPlayer.somMouseClick(btnCarregar, "/com.daniel.audios/musica_menu.wav");
         audioPlayer.stop();
-        System.out.println("Carregando");
         Main.saveManager.Carregar();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
-        audioPlayer.somMouseClick(btnConfig, "/com.daniel.audios/musica_menu.wav");
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfigInicial.fxml")).load());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (!mainSceneMusicaTocando) { audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);}
-        mainSceneMusicaTocando = true;
-        definirBackground(Screen, "/com.daniel.Images/Fundos/Calabouso.jpg");
+        audioPlayer.play("/com.daniel.audios/musica_menu.wav", true);
+        definirBackground(Screen, "/com.daniel.Images/Fundos/Guerreiro.jpg");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);

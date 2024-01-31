@@ -2,11 +2,8 @@ package com.daniel.TerceiraCamada;
 
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.PrimeiraCamada.Entidades.Player;
-import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
-import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
-import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
-import com.daniel.SegundaCamada.CassinoRepositorio.BaralhoMemoria;
+import com.daniel.PrimeiraCamada.Exceptions.*;
+import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.game.Main;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -28,7 +25,7 @@ import java.util.*;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class MemoriaController implements Initializable {
-    private BaralhoMemoria baralho;
+    private Baralho baralho;
     private List<Carta> cartas = new ArrayList<>(); //Para criar e salvar as referencias das cartas
     private List<Carta> limitarVirada = new ArrayList<>(); //Para conseguir fazer a verificaçao e limitar
     private boolean cliquesPermitidos = true;
@@ -61,23 +58,26 @@ public class MemoriaController implements Initializable {
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
         reiniciarJogo();
-        txtVitoria.setText("");
-        btnVoltar.setDisable(true);
-        btnApostar.setDisable(true);
-        btnDesistir.setDisable(false);
-        txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
-
-        reembaralhar();
         String valorStr = textFieldAposta.getText();
-        try {
-            int valorAposta = Integer.parseInt(valorStr);
-            if (valorAposta > Player.getPlayer().getCoins() ) {
-                throw new SemMoedasException();
+        int valorAposta = Integer.parseInt(valorStr);
+
+        if (Player.getPlayer().getCoins() < valorAposta){
+            txtVitoria.setText("");
+            txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
+            try {
+                if (valorAposta > Player.getPlayer().getCoins() ) {
+                    throw new SemMoedasCassino();
+                }
+            } catch (NumberFormatException | PlayerInexistenteException e) {
+                System.out.println("Valor de aposta inválido");
+            } catch (SemMoedasCassino e) {
+                throw new RuntimeException(e);
             }
-        } catch (NumberFormatException | PlayerInexistenteException e) {
-            System.out.println("Valor de aposta inválido");
-        } catch (SemMoedasException e) {
-            throw new RuntimeException(e);
+        }else{
+            reembaralhar();
+            btnVoltar.setDisable(true);
+            btnApostar.setDisable(true);
+            btnDesistir.setDisable(false);
         }
     }
     @FXML
@@ -90,7 +90,7 @@ public class MemoriaController implements Initializable {
         configurarBotoes(btnApostar);
         configurarBotoes(btnDesistir);
         definirBackground(anchorPane, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
-        this.baralho = new BaralhoMemoria();
+        this.baralho = new Baralho();
         this.baralho.criarBaralhoMemoria();
         this.baralho.embaralhar();
         for (int i = 0; i < 17; i++) {
@@ -281,7 +281,7 @@ public class MemoriaController implements Initializable {
     }
     private void reiniciarJogo() {
         gridBaralho.getChildren().clear();
-        baralho.reiniciarBaralho();
+        baralho.reiniciarBaralhoMemoria();
         baralho.embaralhar();
         valorAcumulado = 0;
         txtAcumulado.setText("");

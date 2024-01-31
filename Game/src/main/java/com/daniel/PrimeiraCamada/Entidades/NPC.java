@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NPC {
     private Map<String, ObservableList<String>> MapOpcoesNPC;
@@ -30,18 +31,22 @@ public class NPC {
     }
 
     private void setOpcoesPredefinidas() { // isso permite adicionar coisas na lista do npc
-        switch (name) {
-            case "Veio":
-                itens.add("Olá, veio!");
-                itens.add("Me dê uma dica");
-                itens.add("Tem dinheiro?");
-                MapOpcoesNPC.put(name, itens);
-                break;
-
-            default:
-                MapOpcoesNPC.put(name, FXCollections.observableArrayList());
+        if (Objects.equals(name, "Veio")) {
+            itens.add("Olá, veio!");
+            itens.add("Me dê uma dica");
+            itens.add("Tem dinheiro?");
+            MapOpcoesNPC.put(name, itens);
         }
-    }
+        if (Objects.equals(name, "Veiaco")) {
+                itens.add("Você de novo?");
+                MapOpcoesNPC.put(name, itens);
+            }
+        if (Objects.equals(name, "Ardan")) {
+            itens.add("O mar está agitado?");
+            MapOpcoesNPC.put(name, itens);
+        }
+        }
+
 
     public ObservableList<String> getOpcoesPredefinidas() {
         return MapOpcoesNPC.getOrDefault(name, FXCollections.observableArrayList());
@@ -50,7 +55,7 @@ public class NPC {
     public String gerarResposta(String escolhaPlayer) {
         System.out.println("Escolha do player: " + escolhaPlayer);
 
-        String resposta;
+
         String escolhaEmUpperCase = escolhaPlayer.toUpperCase();
         System.out.println("Escolha em upperCase: " + escolhaEmUpperCase);
 
@@ -62,17 +67,22 @@ public class NPC {
             return "Resposta padrão";
         }
 
-        switch (name) { // aqui você puxa as escolhas específicas de cada  NPC
-            case "Veio":
-                resposta = gerarRespostaVeio(escolhaEmUpperCase);
-                break;
-            default:
-                resposta = "Resposta padrão";
+        if (Objects.equals(name, "Veio")) { // aqui você puxa as escolhas específicas de cada  NPC
+                String resposta = gerarRespostaVeio(escolhaEmUpperCase);
+                System.out.println("Resposta gerada: " + resposta);
+                return resposta;
+        } else if (Objects.equals(name, "Veiaco")) {
+                String resposta = gerarRespostaVeiaco(escolhaEmUpperCase);
+                System.out.println("Resposta gerada: " + resposta);
+            return resposta;
+            } else if (Objects.equals(name, "Ardan")) {
+            String resposta = gerarRespostaArdan(escolhaEmUpperCase);
+            System.out.println("Resposta gerada: " + resposta);
+            return resposta;
+        } else {
+            return "Resposta padrão";
         }
-
-        System.out.println("Resposta gerada: " + resposta);
-        return resposta;
-    }
+        }
 
     private String gerarRespostaVeio(String escolhaPlayer) { // aqui gera as respostas especificas do velho
         switch (escolhaPlayer) {
@@ -82,8 +92,26 @@ public class NPC {
                 return "Não viaje para locais difíceis no início";
             case "TEM DINHEIRO?":
                 return "Sou aposentado";
+            case "SEU IRMÃO?":
+                return "O da Montanha do Norte? Ele se acha muito";
             default:
                 return "Resposta padrão do veio";
+        }
+    }
+    private String gerarRespostaVeiaco(String escolhaPlayer) {
+        switch (escolhaPlayer) {
+            case "VOCÊ DE NOVO?":
+                return "Aquele era meu irmão mais novo, eu sou mais sábio";
+            default:
+                return "resposta padrão do veiaco";
+        }
+    }
+    private String gerarRespostaArdan(String escolhaPlayer) {
+        switch (escolhaPlayer) {
+            case "O MAR ESTÁ AGITADO?":
+                return "Como sempre";
+            default:
+                return "resposta padrão do veiaco";
         }
     }
 

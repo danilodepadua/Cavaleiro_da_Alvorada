@@ -7,10 +7,7 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaAperfeiçoada;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaEletricaAperfeicoada;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaEletricaBasica;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
+import com.daniel.PrimeiraCamada.Itens.Armas.*;
 import com.daniel.PrimeiraCamada.Itens.Mapas.MapaMonteClaro;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
@@ -21,7 +18,10 @@ import java.util.ArrayList;
 
 public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
-        super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg",
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+
+        this.musicPath = "/com.daniel.audios/msc_dasopoles.wav";
 
         this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeTerraNv1(), new InimigoSlimeDeLuzNv1(), new InimigoSlimeDeAguaNv2()};
         this.quests.add(new QuestSlimeDeFogoNv1());
@@ -30,9 +30,10 @@ public class Dasópoles extends Cidade {
         this.quests.add(new QuestSlimeDeLuzNv1());
         this.quests.add(new QuestSlimeDeAguaNv2());
         // Adiciona os itens da loja
-        this.itens.add(new EspadaEletricaBasica());
         this.itens.add(new PocaoCura());
         this.itens.add(new EspadaAperfeiçoada());
+        this.itens.add(new EspadaFogoBasica());
+
         this.itens.add(new PocaoMp());
         this.itens.add(new TonicoDeForca());
         this.itens.add(new MapaMonteClaro());

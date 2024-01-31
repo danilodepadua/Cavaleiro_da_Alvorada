@@ -49,6 +49,7 @@ public class StorySceneController implements Initializable {
     @FXML
     private Button btnSkip;
     private AudioPlayer audioPlayer = new AudioPlayer();
+    private AudioPlayer clickSoundPlayer = new AudioPlayer();
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         audioPlayer.play("/com.daniel.audios/msc_historia.wav",false);
@@ -93,7 +94,13 @@ public class StorySceneController implements Initializable {
                 final int finalJ = j;
                 KeyFrame keyFrame = new KeyFrame(
                         Duration.millis(Time),
-                        event -> {Texto.setText(Texto.getText() + Dialogo[finalI].charAt(finalJ));}
+                        event -> {
+
+                            Texto.setText(Texto.getText() + Dialogo[finalI].charAt(finalJ));
+                            clickSoundPlayer.play("/com.daniel.audios/som_dialogo_storyscene.wav", false);
+
+
+                        }
                 );
                 if(finalJ == Dialogo[finalI].length()-1) {
                     Time+=1000;

@@ -4,13 +4,13 @@ import com.daniel.PrimeiraCamada.Quest;
 
 public class QuestTigerMan extends Quest {
     public QuestTigerMan() {
-        this.nome = "Derrote 3 Tiger Man";
+        this.nome = "Derrote o Tiger Man";
         this.progresso = 0;
-        this.objetivo = 3;
-        this.recompensaMoedas= 100;
-        this.recompensaXP = 10;
+        this.objetivo = 1;
+        this.recompensaMoedas= 2000;
+        this.recompensaXP = 1000;
         this.pontosEvolucao = 1;
-        this.nomeInimigo = "Tigrinho";
-        this.descricao= "Derrote um total de "+this.objetivo+" Tigrinhos";
+        this.nomeInimigo = "Tiger Man";
+        this.descricao= "Derrote o Tiger Man";
     }
 }

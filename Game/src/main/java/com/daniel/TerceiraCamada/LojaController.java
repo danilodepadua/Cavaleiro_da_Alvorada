@@ -8,6 +8,7 @@ import com.daniel.PrimeiraCamada.Interfaces.IEquipable;
 import com.daniel.PrimeiraCamada.Itens.Arma;
 import com.daniel.PrimeiraCamada.Itens.Armadura;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.Itens.Minerio;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,12 +27,7 @@ import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class LojaController implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
-    private ModoLoja modoLoja = ModoLoja.COMPRAR; // Modo inicial é comprar
 
-    private enum ModoLoja {
-        COMPRAR,
-        VENDER
-    }
     @FXML
     private AnchorPane PanePrincipal;
 
@@ -52,6 +48,8 @@ public class LojaController implements Initializable {
 
     @FXML
     private GridPane gridPocoes;
+    @FXML
+    private GridPane gridMinerio;
 
     @FXML
     private AnchorPane panelImage;
@@ -88,6 +86,9 @@ public class LojaController implements Initializable {
 
     @FXML
     private Text txtSeuSaldo;
+
+    @FXML
+    private Text txtVenda;
     private boolean ativarCompra = false;
     private boolean ativarVenda = false;
 
@@ -153,7 +154,7 @@ public class LojaController implements Initializable {
         gridArmaduras.getChildren().clear();
         gridArmas.getChildren().clear();
         gridPocoes.getChildren().clear();
-        int pocoes = 0, armaduras = 0, armas = 0;
+        int pocoes = 0, armaduras = 0, armas = 0, minerio=0;
         for(Item i : Player.getPlayer().getInventario().getItens()){
             if(i instanceof Armadura){
                 criarBotaoItem(i, armaduras%3, (int)armaduras/3, gridArmaduras);
@@ -166,6 +167,10 @@ public class LojaController implements Initializable {
             else if(i instanceof IConsumableOutBattle || i instanceof IConsumableInBattle){
                 criarBotaoItem(i, pocoes%3, (int)pocoes/3, gridPocoes);
                 pocoes++;
+            }else if (i instanceof Minerio) {
+                criarBotaoItem(i, minerio%3, (int)minerio/3, gridMinerio);
+                minerio++;
+
             }
         }
     }
@@ -208,7 +213,7 @@ public class LojaController implements Initializable {
         gridArmaduras.getChildren().clear();
         gridArmas.getChildren().clear();
         gridPocoes.getChildren().clear();
-        int pocoes = 0, armaduras = 0, armas = 0;
+        int pocoes = 0, armaduras = 0, armas = 0, minerio =0;
         for(Item i : Main.cidadeAtual.getItens()){
             if(i instanceof Armadura){
                 criarBotaoItem(i, armaduras%3, (int)armaduras/3, gridArmaduras);
@@ -221,6 +226,10 @@ public class LojaController implements Initializable {
             else if(i instanceof IConsumableOutBattle || i instanceof IConsumableInBattle){
                 criarBotaoItem(i, pocoes%3, (int)pocoes/3, gridPocoes);
                 pocoes++;
+            } else if (i instanceof Minerio) {
+                criarBotaoItem(i, minerio%3, (int)minerio/3, gridMinerio);
+                minerio++;
+
             }
         }
     }
@@ -254,8 +263,10 @@ public class LojaController implements Initializable {
         txtNomeItem.setText(""+i.getNome());
         txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas" );
         txtInfoItem.setText("" + i.getDescricao());
-        txtPreco.setText("" + i.getPreco() + " Moedas");
+        txtPreco.setText(i.getPreco() + " Moedas");
         itemSelecionado = i;
+        txtVenda.setText((int)Math.floor(0.7 * i.getPreco()) + " Moedas");
+
     }
 
     public void setAtivado(boolean ativado) {

@@ -6,6 +6,8 @@ import com.daniel.PrimeiraCamada.Itens.Comidas.Banana;
 import com.daniel.PrimeiraCamada.Itens.Comidas.CoxaFrango;
 import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
 import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
+import com.daniel.PrimeiraCamada.Itens.Minerios.FragmentoFogo;
+import com.daniel.PrimeiraCamada.Itens.Minerios.FragmentoGlacial;
 import com.daniel.PrimeiraCamada.Magias.Splash;
 import com.daniel.PrimeiraCamada.Magias.WaterSpyke;
 import com.daniel.PrimeiraCamada.TiposElementais;
@@ -16,12 +18,10 @@ public class InimigoSlimeDeAguaNv2 extends Inimigo {
         this.magias.add(new Splash());
         this.magias.add(new WaterSpyke());
         this.resistencias = new TiposElementais[]{TiposElementais.Terra};
-        this.imunidades = new TiposElementais[]{ TiposElementais.NaoElemental};
-        this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico, TiposElementais.Fogo};
+        this.imunidades = new TiposElementais[]{ TiposElementais.Fogo};
+        this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
-        this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);
-        this.lootTable.AdicionarEntrada(new Ferro(), 1, 2, 0.8);
+        this.lootTable.AdicionarEntrada(new FragmentoGlacial(), 0, 1, 0.5);
+
     }
 }

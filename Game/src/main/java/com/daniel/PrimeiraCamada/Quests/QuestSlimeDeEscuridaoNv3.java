@@ -7,7 +7,7 @@ public class QuestSlimeDeEscuridaoNv3 extends Quest {
         this.nome = "Derrote os slimes da escuridão super aprimorados";
         this.progresso = 0;
         this.objetivo = 7;
-        this.recompensaMoedas= 150;
+        this.recompensaMoedas= 800;
         this.recompensaXP = 1500;
         this.pontosEvolucao = 2;
         this.nomeInimigo = "Slime de escuridão grande";

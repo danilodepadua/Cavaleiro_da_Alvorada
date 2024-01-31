@@ -9,9 +9,11 @@ import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaPredefinida;
 import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaSequencial;
 import com.daniel.TerceiraCamada.BattleController;
 import com.daniel.game.Main;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -29,12 +31,18 @@ public abstract class Cidade implements Serializable {
     protected String  dialogoCutscene;
     protected boolean dialogoAtivo;
     protected transient ArrayList<Botao> botoes = new ArrayList<>();
+    protected String musicPath;
+    public AudioPlayer audioPlayer = new AudioPlayer();
     public Cidade(String nome, String fundo, String fundoB) {
         this.Fundo = fundo;
         this.FundoBatalha = fundoB;
         this.Nome = nome;
+
     }
 
+    public String getMusicPath(){
+        return this.musicPath;
+    }
     public Image getFundo() {
         return new Image(Main.class.getResource(Fundo).toString());
     }
@@ -88,6 +96,10 @@ public abstract class Cidade implements Serializable {
         } else {
             return new ArrayList<>();
         }
+    }
+
+    public void pararMusica(){
+        audioPlayer.stop();
     }
     protected Botao criarBotao(String nome, Runnable run){
 
@@ -152,7 +164,7 @@ public abstract class Cidade implements Serializable {
             }
         });
     }
-    protected Botao criarBotaoAnciao(){
+    protected Botao criarBotaoAnciao() {
         return criarBotao("Anciao", () -> {
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());

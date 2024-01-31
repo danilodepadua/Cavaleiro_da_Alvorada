@@ -7,8 +7,8 @@ public class QuestSlimeNv3 extends Quest {
         this.nome = "Derrote os Slimes grandes";
         this.progresso = 0;
         this.objetivo = 15;
-        this.recompensaMoedas= 100;
-        this.recompensaXP = 10;
+        this.recompensaMoedas= 700;
+        this.recompensaXP = 1500;
         this.pontosEvolucao = 1;
         this.nomeInimigo = "Slime grande";
         this.descricao= "Derrote um total de "+this.objetivo+" slimes grandes";

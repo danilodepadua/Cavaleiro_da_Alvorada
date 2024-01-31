@@ -13,13 +13,11 @@ import java.util.ArrayList;
 
 public class InimigoAbelha extends Inimigo {
     public InimigoAbelha( ) {
-        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 25, 15, 35, 28, 40, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 200, 50);
+        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 20, 15, 35, 28, 40, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 200, 50);
         this.fraquezas = new TiposElementais[]{TiposElementais.NaoElemental, TiposElementais.Terra};
         this.magias.add(new Veneno());
         this.magias.add(new Escuridao());
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.2);
-        this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.1);
-        this.lootTable.AdicionarEntrada(new Ferro(), 1, 2, 0.8);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.2);
+        this.lootTable.AdicionarEntrada(new Ferro(), 1, 1, 0.2);
     }
 }

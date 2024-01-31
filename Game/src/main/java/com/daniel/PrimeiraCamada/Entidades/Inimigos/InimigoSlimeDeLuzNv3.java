@@ -2,6 +2,8 @@ package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
 import com.daniel.PrimeiraCamada.Comportamentos;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Itens.Comidas.Banana;
+import com.daniel.PrimeiraCamada.Itens.Comidas.CoxaFrango;
 import com.daniel.PrimeiraCamada.Magias.Curaga;
 import com.daniel.PrimeiraCamada.Magias.Fast;
 import com.daniel.PrimeiraCamada.Magias.IntUp;
@@ -14,8 +16,11 @@ public class InimigoSlimeDeLuzNv3 extends Inimigo {
         this.magias.add(new Luz());
         this.magias.add(new IntUp());
         this.magias.add(new Curaga());
-        this.absorcao = new TiposElementais[]{TiposElementais.Luz};
+        this.absorcao = new TiposElementais[]{TiposElementais.Fogo};
         this.fraquezas = new TiposElementais[]{TiposElementais.Escuridao};
-        this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
+        this.imunidades = new TiposElementais[]{TiposElementais.Luz};
+        this.lootTable.AdicionarEntrada(new CoxaFrango(), 0, 2, 0.3);
+        this.lootTable.AdicionarEntrada(new Banana(), 0, 2, 0.3);
+
     }
 }

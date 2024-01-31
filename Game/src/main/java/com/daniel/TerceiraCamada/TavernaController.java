@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Shape;
@@ -66,7 +67,7 @@ public class TavernaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            txtMoedas.setText("" + Player.getPlayer().getCoins() + " Moedas");
+            txtMoedas.setText("Carteira: " + Player.getPlayer().getCoins() + " Moedas");
             Point2D centro = new Point2D(315, 169);
             desenharTexto(texto, 40, centro);
         } catch (PlayerInexistenteException e) {
@@ -100,7 +101,7 @@ public class TavernaController implements Initializable {
             Text parte = new Text(String.valueOf(arrayPalavra[i]));
 
             parte.setFont(Font.font("Barlow Condensed SemiBold", FontWeight.SEMI_BOLD, 90));
-            parte.setFill(Paint.valueOf("yellow"));
+            parte.setFill(Paint.valueOf("#eccb7e"));
 
             partes.add(parte);
 

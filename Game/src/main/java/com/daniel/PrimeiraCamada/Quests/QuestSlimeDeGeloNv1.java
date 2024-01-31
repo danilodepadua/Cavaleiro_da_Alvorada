@@ -7,7 +7,7 @@ public class QuestSlimeDeGeloNv1 extends Quest {
         this.nome = "Derrote os slimes de gelo";
         this.progresso = 0;
         this.objetivo = 15;
-        this.recompensaMoedas= 50;
+        this.recompensaMoedas= 200;
         this.recompensaXP = 500;
         this.pontosEvolucao = 1;
         this.nomeInimigo = "Slime de gelo pequeno";
