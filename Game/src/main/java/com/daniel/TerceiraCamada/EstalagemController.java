@@ -64,7 +64,7 @@ public class EstalagemController implements Initializable {
     void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
         Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
-        Player.getPlayer().removerCoins((int) (0.3 * Player.getPlayer().getCoins()));
+        Player.getPlayer().removerCoins(50,true);
         txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
         txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
     }
@@ -91,11 +91,7 @@ public class EstalagemController implements Initializable {
             } catch (PlayerInexistenteException ex) {
                 throw new RuntimeException(ex);
             }
-            try {
-                txtRestaurar.setText(String.valueOf((int)Math.floor(0.3 * Player.getPlayer().getCoins())));
-            } catch (PlayerInexistenteException ex) {
-                throw new RuntimeException(ex);
-            }
+            txtRestaurar.setText(Integer.toString(50));
 
             FadeTransition fadeOutTransition = new FadeTransition(Duration.seconds(0.5), overlay);
             fadeOutTransition.setFromValue(1.0); // Opacidade inicial

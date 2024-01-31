@@ -241,7 +241,7 @@ public class MapaController extends Utilidades implements Initializable {
         int passagem = 50;
         int dinheiro =  Player.getPlayer().getCoins();
         if (dinheiro >= passagem){
-            Player.getPlayer().removerCoins(passagem);
+            Player.getPlayer().removerCoins(passagem, true);
             exibirCutscene();
             System.out.println("Viajando com passagem");
         }else {

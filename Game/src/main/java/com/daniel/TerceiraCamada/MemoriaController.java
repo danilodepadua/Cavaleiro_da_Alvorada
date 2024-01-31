@@ -200,11 +200,9 @@ public class MemoriaController implements Initializable {
                         btnDesistir.setDisable(true);
                         try {
                             if (valorAcumulado != 0) {
-                                txtVitoria.setText("Você perdeu: " + valorAcumulado+ " Moedas");
-                                Player.getPlayer().removerCoins(valorAcumulado);
+                                txtVitoria.setText("Você perdeu: " + Player.getPlayer().removerCoins(valorAcumulado, false)+ " Moedas");
                             } else {
-                                txtVitoria.setText("Você perdeu: " + valorAposta+ " Moedas");
-                                Player.getPlayer().removerCoins(valorAposta);
+                                txtVitoria.setText("Você perdeu: " + Player.getPlayer().removerCoins(valorAposta, true)+ " Moedas");
                             }
                             txtSeuSaldo.setText("Carteira: " + Player.getPlayer().getCoins());
                             valorAcumulado = 0;
