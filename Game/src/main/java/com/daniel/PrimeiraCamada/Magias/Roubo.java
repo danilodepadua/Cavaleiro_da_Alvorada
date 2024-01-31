@@ -23,8 +23,7 @@ public class Roubo extends Magia implements IEffects {
         Random rand = new Random();
         int quant = rand.nextInt(20, 200);
         try {
-            Player.getPlayer().removerCoins(quant);
-            this.mensagem.add(Player.getPlayer().getName() + " perdeu " + quant + " de dinheiro");
+            this.mensagem.add(Player.getPlayer().getName() + " perdeu " + Player.getPlayer().removerCoins(quant, false) + " de dinheiro");
         }
         catch (PlayerInexistenteException e){
             System.out.println("alvo da magia não foi encontrado");

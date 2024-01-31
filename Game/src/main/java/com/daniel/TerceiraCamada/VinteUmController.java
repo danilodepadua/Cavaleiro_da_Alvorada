@@ -142,7 +142,7 @@ public class VinteUmController implements Initializable{
         // Verifica se alguém ultrapassou 21 (bust)
         if (pontosJogador > 21 && pontosDealer <= 21) {
             handleResultado("Você perdeu!");
-            Player.getPlayer().removerCoins(valorAposta);
+            Player.getPlayer().removerCoins(valorAposta, true);
             txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else if (pontosDealer > 21 && pontosJogador <= 21) {
             handleResultado("Você venceu!");
@@ -161,7 +161,7 @@ public class VinteUmController implements Initializable{
             txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else if (pontosDealer > pontosJogador) {
             handleResultado("Você perdeu!");
-            Player.getPlayer().removerCoins(valorAposta);
+            Player.getPlayer().removerCoins(valorAposta, true);
             mostrarResultado("DERROTA!");
             txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
         } else {

@@ -184,7 +184,7 @@ public class MapaController extends Utilidades implements Initializable {
                             case "Montanha Do Norte":
                                 MostraMarca(0.445, 0.15);
                                 break;
-                            case "Cidade Inicial":
+                            case "Auroraville":
                                 MostraMarca(0.924, 0.55);
                                 break;
                             case "Dasópoles":
@@ -241,7 +241,7 @@ public class MapaController extends Utilidades implements Initializable {
         int passagem = 50;
         int dinheiro =  Player.getPlayer().getCoins();
         if (dinheiro >= passagem){
-            Player.getPlayer().removerCoins(passagem);
+            Player.getPlayer().removerCoins(passagem, true);
             exibirCutscene();
             System.out.println("Viajando com passagem");
         }else {

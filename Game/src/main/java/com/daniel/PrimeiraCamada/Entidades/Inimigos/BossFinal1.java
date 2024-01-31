@@ -5,7 +5,7 @@ import com.daniel.PrimeiraCamada.Magias.*;
 
 public class BossFinal1 extends Inimigo {
     public BossFinal1() {
-        super("Mago abissal", "/com.daniel.Images/Inimigos/Dark Elves Crystal Mage.png", 38, 75, 80, 60, 55, 9000, 20000, TiposElementais.NaoElemental, Comportamentos.BossFinal1, 100000, 150000);
+        super("Mago abissal", "/com.daniel.Images/Inimigos/Dark Elves Crystal Mage.png", 39, 75, 80, 60, 55, 9000, 20000, TiposElementais.NaoElemental, Comportamentos.BossFinal1, 100000, 150000);
         this.absorcao = new TiposElementais[]{TiposElementais.Escuridao};
         this.magias.add(new Escuridao());
         this.magias.add(new Enfraquecer());

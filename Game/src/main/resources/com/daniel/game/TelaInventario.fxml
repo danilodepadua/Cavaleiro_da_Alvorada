@@ -169,146 +169,146 @@
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>
                 </Text>
-            <Pane layoutX="35.0" layoutY="352.0" prefHeight="260.0" prefWidth="330.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="34.60000000000002">
+            <Pane layoutX="35.0" layoutY="352.0" prefHeight="306.0" prefWidth="330.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="35.0">
                <children>
-                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="241.0" prefWidth="310.0">
+                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="290.0" prefWidth="310.0">
                           <children>
                         <HBox prefHeight="0.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
+                              <Text fx:id="txt1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="HpPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="HpPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="4.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MP:">
+                              <Text fx:id="txt2" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="MP:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="MpPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="MpPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="13.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
+                              <Text fx:id="txt3" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="ForcaPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="ForcaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="10.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ataque físico:">
+                              <Text fx:id="txt4" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Ataque físico:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="AtqFPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="AtqFPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="13.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
+                              <Text fx:id="txt5" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="VelocidadePlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="VelocidadePlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="14.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt6" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência:">
+                              <Text fx:id="txt6" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="InteligenciaPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="InteligenciaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="22.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt7" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ataque mágico:">
+                              <Text fx:id="txt7" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Ataque mágico:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="AtqMPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="AtqMPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="22.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt8" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa mágica:">
+                              <Text fx:id="txt8" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa mágica:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="DefesaMagicaPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="DefesaMagicaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="22.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt9" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistência:">
+                              <Text fx:id="txt9" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistência:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="ResistenciaPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="ResistenciaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>
                         </HBox>
                         <HBox prefHeight="13.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <Text fx:id="txt10" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa física:">
+                              <Text fx:id="txt10" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa física:">
                                  <font>
-                                    <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                    <Font name="Barlow Condensed SemiBold" size="23.0" />
                                  </font>
                               </Text>
-                                    <Text fx:id="DefesaPlayer" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="DefesaPlayer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                         <font>
-                                            <Font name="Barlow Condensed SemiBold" size="18.0" />
+                                            <Font name="Barlow Condensed SemiBold" size="23.0" />
                                         </font>
                                     </Text>
                            </children>

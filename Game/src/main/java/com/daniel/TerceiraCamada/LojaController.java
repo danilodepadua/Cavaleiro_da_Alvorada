@@ -238,7 +238,7 @@ public class LojaController implements Initializable {
             int precoItem = itemSelecionado.getPreco();
             if (Player.getPlayer().getCoins() >= precoItem) {
                 // Realize a compra
-                Player.getPlayer().removerCoins(precoItem);
+                Player.getPlayer().removerCoins(precoItem, true);
                 Player.getPlayer().getInventario().adicionarItem(itemSelecionado);
 
                 // Atualiza as informações do item após a compra

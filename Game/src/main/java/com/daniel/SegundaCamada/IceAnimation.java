@@ -7,6 +7,6 @@ import javafx.scene.image.ImageView;
 
 public class IceAnimation extends AnimationsAttack{
     public IceAnimation() {
-        super(34, 50,"/com.daniel.Images/Magias/Gelo1Frames/Ice");
+        super(34,"/com.daniel.Images/Magias/Gelo1Frames/Ice");
     }
 }
