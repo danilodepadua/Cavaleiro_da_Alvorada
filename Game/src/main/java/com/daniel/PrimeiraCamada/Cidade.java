@@ -167,21 +167,7 @@ public abstract class Cidade implements Serializable {
     protected Botao criarBotaoAnciao() {
         return criarBotao("Anciao", () -> {
             try {
-                this.audioPlayer.stop();
-                
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
-
-                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(7));
-                pauseTransition.setOnFinished(event -> {
-                    try {
-                        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-
-                pauseTransition.play();
-
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

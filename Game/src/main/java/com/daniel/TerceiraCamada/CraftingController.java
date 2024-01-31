@@ -210,7 +210,31 @@ public class CraftingController implements Initializable {
             editarTexto();
             return resultado;
         }
+        resultado = crafting.criarBarraGelo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+        resultado = crafting.criarBarraFogo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+
+        resultado = crafting.criarBarraOuro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
+        resultado = crafting.criarBarraEscuridao(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+
+        if (resultado != null) {
+            editarTexto();
+            return resultado;
+        }
         // Se chegou até aqui, nenhum resultado foi encontrado
         return null;
     }

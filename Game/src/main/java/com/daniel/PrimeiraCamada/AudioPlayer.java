@@ -4,9 +4,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.control.Button;
 
+import java.io.Serializable;
 import java.net.URL;
 
-public class AudioPlayer {
+public class AudioPlayer implements Serializable {
 
     private MediaPlayer mediaPlayer;
     private boolean musicaTocando = false;

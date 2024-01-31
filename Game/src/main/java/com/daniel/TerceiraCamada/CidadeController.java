@@ -160,8 +160,15 @@ public class CidadeController implements Initializable {
             int finalI = i;
             b.setText(Main.cidadeAtual.getBotaoNome(finalI));
             b.setOnAction(event -> Main.cidadeAtual.getBotaoFunc(finalI).run());
+
             configurarBotoesTelaCidade(b);
             estiloBotao(b);
+
+            if (!b.getText().equals("Salvar")){
+                b.setOnMousePressed(event -> {
+                    audioPlayer.stop();
+                });
+            }
 
             VBox.getChildren().add(b);
         }

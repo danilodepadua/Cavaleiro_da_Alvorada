@@ -31,6 +31,9 @@ public class EstalagemController implements Initializable {
     private Button btnRestaurar;
 
     @FXML
+    private Button btnSair;
+
+    @FXML
     private Button btnTaverna;
 
     @FXML
@@ -43,23 +46,13 @@ public class EstalagemController implements Initializable {
     private AnchorPane panePrincipal;
 
     @FXML
-    private Text txtHpTotal;
-
-    @FXML
     private Text txtMana;
-
-    @FXML
-    private Text txtManaTotal;
-
-    @FXML
-    private Text txtOuroTotal;
 
     @FXML
     private Text txtRestaurar;
 
     @FXML
     private Text txtVida;
-
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
@@ -71,11 +64,9 @@ public class EstalagemController implements Initializable {
     void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
         Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
-        Player.getPlayer().removerCoins(50);
-        txtOuroTotal.setText(""+Player.getPlayer().getCoins()+" Moedas");
-        txtHpTotal.setText(""+Player.getPlayer().getHP());
-        txtManaTotal.setText(""+Player.getPlayer().getMP());
-
+        Player.getPlayer().removerCoins((int) (0.3 * Player.getPlayer().getCoins()));
+        txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
+        txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
     }
     @FXML
     void onActionDescanso(ActionEvent event) throws PlayerInexistenteException {
@@ -94,13 +85,17 @@ public class EstalagemController implements Initializable {
             btnRestaurar.setDisable(false);
             btnRestaurar.setVisible(true);
             try {
-                txtVida.setText(""+Player.getPlayer().getcHP());
-                txtMana.setText(""+Player.getPlayer().getcMp());
+                txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
+                txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
 
             } catch (PlayerInexistenteException ex) {
                 throw new RuntimeException(ex);
             }
-            txtRestaurar.setText("50 Moedas");
+            try {
+                txtRestaurar.setText(String.valueOf((int)Math.floor(0.3 * Player.getPlayer().getCoins())));
+            } catch (PlayerInexistenteException ex) {
+                throw new RuntimeException(ex);
+            }
 
             FadeTransition fadeOutTransition = new FadeTransition(Duration.seconds(0.5), overlay);
             fadeOutTransition.setFromValue(1.0); // Opacidade inicial
@@ -133,14 +128,15 @@ public class EstalagemController implements Initializable {
         configurarBotoes(btnTaverna);
         configurarBotoes(btnRestaurar);
         contornarBotaoVoltar(btnVoltar);
-        try {
-            txtHpTotal.setText(""+Player.getPlayer().getHP());
-            txtManaTotal.setText(""+Player.getPlayer().getMP());
-            txtOuroTotal.setText(""+Player.getPlayer().getCoins()+" Moedas");
-
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
+        contornarBotaoVoltar(btnSair);
 
     }
+    @FXML
+    void onClickFechar(ActionEvent event) {
+        paneInfos.setVisible(false);
+        paneInfos.setDisable(true);
+        btnRestaurar.setDisable(true);
+        btnRestaurar.setVisible(false);
+    }
+
 }

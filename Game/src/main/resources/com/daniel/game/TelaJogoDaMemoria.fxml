@@ -35,17 +35,17 @@
          <children>
             <VBox prefHeight="98.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Text fx:id="txtAcumulado" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor acumulado: " wrappingWidth="211.99996948242188">
+                  <Text fx:id="txtAcumulado" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Valor acumulado: " wrappingWidth="211.99996948242188">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="21.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtVitoria" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="Você perdeu!">
+                  <Text fx:id="txtVitoria" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Você perdeu!">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="21.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtSeuSaldo" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu saldo:">
+                  <Text fx:id="txtSeuSaldo" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Seu saldo:">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="21.0" />
                      </font>

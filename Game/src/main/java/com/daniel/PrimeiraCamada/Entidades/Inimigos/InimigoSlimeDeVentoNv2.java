@@ -2,6 +2,8 @@ package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
 import com.daniel.PrimeiraCamada.Comportamentos;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Itens.Minerios.BarraFerro;
+import com.daniel.PrimeiraCamada.Itens.Minerios.Ouro;
 import com.daniel.PrimeiraCamada.Magias.Sopro;
 import com.daniel.PrimeiraCamada.Magias.Vento;
 import com.daniel.PrimeiraCamada.TiposElementais;
@@ -14,5 +16,7 @@ public class InimigoSlimeDeVentoNv2 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Terra};
         this.magias.add(new Vento());
         this.magias.add(new Sopro());
+        this.lootTable.AdicionarEntrada(new BarraFerro(), 0, 2, 0.2);
+
     }
 }

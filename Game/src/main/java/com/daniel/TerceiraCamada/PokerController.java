@@ -79,7 +79,7 @@ public class PokerController implements Initializable {
     @FXML
     private VBox vboxTextos;
     private int aposta;
-    private int rodada = 1;
+    private int rodada = 2;
     private int coluna = 3;
     private boolean tresCartas = true;
     private boolean continuar = false;
@@ -96,7 +96,7 @@ public class PokerController implements Initializable {
             if (valorAposta > saldoDisponivel) {
                 btnApostar.setDisable(true);
             } else {
-                mostrarResultado("Rodada: "+ rodada);
+                mostrarResultado("Rodada: 1");
                 txtAposta.setText("Aposta: "+ aposta);
                 btnContinuar.setDisable(false);
                 try {
@@ -153,7 +153,7 @@ public class PokerController implements Initializable {
 
 
         btnContinuar.setOnAction(event -> {
-            mensagensDaMaquina();
+            mostrarResultado("Rodada: "+ rodada);
             try {
                 if (tresCartas){
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 0);
@@ -307,24 +307,8 @@ public class PokerController implements Initializable {
         txtSeuResultado.setText("");
         baralho.reiniciarBaralhoPoker();
         baralho.embaralhar();
-        this.rodada = 1;
+        this.rodada = 2;
         this.coluna = 3;
     }
-    private void mensagensDaMaquina(){
-        String mensagem = obterMensagemAleatoria();
-        mostrarResultado(mensagem);
-    }
 
-    private String obterMensagemAleatoria() {
-        String[] mensagens = {
-                "Essa ta ganha!",
-                "Você não perde por esperar",
-                "Essa ta ganha!",
-                "Droga! ta dificinho"
-        };
-
-        Random random = new Random();
-        int indiceAleatorio = random.nextInt(mensagens.length);
-        return mensagens[indiceAleatorio];
-    }
 }

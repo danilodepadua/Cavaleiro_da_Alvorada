@@ -1,8 +1,9 @@
 package com.daniel.PrimeiraCamada.Itens.Minerios;
 
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.Itens.Minerio;
 
-public class BarraOuro extends Item {
+public class BarraOuro extends Minerio {
     public BarraOuro(){
         super("/com.daniel.Images/Itens/Minerios/BarraOuro.png", "Barra de Ouro", 1, 150, "Barra refinada de Ouro");
     }

@@ -10,13 +10,12 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapaceteMalha;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralCouro;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralMalha;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaAperfeiçoada;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaEletricaAperfeicoada;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaFogoBasica;
-import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
+import com.daniel.PrimeiraCamada.Itens.Armas.*;
+import com.daniel.PrimeiraCamada.Itens.Mapas.MapaPortuaria;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoMp;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.TonicoDeForca;
+import com.daniel.PrimeiraCamada.Quests.*;
 
 import java.util.ArrayList;
 
@@ -24,10 +23,10 @@ public class MonteClaro extends Cidade {
     public MonteClaro() throws PlayerInexistenteException {
         super("Monte Claro", "/com.daniel.Images/Fundos/FundoCanyon.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
-        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeGeloNv2(), new InimigoLadrao(), new InimigoSlimeDeFogoNv3(), new InimigoSlimeDeEscuridaoNv3()};
+        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeGeloNv2(), new InimigoLadrao(), new InimigoSlimeDeLuzNv2(), new InimigoSlimeDeVentoNv2()};
 
         // Adiciona os itens da loja
-        this.itens.add(new EspadaFogoBasica());
+        this.itens.add(new EspadaEletricaBasica());
         this.itens.add(new PocaoCura());
         this.itens.add(new EspadaAperfeiçoada());
         this.itens.add(new PocaoMp());
@@ -35,6 +34,13 @@ public class MonteClaro extends Cidade {
         this.itens.add(new CapaceteMalha());
         this.itens.add(new PeitoralMalha());
         this.itens.add(new CalcaMalha());
+        this.itens.add(new MapaPortuaria());
+        this.quests.add(new QuestSlimeDeFogoNv2());
+        this.quests.add(new QuestSlimeDeAguaNv2());
+        this.quests.add(new QuestSlimeDeGeloNv2());
+        this.quests.add(new QuestSlimeDeLuzNv2());
+        this.quests.add(new QuestSlimeDeVentoNv2());
+
         this.dialogoAtivo = true;
         this.dialogoCutscene = "Você se aproxima de uma antiga cidade seca e montanhosa conhecida desde de a antiguidade, com um povo forte e sobrevivente";
         ajustarBotoes();

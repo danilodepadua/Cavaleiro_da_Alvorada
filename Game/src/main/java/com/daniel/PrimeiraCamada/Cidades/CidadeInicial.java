@@ -6,6 +6,7 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.PeitoralPano;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaFogoBasica;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaInicial;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.PrimeiraCamada.Itens.Mapas.MapaDasópoles;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class CidadeInicial extends Cidade{
     public CidadeInicial() throws PlayerInexistenteException {
-        super("Cidade Inicial", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
+        super("Auroraville", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 
@@ -36,7 +37,6 @@ public class CidadeInicial extends Cidade{
         // Adiciona os itens da loja
         this.itens.add(new EspadaInicial());
         this.itens.add(new PocaoCura());
-        this.itens.add(new EspadaSombriaAperfeicoada());
         this.itens.add(new PocaoMp());
         this.itens.add(new TonicoDeForca());
         this.itens.add(new CapacetePano());

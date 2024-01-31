@@ -2,6 +2,8 @@ package com.daniel.PrimeiraCamada.Entidades.Inimigos;
 
 import com.daniel.PrimeiraCamada.Comportamentos;
 import com.daniel.PrimeiraCamada.Inimigo;
+import com.daniel.PrimeiraCamada.Itens.Comidas.Banana;
+import com.daniel.PrimeiraCamada.Itens.Minerios.Ouro;
 import com.daniel.PrimeiraCamada.Magias.Raio;
 import com.daniel.PrimeiraCamada.Magias.ThunderBall;
 import com.daniel.PrimeiraCamada.TiposElementais;
@@ -12,5 +14,7 @@ public class InimigoSlimeDeRaioNv1 extends Inimigo {
         this.absorcao = new TiposElementais[]{TiposElementais.Eletrico};
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new ThunderBall());
+        this.lootTable.AdicionarEntrada(new Ouro(), 0, 1, 0.2);
+
     }
 }

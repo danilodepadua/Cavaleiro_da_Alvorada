@@ -115,7 +115,7 @@
          <children>
             <AnchorPane prefHeight="113.0" prefWidth="200.0" style="-fx-background-color: #343D38;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Text fx:id="txtMensagem" fill="WHITE" fontSmoothingType="LCD" layoutX="117.0" layoutY="57.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="O inimigo tomou 450 de dano" textAlignment="JUSTIFY" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="33.0">
+                  <Text fx:id="txtMensagem" fill="WHITE" fontSmoothingType="LCD" layoutX="145.0" layoutY="57.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="O inimigo tomou 450 de dano" textAlignment="JUSTIFY" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="33.0">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>

@@ -48,7 +48,7 @@ public class Main extends Application {
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
         stage.setScene(scene);
-        stage.setTitle("teste");
+        stage.setTitle("O Cavaleiro da Alvorada");
         stage.show();
     }
     public static void main(String[] args) {

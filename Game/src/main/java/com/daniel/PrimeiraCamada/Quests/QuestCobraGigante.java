@@ -7,8 +7,8 @@ public class QuestCobraGigante extends Quest {
         this.nome = "Derrote Cobras";
         this.progresso = 0;
         this.objetivo = 5;
-        this.recompensaMoedas= 100;
-        this.recompensaXP = 10;
+        this.recompensaMoedas= 800;
+        this.recompensaXP = 1500;
         this.pontosEvolucao = 1;
         this.nomeInimigo = "Cobra gigante";
         this.descricao= "Derrote um total de "+this.objetivo+" cobras";
