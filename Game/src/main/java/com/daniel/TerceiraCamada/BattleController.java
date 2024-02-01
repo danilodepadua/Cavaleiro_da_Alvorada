@@ -187,7 +187,6 @@ public class BattleController implements Initializable {
         EsconderInterfacePlayer();
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
-
     public void Vitoria() throws PlayerInexistenteException, IOException {
         Player.getPlayer().AtualizarStatus(player.getCurrentHp(), player.getCurrentMp());
         controladorMusica.stop();
@@ -294,12 +293,14 @@ public class BattleController implements Initializable {
         mensagem.add(s);
         gdb.mostrarResultado(mensagem, false);
     }
-    public void Inicializar(){
+    public void Inicializar() throws PlayerInexistenteException {
         if(tipoBatalha == null){
             tipoBatalha = new BatalhaComum();
         }
         tipoBatalha.Inicializar();
         EnimyImg.setImage(tipoBatalha.inimigo.getImagem());
+        PlayerImg.setImage(Player.getPlayer().getImagem());
+        PlayerImg.setFitHeight(PlayerImg.getFitHeight()*1.5);
         Enimy = new PersonagemLuta(tipoBatalha.inimigo);
         Comportamento comp;
         if(tipoBatalha.inimigo.getComp() == Comportamentos.fugitivo){

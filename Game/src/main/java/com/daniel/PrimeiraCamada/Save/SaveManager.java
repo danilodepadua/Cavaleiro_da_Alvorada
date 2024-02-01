@@ -59,4 +59,7 @@ public class SaveManager {
             throw new RuntimeException(e);
         }
     }
+    public boolean SaveExistente(){
+        return Files.exists(CaminhoSave);
+    }
 }

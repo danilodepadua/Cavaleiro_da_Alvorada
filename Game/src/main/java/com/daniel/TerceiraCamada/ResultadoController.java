@@ -125,8 +125,7 @@ public class ResultadoController implements Initializable {
             button.setText("X" + item.getQuant());
             button.setGraphic(view);
             button.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
-            button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e");
-
+            button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #FFFFFF;");
             configurarBotoes(button);
 
 

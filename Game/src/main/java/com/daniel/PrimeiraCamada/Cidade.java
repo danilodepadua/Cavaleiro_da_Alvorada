@@ -125,6 +125,8 @@ public abstract class Cidade implements Serializable {
                 battleController.Inicializar();
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
             }
         });
     }

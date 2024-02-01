@@ -65,7 +65,7 @@ public class MainController implements Initializable {
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
-
+        btnCarregar.setDisable(!Main.saveManager.SaveExistente());
     }
 
     @FXML
