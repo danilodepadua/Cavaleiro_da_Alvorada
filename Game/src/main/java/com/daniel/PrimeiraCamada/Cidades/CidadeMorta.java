@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class CidadeMorta extends Cidade {
     public CidadeMorta() throws PlayerInexistenteException {
-        super("Cidade morta","/com.daniel.Images/Fundos/Montanha do norte.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("CIDADE MORTA","/com.daniel.Images/Fundos/CidadeMorta.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_cidadeMorta.wav";
 
         this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};

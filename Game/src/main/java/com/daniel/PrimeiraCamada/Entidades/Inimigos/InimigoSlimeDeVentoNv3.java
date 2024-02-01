@@ -18,7 +18,7 @@ public class InimigoSlimeDeVentoNv3 extends Inimigo {
         this.magias.add(new Vento());
         this.magias.add(new Sopro());
         this.magias.add(new AirBlast());
-        this.lootTable.AdicionarEntrada(new BarraFogo(), 0, 2, 0.2);
+        this.lootTable.AdicionarEntrada(new BarraFogo(), 1, 2, 0.2);
 
     }
 }

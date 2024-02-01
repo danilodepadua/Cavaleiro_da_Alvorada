@@ -92,7 +92,6 @@ public class LojaController implements Initializable {
     private Text txtVenda;
     private boolean ativarCompra = false;
     private boolean ativarVenda = false;
-    private AudioPlayer audioPlayer = new AudioPlayer();
     private AudioPlayer somCompraVenda = new AudioPlayer();
 
     public void initialize(URL location, ResourceBundle resources) {

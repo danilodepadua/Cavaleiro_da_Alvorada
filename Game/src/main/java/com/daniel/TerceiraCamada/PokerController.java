@@ -3,6 +3,7 @@ import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
+import com.daniel.PrimeiraCamada.Exceptions.SemMoedasCassino;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
 import com.daniel.game.Main;
@@ -94,7 +95,8 @@ public class PokerController implements Initializable {
             int saldoDisponivel = Player.getPlayer().getCoins();
             aposta = valorAposta;
             if (valorAposta > saldoDisponivel) {
-                btnApostar.setDisable(true);
+                btnApostar.setDisable(false);
+                throw new SemMoedasCassino();
             } else {
                 mostrarResultado("Rodada: 1");
                 txtAposta.setText("Aposta: "+ aposta);
@@ -118,6 +120,8 @@ public class PokerController implements Initializable {
             }
         } catch (NumberFormatException e) {
             System.out.println("Valor de aposta inválido");
+        } catch (SemMoedasCassino e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML
@@ -169,7 +173,12 @@ public class PokerController implements Initializable {
                 // Verifica se o texto do textFieldAposta não é nulo
                 String apostaTexto = textFieldAposta.getText();
                 if (apostaTexto != null) {
-                    aposta += Integer.parseInt(apostaTexto);
+                    if (Integer.parseInt(apostaTexto) + aposta <= Player.getPlayer().getCoins()){
+                        aposta += Integer.parseInt(apostaTexto);
+                    }else {
+                        textFieldAposta.setText(null);
+                        throw new SemMoedasCassino();
+                    }
                 }
 
                 if (cartasCentro.getMao().size() == 5) {
@@ -199,6 +208,8 @@ public class PokerController implements Initializable {
             } catch (BaralhoVazioException e) {
                 throw new RuntimeException(e);
             } catch (PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            } catch (SemMoedasCassino e) {
                 throw new RuntimeException(e);
             }
 

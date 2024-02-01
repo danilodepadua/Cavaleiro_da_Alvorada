@@ -1,6 +1,7 @@
 package com.daniel.TerceiraCamada;
 
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
@@ -27,12 +28,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
-import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
+import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class ResultadoController implements Initializable {
-    @FXML
-    private Button btnCacar;
 
     @FXML
     private Button btnRecolher;
@@ -57,6 +55,7 @@ public class ResultadoController implements Initializable {
     private int moedasInimigo;
     private int xpInimigo;
     private ArrayList<Item> itensDoInimigo = new ArrayList<>();
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
     private void atualizarInterface() throws PlayerInexistenteException {
         txtXpObitdo.setText(String.valueOf(xpInimigo));
@@ -66,6 +65,7 @@ public class ResultadoController implements Initializable {
         criarItens();
         btnRecolher.setOnAction(event -> {
             try {
+                audioPlayer.stop();
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -82,13 +82,13 @@ public class ResultadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        audioPlayer.play("/com.daniel.audios/som_vitoria.wav", false);
         try {
             atualizarInterface();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/FundoVitoria.jpg");
-        configurarBotoes(btnCacar);
         configurarBotoes(btnRecolher);
     }
 
@@ -100,17 +100,6 @@ public class ResultadoController implements Initializable {
         Player.getPlayer().ganhaCoins(moedasInimigo);
         atualizarInterface();
     }
-
-    @FXML
-    void onClickCacar (ActionEvent event) throws PlayerInexistenteException, IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
-        Parent root = loader.load();
-        BattleController battleController = loader.getController();
-        battleController.tipoBatalha = new BatalhaComum();
-        Main.ChangeScene(root);
-        battleController.Inicializar();
-    }
-
     private void criarItens() {
         int columnIndex = 0;
         int rowIndex = 0;
@@ -125,8 +114,8 @@ public class ResultadoController implements Initializable {
             button.setText("X" + item.getQuant());
             button.setGraphic(view);
             button.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
-            button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #FFFFFF;");
-            configurarBotoes(button);
+            button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
+            configurarBotoesResultado(button);
 
 
             // Adicione os elementos ao GridPane

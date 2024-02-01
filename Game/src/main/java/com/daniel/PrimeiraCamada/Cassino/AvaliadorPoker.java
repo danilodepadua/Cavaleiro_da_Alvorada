@@ -54,8 +54,6 @@ public class AvaliadorPoker {
             return 2;
         }
     }
-
-    // Implemente os métodos específicos para verificar cada tipo de combinação
     private static boolean temRoyalFlush(Mão mao, Mão centro) {
         // Verifica se a mão tem um Ás, um Valete, uma Dama, um Rei e um 10, todos do mesmo naipe
         int valorCartaMao1 = mao.getMao().get(0).getValor();

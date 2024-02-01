@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class MonteClaro extends Cidade {
     public MonteClaro() throws PlayerInexistenteException {
-        super("Monte Claro", "/com.daniel.Images/Fundos/FundoCanyon.jpg",
+        super("MONTE CLARO", "/com.daniel.Images/Fundos/FundoCanyon.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_monteClaro.wav";
 

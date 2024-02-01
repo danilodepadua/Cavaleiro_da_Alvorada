@@ -19,6 +19,6 @@ public class InimigoSlimeDeFogoNv2 extends Inimigo {
         this.magias.add(new Fogo());
         this.magias.add(new Explosao());
         this.lootTable.AdicionarEntrada(new FragmentoFogo(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new Pao(), 0, 1, 0.2);
+        this.lootTable.AdicionarEntrada(new Pao(), 1, 1, 0.2);
     }
 }

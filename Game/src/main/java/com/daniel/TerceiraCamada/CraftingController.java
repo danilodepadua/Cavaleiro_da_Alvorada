@@ -94,15 +94,15 @@ public class CraftingController implements Initializable {
                 Button botao = new Button();
                 ImageView imageView = new ImageView();
                 imageView.setImage(item.getImage());
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(30);
+                imageView.setFitHeight(30);
                 botao.setGraphic(imageView);
                 botao.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 botao.setStyle("-fx-background-color:  #241811;-fx-border-width: 1;-fx-border-color: #eccb7e");
                 configurarBotoes(botao);
                 gridItensPlayer.add(botao, coluna, linha);
                 coluna++;
-                if (coluna >= 4){
+                if (coluna >= 5){
                     coluna=0;
                     linha++;
                 }

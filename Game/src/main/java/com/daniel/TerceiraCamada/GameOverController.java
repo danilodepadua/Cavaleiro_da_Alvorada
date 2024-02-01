@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import static com.daniel.TerceiraCamada.Utilidades.configurarBotoes;
 import static com.daniel.TerceiraCamada.Utilidades.definirBackground;
 
 public class GameOverController implements Initializable {
+    private AudioPlayer audioPlayer = new AudioPlayer();
+
     @FXML
     private Button btnCarregar;
 
@@ -27,6 +30,7 @@ public class GameOverController implements Initializable {
     @FXML
     void onClickCarregar(ActionEvent event) throws IOException {
         Main.saveManager.Carregar();
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
@@ -37,6 +41,7 @@ public class GameOverController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        audioPlayer.play("/com.daniel.audios/som_derrota.wav", false);
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fundo.png");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnSair);

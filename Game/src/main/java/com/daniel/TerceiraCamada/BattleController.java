@@ -123,7 +123,7 @@ public class BattleController implements Initializable {
 
     boolean isItens;
     private AudioPlayer audioPlayer = new AudioPlayer();
-    private AudioPlayer controladorMusica = new AudioPlayer();
+    public static AudioPlayer controladorMusica = new AudioPlayer();
 
     @FXML
     void AbrirItens(ActionEvent event) {
@@ -183,7 +183,6 @@ public class BattleController implements Initializable {
 
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException, IOException {
-        controladorMusica.stop();
         EsconderInterfacePlayer();
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
@@ -191,13 +190,11 @@ public class BattleController implements Initializable {
         Player.getPlayer().AtualizarStatus(player.getCurrentHp(), player.getCurrentMp());
         controladorMusica.stop();
         tipoBatalha.Vitoria();
-        audioPlayer.play("/com.daniel.audios/som_vitoria.wav", false);
     }
 
     public void Derrota() throws IOException {
         controladorMusica.stop();
         tipoBatalha.Derrota();
-        audioPlayer.play("/com.daniel.audios/som_derrota.wav", false);
     }
 
     public void Atualiazar(){

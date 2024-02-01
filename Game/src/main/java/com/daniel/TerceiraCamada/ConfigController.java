@@ -1,8 +1,6 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Cidades.Dasópoles;
-import com.daniel.PrimeiraCamada.Cidades.Ilha;
-import com.daniel.PrimeiraCamada.Cidades.MonteClaro;
+import com.daniel.PrimeiraCamada.Cidades.*;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Exceptions.SenhaIncorretaException;
@@ -29,10 +27,13 @@ import static com.daniel.TerceiraCamada.Utilidades.contornarBotaoVoltar;
 
 public class ConfigController implements Initializable {
 
+
     @FXML
     private ChoiceBox<String> EscolhaResolucao;
+
     @FXML
     private Slider SliderVolume;
+
     @FXML
     private Button btnAdmin;
 
@@ -43,6 +44,9 @@ public class ConfigController implements Initializable {
     private Button btnSair;
 
     @FXML
+    private Button btnSalvar;
+
+    @FXML
     private Button btnVoltar;
 
     @FXML
@@ -51,8 +55,9 @@ public class ConfigController implements Initializable {
     @FXML
     private TextField txtTextfield;
 
+
     @FXML
-    void Confirmar(ActionEvent event) {
+    void Salvar(ActionEvent event) {
         String[] tamanho = EscolhaResolucao.getValue().split("x");
         int largura = Integer.parseInt(tamanho[0]);
         int altura = Integer.parseInt(tamanho[1]);
@@ -67,6 +72,7 @@ public class ConfigController implements Initializable {
         EscolhaResolucao.getItems().addAll("1200x675","1280x720");
         configurarBotoes(btnAdmin);
         contornarBotaoVoltar(btnSair);
+        configurarBotoes(btnSalvar);
         configurarBotoes(btnConfirmar);
         contornarBotaoVoltar(btnVoltar);
 
@@ -97,17 +103,22 @@ public class ConfigController implements Initializable {
     void onClickConfirmar(ActionEvent event) throws PlayerInexistenteException, SenhaIncorretaException {
         String senha = "santiago";
         if (txtTextfield.getText().equals(senha)){
-                Player.getPlayer().ganhaCoins(10000);
-                Player.getPlayer().adicionarCidade(new Ilha());
-                Player.getPlayer().adicionarCidade(new Dasópoles());
-                Player.getPlayer().adicionarCidade(new MonteClaro());
-                Player.getPlayer().ganharXp(100000);
-                Player.getPlayer().aumentaForcaProgress(999);
-                Player.getPlayer().aumentaVelocidadeProgress(999);
-                Player.getPlayer().aumentaResistenciaProgress(999);
-                Player.getPlayer().aumentaInteligenciaProgess(999);
-                paneAdmin.setOpacity(0);
-                paneAdmin.setDisable(true);
+            Player.getPlayer().ganhaCoins(10000);
+            Player.getPlayer().adicionarCidade(new Dasópoles());
+            Player.getPlayer().adicionarCidade(new MonteClaro());
+            Player.getPlayer().adicionarCidade(new CidadePortuaria());
+            Player.getPlayer().adicionarCidade(new Ilha());
+            Player.getPlayer().adicionarCidade(new BatalhaDePedraveira());
+            Player.getPlayer().adicionarCidade(new MontanhaDoNorte());
+            Player.getPlayer().adicionarCidade(new CidadeMorta());
+
+            Player.getPlayer().ganharXp(100000);
+            Player.getPlayer().aumentaForcaProgress(999);
+            Player.getPlayer().aumentaVelocidadeProgress(999);
+            Player.getPlayer().aumentaResistenciaProgress(999);
+            Player.getPlayer().aumentaInteligenciaProgess(999);
+            paneAdmin.setOpacity(0);
+            paneAdmin.setDisable(true);
         }else {
             throw new SenhaIncorretaException();
         }

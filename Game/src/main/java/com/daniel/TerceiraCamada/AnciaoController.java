@@ -49,7 +49,7 @@ public class AnciaoController implements Initializable {
     }
 
     private void configurarNPCdaCidade() {
-        if (Objects.equals(Main.cidadeAtual.getNome(), "Auroraville")) {
+        if (Objects.equals(Main.cidadeAtual.getNome(), "AURORAVILLE")) {
             carregarImagemVeio("Veio");
             NPC veioNPC = new NPC("Veio");
             if (irmaoVisitado) {
@@ -61,7 +61,7 @@ public class AnciaoController implements Initializable {
             dialogo.setPrefHeight(200);
             dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
-        } else if (Objects.equals(Main.cidadeAtual.getNome(), "Montanha Do Norte")) {
+        } else if (Objects.equals(Main.cidadeAtual.getNome(), "MONTANHA DO NORTE")) {
             carregarImagemVeio("Veio");
             NPC veiacoNPC = new NPC("Veiaco");
             SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
@@ -71,7 +71,7 @@ public class AnciaoController implements Initializable {
             dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
             irmaoVisitado = true;
-        } else if (Objects.equals(Main.cidadeAtual.getNome(), "Cidade Portuária")) {
+        } else if (Objects.equals(Main.cidadeAtual.getNome(), "CIDADE PORTUÁRIA")) {
             carregarImagemVeio("Ardan");
             NPC ardanNPC = new NPC("Ardan");
             SistemaDeDialogo dialogo = new SistemaDeDialogo(ardanNPC);

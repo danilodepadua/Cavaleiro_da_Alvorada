@@ -16,7 +16,7 @@ public class InimigoSlimeDeVentoNv2 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Terra};
         this.magias.add(new Vento());
         this.magias.add(new Sopro());
-        this.lootTable.AdicionarEntrada(new BarraFerro(), 0, 2, 0.2);
+        this.lootTable.AdicionarEntrada(new BarraFerro(), 1, 2, 0.2);
 
     }
 }

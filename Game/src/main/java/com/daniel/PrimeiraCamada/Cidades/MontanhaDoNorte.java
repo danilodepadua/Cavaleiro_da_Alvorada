@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MontanhaDoNorte extends Cidade {
 
     public MontanhaDoNorte() throws PlayerInexistenteException {
-        super("Montanha Do Norte","/com.daniel.Images/Fundos/Montanha do norte.jpg",
+        super("MONTANHA DO NORTE","/com.daniel.Images/Fundos/Montanha do norte.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.inimigos = new Inimigo[]{new InimigoSnowMan(), new InimigoTRex(),
                 new InimigoTigerMan(), new InimigoSlimeDeGeloNv3()};

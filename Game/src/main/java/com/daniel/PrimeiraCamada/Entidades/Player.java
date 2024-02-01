@@ -64,11 +64,6 @@ public class Player extends Personagem implements Serializable {
         this.magias = new ArrayList<>();
         this.magias.add(new Fogo());
         this.cidadesConehcidas.add(new Auroraville());
-        this.cidadesConehcidas.add(new MontanhaDoNorte());
-        this.cidadesConehcidas.add(new CidadeMorta());
-        this.cidadesConehcidas.add(new Ilha());
-        this.cidadesConehcidas.add(new CidadePortuaria());
-        this.cidadesConehcidas.add(new BatalhaDePedraveira());
         this.inventario.adicionarItem(new Ferro());
         this.inventario.adicionarItem(new Ferro());
         this.inventario.adicionarItem(new Ferro());

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.daniel.TerceiraCamada.BattleController.controladorMusica;
 import static com.daniel.TerceiraCamada.Utilidades.*;
 
 public class CidadeController implements Initializable {
@@ -145,6 +146,8 @@ public class CidadeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        controladorMusica = new AudioPlayer();
+        controladorMusica.stop();
         audioPlayer.stop();
         if(Main.cidadeAtual.getMusicPath() != null){
             audioPlayer.play(Main.cidadeAtual.getMusicPath(), true);

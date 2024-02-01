@@ -320,7 +320,7 @@ public class InventarioController implements Initializable {
         btnDesequipar.setDisable(true);
         btnEquipar.setDisable(true);
         btnStatus.setDisable(false);
-        Grid.prefWidthProperty().bind(Scroll.widthProperty().subtract(10));
+        Grid.prefWidthProperty().bind(Scroll.widthProperty().subtract(14));
         Grid.prefHeightProperty().bind(Grid.prefWidthProperty());
         RowConstraints row = new RowConstraints();
         ColumnConstraints col = new ColumnConstraints();

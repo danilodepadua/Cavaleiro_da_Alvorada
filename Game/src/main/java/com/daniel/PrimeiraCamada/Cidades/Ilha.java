@@ -8,13 +8,14 @@ import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaFogoBasica;
 import com.daniel.PrimeiraCamada.Itens.Armas.EspadaGeloAperfeicoada;
+import com.daniel.PrimeiraCamada.Itens.Armas.EspadaSombriaBasica;
 import com.daniel.PrimeiraCamada.Quests.QuestSlimeDeEscuridaoNv1;
 
 import java.util.ArrayList;
 
 public class Ilha extends Cidade {
     public Ilha() throws PlayerInexistenteException {
-        super("Ilha","/com.daniel.Images/Fundos/Ilha.jpg",
+        super("ILHA","/com.daniel.Images/Fundos/Ilha.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
         this.musicPath = "/com.daniel.audios/msc_ilha.wav";
@@ -22,7 +23,7 @@ public class Ilha extends Cidade {
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();
         this.itens.add(new EspadaFogoBasica());
-        this.itens.add(new EspadaGeloAperfeicoada());
+        this.itens.add(new EspadaSombriaBasica());
 
         quests.add(new QuestSlimeDeEscuridaoNv1());
         ajustarBotoes();

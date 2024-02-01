@@ -13,7 +13,7 @@ public class InimigoSlimeDeVentoNv1 extends Inimigo {
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.fraquezas = new TiposElementais[]{TiposElementais.Terra};
         this.magias.add(new Vento());
-        this.lootTable.AdicionarEntrada(new Ouro(), 0, 1, 0.2);
+        this.lootTable.AdicionarEntrada(new Ouro(), 1, 1, 0.2);
 
     }
 }

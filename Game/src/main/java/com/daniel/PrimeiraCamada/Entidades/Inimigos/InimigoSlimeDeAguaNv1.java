@@ -18,7 +18,7 @@ public class InimigoSlimeDeAguaNv1 extends Inimigo {
         this.imunidades = new TiposElementais[]{ TiposElementais.Fogo};
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
-        this.lootTable.AdicionarEntrada(new Ferro(), 0, 2, 0.8);
+        this.lootTable.AdicionarEntrada(new Ferro(), 1, 2, 0.8);
 
 
     }

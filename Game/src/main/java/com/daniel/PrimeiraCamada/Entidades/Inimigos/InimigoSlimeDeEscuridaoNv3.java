@@ -20,8 +20,8 @@ public class InimigoSlimeDeEscuridaoNv3 extends Inimigo {
         this.magias.add(new Amolecer());
         this.magias.add(new Enfraquecer());
         this.magias.add(new IntDown());
-        this.lootTable.AdicionarEntrada(new FragmentoEscuridao(), 0, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 0, 2, 0.5);
+        this.lootTable.AdicionarEntrada(new FragmentoEscuridao(), 1, 2, 0.5);
+        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
 
     }
 }

@@ -9,6 +9,8 @@ import com.daniel.SegundaCamada.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -46,6 +48,9 @@ public class Main extends Application {
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
         stage.setScene(scene);
+        Image icon = new Image(Main.class.getResource("/com.daniel.Images/Icons/IconJogo.png").toString());
+        stage.getIcons().add(icon);
+
         stage.setTitle("O Cavaleiro da Alvorada");
         stage.show();
     }

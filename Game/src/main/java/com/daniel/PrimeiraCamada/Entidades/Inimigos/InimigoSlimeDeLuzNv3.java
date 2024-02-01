@@ -19,8 +19,8 @@ public class InimigoSlimeDeLuzNv3 extends Inimigo {
         this.absorcao = new TiposElementais[]{TiposElementais.Fogo};
         this.fraquezas = new TiposElementais[]{TiposElementais.Escuridao};
         this.imunidades = new TiposElementais[]{TiposElementais.Luz};
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 0, 2, 0.3);
-        this.lootTable.AdicionarEntrada(new Banana(), 0, 2, 0.3);
+        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.3);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.3);
 
     }
 }

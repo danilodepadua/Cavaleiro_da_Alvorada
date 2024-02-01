@@ -181,28 +181,28 @@ public class MapaController extends Utilidades implements Initializable {
                     butao.setText(cidade.getNome());
                     butao.setOnAction(event -> {
                         switch (cidade.getNome()){
-                            case "Montanha Do Norte":
+                            case "MONTANHA DO NORTE":
                                 MostraMarca(0.445, 0.15);
                                 break;
-                            case "Auroraville":
+                            case "AURORAVILLE":
                                 MostraMarca(0.924, 0.55);
                                 break;
-                            case "Dasópoles":
+                            case "DASÓPOLES":
                                 MostraMarca(0.82,0.65);
                                 break;
-                            case "Monte Claro":
+                            case "MONTE CLARO":
                                 MostraMarca(0.638, 0.71);
                                 break;
-                            case "Cidade morta":
+                            case "CIDADE MORTA":
                                 MostraMarca(0.73, 0.195);
                                 break;
-                            case "Ilha":
+                            case "ILHA":
                                 MostraMarca(0.35, 0.83);
                                 break;
-                            case "Cidade Portuária":
+                            case "CIDADE PORTUÁRIA":
                                 MostraMarca(0.305,0.52);
                                 break;
-                            case "Pedraveira":
+                            case "PEDRAVEIRA":
                                 MostraMarca(0.25, 0.2);
                                 break;
 

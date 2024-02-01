@@ -57,6 +57,26 @@ public class Utilidades {
         });
 
     }
+    public static void configurarBotoesResultado(Button button) {
+        audioPlayer.somMouseClick(button, "/com.daniel.audios/som_click.wav");
+
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #ADD8E6;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-text-fill: #eccb7e");
+        });
+
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-text-fill: #eccb7e");
+        });
+
+        button.setOnMousePressed(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e; -fx-opacity: 0.7;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-text-fill: #eccb7e");
+        });
+
+        button.setOnMouseReleased(event -> {
+            button.setStyle("-fx-background-color: #241811; -fx-border-color: #eccb7e;-fx-font-family: 'Barlow Condensed SemiBold'; -fx-text-fill: #eccb7e");
+        });
+
+    }
     public static void configurarBotoesMapa(Button button) {
         audioPlayer.somMouseClick(button, "/com.daniel.audios/som_click.wav");
 

@@ -20,7 +20,7 @@ public class InimigoSlimeDeTerraNv3 extends Inimigo {
         this.magias.add(new Terra());
         this.magias.add(new ParedeTerra());
         this.magias.add(new Endurecer());
-        this.lootTable.AdicionarEntrada(new Banana(), 0, 2, 0.3);
-        this.lootTable.AdicionarEntrada(new BarraOuro(), 0, 2, 0.3);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 2, 0.3);
+        this.lootTable.AdicionarEntrada(new BarraOuro(), 1, 2, 0.3);
     }
 }

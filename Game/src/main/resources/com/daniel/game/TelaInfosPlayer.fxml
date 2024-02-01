@@ -349,9 +349,9 @@
             </Group>
          </children>
       </AnchorPane>
-      <HBox layoutX="443.0" layoutY="542.0" prefHeight="86.0" prefWidth="390.0" spacing="30.0">
+      <HBox layoutX="80.0" layoutY="535.0" prefHeight="94.0" prefWidth="466.0" spacing="75.0">
          <children>
-            <Button fx:id="btnInventario" maxHeight="86.0" maxWidth="91.0" mnemonicParsing="false" onAction="#OnActionInventario" prefHeight="86.0" prefWidth="91.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" textFill="#eccb7e">
+            <Button fx:id="btnInventario" maxHeight="104.0" maxWidth="91.0" mnemonicParsing="false" onAction="#OnActionInventario" prefHeight="104.0" prefWidth="91.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
@@ -363,7 +363,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnPontos" mnemonicParsing="false" onAction="#OnActionPontos" prefHeight="86.0" prefWidth="91.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" textFill="#eccb7e">
+            <Button fx:id="btnPontos" mnemonicParsing="false" onAction="#OnActionPontos" prefHeight="104.0" prefWidth="91.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
@@ -380,16 +380,16 @@
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="62.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="95.0" fitWidth="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../com.daniel.Images/Icons/Weretiger%20Maxima.png" />
+                        <Image url="@../../../com.daniel.Images/Inimigos/Mimic%20Book.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
          </children>
       </HBox>
-      <Circle fx:id="SinalPontos" fill="RED" layoutX="682.0" layoutY="542.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5">
+      <Circle fx:id="SinalPontos" fill="RED" layoutX="364.0" layoutY="535.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5">
          <effect>
             <Lighting diffuseConstant="1.4" specularConstant="1.5" specularExponent="40.0" surfaceScale="1.1">
                <bumpInput>

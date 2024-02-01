@@ -14,7 +14,7 @@ public class InimigoSlimeDeRaioNv1 extends Inimigo {
         this.absorcao = new TiposElementais[]{TiposElementais.Eletrico};
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new ThunderBall());
-        this.lootTable.AdicionarEntrada(new Ouro(), 0, 1, 0.2);
+        this.lootTable.AdicionarEntrada(new Ouro(), 1, 1, 0.2);
 
     }
 }

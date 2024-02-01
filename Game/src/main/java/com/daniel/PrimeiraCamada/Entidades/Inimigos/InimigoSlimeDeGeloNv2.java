@@ -16,6 +16,6 @@ public class InimigoSlimeDeGeloNv2 extends Inimigo {
         this.resistencias = new TiposElementais[]{TiposElementais.Agua};
         this.imunidades = new TiposElementais[]{TiposElementais.Gelo};
         this.lootTable.AdicionarEntrada(new FragmentoGlacial(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 0, 1, 0.3);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.3);
     }
 }

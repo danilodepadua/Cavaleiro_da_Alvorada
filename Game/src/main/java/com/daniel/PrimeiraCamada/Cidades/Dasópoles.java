@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
-        super("Dasópoles", "/com.daniel.Images/Fundos/Dasopoles.jpg",
+        super("DASÓPOLES", "/com.daniel.Images/Fundos/Dasopoles.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
 
         this.musicPath = "/com.daniel.audios/msc_dasopoles.wav";

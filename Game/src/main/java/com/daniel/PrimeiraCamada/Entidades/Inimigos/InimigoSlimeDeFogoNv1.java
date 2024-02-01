@@ -21,6 +21,6 @@ public class InimigoSlimeDeFogoNv1 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Agua, TiposElementais.Gelo};
         this.magias.add(new Fogo());
         this.lootTable.AdicionarEntrada(new FragmentoFogo(), 1, 1, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 0, 1, 0.2);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.2);
     }
 }

@@ -118,14 +118,9 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <HBox layoutX="471.0" layoutY="582.0" prefHeight="100.0" prefWidth="258.0" spacing="20.0">
+      <HBox layoutX="510.0" layoutY="584.0" prefHeight="100.0" prefWidth="258.0" spacing="20.0">
          <children>
-            <Button fx:id="btnCacar" mnemonicParsing="false" onAction="#onClickCacar" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Caçar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnRecolher" mnemonicParsing="false" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Recolher" textFill="#eccb7e">
+            <Button fx:id="btnRecolher" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Recolher" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>

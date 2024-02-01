@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Auroraville extends Cidade{
     public Auroraville() throws PlayerInexistenteException {
-        super("Auroraville", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
+        super("AURORAVILLE", "/com.daniel.Images/Fundos/CidadeNoturna.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 

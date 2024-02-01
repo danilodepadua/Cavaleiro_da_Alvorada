@@ -47,7 +47,7 @@
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnConfirmar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Confirmar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
+            <Button fx:id="btnSalvar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>

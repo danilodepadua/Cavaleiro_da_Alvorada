@@ -17,7 +17,7 @@ public class InimigoSlimeDeTerraNv1 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Agua};
         this.magias.add(new Terra());
         this.magias.add(new Endurecer());
-        this.lootTable.AdicionarEntrada(new Banana(), 0, 1, 0.3);
+        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.3);
 
     }
 }

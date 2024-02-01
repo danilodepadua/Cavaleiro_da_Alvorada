@@ -7,6 +7,7 @@ import com.daniel.PrimeiraCamada.Inimigo;
 import com.daniel.PrimeiraCamada.Itens.Armas.*;
 import com.daniel.PrimeiraCamada.Itens.Comidas.Pao;
 import com.daniel.PrimeiraCamada.Itens.Comidas.Soupa;
+import com.daniel.PrimeiraCamada.Itens.Mapas.MapaIlha;
 import com.daniel.PrimeiraCamada.Itens.Mapas.MapaPedraveira;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.Cerveja;
 import com.daniel.PrimeiraCamada.Itens.Pocoes.PocaoCura;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class CidadePortuaria extends Cidade {
 
     public CidadePortuaria() throws PlayerInexistenteException{
-        super("Cidade Portuária", "/com.daniel.Images/Fundos/CidadePortuaria.jpg",
+        super("CIDADE PORTUÁRIA", "/com.daniel.Images/Fundos/CidadePortuaria.jpg",
                 "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
         this.musicPath = "/com.daniel.audios/msc_cidadePortuaria.wav";
 
@@ -36,6 +37,7 @@ public class CidadePortuaria extends Cidade {
         this.itens.add(new Soupa());
         this.itens.add(new Cerveja());
         this.itens.add(new MapaPedraveira());
+        this.itens.add(new MapaIlha());
         this.quests.add(new QuestSlimeDeTerraNv2());
         this.quests.add(new QuestSlimeDeRaioNv2());
         this.quests.add(new QuestSlimeDeAguaNv3());
