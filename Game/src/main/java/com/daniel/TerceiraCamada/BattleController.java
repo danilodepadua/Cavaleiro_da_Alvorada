@@ -123,6 +123,7 @@ public class BattleController implements Initializable {
 
     boolean isItens;
     private AudioPlayer audioPlayer = new AudioPlayer();
+    private AudioPlayer controladorMusica = new AudioPlayer();
 
     @FXML
     void AbrirItens(ActionEvent event) {
@@ -182,17 +183,20 @@ public class BattleController implements Initializable {
 
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException, IOException {
+        controladorMusica.stop();
         EsconderInterfacePlayer();
         gdb.fugir(player.fugir(Enimy.getVelocidade()));
     }
 
     public void Vitoria() throws PlayerInexistenteException, IOException {
         Player.getPlayer().AtualizarStatus(player.getCurrentHp(), player.getCurrentMp());
+        controladorMusica.stop();
         tipoBatalha.Vitoria();
         audioPlayer.play("/com.daniel.audios/som_vitoria.wav", false);
     }
 
     public void Derrota() throws IOException {
+        controladorMusica.stop();
         tipoBatalha.Derrota();
         audioPlayer.play("/com.daniel.audios/som_derrota.wav", false);
     }
@@ -319,6 +323,7 @@ public class BattleController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        controladorMusica.play("/com.daniel.audios/msc_batalha.wav", true);
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
