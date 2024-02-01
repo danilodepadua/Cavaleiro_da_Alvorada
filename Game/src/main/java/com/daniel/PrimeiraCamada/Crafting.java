@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 
 public class Crafting {
     private double chanceBase;
-    public Item criarBarraFerro(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public Item criarBarraFerro(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) { //Verifica se nao é nulo
             if (item instanceof Ferro && item2 instanceof Ferro) { //depois se ambos são ferro
                 btnCriar.setDisable(false);
@@ -31,7 +31,7 @@ public class Crafting {
         return null;
     }
 
-    public  Item criarPocaoVidaGrande(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarPocaoVidaGrande(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof PocaoCura && item2 instanceof PocaoCura) {
@@ -48,7 +48,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarPocaoManaGrande(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarPocaoManaGrande(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof PocaoMp && item2 instanceof PocaoMp) {
@@ -82,7 +82,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarBarraOuro(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarBarraOuro(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof Ouro && item2 instanceof Ouro) {
@@ -99,7 +99,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarBarraFogo(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarBarraFogo(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof FragmentoFogo && item2 instanceof FragmentoFogo) {
@@ -116,7 +116,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarBarraGelo(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarBarraGelo(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof FragmentoGlacial && item2 instanceof FragmentoGlacial) {
@@ -132,7 +132,7 @@ public class Crafting {
             }
         }
         return null;
-    }    public  Item criarFerroAperfeicoado(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    }    public  Item criarFerroAperfeicoado(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof BarraFerro && item2 instanceof BarraFerro) {
@@ -149,7 +149,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarEspadaAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarEspadaAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaInicial && item2 instanceof FerroAperfeicoado || item instanceof FerroAperfeicoado && item2 instanceof EspadaInicial) {
@@ -167,7 +167,7 @@ public class Crafting {
         return null;
     }
 
-    public  Item criarEspadaGeloAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarEspadaGeloAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaGeloBasica && item2 instanceof BarraGlacial || item instanceof BarraGlacial && item2 instanceof EspadaGeloBasica) {
@@ -184,7 +184,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarEspadaEscuridaoAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarEspadaEscuridaoAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaSombriaBasica && item2 instanceof BarraEscuridao || item instanceof BarraEscuridao && item2 instanceof EspadaSombriaBasica) {
@@ -201,7 +201,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarEspadaFogoAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarEspadaFogoAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaFogoBasica && item2 instanceof BarraFogo || item instanceof BarraFogo && item2 instanceof EspadaFogoBasica) {
@@ -218,7 +218,7 @@ public class Crafting {
         }
         return null;
     }
-    public  Item criarEspadaEletricaAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) throws PlayerInexistenteException {
+    public  Item criarEspadaEletricaAperfeicoada(Item item, Item item2, Button btnSlot3, Button btnCriar, double chance) {
         if (item != null && item2 != null) {
             // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaEletricaBasica && item2 instanceof BarraOuro || item instanceof BarraOuro && item2 instanceof EspadaEletricaBasica) {
@@ -235,6 +235,7 @@ public class Crafting {
         }
         return null;
     }
+
     public double getChanceBase() {
         return chanceBase;
     }

@@ -145,6 +145,7 @@ public class InventarioController implements Initializable {
         } else {
             btnUsar.setDisable(true);
         }
+
         if (i instanceof IEquipable) {
             IEquipable equipableItem = (IEquipable) i;
 
@@ -346,17 +347,6 @@ public class InventarioController implements Initializable {
     void onClickVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
-    public void venderItem(Item item) throws PlayerInexistenteException {
-        if (item instanceof IEquipable) {
-            IEquipable equipableItem = (IEquipable) item;
-            desequiparItemSeEquipado(equipableItem);
-        }
-
-        int precoItem = item.getPreco();
-        Player.getPlayer().ganhaCoins(precoItem * 70 / 100);
-        Player.getPlayer().getInventario().RemoverItem(item);
-    }
-
     private void desequiparItemSeEquipado(IEquipable equipableItem) throws PlayerInexistenteException {
         if (Player.getPlayer().getArma().equals(equipableItem)) {
             Player.getPlayer().desequiparArma();

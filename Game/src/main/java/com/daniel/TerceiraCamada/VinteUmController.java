@@ -1,13 +1,10 @@
 package com.daniel.TerceiraCamada;
 
-import com.daniel.PrimeiraCamada.Exceptions.BaralhoVazioException;
-import com.daniel.PrimeiraCamada.Exceptions.RemoverCoinsException;
-import com.daniel.PrimeiraCamada.Exceptions.SemMoedasException;
+import com.daniel.PrimeiraCamada.Exceptions.*;
 import com.daniel.SegundaCamada.CassinoRepositorio.Baralho;
 import com.daniel.PrimeiraCamada.Cassino.Carta;
 import com.daniel.SegundaCamada.CassinoRepositorio.Mão;
 import com.daniel.PrimeiraCamada.Entidades.Player;
-import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -129,7 +126,7 @@ public class VinteUmController implements Initializable{
         int pontosDealer = dealer.getPontos();
 
         // Se o dealer tem menos de 14 pontos, ele puxa uma carta
-        if (pontosDealer <= 14 && pontosDealer <= pontosJogador) {
+        if (pontosDealer <= 14 || pontosDealer <= pontosJogador) {
             try {
                 adicionarCarta(GridPaneDealer, dealer, 2);
             } catch (BaralhoVazioException ex) {
@@ -189,8 +186,7 @@ public class VinteUmController implements Initializable{
             int valorAposta = Integer.parseInt(valorStr);
 
             if (valorAposta > Player.getPlayer().getCoins() ) {
-                btnApostar.setDisable(true);
-                throw new SemMoedasException();
+                throw new SemMoedasCassino();
             } else {
                 adicionarCartaCostas(GridPaneDealer, 0);
                 adicionarCartaCostas(GridPaneDealer, 1);
@@ -206,7 +202,7 @@ public class VinteUmController implements Initializable{
             }
         } catch (NumberFormatException | BaralhoVazioException e) {
             System.out.println("Valor de aposta inválido");
-        } catch (SemMoedasException e) {
+        } catch (SemMoedasCassino e) {
             throw new RuntimeException(e);
         }
     }

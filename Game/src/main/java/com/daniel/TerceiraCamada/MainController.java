@@ -53,6 +53,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfigInicial.fxml")).load());
     }
 

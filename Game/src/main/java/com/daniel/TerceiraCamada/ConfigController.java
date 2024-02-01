@@ -66,8 +66,9 @@ public class ConfigController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EscolhaResolucao.getItems().addAll("1200x675","1280x720");
         configurarBotoes(btnAdmin);
-        configurarBotoes(btnConfirmar);
         contornarBotaoVoltar(btnSair);
+        configurarBotoes(btnConfirmar);
+        contornarBotaoVoltar(btnVoltar);
 
         // Configurar o Slider de Volume
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
@@ -79,8 +80,7 @@ public class ConfigController implements Initializable {
             }
         });
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
-        configurarBotoes(btnConfirmar);
-        contornarBotaoVoltar(btnVoltar);
+
     }
     @FXML
     void Voltar(ActionEvent event) throws IOException {

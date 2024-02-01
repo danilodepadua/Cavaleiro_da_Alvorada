@@ -11,8 +11,8 @@ import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Capacetes.NullCapacete;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitorais.NullPeitoral;
 import com.daniel.PrimeiraCamada.Itens.Armaduras.Peitoral;
-import com.daniel.PrimeiraCamada.Itens.Armas.NullArma;
-import com.daniel.PrimeiraCamada.Itens.Minerios.Ferro;
+import com.daniel.PrimeiraCamada.Itens.Armas.*;
+import com.daniel.PrimeiraCamada.Itens.Minerios.*;
 import com.daniel.PrimeiraCamada.Magias.*;
 
 import com.daniel.SegundaCamada.Bestiario;
@@ -72,6 +72,25 @@ public class Player extends Personagem implements Serializable {
         this.inventario.adicionarItem(new Ferro());
         this.inventario.adicionarItem(new Ferro());
         this.inventario.adicionarItem(new Ferro());
+
+        this.inventario.adicionarItem(new FragmentoFogo());
+        this.inventario.adicionarItem(new FragmentoFogo());
+
+        this.inventario.adicionarItem(new FragmentoGlacial());
+        this.inventario.adicionarItem(new FragmentoGlacial());
+
+        this.inventario.adicionarItem(new FragmentoEscuridao());
+        this.inventario.adicionarItem(new FragmentoEscuridao());
+
+        this.inventario.adicionarItem(new Ouro());
+        this.inventario.adicionarItem(new Ouro());
+
+        this.inventario.adicionarItem(new EspadaEletricaBasica());
+        this.inventario.adicionarItem(new EspadaFogoBasica());
+        this.inventario.adicionarItem(new EspadaGeloBasica());
+        this.inventario.adicionarItem(new EspadaSombriaBasica());
+
+
         player = this;
     }
     public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {

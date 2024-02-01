@@ -105,19 +105,37 @@
       </Button>
       <AnchorPane layoutX="820.0" layoutY="109.0" prefHeight="96.0" prefWidth="358.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="21.59999999999991">
          <children>
-            <ImageView fx:id="imgItem" fitHeight="79.0" fitWidth="100.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox layoutX="122.0" layoutY="16.0" prefHeight="29.0" prefWidth="100.0" spacing="10.0">
+            <ImageView fx:id="imgItem" fitHeight="79.0" fitWidth="100.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox layoutX="122.0" layoutY="16.0" prefHeight="55.0" prefWidth="224.0" spacing="10.0">
                <children>
-                  <Text fx:id="txtNomeItem" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="20.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="txtQuantidade" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="20.0" />
-                     </font>
-                  </Text>
+                  <HBox prefHeight="23.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtNomeItem" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="11.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtQuantidade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

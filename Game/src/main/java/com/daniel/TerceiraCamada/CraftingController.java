@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.daniel.TerceiraCamada.Utilidades.*;
@@ -136,7 +137,7 @@ public class CraftingController implements Initializable {
                     try {
                         Player.getPlayer().getInventario().adicionarItem(criarCraft());
                         Player.getPlayer().getInventario().RemoverItem(itemSelecionado);
-                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado);
+                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado2);
                         atualizarInterface(); //Chamando de forma recursiva para atualizar a tela a partir do clique
                         limparTela();
 
@@ -150,92 +151,92 @@ public class CraftingController implements Initializable {
         }
     }
     private Item updateCraft() throws PlayerInexistenteException {
-        Item resultado = crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
+        Item resultado1 = crafting.criarBarraFerro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
 
-        if (resultado != null) {
+        if (resultado1 != null) {
             editarTexto();
-            return resultado;
+            return resultado1;
         }
 
-        resultado = crafting.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
+        Item resultado2 = crafting.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.3);
 
-        if (resultado != null) {
+        if (resultado2 != null) {
             editarTexto();
-            return resultado;
+            return resultado2;
         }
 
-        resultado = crafting.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.5);
+        Item resultado3 = crafting.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.5);
 
-        if (resultado != null) {
+        if (resultado3 != null) {
             editarTexto();
-            return resultado;
+            return resultado3;
         }
 
-        resultado = crafting.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.05);
+        Item resultado4 = crafting.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.05);
 
-        if (resultado != null) {
+        if (resultado4 != null) {
             editarTexto();
-            return resultado;
+            return resultado4;
         }
 
-        resultado = crafting.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado5 = crafting.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
-        if (resultado != null) {
+        if (resultado5 != null) {
             editarTexto();
-            return resultado;
+            return resultado5;
         }
 
-        resultado = crafting.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado6 = crafting.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
-        if (resultado != null) {
+        if (resultado6 != null) {
             editarTexto();
-            return resultado;
+            return resultado6;
         }
 
-        resultado = crafting.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado7 = crafting.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
-        if (resultado != null) {
+        if (resultado7 != null) {
             editarTexto();
-            return resultado;
+            return resultado7;
         }
 
-        resultado = crafting.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado8 = crafting.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
-        if (resultado != null) {
+        if (resultado8 != null) {
             editarTexto();
-            return resultado;
+            return resultado8;
         }
 
-        resultado = crafting.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado9 = crafting.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
 
-        if (resultado != null) {
+        if (resultado9 != null) {
             editarTexto();
-            return resultado;
-        }
-        resultado = crafting.criarBarraGelo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
-
-        if (resultado != null) {
-            editarTexto();
-            return resultado;
-        }
-        resultado = crafting.criarBarraFogo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
-
-        if (resultado != null) {
-            editarTexto();
-            return resultado;
+            return resultado9;
         }
 
-        resultado = crafting.criarBarraOuro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado10 = crafting.criarBarraFogo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.6);
 
-        if (resultado != null) {
+        if (resultado10 != null) {
             editarTexto();
-            return resultado;
+            return resultado10;
         }
-        resultado = crafting.criarBarraEscuridao(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.02);
+        Item resultado11 = crafting.criarBarraGelo(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.35);
 
-        if (resultado != null) {
+        if (resultado11 != null) {
             editarTexto();
-            return resultado;
+            return resultado11;
+        }
+        Item resultado13 = crafting.criarBarraEscuridao(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.4);
+
+        if (resultado13 != null) {
+            editarTexto();
+            return resultado13;
+        }
+        Item resultado14 = crafting.criarBarraOuro(itemSelecionado, itemSelecionado2, btnSlot3, btnCriar, 0.6);
+
+        if (resultado14 != null) {
+            editarTexto();
+            return resultado14;
         }
         // Se chegou até aqui, nenhum resultado foi encontrado
         return null;
@@ -291,8 +292,8 @@ public class CraftingController implements Initializable {
         view.setFitWidth(35);
         button.setGraphic(view);
         imgItem.setImage(item.getImage());
-        txtQuantidade.setText("Quantidade: "+ item.getQuant());
-        txtNomeItem.setText("Nome: "+ item.getNome());
+        txtQuantidade.setText(""+item.getQuant());
+        txtNomeItem.setText(item.getNome());
 
     }
 
