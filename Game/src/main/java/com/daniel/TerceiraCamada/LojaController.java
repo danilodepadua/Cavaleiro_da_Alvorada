@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.*;
 import com.daniel.PrimeiraCamada.Interfaces.IConsumableInBattle;
@@ -91,6 +92,8 @@ public class LojaController implements Initializable {
     private Text txtVenda;
     private boolean ativarCompra = false;
     private boolean ativarVenda = false;
+    private AudioPlayer audioPlayer = new AudioPlayer();
+    private AudioPlayer somCompraVenda = new AudioPlayer();
 
     public void initialize(URL location, ResourceBundle resources) {
         configurarBotoes(btnComprar);
@@ -105,6 +108,7 @@ public class LojaController implements Initializable {
         btnVender.setOnAction(event -> {
             try {
                 venderItem(itemSelecionado);
+                somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
                 itemSelecionado = null;
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
@@ -113,6 +117,7 @@ public class LojaController implements Initializable {
         btnComprar.setOnAction(event -> {
             try {
                 comprarItem();
+                somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
             } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |
                      SemMoedasParaLojaException e) {
                 throw new RuntimeException(e);

@@ -1,5 +1,6 @@
 package com.daniel.TerceiraCamada;
 
+import com.daniel.PrimeiraCamada.AudioPlayer;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import javax.sound.sampled.AudioInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,9 +30,11 @@ public class CompraOuVendaController implements Initializable {
 
     @FXML
     private AnchorPane panePrincipal;
+    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
@@ -55,6 +59,7 @@ public class CompraOuVendaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        audioPlayer.play("/com.daniel.audios/msc_loja.wav", true);
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/FundoLoja.jpg");
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnComprar);
