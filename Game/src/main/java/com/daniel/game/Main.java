@@ -24,7 +24,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
         System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
-        // Adicione a chamada para reprodução de som após a mudança de cena
+
         audioPlayer.play("/com.daniel.audios/som_click.wav", false);
     }
 

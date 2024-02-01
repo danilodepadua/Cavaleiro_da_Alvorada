@@ -58,11 +58,13 @@ public class TavernaController implements Initializable {
     private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
     void Jogar(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("BlackJack.fxml")).load());
     }
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
     }
 
@@ -155,11 +157,13 @@ public class TavernaController implements Initializable {
 
     @FXML
     void JogarMemoria(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")).load());
     }
 
     @FXML
     void JogarPoker(ActionEvent event) throws IOException {
+        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaTutorialPoker.fxml")).load());
 
     }
