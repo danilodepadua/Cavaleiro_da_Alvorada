@@ -4,18 +4,22 @@ package com.daniel.TerceiraCamada;
 import com.daniel.PrimeiraCamada.Entidades.Player;
 import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
 import com.daniel.PrimeiraCamada.Itens.Item;
+import com.daniel.PrimeiraCamada.TiposDeBatalha.BatalhaComum;
 import com.daniel.SegundaCamada.LootTable;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -93,12 +97,18 @@ public class ResultadoController implements Initializable {
         moedasInimigo = novasMoedas;
         itensDoInimigo = itens;
         Player.getPlayer().ganharXp(novoXp);
+        Player.getPlayer().ganhaCoins(moedasInimigo);
         atualizarInterface();
     }
 
     @FXML
     void onClickCacar (ActionEvent event) throws PlayerInexistenteException, IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaBatalha.fxml")).load());
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
+        Parent root = loader.load();
+        BattleController battleController = loader.getController();
+        battleController.tipoBatalha = new BatalhaComum();
+        Main.ChangeScene(root);
+        battleController.Inicializar();
     }
 
     private void criarItens() {
@@ -112,6 +122,7 @@ public class ResultadoController implements Initializable {
             view.setImage(item.getImage());
 
             Button button = new Button();
+            button.setText("X" + item.getQuant());
             button.setGraphic(view);
             button.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
             button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e");

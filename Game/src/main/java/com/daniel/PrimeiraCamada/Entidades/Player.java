@@ -48,7 +48,8 @@ public class Player extends Personagem implements Serializable {
     private Bestiario bestiario = new Bestiario();
     private Player(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {
         super(Name, Img, Force, Int, Res, Velocity);
-        this.HP += 100;
+        this.HP += 589;
+        this.MP +=103;
         this.currentHp = this.getHP();
         this.currentMp = this.getMP();
         this.inventario = new Inventario();
@@ -251,7 +252,8 @@ public class Player extends Personagem implements Serializable {
     private boolean VerificarLevelUp(){
         if(xpProx < currentXp){
             lvl ++;
-            this.HP += 100;
+            this.HP += 90;
+            this.MP += 4;
             xpProx += lvl * 1000;
             aprenderMagia();
             VerificarLevelUp();
@@ -387,5 +389,9 @@ public class Player extends Personagem implements Serializable {
             }
         }
         cidadesConehcidas.add(cidade);
+    }
+    public void AtualizarStatus(int vida, int mp){
+        this.currentMp = mp;
+        this.currentHp = vida;
     }
 }

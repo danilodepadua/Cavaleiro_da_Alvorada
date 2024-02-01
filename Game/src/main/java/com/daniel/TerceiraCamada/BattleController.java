@@ -187,6 +187,7 @@ public class BattleController implements Initializable {
     }
 
     public void Vitoria() throws PlayerInexistenteException, IOException {
+        Player.getPlayer().AtualizarStatus(player.getCurrentHp(), player.getCurrentMp());
         tipoBatalha.Vitoria();
         audioPlayer.play("/com.daniel.audios/som_vitoria.wav", false);
     }

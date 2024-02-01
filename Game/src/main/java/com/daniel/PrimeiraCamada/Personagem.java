@@ -15,8 +15,8 @@ public abstract class Personagem implements Serializable {
         this.Force = fr;
         this.Inteligence = in;
         this.Velocity = vel;
-        this.HP = this.Resistencia + 5;
-        this.MP = this.Inteligence + 5;
+        this.HP = this.Resistencia*5;
+        this.MP = this.Inteligence*5;
     }
     protected ArrayList<Magia> magias = new ArrayList<>();
     protected int HP = 0;

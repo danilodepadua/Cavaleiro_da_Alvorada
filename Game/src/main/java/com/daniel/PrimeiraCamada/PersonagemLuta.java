@@ -68,7 +68,7 @@ public class PersonagemLuta{
         String mensagem = this.Nome + " é imune a esse tipo de dano";;
         int danoTomado = 0;
         Random rand = new Random();
-        dano = (int)(dano * rand.nextDouble(0.8, 1.2));
+        dano = (int)(dano * rand.nextDouble(4.8, 5.2));
         System.out.println("Dano: " + dano);
         this.dormindo = false;
         if(temTipo(fraquezas, tipo)){
