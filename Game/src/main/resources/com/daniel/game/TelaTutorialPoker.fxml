@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.Telas.RegrasPokerController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.RegrasPokerController">
    <children>
       <Text fill="#eccb7e" layoutX="24.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O pôquer opera da seguinte maneira: cada jogador e a casa recebem inicialmente duas cartas, &#10;e cabe a você decidir se deseja prosseguir ou desistir.&#10; Para continuar, basta pressionar o botão &quot;Continuar&quot; localizado abaixo do botão de aposta.&#10; Cada vez que o jogador opta por continuar, o valor da aposta é reiniciado, &#10;permitindo aumentar a aposta inicial, pois o valor será acumulado.&#10;&#10;Regras do pôquer:&#10;&#10;Distribuição de Cartas: O jogador recebe duas cartas, e após decidir continuar, &#10;três cartas comunitárias são adicionadas ao centro da mesa. A cada rodada subsequente, &#10;uma carta adicional é incluída até um total de cinco cartas.&#10;&#10;Finalização da Rodada: Ao final de cada rodada, quem possuir a melhor mão ganha o jogo.&#10;&#10;" wrappingWidth="562.986572265625">
          <font>

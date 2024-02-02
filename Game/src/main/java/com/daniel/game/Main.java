@@ -1,11 +1,11 @@
 package com.daniel.game;
 
-import com.daniel.Modelo.AudioPlayer;
-import com.daniel.Dados.CidadeRepositório.Cidade;
-import com.daniel.Dados.CidadeRepositório.Cidades.Auroraville;
-import com.daniel.Modelo.Exceptions.PlayerInexistenteException;
-import com.daniel.Modelo.Save.SaveManager;
-import com.daniel.Dados.ConfiguracoesUsuario;
+import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
+import com.daniel.Model.Dados.CidadeRepositorio.Cidades.Auroraville;
+import com.daniel.Model.Exceptions.PlayerInexistenteException;
+import com.daniel.Model.Dados.Save.SaveManager;
+import com.daniel.Model.Dados.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
