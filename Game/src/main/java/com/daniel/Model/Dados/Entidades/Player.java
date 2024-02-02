@@ -4,21 +4,22 @@ import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidades.Auroraville;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.RemoverCoinsException;
-import com.daniel.Model.Itens.Arma;
-import com.daniel.Model.Itens.Armaduras.Calca;
-import com.daniel.Model.Itens.Armaduras.Calcas.NullCalca;
-import com.daniel.Model.Itens.Armaduras.Capacete;
-import com.daniel.Model.Itens.Armaduras.Capacetes.NullCapacete;
-import com.daniel.Model.Itens.Armaduras.Peitorais.NullPeitoral;
-import com.daniel.Model.Itens.Armaduras.Peitoral;
-import com.daniel.Model.Itens.Armas.*;
-import com.daniel.Model.Itens.Minerios.*;
-import com.daniel.Model.Magias.*;
+import com.daniel.Model.Interfaces.IEquipable;
+import com.daniel.Model.Dados.Itens.Arma;
+import com.daniel.Model.Dados.Itens.Armaduras.Calca;
+import com.daniel.Model.Dados.Itens.Armaduras.Calcas.NullCalca;
+import com.daniel.Model.Dados.Itens.Armaduras.Capacete;
+import com.daniel.Model.Dados.Itens.Armaduras.Capacetes.NullCapacete;
+import com.daniel.Model.Dados.Itens.Armaduras.Peitorais.NullPeitoral;
+import com.daniel.Model.Dados.Itens.Armaduras.Peitoral;
+import com.daniel.Model.Dados.Itens.Armas.*;
+import com.daniel.Model.Dados.Itens.Minerios.*;
+import com.daniel.Model.Dados.Magias.*;
 
 import com.daniel.Model.Dados.Bestiario;
 import com.daniel.Model.Dados.Inventario;
-import com.daniel.Model.Magias.Poderes.*;
-import com.daniel.Model.Quests.Quest;
+import com.daniel.Model.Dados.Magias.Poderes.*;
+import com.daniel.Model.Dados.Quests.Quest;
 import com.daniel.game.Main;
 
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.daniel.Model.Quests.ManejarQuests.iniciarQuests;
+import static com.daniel.Model.Dados.Quests.ManejarQuests.iniciarQuests;
 
 public class Player extends Personagem implements Serializable {
     private Inventario inventario;
@@ -390,5 +391,23 @@ public class Player extends Personagem implements Serializable {
     public void AtualizarStatus(int vida, int mp){
         this.currentMp = mp;
         this.currentHp = vida;
+    }
+    public boolean podeEquiparItem(IEquipable equipableItem) throws PlayerInexistenteException {
+        return !Player.getPlayer().getPeitoral().equals(equipableItem) &&
+                !Player.getPlayer().getCapacete().equals(equipableItem) &&
+                !Player.getPlayer().getCalca().equals(equipableItem) &&
+                !Player.getPlayer().getArma().equals(equipableItem);
+        //Compara se o item atual é igual ao atual inserido no player
+    }
+    public void desequiparItemSeEquipado(Player player, IEquipable equipableItem) throws PlayerInexistenteException {
+        if (player.getArma().equals(equipableItem)) {
+            player.desequiparArma();
+        } else if (player.getPeitoral().equals(equipableItem)) {
+            player.desequiparPeitoral();
+        } else if (player.getCapacete().equals(equipableItem)) {
+            player.desequiparCapacete();
+        } else if (player.getCalca().equals(equipableItem)) {
+            player.desequiparCalca();
+        }
     }
 }

@@ -1,13 +1,13 @@
 package com.daniel.Controller;
 
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Itens.Armas.*;
-import com.daniel.Model.Itens.Item;
-import com.daniel.Model.Itens.Minerios.*;
-import com.daniel.Model.Itens.Pocoes.PocaoCura;
-import com.daniel.Model.Itens.Pocoes.PocaoCuraGrande;
-import com.daniel.Model.Itens.Pocoes.PocaoMp;
-import com.daniel.Model.Itens.Pocoes.PocaoMpGrande;
+import com.daniel.Model.Dados.Itens.Armas.*;
+import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Dados.Itens.Minerios.*;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoCura;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoCuraGrande;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoMp;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoMpGrande;
 
 public class CraftingFachada {
     private double chanceBase;

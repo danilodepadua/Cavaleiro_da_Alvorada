@@ -1,14 +1,15 @@
 package com.daniel.View;
 
+import com.daniel.Model.Dados.Inventario;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableOutBattle;
 import com.daniel.Model.Interfaces.IEquipable;
-import com.daniel.Model.Itens.Arma;
-import com.daniel.Model.Itens.Armaduras.Calca;
-import com.daniel.Model.Itens.Armaduras.Capacete;
-import com.daniel.Model.Itens.Armaduras.Peitoral;
-import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Dados.Itens.Arma;
+import com.daniel.Model.Dados.Itens.Armaduras.Calca;
+import com.daniel.Model.Dados.Itens.Armaduras.Capacete;
+import com.daniel.Model.Dados.Itens.Armaduras.Peitoral;
+import com.daniel.Model.Dados.Itens.Item;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -129,6 +130,7 @@ public class InventarioController implements Initializable {
 
     @FXML
     private Text txtQtdItem;
+    private Inventario inventario;
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
@@ -149,7 +151,7 @@ public class InventarioController implements Initializable {
         if (i instanceof IEquipable) {
             IEquipable equipableItem = (IEquipable) i;
 
-            if (podeEquiparItem(equipableItem)) {
+            if (Player.getPlayer().podeEquiparItem(equipableItem)) {
                 configurarBtnEquipar(equipableItem, i);
             } else {
                 configurarBtnDesequipar(equipableItem);
@@ -171,8 +173,6 @@ public class InventarioController implements Initializable {
             itemButton.prefHeightProperty().bind(gridEquipaveis.prefHeightProperty().divide(4));
             itemButton.setStyle("-fx-border-color:  #eccb7e; -fx-background-color:  #241811");
             configurarBotoes(itemButton);
-
-
             // Configurar ação do botão para exibir detalhes do item ou equipá-lo
             itemButton.setOnAction(event -> {
                 try {
@@ -199,7 +199,6 @@ public class InventarioController implements Initializable {
     private void atualizarGridEquipavel(Button novoBotao, int linha) {
         // Remove os botões existentes na linha
         gridEquipaveis.getChildren().removeIf(node -> GridPane.getRowIndex(node) == linha);
-
         // Adiciona o novo botão
         gridEquipaveis.add(novoBotao, 0, linha);
     }
@@ -245,14 +244,6 @@ public class InventarioController implements Initializable {
             btnDesequipar.setDisable(true);
         });
     }
-    private boolean podeEquiparItem(IEquipable equipableItem) throws PlayerInexistenteException {
-        return !Player.getPlayer().getPeitoral().equals(equipableItem) &&
-                !Player.getPlayer().getCapacete().equals(equipableItem) &&
-                !Player.getPlayer().getCalca().equals(equipableItem) &&
-                !Player.getPlayer().getArma().equals(equipableItem);
-                //Compara se o item atual é igual ao atual inserido no player
-    }
-
     private void AtualizarDados() throws PlayerInexistenteException {
         txt1.setText("HP:");
         txt2.setText("MP:");
@@ -276,8 +267,8 @@ public class InventarioController implements Initializable {
         AtqMPlayer.setText("" + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
-        for (int i = 0; i < Player.getPlayer().getInventario().getItens().length; i++) {
-            if (Player.getPlayer().getInventario().getItens()[i] != null) {
+        for (int i = 0; i < inventario.getItens().length; i++) {
+            if (inventario.getItens()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().getInventario().getItens()[i].getImage());
@@ -306,7 +297,6 @@ public class InventarioController implements Initializable {
                 j++;
             }
         }
-
         criaBotaoEquipavel(Player.getPlayer().getPeitoral());
         criaBotaoEquipavel(Player.getPlayer().getCapacete());
         criaBotaoEquipavel(Player.getPlayer().getCalca());
@@ -315,6 +305,7 @@ public class InventarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.inventario = Inventario.getInstance();
         contornarBotaoVoltar(btnVoltar);
         btnUsar.setDisable(true);
         btnDesequipar.setDisable(true);

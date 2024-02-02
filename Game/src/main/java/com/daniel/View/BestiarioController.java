@@ -2,8 +2,8 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Magias.TiposElementais;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Magias.TiposElementais;
 import com.daniel.game.Main;
 import javafx.animation.*;
 import javafx.event.ActionEvent;

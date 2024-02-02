@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados;
 
-import com.daniel.Model.Dados.Entidades.Inimigo;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 
 import java.io.Serializable;
 

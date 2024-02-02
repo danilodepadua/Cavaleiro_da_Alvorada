@@ -2,10 +2,10 @@ package com.daniel.Model.ComportamentosInimigos;
 
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
 import com.daniel.Model.Interfaces.IEffects;
-import com.daniel.Model.Magias.Magia;
+import com.daniel.Model.Dados.Magias.Magia;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
-import com.daniel.Model.Magias.TiposElementais;
-import com.daniel.Model.Magias.Animation.BuffAnimation;
+import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Dados.Magias.Animation.BuffAnimation;
 
 import java.util.*;
 

@@ -1,14 +1,14 @@
 package com.daniel.Model.Dados.CidadeRepositorio.Cidades;
 
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.InimigoAbelha;
-import com.daniel.Model.Dados.Entidades.Inimigos.InimigoBabySlime;
-import com.daniel.Model.Dados.Entidades.Inimigos.InimigoSlimeDeEscuridaoNv1;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoAbelha;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoBabySlime;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSlimeDeEscuridaoNv1;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Itens.Armas.EspadaFogoBasica;
-import com.daniel.Model.Itens.Armas.EspadaSombriaBasica;
-import com.daniel.Model.Quests.QuestSlimeDeEscuridaoNv1;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Itens.Armas.EspadaFogoBasica;
+import com.daniel.Model.Dados.Itens.Armas.EspadaSombriaBasica;
+import com.daniel.Model.Dados.Quests.QuestSlimeDeEscuridaoNv1;
 
 import java.util.ArrayList;
 

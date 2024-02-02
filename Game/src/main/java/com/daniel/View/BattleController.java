@@ -1,17 +1,17 @@
 package com.daniel.View;
 
-import com.daniel.Model.*;
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
 import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 import com.daniel.Model.ComportamentosInimigos.*;
+import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IEffects;
-import com.daniel.Model.Itens.Item;
-import com.daniel.Model.TiposDeBatalha.BatalhaComum;
-import com.daniel.Model.Magias.Animation.SlashAnimation;
+import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha.BatalhaComum;
+import com.daniel.Model.Dados.Magias.Animation.SlashAnimation;
 import com.daniel.Model.BatalhaDeTurnos.TipoBatalha;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;

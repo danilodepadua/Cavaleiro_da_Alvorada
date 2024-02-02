@@ -1,8 +1,0 @@
-package com.daniel.Model.Magias.Animation;
-
-public class SlashAnimation extends AnimationsAttack {
-
-    public SlashAnimation() {
-        super(5, "/com.daniel.Images/Magias/CorteFrames/Corte");
-    }
-}

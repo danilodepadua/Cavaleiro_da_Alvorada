@@ -1,7 +1,7 @@
 package com.daniel.Model.ComportamentosInimigos;
 
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
-import com.daniel.Model.Magias.Magia;
+import com.daniel.Model.Dados.Magias.Magia;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 
 import java.util.ArrayList;

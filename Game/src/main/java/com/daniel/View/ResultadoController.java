@@ -1,10 +1,10 @@
 package com.daniel.View;
 
 
-import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Dados.Itens.Item;
 import com.daniel.game.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

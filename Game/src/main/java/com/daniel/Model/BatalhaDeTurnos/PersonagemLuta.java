@@ -1,11 +1,11 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.Dados.Entidades.Player;
-import com.daniel.Model.Magias.Animation.AnimationsAttack;
-import com.daniel.Model.Magias.Animation.SlashAnimation;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Magias.Magia;
-import com.daniel.Model.Magias.TiposElementais;
+import com.daniel.Model.Dados.Magias.Animation.AnimationsAttack;
+import com.daniel.Model.Dados.Magias.Animation.SlashAnimation;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Magias.Magia;
+import com.daniel.Model.Dados.Magias.TiposElementais;
 
 import java.util.ArrayList;
 import java.util.Random;

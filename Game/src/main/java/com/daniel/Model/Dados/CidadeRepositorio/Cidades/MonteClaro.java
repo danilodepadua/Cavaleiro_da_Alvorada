@@ -1,18 +1,18 @@
 package com.daniel.Model.Dados.CidadeRepositorio.Cidades;
 
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.*;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Itens.Armaduras.Calcas.CalcaMalha;
-import com.daniel.Model.Itens.Armaduras.Capacetes.CapaceteMalha;
-import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralMalha;
-import com.daniel.Model.Itens.Armas.*;
-import com.daniel.Model.Itens.Mapas.MapaPortuaria;
-import com.daniel.Model.Itens.Pocoes.PocaoCura;
-import com.daniel.Model.Itens.Pocoes.PocaoMp;
-import com.daniel.Model.Itens.Pocoes.TonicoDeForca;
-import com.daniel.Model.Quests.*;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
+import com.daniel.Model.Dados.Itens.Armaduras.Calcas.CalcaMalha;
+import com.daniel.Model.Dados.Itens.Armaduras.Capacetes.CapaceteMalha;
+import com.daniel.Model.Dados.Itens.Armaduras.Peitorais.PeitoralMalha;
+import com.daniel.Model.Dados.Itens.Armas.*;
+import com.daniel.Model.Dados.Itens.Mapas.MapaPortuaria;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoCura;
+import com.daniel.Model.Dados.Itens.Pocoes.PocaoMp;
+import com.daniel.Model.Dados.Itens.Pocoes.TonicoDeForca;
+import com.daniel.Model.Dados.Quests.*;
 
 import java.util.ArrayList;
 

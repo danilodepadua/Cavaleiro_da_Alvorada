@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados;
 
-import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Dados.Itens.Item;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -33,9 +33,10 @@ public class Inventario implements Serializable {
                 itens[nullIndex] = item;
             }
         }
+
     }
 
-    public void RemoverItem(Item i) {
+    public void removerItem(Item i) {
         for (int j = 0; j < itens.length; j++) {
             if (itens[j] != null && Objects.equals(itens[j].getNome(), i.getNome())) {
                 itens[j].MenosQuant();

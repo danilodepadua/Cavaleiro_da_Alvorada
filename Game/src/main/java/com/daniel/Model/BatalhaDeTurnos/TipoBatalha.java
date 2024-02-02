@@ -2,9 +2,9 @@ package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Itens.Item;
-import com.daniel.Model.Quests.Quest;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Dados.Quests.Quest;
 
 import java.io.IOException;
 import java.util.ArrayList;

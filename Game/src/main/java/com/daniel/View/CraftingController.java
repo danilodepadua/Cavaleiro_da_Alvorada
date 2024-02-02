@@ -1,10 +1,10 @@
 package com.daniel.View;
 
-import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Controller.CraftingFachada;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Dados.Itens.Item;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
@@ -135,8 +135,8 @@ public class CraftingController implements Initializable {
                 btnCriar.setOnAction(event -> {
                     try {
                         Player.getPlayer().getInventario().adicionarItem(criarCraft());
-                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado);
-                        Player.getPlayer().getInventario().RemoverItem(itemSelecionado2);
+                        Player.getPlayer().getInventario().removerItem(itemSelecionado);
+                        Player.getPlayer().getInventario().removerItem(itemSelecionado2);
                         atualizarInterface(); //Chamando de forma recursiva para atualizar a tela a partir do clique
                         limparTela();
 

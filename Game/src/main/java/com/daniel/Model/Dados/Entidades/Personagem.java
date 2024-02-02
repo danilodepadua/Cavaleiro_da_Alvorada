@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados.Entidades;
 
-import com.daniel.Model.Magias.Magia;
+import com.daniel.Model.Dados.Magias.Magia;
 import com.daniel.game.Main;
 import javafx.scene.image.Image;
 

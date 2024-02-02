@@ -1,16 +1,19 @@
 package com.daniel.Model.Dados.CidadeRepositorio.Cidades;
 
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.*;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Entidades.Inimigo;
-import com.daniel.Model.Itens.Armaduras.Calcas.CalcaFerro;
-import com.daniel.Model.Itens.Armaduras.Capacetes.CapaceteFerro;
-import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralFerro;
-import com.daniel.Model.Itens.Armas.EspadaGeloAperfeicoada;
-import com.daniel.Model.Itens.Armas.EspadaGeloBasica;
-import com.daniel.Model.Itens.Mapas.MapaCidadeMorta;
-import com.daniel.Model.Quests.*;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSlimeDeGeloNv3;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSnowMan;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoTRex;
+import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoTigerMan;
+import com.daniel.Model.Dados.Itens.Armaduras.Calcas.CalcaFerro;
+import com.daniel.Model.Dados.Itens.Armaduras.Capacetes.CapaceteFerro;
+import com.daniel.Model.Dados.Itens.Armaduras.Peitorais.PeitoralFerro;
+import com.daniel.Model.Dados.Itens.Armas.EspadaGeloAperfeicoada;
+import com.daniel.Model.Dados.Itens.Armas.EspadaGeloBasica;
+import com.daniel.Model.Dados.Itens.Mapas.MapaCidadeMorta;
+import com.daniel.Model.Dados.Quests.*;
 
 import java.util.ArrayList;
 

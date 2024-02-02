@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.NPC;
 import com.daniel.Model.SistemaDeDialogo;
 import com.daniel.game.Main;

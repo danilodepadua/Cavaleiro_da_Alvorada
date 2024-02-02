@@ -2,7 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Quests.Quest;
+import com.daniel.Model.Dados.Quests.Quest;
 import com.daniel.game.Main;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;

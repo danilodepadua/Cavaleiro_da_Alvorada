@@ -1,6 +1,6 @@
 package com.daniel.game;
 
-import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidades.Auroraville;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;

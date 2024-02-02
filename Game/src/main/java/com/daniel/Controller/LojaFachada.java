@@ -3,7 +3,7 @@ package com.daniel.Controller;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Interfaces.IEquipable;
-import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Dados.Itens.Item;
 
 public class LojaFachada {
     private static final LojaFachada instance = new LojaFachada();
@@ -35,24 +35,13 @@ public class LojaFachada {
         if (item != null) {
             if (item instanceof IEquipable) {
                 IEquipable equipableItem = (IEquipable) item;
-                desequiparItemSeEquipado(Player.getPlayer(), equipableItem);
+                Player.getPlayer().desequiparItemSeEquipado(Player.getPlayer(), equipableItem);
             }
-
             int precoItem = item.getPreco();
             Player.getPlayer().ganhaCoins(precoItem * 70 / 100);
-            Player.getPlayer().getInventario().RemoverItem(item);
+            Player.getPlayer().getInventario().removerItem(item);
         }
     }
 
-    private void desequiparItemSeEquipado(Player player, IEquipable equipableItem) throws PlayerInexistenteException {
-        if (player.getArma().equals(equipableItem)) {
-            player.desequiparArma();
-        } else if (player.getPeitoral().equals(equipableItem)) {
-            player.desequiparPeitoral();
-        } else if (player.getCapacete().equals(equipableItem)) {
-            player.desequiparCapacete();
-        } else if (player.getCalca().equals(equipableItem)) {
-            player.desequiparCalca();
-        }
-    }
+
 }
