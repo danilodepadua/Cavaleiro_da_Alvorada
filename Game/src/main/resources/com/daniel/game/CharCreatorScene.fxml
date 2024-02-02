@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.CriarPersonagemController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.Telas.CriarPersonagemController">
    <children>
       <ProgressBar fx:id="BarraForca" layoutX="516.0" layoutY="224.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
       <Button fx:id="btnMenosForca" layoutX="459.0" layoutY="217.0" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">

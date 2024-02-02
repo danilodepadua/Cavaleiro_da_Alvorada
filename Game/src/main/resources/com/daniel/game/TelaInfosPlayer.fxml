@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.TerceiraCamada.InfosController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.Telas.InfosController">
    <children>
       <Group layoutX="82.0" layoutY="36.0" AnchorPane.leftAnchor="79.7155294418335" AnchorPane.topAnchor="20.0">
          <children>
@@ -349,7 +349,7 @@
             </Group>
          </children>
       </AnchorPane>
-      <HBox layoutX="80.0" layoutY="535.0" prefHeight="94.0" prefWidth="466.0" spacing="75.0">
+      <HBox layoutX="80.0" layoutY="535.0" prefHeight="41.0" prefWidth="466.0" spacing="75.0">
          <children>
             <Button fx:id="btnInventario" maxHeight="104.0" maxWidth="91.0" mnemonicParsing="false" onAction="#OnActionInventario" prefHeight="104.0" prefWidth="91.0" style="-fx-border-color: #eccb7e; -fx-background-color: #241811;" textFill="#eccb7e">
                <font>
@@ -380,7 +380,7 @@
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="95.0" fitWidth="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="69.0" fitWidth="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../com.daniel.Images/Inimigos/Mimic%20Book.png" />
                      </image>

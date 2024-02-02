@@ -1,16 +1,15 @@
 package com.daniel.game;
 
-import com.daniel.PrimeiraCamada.AudioPlayer;
-import com.daniel.PrimeiraCamada.Cidade;
-import com.daniel.PrimeiraCamada.Cidades.Auroraville;
-import com.daniel.PrimeiraCamada.Exceptions.PlayerInexistenteException;
-import com.daniel.PrimeiraCamada.Save.SaveManager;
-import com.daniel.SegundaCamada.ConfiguracoesUsuario;
+import com.daniel.Modelo.AudioPlayer;
+import com.daniel.Dados.CidadeRepositório.Cidade;
+import com.daniel.Dados.CidadeRepositório.Cidades.Auroraville;
+import com.daniel.Modelo.Exceptions.PlayerInexistenteException;
+import com.daniel.Modelo.Save.SaveManager;
+import com.daniel.Dados.ConfiguracoesUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
