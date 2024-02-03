@@ -62,7 +62,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="80.0" layoutY="151.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;">
+      <AnchorPane layoutX="80.0" layoutY="151.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.leftAnchor="80.0">
          <children>
             <ImageView fx:id="ImgPlayer" fitHeight="309.0" fitWidth="169.0" layoutX="7.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="49.0">
                <viewport>
@@ -99,7 +99,7 @@
             <Line endX="73.0" endY="-1.0" fill="BLACK" layoutX="184.0" layoutY="65.0" startX="-62.0" startY="10.0" stroke="#eccb7e" strokeWidth="2.0" AnchorPane.leftAnchor="120.58578491210938" AnchorPane.topAnchor="62.58578634262085" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="659.0" layoutY="152.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;">
+      <AnchorPane layoutX="659.0" layoutY="152.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="74.60000000000002">
          <children>
             <GridPane fx:id="GridElementos" layoutX="19.0" layoutY="24.0" prefHeight="160.0" prefWidth="431.0" stylesheets="@style.css" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="24.0">
               <columnConstraints>

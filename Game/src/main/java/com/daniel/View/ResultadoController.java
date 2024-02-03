@@ -109,7 +109,6 @@ public class ResultadoController implements Initializable {
             button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
             configurarBotoesResultado(button);
 
-
             // Adicione os elementos ao GridPane
             gridItens.add(button, columnIndex, rowIndex);
 

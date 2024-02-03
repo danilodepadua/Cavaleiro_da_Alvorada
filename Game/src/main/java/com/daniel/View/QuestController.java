@@ -47,7 +47,6 @@ public class QuestController implements Initializable {
     private static final String TEXT_FILL = "-fx-fill: #eccb7e;";
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
 
-
     private void criarQuest(Quest quest) throws PlayerInexistenteException {
         SimpleIntegerProperty progressoProperty = new SimpleIntegerProperty(quest.getProgresso());
 
@@ -93,7 +92,6 @@ public class QuestController implements Initializable {
     private void atualizarInterfaceGrafica() {
         try {
             vboxQuests.getChildren().clear();
-
             int inicio = questAtual;
             int fim = Math.min(questAtual + 4, Player.getPlayer().obterQuestsComuns().size());
 
@@ -143,7 +141,6 @@ public class QuestController implements Initializable {
         contornarBotaoVoltar(btnSetaDescer);
         contornarBotaoVoltar(bntSetaSubir);
         atualizarInterfaceGrafica();
-
     }
     @FXML
     void DescerItens(ActionEvent event) throws PlayerInexistenteException {

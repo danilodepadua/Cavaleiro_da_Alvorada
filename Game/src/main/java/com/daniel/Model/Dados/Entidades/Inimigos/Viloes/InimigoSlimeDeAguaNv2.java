@@ -9,7 +9,7 @@ import com.daniel.Model.Dados.Magias.TiposElementais;
 
 public class InimigoSlimeDeAguaNv2 extends Inimigo {
     public InimigoSlimeDeAguaNv2() {
-        super("Slime de água médio", "/com.daniel.Images/Inimigos/Slime Waterii.png", 12, 30, 25, 25, 35,  75, 70, TiposElementais.Agua, Comportamentos.padrao, 350, 250);
+        super("Slime de água médio", "/com.daniel.Images/Inimigos/Slime Waterii.png", 12, 30, 25, 25, 35,  100, 70, TiposElementais.Agua, Comportamentos.padrao, 350, 250);
         this.magias.add(new Splash());
         this.magias.add(new WaterSpyke());
         this.resistencias = new TiposElementais[]{TiposElementais.Terra};

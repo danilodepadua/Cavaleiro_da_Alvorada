@@ -58,21 +58,17 @@ public class MapaController extends Utilidades implements Initializable {
     @FXML
     void OnActionViajar(ActionEvent event) throws IOException, PlayerInexistenteException, RemoverCoinsException {
         // Configura a cidade atual
-        if (cidadeTroca.getNome().equals("Ilha")){
+        if (cidadeTroca.getNome().equals("ILHA")){ //condiçao para ilha, verifica se é a ilham se for, aparece o pane
             paneAceitar.setDisable(false);
             paneAceitar.setOpacity(1.0);
         }else{
-            System.out.println("Viajando sem passagem");
             Main.cidadeAtual = cidadeTroca;
-            // Exibe a cutscene
             exibirCutscene();
         }
-
-
     }
 
     private void exibirCutscene() throws IOException {
-        if (cidadeTroca.isDialogoAtivo()){
+        if (cidadeTroca.isDialogoAtivo()){ //chamo a variável booleana pra ver se ta ativa pra não ficar repetindo os diálogos sempre.
             AnchorPane cutsceneContainer = criarAnchorPane(); //cria um AnchorPane pro dialogo junto de um scene
             String mensagemCutscene = Main.cidadeAtual.getDialogoCutscene();
 
@@ -84,7 +80,7 @@ public class MapaController extends Utilidades implements Initializable {
                 vbox.setLayoutY(25);
                 AnchorPane anchorPane = new AnchorPane();
                 anchorPane.setStyle("-fx-background-color:  white; -fx-border-color: black; -fx-opacity: 0.7");
-
+                //Configs básicas do pane
                 anchorPane.getChildren().add(vbox);
                 anchorPane.setPrefWidth(1150);
                 anchorPane.setLayoutX(50);
@@ -109,6 +105,7 @@ public class MapaController extends Utilidades implements Initializable {
             });
             }
         } else {
+            //Se não ta ativo, chama a tela de load
             Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
             PauseTransition pause = new PauseTransition(Duration.seconds(3));
             pause.setOnFinished(event -> {
@@ -121,7 +118,7 @@ public class MapaController extends Utilidades implements Initializable {
             pause.play();
         }
     }
-
+    //Metodo pra criar um pane pra tela de diálogo
     private AnchorPane criarAnchorPane() {
         AnchorPane cutsceneContainer = new AnchorPane();
         definirBackground(cutsceneContainer, cidadeAtual.getCaminhoImagem());
@@ -161,12 +158,6 @@ public class MapaController extends Utilidades implements Initializable {
         ImgMapa.setFitWidth(ImgMapa.getBoundsInLocal().getWidth());
         definirBackground(Fundo, "/com.daniel.Images/Fundos/Mar.jpg");
         Circulo.setOpacity(0);
-        //Cidade do norte(0.445, 0.15)
-        //Forte nas montanhas(0.638, 0.71)
-        //Cidade do bosque(0.82,0.65)
-        //Cidade inicial(0.924, 0.55)
-        //Cidade morta(0.73, 0.195)
-        //Cidade porto(0.305,0.52)
         try {
             ParallelTransition parallelTransition = new ParallelTransition();
             int i = 0;
@@ -200,7 +191,6 @@ public class MapaController extends Utilidades implements Initializable {
                             case "PEDRAVEIRA":
                                 MostraMarca(0.25, 0.2);
                                 break;
-
                         }
                         cidadeTroca = cidade;
                     });
@@ -209,7 +199,6 @@ public class MapaController extends Utilidades implements Initializable {
                     estiloBotao(butao);
                     configurarBotoesMapa(butao);
                     Fundo.getChildren().add(butao);
-
                     SequentialTransition sequentialTransition = new SequentialTransition();
                     sequentialTransition.getChildren().addAll(
                             new PauseTransition(Duration.millis(i * 250)),
@@ -229,7 +218,6 @@ public class MapaController extends Utilidades implements Initializable {
         paneAceitar.setDisable(true);
         paneAceitar.setOpacity(0);
     }
-
     @FXML
     void onActionSim(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException, IOException, SemMoedasException {
         Main.cidadeAtual = cidadeTroca;

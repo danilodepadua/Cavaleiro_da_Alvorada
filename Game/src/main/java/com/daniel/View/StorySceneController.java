@@ -27,11 +27,11 @@ public class StorySceneController implements Initializable {
     @FXML
     private AnchorPane Screen;
     String[] Dialogo = {
-            "Há eras, quando a passagem das coisas era incerta, um povo, não muito diferente do que agora chamamos de humanidade e do qual descendemos, compartilhava um antigo mundo com outro povo de natureza nefasta, inclinado a fazer nada além do mal. Hoje, os chamaríamos de demônios. Houve vários conflitos intermináveis entre os dois povos. Eventualmente, o lado maligno cedeu, e os vitoriosos forjaram um novo mundo a partir do antigo, que foi separado dos demônios. O tempo passou, e em um passado não muito distante, alcançamos um ponto de transição.",
+            "Há eras, em um mundo antigo, um povo enfrentou demônios em conflitos intermináveis. Vitoriosos, criaram um novo mundo separado dos demônios. Com o tempo, chegamos a um ponto de transição.",
 
-            "Três selos ao longo do novo mundo, arquitetados para a preservação das estruturas fundamentais da nossa realidade, enfraqueceram, abrindo passagens que provocaram um abalo nas terras humanas. Isso permitiu a invasão demoníaca e nos colocou em rota de colisão iminente com o caos primordial.",
+            "Três selos enfraqueceram, abrindo passagens que permitiram a invasão demoníaca. Estamos em rota de colisão com o caos primordial.",
 
-            "Você é o morador de uma pequena vila em um vasto continente, formado por vários reinos. Seu sonho sempre foi se tornar um cavaleiro e fazer do nome da sua pobre família algo grandioso e honroso. Em um dia nublado, notícias chegam à sua vila por viajantes passageiros, informando que um grande mal foi libertado na Montanha do Norte e está se espalhando pelas terras ao redor. Você vê isso como uma oportunidade de receber reconhecimento para o seu reino e parte em uma jornada para a capital, a fim de descobrir como pode ajudar e exigir reconhecimento caso vença o mal que foi libertado."
+            "Você, morador de uma vila, sonha em se tornar cavaleiro. Notícias de um grande mal na Montanha do Norte chegam, e você parte em uma jornada para a capital em busca de reconhecimento e para derrotar o mal liberado."
     };
 
 
@@ -110,6 +110,7 @@ public class StorySceneController implements Initializable {
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Time + 100), event -> {
             try {
                 Mudar();
+                audioPlayer.stop();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

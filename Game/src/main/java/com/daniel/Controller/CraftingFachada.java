@@ -24,7 +24,7 @@ public class CraftingFachada {
     }
     public Item criarBarraFerro(Item item, Item item2, double chance) {
         if (item != null && item2 != null) { //Verifica se nao é nulo
-            if (item instanceof Ferro && item2 instanceof Ferro) { //depois se ambos são ferro
+            if (item instanceof Ferro && item2 instanceof Ferro) { //depois verifica se participam da condiçao específica do craft
                 BarraFerro barraFerro = new BarraFerro();
                 this.chanceBase = chance;
                 return barraFerro;
@@ -35,7 +35,6 @@ public class CraftingFachada {
 
     public  Item criarPocaoVidaGrande(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof PocaoCura && item2 instanceof PocaoCura) {
                 PocaoCuraGrande pocaoCuraGrande = new PocaoCuraGrande();
                 this.chanceBase = chance;
@@ -46,7 +45,6 @@ public class CraftingFachada {
     }
     public  Item criarPocaoManaGrande(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof PocaoMp && item2 instanceof PocaoMp) {
                 PocaoMpGrande pocaoMpGrande = new PocaoMpGrande();
                 this.chanceBase = chance;
@@ -55,9 +53,8 @@ public class CraftingFachada {
         }
         return null;
     }
-    public  Item criarBarraEscuridao(Item item, Item item2, double chance) throws PlayerInexistenteException {
+    public  Item criarBarraEscuridao(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof FragmentoEscuridao && item2 instanceof FragmentoEscuridao) {
                 BarraEscuridao barraEscuridao = new BarraEscuridao();
                 this.chanceBase = chance;
@@ -68,7 +65,6 @@ public class CraftingFachada {
     }
     public  Item criarBarraOuro(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof Ouro && item2 instanceof Ouro) {
                 BarraOuro barraOuro = new BarraOuro();
                 this.chanceBase = chance;
@@ -79,7 +75,6 @@ public class CraftingFachada {
     }
     public  Item criarBarraFogo(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof FragmentoFogo && item2 instanceof FragmentoFogo) {
                 BarraFogo barraFogo = new BarraFogo();
                 this.chanceBase = chance;
@@ -90,7 +85,6 @@ public class CraftingFachada {
     }
     public  Item criarBarraGelo(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof FragmentoGlacial && item2 instanceof FragmentoGlacial) {
                 BarraGlacial barraGlacial = new BarraGlacial();
                 this.chanceBase = chance;
@@ -101,7 +95,6 @@ public class CraftingFachada {
     }
     public  Item criarFerroAperfeicoado(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof BarraFerro && item2 instanceof BarraFerro) {
                 FerroAperfeicoado ferroAperfeicoado = new FerroAperfeicoado();
                 this.chanceBase = chance;
@@ -112,7 +105,6 @@ public class CraftingFachada {
     }
     public  Item criarEspadaAperfeicoada(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaInicial && item2 instanceof FerroAperfeicoado || item instanceof FerroAperfeicoado && item2 instanceof EspadaInicial) {
                 EspadaAperfeiçoada espadaAperfeiçoada = new EspadaAperfeiçoada();
                 this.chanceBase = chance;
@@ -124,7 +116,6 @@ public class CraftingFachada {
 
     public  Item criarEspadaGeloAperfeicoada(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaGeloBasica && item2 instanceof BarraGlacial || item instanceof BarraGlacial && item2 instanceof EspadaGeloBasica) {
                 EspadaGeloAperfeicoada espadaGeloAperfeicoada = new EspadaGeloAperfeicoada();
                 this.chanceBase = chance;
@@ -135,7 +126,6 @@ public class CraftingFachada {
     }
     public  Item criarEspadaEscuridaoAperfeicoada(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaSombriaBasica && item2 instanceof BarraEscuridao || item instanceof BarraEscuridao && item2 instanceof EspadaSombriaBasica) {
                 EspadaSombriaAperfeicoada espadaSombriaAperfeicoada = new EspadaSombriaAperfeicoada();
                 this.chanceBase = chance;
@@ -146,7 +136,6 @@ public class CraftingFachada {
     }
     public  Item criarEspadaFogoAperfeicoada(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaFogoBasica && item2 instanceof BarraFogo || item instanceof BarraFogo && item2 instanceof EspadaFogoBasica) {
                 EspadaDemoniaca espadaDemoniaca = new EspadaDemoniaca();
                 this.chanceBase = chance;
@@ -157,7 +146,6 @@ public class CraftingFachada {
     }
     public  Item criarEspadaEletricaAperfeicoada(Item item, Item item2,double chance) {
         if (item != null && item2 != null) {
-            // Verifica se pelo menos um dos itens selecionados é um minério de ferro
             if (item instanceof EspadaEletricaBasica && item2 instanceof BarraOuro || item instanceof BarraOuro && item2 instanceof EspadaEletricaBasica) {
                 EspadaEletricaAperfeicoada espadaEletricaAperfeicoada = new EspadaEletricaAperfeicoada();
                 this.chanceBase = chance;

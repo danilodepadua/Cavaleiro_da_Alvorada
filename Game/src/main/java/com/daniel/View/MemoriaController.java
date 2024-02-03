@@ -50,7 +50,6 @@ public class MemoriaController implements Initializable {
     private Text txtTutorial;
     @FXML
     private Text txtVitoria;
-
     @FXML
     private Text txtSeuSaldo;
     @FXML
@@ -86,27 +85,27 @@ public class MemoriaController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Metodos estaticos estilizados do jogo
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnApostar);
         configurarBotoes(btnDesistir);
         definirBackground(anchorPane, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
-        this.baralho = new Baralho();
-        this.baralho.criarBaralhoMemoria();
-        this.baralho.embaralhar();
-        for (int i = 0; i < 17; i++) {
+        this.baralho = new Baralho(); //instancia um baralho
+        this.baralho.criarBaralhoMemoria(); //digo o baralho específico
+        this.baralho.embaralhar(); // embaralho
+        for (int i = 0; i < 17; i++) {   //adiciono 17 do baralho no array da mesa, feito de forma completamente random
             try {
                 cartas.add(baralho.pegarCarta());
             } catch (BaralhoVazioException e) {
                 throw new RuntimeException(e);
             }
         }
+        //Adiciona cartas coringas de forma aleátoria no baralho
         int posicaoCoringa = (int) (Math.random() * (cartas.size() + 1));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
         cartas.add(Math.min(posicaoCoringa, cartas.size()), new Carta("Coringa", "", 0, "/com.daniel.Images/Cartas/black_joker.png"));
-
-
         txtVitoria.setText("");
         txtAcumulado.setText("");
         try {
@@ -194,7 +193,7 @@ public class MemoriaController implements Initializable {
                     // Verificar se as duas cartas viradas são iguais
                     if (limitarVirada.get(0).getNome().equals(limitarVirada.get(1).getNome())) {
                         removerCartasDoGrid(gridBaralho, limitarVirada);
-                        valorAcumulado += valorAposta;
+                        valorAcumulado += valorAposta; //acumular o valor do dinheiro
                         txtAcumulado.setText("Valor acumulado: " + valorAcumulado + " Moedas");
                     } else if (limitarVirada.get(0).getNome().equals("Coringa") || limitarVirada.get(1).getNome().equals("Coringa")) {
                         btnDesistir.setDisable(true);
@@ -225,7 +224,7 @@ public class MemoriaController implements Initializable {
             }
         }
     }
-
+    //metodo pra remover as cartas do grid baseado na coluna e linha
     private void removerCartasDoGrid(GridPane gridPane, List<Carta> cartas) {
         List<Button> removerBotoes = new ArrayList<>();
         gridPane.getChildren().forEach(node -> {

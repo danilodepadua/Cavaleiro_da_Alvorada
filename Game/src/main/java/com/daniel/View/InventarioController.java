@@ -267,8 +267,8 @@ public class InventarioController implements Initializable {
         AtqMPlayer.setText("" + Player.getPlayer().getAtaqueM());
         Grid.getChildren().clear();
         int j =0;
-        for (int i = 0; i < inventario.getItens().length; i++) {
-            if (inventario.getItens()[i] != null) {
+        for (int i = 0; i < Player.getPlayer().getInventario().getItens().length; i++) {
+            if (Player.getPlayer().getInventario().getItens()[i] != null) {
                 Button item = new Button();
                 ImageView image = new ImageView();
                 image.setImage(Player.getPlayer().getInventario().getItens()[i].getImage());
