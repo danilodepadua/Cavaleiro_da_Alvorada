@@ -399,15 +399,15 @@ public class Player extends Personagem implements Serializable {
                 !Player.getPlayer().getArma().equals(equipableItem);
         //Compara se o item atual é igual ao atual inserido no player
     }
-    public void desequiparItemSeEquipado(Player player, IEquipable equipableItem) throws PlayerInexistenteException {
-        if (player.getArma().equals(equipableItem)) {
-            player.desequiparArma();
-        } else if (player.getPeitoral().equals(equipableItem)) {
-            player.desequiparPeitoral();
-        } else if (player.getCapacete().equals(equipableItem)) {
-            player.desequiparCapacete();
-        } else if (player.getCalca().equals(equipableItem)) {
-            player.desequiparCalca();
+    public void desequiparItemSeEquipado(IEquipable equipableItem) throws PlayerInexistenteException {
+        if (Player.getPlayer().getArma().equals(equipableItem)) {
+            Player.getPlayer().desequiparArma();
+        } else if (Player.getPlayer().getPeitoral().equals(equipableItem)) {
+            Player.getPlayer().desequiparPeitoral();
+        } else if (Player.getPlayer().getCapacete().equals(equipableItem)) {
+            Player.getPlayer().desequiparCapacete();
+        } else if (Player.getPlayer().getCalca().equals(equipableItem)) {
+            Player.getPlayer().desequiparCalca();
         }
     }
 }
