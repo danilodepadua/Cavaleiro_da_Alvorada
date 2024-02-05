@@ -26,7 +26,6 @@ public abstract class Arma extends Item implements IEquipable {
 
     @Override
     public void equipar() throws PlayerInexistenteException {
-        Player.getPlayer().desequiparArma();
         Player.getPlayer().equiparArma(this);
     }
 

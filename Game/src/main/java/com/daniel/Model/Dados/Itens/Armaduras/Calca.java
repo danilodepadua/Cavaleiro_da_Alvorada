@@ -5,7 +5,7 @@ import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IEquipable;
 import com.daniel.Model.Dados.Itens.Armadura;
 
-public class Calca extends Armadura implements IEquipable {
+public abstract class Calca extends Armadura implements IEquipable {
     /*public Calca(){
         this.aumentoDefesaFisica = 0;
         this.aumentoDefesaMagica= 0;
@@ -19,7 +19,6 @@ public class Calca extends Armadura implements IEquipable {
 
     @Override
     public void equipar() throws PlayerInexistenteException {
-        Player.getPlayer().desequiparCalca();
         Player.getPlayer().equiparCalca(this);
 
     }

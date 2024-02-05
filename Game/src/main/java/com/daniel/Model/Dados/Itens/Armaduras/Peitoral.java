@@ -13,7 +13,6 @@ public abstract class Peitoral extends Armadura implements IEquipable {
 
     @Override
     public void equipar() throws PlayerInexistenteException {
-        Player.getPlayer().desequiparPeitoral();
         Player.getPlayer().equiparPeitoral(this);
     }
 

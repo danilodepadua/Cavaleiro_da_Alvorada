@@ -34,7 +34,6 @@ public class Ilha extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
-        this.botoes.add(criarBotaoTaverna());
         this.botoes.add(criarBotaoSalvar());
     }
 }
