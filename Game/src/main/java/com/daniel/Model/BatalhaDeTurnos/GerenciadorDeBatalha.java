@@ -177,7 +177,7 @@ public class GerenciadorDeBatalha {
                 Mensagem.add(Player.getNome() + " acordou");
             }
             Random rand = new Random();
-            double taxaAcerto = 1/(1+Math.exp(-5*(Inimigo.getVelocidade() - Player.getVelocidade())));
+            double taxaAcerto = 1/(1+Math.exp(-0.02*(Inimigo.getVelocidade() - Player.getVelocidade())));
             if(Inimigo.cegado){
                 taxaAcerto /= 2;
             }

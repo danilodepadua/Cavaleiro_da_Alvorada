@@ -31,8 +31,8 @@ public class NPC {
     }
 
     private void setOpcoesPredefinidas() { // isso permite adicionar coisas na lista do npc
+        itens.add("Olá, " + name + "!");
         if (Objects.equals(name, "Veio")) {
-            itens.add("Olá, veio!");
             itens.add("Me dê uma dica");
             itens.add("Tem dinheiro?");
             MapOpcoesNPC.put(name, itens);
@@ -87,11 +87,11 @@ public class NPC {
     private String gerarRespostaVeio(String escolhaPlayer) { // aqui gera as respostas especificas do velho
         switch (escolhaPlayer) {
             case "OLÁ, VEIO!":
-                return "Olá! Bem vindo a " + Main.cidadeAtual.getNome();
+                return "Olá! Bem vindo a " + Main.cidadeAtual.getNome().charAt(0) + Main.cidadeAtual.getNome().substring(1).toLowerCase();
             case "ME DÊ UMA DICA":
                 return "Não viaje para locais difíceis no início";
             case "TEM DINHEIRO?":
-                return "Sou aposentado";
+                return "Sou aposentado, você pode ganhar dinheiro batalhando monstros ou jogando no cassino";
             case "SEU IRMÃO?":
                 return "O da Montanha do Norte? Ele se acha muito";
             default:
@@ -100,6 +100,8 @@ public class NPC {
     }
     private String gerarRespostaVeiaco(String escolhaPlayer) {
         switch (escolhaPlayer) {
+            case "OLÁ, VEIACO!":
+                return "Olá! Bem vindo a " + Main.cidadeAtual.getNome().charAt(0) + Main.cidadeAtual.getNome().substring(1).toLowerCase();
             case "VOCÊ DE NOVO?":
                 return "Aquele era meu irmão mais novo, eu sou mais sábio";
             default:
@@ -108,6 +110,8 @@ public class NPC {
     }
     private String gerarRespostaArdan(String escolhaPlayer) {
         switch (escolhaPlayer) {
+            case "OLÁ, ARDAN!":
+                return "Olá! Bem vindo a " + Main.cidadeAtual.getNome().charAt(0) + Main.cidadeAtual.getNome().substring(1).toLowerCase();
             case "O MAR ESTÁ AGITADO?":
                 return "Como sempre";
             default:

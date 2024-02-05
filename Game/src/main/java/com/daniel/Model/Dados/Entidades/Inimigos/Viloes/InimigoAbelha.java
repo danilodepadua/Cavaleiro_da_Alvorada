@@ -10,7 +10,7 @@ import com.daniel.Model.Dados.Magias.TiposElementais;
 
 public class InimigoAbelha extends Inimigo {
     public InimigoAbelha( ) {
-        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 20, 15, 35, 28, 40, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 200, 50);
+        super("Abelha", "/com.daniel.Images/Inimigos/Insects Bee.png", 29, 20, 15, 35, 15, 500, 50, TiposElementais.NaoElemental, Comportamentos.padrao, 200, 50);
         this.fraquezas = new TiposElementais[]{TiposElementais.NaoElemental, TiposElementais.Terra};
         this.magias.add(new Veneno());
         this.magias.add(new Escuridao());

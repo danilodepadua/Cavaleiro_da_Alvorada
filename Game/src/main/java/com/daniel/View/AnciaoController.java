@@ -2,7 +2,6 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.NPC;
-import com.daniel.Model.SistemaDeDialogo;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +25,7 @@ public class AnciaoController implements Initializable {
     @FXML
     HBox Hbox;
     @FXML
-    ImageView veioImg;
+    ImageView imagemNPC;
     @FXML
     Pane paneCentral;
     @FXML
@@ -44,7 +43,7 @@ public class AnciaoController implements Initializable {
 
     private void configurarNPCdaCidade() {
         if (Objects.equals(Main.cidadeAtual.getNome(), "AURORAVILLE")) {
-            carregarImagemVeio("Veio");
+            carregarImagemNPC("Veio");
             NPC veioNPC = new NPC("Veio");
             if (irmaoVisitado) {
             veioNPC.setMaisOpcao("Seu Irmão?");
@@ -56,7 +55,7 @@ public class AnciaoController implements Initializable {
             dialogo.setLayoutX((paneCentral.getWidth() - dialogo.getPrefWidth()) / 2);
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
         } else if (Objects.equals(Main.cidadeAtual.getNome(), "MONTANHA DO NORTE")) {
-            carregarImagemVeio("Veio");
+            carregarImagemNPC("Veio");
             NPC veiacoNPC = new NPC("Veiaco");
             SistemaDeDialogo dialogo = new SistemaDeDialogo(veiacoNPC);
             paneCentral.getChildren().add(dialogo);
@@ -66,7 +65,7 @@ public class AnciaoController implements Initializable {
             dialogo.setLayoutY((paneCentral.getHeight() - dialogo.getPrefHeight()) / 2);
             irmaoVisitado = true;
         } else if (Objects.equals(Main.cidadeAtual.getNome(), "CIDADE PORTUÁRIA")) {
-            carregarImagemVeio("Ardan");
+            carregarImagemNPC("Ardan");
             NPC ardanNPC = new NPC("Ardan");
             SistemaDeDialogo dialogo = new SistemaDeDialogo(ardanNPC);
             paneCentral.getChildren().add(dialogo);
@@ -81,26 +80,26 @@ public class AnciaoController implements Initializable {
         audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
-    private void carregarImagemVeio(String nome) {
-        Image imagemVeio;
+    private void carregarImagemNPC(String nome) {
+        Image imagemNPC;
         if(nome.equals("Veio")) {
-            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
+            imagemNPC = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
         } else if(nome.equals("Ardan")) {
-            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/magoestiloso.png"));
+            imagemNPC = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/magoestiloso.png"));
         } else {
-            imagemVeio = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
+            imagemNPC = new Image(getClass().getResourceAsStream("/com.daniel.Images/Personagens/veiohaha.png"));
         }
-        configurarImagemVeio(imagemVeio, nome);
+        configurarImagemNPC(imagemNPC, nome);
     }
-    private void configurarImagemVeio(Image image, String nome) {
+    private void configurarImagemNPC(Image image, String nome) {
         if (nome.equals("Ardan")) {
-            veioImg.setImage(image);
-            veioImg.setFitWidth(600);
-            veioImg.setFitHeight(800);
+            imagemNPC.setImage(image);
+            imagemNPC.setFitWidth(600);
+            imagemNPC.setFitHeight(800);
         } else {
-        veioImg.setImage(image);
-        veioImg.setFitWidth(500);
-        veioImg.setFitHeight(500);
+        imagemNPC.setImage(image);
+        imagemNPC.setFitWidth(500);
+        imagemNPC.setFitHeight(500);
         }
     }
 }

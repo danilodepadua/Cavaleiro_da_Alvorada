@@ -1,4 +1,4 @@
-package com.daniel.Model;
+package com.daniel.View;
 
 import com.daniel.Model.Dados.Entidades.NPC;
 import com.daniel.Model.Dados.Entidades.Player;

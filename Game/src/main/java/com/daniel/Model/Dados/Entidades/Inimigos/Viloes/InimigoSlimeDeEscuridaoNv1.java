@@ -8,7 +8,7 @@ import com.daniel.Model.Dados.Magias.TiposElementais;
 
 public class InimigoSlimeDeEscuridaoNv1 extends Inimigo {
     public InimigoSlimeDeEscuridaoNv1() {
-        super("Slime de escuridão pequeno", "/com.daniel.Images/Inimigos/Slime Darki.png", 23, 25, 15, 35, 5, 35, 15, TiposElementais.Escuridao, Comportamentos.padrao, 150, 55);
+        super("Slime de escuridão pequeno", "/com.daniel.Images/Inimigos/Slime Darki.png", 23, 25, 15, 35, 5, 600, 15, TiposElementais.Escuridao, Comportamentos.padrao, 150, 55);
         this.absorcao = new TiposElementais[]{TiposElementais.Escuridao};
         this.imunidades = new TiposElementais[]{TiposElementais.Eletrico};
         this.fraquezas = new TiposElementais[]{TiposElementais.Luz};
