@@ -1,5 +1,7 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
+import com.daniel.Model.Dados.ConfiguracoesUsuario;
+import com.daniel.Model.Dados.Entidades.Personagem;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Magias.TiposElementais;
 import com.daniel.View.BattleController;
@@ -49,7 +51,7 @@ public class GerenciadorDeBatalha {
                 mensagemBox.setOpacity(1);
                 txtMensagem.setText(i);
             }));
-            time+=1;
+            time+=1/ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao();
         }
         T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
         if(passar){
@@ -136,60 +138,36 @@ public class GerenciadorDeBatalha {
     }
     public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
         boolean acertou = true;
-        if(state == States.turnoPlayer){
-            if(Mensagem == null){
-                Mensagem = new ArrayList<String>();
-                Mensagem.add(Player.getNome() + " atacou");
-            }
-            if(Inimigo.dormindo){
-                Mensagem.add(Inimigo.getNome() + " acordou");
-            }
-            BC.EsconderInterfacePlayer();
-            Random rand = new Random();
-            double taxaAcerto = 1/(1+Math.exp(-0.0310*(Player.getVelocidade() - Inimigo.getVelocidade())));
-            System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + Player.getVelocidade() + "/nInimigo: " + Inimigo.getVelocidade());
-            if(Player.cegado){
-                taxaAcerto /= 2;
-            }
-            if(taxaAcerto < 0.05){
-                taxaAcerto = 0.05;
-            }
-            else if(taxaAcerto > 0.95){
-                taxaAcerto = 0.95;
-            }
-            System.out.println("Taxa de acerto: " + taxaAcerto);
-            if(!(taxaAcerto > rand.nextDouble(0,1))){
-                acertou = false;
-            }
-            if(acertou){
-                Mensagem.add(this.Inimigo.tomarDano(Dano, tipo, fisico));
-            }
-            else{
-                Mensagem.add(Player.getNome() + " errou o ataque");
-            }
+        PersonagemLuta alvo = getAlvo(false), atacante = getAlvo(true);
+        if(Mensagem == null){
+            Mensagem = new ArrayList<String>();
+            Mensagem.add(atacante.getNome() + " atacou");
+        }
+        if(alvo.dormindo){
+            Mensagem.add(alvo.getNome() + " acordou");
+        }
+        BC.EsconderInterfacePlayer();
+        Random rand = new Random();
+        double taxaAcerto = 1/(1+Math.exp(-0.1*(atacante.getVelocidade() + 7 - alvo.getVelocidade())));
+        System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + Player.getVelocidade() + "/nInimigo: " + Inimigo.getVelocidade());
+        if(atacante.cegado){
+            taxaAcerto /= 2;
+        }
+        if(taxaAcerto < 0.05){
+            taxaAcerto = 0.05;
+        }
+        else if(taxaAcerto > 0.95){
+            taxaAcerto = 0.95;
+        }
+        System.out.println("Taxa de acerto: " + taxaAcerto);
+        if(!(taxaAcerto > rand.nextDouble(0,1))){
+            acertou = false;
+        }
+        if(acertou){
+            Mensagem.add(alvo.tomarDano(Dano, tipo, fisico));
         }
         else{
-            if(Mensagem == null){
-                Mensagem = new ArrayList<String>();
-                Mensagem.add(Inimigo.getNome() + " atacou");
-            }
-            if(Player.dormindo){
-                Mensagem.add(Player.getNome() + " acordou");
-            }
-            Random rand = new Random();
-            double taxaAcerto = 1/(1+Math.exp(-0.02*(Inimigo.getVelocidade() - Player.getVelocidade())));
-            if(Inimigo.cegado){
-                taxaAcerto /= 2;
-            }
-            if(!(taxaAcerto > rand.nextDouble(0,1))){
-                acertou = false;
-            }
-            if(acertou){
-                Mensagem.add(this.Player.tomarDano(Dano, tipo, fisico));
-            }
-            else{
-                Mensagem.add(Inimigo.getNome() + " errou o ataque");
-            }
+            Mensagem.add(atacante.getNome() + " errou o ataque");
         }
         ArrayList<String> finalMensagem = Mensagem;
         t.setOnFinished(event -> mostrarResultado(finalMensagem,true));

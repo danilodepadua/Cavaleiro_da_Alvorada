@@ -52,7 +52,7 @@ public class MainController implements Initializable {
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfigInicial.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
 
     @Override

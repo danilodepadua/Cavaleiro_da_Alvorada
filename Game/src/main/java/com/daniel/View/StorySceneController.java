@@ -1,6 +1,7 @@
 package com.daniel.View;
 
 import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.Dados.ConfiguracoesUsuario;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -103,7 +104,8 @@ public class StorySceneController implements Initializable {
                             event -> {Texto.setText("");});
                     timeline.getKeyFrames().add(Frame);
                 }
-                Time+=100;
+                System.out.println(ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao());
+                Time+=100/ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao();
                 timeline.getKeyFrames().add(keyFrame);
             }
         }

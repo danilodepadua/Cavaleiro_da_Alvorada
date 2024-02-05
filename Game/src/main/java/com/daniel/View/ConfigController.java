@@ -32,6 +32,11 @@ public class ConfigController implements Initializable {
 
     @FXML
     private ChoiceBox<String> EscolhaResolucao;
+    @FXML
+    private Slider SliderVelBatalha;
+
+    @FXML
+    private Slider SliderVelHistoria;
 
     @FXML
     private Slider SliderVolume;
@@ -57,6 +62,7 @@ public class ConfigController implements Initializable {
     @FXML
     private TextField txtTextfield;
 
+    boolean telaInicial = true;
 
     @FXML
     void Salvar(ActionEvent event) {
@@ -67,10 +73,19 @@ public class ConfigController implements Initializable {
         ConfiguracoesUsuario.salvarAlturaTela(altura);
         ConfiguracoesUsuario.salvarLarguraTela(largura);
         ConfiguracoesUsuario.salvarVolume(SliderVolume.getValue());
+        ConfiguracoesUsuario.salvarVelelocidadeTextoHistoria(SliderVelHistoria.getValue());
+        ConfiguracoesUsuario.salvarVelelocidadeTextoBatalha(SliderVelBatalha.getValue());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            Player.getPlayer();
+            telaInicial = false;
+        } catch (PlayerInexistenteException e) {
+            btnAdmin.setDisable(true);
+            btnAdmin.setOpacity(0);
+        }
         EscolhaResolucao.getItems().addAll("1200x675", "1280x720");
         configurarBotoes(btnAdmin);
         contornarBotaoVoltar(btnSair);
@@ -81,6 +96,8 @@ public class ConfigController implements Initializable {
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
 
         SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao()*100);
+        SliderVelBatalha.setValue(ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao()-1);
+        SliderVelHistoria.setValue(ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao()-1);
         SliderVolume.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
@@ -91,7 +108,12 @@ public class ConfigController implements Initializable {
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        if(telaInicial){
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("MainScene.fxml")).load());
+        }
+        else {
+            Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        }
     }
     @FXML
     void Admin(ActionEvent event) throws PlayerInexistenteException {
