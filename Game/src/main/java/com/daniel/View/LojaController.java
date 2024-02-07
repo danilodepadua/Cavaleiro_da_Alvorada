@@ -9,7 +9,7 @@ import com.daniel.Model.Dados.Itens.Arma;
 import com.daniel.Model.Dados.Itens.Armadura;
 import com.daniel.Model.Dados.Itens.Item;
 import com.daniel.Model.Dados.Itens.Minerio;
-import com.daniel.Controller.LojaFachada;
+import com.daniel.Controller.JogoFachada;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,10 +67,10 @@ public class LojaController implements Initializable {
     private Text txtVenda;
     private boolean ativarCompra = false;
     private AudioPlayer somCompraVenda = new AudioPlayer();
-    private LojaFachada lojaFachada;
+    private JogoFachada jogoFachada;
 
     public void initialize(URL location, ResourceBundle resources) {
-        lojaFachada = LojaFachada.getInstance();
+        jogoFachada = JogoFachada.getInstance();
         configurarBotoes(btnComprar);
         configurarBotoes(btnVender);
         contornarBotaoVoltarLoja(btnVoltar);
@@ -88,7 +88,7 @@ public class LojaController implements Initializable {
     private void configBotoes(){
         btnVender.setOnAction(event -> {
             try {
-                lojaFachada.venderItem(itemSelecionado);
+                jogoFachada.venderItem(itemSelecionado);
                 txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
                 configModoVenda();
                 somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
@@ -99,7 +99,7 @@ public class LojaController implements Initializable {
         });
         btnComprar.setOnAction(event -> {
             try {
-                lojaFachada.comprarItem(itemSelecionado);
+                jogoFachada.comprarItem(itemSelecionado);
                 txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
                 somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
             } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |

@@ -1,5 +1,6 @@
-package com.daniel.Model.Cassino;
+package com.daniel.Model;
 
+import com.daniel.Model.Cassino.Carta;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
 
 import java.util.ArrayList;

@@ -1,10 +1,7 @@
 package com.daniel.Controller;
 
-import com.daniel.Model.Cassino.Poker;
+import com.daniel.Model.Poker;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
-import com.daniel.Model.Cassino.Carta;
-
-import java.util.*;
 
 public class AvaliadorPoker {
     private static AvaliadorPoker instance;

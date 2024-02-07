@@ -1,4 +1,4 @@
-package com.daniel.Model.Loja;
+package com.daniel.Controller;
 
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.Itens.Item;

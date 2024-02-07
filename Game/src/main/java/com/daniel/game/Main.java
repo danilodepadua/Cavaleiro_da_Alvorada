@@ -19,6 +19,7 @@ import java.io.IOException;
 public class Main extends Application {
     public static Stage CurrentStage;
     public static Cidade cidadeAtual;
+
     public static SaveManager saveManager = new SaveManager();
     public static AudioPlayer audioPlayer = new AudioPlayer();
     public static void ChangeScene(Parent root){

@@ -1,15 +1,13 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidades.*;
+import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.SenhaIncorretaException;
 import com.daniel.Model.Dados.ConfiguracoesUsuario;
 import com.daniel.game.Main;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,22 +43,10 @@ public class ConfigController implements Initializable {
     private Button btnAdmin;
 
     @FXML
-    private Button btnConfirmar;
-
-    @FXML
-    private Button btnSair;
-
-    @FXML
     private Button btnSalvar;
 
     @FXML
     private Button btnVoltar;
-
-    @FXML
-    private AnchorPane paneAdmin;
-
-    @FXML
-    private TextField txtTextfield;
 
     boolean telaInicial = true;
 
@@ -80,6 +66,24 @@ public class ConfigController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            Player.getPlayer().ganhaCoins(10000);
+            Player.getPlayer().adicionarCidade(new Dasópoles());
+            Player.getPlayer().adicionarCidade(new MonteClaro());
+            Player.getPlayer().adicionarCidade(new CidadePortuaria());
+            Player.getPlayer().adicionarCidade(new Ilha());
+            Player.getPlayer().adicionarCidade(new BatalhaDePedraveira());
+            Player.getPlayer().adicionarCidade(new MontanhaDoNorte());
+            Player.getPlayer().adicionarCidade(new CidadeMorta());
+
+            Player.getPlayer().ganharXp(100000);
+            Player.getPlayer().aumentaForcaProgress(999);
+            Player.getPlayer().aumentaVelocidadeProgress(999);
+            Player.getPlayer().aumentaResistenciaProgress(999);
+            Player.getPlayer().aumentaInteligenciaProgess(999);
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             Player.getPlayer();
             telaInicial = false;
         } catch (PlayerInexistenteException e) {
@@ -88,9 +92,7 @@ public class ConfigController implements Initializable {
         }
         EscolhaResolucao.getItems().addAll("1200x675", "1280x720");
         configurarBotoes(btnAdmin);
-        contornarBotaoVoltar(btnSair);
         configurarBotoes(btnSalvar);
-        configurarBotoes(btnConfirmar);
         contornarBotaoVoltar(btnVoltar);
 
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
@@ -116,41 +118,9 @@ public class ConfigController implements Initializable {
         }
     }
     @FXML
-    void Admin(ActionEvent event) throws PlayerInexistenteException {
-        paneAdmin.setOpacity(1);
-        paneAdmin.setDisable(false);
-    }
+    void Admin(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaWeb.fxml")).load());
 
-
-    @FXML
-    void onClickConfirmar(ActionEvent event) throws PlayerInexistenteException, SenhaIncorretaException {
-        String senha = "santiago";
-        if (txtTextfield.getText().equals(senha)){
-            Player.getPlayer().ganhaCoins(10000);
-            Player.getPlayer().adicionarCidade(new Dasópoles());
-            Player.getPlayer().adicionarCidade(new MonteClaro());
-            Player.getPlayer().adicionarCidade(new CidadePortuaria());
-            Player.getPlayer().adicionarCidade(new Ilha());
-            Player.getPlayer().adicionarCidade(new BatalhaDePedraveira());
-            Player.getPlayer().adicionarCidade(new MontanhaDoNorte());
-            Player.getPlayer().adicionarCidade(new CidadeMorta());
-
-            Player.getPlayer().ganharXp(100000);
-            Player.getPlayer().aumentaForcaProgress(999);
-            Player.getPlayer().aumentaVelocidadeProgress(999);
-            Player.getPlayer().aumentaResistenciaProgress(999);
-            Player.getPlayer().aumentaInteligenciaProgess(999);
-            paneAdmin.setOpacity(0);
-            paneAdmin.setDisable(true);
-        }else {
-            throw new SenhaIncorretaException();
-        }
-    }
-
-    @FXML
-    void onClickSair(ActionEvent event) {
-        paneAdmin.setOpacity(0);
-        paneAdmin.setDisable(true);
     }
 
 }

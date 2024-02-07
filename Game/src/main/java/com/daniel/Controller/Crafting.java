@@ -1,4 +1,4 @@
-package com.daniel.Model;
+package com.daniel.Controller;
 
 import com.daniel.Model.Dados.Itens.Armas.*;
 import com.daniel.Model.Dados.Itens.Item;

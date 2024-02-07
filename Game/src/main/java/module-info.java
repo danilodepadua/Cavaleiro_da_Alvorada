@@ -5,6 +5,10 @@ module com.daniel.game {
     requires java.desktop;
     requires javafx.media;
     requires java.sql;
+    requires javafx.web;
+    requires jdk.jsobject;
+    requires javafx.swing;
+    requires webcam.capture;
 
 
     opens com.daniel.game to javafx.fxml;

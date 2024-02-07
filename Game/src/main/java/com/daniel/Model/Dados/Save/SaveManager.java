@@ -27,7 +27,7 @@ public class SaveManager {
     }
     public void Salvar() throws PlayerInexistenteException {
         Save save = new Save(Player.getPlayer(), Main.cidadeAtual);
-        Path caminhoSave = CaminhoSave;  // Substitua isso pela lógica real para obter o caminho do arquivo
+        Path caminhoSave = CaminhoSave;
 
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(caminhoSave.toFile()))) {
             out.writeObject(save);
@@ -61,5 +61,25 @@ public class SaveManager {
     }
     public boolean SaveExistente(){
         return Files.exists(CaminhoSave);
+    }
+    public void carregarAdmin(Path filePath) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath.toFile()))) {
+            // Ler o objeto do arquivo
+            Save save = (Save) in.readObject();
+
+            // Processar os dados carregados
+            for (Cidade c : save.player.getCidadesConehcidas()) {
+                c.ajustarBotoes();
+            }
+            Player.setPlayer(save.player);
+            save.cidade.ajustarBotoes();
+            Main.cidadeAtual = save.cidade;
+            System.out.println(Player.getPlayer().getName());
+            System.out.println(save.player.getName());
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Falha ao carregar arquivo");
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

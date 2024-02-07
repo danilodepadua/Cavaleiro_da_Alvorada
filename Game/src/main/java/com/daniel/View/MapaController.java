@@ -2,6 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Exceptions.CidadeInexistenteException;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.RemoverCoinsException;
 import com.daniel.Model.Exceptions.SemMoedasException;
@@ -56,14 +57,18 @@ public class MapaController extends Utilidades implements Initializable {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
-    void OnActionViajar(ActionEvent event) throws IOException, PlayerInexistenteException, RemoverCoinsException {
+    void OnActionViajar(ActionEvent event) throws IOException, CidadeInexistenteException {
         // Configura a cidade atual
-        if (cidadeTroca.getNome().equals("ILHA")){ //condiçao para ilha, verifica se é a ilham se for, aparece o pane
-            paneAceitar.setDisable(false);
-            paneAceitar.setOpacity(1.0);
-        }else{
-            Main.cidadeAtual = cidadeTroca;
-            exibirCutscene();
+        if ( cidadeTroca != null) {
+            if (cidadeTroca.getNome().equals("ILHA")) { //condiçao para ilha, verifica se é a ilham se for, aparece o pane
+                paneAceitar.setDisable(false);
+                paneAceitar.setOpacity(1.0);
+            } else {
+                Main.cidadeAtual = cidadeTroca;
+                exibirCutscene();
+            }
+        }else {
+            throw new CidadeInexistenteException();
         }
     }
 

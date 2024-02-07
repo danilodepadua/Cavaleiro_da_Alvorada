@@ -1,7 +1,7 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.AudioPlayer;
-import com.daniel.Controller.CraftingFachada;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Itens.Item;
@@ -67,7 +67,7 @@ public class CraftingController implements Initializable {
     private Text txtQuantidade;
     private Item itemSelecionado;
     private Item itemSelecionado2;
-    private CraftingFachada craftingFachada;
+    private JogoFachada craftingFachada;
     private AudioPlayer audioPlayer = new AudioPlayer();
 
     @Override
@@ -75,7 +75,7 @@ public class CraftingController implements Initializable {
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fornalha.jpg");
         contornarBotaoVoltarLoja(btnVoltar);
         configurarBotoes(btnCriar);
-        this.craftingFachada = CraftingFachada.getInstance();
+        this.craftingFachada = JogoFachada.getInstance();
         try {
             atualizarInterface();
         } catch (PlayerInexistenteException e) {

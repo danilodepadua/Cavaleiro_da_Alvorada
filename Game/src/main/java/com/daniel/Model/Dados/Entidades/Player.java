@@ -264,10 +264,6 @@ public class Player extends Personagem implements Serializable {
         return this.VerificarLevelUp();
     }
 
-    public void ganharMoedas(int moedas) {
-        this.currentMoedas += moedas;
-    }
-
     private void aprenderMagia(){
         switch (lvl){
             case 2:
@@ -349,11 +345,11 @@ public class Player extends Personagem implements Serializable {
     }
 
     public List<Quest> obterQuestsComuns() {
-        List<Quest> questComuns = Main.cidadeAtual.getQuests();
+        List<Quest> questsCidade = Main.cidadeAtual.getQuests();
         List<Quest> questsComuns = new ArrayList<>();
 
         for (Quest questJogador : getQuestsAtuais()) {
-            boolean questComum = questComuns.stream().anyMatch(questCidade -> questJogador.getNome().equals(questCidade.getNome()));
+            boolean questComum = questsCidade.stream().anyMatch(questCidade -> questJogador.getNome().equals(questCidade.getNome()));
 
             if (questComum) {
                 questsComuns.add(questJogador);  // Adiciona a quest comum à lista
