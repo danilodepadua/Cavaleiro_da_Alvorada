@@ -1,6 +1,8 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.game.Main;
+import com.sun.net.httpserver.HttpServer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,9 @@ import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -26,14 +31,16 @@ public class WebController implements Initializable {
     private Button btnAdmin;
     @FXML
     private Button btnVoltar;
-    private boolean ativarBotao = false;
+    private JogoFachada jogoFachada;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        jogoFachada = JogoFachada.getInstance();
         configurarBotoes(btnAdmin);
         contornarBotaoVoltar(btnVoltar);
+        jogoFachada.ligarServidor();  // assim chamando a funçao na classe fachada pra ligar.
         try {
-            // Abre a URL no navegador padrão
-            Desktop.getDesktop().browse(new URI("http://localhost:63342/Game/Game/src/main/java/com/daniel/Controller/IA/index.html?_ijt=11l2ucj6mg5r1ba4mqpm5otb1t&_ij_reload=RELOAD_ON_SAVE"));
+            // Abre a URL no navegador padrão da maquina
+            Desktop.getDesktop().browse(new URI("http://localhost:4040/"));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
@@ -59,7 +66,8 @@ public class WebController implements Initializable {
     }
     @FXML
     void onClickVoltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        jogoFachada.desligarServidor();
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
 
     }
 

@@ -1,4 +1,4 @@
-package com.daniel.Model.Cassino;
+package com.daniel.Model;
 
 
 import com.daniel.game.Main;

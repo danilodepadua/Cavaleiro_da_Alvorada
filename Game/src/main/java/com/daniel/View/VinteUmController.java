@@ -3,7 +3,7 @@ package com.daniel.View;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Dados.CassinoRepositorio.Baralho;
-import com.daniel.Model.Cassino.Carta;
+import com.daniel.Model.Carta;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.game.Main;
@@ -90,97 +90,95 @@ public class VinteUmController implements Initializable{
     private VBox vboxTextos;
 
     @FXML
-    void onClickManter(ActionEvent event) throws BaralhoVazioException {
+    void onClickManter(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
         determinarVencedor();
     }
     @FXML
-    void onClickPuxar(ActionEvent event) throws BaralhoVazioException {
+    void onClickPuxar(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
         adicionarCarta(GridPanePlayer, jogador, 2);
         txtSeusPontos.setText("Seus Pontos: "+ jogador.getPontos());
         determinarVencedor();
 
     }
-    public void determinarVencedor() throws BaralhoVazioException {
-        String valorStr = textFieldAposta.getText(); //Pega o valor da aposta no textField
-        int valorAposta = Integer.parseInt(valorStr);  //Armazenando em uma variável inteira
+    public void determinarVencedor() throws PlayerInexistenteException, BaralhoVazioException {
+        String valorStr = textFieldAposta.getText();
+        int valorAposta = Integer.parseInt(valorStr);
 
-        //Chamar o método de adicionar carta aos jogadores
         adicionarCarta(GridPaneDealer, dealer, 0);
         adicionarCarta(GridPaneDealer, dealer, 1);
-        txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos()); //Setar o texto para uma imersão maior
-
-        //Criar um pause pra determinar o vencedor
+        txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+        //Criar um pause pra imersão
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> {
-            try {
-                processarVencedor(valorAposta);
-            } catch (PlayerInexistenteException | RemoverCoinsException ex) {
-                throw new RuntimeException(ex);
+            int pontosJogador = jogador.getPontos();
+            int pontosDealer = dealer.getPontos();
+            // Se o dealer tem menos de 15 pontos, ele puxa uma carta
+            if (pontosDealer <= 15 || pontosDealer < pontosJogador) {
+                try {
+                    adicionarCarta(GridPaneDealer, dealer, 2);
+                } catch (BaralhoVazioException ex) {
+                    throw new RuntimeException(ex);
+                }
+                pontosDealer = dealer.getPontos();
+                txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+            }
+            // Verifica se alguém ultrapassou 21 (bust)
+            if (pontosJogador > 21 && pontosDealer <= 21) {
+                try {
+                    txtVoceGanhou.setText("Você perdeu!");
+                    mostrarResultado("Você perdeu!", txtMensagem, boxMensagem);
+                    Player.getPlayer().removerCoins(valorAposta);
+                    configBotoes();
+                } catch (PlayerInexistenteException | RemoverCoinsException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else if (pontosDealer > 21 && pontosJogador <= 21) {
+                try {
+                    txtVoceGanhou.setText("Você venceu!");
+                    mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
+                    Player.getPlayer().ganhaCoins(valorAposta );
+                    configBotoes();
+                } catch (PlayerInexistenteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                // Verifica quem tem mais pontos sem ultrapassar 21
+                if (pontosJogador > pontosDealer) {
+                    txtVoceGanhou.setText("Você venceu!");
+                    mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
+                    try {
+                        Player.getPlayer().ganhaCoins(valorAposta );
+                        configBotoes();
+                    } catch (PlayerInexistenteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                } else if (pontosDealer > pontosJogador) {
+                    try {
+                        txtVoceGanhou.setText("Você perdeu!");
+                        mostrarResultado("Você perdeu!", txtMensagem, boxMensagem);
+                        Player.getPlayer().removerCoins(valorAposta);
+                        configBotoes();
+                    } catch (PlayerInexistenteException | RemoverCoinsException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    try {
+                        mostrarResultado("EMPATE!", txtMensagem, boxMensagem);
+                        txtVoceGanhou.setText("Empate!");
+                        configBotoes();
+                    } catch (PlayerInexistenteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
         pause.play();
-
-        btnManter.setDisable(true); //Desabilita os botões
+        btnManter.setDisable(true);
         btnPuxar.setDisable(true);
+
     }
 
-    private void processarVencedor(int valorAposta) throws PlayerInexistenteException, RemoverCoinsException {
-        int pontosJogador = jogador.getPontos();
-        int pontosDealer = dealer.getPontos();
-
-        // Se o dealer tem menos de 14 pontos, ele puxa uma carta
-        if (pontosDealer <= 14 || pontosDealer <= pontosJogador) {
-            try {
-                adicionarCarta(GridPaneDealer, dealer, 2);
-            } catch (BaralhoVazioException ex) {
-                throw new RuntimeException(ex);
-            }
-            pontosDealer = dealer.getPontos();
-            txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
-        }
-
-        // Verifica se alguém ultrapassou 21 (bust)
-        if (pontosJogador > 21 && pontosDealer <= 21) {
-            handleResultado("Você perdeu!");
-            Player.getPlayer().removerCoins(valorAposta);
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-        } else if (pontosDealer > 21 && pontosJogador <= 21) {
-            handleResultado("Você venceu!");
-            Player.getPlayer().ganhaCoins(valorAposta);
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-        } else {
-                determinarVencedorSemEstouro(pontosJogador, pontosDealer, valorAposta);
-        }
-    }
-    private void determinarVencedorSemEstouro(int pontosJogador, int pontosDealer, int valorAposta) throws PlayerInexistenteException, RemoverCoinsException {
-        // Verifica quem tem mais pontos sem ultrapassar 21
-        if (pontosJogador > pontosDealer) {
-            handleResultado("Você venceu!");
-            Player.getPlayer().ganhaCoins(valorAposta);
-            mostrarResultado("VITÓRIA");
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-        } else if (pontosDealer > pontosJogador) {
-            handleResultado("Você perdeu!");
-            Player.getPlayer().removerCoins(valorAposta);
-            mostrarResultado("DERROTA!");
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-        } else {
-            handleResultado("Empate!");
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-            mostrarResultado("Empate!");
-
-        }
-    }
-    private void handleResultado(String mensagem) {
-        txtVoceGanhou.setText(mensagem);
-        try {
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
-        } catch (PlayerInexistenteException ex) {
-            throw new RuntimeException(ex);
-        }
-        btnApostar.setDisable(false);
-        btnVoltar.setDisable(false);
-    }
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
         resetarJogo();
@@ -222,6 +220,11 @@ public class VinteUmController implements Initializable{
     @FXML
     void Voltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
+    }
+    private void configBotoes() throws PlayerInexistenteException {
+        btnApostar.setDisable(false);
+        btnVoltar.setDisable(false);
+        txtSeuSaldo.setText("Carteira: "+Player.getPlayer().getCoins()+ " Moedas");
     }
     private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
         Carta carta = baralho.pegarCarta();
@@ -301,24 +304,5 @@ public class VinteUmController implements Initializable{
 
         definirBackground(PanePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
     }
-    private void mostrarResultado(String mensagem) {
-        txtMensagem.setText(mensagem);
 
-        // Animação de fade-in
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), boxMensagem);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-
-        // Animação de fade-out
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), boxMensagem);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
-        fadeOut.setDelay(Duration.seconds(2));
-
-        // Combinação das animações
-        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
-
-        // Inicia a sequência de animação
-        sequence.play();
-    }
 }

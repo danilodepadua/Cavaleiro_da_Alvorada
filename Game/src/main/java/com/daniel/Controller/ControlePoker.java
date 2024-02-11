@@ -1,6 +1,6 @@
-package com.daniel.Model;
+package com.daniel.Controller;
 
-import com.daniel.Model.Cassino.Carta;
+import com.daniel.Model.Carta;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Poker {
+public class ControlePoker {
     public  String avaliarMao(Mão mao, Mão centro) {
         if (temRoyalFlush(mao, centro)) {
             return "Royal Flush";

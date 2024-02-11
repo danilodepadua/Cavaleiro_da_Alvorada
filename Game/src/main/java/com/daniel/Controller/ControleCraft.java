@@ -7,9 +7,8 @@ import com.daniel.Model.Dados.Itens.Pocoes.PocaoCura;
 import com.daniel.Model.Dados.Itens.Pocoes.PocaoCuraGrande;
 import com.daniel.Model.Dados.Itens.Pocoes.PocaoMp;
 import com.daniel.Model.Dados.Itens.Pocoes.PocaoMpGrande;
-import com.daniel.Model.Exceptions.PlayerInexistenteException;
 
-public class Crafting {
+public class ControleCraft {
     private double chanceBase;
     public Item criarBarraFerro(Item item, Item item2, double chance) {
         if (item != null && item2 != null) { //Verifica se nao é nulo

@@ -1,5 +1,6 @@
 package com.daniel.game;
-
+import com.daniel.Controller.JogoFachada;
+import com.sun.net.httpserver.* ;
 import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
 import com.daniel.Model.Dados.CidadeRepositorio.Cidades.Auroraville;
@@ -10,18 +11,28 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
-import java.io.IOException;
+import java.awt.*;
+import java.io.*;
+import java.net.InetSocketAddress;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.concurrent.Executors;
 
 
 public class Main extends Application {
     public static Stage CurrentStage;
-    public static Cidade cidadeAtual;
 
+    public static Cidade cidadeAtual;
     public static SaveManager saveManager = new SaveManager();
+
     public static AudioPlayer audioPlayer = new AudioPlayer();
+    Font barlow;
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
@@ -37,7 +48,14 @@ public class Main extends Application {
         return CurrentStage.getHeight();
     }
     @Override
-    public void start(Stage stage) throws IOException, PlayerInexistenteException {;
+    public void start(Stage stage) throws IOException, PlayerInexistenteException {
+        try {
+            // Carrega a fonte a partir do arquivo no caminho relativo
+            InputStream fontStream = getClass().getResourceAsStream("/com.daniel.game/Fontes/BarlowCondensed-SemiBold.ttf");
+            Font.loadFont(fontStream, 12);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         stage.setMinHeight(675);
         stage.setMinWidth(1200);
         cidadeAtual = new Auroraville();
@@ -61,6 +79,4 @@ public class Main extends Application {
         CurrentStage.setWidth(largura);
         CurrentStage.setHeight(altura);
     }
-
-
 }

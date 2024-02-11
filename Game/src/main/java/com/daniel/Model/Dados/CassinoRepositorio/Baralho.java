@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados.CassinoRepositorio;
 
-import com.daniel.Model.Cassino.Carta;
+import com.daniel.Model.Carta;
 import com.daniel.Model.Exceptions.BaralhoVazioException;
 
 import java.util.ArrayList;

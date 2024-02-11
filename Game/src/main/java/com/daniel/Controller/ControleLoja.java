@@ -8,7 +8,7 @@ import com.daniel.Model.Exceptions.RemoverCoinsException;
 import com.daniel.Model.Exceptions.SemMoedasParaLojaException;
 import com.daniel.Model.Interfaces.IEquipable;
 
-public class Loja {
+public class ControleLoja {
     /**
      * Realiza a compra de um item na loja.
      *

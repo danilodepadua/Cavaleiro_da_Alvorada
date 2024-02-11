@@ -2,7 +2,9 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.game.Main;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -249,7 +251,26 @@ public class Utilidades {
         timeline.play();
     }
 
+    public static void mostrarResultado(String mensagem, Text text, AnchorPane anchorPane) {
+        text.setText(mensagem);
 
+        // Animação de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), anchorPane);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+
+        // Animação de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), anchorPane);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(2));
+
+        // Combinação das animações
+        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
+
+        // Inicia a sequência de animação
+        sequence.play();
+    }
 
 
 

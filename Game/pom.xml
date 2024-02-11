@@ -64,6 +64,13 @@
             <artifactId>webcam-capture</artifactId>
             <version>0.3.12</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.net.httpserver/http -->
+        <dependency>
+            <groupId>com.sun.net.httpserver</groupId>
+            <artifactId>http</artifactId>
+            <version>20070405</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,20 +1,21 @@
 package com.daniel.Controller;
 
-import com.daniel.Model.Poker;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Dados.Itens.Item;
 
 public class JogoFachada {
     private static final JogoFachada instance = new JogoFachada();
-    private Loja loja;
-    private Crafting crafting;
-    private Poker poker;
+    private ControleLoja controleLoja;
+    private ControleCraft controleCraft;
+    private ControlePoker controlePoker;
+    private ControleServidor controleServidor;
 
     private JogoFachada() {
-        loja = new Loja();
-        crafting = new Crafting();
-        poker = new Poker();
+        controleLoja = new ControleLoja();
+        controleCraft = new ControleCraft();
+        controlePoker = new ControlePoker();
+        controleServidor = new ControleServidor();
     }
 
     public static JogoFachada getInstance() {
@@ -22,74 +23,80 @@ public class JogoFachada {
     }
 
     public void comprarItem(Item item) throws PlayerInexistenteException, RemoverCoinsException, CompraErroException, SemMoedasParaLojaException {
-        loja.comprarItem(item);
+        controleLoja.comprarItem(item);
     }
 
     public void venderItem(Item item) throws PlayerInexistenteException {
-        loja.venderItem(item);
+        controleLoja.venderItem(item);
     }
 
     public Item criarBarraFerro(Item item, Item item2, double chance) {
-        return crafting.criarBarraFerro(item, item2, chance);
+        return controleCraft.criarBarraFerro(item, item2, chance);
     }
 
     public Item criarPocaoVidaGrande(Item item, Item item2, double chance) {
-        return crafting.criarPocaoVidaGrande(item, item2, chance);
+        return controleCraft.criarPocaoVidaGrande(item, item2, chance);
     }
 
     public Item criarPocaoManaGrande(Item item, Item item2, double chance) {
-        return crafting.criarPocaoManaGrande(item, item2, chance);
+        return controleCraft.criarPocaoManaGrande(item, item2, chance);
     }
 
     public Item criarBarraEscuridao(Item item, Item item2, double chance) {
-        return crafting.criarBarraEscuridao(item, item2, chance);
+        return controleCraft.criarBarraEscuridao(item, item2, chance);
     }
 
     public Item criarBarraOuro(Item item, Item item2, double chance) {
-        return crafting.criarBarraOuro(item, item2, chance);
+        return controleCraft.criarBarraOuro(item, item2, chance);
     }
 
     public Item criarBarraFogo(Item item, Item item2, double chance) {
-        return crafting.criarBarraFogo(item, item2, chance);
+        return controleCraft.criarBarraFogo(item, item2, chance);
     }
 
     public Item criarBarraGelo(Item item, Item item2, double chance) {
-        return crafting.criarBarraGelo(item, item2, chance);
+        return controleCraft.criarBarraGelo(item, item2, chance);
     }
 
     public Item criarFerroAperfeicoado(Item item, Item item2, double chance) {
-        return crafting.criarFerroAperfeicoado(item, item2, chance);
+        return controleCraft.criarFerroAperfeicoado(item, item2, chance);
     }
 
     public Item criarEspadaAperfeicoada(Item item, Item item2, double chance) {
-        return crafting.criarEspadaAperfeicoada(item, item2, chance);
+        return controleCraft.criarEspadaAperfeicoada(item, item2, chance);
     }
 
     public Item criarEspadaGeloAperfeicoada(Item item, Item item2, double chance) {
-        return crafting.criarEspadaGeloAperfeicoada(item, item2, chance);
+        return controleCraft.criarEspadaGeloAperfeicoada(item, item2, chance);
     }
 
     public Item criarEspadaEscuridaoAperfeicoada(Item item, Item item2, double chance) {
-        return crafting.criarEspadaEscuridaoAperfeicoada(item, item2, chance);
+        return controleCraft.criarEspadaEscuridaoAperfeicoada(item, item2, chance);
     }
 
     public Item criarEspadaFogoAperfeicoada(Item item, Item item2, double chance) {
-        return crafting.criarEspadaFogoAperfeicoada(item, item2, chance);
+        return controleCraft.criarEspadaFogoAperfeicoada(item, item2, chance);
     }
 
     public Item criarEspadaEletricaAperfeicoada(Item item, Item item2, double chance) {
-        return crafting.criarEspadaEletricaAperfeicoada(item, item2, chance);
+        return controleCraft.criarEspadaEletricaAperfeicoada(item, item2, chance);
     }
 
     public double getChanceBase() {
-        return crafting.getChanceBase();
+        return controleCraft.getChanceBase();
     }
     public  String avaliarMao(Mão mao, Mão centro){
-        return poker.avaliarMao(mao, centro);
+        return controlePoker.avaliarMao(mao, centro);
     }
 
     public  int avaliarForcaMao(Mão mao, Mão centro) {
-        return poker.avaliarForcaMao(mao, centro);
+        return controlePoker.avaliarForcaMao(mao, centro);
     }
 
+    public void ligarServidor(){
+        controleServidor.ligarServidor();
+    }
+    public void desligarServidor(){
+        controleServidor.desligarServidor();
+    }
 }

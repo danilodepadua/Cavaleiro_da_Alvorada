@@ -9,6 +9,7 @@ module com.daniel.game {
     requires jdk.jsobject;
     requires javafx.swing;
     requires webcam.capture;
+    requires jdk.httpserver;
 
 
     opens com.daniel.game to javafx.fxml;

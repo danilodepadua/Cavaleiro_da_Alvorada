@@ -1,6 +1,6 @@
 package com.daniel.View;
-import com.daniel.Controller.AvaliadorPoker;
-import com.daniel.Model.Cassino.Carta;
+import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.BaralhoVazioException;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -81,7 +81,7 @@ public class PokerController implements Initializable {
     private int coluna = 3;
     private boolean tresCartas = true;
     private boolean continuar = false;
-    private AvaliadorPoker avaliadorPoker;
+    private JogoFachada jogoFachada;
     @FXML
     void Apostar(ActionEvent event) throws PlayerInexistenteException {
         limparMesa();
@@ -136,7 +136,7 @@ public class PokerController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.avaliadorPoker = AvaliadorPoker.getInstance();
+        jogoFachada = JogoFachada.getInstance();
         this.cartasCentro = new Mão();
         definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         contornarBotaoVoltar(btnVoltar);
@@ -239,11 +239,11 @@ public class PokerController implements Initializable {
         return carta;
     }
     private void determinarVencedor() throws PlayerInexistenteException {
-        String resultadoJogador = avaliadorPoker.avaliarMao(jogador, cartasCentro);
-        String resultadoCasa = avaliadorPoker.avaliarMao(casa, cartasCentro);
+        String resultadoJogador = jogoFachada.avaliarMao(jogador, cartasCentro);
+        String resultadoCasa = jogoFachada.avaliarMao(casa, cartasCentro);
 
-        int forcaJogador = avaliadorPoker.avaliarForcaMao(jogador, cartasCentro);
-        int forcaCasa = avaliadorPoker.avaliarForcaMao(casa, cartasCentro);
+        int forcaJogador = jogoFachada.avaliarForcaMao(jogador, cartasCentro);
+        int forcaCasa = jogoFachada.avaliarForcaMao(casa, cartasCentro);
         btnVoltar.setDisable(false);
         if (forcaJogador > forcaCasa ) {
             mostrarResultado("Você ganhou! ");

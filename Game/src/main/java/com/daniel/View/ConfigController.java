@@ -66,24 +66,6 @@ public class ConfigController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Player.getPlayer().ganhaCoins(10000);
-            Player.getPlayer().adicionarCidade(new Dasópoles());
-            Player.getPlayer().adicionarCidade(new MonteClaro());
-            Player.getPlayer().adicionarCidade(new CidadePortuaria());
-            Player.getPlayer().adicionarCidade(new Ilha());
-            Player.getPlayer().adicionarCidade(new BatalhaDePedraveira());
-            Player.getPlayer().adicionarCidade(new MontanhaDoNorte());
-            Player.getPlayer().adicionarCidade(new CidadeMorta());
-
-            Player.getPlayer().ganharXp(100000);
-            Player.getPlayer().aumentaForcaProgress(999);
-            Player.getPlayer().aumentaVelocidadeProgress(999);
-            Player.getPlayer().aumentaResistenciaProgress(999);
-            Player.getPlayer().aumentaInteligenciaProgess(999);
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             Player.getPlayer();
             telaInicial = false;
         } catch (PlayerInexistenteException e) {

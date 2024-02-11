@@ -130,7 +130,6 @@ public class InventarioController implements Initializable {
 
     @FXML
     private Text txtQtdItem;
-    private Inventario inventario;
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
@@ -305,7 +304,6 @@ public class InventarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.inventario = Inventario.getInstance();
         contornarBotaoVoltar(btnVoltar);
         btnUsar.setDisable(true);
         btnDesequipar.setDisable(true);

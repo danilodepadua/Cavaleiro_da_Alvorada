@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Cassino.Carta;
+import com.daniel.Model.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Dados.CassinoRepositorio.Baralho;
