@@ -22,6 +22,7 @@ public class BatalhaPredefinida extends TipoBatalha {
 
     @Override
     public void LogicaVitoria() throws IOException, PlayerInexistenteException {
+        this.finalizado = true;
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
         Parent root = loader.load();
         ResultadoController resultadoController = loader.getController();

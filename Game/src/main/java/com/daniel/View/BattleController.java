@@ -1,29 +1,30 @@
 package com.daniel.View;
 
-import com.daniel.Model.BatalhaDeTurnos.Comportamento;
-import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
-import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
-import com.daniel.Model.ComportamentosInimigos.*;
+import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.BatalhaDeTurnos.*;
 import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.Dados.ConfiguracoesUsuario;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.Dados.Itens.Item;
-import com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha.BatalhaComum;
 import com.daniel.Model.Dados.Magias.Animation.SlashAnimation;
-import com.daniel.Model.BatalhaDeTurnos.TipoBatalha;
 import com.daniel.game.Main;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,13 +37,10 @@ public class BattleController implements Initializable {
     GerenciadorDeBatalha gdb;
     private ArrayList<Item> itens = new ArrayList<>();
     int itemAtual = 0;
-    PersonagemLuta Enimy;
-    PersonagemLuta player;
-
-    public TipoBatalha tipoBatalha;
-
     @FXML
     private AnchorPane Back;
+    @FXML
+    private ProgressBar PlayerBar;
 
     @FXML
     private Button BtnAtacar;
@@ -157,6 +155,20 @@ public class BattleController implements Initializable {
             ColocarMagias();
         }
     }
+    public void ShowProgressBar(boolean mostrar){
+        if(mostrar){
+            PlayerBar.setOpacity(1);
+            PlayerBar.setDisable(false);
+            PnlPrimeirasEscolhas.setDisable(true);
+            PnlPrimeirasEscolhas.setOpacity(0);
+        }
+        else{
+            PlayerBar.setOpacity(0);
+            PlayerBar.setDisable(true);
+            PnlPrimeirasEscolhas.setOpacity(1);
+            PnlPrimeirasEscolhas.setDisable(false);
+        }
+    }
     @FXML
     void Sair(MouseEvent event) {
         double x = event.getSceneX();
@@ -173,8 +185,8 @@ public class BattleController implements Initializable {
 
     @FXML
     void Atacar(ActionEvent event) throws PlayerInexistenteException {
-        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),player.getAtqF(),
-                player.getTipoAtaqueBase(), true, null);
+        gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),this.gdb.player.getAtqF(),
+                this.gdb.player.getTipoAtaqueBase(), true, null);
 
         audioPlayer.play("/com.daniel.audios/som_swordSlash.wav", false);
     }
@@ -182,23 +194,50 @@ public class BattleController implements Initializable {
     @FXML
     void Fugir(ActionEvent event) throws PlayerInexistenteException, IOException {
         EsconderInterfacePlayer();
-        gdb.fugir(player.fugir(Enimy.getVelocidade()));
+        gdb.fugir(this.gdb.player.fugir(this.gdb.inimigo.getVelocidade()));
+    }
+    public void mostrarResultado(ArrayList<String> mensagems){
+        Timeline T = new Timeline();
+        double time = 0.2;
+        for(String i : mensagems) {
+            T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {
+                boxMensagem.setOpacity(1);
+                txtMensagem.setText(i);
+            }));
+            time+=1/ ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao();
+        }
+        T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {boxMensagem.setOpacity(0); txtMensagem.setText("");}));
+        T.setOnFinished(event -> {
+            try {
+                gdb.VerificarTurno();
+            } catch (IOException | PlayerInexistenteException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        T.play();
+    }
+    public void SetPlyerBar(double d){
+        PlayerBar.setProgress(d);
+    }
+    public ImageView getPlayerEffect(){
+        return PlayerEffect;
+    }
+    public ImageView getEnimyEffect(){
+        return EnimyEffect;
     }
     public void Vitoria() throws PlayerInexistenteException, IOException {
-        Player.getPlayer().AtualizarStatus(player.getCurrentHp(), player.getCurrentMp());
+        Player.getPlayer().AtualizarStatus(this.gdb.player.getCurrentHp(), this.gdb.player.getCurrentMp());
         controladorMusica.stop();
-        tipoBatalha.Vitoria();
     }
 
     public void Derrota() throws IOException {
         controladorMusica.stop();
-        tipoBatalha.Derrota();
     }
 
     public void Atualiazar(){
-        InfoVida.setText("HP: " + player.getCurrentHp() + "/" + player.getHP());
-        InfoMp.setText("MP: " + player.getCurrentMp() + "/" + player.getMP());
-        InfoNome.setText(player.getNome());
+        InfoVida.setText("HP: " + this.gdb.player.getCurrentHp() + "/" + this.gdb.player.getHP());
+        InfoMp.setText("MP: " + this.gdb.player.getCurrentMp() + "/" + this.gdb.player.getMP());
+        InfoNome.setText(this.gdb.player.getNome());
     }
     private void ColocarMagias() throws PlayerInexistenteException {
         isItens = false;
@@ -209,7 +248,7 @@ public class BattleController implements Initializable {
             magiaButton.setText(Player.getPlayer().getMagias().get(i).getNome() + " : " + Player.getPlayer().getMagias().get(i).getCusto() + "MP");
             magiaButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             magiaButton.prefHeightProperty().bind(VBoxItens.prefHeightProperty().subtract(20).divide(3));
-            if(player.getCurrentMp() < Player.getPlayer().getMagias().get(i).getCusto()){
+            if(this.gdb.player.getCurrentMp() < Player.getPlayer().getMagias().get(i).getCusto()){
                 magiaButton.setDisable(true);
             }
             int finalI = i;
@@ -217,11 +256,11 @@ public class BattleController implements Initializable {
 
                 try {
                     if(Player.getPlayer().getMagias().get(finalI) instanceof IEffects){
-                        ((IEffects) Player.getPlayer().getMagias().get(finalI)).aplicarEfeito(Enimy);
+                        ((IEffects) Player.getPlayer().getMagias().get(finalI)).aplicarEfeito(this.gdb.inimigo);
                     }
                     itemAtual =0;
                     RetornarInicial();
-                    Player.getPlayer().getMagias().get(finalI).Conjurar(gdb, player);
+                    Player.getPlayer().getMagias().get(finalI).Conjurar(gdb, this.gdb.player);
 
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
@@ -245,7 +284,7 @@ public class BattleController implements Initializable {
             itemBtn.setOnAction(event -> {
                 try {
                     ArrayList<String> mensagem = new ArrayList<>();
-                    mensagem.add(((IConsumableInBattle)itens.get(finalI)).Consumir(player));
+                    mensagem.add(((IConsumableInBattle)itens.get(finalI)).Consumir(this.gdb.player));
                     if(itens.get(finalI).getQuant() <=0){
                         itens.remove(finalI);
                     }
@@ -253,7 +292,7 @@ public class BattleController implements Initializable {
                     RetornarInicial();
                     EsconderInterfacePlayer();
                     Atualiazar();
-                    gdb.mostrarResultado(mensagem, true);
+                    mostrarResultado(mensagem);
                 } catch (PlayerInexistenteException e) {
                     throw new RuntimeException(e);
                 }
@@ -274,10 +313,17 @@ public class BattleController implements Initializable {
         PnlPrimeirasEscolhas.setDisable(false);
     }
 
-    public void MostrarInterfacePlayer(){
-        InterfacePlayer.setOpacity(1);
-        InterfacePlayer.setDisable(false);
-        BtnMagias.setDisable(player.getSilenciado());
+    public void MostrarInterfacePlayer(boolean b){
+        if(b) {
+            System.out.println("Mostrar interface player.");
+            InterfacePlayer.setOpacity(1);
+            InterfacePlayer.setDisable(false);
+            BtnMagias.setDisable(this.gdb.player.getSilenciado());
+        }
+        else{
+            InterfacePlayer.setOpacity(0);
+            InterfacePlayer.setDisable(true);
+        }
     }
     public void EsconderInterfacePlayer(){
         InterfacePlayer.setOpacity(0);
@@ -286,39 +332,11 @@ public class BattleController implements Initializable {
     public void ShowMensage(String s){
         ArrayList<String> mensagem = new ArrayList<>();
         mensagem.add(s);
-        gdb.mostrarResultado(mensagem, false);
-    }
-    public void Inicializar() throws PlayerInexistenteException {
-        if(tipoBatalha == null){
-            tipoBatalha = new BatalhaComum();
-        }
-        tipoBatalha.Inicializar();
-        EnimyImg.setImage(tipoBatalha.inimigo.getImagem());
-        PlayerImg.setImage(Player.getPlayer().getImagem());
-        PlayerImg.setFitHeight(PlayerImg.getFitHeight()*1.5);
-        Enimy = new PersonagemLuta(tipoBatalha.inimigo);
-        Comportamento comp;
-        if(tipoBatalha.inimigo.getComp() == Comportamentos.fugitivo){
-            comp = new ComportamentoFugitivo(Enimy, player);
-        }
-        else if(tipoBatalha.inimigo.getComp() == Comportamentos.BossFinal1){
-            comp = new ComportamentoBossFinal1(Enimy, player);
-        }
-        else if(tipoBatalha.inimigo.getComp() == Comportamentos.BossAquatico){
-            comp = new ComportamentoBossAquatico(Enimy,player);
-        }
-        else{
-            comp = new ComportamentoPadrao(Enimy, player);
-        }
-        gdb = new GerenciadorDeBatalha(player, Enimy, boxMensagem, txtMensagem, PlayerEffect, EnimyEffect,this ,comp);
-        try {
-            gdb.IniciarBatalha();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        mostrarResultado(mensagem);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        gdb = JogoFachada.getInstance().getGerenciadorDeBatalha();
         controladorMusica.play("/com.daniel.audios/msc_batalha.wav", true);
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
                 BackgroundRepeat.NO_REPEAT,
@@ -333,7 +351,7 @@ public class BattleController implements Initializable {
                         true
                 ))));
         try {
-            player = new PersonagemLuta(Player.getPlayer());
+            this.gdb.player = new PersonagemLuta(Player.getPlayer());
             for(Item i : Player.getPlayer().getInventario().getItens()){
                 if(i instanceof IConsumableInBattle){
                     itens.add(i);
@@ -343,6 +361,13 @@ public class BattleController implements Initializable {
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
+        EnimyImg.setImage(this.gdb.tipoBatalha.inimigo.getImagem());
+        try {
+            PlayerImg.setImage(Player.getPlayer().getImagem());
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
+        PlayerImg.setFitHeight(PlayerImg.getFitHeight()*1.5);
         PnlOpcoes.setPickOnBounds(true);
         ImageView seta = new ImageView();
         seta.setImage(new Image(Main.class.getResource("/com.daniel.Images/Setas/Seta.png").toString()));

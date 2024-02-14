@@ -1,5 +1,6 @@
 package com.daniel.Model.Dados.CidadeRepositorio;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Dados.AudioPlayer;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -113,15 +114,8 @@ public abstract class Cidade implements Serializable {
     protected  Botao criarBotaoCacar(){
         return criarBotao("Caçar", () -> {
             try {
-                FXMLLoader loader =new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
-                Parent root = loader.load();
-                BattleController battleController = loader.getController();
-                battleController.tipoBatalha = new BatalhaComum();
-                Main.ChangeScene(root);
-                battleController.Inicializar();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (PlayerInexistenteException e) {
+                JogoFachada.getInstance().getGerenciadorDeBatalha().Inicializar(new BatalhaComum());
+            } catch (IOException | PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }
         });

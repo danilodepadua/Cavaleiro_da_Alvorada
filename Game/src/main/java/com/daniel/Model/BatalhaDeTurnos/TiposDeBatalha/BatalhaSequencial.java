@@ -31,9 +31,9 @@ public class BatalhaSequencial extends TipoBatalha {
         if(pos<sequenciaInimigos.size()){
             System.out.println("Nova batalha em sequência");
             bc.ShowMensage("Um novo inimigo apareceu");
-            bc.Inicializar();
         }
         else{
+            this.finalizado = true;
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("TelaResultado.fxml"));
             Parent root = loader.load();
             ResultadoController resultadoController = loader.getController();

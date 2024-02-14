@@ -1,24 +1,30 @@
 package com.daniel.Controller;
 
+import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
 import com.daniel.Model.Dados.CassinoRepositorio.Mão;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Dados.Itens.Item;
 
 public class JogoFachada {
-    private static final JogoFachada instance = new JogoFachada();
+    private static JogoFachada instance = null;
     private ControleLoja controleLoja;
     private ControleCraft controleCraft;
     private ControlePoker controlePoker;
     private ControleServidor controleServidor;
+    private GerenciadorDeBatalha gerenciadorDeBatalha;
 
-    private JogoFachada() {
+    public JogoFachada() {
         controleLoja = new ControleLoja();
         controleCraft = new ControleCraft();
         controlePoker = new ControlePoker();
         controleServidor = new ControleServidor();
+        gerenciadorDeBatalha = new GerenciadorDeBatalha();
     }
 
     public static JogoFachada getInstance() {
+        if(JogoFachada.instance == null){
+            JogoFachada.instance = new JogoFachada();
+        }
         return instance;
     }
 
@@ -98,5 +104,8 @@ public class JogoFachada {
     }
     public void desligarServidor(){
         controleServidor.desligarServidor();
+    }
+    public GerenciadorDeBatalha getGerenciadorDeBatalha(){
+        return gerenciadorDeBatalha;
     }
 }

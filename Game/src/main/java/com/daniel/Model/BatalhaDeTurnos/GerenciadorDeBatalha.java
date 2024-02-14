@@ -1,17 +1,16 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
-import com.daniel.Model.Dados.ConfiguracoesUsuario;
-import com.daniel.Model.Dados.Entidades.Personagem;
-import com.daniel.Model.Exceptions.PlayerInexistenteException;
+import com.daniel.Model.ComportamentosInimigos.*;
+import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.View.BattleController;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -20,119 +19,118 @@ import java.util.Random;
 
 public class GerenciadorDeBatalha {
 
-    PersonagemLuta Player, Inimigo;
-    AnchorPane mensagemBox;
-    Text txtMensagem;
-    States state;
-    ImageView pEffect, eEffect;
+    public TipoBatalha tipoBatalha;
+    public PersonagemLuta player, inimigo;
+    BattleController controller;
     Comportamento comp;
-    private BattleController BC;
+    States estado;
 
+    double pBar = 0, iBar = 0;
+
+    public void Inicializar(TipoBatalha tb) throws IOException, PlayerInexistenteException {
+        this.tipoBatalha = tb;
+        this.tipoBatalha.Inicializar();
+        this.player = new PersonagemLuta(Player.getPlayer());
+        this.inimigo = new PersonagemLuta(tb.inimigo);
+        if(tipoBatalha.inimigo.getComp() == Comportamentos.fugitivo){
+            comp = new ComportamentoFugitivo(this.inimigo, this.player);
+        }
+        else if(tipoBatalha.inimigo.getComp() == Comportamentos.BossFinal1){
+            comp = new ComportamentoBossFinal1(this.inimigo, this.player);
+        }
+        else if(tipoBatalha.inimigo.getComp() == Comportamentos.BossAquatico){
+            comp = new ComportamentoBossAquatico(this.inimigo,this.player);
+        }
+        else{
+            comp = new ComportamentoPadrao(this.inimigo, this.player);
+        }
+        FXMLLoader root = new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
+        Parent parent = root.load();
+        this.controller = root.getController();
+        Main.ChangeScene(parent);
+        VerificarTurno();
+    }
     private enum States{
         turnoPlayer,
         turnoInimigo;
     }
 
-    public GerenciadorDeBatalha(PersonagemLuta p, PersonagemLuta i, AnchorPane boxMensagem, Text txtMensagem, ImageView pe, ImageView ee, BattleController bc,Comportamento Comp){
-        this.Inimigo = i;
-        this.Player = p;
-        this.txtMensagem = txtMensagem;
-        this.mensagemBox = boxMensagem;
-        this.pEffect = pe;
-        this.eEffect = ee;
-        this.comp = Comp;
-        this.BC = bc;
-    }
-    public void mostrarResultado(ArrayList<String> mensagems, boolean passar){
-        Timeline T = new Timeline();
-        double time = 0.2;
-        for(String i : mensagems) {
-            T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {
-                mensagemBox.setOpacity(1);
-                txtMensagem.setText(i);
-            }));
-            time+=1/ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao();
+    public void VerificarTurno() throws IOException, PlayerInexistenteException {
+        System.out.println("Buscando turno");
+        this.controller.Atualiazar();
+        System.out.println("Player: " + pBar + ", Inimigo: " + iBar);
+        this.controller.MostrarInterfacePlayer(true);
+        if(this.player.currentHp <=0){
+            Derrota();
         }
-        T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {mensagemBox.setOpacity(0); txtMensagem.setText("");}));
-        if(passar){
-            T.setOnFinished(event -> {
-                try {
-                    MudarTurno();
-                } catch (PlayerInexistenteException | IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        else if(this.inimigo.currentHp <= 0){
+            Vitoria();
         }
-        T.play();
-    }
-
-    public void IniciarBatalha() throws IOException{
-        if(Inimigo.velocidade > Player.velocidade){
-            state = States.turnoInimigo;
+        else if(this.pBar >= 1){
+            this.pBar = 0;
+            System.out.println("Turno player //" + this.getClass().getName());
+            turnoPlayer();
+        }
+        else if(this.iBar >= 1){
+            System.out.println("Turno inimigo");
+            this.iBar = 0;
             turnoInimigo();
         }
         else{
-            state = States.turnoPlayer;
-            turnoPlayer();
-        }
-    }
-    public void MudarTurno() throws PlayerInexistenteException, IOException{
-        if(Player.currentHp <= 0){
-            BC.Derrota();
-        }
-        else if(Inimigo.currentHp <= 0){
-            BC.Vitoria();
-        }
-        else{
-            if(state == States.turnoPlayer){
-                state = States.turnoInimigo;
-                turnoInimigo();
-            }
-            else{
-                state = States.turnoPlayer;
-                BC.Atualiazar();
-                turnoPlayer();
-            }
+            this.controller.ShowProgressBar(true);
+            this.pBar += (double) this.player.getVelocidade() /1000;
+            this.iBar += (double) this.inimigo.getVelocidade() /1000;
+            this.controller.SetPlyerBar(pBar);
+            Timeline timeline = new Timeline();
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.2), event -> {
+                try {
+                    VerificarTurno();
+                } catch (IOException | PlayerInexistenteException e) {
+                    throw new RuntimeException(e);
+                }
+            }));
+            timeline.play();
         }
     }
 
     public void turnoPlayer(){
+        estado = States.turnoPlayer;
         ArrayList<String> mensagem = new ArrayList<>();
-        if(Player.envenenado){
-            mensagem.add(Player.TomarDanoVeneno());
+        if(this.player.envenenado){
+            mensagem.add(this.player.TomarDanoVeneno());
         }
-        if(Player.stun > 0){
-            Player.stun--;
-            mensagem.add(Player.getNome() + " esta stunado");
-            mostrarResultado(mensagem, true);
+        if(this.player.stun > 0){
+            this.player.stun--;
+            mensagem.add(this.player.getNome() + " esta stunado");
+            this.controller.mostrarResultado(mensagem);
         }
-        else if(Player.dormindo){
-            mensagem.add(Player.getNome() + " esta dormindo");
-            mostrarResultado(mensagem, true);
+        else if(this.player.dormindo){
+            mensagem.add(this.player.getNome() + " esta dormindo");
+            this.controller.mostrarResultado(mensagem);
         }
         else{
-        // logica do player
-            BC.MostrarInterfacePlayer();
+            this.controller.ShowProgressBar(false);
             System.out.println("Turno player");
         }
     }
     public void turnoInimigo() throws IOException{
-        if(Inimigo.stun > 0){
-            Inimigo.stun--;
+        estado = States.turnoInimigo;
+        if(this.inimigo.stun > 0){
+            this.inimigo.stun--;
             ArrayList<String> mensagem = new ArrayList<>();
             mensagem.add("Inimigo esta stunado");
-            mostrarResultado(mensagem, true);
+            this.controller.mostrarResultado(mensagem);
         }
         else{
             Comportamento.acoes acao = comp.EscolherAcao();
-            if(acao == Comportamento.acoes.fugir && BC.tipoBatalha.escapavel){
-                this.fugir(Inimigo.fugir(Player.getVelocidade()));
+            if(acao == Comportamento.acoes.fugir && this.tipoBatalha.escapavel){
+                this.fugir(this.inimigo.fugir(this.player.getVelocidade()));
             }
             else if(acao == Comportamento.acoes.usarMagia){
-                comp.magiaEscolhida.Conjurar(this, Inimigo);
+                comp.magiaEscolhida.Conjurar(this, this.inimigo);
             }
             else{
-                this.Ataque(Inimigo.atqAnim.INICIAR(pEffect), Inimigo.getAtqM(),Inimigo.getTipoAtaqueBase(), true, null);
+                this.Ataque(this.inimigo.atqAnim.INICIAR(this.controller.getPlayerEffect()), this.inimigo.getAtqM(),this.inimigo.getTipoAtaqueBase(), true, null);
             }
         }
     }
@@ -146,10 +144,10 @@ public class GerenciadorDeBatalha {
         if(alvo.dormindo){
             Mensagem.add(alvo.getNome() + " acordou");
         }
-        BC.EsconderInterfacePlayer();
+        this.controller.EsconderInterfacePlayer();
         Random rand = new Random();
         double taxaAcerto = 1/(1+Math.exp(-0.1*(atacante.getVelocidade() + 7 - alvo.getVelocidade())));
-        System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + Player.getVelocidade() + "/nInimigo: " + Inimigo.getVelocidade());
+        System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + this.player.getVelocidade() + "/nInimigo: " + this.inimigo.getVelocidade());
         if(atacante.cegado){
             taxaAcerto /= 2;
         }
@@ -169,55 +167,56 @@ public class GerenciadorDeBatalha {
         else{
             Mensagem.add(atacante.getNome() + " errou o ataque");
         }
+        this.controller.MostrarInterfacePlayer(false);
         ArrayList<String> finalMensagem = Mensagem;
-        t.setOnFinished(event -> mostrarResultado(finalMensagem,true));
+        t.setOnFinished(event -> this.controller.mostrarResultado(finalMensagem));
         t.play();
     }
 
     public void acaoNaoAgreciva(Timeline t, ArrayList<String> mensagem){
-        t.setOnFinished(event -> mostrarResultado(mensagem, true));
+        this.controller.MostrarInterfacePlayer(false);
+        t.setOnFinished(event -> this.controller.mostrarResultado(mensagem));
         t.play();
     }
     public ImageView getAlvoView(boolean autoUsavel){
         if(!autoUsavel){
-            if(this.state == States.turnoInimigo){
-                return pEffect;
+            if(this.estado == States.turnoInimigo){
+                return this.controller.getPlayerEffect();
             }
             else{
-                return eEffect;
+                return this.controller.getEnimyEffect();
             }
         }
         else{
-            if(this.state == States.turnoInimigo){
-                return eEffect;
+            if(this.estado == States.turnoInimigo){
+                return this.controller.getEnimyEffect();
             }
             else{
-                return pEffect;
+                return this.controller.getPlayerEffect();
             }
         }
     }
-
     public PersonagemLuta getAlvo(boolean autoUsavel) {
-        if(state == States.turnoInimigo){
+        if(this.estado == States.turnoInimigo){
             if(!autoUsavel){
-                return Player;
+                return this.player;
             }
             else{
-                return Inimigo;
+                return this.inimigo;
             }
         }
         else{
             if(!autoUsavel){
-                return Inimigo;
+                return this.inimigo;
             }
             else{
-                return Player;
+                return this.player;
             }
         }
     }
     public void fugir(boolean conseguiu) throws IOException {
         ArrayList<String> i = new ArrayList<String>();
-        if(BC.tipoBatalha.escapavel) {
+        if(this.tipoBatalha.escapavel) {
             if (conseguiu) {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
             } else {
@@ -227,6 +226,21 @@ public class GerenciadorDeBatalha {
         else{
             i.add("Não é possível fugir desta batalha");
         }
-        mostrarResultado(i, true);
+        this.controller.mostrarResultado(i);
+    }
+    private void Vitoria() throws PlayerInexistenteException, IOException {
+        this.tipoBatalha.Vitoria();
+        if(!this.tipoBatalha.finalizado){
+            this.inimigo = new PersonagemLuta(this.tipoBatalha.inimigo);
+            this.iBar = 0;
+            VerificarTurno();
+        }
+        else{
+            this.controller.Vitoria();
+        }
+    }
+    private void Derrota() throws IOException {
+        this.tipoBatalha.Derrota();
+        this.controller.Derrota();
     }
 }

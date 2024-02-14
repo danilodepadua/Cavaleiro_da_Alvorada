@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public abstract class TipoBatalha {
     public Inimigo inimigo;
-    public boolean escapavel = true;
+    public boolean escapavel = true, finalizado = false;
     public int xpGanho, dinheiroGanho;
     public ArrayList<Item> itensDropados = new ArrayList<>();
     public abstract void Inicializar();
