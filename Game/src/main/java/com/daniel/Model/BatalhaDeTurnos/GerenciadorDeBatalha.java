@@ -44,6 +44,8 @@ public class GerenciadorDeBatalha {
         else{
             comp = new ComportamentoPadrao(this.inimigo, this.player);
         }
+        this.pBar = 0;
+        this.iBar = 0;
         FXMLLoader root = new FXMLLoader(Main.class.getResource("TelaBatalha.fxml"));
         Parent parent = root.load();
         this.controller = root.getController();
@@ -221,12 +223,13 @@ public class GerenciadorDeBatalha {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
             } else {
                 i.add("Falhou em fugir");
+                this.controller.mostrarResultado(i);
             }
         }
         else{
             i.add("Não é possível fugir desta batalha");
+            this.controller.mostrarResultado(i);
         }
-        this.controller.mostrarResultado(i);
     }
     private void Vitoria() throws PlayerInexistenteException, IOException {
         this.tipoBatalha.Vitoria();
