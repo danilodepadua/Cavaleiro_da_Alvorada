@@ -2,10 +2,10 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Minerios.BarraFerro;
-import com.daniel.Model.Dados.Magias.Poderes.Sopro;
-import com.daniel.Model.Dados.Magias.Poderes.Vento;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Itens.Minerios.BarraFerro;
+import com.daniel.Model.Magias.Poderes.Sopro;
+import com.daniel.Model.Magias.Poderes.Vento;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeVentoNv2 extends Inimigo {
     public InimigoSlimeDeVentoNv2() {

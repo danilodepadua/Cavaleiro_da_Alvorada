@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -271,9 +272,21 @@ public class Utilidades {
         // Inicia a sequência de animação
         sequence.play();
     }
+    public static Font loadFont() {
+        return Font.loadFont(Main.class.getResourceAsStream("/com/daniel/game/BarlowCondensed-SemiBold.ttf"), 14);
+    }
 
-
-
+    public static void identificarTextos(AnchorPane anchorPane) {
+        for (javafx.scene.Node node : anchorPane.getChildren()) {
+            if (node instanceof Text) {
+                Text texto = (Text) node;
+                texto.setFont(loadFont());
+            } else if (node instanceof  Button) {
+                Button button = (Button) node;
+                button.setFont(loadFont());
+            }
+        }
+    }
 
 
 }

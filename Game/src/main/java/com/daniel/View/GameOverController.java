@@ -1,6 +1,7 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class GameOverController implements Initializable {
     @FXML
     private AnchorPane panePrincipal;
     @FXML
-    void onClickCarregar(ActionEvent event) throws IOException {
+    void onClickCarregar(ActionEvent event) throws IOException, SaveInexistenteException {
         Main.saveManager.Carregar();
         audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());

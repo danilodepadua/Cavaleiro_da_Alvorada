@@ -15,11 +15,6 @@
 
 <AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.CraftingController">
    <children>
-      <Text fill="#eccb7e" layoutX="513.0" layoutY="52.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS" AnchorPane.leftAnchor="512.6280334472656" AnchorPane.rightAnchor="408.1719665527344">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="44.0" />
-         </font>
-      </Text>
       <ScrollPane layoutX="25.0" layoutY="109.0" prefHeight="518.0" prefWidth="452.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" stylesheets="@style.css" AnchorPane.leftAnchor="25.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="448.0" style="-fx-background-color: #140e0a;">
@@ -99,11 +94,6 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Button fx:id="btnCriar" disable="true" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e" AnchorPane.leftAnchor="578.0" AnchorPane.rightAnchor="471.6">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="15.0" />
-         </font>
-      </Button>
       <Button fx:id="btnVoltar" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="41.0" prefWidth="24.0" style="-fx-background-color: #140e0a;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="19.0" />
@@ -166,5 +156,19 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <VBox fx:id="vboxTextos" alignment="TOP_CENTER" layoutX="494.0" layoutY="2.0" prefHeight="624.0" prefWidth="315.0" spacing="520.0" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="390.8">
+         <children>
+            <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="44.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnCriar" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Criar" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

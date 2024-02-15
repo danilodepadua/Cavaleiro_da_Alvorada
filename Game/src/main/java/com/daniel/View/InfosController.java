@@ -2,7 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.TiposElementais;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -170,6 +170,7 @@ public class InfosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            identificarTextos(panePrincipal);
             configurarBotoes(btnBestiario);
             configurarBotoes(btnInventario);
             configurarBotoes(btnPontos);
@@ -184,7 +185,7 @@ public class InfosController implements Initializable {
             }
             String lvl = "Lvl: "+String.valueOf(Player.getPlayer().getLvl());
             TxtLvl.setText(lvl);
-            TxtNome.setText(Player.getPlayer().getName());
+            TxtNome.setText(Player.getPlayer().getNome());
             TxtNomeArma.setText(Player.getPlayer().getArma().getNome());
             TxtNomeCalca.setText(Player.getPlayer().getCalca().getNome());
             TxtNomeCapacete.setText(Player.getPlayer().getCapacete().getNome());

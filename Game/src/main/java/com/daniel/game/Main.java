@@ -1,43 +1,32 @@
 package com.daniel.game;
-import com.daniel.Controller.JogoFachada;
-import com.sun.net.httpserver.* ;
-import com.daniel.Model.Dados.AudioPlayer;
-import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
-import com.daniel.Model.Dados.CidadeRepositorio.Cidades.Auroraville;
-import com.daniel.Model.Exceptions.PlayerInexistenteException;
+
+import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Cidades.Vilas.Auroraville;
+import com.daniel.View.ConfiguracoesUsuario;
 import com.daniel.Model.Dados.Save.SaveManager;
-import com.daniel.Model.Dados.ConfiguracoesUsuario;
+import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-import java.awt.*;
-import java.io.*;
-import java.net.InetSocketAddress;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.concurrent.Executors;
+import java.io.IOException;
+import java.util.Objects;
 
 
 public class Main extends Application {
-    public static Stage CurrentStage;
+    public static Stage CurrentStage; //instancia um palco inicial
 
-    public static Cidade cidadeAtual;
-    public static SaveManager saveManager = new SaveManager();
+    public static Cidade cidadeAtual; //instancia a cidade inicial do player
+    public static SaveManager saveManager = new SaveManager(); //instancia a classe de manejar o save
 
     public static AudioPlayer audioPlayer = new AudioPlayer();
-    Font barlow;
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
-        System.out.println(CurrentStage.getWidth() + "x"+ CurrentStage.getHeight());
-
         audioPlayer.play("/com.daniel.audios/som_click.wav", false);
     }
 
@@ -49,24 +38,17 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException, PlayerInexistenteException {
-        try {
-            // Carrega a fonte a partir do arquivo no caminho relativo
-            InputStream fontStream = getClass().getResourceAsStream("/com.daniel.game/Fontes/BarlowCondensed-SemiBold.ttf");
-            Font.loadFont(fontStream, 12);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
         stage.setMinHeight(675);
         stage.setMinWidth(1200);
         cidadeAtual = new Auroraville();
         CurrentStage = stage;
         stage.setResizable(false);
-        FXMLLoader root = new FXMLLoader(Main.class.getResource("MainScene.fxml"));
+        FXMLLoader root = new FXMLLoader(Main.class.getResource("TelaInicial.fxml"));
         stage.setHeight(ConfiguracoesUsuario.obterAlturaTelaPadrao());
         stage.setWidth(ConfiguracoesUsuario.obterLarguraTelaPadrao());
         Scene scene = new Scene(root.load(),CurrentStage.getMaxWidth(), CurrentStage.getHeight());
         stage.setScene(scene);
-        Image icon = new Image(Main.class.getResource("/com.daniel.Images/Icons/IconJogo.png").toString());
+        Image icon = new Image(Objects.requireNonNull(Main.class.getResource("/com.daniel.Images/Icons/IconJogo.png")).toString());
         stage.getIcons().add(icon);
 
         stage.setTitle("O Cavaleiro da Alvorada");

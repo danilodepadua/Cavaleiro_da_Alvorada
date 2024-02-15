@@ -1,14 +1,14 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IConsumableOutBattle;
-import com.daniel.Model.Dados.Itens.Arma;
-import com.daniel.Model.Dados.Itens.Armadura;
-import com.daniel.Model.Dados.Itens.Item;
-import com.daniel.Model.Dados.Itens.Minerio;
+import com.daniel.Model.Itens.Arma;
+import com.daniel.Model.Itens.Armadura;
+import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Itens.Minerio;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -68,7 +68,7 @@ public class LojaController implements Initializable {
     private boolean ativarCompra = false;
     private AudioPlayer somCompraVenda = new AudioPlayer();
     private JogoFachada jogoFachada;
-
+    @FXML
     public void initialize(URL location, ResourceBundle resources) {
         jogoFachada = JogoFachada.getInstance();
         configurarBotoes(btnComprar);

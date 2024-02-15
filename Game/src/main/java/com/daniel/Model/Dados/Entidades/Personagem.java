@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados.Entidades;
 
-import com.daniel.Model.Dados.Magias.Magia;
+import com.daniel.Model.Magias.Magia;
 import com.daniel.game.Main;
 import javafx.scene.image.Image;
 
@@ -8,73 +8,68 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Personagem implements Serializable {
-
-    public Personagem(String Nome, String Imagem, int fr, int in, int rs, int vel){
-        this.Name = Nome;
-        this.ImagePath = Imagem;
-        this.Resistencia = rs;
-        this.Force = fr;
-        this.Inteligence = in;
-        this.Velocity = vel;
-        this.HP = this.Resistencia*5;
-        this.MP = this.Inteligence*5;
-    }
+    //classe inicial onde vão ser instanciados os atributos primoridades das entidades do jogo.
     protected ArrayList<Magia> magias = new ArrayList<>();
-    protected int HP = 0;
-    protected String ImagePath;
-    protected int MP = 0;
-    protected String Name = null;
-    protected int Force = 0;
-    protected int Velocity = 0;
-    protected int Inteligence = 0;
-    protected int Resistencia = 0;
-
+    protected int HP; //vida
+    protected String ImagePath; //caminho da imagem
+    protected int MP; //mana
+    protected String nome;
+    protected int forca; //força de ataque do player, quanto maior, mais dano
+    protected int velocidade; //define quem vai iniciar o combate
+    protected int inteligencia; //atributo pra aumentar os poderes magicos
+    protected int resistencia; //atributo pra resistir a danos
+    public Personagem(String Nome, String Imagem, int fr, int in, int rs, int vel){
+        this.nome = Nome;
+        this.ImagePath = Imagem;
+        this.resistencia = rs;
+        this.forca = fr;
+        this.inteligencia = in;
+        this.velocidade = vel;
+        this.HP = this.resistencia *5;
+        this.MP = this.inteligencia *5;
+    }
     public int getHP() {
         return HP;
     }
-
     public int getMP() {
         return MP;
     }
-
-    public String getName() {
-        return Name;
+    public String getNome() {
+        return nome;
     }
-    public int getForce() {
-        return Force;
+    public int getForca() {
+        return forca;
     }
-
-    public int getVelocity() {
-        return Velocity;
+    public int getVelocidade() {
+        return velocidade;
     }
-    public int getInteligence() {
-        return Inteligence;
+    public int getInteligencia() {
+        return inteligencia;
     }
-    public int getResistencia(){return Resistencia;}
-    public String getImageStr(){
-        return ImagePath;
-    }
+    public int getResistencia(){return resistencia;}
     public Image getImagem() {
         return new Image(Main.class.getResource(ImagePath).toString());
     }
-
     public ArrayList<Magia> getMagias() {
         return magias;
     }
-
+    public void mudarHP(int hp){
+        this.HP = hp;
+    } //metodo personalizado pra mudar o hp do player
+    public void mudarMP(int MP){
+        this.MP = MP;
+    } //analogo ao hp so que com a mana
+    //metodos analogos ao hp e mana pra tela de evoluçao
     public void aumentaForcaProgress(int quantidade) {
-        Force = quantidade;
+        forca = quantidade;
     }
-
     public void aumentaInteligenciaProgess(int quantidade) {
-        Inteligence = quantidade;
+        inteligencia = quantidade;
     }
-
     public void aumentaResistenciaProgress(int quantidade) {
-        Resistencia = quantidade;
+        resistencia = quantidade;
     }
-
     public void aumentaVelocidadeProgress(int quantidade) {
-        Velocity = quantidade;
+        velocidade = quantidade;
     }
 }

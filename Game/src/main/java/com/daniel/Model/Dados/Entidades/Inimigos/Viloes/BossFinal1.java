@@ -2,8 +2,8 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Magias.*;
-import com.daniel.Model.Dados.Magias.Poderes.*;
+import com.daniel.Model.Magias.*;
+import com.daniel.Model.Magias.Poderes.*;
 
 public class BossFinal1 extends Inimigo {
     public BossFinal1() {

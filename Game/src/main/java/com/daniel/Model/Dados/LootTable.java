@@ -1,6 +1,6 @@
 package com.daniel.Model.Dados;
 
-import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Itens.Item;
 
 import java.io.Serializable;
 import java.util.ArrayList;

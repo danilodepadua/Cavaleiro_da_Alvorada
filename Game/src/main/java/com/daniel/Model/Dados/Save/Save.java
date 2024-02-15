@@ -1,7 +1,7 @@
 package com.daniel.Model.Dados.Save;
 
 
-import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
+import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
 
 import java.io.Serializable;

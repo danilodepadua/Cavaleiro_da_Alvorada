@@ -1,15 +1,14 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.*;
-import com.daniel.Model.Dados.CassinoRepositorio.Baralho;
-import com.daniel.Model.Carta;
-import com.daniel.Model.Dados.CassinoRepositorio.Mão;
+import com.daniel.Model.Dados.RepositorioTaverna.Baralho;
+import com.daniel.Model.Taverna.Carta;
+import com.daniel.Model.Dados.RepositorioTaverna.Mão;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.game.Main;
-import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +33,7 @@ public class VinteUmController implements Initializable{
     private Baralho baralho;
     private Mão jogador;
     private Mão dealer;
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
 
     @FXML
     private GridPane GridPaneDealer;
@@ -136,7 +136,7 @@ public class VinteUmController implements Initializable{
                 try {
                     txtVoceGanhou.setText("Você venceu!");
                     mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
-                    Player.getPlayer().ganhaCoins(valorAposta );
+                    Player.getPlayer().ganharCoins(valorAposta );
                     configBotoes();
                 } catch (PlayerInexistenteException ex) {
                     throw new RuntimeException(ex);
@@ -147,7 +147,7 @@ public class VinteUmController implements Initializable{
                     txtVoceGanhou.setText("Você venceu!");
                     mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
                     try {
-                        Player.getPlayer().ganhaCoins(valorAposta );
+                        Player.getPlayer().ganharCoins(valorAposta );
                         configBotoes();
                     } catch (PlayerInexistenteException ex) {
                         throw new RuntimeException(ex);
@@ -271,6 +271,7 @@ public class VinteUmController implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        identificarTextos(PanePrincipal);
         // Centraliza o VBox verticalmente
         configurarBotoes(btnApostar);
         configurarBotoes(btnManter);

@@ -126,7 +126,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMenosForca(ActionEvent event) throws PlayerInexistenteException {
-        if (progBarForca.getProgress() > 0.25 && progBarForca.getProgress() > (Player.getPlayer().getForce() / 100.0)) {
+        if (progBarForca.getProgress() > 0.25 && progBarForca.getProgress() > (Player.getPlayer().getForca() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText("" + pontosDisp);
@@ -136,7 +136,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMenosInt(ActionEvent event) throws PlayerInexistenteException {
-        if (progBarInt.getProgress() > 0.25 && progBarInt.getProgress() > (Player.getPlayer().getInteligence() / 100.0)) {
+        if (progBarInt.getProgress() > 0.25 && progBarInt.getProgress() > (Player.getPlayer().getInteligencia() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText("" + pontosDisp);
@@ -157,7 +157,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMenosVel(ActionEvent event) throws PlayerInexistenteException {
-        if (progBarVel.getProgress() > 0.25 && progBarVel.getProgress() > (Player.getPlayer().getVelocity() / 100.0)) {
+        if (progBarVel.getProgress() > 0.25 && progBarVel.getProgress() > (Player.getPlayer().getVelocidade() / 100.0)) {
             pontosDisp++;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText("" + pontosDisp);
@@ -169,6 +169,7 @@ public class EvoluçaoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
+
             definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
             contornarBotaoVoltar(btnVoltar);
             configurarBotoes(btnSalvar);
@@ -202,10 +203,10 @@ public class EvoluçaoController implements Initializable {
             txtPontos.setText(""+ pontosDisp);
             txtLevel.setText(""+ Player.getPlayer().getLvl());
 
-            progBarForca.setProgress(Player.getPlayer().getForce()/100.0);
-            progBarInt.setProgress(Player.getPlayer().getInteligence()/100.0);
+            progBarForca.setProgress(Player.getPlayer().getForca()/100.0);
+            progBarInt.setProgress(Player.getPlayer().getInteligencia()/100.0);
             progBarRes.setProgress(Player.getPlayer().getResistencia()/100.0);
-            progBarVel.setProgress(Player.getPlayer().getVelocity()/100.0);
+            progBarVel.setProgress(Player.getPlayer().getVelocidade()/100.0);
 
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);

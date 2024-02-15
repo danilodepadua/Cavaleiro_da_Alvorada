@@ -2,10 +2,10 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Minerios.FragmentoGlacial;
-import com.daniel.Model.Dados.Magias.Poderes.Splash;
-import com.daniel.Model.Dados.Magias.Poderes.WaterSpyke;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Itens.Minerios.FragmentoGlacial;
+import com.daniel.Model.Magias.Poderes.Splash;
+import com.daniel.Model.Magias.Poderes.WaterSpyke;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeAguaNv2 extends Inimigo {
     public InimigoSlimeDeAguaNv2() {

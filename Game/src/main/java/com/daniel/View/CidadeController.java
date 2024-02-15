@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -146,6 +146,7 @@ public class CidadeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        identificarTextos(Screen);
         controladorMusica = new AudioPlayer();
         controladorMusica.stop();
         audioPlayer.stop();
@@ -159,6 +160,7 @@ public class CidadeController implements Initializable {
             int finalI = i;
             b.setText(Main.cidadeAtual.getBotaoNome(finalI));
             b.setOnAction(event -> Main.cidadeAtual.getBotaoFunc(finalI).run());
+            b.setFont(loadFont());
 
             configurarBotoesTelaCidade(b);
             estiloBotao(b);
@@ -178,16 +180,16 @@ public class CidadeController implements Initializable {
         try {
             txtPontos.setText("" + Player.getPlayer().getPontos());
             txtResistencia.setText(""+ Player.getPlayer().getResistencia());
-            labelNome.setText(Player.getPlayer().getName());
-            LabelForca.setText("" + Player.getPlayer().getForce());
+            labelNome.setText(Player.getPlayer().getNome());
+            LabelForca.setText("" + Player.getPlayer().getForca());
             LabelMP.setText("" + Player.getPlayer().getMP());
             labelVida.setText("" + Player.getPlayer().getHP());
             lblDefesaMagica.setText("" + Player.getPlayer().getDefesaM());
-            lblInteligencia.setText("" + Player.getPlayer().getInteligence());
+            lblInteligencia.setText("" + Player.getPlayer().getInteligencia());
             LblDefesa.setText("" + Player.getPlayer().getDefesaF());
             lblDinheiro.setText("" + Player.getPlayer().getCoins());
             txtNivel.setText(""+ Player.getPlayer().getLvl());
-            txtVelocidade.setText(""+ Player.getPlayer().getVelocity());
+            txtVelocidade.setText(""+ Player.getPlayer().getVelocidade());
         }
         catch (PlayerInexistenteException e){
             throw new RuntimeException(e);

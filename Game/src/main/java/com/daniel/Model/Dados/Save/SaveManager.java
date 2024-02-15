@@ -1,9 +1,10 @@
 package com.daniel.Model.Dados.Save;
 
 
-import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
+import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
+import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
 
 import java.io.*;
@@ -40,7 +41,7 @@ public class SaveManager {
             System.out.println("Erro inesperado ao salvar/atualizar arquivo: " + e.getMessage());
         }
     }
-    public void Carregar(){
+    public void Carregar() throws SaveInexistenteException {
         try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(CaminhoSave.toFile()));
             Save save = (Save) in.readObject();
@@ -50,11 +51,11 @@ public class SaveManager {
             Player.setPlayer(save.player);
             save.cidade.ajustarBotoes();
             Main.cidadeAtual = save.cidade;
-            System.out.println(Player.getPlayer().getName());
-            System.out.println(save.player.getName());
+            System.out.println(Player.getPlayer().getNome());
+            System.out.println(save.player.getNome());
         }
         catch (IOException | ClassNotFoundException e){
-            System.out.println("Falha ao carregar arquivo");
+            throw new SaveInexistenteException();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -74,8 +75,8 @@ public class SaveManager {
             Player.setPlayer(save.player);
             save.cidade.ajustarBotoes();
             Main.cidadeAtual = save.cidade;
-            System.out.println(Player.getPlayer().getName());
-            System.out.println(save.player.getName());
+            System.out.println(Player.getPlayer().getNome());
+            System.out.println(save.player.getNome());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Falha ao carregar arquivo");
         } catch (PlayerInexistenteException e) {

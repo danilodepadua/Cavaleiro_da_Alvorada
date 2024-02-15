@@ -1,10 +1,10 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Itens.Item;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -65,6 +66,9 @@ public class CraftingController implements Initializable {
 
     @FXML
     private Text txtQuantidade;
+
+    @FXML
+    private VBox vboxTextos;
     private Item itemSelecionado;
     private Item itemSelecionado2;
     private JogoFachada craftingFachada;
@@ -162,8 +166,7 @@ public class CraftingController implements Initializable {
         Item resultado = craftingFachada.criarBarraFerro(itemSelecionado, itemSelecionado2, 0.3);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
@@ -171,93 +174,81 @@ public class CraftingController implements Initializable {
         resultado = craftingFachada.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, 0.3);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, 0.5);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, 0.5);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, 0.6);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, 0.4);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, 0.7);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2,0.6);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2,0.5);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
 
         resultado = craftingFachada.criarBarraFogo(itemSelecionado, itemSelecionado2, 0.6);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
         resultado = craftingFachada.criarBarraGelo(itemSelecionado, itemSelecionado2, 0.35);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
         resultado = craftingFachada.criarBarraEscuridao(itemSelecionado, itemSelecionado2, 0.4);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
         resultado = craftingFachada.criarBarraOuro(itemSelecionado, itemSelecionado2, 0.6);
 
         if (resultado != null) {
-            btnSlot3.setGraphic(criarImageCraft(resultado));
-            editarTexto();
+            editarTexto(resultado);
             return resultado;
         }
         // Se chegou até aqui, nenhum resultado foi encontrado
@@ -282,7 +273,7 @@ public class CraftingController implements Initializable {
         return null;
     }
     private double calcularChance() throws PlayerInexistenteException {
-        int inteligencia = Player.getPlayer().getInteligence();
+        int inteligencia = Player.getPlayer().getInteligencia();
         double chance = craftingFachada.getChanceBase();
         double sucesso = chance + (inteligencia * 0.01);
         if( sucesso >= 1){
@@ -290,9 +281,10 @@ public class CraftingController implements Initializable {
         }
         return sucesso;
     }
-    private void editarTexto() throws PlayerInexistenteException {
+    private void editarTexto(Item item) throws PlayerInexistenteException {
         String porcentagemFormatada = String.format("%.0f%%", calcularChance() * 100);
         txtProbSucesso.setText(porcentagemFormatada);
+        btnSlot3.setGraphic(criarImageCraft(item));
     }
     private void limparTela(){
         itemSelecionado = null;

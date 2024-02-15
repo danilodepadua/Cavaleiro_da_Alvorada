@@ -1,10 +1,11 @@
 package com.daniel.View;
 
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Itens.Item;
 import com.daniel.game.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 import static com.daniel.View.Utilidades.*;
 
 public class ResultadoController implements Initializable {
-
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
     private Button btnRecolher;
 
@@ -88,8 +89,8 @@ public class ResultadoController implements Initializable {
         xpInimigo = novoXp;
         moedasInimigo = novasMoedas;
         itensDoInimigo = itens;
-        Player.getPlayer().ganharXp(novoXp);
-        Player.getPlayer().ganhaCoins(moedasInimigo);
+        jogoFachada.ganharXp(novoXp);
+        Player.getPlayer().ganharCoins(moedasInimigo);
         atualizarInterface();
     }
     private void criarItens() {

@@ -1,7 +1,7 @@
 package com.daniel.Controller;
 
-import com.daniel.Model.Carta;
-import com.daniel.Model.Dados.CassinoRepositorio.Mão;
+import com.daniel.Model.Taverna.Carta;
+import com.daniel.Model.Dados.RepositorioTaverna.Mão;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ControlePoker {
-    public  String avaliarMao(Mão mao, Mão centro) {
+    public  String avaliarMao(Mão mao, Mão centro) { //metodo pra avaliar a mão do player, verificar se possui algum desses
         if (temRoyalFlush(mao, centro)) {
             return "Royal Flush";
         } else if (temStraightFlush(mao, centro)) {
@@ -33,7 +33,7 @@ public class ControlePoker {
         }
     }
 
-    public  int avaliarForcaMao(Mão mao, Mão centro) {
+    public  int avaliarForcaMao(Mão mao, Mão centro) { //coloca um valor so pra diferenciar cada uma, principalmente pra mostrar a força
         if (temRoyalFlush(mao, centro)) {
             return 11;
         } else if (temStraightFlush(mao, centro)) {
@@ -145,18 +145,18 @@ public class ControlePoker {
     }
 
     private static boolean temFourOfAKind(Mão mao, Mão centro) {
-        int valorCartaMao1 = mao.getMao().get(0).getValor();
+        int valorCartaMao1 = mao.getMao().get(0).getValor(); //pega o valor das duas cartas do player
         int valorCartaMao2 = mao.getMao().get(1).getValor();
 
-        if (valorCartaMao1 == valorCartaMao2){
+        if (valorCartaMao1 == valorCartaMao2){ //as cartas tem que ter o mesmo valor
             int contador = 0;
 
-            for (Carta carta : centro.getMao()){
+            for (Carta carta : centro.getMao()){ //itera sobre as cartas do centro, se for igual incrementa
                 if (valorCartaMao1== carta.getValor()){
                     contador++;
                 }
 
-                if (contador ==2){
+                if (contador ==2){ //se o contador for igual a 2 quer dizer que ele achou 2 cartas cartas iguais as cartas da mão, formando 4.
                     return true;
                 }
             }

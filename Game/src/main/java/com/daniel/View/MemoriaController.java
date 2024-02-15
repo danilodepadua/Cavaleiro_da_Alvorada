@@ -1,9 +1,10 @@
 package com.daniel.View;
 
-import com.daniel.Model.Carta;
+import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Taverna.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.*;
-import com.daniel.Model.Dados.CassinoRepositorio.Baralho;
+import com.daniel.Model.Dados.RepositorioTaverna.Baralho;
 import com.daniel.game.Main;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import java.util.*;
 import static com.daniel.View.Utilidades.*;
 
 public class MemoriaController implements Initializable {
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     private Baralho baralho;
     private List<Carta> cartas = new ArrayList<>(); //Para criar e salvar as referencias das cartas
     private List<Carta> limitarVirada = new ArrayList<>(); //Para conseguir fazer a verificaçao e limitar
@@ -86,6 +88,7 @@ public class MemoriaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Metodos estaticos estilizados do jogo
+        identificarTextos(anchorPane);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnApostar);
         configurarBotoes(btnDesistir);
@@ -271,7 +274,7 @@ public class MemoriaController implements Initializable {
     }
     @FXML
     void Desistir() throws PlayerInexistenteException {
-        Player.getPlayer().ganhaCoins(valorAcumulado);
+        Player.getPlayer().ganharCoins(valorAcumulado);
         txtVitoria.setText("Ganhou: "+ valorAcumulado+ " Moedas");
         txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
         valorAcumulado = 0;

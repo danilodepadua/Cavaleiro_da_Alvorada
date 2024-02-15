@@ -1,14 +1,14 @@
 package com.daniel.Controller;
 
-import com.daniel.Model.Dados.Itens.Armas.*;
-import com.daniel.Model.Dados.Itens.Item;
-import com.daniel.Model.Dados.Itens.Minerios.*;
-import com.daniel.Model.Dados.Itens.Pocoes.PocaoCura;
-import com.daniel.Model.Dados.Itens.Pocoes.PocaoCuraGrande;
-import com.daniel.Model.Dados.Itens.Pocoes.PocaoMp;
-import com.daniel.Model.Dados.Itens.Pocoes.PocaoMpGrande;
+import com.daniel.Model.Itens.Armas.*;
+import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Itens.Minerios.*;
+import com.daniel.Model.Itens.Pocoes.PocaoCura;
+import com.daniel.Model.Itens.Pocoes.PocaoCuraGrande;
+import com.daniel.Model.Itens.Pocoes.PocaoMp;
+import com.daniel.Model.Itens.Pocoes.PocaoMpGrande;
 
-public class ControleCraft {
+public class ControleCraft  {
     private double chanceBase;
     public Item criarBarraFerro(Item item, Item item2, double chance) {
         if (item != null && item2 != null) { //Verifica se nao é nulo

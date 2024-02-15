@@ -2,10 +2,10 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Magias.Poderes.Endurecer;
-import com.daniel.Model.Dados.Magias.Poderes.Fast;
-import com.daniel.Model.Dados.Magias.Poderes.Fortalecer;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.Poderes.Endurecer;
+import com.daniel.Model.Magias.Poderes.Fast;
+import com.daniel.Model.Magias.Poderes.Fortalecer;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoTigerMan extends Inimigo {
     public InimigoTigerMan() {

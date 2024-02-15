@@ -1,7 +1,12 @@
+@font-face {
+    font-family: 'Barlow Condensed SemiBold';
+    src: url('BarlowCondensed-SemiBold.ttf');
+}
 .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: #eccb7e;
     -fx-border-color: #eccb7e;
 }
+
 .tab-pane .tab-header-area .tab-header-background {
     -fx-effect: null;
 }
@@ -59,3 +64,13 @@
     -fx-background-color: transparent;
     -fx-padding: 0px;
 }
+.button{
+    -fx-font-family:'Barlow Condensed SemiBold';
+    -fx-font-size: 17;
+}
+.label{
+    -fx-font-family:'Barlow Condensed SemiBold';
+}
+
+
+

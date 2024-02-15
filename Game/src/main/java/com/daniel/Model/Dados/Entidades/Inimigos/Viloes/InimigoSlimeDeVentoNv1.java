@@ -2,9 +2,9 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Minerios.Ouro;
-import com.daniel.Model.Dados.Magias.Poderes.Vento;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Itens.Minerios.Ouro;
+import com.daniel.Model.Magias.Poderes.Vento;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeVentoNv1 extends Inimigo {
     public InimigoSlimeDeVentoNv1() {

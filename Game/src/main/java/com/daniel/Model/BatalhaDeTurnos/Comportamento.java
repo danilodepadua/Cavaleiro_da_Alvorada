@@ -1,7 +1,7 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.Exceptions.ErroUsarMagiaExptions;
-import com.daniel.Model.Dados.Magias.Magia;
+import com.daniel.Model.Magias.Magia;
 
 public abstract class Comportamento {
     protected PersonagemLuta controlado, adversario;

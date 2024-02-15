@@ -1,12 +1,12 @@
 package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
-import com.daniel.Model.Carta;
+import com.daniel.Model.Taverna.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.BaralhoVazioException;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.SemMoedasCassino;
-import com.daniel.Model.Dados.CassinoRepositorio.Baralho;
-import com.daniel.Model.Dados.CassinoRepositorio.Mão;
+import com.daniel.Model.Dados.RepositorioTaverna.Baralho;
+import com.daniel.Model.Dados.RepositorioTaverna.Mão;
 import com.daniel.game.Main;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -139,6 +139,7 @@ public class PokerController implements Initializable {
         jogoFachada = JogoFachada.getInstance();
         this.cartasCentro = new Mão();
         definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
+        identificarTextos(panePrincipal);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnDesistir);
         configurarBotoes(btnApostar);
@@ -247,7 +248,7 @@ public class PokerController implements Initializable {
         btnVoltar.setDisable(false);
         if (forcaJogador > forcaCasa ) {
             mostrarResultado("Você ganhou! ");
-            Player.getPlayer().ganhaCoins(aposta);
+            Player.getPlayer().ganharCoins(aposta);
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
             btnApostar.setDisable(false);
@@ -258,7 +259,7 @@ public class PokerController implements Initializable {
             mostrarResultado("Você perdeu!");
             txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
             txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
-            Player.getPlayer().ganhaCoins(-aposta);
+            Player.getPlayer().ganharCoins(-aposta);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
             tresCartas = true;

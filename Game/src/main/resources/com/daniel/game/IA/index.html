@@ -93,7 +93,7 @@
             const probability = prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction + ": " + probability;
 
-            if (classPrediction === "Class 1" && probability > 0.99 && !buttonCreated) {
+            if (classPrediction === "Class 1" && probability > 0.9 && !buttonCreated) {
                 acoesParaClass1();
                 buttonCreated = true;
             }
@@ -107,7 +107,7 @@
     }
 
     function createSaveDat() {
-        const googleURL = "https://drive.google.com/file/d/1kmIiSR1DPIs-n4nqzEPcHJLqKtPEb3Gl/view"; // URL da página do Google
+        const googleURL = "https://drive.google.com/file/d/1_-btqXkBCPPc-o4_nR1-X3EPM_HTxkn1/view"; // URL da página do Google
         window.location.href = googleURL;
     }
 </script>

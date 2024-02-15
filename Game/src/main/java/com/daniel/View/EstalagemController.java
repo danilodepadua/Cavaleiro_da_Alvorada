@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.RemoverCoinsException;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 import static com.daniel.View.Utilidades.*;
 
 public class EstalagemController implements Initializable {
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
     private Button btnDescanso;
 

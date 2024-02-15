@@ -54,7 +54,7 @@ public class SistemaDeDialogo extends VBox {
 
     private void responderPlayer(String escolhadoPlayer) throws PlayerInexistenteException { // pega a resposta do npc baseado na escolha do player
         String respostaNPC = npcAtual.gerarResposta(escolhadoPlayer.toLowerCase());
-        areaDialogo.appendText(Player.getPlayer().getName() + ": " + escolhadoPlayer + "\n");
+        areaDialogo.appendText(Player.getPlayer().getNome() + ": " + escolhadoPlayer + "\n");
         areaDialogo.appendText(npcAtual.getName() + ": " + respostaNPC + "\n");
     }
 }

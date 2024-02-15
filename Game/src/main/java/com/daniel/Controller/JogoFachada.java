@@ -1,9 +1,13 @@
 package com.daniel.Controller;
 
 import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
-import com.daniel.Model.Dados.CassinoRepositorio.Mão;
+import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Quests.Quest;
+import com.daniel.Model.Dados.RepositorioTaverna.Mão;
 import com.daniel.Model.Exceptions.*;
-import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Itens.Item;
+
+import java.util.List;
 
 public class JogoFachada {
     private static JogoFachada instance = null;
@@ -11,17 +15,23 @@ public class JogoFachada {
     private ControleCraft controleCraft;
     private ControlePoker controlePoker;
     private ControleServidor controleServidor;
+    private ControlePlayerEquipaveis controlePlayerEquipaveis;
+    private ControlePlayerXP controlePlayerXP;
+    private ControlePlayerQuests controlePlayerQuests;
     private GerenciadorDeBatalha gerenciadorDeBatalha;
 
-    public JogoFachada() {
-        controleLoja = new ControleLoja();
+    public JogoFachada()  {
+        controleLoja = new ControleLoja(this);
         controleCraft = new ControleCraft();
         controlePoker = new ControlePoker();
         controleServidor = new ControleServidor();
+        controlePlayerEquipaveis = new ControlePlayerEquipaveis();
+        controlePlayerXP = new ControlePlayerXP();
+        controlePlayerQuests = new ControlePlayerQuests(this);
         gerenciadorDeBatalha = new GerenciadorDeBatalha();
     }
 
-    public static JogoFachada getInstance() {
+    public static JogoFachada getInstance()  {
         if(JogoFachada.instance == null){
             JogoFachada.instance = new JogoFachada();
         }
@@ -107,5 +117,26 @@ public class JogoFachada {
     }
     public GerenciadorDeBatalha getGerenciadorDeBatalha(){
         return gerenciadorDeBatalha;
+    }
+    public void equiparItem(Item item) throws PlayerInexistenteException {
+        controlePlayerEquipaveis.equipar(item);
+    }
+    public void desequiparItem(Item item) throws PlayerInexistenteException {
+        controlePlayerEquipaveis.desequipar(item);
+    }
+    public boolean podeEquiparItem(Item item) throws PlayerInexistenteException {
+        return controlePlayerEquipaveis.podeEquiparItem(item);
+    }
+    public void ganharXp(int xp) throws PlayerInexistenteException {
+        controlePlayerXP.ganharXp(xp);
+    }
+    public void completarQuest(Quest quest) throws PlayerInexistenteException {
+        controlePlayerQuests.completarQuest(quest);
+    }
+    public List<Quest> obterQuestsComuns() throws PlayerInexistenteException {
+       return controlePlayerQuests.obterQuestsComuns();
+    }
+    public void ganhaPontos(int quantidade) throws PlayerInexistenteException { //metodo pra ganhar pontos de evoluçao do player
+        Player.getPlayer().setPontos(Player.getPlayer().getPontos()+ quantidade);
     }
 }

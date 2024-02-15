@@ -3,7 +3,7 @@ package com.daniel.View;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.TiposElementais;
 import com.daniel.game.Main;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -165,15 +165,15 @@ public class BestiarioController implements Initializable {
                     });
                 }
                 else{
-                    btnBesta.setText(i.getName());
+                    btnBesta.setText(i.getNome());
                     btnBesta.setOnAction(event -> {
-                        TxtFr.setText("Força: " + i.getForce());
+                        TxtFr.setText("Força: " + i.getForca());
                         TxtHP.setText("HP: " + i.getHP());
                         TxtMP.setText("MP: " + i.getMP());
-                        TxtNome.setText(i.getName());
+                        TxtNome.setText(i.getNome());
                         TxtRes.setText("Resistência: " + i.getResistencia());
-                        TxtInt.setText("Inteligência: " + i.getInteligence());
-                        TxtVel.setText("Velocidade: " + i.getVelocity());
+                        TxtInt.setText("Inteligência: " + i.getInteligencia());
+                        TxtVel.setText("Velocidade: " + i.getVelocidade());
                         ImgBesta.setImage(i.getImagem());
                         PnlInfos.setOpacity(1);
                         AjustarElementos(i);

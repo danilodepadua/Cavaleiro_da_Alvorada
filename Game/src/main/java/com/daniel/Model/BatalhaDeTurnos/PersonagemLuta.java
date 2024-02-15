@@ -1,11 +1,11 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.Dados.Entidades.Player;
-import com.daniel.Model.Dados.Magias.Animation.AnimationsAttack;
-import com.daniel.Model.Dados.Magias.Animation.SlashAnimation;
+import com.daniel.Model.Magias.AnimationsAttack;
+import com.daniel.Model.Magias.Animacoes.SlashAnimation;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Magias.Magia;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.Magia;
+import com.daniel.Model.Magias.TiposElementais;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,15 +23,15 @@ public class PersonagemLuta{
         this.currentHp = HP;
         this.currentMp = MP;
         this.DefF = i.getResistencia();
-        this.DefM = i.getInteligence();
-        this.AtqF = i.getForce();
-        this.AtqM = i.getInteligence();
-        this.velocidade = i.getVelocity();
+        this.DefM = i.getInteligencia();
+        this.AtqF = i.getForca();
+        this.AtqM = i.getInteligencia();
+        this.velocidade = i.getVelocidade();
         this.fraquezas = i.getFraquezas();
         this.resistencias = i.getResistencias();
         this.imunidades = i.getImunidades();
         this.absorcao = i.getAbsorcao();
-        this.Nome = i.getName();
+        this.Nome = i.getNome();
         this.atqAnim = new SlashAnimation();
         this.magias = i.getMagias();
     }
@@ -45,14 +45,14 @@ public class PersonagemLuta{
         this.MP = p.getMP();
         this.currentHp = p.getcHP();
         this.currentMp = p.getcMp();
-        this.velocidade = p.getVelocity();
+        this.velocidade = p.getVelocidade();
         this.fraquezas = p.getFraquezas();
         this.resistencias = p.getResistencias();
         this.imunidades = p.getImundades();
         this.absorcao = p.getAbsorcoes();
         this.tipoAtaqueBase = p.getArma().getTipoDano();
         this.atqAnim = new SlashAnimation();
-        this.Nome = p.getName();
+        this.Nome = p.getNome();
         this.magias = p.getMagias();
     }
     protected TiposElementais[] fraquezas;

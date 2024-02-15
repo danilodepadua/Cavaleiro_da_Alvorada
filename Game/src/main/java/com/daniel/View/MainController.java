@@ -1,6 +1,7 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,10 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
-import static com.daniel.View.Utilidades.configurarBotoes;
-import static com.daniel.View.Utilidades.definirBackground;
+import static com.daniel.View.Utilidades.*;
 
 
 public class MainController implements Initializable {
@@ -35,17 +33,19 @@ public class MainController implements Initializable {
 
     @FXML
     private Button btnSair;
+    @FXML
+    private VBox vbox;
 
     public static AudioPlayer audioPlayerInicial = new AudioPlayer();
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
         audioPlayerInicial.stop();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("StoryScene.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaDeHistoria.fxml")).load());
 
     }
     @FXML
-    void Carregar(ActionEvent event) throws IOException {
+    void Carregar(ActionEvent event) throws IOException, SaveInexistenteException {
         audioPlayerInicial.stop();
         Main.saveManager.Carregar();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
@@ -65,6 +65,7 @@ public class MainController implements Initializable {
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
         btnCarregar.setDisable(!Main.saveManager.SaveExistente());
+        identificarTextos(Screen);
     }
 
     @FXML

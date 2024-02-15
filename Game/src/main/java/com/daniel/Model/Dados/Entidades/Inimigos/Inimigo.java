@@ -3,7 +3,7 @@ package com.daniel.Model.Dados.Entidades.Inimigos;
 import com.daniel.Model.Dados.Entidades.Personagem;
 import com.daniel.Model.Dados.LootTable;
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.TiposElementais;
 
 public abstract class Inimigo extends Personagem {
     int pos,  dropXp, moedas;

@@ -12,35 +12,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.ConfigController">
    <children>
-      <ChoiceBox fx:id="EscolhaResolucao" layoutX="483.0" layoutY="152.0" prefHeight="26.0" prefWidth="222.0" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="152.0" />
-      <Text fill="#eccb7e" layoutX="452.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" textAlignment="RIGHT" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="412.4399719238281" AnchorPane.topAnchor="20.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="48.0" />
-         </font>
-      </Text>
-      <Slider fx:id="SliderVolume" layoutX="487.0" layoutY="248.0" prefHeight="14.0" prefWidth="150.0" value="100.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="248.0" />
-      <Slider fx:id="SliderVelBatalha" layoutX="487.0" layoutY="312.0" max="1.0" prefHeight="14.0" prefWidth="150.0" value="1.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="312.0" />
-      <Slider fx:id="SliderVelHistoria" layoutX="487.0" layoutY="374.0" max="1.0" prefHeight="14.0" prefWidth="150.0" value="1.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="374.0" />
-      <Text fill="#eccb7e" layoutX="487.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="213.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="29.0" />
-         </font>
-      </Text>
-      <Text fill="#eccb7e" layoutX="487.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO BATALHA:" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="275.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="29.0" />
-         </font>
-      </Text>
-      <Text fill="#eccb7e" layoutX="487.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO HISTÓRIA:" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="339.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="29.0" />
-         </font>
-      </Text>
-      <Text fill="#eccb7e" layoutX="482.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="106.0">
-         <font>
-            <Font name="Barlow Condensed SemiBold" size="29.0" />
-         </font>
-      </Text>
       <Button fx:id="btnVoltar" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
@@ -53,8 +24,37 @@
             </ImageView>
          </graphic>
       </Button>
-      <VBox layoutX="497.0" layoutY="439.0" prefHeight="200.0" prefWidth="221.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="497.0">
+      <VBox fx:id="vboxcentro" alignment="TOP_CENTER" layoutX="450.0" layoutY="20.0" prefHeight="503.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="43.799999999999955" AnchorPane.topAnchor="20.0">
          <children>
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" textAlignment="RIGHT">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="48.0" />
+               </font>
+            </Text>
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="EscolhaResolucao" prefHeight="26.0" prefWidth="222.0" />
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+               </font>
+            </Text>
+            <Slider fx:id="SliderVolume" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="100.0" />
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO BATALHA:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+               </font>
+            </Text>
+            <Slider fx:id="SliderVelBatalha" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
+            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO HISTÓRIA:">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+               </font>
+            </Text>
+            <Slider fx:id="SliderVelHistoria" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
             <Button fx:id="btnSalvar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />

@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -198,7 +198,6 @@ public class CriarPersonagemController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         audioPlayer.play("/com.daniel.audios/msc_criacaodepersonagem.wav", true);
         btnCriar.setDisable(true);
-
 
 
         BarraForca.setStyle(PROGRESS_BAR_COLOR);

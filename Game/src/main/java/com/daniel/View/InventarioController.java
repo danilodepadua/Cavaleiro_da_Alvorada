@@ -1,15 +1,15 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.Inventario;
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Itens.Armadura;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableOutBattle;
-import com.daniel.Model.Interfaces.IEquipable;
-import com.daniel.Model.Dados.Itens.Arma;
-import com.daniel.Model.Dados.Itens.Armaduras.Calca;
-import com.daniel.Model.Dados.Itens.Armaduras.Capacete;
-import com.daniel.Model.Dados.Itens.Armaduras.Peitoral;
-import com.daniel.Model.Dados.Itens.Item;
+import com.daniel.Model.Itens.Arma;
+import com.daniel.Model.Itens.Armaduras.Calca;
+import com.daniel.Model.Itens.Armaduras.Capacete;
+import com.daniel.Model.Itens.Armaduras.Peitoral;
+import com.daniel.Model.Itens.Item;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +30,6 @@ import static com.daniel.View.Utilidades.contornarBotaoVoltar;
 
 public class InventarioController implements Initializable {
     private boolean statusVisivel = false; // Variável para controlar se os dados estão visíveis
-
     @FXML
     private Text AtqFPlayer;
 
@@ -130,6 +129,7 @@ public class InventarioController implements Initializable {
 
     @FXML
     private Text txtQtdItem;
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         ImagemItem.setImage(i.getImage());
@@ -146,21 +146,18 @@ public class InventarioController implements Initializable {
         } else {
             btnUsar.setDisable(true);
         }
-
-        if (i instanceof IEquipable) {
-            IEquipable equipableItem = (IEquipable) i;
-
-            if (Player.getPlayer().podeEquiparItem(equipableItem)) {
-                configurarBtnEquipar(equipableItem, i);
+        if (i instanceof Armadura || i instanceof Arma) {
+            if (jogoFachada.podeEquiparItem(i)) {
+                configurarBtnEquipar(i);
             } else {
-                configurarBtnDesequipar(equipableItem);
+                configurarBtnDesequipar(i);
             }
-        } else {
+        }else {
             btnEquipar.setDisable(true);
             btnDesequipar.setDisable(true);
         }
     }
-    private void criaBotaoEquipavel(Item i) throws PlayerInexistenteException {
+    private void criaBotaoEquipavel(Item i) {
         if (i.getNome()!= null){
             Button itemButton = new Button();
             ImageView image = new ImageView();
@@ -212,11 +209,11 @@ public class InventarioController implements Initializable {
             }
         });
     }
-    private void configurarBtnEquipar(IEquipable equipableItem, Item i) {
+    private void configurarBtnEquipar(Item i) {
         btnEquipar.setDisable(false);
         btnEquipar.setOnAction(event -> {
             try {
-                equipableItem.equipar();
+                jogoFachada.equiparItem(i);
                 AtualizarDados();
                 ItemSelecionado(i);
             } catch (PlayerInexistenteException e) {
@@ -228,12 +225,12 @@ public class InventarioController implements Initializable {
         btnDesequipar.setDisable(true);
     }
 
-    private void configurarBtnDesequipar(IEquipable equipableItem){
+    private void configurarBtnDesequipar(Item item){
         btnEquipar.setDisable(true);
         btnDesequipar.setDisable(false);
         btnDesequipar.setOnAction(event -> {
             try {
-                equipableItem.desequipar(); //Analogo ao equipar, chama o metodo implementando
+                jogoFachada.desequiparItem(item); //Analogo ao equipar, chama o metodo implementando
                 AtualizarDados();
                 limparTela();
 
@@ -254,11 +251,11 @@ public class InventarioController implements Initializable {
         txt8.setText("Defesa mágica:");
         txt9.setText("Resistência:");
         txt10.setText("Defesa física:");
-        VelocidadePlayer.setText("" + Player.getPlayer().getVelocity());
-        ForcaPlayer.setText("" + Player.getPlayer().getForce());
+        VelocidadePlayer.setText("" + Player.getPlayer().getVelocidade());
+        ForcaPlayer.setText("" + Player.getPlayer().getForca());
         HpPlayer.setText("" + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
         MpPlayer.setText("" + Player.getPlayer().getcMp() + "/" + Player.getPlayer().getMP());
-        InteligenciaPlayer.setText("" + Player.getPlayer().getInteligence());
+        InteligenciaPlayer.setText("" + Player.getPlayer().getInteligencia());
         ResistenciaPlayer.setText("" + Player.getPlayer().getResistencia());
         DefesaPlayer.setText("" + Player.getPlayer().getDefesaF());
         DefesaMagicaPlayer.setText("" + Player.getPlayer().getDefesaM());

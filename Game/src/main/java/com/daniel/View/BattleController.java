@@ -2,14 +2,13 @@ package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.BatalhaDeTurnos.*;
-import com.daniel.Model.Dados.AudioPlayer;
-import com.daniel.Model.Dados.ConfiguracoesUsuario;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IEffects;
-import com.daniel.Model.Dados.Itens.Item;
-import com.daniel.Model.Dados.Magias.Animation.SlashAnimation;
+import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Magias.Animacoes.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

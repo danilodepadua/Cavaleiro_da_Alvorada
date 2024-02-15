@@ -35,6 +35,7 @@ public class RegrasPokerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
+        Utilidades.identificarTextos(panePrincipal);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnProsseguir);
     }

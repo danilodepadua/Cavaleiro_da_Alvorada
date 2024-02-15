@@ -1,7 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
-import com.daniel.Model.Dados.ConfiguracoesUsuario;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -56,7 +55,7 @@ public class StorySceneController implements Initializable {
     }
 
     public void Mudar() throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("CharCreatorScene.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCriacaoPersonagem.fxml")).load());
     }
 
     public void MudarBackGround(Image imagem){
@@ -104,7 +103,6 @@ public class StorySceneController implements Initializable {
                             event -> {Texto.setText("");});
                     timeline.getKeyFrames().add(Frame);
                 }
-                System.out.println(ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao());
                 Time+=100/ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao();
                 timeline.getKeyFrames().add(keyFrame);
             }

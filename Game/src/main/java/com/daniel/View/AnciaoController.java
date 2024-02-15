@@ -1,6 +1,6 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.AudioPlayer;
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.NPC;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -34,6 +34,7 @@ public class AnciaoController implements Initializable {
     private static boolean irmaoVisitado = false;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        identificarTextos(Screen);
         //Main.cidadeAtual.audioPlayer.stop();
         audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");

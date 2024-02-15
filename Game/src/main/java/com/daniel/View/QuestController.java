@@ -1,8 +1,8 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
-import com.daniel.Model.Dados.Quests.Quest;
+import com.daniel.Model.Quests.Quest;
 import com.daniel.game.Main;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
@@ -46,6 +46,7 @@ public class QuestController implements Initializable {
     private static final int FONT_SIZE = 24;
     private static final String TEXT_FILL = "-fx-fill: #eccb7e;";
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
 
     private void criarQuest(Quest quest) throws PlayerInexistenteException {
         SimpleIntegerProperty progressoProperty = new SimpleIntegerProperty(quest.getProgresso());
@@ -87,16 +88,16 @@ public class QuestController implements Initializable {
         vboxQuests.setSpacing(25);
     }
     private void recolherRecompensas(Quest quest) throws PlayerInexistenteException {
-        Player.getPlayer().completarQuest(quest);
+        jogoFachada.completarQuest(quest);
     }
     private void atualizarInterfaceGrafica() {
         try {
             vboxQuests.getChildren().clear();
             int inicio = questAtual;
-            int fim = Math.min(questAtual + 4, Player.getPlayer().obterQuestsComuns().size());
+            int fim = Math.min(questAtual + 4, jogoFachada.obterQuestsComuns().size());
 
             for (int i = inicio; i < fim; i++) {
-                Quest quest = Player.getPlayer().obterQuestsComuns().get(i);
+                Quest quest = jogoFachada.obterQuestsComuns().get(i);
                 criarQuest(quest);
 
             }
@@ -144,7 +145,7 @@ public class QuestController implements Initializable {
     }
     @FXML
     void DescerItens(ActionEvent event) throws PlayerInexistenteException {
-        if (questAtual < Player.getPlayer().obterQuestsComuns().size() - 1) {
+        if (questAtual < jogoFachada.obterQuestsComuns().size() - 1) {
             questAtual++;
             atualizarInterfaceGrafica();
         }

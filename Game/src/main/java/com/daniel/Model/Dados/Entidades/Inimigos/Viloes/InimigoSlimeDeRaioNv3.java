@@ -2,11 +2,11 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Minerios.BarraOuro;
-import com.daniel.Model.Dados.Itens.Minerios.Ouro;
-import com.daniel.Model.Dados.Magias.Poderes.Raio;
-import com.daniel.Model.Dados.Magias.Poderes.ThunderBall;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Itens.Minerios.BarraOuro;
+import com.daniel.Model.Itens.Minerios.Ouro;
+import com.daniel.Model.Magias.Poderes.Raio;
+import com.daniel.Model.Magias.Poderes.ThunderBall;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeRaioNv3 extends Inimigo {
     public InimigoSlimeDeRaioNv3() {

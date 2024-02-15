@@ -2,7 +2,7 @@ package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.ComportamentosInimigos.*;
 import com.daniel.Model.Dados.Entidades.Player;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Magias.TiposElementais;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.View.BattleController;
 import com.daniel.game.Main;

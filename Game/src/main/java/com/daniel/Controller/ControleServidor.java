@@ -6,12 +6,11 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.InetSocketAddress;
 
-public class ControleServidor {
+public class ControleServidor  {
     private HttpServer server;
-    public ControleServidor(){
-    }
     public void ligarServidor(){
         //cria o servidor usando a biblioteca do Http
         server = null;
@@ -76,7 +75,6 @@ public class ControleServidor {
     public void desligarServidor() {
         if (server != null) {
             server.stop(0); // O argumento 0 indica que o desligamento deve ser imediato
-            System.out.println("Servidor desligado.");
         }
     }
 

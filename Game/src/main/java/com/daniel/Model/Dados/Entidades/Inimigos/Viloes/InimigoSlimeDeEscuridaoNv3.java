@@ -2,13 +2,13 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Comidas.CoxaFrango;
-import com.daniel.Model.Dados.Itens.Minerios.FragmentoEscuridao;
-import com.daniel.Model.Dados.Magias.Poderes.Amolecer;
-import com.daniel.Model.Dados.Magias.Poderes.Enfraquecer;
-import com.daniel.Model.Dados.Magias.Poderes.Escuridao;
-import com.daniel.Model.Dados.Magias.Poderes.IntDown;
-import com.daniel.Model.Dados.Magias.TiposElementais;
+import com.daniel.Model.Itens.Comidas.CoxaFrango;
+import com.daniel.Model.Itens.Minerios.FragmentoEscuridao;
+import com.daniel.Model.Magias.Poderes.Amolecer;
+import com.daniel.Model.Magias.Poderes.Enfraquecer;
+import com.daniel.Model.Magias.Poderes.Escuridao;
+import com.daniel.Model.Magias.Poderes.IntDown;
+import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeEscuridaoNv3 extends Inimigo {
     public InimigoSlimeDeEscuridaoNv3() {

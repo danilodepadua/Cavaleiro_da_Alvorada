@@ -1,6 +1,7 @@
 package com.daniel.View;
 
-import com.daniel.Model.Dados.CidadeRepositorio.Cidade;
+import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.CidadeInexistenteException;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -32,7 +33,7 @@ import static com.daniel.game.Main.CurrentStage;
 import static com.daniel.game.Main.cidadeAtual;
 
 public class MapaController extends Utilidades implements Initializable {
-
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
     private Circle Circulo;
     @FXML
@@ -162,6 +163,7 @@ public class MapaController extends Utilidades implements Initializable {
         ImgMapa.setFitHeight(Main.getAltura() - 100);
         ImgMapa.setFitWidth(ImgMapa.getBoundsInLocal().getWidth());
         definirBackground(Fundo, "/com.daniel.Images/Fundos/Mar.jpg");
+        identificarTextos(Fundo);
         Circulo.setOpacity(0);
         try {
             ParallelTransition parallelTransition = new ParallelTransition();

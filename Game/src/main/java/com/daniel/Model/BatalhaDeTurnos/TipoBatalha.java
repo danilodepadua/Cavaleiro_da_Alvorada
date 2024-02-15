@@ -3,8 +3,8 @@ package com.daniel.Model.BatalhaDeTurnos;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Itens.Item;
-import com.daniel.Model.Dados.Quests.Quest;
+import com.daniel.Model.Itens.Item;
+import com.daniel.Model.Quests.Quest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public abstract class TipoBatalha {
     public abstract void Inicializar();
     public final void Vitoria() throws PlayerInexistenteException, IOException {
         for (Quest quest : Player.getPlayer().getQuestsAtuais()) {
-            if (quest.getNomeInimigo().equals(inimigo.getName())) {
+            if (quest.getNomeInimigo().equals(inimigo.getNome())) {
                 try {
                     quest.updateQuestCompleted();
                 } catch (PlayerInexistenteException e) {
