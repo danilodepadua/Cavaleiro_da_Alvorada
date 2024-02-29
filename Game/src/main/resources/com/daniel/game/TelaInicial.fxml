@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="Screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.MainController">
    <children>
-      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="327.0" layoutY="72.0" prefHeight="526.0" prefWidth="503.0" spacing="50.0" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="309.0">
+      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="336.0" layoutY="14.0" prefHeight="526.0" prefWidth="503.0" spacing="50.0" AnchorPane.leftAnchor="336.0" AnchorPane.rightAnchor="300.0">
          <children>
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="O CAVALEIRO DA ALVORADA">
                <font>
@@ -30,7 +30,12 @@
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnSair" maxHeight="52.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Sair" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" stylesheets="@style.css" text="Sair" textFill="#eccb7e">
+            <Button fx:id="btnCreditos" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OnActionCreditos" prefHeight="50.0" prefWidth="240.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Créditos" textFill="#eccb7e">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSair" maxHeight="52.0" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Sair" prefHeight="50.0" prefWidth="240.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" stylesheets="@style.css" text="Sair" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>

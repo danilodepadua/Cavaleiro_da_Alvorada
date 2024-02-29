@@ -221,7 +221,7 @@ public class Utilidades {
     public static void adicionarCaracteresComAtraso(String mensagem, Text texto, Runnable onCompletion) {
         Timeline timeline = new Timeline();
         double time = 50;
-
+        texto.setText("");
         // Adiciona KeyFrames para cada caractere com atraso
         for (int i = 0; i < mensagem.length(); i++) {
             final int finalI = i;
@@ -251,7 +251,38 @@ public class Utilidades {
         // Inicia a animação
         timeline.play();
     }
+    public static void adicionarCaracteresComAtrasoCredito(String mensagem, Text texto, Runnable onCompletion) {
+        Timeline timeline = new Timeline();
+        double time = 50;
+        texto.setText("");
+        // Adiciona KeyFrames para cada caractere com atraso
+        for (int i = 0; i < mensagem.length(); i++) {
+            final int finalI = i;
 
+            // Adiciona um KeyFrame para adicionar o caractere
+            timeline.getKeyFrames().add(new KeyFrame(
+                    Duration.millis(time),
+                    event -> {
+                        texto.setText(texto.getText() + mensagem.charAt(finalI));
+                    }));
+
+            // Adiciona um KeyFrame para limpar o texto se for o último caractere da mensagem
+            if (finalI == mensagem.length() - 1) {
+                time += 1000;
+                timeline.getKeyFrames().add(new KeyFrame(Duration.millis(time), event -> {
+                    texto.setText("");  // Limpa o Text ao final da animação
+                    // Chama o evento de conclusão quando a animação estiver concluída
+                    onCompletion.run();
+                }));
+            }
+
+            // Incrementa o tempo para o próximo caractere
+            time += 100;
+        }
+
+        // Inicia a animação
+        timeline.play();
+    }
     public static void mostrarResultado(String mensagem, Text text, AnchorPane anchorPane) {
         text.setText(mensagem);
 

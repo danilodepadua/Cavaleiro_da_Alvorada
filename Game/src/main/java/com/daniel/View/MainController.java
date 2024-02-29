@@ -35,6 +35,8 @@ public class MainController implements Initializable {
     private Button btnSair;
     @FXML
     private VBox vbox;
+    @FXML
+    private Button btnCreditos;
 
     public static AudioPlayer audioPlayerInicial = new AudioPlayer();
 
@@ -64,6 +66,7 @@ public class MainController implements Initializable {
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
+        configurarBotoes(btnCreditos);
         btnCarregar.setDisable(!Main.saveManager.SaveExistente());
         identificarTextos(Screen);
     }
@@ -75,6 +78,10 @@ public class MainController implements Initializable {
 
     }
 
+    @FXML
+    void OnActionCreditos(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCreditos.fxml")).load());
 
+    }
 
 }
