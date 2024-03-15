@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -23,7 +24,6 @@ import static com.daniel.View.BattleController.controladorMusica;
 import static com.daniel.View.Utilidades.*;
 
 public class CidadeController implements Initializable {
-    private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
     private Label LabelForca;
 
@@ -148,10 +148,8 @@ public class CidadeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         identificarTextos(Screen);
         controladorMusica = new AudioPlayer();
-        controladorMusica.stop();
-        audioPlayer.stop();
         if(Main.cidadeAtual.getMusicPath() != null){
-            audioPlayer.play(Main.cidadeAtual.getMusicPath(), true);
+            JogoFachada.getInstance().getAudioPlayer().PlayLoop(Main.cidadeAtual.getMusicPath());
         }
 
         for(int i = 0; i<Main.cidadeAtual.getBotoes().size();i++){
@@ -165,11 +163,11 @@ public class CidadeController implements Initializable {
             configurarBotoesTelaCidade(b);
             estiloBotao(b);
 
-            if (!b.getText().equals("Salvar") && !b.getText().equals("Quest")){
-                b.setOnMousePressed(event -> {
-                    audioPlayer.stop();
-                });
-            }
+//            if (!b.getText().equals("Salvar") && !b.getText().equals("Quest")){
+//                b.setOnMousePressed(event -> {
+//                    audioPlayer.stop();
+//                });
+//            }
 
             VBox.getChildren().add(b);
         }
@@ -229,18 +227,18 @@ public class CidadeController implements Initializable {
 
     @FXML
     void onClickStatus(ActionEvent event) throws IOException {
-        audioPlayer.stop();
+        //audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaLoad.fxml")).load());
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInfosPlayer.fxml")).load());
     }
     @FXML
     void Config(ActionEvent event) throws IOException {
-        audioPlayer.stop();
+        //audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaConfiguracoes.fxml")).load());
     }
     @FXML
     void Craft(ActionEvent event) throws IOException {
-        audioPlayer.stop();
+        //audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCraft.fxml")).load());
 
     }

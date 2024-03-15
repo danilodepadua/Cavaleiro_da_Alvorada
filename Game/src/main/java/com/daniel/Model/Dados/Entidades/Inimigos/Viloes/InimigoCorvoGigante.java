@@ -9,7 +9,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoCorvoGigante extends Inimigo {
     public InimigoCorvoGigante() {
-        super("Corvo gigante", "/com.daniel.Images/Inimigos/Colossal Dark Crow.png", 32, 45, 45, 30, 60, 350, 125, TiposElementais.NaoElemental, Comportamentos.padrao, 25000, 4000);
+        super("Corvo gigante", "/com.daniel.Images/Inimigos/Colossal Dark Crow.png", 32, 45, 45, 30, 60, 30,350, 125, TiposElementais.NaoElemental, Comportamentos.padrao, 25000, 4000);
         this.magias.add(new Vento());
         this.magias.add(new AirBlast());
         this.magias.add(new Sopro());

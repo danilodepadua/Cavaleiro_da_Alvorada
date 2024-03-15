@@ -7,7 +7,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeGod extends Inimigo {
     public InimigoSlimeGod() {
-        super("Slime primordial", "com.daniel.Images/Inimigos/Slime RPG King.png", 37, 45, 87, 10, 73, 4990, 49913, TiposElementais.NaoElemental, Comportamentos.padrao, 150000, 50000);this.magias.add(new Enfraquecer());
+        super("Slime primordial", "com.daniel.Images/Inimigos/Slime RPG King.png", 37, 45, 87, 10, 73, 60,4990, 49913, TiposElementais.NaoElemental, Comportamentos.padrao, 150000, 50000);this.magias.add(new Enfraquecer());
         this.magias.add(new Enfraquecer());
         this.magias.add(new Amolecer());
         this.magias.add(new Fortalecer());

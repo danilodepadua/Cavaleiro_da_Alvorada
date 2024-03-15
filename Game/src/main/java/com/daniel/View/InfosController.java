@@ -190,9 +190,9 @@ public class InfosController implements Initializable {
             TxtNomeCalca.setText(Player.getPlayer().getCalca().getNome());
             TxtNomeCapacete.setText(Player.getPlayer().getCapacete().getNome());
             TxtNomePeitoral.setText(Player.getPlayer().getPeitoral().getNome());
-            String xp = "Exp. Atual: " + String.valueOf(Player.getPlayer().getXp());
+            String xp = "Exp. Atual: " + String.valueOf(Player.getPlayer().getCurrentXp());
             TxtXPAtual.setText(xp);
-            String xpProx = "Exp. Prox.: " + String.valueOf((Player.getPlayer().getLvl()*1000) - Player.getPlayer().getXp());
+            String xpProx = "Exp. Prox.: " + String.valueOf((Player.getPlayer().getLvl()*1000) - Player.getPlayer().getCurrentXp());
             TxtXPProx.setText(xpProx);
             ImgPlayer.setImage(Player.getPlayer().getImagem());
 

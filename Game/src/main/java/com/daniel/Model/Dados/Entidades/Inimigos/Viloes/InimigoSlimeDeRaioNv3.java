@@ -10,7 +10,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeRaioNv3 extends Inimigo {
     public InimigoSlimeDeRaioNv3() {
-        super("Slime de raio grande", "/com.daniel.Images/Inimigos/Slime Thunderiii.png", 16, 45, 35, 35, 50, 80, 55, TiposElementais.Eletrico, Comportamentos.padrao, 400, 250);
+        super("Slime de raio grande", "/com.daniel.Images/Inimigos/Slime Thunderiii.png", 16, 45, 35, 35, 50, 30,80, 55, TiposElementais.Eletrico, Comportamentos.padrao, 400, 250);
         this.absorcao = new TiposElementais[]{TiposElementais.Eletrico};
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new Raio());

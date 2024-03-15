@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.EvoluçaoController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.EvoluçaoController">
    <children>
       <ProgressBar fx:id="progBarVel" layoutX="389.0" layoutY="404.0" minWidth="100.0" prefHeight="18.0" prefWidth="274.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="404.0" />
       <ProgressBar fx:id="progBarRes" layoutX="387.0" layoutY="273.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="273.0" />
@@ -137,12 +137,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnSalvar" layoutX="517.0" layoutY="485.0" mnemonicParsing="false" onAction="#onClickSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e" AnchorPane.topAnchor="485.0">
+      <Button fx:id="btnSalvar" layoutX="517.0" layoutY="485.0" mnemonicParsing="false" onAction="#onClickSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e" AnchorPane.topAnchor="550.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="834.0" layoutY="204.0" prefHeight="220.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="204.0">
+      <Pane layoutX="834.0" layoutY="204.0" prefHeight="271.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="204.0">
          <children>
             <VBox layoutX="14.0" layoutY="14.0" prefHeight="242.0" prefWidth="233.0" spacing="20.0">
                <children>
@@ -216,6 +216,20 @@
                         </Text>
                      </children>
                   </HBox>
+                  <HBox layoutX="10.0" layoutY="178.0" prefHeight="0.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtSorte" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
@@ -239,5 +253,35 @@
             </Text>
          </children>
       </HBox>
+      <ProgressBar fx:id="progBarSorte" layoutX="386.0" layoutY="453.0" minWidth="100.0" prefHeight="18.0" prefWidth="274.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="470.0" />
+      <Text fill="#eccb7e" layoutX="388.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnMenosSorte" layoutX="334.0" layoutY="460.0" mnemonicParsing="false" onAction="#onClickMenosSorte" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnMaisSorte" layoutX="597.0" layoutY="460.0" maxWidth="25.0" mnemonicParsing="false" onAction="#onClickMaisSorte" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="460.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

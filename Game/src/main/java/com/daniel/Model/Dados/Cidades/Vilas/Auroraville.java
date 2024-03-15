@@ -23,8 +23,8 @@ public class Auroraville extends Cidade {
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 
         // Inicializa a lista de inimigos corretamente
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeEscuridaoNv1(), new InimigoSlimeDeRaioNv1(), new InimigoLadrao()};
-
+        //this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeEscuridaoNv1(), new InimigoSlimeDeRaioNv1(), new InimigoLadrao()};
+        this.inimigos = new Inimigo[]{new InimigoAbelha()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests.add(new QuestBabySlime());
         this.quests.add(new QuestAbelha());

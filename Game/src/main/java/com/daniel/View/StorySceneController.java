@@ -1,6 +1,8 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Textos.TextosIntroducao;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,6 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static com.daniel.View.Utilidades.contornarBotaoVoltar;
@@ -26,27 +29,18 @@ public class StorySceneController implements Initializable {
     private Timeline timeL;
     @FXML
     private AnchorPane Screen;
-    String[] Dialogo = {
-            "Há eras, em um mundo antigo, um povo enfrentou demônios em conflitos intermináveis. Vitoriosos, criaram um novo mundo separado dos demônios. Com o tempo, chegamos a um ponto de transição.",
-
-            "Três selos enfraqueceram, abrindo passagens que permitiram a invasão demoníaca. Estamos em rota de colisão com o caos primordial.",
-
-            "Você, morador de uma vila, sonha em se tornar cavaleiro. Notícias de um grande mal na Montanha do Norte chegam, e você parte em uma jornada para a capital em busca de reconhecimento e para derrotar o mal liberado."
-    };
 
 
 
-    Image[] Fundos = { new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo1.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo2.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Fundo3.jpg").toString())};
+    Image[] Fundos = { new Image(Main.class.getResource("/com.daniel.Images/Fundos/FundosIntro/TerraDestruida.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/FundosIntro/BatalhaAntiga.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/FundosIntro/CidadeEmPaz.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Guerreiro.jpg").toString()),new Image(Main.class.getResource("/com.daniel.Images/Fundos/Guerreiro.jpg").toString())};
 
     @FXML
     private Text Texto;
     @FXML
     private Button btnSkip;
-    private AudioPlayer audioPlayer = new AudioPlayer();
-    private AudioPlayer clickSoundPlayer = new AudioPlayer();
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        audioPlayer.play("/com.daniel.audios/msc_historia.wav",false);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/NovasMusicas/Eventos/main-theme04.mp3");
 
         timeL = adicionarCaracteresComAtraso();
         btnSkip.rotateProperty().set(180);
@@ -76,6 +70,7 @@ public class StorySceneController implements Initializable {
         );
     }
     private Timeline adicionarCaracteresComAtraso() {
+        String[] Dialogo = TextosIntroducao.getIntroducao();
         Timeline timeline = new Timeline();
         Texto.setStyle("-fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 35; -fx-fill: black");
         Texto.setWrappingWidth(1100);
@@ -91,26 +86,30 @@ public class StorySceneController implements Initializable {
                         event -> {
 
                             Texto.setText(Texto.getText() + Dialogo[finalI].charAt(finalJ));
-                            clickSoundPlayer.play("/com.daniel.audios/som_dialogo_storyscene.wav", false);
+                            JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_dialogo_storyscene.wav");
 
 
                         }
                 );
+                if(Dialogo[finalI].charAt(finalJ) == '.'){
+                    Time+= 1000;
+                } else if (Dialogo[finalI].charAt(finalJ) == ',') {
+                    Time+= 200;
+                }
                 if(finalJ == Dialogo[finalI].length()-1) {
-                    Time+=1000;
+                    Time+=7000;
                     KeyFrame Frame = new KeyFrame(
                             Duration.millis(Time),
                             event -> {Texto.setText("");});
                     timeline.getKeyFrames().add(Frame);
                 }
-                Time+=100/ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao();
+                Time+=100;
                 timeline.getKeyFrames().add(keyFrame);
             }
         }
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Time + 100), event -> {
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Time), event -> {
             try {
                 Mudar();
-                audioPlayer.stop();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -123,7 +122,6 @@ public class StorySceneController implements Initializable {
         try {
             timeL.stop();
             Mudar();
-            audioPlayer.stop();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

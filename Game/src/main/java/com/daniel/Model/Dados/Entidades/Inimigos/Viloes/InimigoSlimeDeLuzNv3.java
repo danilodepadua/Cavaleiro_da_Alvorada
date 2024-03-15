@@ -11,7 +11,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeLuzNv3 extends Inimigo {
     public InimigoSlimeDeLuzNv3() {
-        super("Slime de luz grande", "/com.daniel.Images/Inimigos/Slime Holyiii.png", 28, 35, 55, 45, 40, 65, 250, TiposElementais.Luz, Comportamentos.padrao, 350, 150);
+        super("Slime de luz grande", "/com.daniel.Images/Inimigos/Slime Holyiii.png", 28, 35, 55, 45, 40, 40,65, 250, TiposElementais.Luz, Comportamentos.padrao, 350, 150);
         this.magias.add(new Luz());
         this.magias.add(new IntUp());
         this.magias.add(new Curaga());

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.ConfigController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #140e0a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.ConfigController">
    <children>
       <Button fx:id="btnVoltar" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="34.0" prefWidth="43.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
@@ -24,43 +24,44 @@
             </ImageView>
          </graphic>
       </Button>
-      <VBox fx:id="vboxcentro" alignment="TOP_CENTER" layoutX="450.0" layoutY="20.0" prefHeight="503.0" prefWidth="225.0" spacing="20.0" AnchorPane.bottomAnchor="43.799999999999955" AnchorPane.topAnchor="20.0">
+      <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES:" textAlignment="RIGHT" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="48.0" />
+         </font>
+      </Text>
+      <VBox fx:id="vboxcentro" alignment="TOP_CENTER" layoutX="348.0" layoutY="100.0" prefHeight="620.0" prefWidth="235.7109375" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" textAlignment="RIGHT">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="48.0" />
-               </font>
-            </Text>
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <ChoiceBox fx:id="EscolhaResolucao" prefHeight="26.0" prefWidth="222.0" />
+            <Text fill="#eccb7e" layoutX="137.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="EscolhaIdioma" layoutX="169.0" layoutY="153.0" prefHeight="26.0" prefWidth="222.0" />
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="SliderVolume" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="100.0" />
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO BATALHA:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="SliderVelBatalha" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO HISTÓRIA:">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="SliderVelHistoria" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
             <Button fx:id="btnSalvar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnAdmin" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Admin" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Admin" textFill="#eccb7e">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="17.0" />
                </font>

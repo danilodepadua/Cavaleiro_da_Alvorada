@@ -26,9 +26,10 @@ import static com.daniel.View.Utilidades.configurarBotoes;
 import static com.daniel.View.Utilidades.contornarBotaoVoltar;
 
 public class ConfigController implements Initializable {
-    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
     private ChoiceBox<String> EscolhaResolucao;
+    @FXML
+    private ChoiceBox<String> EscolhaIdioma;
     @FXML
     private Slider SliderVelBatalha;
 
@@ -37,9 +38,6 @@ public class ConfigController implements Initializable {
 
     @FXML
     private Slider SliderVolume;
-
-    @FXML
-    private Button btnAdmin;
 
     @FXML
     private Button btnSalvar;
@@ -63,34 +61,16 @@ public class ConfigController implements Initializable {
         ConfiguracoesUsuario.salvarVolume(SliderVolume.getValue());
         ConfiguracoesUsuario.salvarVelelocidadeTextoHistoria(SliderVelHistoria.getValue());
         ConfiguracoesUsuario.salvarVelelocidadeTextoBatalha(SliderVelBatalha.getValue());
+        ConfiguracoesUsuario.salvarIdioma(EscolhaIdioma.getValue());
+        Utilidades.AlinharHorizontal(vboxcentro, 0.5);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            Player.getPlayer();
-//            JogoFachada jogoFachada = JogoFachada.getInstance();
-//            Player.getPlayer().aumentaForcaProgress(999);
-//            Player.getPlayer().aumentaInteligenciaProgess(999);
-//            Player.getPlayer().aumentaResistenciaProgress(999);
-//            Player.getPlayer().aumentaVelocidadeProgress(999);
-//            jogoFachada.ganharXp(100000);
-//            Player.getPlayer().ganharCoins(100000);
-//            Player.getPlayer().adicionarCidade(new Dasópoles());
-//            Player.getPlayer().adicionarCidade(new MonteClaro());
-//            Player.getPlayer().adicionarCidade(new CidadePortuaria());
-//            Player.getPlayer().adicionarCidade(new Ilha());
-//            Player.getPlayer().adicionarCidade(new BatalhaDePedraveira());
-//            Player.getPlayer().adicionarCidade(new MontanhaDoNorte());
-//            Player.getPlayer().adicionarCidade(new CidadeMorta());
-            telaInicial = false;
-        } catch (PlayerInexistenteException e) {
-            btnAdmin.setDisable(true);
-            btnAdmin.setOpacity(0);
-        }
-        AnchorPane.setRightAnchor(vboxcentro, 450.0);
+        Utilidades.AlinharHorizontal(vboxcentro, 0.5);
         EscolhaResolucao.getItems().addAll("1200x675", "1280x720");
-        configurarBotoes(btnAdmin);
+        EscolhaIdioma.getItems().addAll("Português", "English");
+
         configurarBotoes(btnSalvar);
         contornarBotaoVoltar(btnVoltar);
 
@@ -105,6 +85,14 @@ public class ConfigController implements Initializable {
                 audioPlayerInicial.configVolume(SliderVolume.getValue()/100);
             }
         });
+
+        try{
+            Player.getPlayer();
+            telaInicial = false;
+        }
+        catch (PlayerInexistenteException e){
+            telaInicial = true;
+        }
     }
 
     @FXML
@@ -116,11 +104,5 @@ public class ConfigController implements Initializable {
             Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
         }
     }
-    @FXML
-    void Admin(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaWeb.fxml")).load());
-
-    }
-
 }
 

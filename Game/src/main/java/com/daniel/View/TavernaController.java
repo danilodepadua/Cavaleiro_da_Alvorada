@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -57,13 +58,11 @@ public class TavernaController implements Initializable {
     private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
     void Jogar(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaVinteUm.fxml")).load());
     }
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
     }
 
@@ -72,7 +71,7 @@ public class TavernaController implements Initializable {
         try {
             identificarTextos(anchorPane);
             txtMoedas.setText("Carteira: " + Player.getPlayer().getCoins() + " Moedas");
-            audioPlayer.play("/com.daniel.audios/msc_taverna.wav", true);
+            JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_taverna.wav");
             Point2D centro = new Point2D(315, 169);
             desenharTexto(texto, 40, centro);
         } catch (PlayerInexistenteException e) {
@@ -157,13 +156,11 @@ public class TavernaController implements Initializable {
 
     @FXML
     void JogarMemoria(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")).load());
     }
 
     @FXML
     void JogarPoker(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaTutorialPoker.fxml")).load());
 
     }

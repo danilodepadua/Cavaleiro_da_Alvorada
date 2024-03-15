@@ -264,7 +264,7 @@ public class CraftingController implements Initializable {
             double random =Math.random();
             if (calcularChance() > random) {
                 mostrarResultado("Item Forjado!");
-                audioPlayer.play("/com.daniel.audios/som_craft.wav", false);
+                JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_craft.wav");
                 return craftResult;
             }else {
                 mostrarResultado("Falhou");

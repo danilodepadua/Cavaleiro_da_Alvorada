@@ -83,10 +83,6 @@ public abstract class Cidade implements Serializable {
     public ArrayList<Item> getItens(){
         return this.itens;
     }
-
-    public void pararMusica(){
-        audioPlayer.stop();
-    }
     protected Botao criarBotao(String nome, Runnable run){
 
         return new Botao(nome, run);
@@ -94,7 +90,7 @@ public abstract class Cidade implements Serializable {
     protected Botao criarBotaoSalvar() throws PlayerInexistenteException {
         return criarBotao("Salvar", () -> {
             try {
-                Main.saveManager.Salvar();
+                Main.saveManager.Salvar(Main.getSaveAtual());
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }

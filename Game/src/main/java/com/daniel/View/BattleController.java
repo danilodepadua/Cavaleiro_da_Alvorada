@@ -117,7 +117,6 @@ public class BattleController implements Initializable {
     private Text txtMensagem;
 
     boolean isItens;
-    private AudioPlayer audioPlayer = new AudioPlayer();
     public static AudioPlayer controladorMusica = new AudioPlayer();
 
     @FXML
@@ -187,7 +186,7 @@ public class BattleController implements Initializable {
         gdb.Ataque(new SlashAnimation().INICIAR(EnimyEffect),this.gdb.player.getAtqF(),
                 this.gdb.player.getTipoAtaqueBase(), true, null);
 
-        audioPlayer.play("/com.daniel.audios/som_swordSlash.wav", false);
+        JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_swordSlash.wav");
     }
 
     @FXML
@@ -226,12 +225,8 @@ public class BattleController implements Initializable {
     }
     public void Vitoria() throws PlayerInexistenteException, IOException {
         Player.getPlayer().AtualizarStatus(this.gdb.player.getCurrentHp(), this.gdb.player.getCurrentMp());
-        controladorMusica.stop();
     }
 
-    public void Derrota() throws IOException {
-        controladorMusica.stop();
-    }
 
     public void Atualiazar(){
         InfoVida.setText("HP: " + this.gdb.player.getCurrentHp() + "/" + this.gdb.player.getHP());
@@ -336,7 +331,7 @@ public class BattleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gdb = JogoFachada.getInstance().getGerenciadorDeBatalha();
-        controladorMusica.play("/com.daniel.audios/msc_batalha.wav", true);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/NovasMusicas/Batalhas/BatalhaComum1/Battle-Abysswalker_intro.wav", "/com.daniel.audios/NovasMusicas/Batalhas/BatalhaComum1/Battle-Abysswalker_loop.wav");
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,

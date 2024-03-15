@@ -57,5 +57,9 @@ module com.daniel.game {
     opens com.daniel.Model.Dados.Entidades.Inimigos.Viloes to javafx.fxml;
     exports com.daniel.Model.Taverna;
     opens com.daniel.Model.Taverna to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.Bosses;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.Bosses to javafx.fxml;
+    exports com.daniel.Model.Dados.Textos;
+    opens com.daniel.Model.Dados.Textos to javafx.fxml;
 
 }

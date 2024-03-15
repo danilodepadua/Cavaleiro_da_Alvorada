@@ -11,7 +11,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeTerraNv3 extends Inimigo {
     public InimigoSlimeDeTerraNv3() {
-        super("Slime de terra grande", "/com.daniel.Images/Inimigos/Slime Earthiii.png", 22, 35, 40, 60, 35,  150, 45, TiposElementais.Terra, Comportamentos.padrao, 400, 250);
+        super("Slime de terra grande", "/com.daniel.Images/Inimigos/Slime Earthiii.png", 22, 35, 40, 60, 35,  30,150, 45, TiposElementais.Terra, Comportamentos.padrao, 400, 250);
         this.absorcao = new TiposElementais[]{TiposElementais.Terra};
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.resistencias = new TiposElementais[]{TiposElementais.Eletrico, TiposElementais.Vento};

@@ -80,11 +80,11 @@ public class GerenciadorDeBatalha {
         }
         else{
             this.controller.ShowProgressBar(true);
-            this.pBar += (double) this.player.getVelocidade() /1000;
-            this.iBar += (double) this.inimigo.getVelocidade() /1000;
+            this.pBar += (double) this.player.getVelocidade() /100;
+            this.iBar += (double) this.inimigo.getVelocidade() /100;
             this.controller.SetPlyerBar(pBar);
             Timeline timeline = new Timeline();
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.2), event -> {
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.1), event -> {
                 try {
                     VerificarTurno();
                 } catch (IOException | PlayerInexistenteException e) {
@@ -244,6 +244,5 @@ public class GerenciadorDeBatalha {
     }
     private void Derrota() throws IOException {
         this.tipoBatalha.Derrota();
-        this.controller.Derrota();
     }
 }

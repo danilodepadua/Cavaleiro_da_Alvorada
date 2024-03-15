@@ -9,7 +9,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeGeloNv3 extends Inimigo {
     public InimigoSlimeDeGeloNv3() {
-        super("Slime de gelo grande", "/com.daniel.Images/Inimigos/Slime Iceiii.png", 10, 40, 35, 45, 40, 5, 5, TiposElementais.Gelo, Comportamentos.padrao, 300, 105);
+        super("Slime de gelo grande", "/com.daniel.Images/Inimigos/Slime Iceiii.png", 10, 40, 35, 45, 40, 30,5, 5, TiposElementais.Gelo, Comportamentos.padrao, 300, 105);
         this.magias.add(new Gelo());
         this.absorcao = new TiposElementais[]{TiposElementais.Terra};
         this.fraquezas = new TiposElementais[]{TiposElementais.Fogo};

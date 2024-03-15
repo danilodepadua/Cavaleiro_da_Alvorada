@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.game.Main;
 import javafx.animation.FadeTransition;
@@ -7,6 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -157,7 +159,7 @@ public class Utilidades {
             button.setStyle("-fx-background-color:  #241811; -fx-border-color: #eccb7e;-fx-min-width: 200; -fx-min-height: 50;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 17;");
         });
         button.setOnMouseClicked(event -> {
-            audioPlayer.play("/com.daniel.audios/som_click.wav", false);
+            JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_click.wav");
         });
     }
     public static void configurarBotoesTelaBestiario(Button button) {
@@ -177,7 +179,7 @@ public class Utilidades {
             button.setStyle("-fx-background-color:   #140e0a; -fx-border-color: #eccb7e;-fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'; -fx-font-size: 15;");
         });
         button.setOnMouseClicked(event -> {
-            audioPlayer.play("/com.daniel.audios/som_click.wav", false);
+            JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_click.wav");
         });
     }
 
@@ -231,7 +233,7 @@ public class Utilidades {
                     Duration.millis(time),
                     event -> {
                         texto.setText(texto.getText() + mensagem.charAt(finalI));
-                        audioPlayer.play("/com.daniel.audios/som_beep2.wav", false);
+                        JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_beep2.wav");
                     }));
 
             // Adiciona um KeyFrame para limpar o texto se for o último caractere da mensagem
@@ -318,6 +320,10 @@ public class Utilidades {
             }
         }
     }
-
-
+    public static void AlinharHorizontal(Node node, Double margemDir ){
+        node.setLayoutX((Main.getLargura()*margemDir) - (node.getBoundsInLocal().getWidth()/2));
+    }
+    public static void AlinharVertical(Node node, Double margemTopo ){
+        node.setLayoutY((Main.getAltura()*margemTopo) - (node.getBoundsInLocal().getHeight()/2));
+    }
 }

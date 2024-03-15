@@ -10,8 +10,8 @@ public abstract class Inimigo extends Personagem {
     private final Comportamentos comp;
     protected TiposElementais tipoDano;
     protected LootTable lootTable = new LootTable();
-    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
-        super(Nome, Imagem, fr, in, rs, vel);
+    public Inimigo(String Nome, String Imagem, int posicao, int fr, int in, int rs, int vel, int sorte, int ModHp, int ModMp, TiposElementais tipoDn, Comportamentos comp, int dropXp, int moedas) {
+        super(Nome, Imagem, fr, in, rs, vel, sorte);
         this.HP += rs + ModHp;
         this.MP += in + ModMp;
         this.fraquezas = new TiposElementais[0];

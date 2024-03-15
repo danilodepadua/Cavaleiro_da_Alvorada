@@ -21,8 +21,6 @@ import static com.daniel.View.Utilidades.*;
 public class EvoluçaoController implements Initializable {
     private Integer  pontosDisp;
     @FXML
-    private AnchorPane panePrincipal;
-    @FXML
     private Button btnMaisForca;
 
     @FXML
@@ -30,6 +28,9 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     private Button btnMaisRes;
+
+    @FXML
+    private Button btnMaisSorte;
 
     @FXML
     private Button btnMaisVel;
@@ -44,6 +45,9 @@ public class EvoluçaoController implements Initializable {
     private Button btnMenosRes;
 
     @FXML
+    private Button btnMenosSorte;
+
+    @FXML
     private Button btnMenosVel;
 
     @FXML
@@ -53,6 +57,9 @@ public class EvoluçaoController implements Initializable {
     private Button btnVoltar;
 
     @FXML
+    private AnchorPane panePrincipal;
+
+    @FXML
     private ProgressBar progBarForca;
 
     @FXML
@@ -60,6 +67,9 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     private ProgressBar progBarRes;
+
+    @FXML
+    private ProgressBar progBarSorte;
 
     @FXML
     private ProgressBar progBarVel;
@@ -78,6 +88,9 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     private Text txtRes;
+
+    @FXML
+    private Text txtSorte;
 
     @FXML
     private Text txtVelocidade;
@@ -123,6 +136,15 @@ public class EvoluçaoController implements Initializable {
             progBarVel.setProgress(progBarVel.getProgress() + 0.01);
         }
     }
+    @FXML
+    void onClickMaisSorte(ActionEvent event) throws PlayerInexistenteException {
+        if(pontosDisp>0) {
+            pontosDisp--;
+            Player.getPlayer().setPontos(pontosDisp);
+            txtPontos.setText(""+ pontosDisp);
+            progBarSorte.setProgress(progBarSorte.getProgress() + 0.01);
+        }
+    }
 
     @FXML
     void onClickMenosForca(ActionEvent event) throws PlayerInexistenteException {
@@ -134,6 +156,15 @@ public class EvoluçaoController implements Initializable {
         }
     }
 
+    @FXML
+    void onClickMenosSorte(ActionEvent event) throws PlayerInexistenteException {
+        if (progBarSorte.getProgress() > 0.25 && progBarSorte.getProgress() > (Player.getPlayer().getForca() / 100.0)) {
+            pontosDisp++;
+            Player.getPlayer().setPontos(pontosDisp);
+            txtPontos.setText("" + pontosDisp);
+            progBarSorte.setProgress(progBarSorte.getProgress() - 0.01);
+        }
+    }
     @FXML
     void onClickMenosInt(ActionEvent event) throws PlayerInexistenteException {
         if (progBarInt.getProgress() > 0.25 && progBarInt.getProgress() > (Player.getPlayer().getInteligencia() / 100.0)) {
@@ -219,13 +250,14 @@ public class EvoluçaoController implements Initializable {
         int velocidade = calcularValorDaBarra(progBarVel);
         int res = calcularValorDaBarra(progBarRes);
         int inteligencia = calcularValorDaBarra(progBarInt);
+        int sorte = calcularValorDaBarra(progBarSorte);
 
         Player.getPlayer().aumentaForcaProgress(forca);
         Player.getPlayer().aumentaInteligenciaProgess(inteligencia);
         Player.getPlayer().aumentaResistenciaProgress(res);
         Player.getPlayer().aumentaVelocidadeProgress(velocidade);
-
         Player.getPlayer().setPontos(pontosDisp);
+        Player.getPlayer().aumentaSorteProgress(sorte);
     }
     @FXML
     void onClickVoltar(ActionEvent event) throws IOException {

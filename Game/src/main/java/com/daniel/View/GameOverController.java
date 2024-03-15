@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
@@ -30,9 +31,7 @@ public class GameOverController implements Initializable {
     private AnchorPane panePrincipal;
     @FXML
     void onClickCarregar(ActionEvent event) throws IOException, SaveInexistenteException {
-        Main.saveManager.Carregar();
-        audioPlayer.stop();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaInicial.fxml")).load());
     }
 
     @FXML
@@ -42,7 +41,7 @@ public class GameOverController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        audioPlayer.play("/com.daniel.audios/som_derrota.wav", false);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/som_derrota.wav");
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fundo.png");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnSair);

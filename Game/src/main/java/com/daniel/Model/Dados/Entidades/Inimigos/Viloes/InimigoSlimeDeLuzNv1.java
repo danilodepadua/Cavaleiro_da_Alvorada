@@ -9,7 +9,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeLuzNv1 extends Inimigo {
     public InimigoSlimeDeLuzNv1() {
-        super("Slime de luz pequeno", "/com.daniel.Images/Inimigos/Slime Holyi.png", 26, 20, 35, 15, 25, 45, 50, TiposElementais.Luz, Comportamentos.padrao, 250, 150);
+        super("Slime de luz pequeno", "/com.daniel.Images/Inimigos/Slime Holyi.png", 26, 20, 35, 15, 25, 20,45, 50, TiposElementais.Luz, Comportamentos.padrao, 250, 150);
         this.magias.add(new Luz());
         this.magias.add(new Cure());
         this.absorcao = new TiposElementais[]{TiposElementais.Fogo};

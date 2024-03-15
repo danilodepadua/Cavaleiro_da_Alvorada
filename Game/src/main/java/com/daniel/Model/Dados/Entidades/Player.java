@@ -43,8 +43,8 @@ public class Player extends Personagem implements Serializable {
     private int pontos;
     private ArrayList<Cidade> cidadesConehcidas = new ArrayList<>();
     private Bestiario bestiario = new Bestiario();
-    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {
-        super(Name, Img, Force, Int, Res, Velocity);
+    private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int sorte) throws PlayerInexistenteException {
+        super(Name, Img, Force, Int, Res, Velocity, sorte);
         this.HP += 589;
         this.MP +=103;
         this.currentHp = this.getHP();
@@ -80,12 +80,12 @@ public class Player extends Personagem implements Serializable {
         player = this;
     }
     //Criar a instancia unica do player
-    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res) throws PlayerInexistenteException {
+    public static Player CreatePlayer(String Img, int Force, int Int, String Name, int Velocity, int Res, int sorte) throws PlayerInexistenteException {
         if(player != null){
             return player;
         }
         else{
-            return new Player(Img, Force, Int, Name, Velocity, Res);
+            return new Player(Img, Force, Int, Name, Velocity, Res, sorte);
         }
     }
     //get do player
@@ -209,9 +209,6 @@ public class Player extends Personagem implements Serializable {
     }
     public int getPontos() {
         return pontos;
-    }
-    public int getXp() {
-        return this.currentXp;
     }
     public List<Quest> getQuestsAtuais() {
         return questAtuais;

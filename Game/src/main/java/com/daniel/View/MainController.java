@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
@@ -23,9 +24,6 @@ public class MainController implements Initializable {
     private AnchorPane Screen;
 
     @FXML
-    private Button btnCarregar;
-
-    @FXML
     private Button btnConfig;
 
     @FXML
@@ -42,15 +40,7 @@ public class MainController implements Initializable {
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
-        audioPlayerInicial.stop();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaDeHistoria.fxml")).load());
-
-    }
-    @FXML
-    void Carregar(ActionEvent event) throws IOException, SaveInexistenteException {
-        audioPlayerInicial.stop();
-        Main.saveManager.Carregar();
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaSaves.fxml")).load());
     }
     @FXML
     void Configurar(ActionEvent event) throws IOException {
@@ -59,15 +49,12 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        audioPlayerInicial.stop();
-        audioPlayerInicial.play("/com.daniel.audios/musica_menu.wav", true);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/NovasMusicas/Eventos/MenuInical/Prologue_intro.mp3", "/com.daniel.audios/NovasMusicas/Eventos/MenuInical/Prologue_loop.mp3");
         definirBackground(Screen, "/com.daniel.Images/Fundos/Guerreiro.jpg");
-        configurarBotoes(btnCarregar);
         configurarBotoes(btnConfig);
         configurarBotoes(btnSair);
         configurarBotoes(btnNovoJogo);
         configurarBotoes(btnCreditos);
-        btnCarregar.setDisable(!Main.saveManager.SaveExistente());
         identificarTextos(Screen);
     }
 

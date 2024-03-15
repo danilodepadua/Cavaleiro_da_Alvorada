@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.NPC;
 import com.daniel.game.Main;
@@ -36,7 +37,7 @@ public class AnciaoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         identificarTextos(Screen);
         //Main.cidadeAtual.audioPlayer.stop();
-        audioPlayer.play("/com.daniel.audios/msc_anciao.wav", true);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_anciao.wav");
         definirBackground(Screen, "/com.daniel.Images/Fundos/CasaDoAnciao.jpg");
         contornarBotaoVoltar(btnVoltar);
         configurarNPCdaCidade();
@@ -78,7 +79,6 @@ public class AnciaoController implements Initializable {
     }
     @FXML
     void OnActionVoltar(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     private void carregarImagemNPC(String nome) {

@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -33,7 +34,6 @@ public class CompraOuVendaController implements Initializable {
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        audioPlayer.stop();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
 
@@ -58,7 +58,7 @@ public class CompraOuVendaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        audioPlayer.play("/com.daniel.audios/msc_loja.wav", true);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_loja.wav");
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/FundoLoja.jpg");
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnComprar);

@@ -1,5 +1,6 @@
 package com.daniel.game;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Cidades.Vilas.Auroraville;
@@ -24,10 +25,23 @@ public class Main extends Application {
     public static SaveManager saveManager = new SaveManager(); //instancia a classe de manejar o save
 
     public static AudioPlayer audioPlayer = new AudioPlayer();
+
+    private static int saveAtual = 1;
+    public static int getSaveAtual(){
+        return saveAtual;
+    }
+    public static void setSaveAtual(int num){
+        if(num<1 || num >3){
+            saveAtual = 1;
+        }
+        else{
+            saveAtual = num;
+        }
+    }
     public static void ChangeScene(Parent root){
         Scene scene = new Scene(root, CurrentStage.getWidth(), CurrentStage.getHeight());
         CurrentStage.setScene(scene);
-        audioPlayer.play("/com.daniel.audios/som_click.wav", false);
+        JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_click.wav");
     }
 
     public static double getLargura(){

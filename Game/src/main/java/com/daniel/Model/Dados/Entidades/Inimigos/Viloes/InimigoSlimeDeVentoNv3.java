@@ -10,7 +10,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeVentoNv3 extends Inimigo {
     public InimigoSlimeDeVentoNv3() {
-        super("Slime de vento grande", "/com.daniel.Images/Inimigos/Slime Windiii.png", 19, 45, 35, 35, 60, 55, 45, TiposElementais.Vento, Comportamentos.padrao, 100, 5);
+        super("Slime de vento grande", "/com.daniel.Images/Inimigos/Slime Windiii.png", 19, 45, 35, 35, 60, 20,55, 45, TiposElementais.Vento, Comportamentos.padrao, 100, 5);
         this.absorcao = new TiposElementais[]{TiposElementais.Vento};
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.fraquezas = new TiposElementais[]{TiposElementais.Terra};

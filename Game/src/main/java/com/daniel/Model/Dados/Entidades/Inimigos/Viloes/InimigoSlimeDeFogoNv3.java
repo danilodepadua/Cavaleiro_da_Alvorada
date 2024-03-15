@@ -11,7 +11,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class InimigoSlimeDeFogoNv3 extends Inimigo {
     public InimigoSlimeDeFogoNv3() {
-        super("Slime de fogo grande", "/com.daniel.Images/Inimigos/Slime Fireiii.png", 7, 55, 30, 35, 35, 65, 35, TiposElementais.Gelo, Comportamentos.padrao, 370, 105);
+        super("Slime de fogo grande", "/com.daniel.Images/Inimigos/Slime Fireiii.png", 7, 55, 30, 35, 35, 30,65, 35, TiposElementais.Gelo, Comportamentos.padrao, 370, 105);
         this.imunidades = new TiposElementais[]{TiposElementais.NaoElemental};
         this.absorcao = new TiposElementais[]{TiposElementais.Fogo};
         this.fraquezas = new TiposElementais[]{TiposElementais.Agua, TiposElementais.Gelo};

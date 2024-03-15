@@ -1,5 +1,6 @@
 package com.daniel.View;
 
+import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
@@ -39,6 +40,9 @@ public class CriarPersonagemController implements Initializable {
     private ProgressBar BarraRes;
 
     @FXML
+    private ProgressBar BarraSorte;
+
+    @FXML
     private ProgressBar BarraVel;
 
     @FXML
@@ -48,31 +52,6 @@ public class CriarPersonagemController implements Initializable {
     private Button btnCriar;
 
     @FXML
-    private Button btnProxSkin;
-
-    @FXML
-    private Button btnSkinAnterior;
-
-    @FXML
-    private ImageView imgBonecos;
-
-    @FXML
-    private Text txtForce;
-
-    @FXML
-    private Text txtInt;
-
-    @FXML
-    private Text txtPontos;
-
-    @FXML
-    private Text txtRes;
-
-    @FXML
-    private Text txtVelocidade;
-    @FXML
-    private AnchorPane panePrincipal;
-    @FXML
     private Button btnMaisForca;
 
     @FXML
@@ -80,6 +59,9 @@ public class CriarPersonagemController implements Initializable {
 
     @FXML
     private Button btnMaisRes;
+
+    @FXML
+    private Button btnMaisSorte;
 
     @FXML
     private Button btnMaisVel;
@@ -94,9 +76,42 @@ public class CriarPersonagemController implements Initializable {
     private Button btnMenosRes;
 
     @FXML
+    private Button btnMenosSorte;
+
+    @FXML
     private Button btnMenosVel;
+
+    @FXML
+    private Button btnProxSkin;
+
+    @FXML
+    private Button btnSkinAnterior;
+
+    @FXML
+    private ImageView imgBonecos;
+
+    @FXML
+    private AnchorPane panePrincipal;
+
+    @FXML
+    private Text txtForce;
+
+    @FXML
+    private Text txtInt;
+
+    @FXML
+    private Text txtPontos;
+
+    @FXML
+    private Text txtRes;
+
+    @FXML
+    private Text txtSorte;
+
+    @FXML
+    private Text txtVelocidade;
+
     private static final String PROGRESS_BAR_COLOR = "-fx-accent:   #ad8a37; ";
-    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     void Criar(ActionEvent event) throws IOException, PlayerInexistenteException {
@@ -107,9 +122,9 @@ public class CriarPersonagemController implements Initializable {
         int velocidade = calcularValorDaBarra(BarraVel);
         int res = calcularValorDaBarra(BarraRes);
         int Int = calcularValorDaBarra(BarraInt);
-        Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res);
+        int sorte = calcularValorDaBarra(BarraSorte);
+        Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res, sorte);
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
-        audioPlayer.stop();
     }
     @FXML
     void MaisForca(ActionEvent event) {
@@ -122,13 +137,21 @@ public class CriarPersonagemController implements Initializable {
         }
     }
     @FXML
+    void MaisSorte(ActionEvent event) {
+        if(pontosDisp>0) {
+            pontosDisp--;
+            txtPontos.setText(pontosDisp.toString());
+            BarraSorte.setProgress(BarraSorte.getProgress() + 0.01);
+            atualizarBotao();
+        }
+    }
+    @FXML
     void MaisVel(ActionEvent event) {
         if(pontosDisp>0) {
             pontosDisp--;
             txtPontos.setText(pontosDisp.toString());
             BarraVel.setProgress(BarraVel.getProgress() + 0.01);
             atualizarBotao();
-
         }
     }
     @FXML
@@ -138,7 +161,6 @@ public class CriarPersonagemController implements Initializable {
         txtPontos.setText(pontosDisp.toString());
         BarraRes.setProgress(BarraRes.getProgress() + 0.01);
         atualizarBotao();
-
         }
     }
     @FXML
@@ -148,7 +170,15 @@ public class CriarPersonagemController implements Initializable {
             txtPontos.setText(pontosDisp.toString());
             BarraForca.setProgress(BarraForca.getProgress() - 0.01);
             atualizarBotao();
-
+        }
+    }
+    @FXML
+    void MenosSorte(ActionEvent event) {
+        if(BarraSorte.getProgress() > 0.25) {
+            pontosDisp++;
+            txtPontos.setText(pontosDisp.toString());
+            BarraVel.setProgress(BarraSorte.getProgress() - 0.01);
+            atualizarBotao();
         }
     }
     @FXML
@@ -158,7 +188,6 @@ public class CriarPersonagemController implements Initializable {
             txtPontos.setText(pontosDisp.toString());
             BarraVel.setProgress(BarraVel.getProgress() - 0.01);
             atualizarBotao();
-
         }
     }
     @FXML
@@ -196,7 +225,7 @@ public class CriarPersonagemController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        audioPlayer.play("/com.daniel.audios/msc_criacaodepersonagem.wav", true);
+        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_criacaodepersonagem.wav");
         btnCriar.setDisable(true);
 
 
@@ -204,6 +233,7 @@ public class CriarPersonagemController implements Initializable {
         BarraRes.setStyle(PROGRESS_BAR_COLOR);
         BarraInt.setStyle(PROGRESS_BAR_COLOR);
         BarraVel.setStyle(PROGRESS_BAR_COLOR);
+        BarraSorte.setStyle(PROGRESS_BAR_COLOR);
 
         configurarBotoes(btnCriar);
         configurarBotoes(btnProxSkin);
@@ -212,23 +242,27 @@ public class CriarPersonagemController implements Initializable {
         configurarBotoes(btnMaisInt);
         configurarBotoes(btnMaisRes);
         configurarBotoes(btnMaisVel);
+        configurarBotoes(btnMaisSorte);
 
         configurarBotoes(btnMenosForca);
         configurarBotoes(btnMenosRes);
         configurarBotoes(btnMenosInt);
         configurarBotoes(btnMenosVel);
+        configurarBotoes(btnMenosSorte);
         txtPontos.setText(""+pontosDisp);
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
         configurarOuvinte(BarraInt, txtInt);
         configurarOuvinte(BarraVel, txtVelocidade);
         configurarOuvinte(BarraRes, txtRes);
         configurarOuvinte(BarraForca, txtForce);
+        configurarOuvinte(BarraSorte, txtSorte);
 
         // Definir os textos iniciais com os valores iniciais das barras
         txtVelocidade.setText(String.valueOf(calcularValorDaBarra(BarraVel)));
         txtForce.setText(String.valueOf(calcularValorDaBarra(BarraForca)));
         txtRes.setText(String.valueOf(calcularValorDaBarra(BarraRes)));
         txtInt.setText(String.valueOf(calcularValorDaBarra(BarraInt)));
+        txtSorte.setText(String.valueOf(calcularValorDaBarra(BarraSorte)));
 
         images = new ArrayList<>();
         images.add("/com.daniel.Images/Personagens/Homi.png");

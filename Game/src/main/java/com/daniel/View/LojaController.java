@@ -91,7 +91,7 @@ public class LojaController implements Initializable {
                 jogoFachada.venderItem(itemSelecionado);
                 txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
                 configModoVenda();
-                somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
+                JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_moedas.wav");
                 itemSelecionado = null;
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
@@ -101,7 +101,7 @@ public class LojaController implements Initializable {
             try {
                 jogoFachada.comprarItem(itemSelecionado);
                 txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
-                somCompraVenda.play("/com.daniel.audios/som_moedas.wav", false);
+                JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_moedas.wav");
             } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |
                      SemMoedasParaLojaException e) {
                 throw new RuntimeException(e);

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.CriarPersonagemController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.CriarPersonagemController">
    <children>
       <ProgressBar fx:id="BarraForca" layoutX="516.0" layoutY="224.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
       <Button fx:id="btnMenosForca" layoutX="459.0" layoutY="217.0" mnemonicParsing="false" onAction="#MenosForca" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
@@ -110,7 +110,7 @@
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Pane layoutX="837.0" layoutY="218.0" prefHeight="208.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
+      <Pane layoutX="837.0" layoutY="218.0" prefHeight="242.0" prefWidth="274.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;">
          <children>
             <VBox layoutX="14.0" layoutY="19.0" prefHeight="175.0" prefWidth="233.0" spacing="25.0">
                <children>
@@ -170,6 +170,20 @@
                         </Text>
                      </children>
                   </HBox>
+                  <HBox layoutX="10.0" layoutY="151.0" prefHeight="0.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtSorte" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
+                           <font>
+                              <Font name="Barlow Condensed SemiBold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
@@ -188,7 +202,7 @@
             </Text>
          </children>
       </HBox>
-      <Button fx:id="btnCriar" layoutX="516.0" layoutY="500.0" mnemonicParsing="false" onAction="#Criar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" stylesheets="@style.css" text="Criar" textFill="#eccb7e">
+      <Button fx:id="btnCriar" layoutX="517.0" layoutY="523.0" mnemonicParsing="false" onAction="#Criar" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" stylesheets="@style.css" text="Criar" textFill="#eccb7e">
          <font>
             <Font name="Barlow Condensed SemiBold" size="17.0" />
          </font>
@@ -245,6 +259,30 @@
       <Text fill="#eccb7e" layoutX="837.0" layoutY="77.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Com seus pontos, distribua-os da forma que preferir entre seus atributos. &#10;&#10;No entanto, lembre-se de que investir &#10;exclusivamente em um único atributo &#10;pode resultar em situações desfavoráveis no futuro." wrappingWidth="274.4000000000001">
          <font>
             <Font name="Barlow Condensed SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="BarraSorte" layoutX="516.0" layoutY="461.0" minWidth="100.0" prefWidth="200.0" progress="0.25" />
+      <Button fx:id="btnMaisSorte" layoutX="729.0" layoutY="454.0" maxWidth="25.0" mnemonicParsing="false" onAction="#MaisSorte" prefHeight="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaBaixoAmarelaDireita.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnMenosSorte" layoutX="459.0" layoutY="453.0" mnemonicParsing="false" onAction="#MenosSorte" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" textFill="#eccb7e">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../com.daniel.Images/Setas/SetaAmarelaEsquerda.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text fill="#eccb7e" layoutX="516.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
    </children>

@@ -1,5 +1,6 @@
 package com.daniel.Controller;
 
+import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Quests.Quest;
@@ -19,6 +20,7 @@ public class JogoFachada {
     private ControlePlayerXP controlePlayerXP;
     private ControlePlayerQuests controlePlayerQuests;
     private GerenciadorDeBatalha gerenciadorDeBatalha;
+    private AudioPlayer audioPlayer;
 
     public JogoFachada()  {
         controleLoja = new ControleLoja(this);
@@ -29,6 +31,7 @@ public class JogoFachada {
         controlePlayerXP = new ControlePlayerXP();
         controlePlayerQuests = new ControlePlayerQuests(this);
         gerenciadorDeBatalha = new GerenciadorDeBatalha();
+        audioPlayer = new AudioPlayer();
     }
 
     public static JogoFachada getInstance()  {
@@ -36,6 +39,10 @@ public class JogoFachada {
             JogoFachada.instance = new JogoFachada();
         }
         return instance;
+    }
+
+    public AudioPlayer getAudioPlayer() {
+        return audioPlayer;
     }
 
     public void comprarItem(Item item) throws PlayerInexistenteException, RemoverCoinsException, CompraErroException, SemMoedasParaLojaException {

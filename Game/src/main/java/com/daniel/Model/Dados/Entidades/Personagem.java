@@ -18,7 +18,8 @@ public abstract class Personagem implements Serializable {
     protected int velocidade; //define quem vai iniciar o combate
     protected int inteligencia; //atributo pra aumentar os poderes magicos
     protected int resistencia; //atributo pra resistir a danos
-    public Personagem(String Nome, String Imagem, int fr, int in, int rs, int vel){
+    protected int sorte; //atributo pra variação de resultados
+    public Personagem(String Nome, String Imagem, int fr, int in, int rs, int vel, int sorte){
         this.nome = Nome;
         this.ImagePath = Imagem;
         this.resistencia = rs;
@@ -27,6 +28,7 @@ public abstract class Personagem implements Serializable {
         this.velocidade = vel;
         this.HP = this.resistencia *5;
         this.MP = this.inteligencia *5;
+        this.sorte = sorte;
     }
     public int getHP() {
         return HP;
@@ -47,6 +49,7 @@ public abstract class Personagem implements Serializable {
         return inteligencia;
     }
     public int getResistencia(){return resistencia;}
+    public int getSorte(){return sorte;}
     public Image getImagem() {
         return new Image(Main.class.getResource(ImagePath).toString());
     }
@@ -72,4 +75,5 @@ public abstract class Personagem implements Serializable {
     public void aumentaVelocidadeProgress(int quantidade) {
         velocidade = quantidade;
     }
+    public void aumentaSorteProgress(int quantidade){velocidade = quantidade;}
 }

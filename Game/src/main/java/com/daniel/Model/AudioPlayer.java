@@ -1,49 +1,48 @@
 package com.daniel.Model;
 
+import com.daniel.game.Main;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import javafx.scene.control.Button;
 
 import java.io.Serializable;
-import java.net.URL;
 
 public class AudioPlayer implements Serializable {
 
     private MediaPlayer mediaPlayer;
+    private AudioClip audioClip;
 
-    public void play(String audioPath, boolean loop) {
+    private void stop() {
         if (mediaPlayer != null) {
-            stop(); //acaba com a musica atual
-        }
-
-        URL audioUrl = getClass().getResource(audioPath);
-
-        // debug
-        if (audioUrl == null) {
-            System.err.println("arquivo de audio nao encontrado: " + audioPath);
-            return;
-        }
-
-        Media media = new Media(audioUrl.toString());
-        mediaPlayer = new MediaPlayer(media);
-
-        if (loop) {
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        }
-
-        mediaPlayer.setVolume(1.0);
-        mediaPlayer.setOnEndOfMedia(() -> {
-        });
-        mediaPlayer.play();
-    }
-
-    public void stop() {
-        if (mediaPlayer != null) {
+            System.out.println("Parando musica");
             mediaPlayer.stop();
             mediaPlayer.dispose();
         }
     }
 
+    public void PlayLoop(String pathItroducao, String pathLoop){
+        stop();
+        Media midia = new Media(Main.class.getResource(pathItroducao).toString());
+        mediaPlayer = new MediaPlayer(midia);
+        mediaPlayer.setOnEndOfMedia(() -> {
+            Media midiaLoop = new Media(Main.class.getResource(pathLoop).toString());
+            mediaPlayer = new MediaPlayer(midiaLoop);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.play();
+        });
+        mediaPlayer.play();
+    }
+    public void PlayLoop(String loop){
+        stop();
+        Media midia = new Media(Main.class.getResource(loop).toString());
+        mediaPlayer = new MediaPlayer(midia);
+        mediaPlayer.play();
+    }
+    public void PlayEfeito(String pathEfeito){
+        audioClip = new AudioClip(Main.class.getResource(pathEfeito).toString());
+        audioClip.play();
+    }
 
     public void configVolume(double normalizedVolume) {
         if (mediaPlayer != null) {
@@ -54,7 +53,7 @@ public class AudioPlayer implements Serializable {
 
     public void somMouseClick(Button button, String audioPath) {
         button.setOnMouseClicked(event -> {
-            play(audioPath, false);
+            PlayEfeito(audioPath);
         });
     }
 

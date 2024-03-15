@@ -13,4 +13,11 @@ public class Save implements Serializable {
     }
     protected Player player;
     protected Cidade cidade;
+
+    public Player getPlayer(){
+        return player;
+    }
+    public Cidade getCidade(){
+        return cidade;
+    }
 }

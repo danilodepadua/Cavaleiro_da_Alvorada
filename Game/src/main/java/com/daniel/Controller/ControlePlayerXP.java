@@ -8,7 +8,7 @@ public class ControlePlayerXP {
     //Classe que vai gerir a manipulaçao de XP do Player.
 
     public boolean ganharXp(int xp) throws PlayerInexistenteException { //metodo pra ganhar o xp
-        Player.getPlayer().setCurrentXp(Player.getPlayer().getXp()+xp);
+        Player.getPlayer().setCurrentXp(Player.getPlayer().getCurrentXp()+xp);
         return this.VerificarLevelUp();
     }
 
@@ -18,7 +18,9 @@ public class ControlePlayerXP {
             Player.getPlayer().mudarHP(Player.getPlayer().getHP()+90);
             Player.getPlayer().mudarMP(Player.getPlayer().getMP()+4);
             Player.getPlayer().setXpProx(Player.getPlayer().getXpProx()+Player.getPlayer().getLvl()*1000);
+            Player.getPlayer().setPontos(Player.getPlayer().getPontos()+3);
             aprenderMagia();
+            System.out.println("XpProx: " + Player.getPlayer().getXpProx());
             VerificarLevelUp();
             return true;
         }
