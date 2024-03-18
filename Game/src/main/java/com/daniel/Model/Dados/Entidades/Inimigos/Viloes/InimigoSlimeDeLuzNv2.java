@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Comidas.CoxaFrango;
 import com.daniel.Model.Magias.Poderes.Cura;
 import com.daniel.Model.Magias.Poderes.IntUp;
 import com.daniel.Model.Magias.Poderes.Luz;
@@ -17,7 +16,5 @@ public class InimigoSlimeDeLuzNv2 extends Inimigo {
         this.absorcao = new TiposElementais[]{TiposElementais.Fogo};
         this.fraquezas = new TiposElementais[]{TiposElementais.Escuridao};
         this.imunidades = new TiposElementais[]{TiposElementais.Luz};
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 1, 0.3);
-
     }
 }

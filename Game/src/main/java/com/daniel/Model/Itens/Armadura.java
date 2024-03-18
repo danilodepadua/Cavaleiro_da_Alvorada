@@ -1,11 +1,12 @@
 package com.daniel.Model.Itens;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Magias.TiposElementais;
 
 public abstract class Armadura extends Item {
     protected int aumentoDefesaFisica;
     protected int aumentoDefesaMagica;
-    public Armadura(String imgPath, String nome, int quant, int preco, String desc, int aumentoDefesaFisica, int aumentoDefesaMagica) {
+    public Armadura(String imgPath, TextoNode nome, int quant, int preco, TextoNode desc, int aumentoDefesaFisica, int aumentoDefesaMagica) {
         super(imgPath, nome, quant, preco, desc);
         this.aumentoDefesaFisica = aumentoDefesaFisica;
         this.aumentoDefesaMagica = aumentoDefesaMagica;

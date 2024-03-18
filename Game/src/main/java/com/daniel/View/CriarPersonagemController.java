@@ -3,6 +3,8 @@ package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
+import com.daniel.Model.Dados.Textos.TextosIntroducao;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -30,6 +32,48 @@ public class CriarPersonagemController implements Initializable {
     private List<String> images;
     private int indiceAtual;
 
+
+    @FXML
+    private Text Txt_Dica;
+
+    @FXML
+    private Text Txt_Foca1;
+
+    @FXML
+    private Text Txt_Forca;
+
+    @FXML
+    private Text Txt_Int;
+
+    @FXML
+    private Text Txt_Int1;
+
+    @FXML
+    private Text Txt_Nome;
+
+    @FXML
+    private Text Txt_Pontos;
+
+    @FXML
+    private Text Txt_Res;
+
+    @FXML
+    private Text Txt_Res1;
+
+    @FXML
+    private Text Txt_Sorte;
+
+    @FXML
+    private Text Txt_Sorte1;
+
+    @FXML
+    private Text Txt_Titulo;
+
+    @FXML
+    private Text Txt_Vel;
+
+    @FXML
+    private Text Txt_Vel1;
     @FXML
     private ProgressBar BarraForca;
 
@@ -124,6 +168,7 @@ public class CriarPersonagemController implements Initializable {
         int Int = calcularValorDaBarra(BarraInt);
         int sorte = calcularValorDaBarra(BarraSorte);
         Player.CreatePlayer(images.get(indiceAtual), forca, Int, nomeDoJogador, velocidade, res, sorte);
+        Main.cidadeAtual = Player.getPlayer().getCidadesConehcidas().getFirst();
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
     @FXML
@@ -228,6 +273,21 @@ public class CriarPersonagemController implements Initializable {
         JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_criacaodepersonagem.wav");
         btnCriar.setDisable(true);
 
+        Txt_Dica.setText(TextosIntroducao.getDica());
+        Txt_Nome.setText(TextosInterface.getNome()+":");
+        Txt_Forca.setText(TextosInterface.getForca());
+        Txt_Int.setText(TextosInterface.getInteli());
+        Txt_Vel.setText(TextosInterface.getVel());
+        Txt_Sorte.setText(TextosInterface.getSorte());
+        Txt_Res.setText(TextosInterface.getResis());
+        Txt_Foca1.setText(TextosInterface.getForca()+":");
+        Txt_Int1.setText(TextosInterface.getInteli()+":");
+        Txt_Vel1.setText(TextosInterface.getVel()+":");
+        Txt_Sorte1.setText(TextosInterface.getSorte()+":");
+        Txt_Res1.setText(TextosInterface.getResis()+":");
+        Txt_Pontos.setText(TextosInterface.getPontos()+":");
+        Txt_Titulo.setText(TextosInterface.getCriarPerso());
+        btnCriar.setText(TextosInterface.getCriar());
 
         BarraForca.setStyle(PROGRESS_BAR_COLOR);
         BarraRes.setStyle(PROGRESS_BAR_COLOR);

@@ -54,6 +54,5 @@ public class MonteClaro extends Cidade {
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoSalvar());
-        this.botoes.add(criarBotaoAnciao());
     }
 }

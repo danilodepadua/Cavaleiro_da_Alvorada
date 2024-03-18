@@ -1,5 +1,6 @@
 package com.daniel.Model;
 
+import com.daniel.View.ConfiguracoesUsuario;
 import com.daniel.game.Main;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -28,19 +29,24 @@ public class AudioPlayer implements Serializable {
         mediaPlayer.setOnEndOfMedia(() -> {
             Media midiaLoop = new Media(Main.class.getResource(pathLoop).toString());
             mediaPlayer = new MediaPlayer(midiaLoop);
+            mediaPlayer.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
             mediaPlayer.play();
         });
+        mediaPlayer.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
         mediaPlayer.play();
     }
     public void PlayLoop(String loop){
         stop();
         Media midia = new Media(Main.class.getResource(loop).toString());
         mediaPlayer = new MediaPlayer(midia);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
         mediaPlayer.play();
     }
     public void PlayEfeito(String pathEfeito){
         audioClip = new AudioClip(Main.class.getResource(pathEfeito).toString());
+        audioClip.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
         audioClip.play();
     }
 

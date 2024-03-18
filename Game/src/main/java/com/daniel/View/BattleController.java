@@ -4,6 +4,7 @@ import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.BatalhaDeTurnos.*;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IEffects;
@@ -11,15 +12,20 @@ import com.daniel.Model.Itens.Item;
 import com.daniel.Model.Magias.Animacoes.SlashAnimation;
 import com.daniel.game.Main;
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -223,11 +229,65 @@ public class BattleController implements Initializable {
     public ImageView getEnimyEffect(){
         return EnimyEffect;
     }
-    public void Vitoria() throws PlayerInexistenteException, IOException {
-        Player.getPlayer().AtualizarStatus(this.gdb.player.getCurrentHp(), this.gdb.player.getCurrentMp());
+
+    public Timeline Destruir() {
+        Image image = EnimyImg.getImage();
+        int blockSize = 5; // Tamanho do bloco de pixels a ser removido
+
+        // Cria uma Timeline para a animação
+        Timeline timeline = new Timeline();
+
+        // Calcula o número total de blocos de 4x4 pixels na largura e altura da imagem
+        int totalRows = (int) (image.getHeight() / blockSize);
+        int totalColumns = (int) (image.getWidth() / blockSize);
+        int totalBlocksToRemove = totalRows * totalColumns;
+
+        System.out.println("Destruindo2");
+
+        for (int i = 0; i < totalBlocksToRemove; i++) {
+            System.out.println("Loop: " + i);
+
+            // Calcula a posição do bloco atual
+            int row = i / totalColumns;
+            int column = i % totalColumns;
+
+            // Calcula as coordenadas do bloco de pixels a ser removido
+            int startX = column * blockSize;
+            int startY = row * blockSize;
+            image = removeArea(image, startX, startY, blockSize, blockSize);
+            // Remove o bloco de pixels
+            Image finalImage = image;
+
+            // Adiciona o KeyValue em um KeyFrame com duração incremental
+            KeyValue kv = new KeyValue(EnimyImg.imageProperty(), finalImage);
+            KeyFrame keyFrame = new KeyFrame(Duration.millis(5 * i), kv);
+
+            // Adiciona o KeyFrame à Timeline
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        System.out.println("Destruindo5");
+
+        // Inicia a animação
+        return timeline;
     }
+    private Image removeArea(Image image, int startX, int startY, int widthToRemove, int heightToRemove) {
+        int width = (int) image.getWidth();
+        int height = (int) image.getHeight();
+        WritableImage writableImage = new WritableImage(width, height);
+        PixelWriter pixelWriter = writableImage.getPixelWriter();
 
-
+        // Copia os pixels da imagem original para a imagem gravável, exceto a área a ser removida
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                // Verifica se o pixel está dentro da área a ser removida
+                if (col < startX || col >= startX + widthToRemove || row < startY || row >= startY + heightToRemove) {
+                    pixelWriter.setArgb(col, row, image.getPixelReader().getArgb(col, row));
+                }
+            }
+        }
+        return writableImage;
+    }
     public void Atualiazar(){
         InfoVida.setText("HP: " + this.gdb.player.getCurrentHp() + "/" + this.gdb.player.getHP());
         InfoMp.setText("MP: " + this.gdb.player.getCurrentMp() + "/" + this.gdb.player.getMP());
@@ -328,8 +388,36 @@ public class BattleController implements Initializable {
         mensagem.add(s);
         mostrarResultado(mensagem);
     }
+    public void Fuga(int i){
+        TranslateTransition t = new TranslateTransition();
+        KeyFrame kf,kff;
+        if(i==1){
+            t.setNode(PlayerImg);
+            t.setFromX(PlayerImg.getLayoutX());
+            t.setToX(PlayerImg.getLayoutX()-1000);
+            t.setDuration(Duration.seconds(1));
+        }
+        else if(i==2){
+            t.setNode(EnimyImg);
+            t.setFromX(EnimyImg.getLayoutX());
+            t.setToX(EnimyImg.getLayoutX()+200);
+            t.setDuration(Duration.seconds(1));
+        }
+        t.setOnFinished(event -> {
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        t.play();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        BtnAtacar.setText(TextosInterface.getAtacar());
+        BtnFugir.setText(TextosInterface.getFugir());
+        BtnItens.setText(TextosInterface.getItem());
+        BtnMagias.setText(TextosInterface.getMagia());
         gdb = JogoFachada.getInstance().getGerenciadorDeBatalha();
         JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/NovasMusicas/Batalhas/BatalhaComum1/Battle-Abysswalker_intro.wav", "/com.daniel.audios/NovasMusicas/Batalhas/BatalhaComum1/Battle-Abysswalker_loop.wav");
         Screen.setBackground(new Background(new BackgroundImage(Main.cidadeAtual.getFundoBatalha(),
@@ -375,5 +463,15 @@ public class BattleController implements Initializable {
         SetaDescer.setGraphic(seta);
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
+    }
+    public void PrepararInimigo(){
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(EnimyImg.opacityProperty(), 0);
+        KeyValue kvf = new KeyValue(EnimyImg.opacityProperty(), 1);
+        KeyFrame kf = new KeyFrame(Duration.ZERO, kv);
+        KeyFrame kff = new KeyFrame(Duration.millis(500), kvf);
+        t.getKeyFrames().add(kf);
+        t.getKeyFrames().add(kff);
+        t.play();
     }
 }

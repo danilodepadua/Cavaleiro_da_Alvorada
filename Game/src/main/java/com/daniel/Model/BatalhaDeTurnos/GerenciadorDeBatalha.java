@@ -61,37 +61,37 @@ public class GerenciadorDeBatalha {
         System.out.println("Buscando turno");
         this.controller.Atualiazar();
         System.out.println("Player: " + pBar + ", Inimigo: " + iBar);
-        this.controller.MostrarInterfacePlayer(true);
         if(this.player.currentHp <=0){
             Derrota();
         }
         else if(this.inimigo.currentHp <= 0){
             Vitoria();
         }
-        else if(this.pBar >= 1){
-            this.pBar = 0;
-            System.out.println("Turno player //" + this.getClass().getName());
-            turnoPlayer();
-        }
-        else if(this.iBar >= 1){
-            System.out.println("Turno inimigo");
-            this.iBar = 0;
-            turnoInimigo();
-        }
-        else{
-            this.controller.ShowProgressBar(true);
-            this.pBar += (double) this.player.getVelocidade() /100;
-            this.iBar += (double) this.inimigo.getVelocidade() /100;
-            this.controller.SetPlyerBar(pBar);
-            Timeline timeline = new Timeline();
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.1), event -> {
-                try {
-                    VerificarTurno();
-                } catch (IOException | PlayerInexistenteException e) {
-                    throw new RuntimeException(e);
-                }
-            }));
-            timeline.play();
+        else {
+            this.controller.MostrarInterfacePlayer(true);
+            if (this.pBar >= 1) {
+                this.pBar = 0;
+                System.out.println("Turno player //" + this.getClass().getName());
+                turnoPlayer();
+            } else if (this.iBar >= 1) {
+                System.out.println("Turno inimigo");
+                this.iBar = 0;
+                turnoInimigo();
+            } else {
+                this.controller.ShowProgressBar(true);
+                this.pBar += (double) this.player.getVelocidade() / 100;
+                this.iBar += (double) this.inimigo.getVelocidade() / 100;
+                this.controller.SetPlyerBar(pBar);
+                Timeline timeline = new Timeline();
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.1), event -> {
+                    try {
+                        VerificarTurno();
+                    } catch (IOException | PlayerInexistenteException e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
+                timeline.play();
+            }
         }
     }
 
@@ -220,7 +220,14 @@ public class GerenciadorDeBatalha {
         ArrayList<String> i = new ArrayList<String>();
         if(this.tipoBatalha.escapavel) {
             if (conseguiu) {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+                int quem;
+                if(estado==States.turnoPlayer){
+                    quem = 1;
+                }
+                else {
+                    quem = 2;
+                }
+                this.controller.Fuga(quem);
             } else {
                 i.add("Falhou em fugir");
                 this.controller.mostrarResultado(i);
@@ -232,15 +239,22 @@ public class GerenciadorDeBatalha {
         }
     }
     private void Vitoria() throws PlayerInexistenteException, IOException {
-        this.tipoBatalha.Vitoria();
-        if(!this.tipoBatalha.finalizado){
-            this.inimigo = new PersonagemLuta(this.tipoBatalha.inimigo);
-            this.iBar = 0;
-            VerificarTurno();
-        }
-        else{
-            this.controller.Vitoria();
-        }
+        Timeline dest = this.controller.Destruir();
+        dest.setOnFinished(event -> {
+            try {
+                Player.getPlayer().AtualizarStatus(this.player.getCurrentHp(), this.player.getCurrentMp());
+                this.tipoBatalha.Vitoria();
+                if(!this.tipoBatalha.finalizado){
+                    this.inimigo = new PersonagemLuta(this.tipoBatalha.inimigo);
+                    this.iBar = 0;
+                    VerificarTurno();
+                }
+            } catch (PlayerInexistenteException | IOException e) {
+                System.out.println("Destruindo3");
+                throw new RuntimeException(e);
+            }
+        });
+        dest.play();
     }
     private void Derrota() throws IOException {
         this.tipoBatalha.Derrota();

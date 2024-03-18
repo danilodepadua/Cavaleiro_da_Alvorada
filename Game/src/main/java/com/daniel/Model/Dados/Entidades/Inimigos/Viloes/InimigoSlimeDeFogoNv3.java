@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Comidas.CoxaFrango;
 import com.daniel.Model.Itens.Minerios.FragmentoFogo;
 import com.daniel.Model.Magias.Poderes.Explosao;
 import com.daniel.Model.Magias.Poderes.Fogo;
@@ -19,6 +18,5 @@ public class InimigoSlimeDeFogoNv3 extends Inimigo {
         this.magias.add(new Explosao());
         this.magias.add(new Fortalecer());
         this.lootTable.AdicionarEntrada(new FragmentoFogo(), 1, 3, 0.7);
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.2);
     }
 }

@@ -1,13 +1,14 @@
 package com.daniel.Model.Itens.Minerios;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Itens.Minerio;
 
 public class FragmentoFogo extends Minerio {
     public FragmentoFogo(){
-        super("/com.daniel.Images/Itens/Minerios/FragmentoFogo.png", "Fragmento de Fogo", 1, 60, "Pequeno fragmento de fogo mágico");
+        super("/com.daniel.Images/Itens/Minerios/FragmentoFogo.png", new TextoNode("Fragmento de Fogo","Fire fragment"), 1, 60, new TextoNode("Pequeno fragmento de fogo","Tiny fire fragment"));
     }
 
     public FragmentoFogo(int quant) {
-        super("/com.daniel.Images/Itens/Minerios/FragmentoFogo.png", "Fragmento de Fogo", quant, 60, "Pequeno fragmento de fogo mágico");
+        super("/com.daniel.Images/Itens/Minerios/FragmentoFogo.png", new TextoNode("Fragmento de Fogo","Fire fragment"), quant, 60, new TextoNode("Pequeno fragmento de fogo","Tiny fire fragment"));
     }
 }

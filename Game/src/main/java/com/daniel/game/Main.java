@@ -54,7 +54,6 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException, PlayerInexistenteException {
         stage.setMinHeight(675);
         stage.setMinWidth(1200);
-        cidadeAtual = new Auroraville();
         CurrentStage = stage;
         stage.setResizable(false);
         FXMLLoader root = new FXMLLoader(Main.class.getResource("TelaInicial.fxml"));

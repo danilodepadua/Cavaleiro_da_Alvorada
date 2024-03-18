@@ -24,6 +24,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -60,7 +61,7 @@ public class ResultadoController implements Initializable {
     private int moedasInimigo;
     private int xpInimigo;
     private ArrayList<Item> itensDoInimigo = new ArrayList<>();
-    private AudioPlayer audioPlayer = new AudioPlayer();
+    private SequentialTransition t = new SequentialTransition();
 
     private void atualizarInterface() throws PlayerInexistenteException {
         txtXpObitdo.setText(String.valueOf(xpInimigo));
@@ -80,6 +81,7 @@ public class ResultadoController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
+            t.stop();
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
             } catch (IOException e) {
@@ -175,6 +177,7 @@ public class ResultadoController implements Initializable {
             sequentialTransition.getChildren().add(CriarProgress((double) xpTemporario / ((Player.getPlayer().getLvl() + i) * 1000),nivel));
             xpTemporario-=((Player.getPlayer().getLvl() + i) * 1000);
         }
+        t = sequentialTransition;
         sequentialTransition.play();
     }
     public Timeline CriarProgress(double ValorFinal, int cont){

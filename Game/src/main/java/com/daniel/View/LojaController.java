@@ -2,6 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
 import com.daniel.Model.Interfaces.IConsumableOutBattle;
@@ -73,9 +74,11 @@ public class LojaController implements Initializable {
         jogoFachada = JogoFachada.getInstance();
         configurarBotoes(btnComprar);
         configurarBotoes(btnVender);
+        btnComprar.setText(TextosInterface.getComprar());
+        btnVender.setText(TextosInterface.getVender());
         contornarBotaoVoltarLoja(btnVoltar);
         try {
-            txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas");
+            txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Makkos");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -89,7 +92,7 @@ public class LojaController implements Initializable {
         btnVender.setOnAction(event -> {
             try {
                 jogoFachada.venderItem(itemSelecionado);
-                txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
+                txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Makkos");
                 configModoVenda();
                 JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_moedas.wav");
                 itemSelecionado = null;
@@ -100,7 +103,7 @@ public class LojaController implements Initializable {
         btnComprar.setOnAction(event -> {
             try {
                 jogoFachada.comprarItem(itemSelecionado);
-                txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Moedas");
+                txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Makkos");
                 JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_moedas.wav");
             } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |
                      SemMoedasParaLojaException e) {
@@ -203,11 +206,11 @@ public class LojaController implements Initializable {
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
         //pega e atualiza a interface gráfica
         txtNomeItem.setText(""+i.getNome());
-        txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Moedas" );
+        txtSeuSaldo.setText(""+ Player.getPlayer().getCoins() + " Makkos" );
         txtInfoItem.setText("" + i.getDescricao());
-        txtPreco.setText(i.getPreco() + " Moedas");
+        txtPreco.setText(i.getPreco() + " Makkos");
         itemSelecionado = i;
-        txtVenda.setText((int)Math.floor(0.7 * i.getPreco()) + " Moedas");
+        txtVenda.setText((int)Math.floor(0.7 * i.getPreco()) + " Makkos");
     }
 
     public void setAtivado(boolean ativado) {

@@ -3,6 +3,7 @@ package com.daniel.Model.Dados.Cidades;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Itens.Item;
 import com.daniel.Model.Quests.Quest;
@@ -17,6 +18,10 @@ import java.util.ArrayList;
 
 public abstract class Cidade implements Serializable {
     public abstract void ajustarBotoes() throws PlayerInexistenteException;
+    public void Atualizar() throws PlayerInexistenteException {
+        botoes.clear();
+        ajustarBotoes();
+    }
     protected String Fundo, FundoBatalha;
     protected String Nome;
     protected Inimigo[] inimigos;
@@ -31,7 +36,6 @@ public abstract class Cidade implements Serializable {
         this.Fundo = fundo;
         this.FundoBatalha = fundoB;
         this.Nome = nome;
-
     }
 
     public String getMusicPath(){
@@ -88,7 +92,7 @@ public abstract class Cidade implements Serializable {
         return new Botao(nome, run);
     }
     protected Botao criarBotaoSalvar() throws PlayerInexistenteException {
-        return criarBotao("Salvar", () -> {
+        return criarBotao(TextosInterface.getSalvar(), () -> {
             try {
                 Main.saveManager.Salvar(Main.getSaveAtual());
             } catch (PlayerInexistenteException e) {
@@ -97,7 +101,7 @@ public abstract class Cidade implements Serializable {
         });
     }
     protected  Botao criarBotaoCacar(){
-        return criarBotao("Caçar", () -> {
+        return criarBotao(TextosInterface.getCacar(), () -> {
             try {
                 JogoFachada.getInstance().getGerenciadorDeBatalha().Inicializar(new BatalhaComum());
             } catch (IOException | PlayerInexistenteException e) {
@@ -106,7 +110,7 @@ public abstract class Cidade implements Serializable {
         });
     }
     protected  Botao criarBotaoLoja(){
-        return criarBotao("Loja", () -> {
+        return criarBotao(TextosInterface.getLoja(), () -> {
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCompraOuVenda.fxml")).load());
             } catch (IOException e) {
@@ -115,7 +119,7 @@ public abstract class Cidade implements Serializable {
         });
     }
     protected  Botao criarBotaoQuest(){
-        return criarBotao("Quest", () -> {
+        return criarBotao("Quests", () -> {
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaQuests.fxml")).load());
             } catch (IOException e) {
@@ -124,18 +128,9 @@ public abstract class Cidade implements Serializable {
         });
     }
     protected  Botao criarBotaoViajar(){
-        return criarBotao("Viajar", () -> {
+        return criarBotao(TextosInterface.getViajar(), () -> {
             try {
                 Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaMapaDeViagem.fxml")).load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-    protected Botao criarBotaoAnciao() {
-        return criarBotao("Anciao", () -> {
-            try {
-                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaAnciao.fxml")).load());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -150,6 +145,9 @@ class Botao{
     public Botao(String nome, Runnable func) {
         this.nome = nome;
         this.func = func;
+    }
+    public void AtualizarNome(){
+
     }
 
     public String getNome() {

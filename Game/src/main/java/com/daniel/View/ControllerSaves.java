@@ -3,19 +3,22 @@ package com.daniel.View;
 import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.Save.Save;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.ResourceBundle;
 
 public class ControllerSaves implements Initializable {
@@ -34,9 +37,13 @@ public class ControllerSaves implements Initializable {
 
     @FXML
     private Button Save3;
+    @FXML
+    private AnchorPane Fundo;
 
     @FXML
     private VBox VBox_Saves;
+    @FXML
+    private Text Txt_Save;
 
     private Save saveSelecionado;
     private int saveNum;
@@ -141,5 +148,20 @@ public class ControllerSaves implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Atualizar();
+        Save1.setText(TextosInterface.getNovoJogo());
+        Save2.setText(TextosInterface.getNovoJogo());
+        Save3.setText(TextosInterface.getNovoJogo());
+        Btn_Deletar.setText(TextosInterface.getDeletar());
+        Btn_Carregar.setText(TextosInterface.getCarregar());
+        Utilidades.estiloBotao(Save1);
+        Utilidades.estiloBotao(Save2);
+        Utilidades.estiloBotao(Save3);
+        Utilidades.estiloBotao(Btn_Carregar);
+        Utilidades.estiloBotao(Btn_Deletar);
+        Utilidades.definirBackground(Fundo, "/com.daniel.Images/Fundos/Dungeon.jpg");
+        Platform.runLater(() -> {
+            Utilidades.AlinharHorizontal(Txt_Save,0.5);
+            Utilidades.AlinharHorizontal(VBox_Saves,0.5);
+        });
     }
 }

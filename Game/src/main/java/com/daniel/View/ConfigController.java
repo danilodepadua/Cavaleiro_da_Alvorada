@@ -1,10 +1,13 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Cidades.Vilas.*;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -16,6 +19,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,9 +36,20 @@ public class ConfigController implements Initializable {
     private ChoiceBox<String> EscolhaIdioma;
     @FXML
     private Slider SliderVelBatalha;
+    @FXML
+    private Text Txt_Config;
 
     @FXML
-    private Slider SliderVelHistoria;
+    private Text Txt_Idioma;
+
+    @FXML
+    private Text Txt_Reso;
+
+    @FXML
+    private Text Txt_VelB;
+
+    @FXML
+    private Text Txt_Volume;
 
     @FXML
     private Slider SliderVolume;
@@ -51,7 +66,7 @@ public class ConfigController implements Initializable {
     boolean telaInicial = true;
 
     @FXML
-    void Salvar(ActionEvent event) {
+    void Salvar(ActionEvent event) throws PlayerInexistenteException {
         String[] tamanho = EscolhaResolucao.getValue().split("x");
         int largura = Integer.parseInt(tamanho[0]);
         int altura = Integer.parseInt(tamanho[1]);
@@ -59,15 +74,33 @@ public class ConfigController implements Initializable {
         ConfiguracoesUsuario.salvarAlturaTela(altura);
         ConfiguracoesUsuario.salvarLarguraTela(largura);
         ConfiguracoesUsuario.salvarVolume(SliderVolume.getValue());
-        ConfiguracoesUsuario.salvarVelelocidadeTextoHistoria(SliderVelHistoria.getValue());
         ConfiguracoesUsuario.salvarVelelocidadeTextoBatalha(SliderVelBatalha.getValue());
         ConfiguracoesUsuario.salvarIdioma(EscolhaIdioma.getValue());
         Utilidades.AlinharHorizontal(vboxcentro, 0.5);
+        Utilidades.AlinharHorizontal(btnSalvar, 0.5);
+        Utilidades.AlinharVertical(btnSalvar, 0.85);
+        Txt_Config.setText(TextosInterface.getConfig().toUpperCase());
+        Txt_Idioma.setText(TextosInterface.getIdioma());
+        Txt_Reso.setText(TextosInterface.getResolucao());
+        Txt_VelB.setText(TextosInterface.getVelTxtBtl());
+        btnSalvar.setText(TextosInterface.getSalvar());
+        if(!telaInicial){
+            for(Cidade c : Player.getPlayer().getCidadesConehcidas()){
+                c.Atualizar();
+                Main.cidadeAtual.Atualizar();
+                System.out.println("Atualizou botões");
+                System.out.println(ConfiguracoesUsuario.obterIdioma());
+            }
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utilidades.AlinharHorizontal(vboxcentro, 0.5);
+        Txt_Config.setText(TextosInterface.getConfig().toUpperCase());
+        Txt_Idioma.setText(TextosInterface.getIdioma());
+        Txt_Reso.setText(TextosInterface.getResolucao());
+        Txt_VelB.setText(TextosInterface.getVelTxtBtl());
+        btnSalvar.setText(TextosInterface.getSalvar());
         EscolhaResolucao.getItems().addAll("1200x675", "1280x720");
         EscolhaIdioma.getItems().addAll("Português", "English");
 
@@ -75,16 +108,11 @@ public class ConfigController implements Initializable {
         contornarBotaoVoltar(btnVoltar);
 
         EscolhaResolucao.setValue(ConfiguracoesUsuario.obterLarguraTelaPadrao() + "x" + ConfiguracoesUsuario.obterAlturaTelaPadrao());
+        EscolhaIdioma.setValue(ConfiguracoesUsuario.obterIdioma());
 
-        SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao()*100);
+        SliderVolume.setValue(ConfiguracoesUsuario.obterVolumePadrao());
         SliderVelBatalha.setValue(ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao()-1);
-        SliderVelHistoria.setValue(ConfiguracoesUsuario.obterVelelocidadeTextoHistoriaPadrao()-1);
-        SliderVolume.valueProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                audioPlayerInicial.configVolume(SliderVolume.getValue()/100);
-            }
-        });
+        SliderVolume.valueProperty().addListener(observable -> JogoFachada.getInstance().getAudioPlayer().configVolume(SliderVolume.getValue()));
 
         try{
             Player.getPlayer();
@@ -93,6 +121,11 @@ public class ConfigController implements Initializable {
         catch (PlayerInexistenteException e){
             telaInicial = true;
         }
+        Platform.runLater(() -> {
+            Utilidades.AlinharHorizontal(vboxcentro, 0.5);
+            Utilidades.AlinharHorizontal(btnSalvar, 0.5);
+            Utilidades.AlinharVertical(btnSalvar, 0.85);
+        });
     }
 
     @FXML

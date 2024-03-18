@@ -5,8 +5,6 @@ import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
 import com.daniel.Model.Itens.Armas.*;
-import com.daniel.Model.Itens.Comidas.Pao;
-import com.daniel.Model.Itens.Comidas.Soupa;
 import com.daniel.Model.Itens.Mapas.MapaIlha;
 import com.daniel.Model.Itens.Mapas.MapaPedraveira;
 import com.daniel.Model.Itens.Pocoes.Cerveja;
@@ -27,14 +25,11 @@ public class CidadePortuaria extends Cidade {
 
         this.itens.add(new FoiceMagica());
         this.itens.add(new Machado());
-        this.itens.add(new ManoplaTita());
         this.itens.add(new EspadaAperfeiçoada());
         this.itens.add(new EspadaSombriaBasica());
         this.itens.add(new EspadaDemoniaca());
         this.itens.add(new PocaoCura());
         this.itens.add(new PocaoMp());
-        this.itens.add(new Pao());
-        this.itens.add(new Soupa());
         this.itens.add(new Cerveja());
         this.itens.add(new MapaPedraveira());
         this.itens.add(new MapaIlha());
@@ -56,6 +51,5 @@ public class CidadePortuaria extends Cidade {
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
         this.botoes.add(criarBotaoSalvar());
-        this.botoes.add(criarBotaoAnciao());
     }
 }

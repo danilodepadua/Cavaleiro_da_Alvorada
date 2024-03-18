@@ -1,27 +1,20 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
-import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
+import com.daniel.Model.Exceptions.RemoverCoinsException;
 import com.daniel.game.Main;
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
-import javafx.animation.Transition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -32,136 +25,118 @@ import java.util.ResourceBundle;
 import static com.daniel.View.Utilidades.*;
 
 public class TavernaController implements Initializable {
-    private String texto = "Taverna";
+    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
-    private Button btnMemoria;
-    @FXML
-    private AnchorPane anchorPane;
+    private Button btnDescanso;
 
     @FXML
-    private Button btnBlackJack;
+    private Button btnRestaurar;
+
+    @FXML
+    private Button btnSair;
+
+    @FXML
+    private Button btnTaverna;
 
     @FXML
     private Button btnVoltar;
 
     @FXML
-    private Button btnPoker;
-    @FXML
-    private Text txtCassino;
+    private AnchorPane paneInfos;
 
     @FXML
-    private Text txtMoedas;
+    private AnchorPane panePrincipal;
 
     @FXML
-    private VBox vboxTextos;
+    private Text txtMana;
 
-    private AudioPlayer audioPlayer = new AudioPlayer();
     @FXML
-    void Jogar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaVinteUm.fxml")).load());
-    }
+    private Text txtRestaurar;
+
+    @FXML
+    private Text txtVida;
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
+
+    }
+
+    @FXML
+    void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
+        Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
+        Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
+        Player.getPlayer().removerCoins(50);
+        txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
+        txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
+    }
+    @FXML
+    void onActionDescanso(ActionEvent event) throws PlayerInexistenteException {
+        // Cria um retângulo para cobrir toda a tela
+        Rectangle overlay = new Rectangle(panePrincipal.getWidth(), panePrincipal.getHeight(), Color.rgb(0, 0, 0, 0.5));
+        panePrincipal.getChildren().add(overlay);
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), overlay);
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+
+        // Configura a ação a ser executada quando a transição terminar
+        fadeTransition.setOnFinished(e -> {
+            paneInfos.setVisible(true);
+            paneInfos.setDisable(false);
+            btnRestaurar.setDisable(false);
+            btnRestaurar.setVisible(true);
+            try {
+                txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
+                txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
+
+            } catch (PlayerInexistenteException ex) {
+                throw new RuntimeException(ex);
+            }
+            txtRestaurar.setText(Integer.toString(50));
+
+            FadeTransition fadeOutTransition = new FadeTransition(Duration.seconds(0.5), overlay);
+            fadeOutTransition.setFromValue(1.0); // Opacidade inicial
+            fadeOutTransition.setToValue(0.0);   // Opacidade final
+
+            // Configura a ação a ser executada quando a transição de clareamento terminar
+            fadeOutTransition.setOnFinished(e2 -> {
+                // Remova o retângulo da cena
+                panePrincipal.getChildren().remove(overlay);
+            });
+
+            // Inicia a transição de clareamento
+            fadeOutTransition.play();
+        });
+
+        // Inicia a transição de escurecimento
+        fadeTransition.play();
+    }
+
+    @FXML
+    void onActionTaverna(ActionEvent event) throws IOException {
+        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            identificarTextos(anchorPane);
-            txtMoedas.setText("Carteira: " + Player.getPlayer().getCoins() + " Moedas");
-            JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_taverna.wav");
-            Point2D centro = new Point2D(315, 169);
-            desenharTexto(texto, 40, centro);
-        } catch (PlayerInexistenteException e) {
-            throw new RuntimeException(e);
-        }
-
-        definirBackground(anchorPane, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
-
+        definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Taverna.jpg");
+        configurarBotoes(btnDescanso);
+        configurarBotoes(btnTaverna);
+        configurarBotoes(btnRestaurar);
         contornarBotaoVoltar(btnVoltar);
-        configurarBotoes(btnBlackJack);
-        configurarBotoes(btnMemoria);
-        configurarBotoes(btnPoker);
+        contornarBotaoVoltar(btnSair);
+        btnRestaurar.setText(TextosInterface.getDescancar());
+        btnTaverna.setText(TextosInterface.getCassino());
+
     }
-
-    public void desenharTexto(String palavra, double rotacaoInicial, Point2D centro) {
-        double anguloCurva = 105; // 60 a 150 parece melhor
-        char[] arrayPalavra = palavra.toCharArray();
-
-        double raio = 100;
-
-        boolean acimaDoCentro = rotacaoInicial < 180;
-
-        final ObservableList<Text> partes = FXCollections.observableArrayList();
-        final ObservableList<PathTransition> transicoes = FXCollections.observableArrayList();
-
-        for (int i = 0; i < palavra.length(); i++) {
-            double anguloFinal = (i + 1) * anguloCurva / palavra.length();
-
-            Shape curva = criarCurva(centro, raio, anguloCurva, anguloFinal, rotacaoInicial, acimaDoCentro);
-
-            Text parte = new Text(String.valueOf(arrayPalavra[i]));
-
-            parte.setFont(Font.font("Barlow Condensed SemiBold", FontWeight.SEMI_BOLD, 90));
-            parte.setFill(Paint.valueOf("#eccb7e"));
-
-            partes.add(parte);
-
-            transicoes.add(criarTransicaoCaminho(curva, parte));
-        }
-
-        for (int i = 0; i < partes.size(); i++) {
-            Text parte = partes.get(i);
-            parte.setLayoutX(centro.getX() - raio * Math.cos(Math.toRadians(rotacaoInicial + i * anguloCurva / (palavra.length() - 1))));
-            parte.setLayoutY(centro.getY() - raio * Math.sin(Math.toRadians(rotacaoInicial + i * anguloCurva / (palavra.length() - 1))));
-            parte.setVisible(true);
-
-            final Transition transicao = transicoes.get(i);
-            transicao.stop();
-            transicao.play();
-        }
-
-        anchorPane.getChildren().addAll(partes);
-    }
-
-    private PathTransition criarTransicaoCaminho(Shape curva, Text texto) {
-        final PathTransition transicao = new PathTransition(Duration.millis(1), curva, texto);
-
-        transicao.setAutoReverse(false);
-        transicao.setCycleCount(1);
-        transicao.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-        transicao.setInterpolator(Interpolator.LINEAR);
-
-        return transicao;
-    }
-
-    private Shape criarCurva(Point2D centro, double raio, double anguloTotal, double angulo, double rotacaoInicial, boolean inverter) {
-        Arc arco = new Arc();
-        arco.setCenterX(centro.getX());
-        arco.setCenterY(centro.getY());
-        if (inverter) {
-            final double anguloFinal = rotacaoInicial + anguloTotal;
-            arco.setStartAngle(anguloFinal);
-            arco.setLength(-angulo);
-        } else {
-            arco.setStartAngle(rotacaoInicial);
-            arco.setLength(angulo);
-        }
-        arco.setRadiusX(raio);
-        arco.setRadiusY(raio);
-        return arco;
-    }
-
     @FXML
-    void JogarMemoria(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaJogoDaMemoria.fxml")).load());
+    void onClickFechar(ActionEvent event) {
+        paneInfos.setVisible(false);
+        paneInfos.setDisable(true);
+        btnRestaurar.setDisable(true);
+        btnRestaurar.setVisible(false);
     }
 
-    @FXML
-    void JogarPoker(ActionEvent event) throws IOException {
-        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaTutorialPoker.fxml")).load());
-
-    }
 }

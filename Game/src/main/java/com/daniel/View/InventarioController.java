@@ -2,6 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Itens.Armadura;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableOutBattle;
@@ -243,14 +244,14 @@ public class InventarioController implements Initializable {
     private void AtualizarDados() throws PlayerInexistenteException {
         txt1.setText("HP:");
         txt2.setText("MP:");
-        txt3.setText("Força: ");
-        txt4.setText("Ataque físico:");
-        txt5.setText("Velocidade:");
-        txt6.setText("Inteligência:");
-        txt7.setText("Ataque mágico:");
-        txt8.setText("Defesa mágica:");
-        txt9.setText("Resistência:");
-        txt10.setText("Defesa física:");
+        txt3.setText(TextosInterface.getForca()+":");
+        txt4.setText(TextosInterface.getAtqF()+":");
+        txt5.setText(TextosInterface.getVel()+":");
+        txt6.setText(TextosInterface.getInteli()+":");
+        txt7.setText(TextosInterface.getAtqM()+":");
+        txt8.setText(TextosInterface.getDefM()+":");
+        txt9.setText(TextosInterface.getResis()+":");
+        txt10.setText(TextosInterface.getDefF()+":");
         VelocidadePlayer.setText("" + Player.getPlayer().getVelocidade());
         ForcaPlayer.setText("" + Player.getPlayer().getForca());
         HpPlayer.setText("" + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());
@@ -301,6 +302,9 @@ public class InventarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnDesequipar.setText(TextosInterface.getDesquipar());
+        btnEquipar.setText(TextosInterface.getEquipar());
+        btnUsar.setText(TextosInterface.getUsar());
         contornarBotaoVoltar(btnVoltar);
         btnUsar.setDisable(true);
         btnDesequipar.setDisable(true);

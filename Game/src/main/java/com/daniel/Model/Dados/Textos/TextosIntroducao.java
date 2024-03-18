@@ -12,4 +12,13 @@ public class TextosIntroducao {
     public static String[] getIntroducao(){
         return new String[]{intro1.getTexto(), intro2.getTexto(), intro3.getTexto(), intro4.getTexto(), intro5.getTexto()};
     }
+
+    // Outro textos
+    private static final TextoNode DicaCria = new TextoNode(
+            "Com seus pontos, distribua-os da forma que preferir entre seus atributos. \n\nNo entanto, lembre-se de que investir \nexclusivamente em um único atributo \npode resultar em situações desfavoráveis no futuro.",
+            "With your points, distribute them in the way you prefer among your attributes. \n\nHowever, keep in mind that investing \nexclusively in a single attribute \ncan result in unfavorable situations in the future."
+    );
+    public static String getDica(){
+        return DicaCria.getTexto();
+    }
 }

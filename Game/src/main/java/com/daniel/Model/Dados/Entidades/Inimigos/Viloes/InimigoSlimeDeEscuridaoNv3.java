@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Comidas.CoxaFrango;
 import com.daniel.Model.Itens.Minerios.FragmentoEscuridao;
 import com.daniel.Model.Magias.Poderes.Amolecer;
 import com.daniel.Model.Magias.Poderes.Enfraquecer;
@@ -21,7 +20,5 @@ public class InimigoSlimeDeEscuridaoNv3 extends Inimigo {
         this.magias.add(new Enfraquecer());
         this.magias.add(new IntDown());
         this.lootTable.AdicionarEntrada(new FragmentoEscuridao(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new CoxaFrango(), 1, 2, 0.5);
-
     }
 }

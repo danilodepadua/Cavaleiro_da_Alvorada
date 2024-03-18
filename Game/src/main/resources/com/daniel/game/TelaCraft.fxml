@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.CraftingController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.CraftingController">
    <children>
       <ScrollPane layoutX="25.0" layoutY="109.0" prefHeight="518.0" prefWidth="452.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" stylesheets="@style.css" AnchorPane.leftAnchor="25.0">
         <content>
@@ -58,7 +58,7 @@
          <children>
             <VBox alignment="CENTER" layoutX="123.0" layoutY="7.0" prefHeight="334.0" prefWidth="126.0" spacing="5.0">
                <children>
-                  <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="FORJAR">
+                  <Text fx:id="Txt_Forja" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="FORJAR">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="32.0" />
                      </font>
@@ -80,7 +80,7 @@
             </VBox>
             <HBox layoutX="12.0" layoutY="367.0" prefHeight="38.0" prefWidth="242.0" spacing="5.0">
                <children>
-                  <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Probabilidade de Sucesso:">
+                  <Text fx:id="Txt_Sucesso" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Probabilidade de Sucesso:">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
@@ -113,7 +113,7 @@
                <children>
                   <HBox prefHeight="23.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
+                        <Text fx:id="Txt_Nome" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="17.0" />
                            </font>
@@ -127,7 +127,7 @@
                   </HBox>
                   <HBox prefHeight="11.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
+                        <Text fx:id="Txt_Quant" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="17.0" />
                            </font>
@@ -158,7 +158,7 @@
       </AnchorPane>
       <VBox fx:id="vboxTextos" alignment="TOP_CENTER" layoutX="494.0" layoutY="2.0" prefHeight="624.0" prefWidth="315.0" spacing="520.0" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="390.8">
          <children>
-            <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS">
+            <Text fx:id="Txt_Titulo" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE ITENS">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="44.0" />
                </font>

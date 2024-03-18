@@ -17,22 +17,22 @@
       <ProgressBar fx:id="progBarRes" layoutX="387.0" layoutY="273.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="273.0" />
       <ProgressBar fx:id="progBarInt" layoutX="389.0" layoutY="335.0" minWidth="100.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="335.0" />
       <ProgressBar fx:id="progBarForca" layoutX="387.0" layoutY="211.0" minWidth="100.0" prefHeight="18.0" prefWidth="200.0" progress="0.25" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="211.0" />
-      <Text fill="#eccb7e" layoutX="386.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
+      <Text fx:id="Txt_Forca" fill="#eccb7e" layoutX="386.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="387.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
+      <Text fx:id="Txt_Res" fill="#eccb7e" layoutX="387.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistecia">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="386.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
+      <Text fx:id="Txt_Int" fill="#eccb7e" layoutX="386.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligencia">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="388.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
+      <Text fx:id="Txt_Vel" fill="#eccb7e" layoutX="388.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -162,7 +162,7 @@
                   </HBox>
                   <HBox prefHeight="18.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
+                        <Text fx:id="Txt_Forca1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -176,7 +176,7 @@
                   </HBox>
                   <HBox prefHeight="18.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:">
+                        <Text fx:id="Txt_Res1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -190,7 +190,7 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia:">
+                        <Text fx:id="Txt_Int1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -204,7 +204,7 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
+                        <Text fx:id="Txt_Vel1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -218,7 +218,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="178.0" prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
+                        <Text fx:id="Txt_Sorte1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -234,14 +234,14 @@
             </VBox>
          </children>
       </Pane>
-      <Text fill="#eccb7e" layoutX="517.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="EVOLUÇÃO">
+      <Text fx:id="Txt_Titulo" fill="#eccb7e" layoutX="517.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="EVOLUÇÃO">
          <font>
             <Font name="Barlow Condensed SemiBold" size="43.0" />
          </font>
       </Text>
       <HBox layoutX="382.0" layoutY="116.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
+            <Text fx:id="Txt_Pontos" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="28.0" />
                </font>
@@ -254,7 +254,7 @@
          </children>
       </HBox>
       <ProgressBar fx:id="progBarSorte" layoutX="386.0" layoutY="453.0" minWidth="100.0" prefHeight="18.0" prefWidth="274.0" progress="0.25" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="470.0" />
-      <Text fill="#eccb7e" layoutX="388.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
+      <Text fx:id="Txt_Sorte" fill="#eccb7e" layoutX="388.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>

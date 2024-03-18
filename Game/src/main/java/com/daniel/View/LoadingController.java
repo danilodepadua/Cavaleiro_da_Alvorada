@@ -35,7 +35,8 @@ public class LoadingController implements Initializable {
 
     public static void animacaoLoading(Rectangle rectangle) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(2), rectangle);
-        scaleTransition.setToX(3); // Ajuste conforme necessário
+        scaleTransition.setFromX(0);
+        scaleTransition.setToX(5); // Ajuste conforme necessário
         scaleTransition.setCycleCount(Timeline.INDEFINITE);
         scaleTransition.play();
     }

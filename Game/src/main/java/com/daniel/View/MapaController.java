@@ -3,6 +3,7 @@ package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.CidadeInexistenteException;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.RemoverCoinsException;
@@ -155,6 +156,8 @@ public class MapaController extends Utilidades implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnViajar.setText(TextosInterface.getViajar());
+        btnViajar.setDisable(true);
         contornarBotaoVoltar(btnNao);
         configurarBotoes(btnSim);
         contornarBotaoVoltar(btnVoltar);
@@ -172,6 +175,7 @@ public class MapaController extends Utilidades implements Initializable {
                     Button butao = new Button();
                     butao.setText(cidade.getNome());
                     butao.setOnAction(event -> {
+                        btnViajar.setDisable(false);
                         switch (cidade.getNome()){
                             case "MONTANHA DO NORTE":
                                 MostraMarca(0.445, 0.15);

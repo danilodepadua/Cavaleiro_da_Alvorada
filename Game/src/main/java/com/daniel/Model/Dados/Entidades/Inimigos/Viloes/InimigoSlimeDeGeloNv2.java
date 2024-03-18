@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Comidas.Banana;
 import com.daniel.Model.Itens.Minerios.FragmentoGlacial;
 import com.daniel.Model.Magias.Poderes.Gelo;
 import com.daniel.Model.Magias.TiposElementais;
@@ -16,6 +15,5 @@ public class InimigoSlimeDeGeloNv2 extends Inimigo {
         this.resistencias = new TiposElementais[]{TiposElementais.Agua};
         this.imunidades = new TiposElementais[]{TiposElementais.Gelo};
         this.lootTable.AdicionarEntrada(new FragmentoGlacial(), 1, 2, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.3);
     }
 }

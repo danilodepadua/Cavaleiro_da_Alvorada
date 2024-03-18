@@ -24,49 +24,43 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES:" textAlignment="RIGHT" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
+      <Text fx:id="Txt_Config" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES:" textAlignment="RIGHT" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="48.0" />
          </font>
       </Text>
       <VBox fx:id="vboxcentro" alignment="TOP_CENTER" layoutX="348.0" layoutY="100.0" prefHeight="620.0" prefWidth="235.7109375" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:">
+            <Text fx:id="Txt_Reso" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="RESOLUÇÃO DA TELA:">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
             <ChoiceBox fx:id="EscolhaResolucao" prefHeight="26.0" prefWidth="222.0" />
-            <Text fill="#eccb7e" layoutX="137.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma:">
+            <Text fx:id="Txt_Idioma" fill="#eccb7e" layoutX="137.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idioma:">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
             <ChoiceBox fx:id="EscolhaIdioma" layoutX="169.0" layoutY="153.0" prefHeight="26.0" prefWidth="222.0" />
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:">
+            <Text fx:id="Txt_Volume" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME:">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Slider fx:id="SliderVolume" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="100.0" />
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO BATALHA:">
+            <Slider fx:id="SliderVolume" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="100.0" />
+            <Text fx:id="Txt_VelB" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO BATALHA:">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="SliderVelBatalha" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="VEL. TEXTO HISTÓRIA:">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Slider fx:id="SliderVelHistoria" max="1.0" maxWidth="150.0" prefHeight="14.0" prefWidth="150.0" value="1.0" />
-            <Button fx:id="btnSalvar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="17.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
+      <Button fx:id="btnSalvar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salvar" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Salvar" textFill="#eccb7e">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

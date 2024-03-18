@@ -1,5 +1,6 @@
 package com.daniel.View;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -22,6 +23,41 @@ public class EvoluçaoController implements Initializable {
     private Integer  pontosDisp;
     @FXML
     private Button btnMaisForca;
+    @FXML
+    private Text Txt_Forca;
+
+    @FXML
+    private Text Txt_Forca1;
+
+    @FXML
+    private Text Txt_Int;
+
+    @FXML
+    private Text Txt_Int1;
+
+    @FXML
+    private Text Txt_Pontos;
+
+    @FXML
+    private Text Txt_Res;
+
+    @FXML
+    private Text Txt_Res1;
+
+    @FXML
+    private Text Txt_Sorte;
+
+    @FXML
+    private Text Txt_Sorte1;
+
+    @FXML
+    private Text Txt_Titulo;
+
+    @FXML
+    private Text Txt_Vel;
+    @FXML
+    private Text Txt_Vel1;
+
 
     @FXML
     private Button btnMaisInt;
@@ -200,7 +236,18 @@ public class EvoluçaoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-
+            Txt_Forca.setText(TextosInterface.getForca());
+            Txt_Int.setText(TextosInterface.getInteli());
+            Txt_Res.setText(TextosInterface.getRes());
+            Txt_Sorte.setText(TextosInterface.getSorte());
+            Txt_Vel.setText(TextosInterface.getVel());
+            Txt_Forca1.setText(TextosInterface.getForca()+": ");
+            Txt_Int1.setText(TextosInterface.getInteli()+": ");
+            Txt_Res1.setText(TextosInterface.getRes()+": ");
+            Txt_Sorte1.setText(TextosInterface.getSorte()+": ");
+            Txt_Vel1.setText(TextosInterface.getVel()+": ");
+            Txt_Pontos.setText(TextosInterface.getPontos()+": ");
+            Txt_Titulo.setText(TextosInterface.getEvolucao());
             definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Castelo.jpg");
             contornarBotaoVoltar(btnVoltar);
             configurarBotoes(btnSalvar);
@@ -208,22 +255,26 @@ public class EvoluçaoController implements Initializable {
             configurarBotoes(btnMaisInt);
             configurarBotoes(btnMaisRes);
             configurarBotoes(btnMaisVel);
+            configurarBotoes(btnMaisSorte);
 
             configurarBotoes(btnMenosForce);
             configurarBotoes(btnMenosRes);
             configurarBotoes(btnMenosInt);
             configurarBotoes(btnMenosVel);
+            configurarBotoes(btnMenosSorte);
 
             progBarInt.setStyle(PROGRESS_BAR_COLOR);
             progBarRes.setStyle(PROGRESS_BAR_COLOR);
             progBarVel.setStyle(PROGRESS_BAR_COLOR);
             progBarForca.setStyle(PROGRESS_BAR_COLOR);
+            progBarSorte.setStyle(PROGRESS_BAR_COLOR);
 
             btnSalvar.setAlignment(Pos.CENTER);
             configurarOuvinte(progBarForca, txtForce);
             configurarOuvinte(progBarInt, txtInt);
             configurarOuvinte(progBarRes, txtRes);
             configurarOuvinte(progBarVel, txtVelocidade);
+            configurarOuvinte(progBarSorte, txtSorte);
 
             txtVelocidade.setText(""+calcularValorDaBarra(progBarVel));
             txtForce.setText(""+calcularValorDaBarra(progBarForca));

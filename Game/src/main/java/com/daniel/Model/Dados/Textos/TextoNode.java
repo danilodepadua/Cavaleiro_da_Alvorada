@@ -2,10 +2,11 @@ package com.daniel.Model.Dados.Textos;
 
 import com.daniel.View.ConfiguracoesUsuario;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.prefs.Preferences;
 
-public class TextoNode {
+public class TextoNode implements Serializable {
     private String ptbr;
     private String Eng;
 

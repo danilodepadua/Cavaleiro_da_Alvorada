@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Comidas.Banana;
 import com.daniel.Model.Itens.Minerios.FragmentoFogo;
 import com.daniel.Model.Magias.Poderes.Fogo;
 import com.daniel.Model.Magias.TiposElementais;
@@ -15,6 +14,5 @@ public class InimigoSlimeDeFogoNv1 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Agua, TiposElementais.Gelo};
         this.magias.add(new Fogo());
         this.lootTable.AdicionarEntrada(new FragmentoFogo(), 1, 1, 0.5);
-        this.lootTable.AdicionarEntrada(new Banana(), 1, 1, 0.2);
     }
 }

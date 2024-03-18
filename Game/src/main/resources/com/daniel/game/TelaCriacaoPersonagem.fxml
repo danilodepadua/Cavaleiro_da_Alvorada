@@ -33,7 +33,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="516.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
+      <Text fx:id="Txt_Forca" fill="#eccb7e" layoutX="516.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Força">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -57,7 +57,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="518.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistência">
+      <Text fx:id="Txt_Res" fill="#eccb7e" layoutX="518.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Resistência">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -81,7 +81,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="516.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligência">
+      <Text fx:id="Txt_Int" fill="#eccb7e" layoutX="516.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Inteligência">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -105,7 +105,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="516.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
+      <Text fx:id="Txt_Vel" fill="#eccb7e" layoutX="516.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Velocidade">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
@@ -116,7 +116,7 @@
                <children>
                   <HBox prefHeight="18.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
+                        <Text fx:id="Txt_Foca1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Força:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -130,7 +130,7 @@
                   </HBox>
                   <HBox prefHeight="18.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:">
+                        <Text fx:id="Txt_Res1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistencia:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -144,7 +144,7 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia:">
+                        <Text fx:id="Txt_Int1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligencia:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -158,7 +158,7 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
+                        <Text fx:id="Txt_Vel1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidade:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -172,7 +172,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="151.0" prefHeight="0.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
+                        <Text fx:id="Txt_Sorte1" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorte:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="18.0" />
                            </font>
@@ -190,7 +190,7 @@
       </Pane>
       <HBox layoutX="510.0" layoutY="135.0" prefHeight="7.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
+            <Text fx:id="Txt_Pontos" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Pontos:">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="24.0" />
                </font>
@@ -207,7 +207,7 @@
             <Font name="Barlow Condensed SemiBold" size="17.0" />
          </font>
       </Button>
-      <Text fill="#eccb7e" layoutX="449.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE PERSONAGEM">
+      <Text fx:id="Txt_Titulo" fill="#eccb7e" layoutX="449.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="CRIAÇÃO DE PERSONAGEM">
          <font>
             <Font name="Barlow Condensed SemiBold" size="36.0" />
          </font>
@@ -250,13 +250,13 @@
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#eccb7e" layoutX="141.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="121.0">
+      <Text fx:id="Txt_Nome" fill="#eccb7e" layoutX="141.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="121.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>
       </Text>
       <TextField fx:id="Nome" layoutX="208.0" layoutY="122.0" prefHeight="26.0" prefWidth="169.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="122.0" />
-      <Text fill="#eccb7e" layoutX="837.0" layoutY="77.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Com seus pontos, distribua-os da forma que preferir entre seus atributos. &#10;&#10;No entanto, lembre-se de que investir &#10;exclusivamente em um único atributo &#10;pode resultar em situações desfavoráveis no futuro." wrappingWidth="274.4000000000001">
+      <Text fx:id="Txt_Dica" fill="#eccb7e" layoutX="837.0" layoutY="77.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Com seus pontos, distribua-os da forma que preferir entre seus atributos. &#10;&#10;No entanto, lembre-se de que investir &#10;exclusivamente em um único atributo &#10;pode resultar em situações desfavoráveis no futuro." wrappingWidth="274.4000000000001">
          <font>
             <Font name="Barlow Condensed SemiBold" size="18.0" />
          </font>
@@ -280,7 +280,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#eccb7e" layoutX="516.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
+      <Text fx:id="Txt_Sorte" fill="#eccb7e" layoutX="516.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 2;" text="Sorte">
          <font>
             <Font name="Barlow Condensed SemiBold" size="24.0" />
          </font>

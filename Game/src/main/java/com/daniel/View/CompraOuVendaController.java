@@ -2,6 +2,7 @@ package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -30,7 +31,6 @@ public class CompraOuVendaController implements Initializable {
 
     @FXML
     private AnchorPane panePrincipal;
-    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     void Voltar(ActionEvent event) throws IOException {
@@ -60,6 +60,8 @@ public class CompraOuVendaController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/msc_loja.wav");
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/FundoLoja.jpg");
+        btnComprar.setText(TextosInterface.getComprar());
+        btnVender.setText(TextosInterface.getVender());
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnComprar);
         configurarBotoes(btnVender);

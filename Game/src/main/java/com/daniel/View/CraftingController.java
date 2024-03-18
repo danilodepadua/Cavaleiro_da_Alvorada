@@ -3,6 +3,8 @@ package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Itens.Item;
 import com.daniel.game.Main;
@@ -63,6 +65,20 @@ public class CraftingController implements Initializable {
 
     @FXML
     private Text txtProbSucesso;
+    @FXML
+    private Text Txt_Forja;
+
+    @FXML
+    private Text Txt_Nome;
+
+    @FXML
+    private Text Txt_Quant;
+
+    @FXML
+    private Text Txt_Sucesso;
+
+    @FXML
+    private Text Txt_Titulo;
 
     @FXML
     private Text txtQuantidade;
@@ -72,13 +88,19 @@ public class CraftingController implements Initializable {
     private Item itemSelecionado;
     private Item itemSelecionado2;
     private JogoFachada craftingFachada;
-    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fornalha.jpg");
         contornarBotaoVoltarLoja(btnVoltar);
         configurarBotoes(btnCriar);
+        Txt_Forja.setText(TextosInterface.getForja());
+        Txt_Nome.setText(TextosInterface.getNome());
+        Txt_Quant.setText(TextosInterface.getQuantidade());
+        Txt_Sucesso.setText(TextosInterface.getProb());
+        Txt_Titulo.setText(TextosInterface.getCriacao());
+        btnCriar.setText(TextosInterface.getForjar());
+
         this.craftingFachada = JogoFachada.getInstance();
         try {
             atualizarInterface();
@@ -263,11 +285,11 @@ public class CraftingController implements Initializable {
 
             double random =Math.random();
             if (calcularChance() > random) {
-                mostrarResultado("Item Forjado!");
+                mostrarResultado(new TextoNode("Item Forjado!","Forged Item!"));
                 JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_craft.wav");
                 return craftResult;
             }else {
-                mostrarResultado("Falhou");
+                mostrarResultado(new TextoNode("Falhou","Failed"));
             }
         }
         return null;
@@ -315,8 +337,8 @@ public class CraftingController implements Initializable {
     void onClickVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
-    private void mostrarResultado(String mensagem) {
-        txtMensagem.setText(mensagem);
+    private void mostrarResultado(TextoNode mensagem) {
+        txtMensagem.setText(mensagem.getTexto());
 
         // Animação de fade-in
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), boxMensagem);

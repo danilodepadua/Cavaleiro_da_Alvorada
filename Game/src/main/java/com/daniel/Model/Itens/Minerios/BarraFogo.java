@@ -1,13 +1,14 @@
 package com.daniel.Model.Itens.Minerios;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Itens.Minerio;
 
 public class BarraFogo extends Minerio {
     public BarraFogo(){
-        super("/com.daniel.Images/Itens/Minerios/BarraFogo.png", "Barra de Fogo", 1, 150, "Barra refinada de fragmentos de Fogo");
+        super("/com.daniel.Images/Itens/Minerios/BarraFogo.png", new TextoNode("Barra de Fogo","Fire bar"), 1, 150, new TextoNode("Barra refinada de fragmentos de Fogo","Refined bar of fire fragments"));
     }
 
     public BarraFogo(int quant) {
-        super("/com.daniel.Images/Itens/Minerios/BarraFogo.png", "Barra de Fogo", quant, 150, "Barra refinada de fragmentos de Fogo");
+        super("/com.daniel.Images/Itens/Minerios/BarraFogo.png", new TextoNode("Barra de Fogo","Fire bar"), quant, 150, new TextoNode("Barra refinada de fragmentos de Fogo","Refined bar of fire fragments"));
     }
 }
