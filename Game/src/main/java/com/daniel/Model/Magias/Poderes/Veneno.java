@@ -6,6 +6,8 @@ import com.daniel.Model.Magias.Animacoes.VenenoAnimation;
 import com.daniel.Model.Magias.Magia;
 import com.daniel.Model.Magias.TiposElementais;
 
+import java.util.Random;
+
 public class Veneno extends Magia implements IEffects {
     public Veneno() {
         super("Venenum", 15, 1.5, TiposElementais.NaoElemental,new VenenoAnimation(), true);

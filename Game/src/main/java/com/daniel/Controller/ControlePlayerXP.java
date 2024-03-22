@@ -13,7 +13,7 @@ public class ControlePlayerXP {
     }
 
     public boolean VerificarLevelUp() throws PlayerInexistenteException {  //verificar se o player conseguiu subir de nivel
-        if(Player.getPlayer().getXpProx() < Player.getPlayer().getCurrentXp()){
+        if(Player.getPlayer().getXpProx() <= Player.getPlayer().getCurrentXp()){
             Player.getPlayer().setLvl(Player.getPlayer().getLvl() + 1);
             Player.getPlayer().mudarHP(Player.getPlayer().getHP()+90);
             Player.getPlayer().mudarMP(Player.getPlayer().getMP()+4);

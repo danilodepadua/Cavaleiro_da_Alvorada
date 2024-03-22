@@ -26,8 +26,8 @@ public abstract class Personagem implements Serializable {
         this.forca = fr;
         this.inteligencia = in;
         this.velocidade = vel;
-        this.HP = this.resistencia *5;
-        this.MP = this.inteligencia *5;
+        this.HP = this.resistencia *94;
+        this.MP = this.inteligencia *8;
         this.sorte = sorte;
     }
     public int getHP() {
@@ -64,16 +64,47 @@ public abstract class Personagem implements Serializable {
     } //analogo ao hp so que com a mana
     //metodos analogos ao hp e mana pra tela de evoluçao
     public void aumentaForcaProgress(int quantidade) {
+        if(quantidade>100){
+            quantidade = 100;
+        }
+        else if(quantidade<0){
+            quantidade = 0;
+        }
         forca = quantidade;
     }
     public void aumentaInteligenciaProgess(int quantidade) {
+        if(quantidade>100){
+            quantidade = 100;
+        }
+        else if(quantidade<0){
+            quantidade = 0;
+        }
         inteligencia = quantidade;
     }
     public void aumentaResistenciaProgress(int quantidade) {
+        if(quantidade>100){
+            quantidade = 100;
+        }
+        else if(quantidade<0){
+            quantidade = 0;
+        }
         resistencia = quantidade;
     }
     public void aumentaVelocidadeProgress(int quantidade) {
+        if(quantidade>100){
+            quantidade = 100;
+        }
+        else if(quantidade<0){
+            quantidade = 0;
+        }
         velocidade = quantidade;
     }
-    public void aumentaSorteProgress(int quantidade){velocidade = quantidade;}
+    public void aumentaSorteProgress(int quantidade){
+        if(quantidade>100){
+            quantidade = 100;
+        }
+        else if(quantidade<0){
+            quantidade = 0;
+        }
+        velocidade = quantidade;}
 }

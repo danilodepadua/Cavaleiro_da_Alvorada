@@ -1,9 +1,9 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria.InimigoLadrao;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaMalha;
 import com.daniel.Model.Itens.Armaduras.Capacetes.CapaceteMalha;
 import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralMalha;
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class MonteClaro extends Cidade {
     public MonteClaro() throws PlayerInexistenteException {
         super("MONTE CLARO", "/com.daniel.Images/Fundos/FundoCanyon.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",500);
         this.musicPath = "/com.daniel.audios/msc_monteClaro.wav";
 
-        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeAguaNv2(), new InimigoSlimeDeGeloNv2(), new InimigoLadrao(), new InimigoSlimeDeLuzNv2(), new InimigoSlimeDeVentoNv2()};
+        this.inimigos = new Inimigo[]{new InimigoLadrao()};
 
         // Adiciona os itens da loja
         this.itens.add(new EspadaEletricaBasica());

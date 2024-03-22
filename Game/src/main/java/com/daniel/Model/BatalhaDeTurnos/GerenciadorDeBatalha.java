@@ -2,6 +2,7 @@ package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.ComportamentosInimigos.*;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Magias.TiposElementais;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.View.BattleController;
@@ -97,17 +98,22 @@ public class GerenciadorDeBatalha {
 
     public void turnoPlayer(){
         estado = States.turnoPlayer;
-        ArrayList<String> mensagem = new ArrayList<>();
+        ArrayList<TextoNode> mensagem = new ArrayList<>();
         if(this.player.envenenado){
             mensagem.add(this.player.TomarDanoVeneno());
         }
+        if(this.player.regen>0){
+            this.player.regen --;
+            this.player.currentHp += this.player.currentHp/5;
+            mensagem.add(new TextoNode("Você teve sua vida regenerada","Your hp was regenerated"));
+        }
         if(this.player.stun > 0){
             this.player.stun--;
-            mensagem.add(this.player.getNome() + " esta stunado");
+            mensagem.add(new TextoNode(this.player.getNome() + " esta stunado",this.player.getNome() + " is stunned"));
             this.controller.mostrarResultado(mensagem);
         }
         else if(this.player.dormindo){
-            mensagem.add(this.player.getNome() + " esta dormindo");
+            mensagem.add(new TextoNode(this.player.getNome() + " esta dormindo",this.player.getNome() + " is sleeping"));
             this.controller.mostrarResultado(mensagem);
         }
         else{
@@ -117,10 +123,22 @@ public class GerenciadorDeBatalha {
     }
     public void turnoInimigo() throws IOException{
         estado = States.turnoInimigo;
+        ArrayList<TextoNode> mensagem = new ArrayList<>();
+        if(this.inimigo.envenenado){
+            mensagem.add(this.player.TomarDanoVeneno());
+        }
+        if(this.inimigo.regen>0){
+            this.inimigo.regen --;
+            this.inimigo.currentHp += this.inimigo.currentHp/5;
+            mensagem.add(new TextoNode("O inimigo teve sua vida regenerada","The enemy's hp was regenerated"));
+        }
         if(this.inimigo.stun > 0){
             this.inimigo.stun--;
-            ArrayList<String> mensagem = new ArrayList<>();
-            mensagem.add("Inimigo esta stunado");
+            mensagem.add(new TextoNode("O inimigo esta stunado", "The enemy is stunned"));
+            this.controller.mostrarResultado(mensagem);
+        }
+        else if(this.inimigo.dormindo){
+            mensagem.add(new TextoNode(this.inimigo.getNome() + " esta dormindo",this.inimigo.getNome() + " is sleeping"));
             this.controller.mostrarResultado(mensagem);
         }
         else{
@@ -132,29 +150,31 @@ public class GerenciadorDeBatalha {
                 comp.magiaEscolhida.Conjurar(this, this.inimigo);
             }
             else{
-                this.Ataque(this.inimigo.atqAnim.INICIAR(this.controller.getPlayerEffect()), this.inimigo.getAtqM(),this.inimigo.getTipoAtaqueBase(), true, null);
+                this.Ataque(this.inimigo.atqAnim.INICIAR(this.controller.getPlayerEffect()), this.inimigo.getAtqF(),this.inimigo.getTipoAtaqueBase(), true, null);
             }
         }
     }
-    public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<String> Mensagem){
+    public void Ataque(Timeline t, int Dano, TiposElementais tipo, boolean fisico, ArrayList<TextoNode> Mensagem){
         boolean acertou = true;
+        boolean critico = true;
         PersonagemLuta alvo = getAlvo(false), atacante = getAlvo(true);
         if(Mensagem == null){
-            Mensagem = new ArrayList<String>();
-            Mensagem.add(atacante.getNome() + " atacou");
+            Mensagem = new ArrayList<TextoNode>();
+            Mensagem.add(new TextoNode(atacante.getNome() + " atacou", atacante.getNome() + " attacked"));
         }
         if(alvo.dormindo){
-            Mensagem.add(alvo.getNome() + " acordou");
+            Mensagem.add(new TextoNode(alvo.getNome() + " acordou",alvo.getNome() + " wake up"));
         }
         this.controller.EsconderInterfacePlayer();
         Random rand = new Random();
-        double taxaAcerto = 1/(1+Math.exp(-0.1*(atacante.getVelocidade() + 7 - alvo.getVelocidade())));
+        double taxaAcerto = 1/(1+Math.exp(-0.01*(atacante.getVelocidade() + (0.25*(atacante.sorte+5-alvo.sorte)) - alvo.getVelocidade())));
+        double taxaCritico = 1/(1+Math.exp(-0.1*(atacante.getVelocidade() + (0.25*(atacante.sorte+5-alvo.sorte)) - alvo.getVelocidade())));
         System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + this.player.getVelocidade() + "/nInimigo: " + this.inimigo.getVelocidade());
         if(atacante.cegado){
             taxaAcerto /= 2;
         }
-        if(taxaAcerto < 0.05){
-            taxaAcerto = 0.05;
+        if(taxaAcerto < 0.2){
+            taxaAcerto = 0.2;
         }
         else if(taxaAcerto > 0.95){
             taxaAcerto = 0.95;
@@ -163,19 +183,26 @@ public class GerenciadorDeBatalha {
         if(!(taxaAcerto > rand.nextDouble(0,1))){
             acertou = false;
         }
+        if(!(taxaCritico > rand.nextDouble(0,1))){
+            critico = false;
+        }
         if(acertou){
+            if(critico){
+                Dano = (int)(Dano*1.5f);
+                Mensagem.add(new TextoNode("Acerto crítico!!", "Critical hit!!"));
+            }
             Mensagem.add(alvo.tomarDano(Dano, tipo, fisico));
         }
         else{
-            Mensagem.add(atacante.getNome() + " errou o ataque");
+            Mensagem.add(new TextoNode(atacante.getNome() + " errou o ataque", atacante.getNome() + " missed the attack"));
         }
         this.controller.MostrarInterfacePlayer(false);
-        ArrayList<String> finalMensagem = Mensagem;
+        ArrayList<TextoNode> finalMensagem = Mensagem;
         t.setOnFinished(event -> this.controller.mostrarResultado(finalMensagem));
         t.play();
     }
 
-    public void acaoNaoAgreciva(Timeline t, ArrayList<String> mensagem){
+    public void acaoNaoAgreciva(Timeline t, ArrayList<TextoNode> mensagem){
         this.controller.MostrarInterfacePlayer(false);
         t.setOnFinished(event -> this.controller.mostrarResultado(mensagem));
         t.play();
@@ -217,7 +244,7 @@ public class GerenciadorDeBatalha {
         }
     }
     public void fugir(boolean conseguiu) throws IOException {
-        ArrayList<String> i = new ArrayList<String>();
+        ArrayList<TextoNode> i = new ArrayList<TextoNode>();
         if(this.tipoBatalha.escapavel) {
             if (conseguiu) {
                 int quem;
@@ -227,14 +254,16 @@ public class GerenciadorDeBatalha {
                 else {
                     quem = 2;
                 }
+                i.add(new TextoNode("Fugiu da batalha","Escaped"));
+                this.controller.mostrarResultado(i);
                 this.controller.Fuga(quem);
             } else {
-                i.add("Falhou em fugir");
+                i.add(new TextoNode("Falhou em fugir","Failed to escape"));
                 this.controller.mostrarResultado(i);
             }
         }
         else{
-            i.add("Não é possível fugir desta batalha");
+            i.add(new TextoNode("Não é possível fugir desta batalha","It's impossible to escape"));
             this.controller.mostrarResultado(i);
         }
     }

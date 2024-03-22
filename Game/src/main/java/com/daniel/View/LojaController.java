@@ -30,6 +30,33 @@ import static com.daniel.View.Utilidades.*;
 public class LojaController implements Initializable {
     private Item itemSelecionado; //Armazenar item clicado
     @FXML
+    private Tab Aba_Arm;
+
+    @FXML
+    private Tab Aba_Armas;
+
+    @FXML
+    private Tab Aba_Minerios;
+
+    @FXML
+    private Tab Aba_P;
+
+    @FXML
+    private Text Txt_Carteira;
+
+    @FXML
+    private Text Txt_Desc;
+
+    @FXML
+    private Text Txt_Nome;
+
+    @FXML
+    private Text Txt_Preco;
+
+    @FXML
+    private Text Txt_Venda;
+
+    @FXML
     private Button btnComprar;
 
     @FXML
@@ -45,12 +72,16 @@ public class LojaController implements Initializable {
     private GridPane gridArmas;
 
     @FXML
-    private GridPane gridPocoes;
-    @FXML
     private GridPane gridMinerio;
 
     @FXML
+    private GridPane gridPocoes;
+
+    @FXML
     private AnchorPane panelImage;
+
+    @FXML
+    private TabPane tabPane;
 
     @FXML
     private Text txtInfoItem;
@@ -67,10 +98,18 @@ public class LojaController implements Initializable {
     @FXML
     private Text txtVenda;
     private boolean ativarCompra = false;
-    private AudioPlayer somCompraVenda = new AudioPlayer();
     private JogoFachada jogoFachada;
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        Txt_Carteira.setText(TextosInterface.getCarteira());
+        Txt_Desc.setText(TextosInterface.getDesc());
+        Txt_Nome.setText(TextosInterface.getNome());
+        Txt_Preco.setText(TextosInterface.getPreco());
+        Txt_Venda.setText(TextosInterface.getVender()+":");
+        Aba_Arm.setText(TextosInterface.getArmadura());
+        Aba_Armas.setText(TextosInterface.getArmas()+"s");
+        Aba_Minerios.setText(TextosInterface.getMinerio());
+        Aba_P.setText(TextosInterface.getPocoes());
         jogoFachada = JogoFachada.getInstance();
         configurarBotoes(btnComprar);
         configurarBotoes(btnVender);

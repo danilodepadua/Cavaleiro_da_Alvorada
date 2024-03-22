@@ -4,6 +4,7 @@ import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.BatalhaDeTurnos.*;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Interfaces.IConsumableInBattle;
@@ -200,13 +201,13 @@ public class BattleController implements Initializable {
         EsconderInterfacePlayer();
         gdb.fugir(this.gdb.player.fugir(this.gdb.inimigo.getVelocidade()));
     }
-    public void mostrarResultado(ArrayList<String> mensagems){
+    public void mostrarResultado(ArrayList<TextoNode> mensagems){
         Timeline T = new Timeline();
         double time = 0.2;
-        for(String i : mensagems) {
+        for(TextoNode i : mensagems) {
             T.getKeyFrames().add(new KeyFrame(Duration.seconds(time), event -> {
                 boxMensagem.setOpacity(1);
-                txtMensagem.setText(i);
+                txtMensagem.setText(i.getTexto());
             }));
             time+=1/ ConfiguracoesUsuario.obterVelelocidadeTextoBatalhaPadrao();
         }
@@ -337,7 +338,7 @@ public class BattleController implements Initializable {
             int finalI = i;
             itemBtn.setOnAction(event -> {
                 try {
-                    ArrayList<String> mensagem = new ArrayList<>();
+                    ArrayList<TextoNode> mensagem = new ArrayList<>();
                     mensagem.add(((IConsumableInBattle)itens.get(finalI)).Consumir(this.gdb.player));
                     if(itens.get(finalI).getQuant() <=0){
                         itens.remove(finalI);
@@ -383,8 +384,8 @@ public class BattleController implements Initializable {
         InterfacePlayer.setOpacity(0);
         InterfacePlayer.setDisable(true);
     }
-    public void ShowMensage(String s){
-        ArrayList<String> mensagem = new ArrayList<>();
+    public void ShowMensage(TextoNode s){
+        ArrayList<TextoNode> mensagem = new ArrayList<>();
         mensagem.add(s);
         mostrarResultado(mensagem);
     }
@@ -395,13 +396,13 @@ public class BattleController implements Initializable {
             t.setNode(PlayerImg);
             t.setFromX(PlayerImg.getLayoutX());
             t.setToX(PlayerImg.getLayoutX()-1000);
-            t.setDuration(Duration.seconds(1));
+            t.setDuration(Duration.seconds(2));
         }
         else if(i==2){
             t.setNode(EnimyImg);
             t.setFromX(EnimyImg.getLayoutX());
-            t.setToX(EnimyImg.getLayoutX()+200);
-            t.setDuration(Duration.seconds(1));
+            t.setToX(EnimyImg.getLayoutX()+1000);
+            t.setDuration(Duration.seconds(2));
         }
         t.setOnFinished(event -> {
             try {

@@ -19,10 +19,10 @@ public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableIn
     }
 
     @Override
-    public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
+    public TextoNode Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.RecuperarMana(15);
         Player.getPlayer().getInventario().removerItem(this);
-        return "O jogador recuperou 15 de MP";
+        return new TextoNode("O jogador recuperou 15 de mp","The player recover 15 of mp");
     }
 
     @Override

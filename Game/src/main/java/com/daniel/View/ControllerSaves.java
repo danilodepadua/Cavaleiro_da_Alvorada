@@ -87,7 +87,7 @@ public class ControllerSaves implements Initializable {
             }
         }
         else{
-            Save1.setText("Novo jogo");
+            Save1.setText(TextosInterface.getNovoJogo());
             Save1.setOnAction(event->{
                 try {
                     NovoJogo(1);
@@ -111,7 +111,7 @@ public class ControllerSaves implements Initializable {
             }
         }
         else{
-            Save2.setText("Novo jogo");
+            Save2.setText(TextosInterface.getNovoJogo());
             Save2.setOnAction(event->{
                 try {
                     NovoJogo(2);
@@ -135,7 +135,7 @@ public class ControllerSaves implements Initializable {
             }
         }
         else{
-            Save3.setText("Novo jogo");
+            Save3.setText(TextosInterface.getNovoJogo());
             Save3.setOnAction(event->{
                 try {
                     NovoJogo(3);
@@ -148,9 +148,6 @@ public class ControllerSaves implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Atualizar();
-        Save1.setText(TextosInterface.getNovoJogo());
-        Save2.setText(TextosInterface.getNovoJogo());
-        Save3.setText(TextosInterface.getNovoJogo());
         Btn_Deletar.setText(TextosInterface.getDeletar());
         Btn_Carregar.setText(TextosInterface.getCarregar());
         Utilidades.estiloBotao(Save1);

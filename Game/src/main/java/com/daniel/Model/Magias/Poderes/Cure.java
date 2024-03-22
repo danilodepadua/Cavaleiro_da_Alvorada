@@ -1,5 +1,6 @@
 package com.daniel.Model.Magias.Poderes;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 import com.daniel.Model.Magias.Animacoes.CureAnimation;
@@ -15,5 +16,6 @@ public class Cure extends Magia implements IEffects {
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
         alvo.RecuperarVida(50);
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida curada em 50",alvo.getNome() + " has it's hp healed by 50"));
     }
 }

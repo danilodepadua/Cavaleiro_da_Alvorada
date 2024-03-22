@@ -6,4 +6,10 @@ public enum Comportamentos {
     BossFinal1,
     BossFinal2,
     BossAquatico,
+    BossFloresta,
+    BossBruxa,
+    BossMontanha,
+    BossPorto,
+    BossCaverna,
+    BossNeve
 }

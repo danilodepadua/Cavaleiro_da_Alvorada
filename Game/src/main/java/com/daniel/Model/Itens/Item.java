@@ -10,7 +10,7 @@ public abstract class Item implements Serializable {
     protected String imagem;
     protected TextoNode nome;
     protected int quant = 1;
-    protected int preco;
+    protected int preco,precoVenda;
     protected TextoNode descricao;
 
     public Item(String imgPath, TextoNode nome, int quant, int preco, TextoNode desc){
@@ -19,6 +19,7 @@ public abstract class Item implements Serializable {
         this.quant = quant;
         this.nome = nome;
         this.preco = preco;
+        this.precoVenda = preco/3;
     }
     public Image getImage(){
         return new Image (Main.class.getResource(imagem).toString());
@@ -30,6 +31,7 @@ public abstract class Item implements Serializable {
     public int getPreco() {
         return preco;
     }
+    public int getPrecoVenda(){return precoVenda;}
     public String getDescricao() {
         return descricao.getTexto();
     }

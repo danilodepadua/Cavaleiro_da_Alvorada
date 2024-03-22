@@ -9,9 +9,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.TavernaController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.TavernaController">
    <children>
-      <VBox layoutX="74.0" layoutY="458.0" prefHeight="123.0" prefWidth="204.0" spacing="30.0" />
       <Button fx:id="btnVoltar" layoutX="10.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Barlow Condensed SemiBold" size="15.0" />
@@ -24,7 +23,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <HBox layoutX="62.0" layoutY="458.0" prefHeight="72.0" prefWidth="432.0" spacing="30.0" />
       <VBox layoutX="95.0" layoutY="161.0" prefHeight="287.0" prefWidth="204.0" spacing="43.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="901.0">
          <children>
             <Button fx:id="btnDescanso" mnemonicParsing="false" onAction="#onActionDescanso" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Descansar" textFill="#eccb7e">
@@ -43,14 +41,14 @@
          <children>
             <VBox layoutX="12.0" layoutY="12.0" prefHeight="214.0" prefWidth="274.0" spacing="30.0">
                <children>
-                  <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="ATRIBUTO ATUAL">
+                  <Text fx:id="Txt_Atributos" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="ATRIBUTO ATUAL">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                      </font>
                   </Text>
                   <HBox prefHeight="30.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida Atual:">
+                        <Text fx:id="Txt_HpAtual" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida Atual:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="25.0" />
                            </font>
@@ -64,7 +62,7 @@
                   </HBox>
                   <HBox prefHeight="30.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Mana Atual:">
+                        <Text fx:id="Txt_MpAtual" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Mana Atual:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="25.0" />
                            </font>
@@ -78,7 +76,7 @@
                   </HBox>
                   <HBox prefHeight="30.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço para se recuperar:">
+                        <Text fx:id="Txt_Preco" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço para se recuperar:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="25.0" />
                            </font>

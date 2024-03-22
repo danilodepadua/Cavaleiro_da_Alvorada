@@ -1,6 +1,7 @@
 package com.daniel.Model.Magias.Poderes;
 
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.RemoverCoinsException;
 import com.daniel.Model.Interfaces.IEffects;
@@ -22,7 +23,7 @@ public class Roubo extends Magia implements IEffects {
         Random rand = new Random();
         int quant = rand.nextInt(20, 200);
         try {
-            this.mensagem.add(Player.getPlayer().getNome() + " perdeu " + Player.getPlayer().removerCoins(quant) + " de dinheiro");
+            this.mensagem.add(new TextoNode(Player.getPlayer().getNome() + " perdeu " + Player.getPlayer().removerCoins(quant) + " makkos",Player.getPlayer().getNome() + " lost " + Player.getPlayer().removerCoins(quant) + " makkos"));
         }
         catch (PlayerInexistenteException e){
             System.out.println("alvo da magia não foi encontrado");

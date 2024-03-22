@@ -1,8 +1,9 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.Auroraville.*;
+import com.daniel.Model.Dados.Entidades.Inimigos.Desapoles.InimigoAbelha;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaPano;
 import com.daniel.Model.Itens.Armaduras.Capacetes.CapacetePano;
 import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralPano;
@@ -19,12 +20,12 @@ import java.util.ArrayList;
 public class Auroraville extends Cidade {
     public Auroraville() throws PlayerInexistenteException {
         super("AURORAVILLE", "/com.daniel.Images/Fundos/Fundo3.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg", 50);
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 
         // Inicializa a lista de inimigos corretamente
-        //this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeAguaNv1(), new InimigoSlimeDeEscuridaoNv1(), new InimigoSlimeDeRaioNv1(), new InimigoLadrao()};
-        this.inimigos = new Inimigo[]{new InimigoAbelha()};
+        //this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoLadrao()};
+        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAve1(),new InimigoAve2(),new InimigoAve3(),new InimigoJavali(), new InimigoSlimeNv3()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests.add(new QuestBabySlime());
         this.quests.add(new QuestAbelha());

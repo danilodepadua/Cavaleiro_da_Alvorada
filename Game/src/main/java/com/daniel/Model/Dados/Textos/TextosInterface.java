@@ -35,16 +35,30 @@ public class TextosInterface {
     private static final TextoNode Memoria = new TextoNode("Memoria", "Memory");
     private static final TextoNode Taverna = new TextoNode("Taverna", "Inn");
     private static final TextoNode Descancar = new TextoNode("Descaçar", "Rest");
-    private static final TextoNode Minerios = new TextoNode("Minérios", "Ores");
     private static final TextoNode Evoluir = new TextoNode("Evoluir", "Evolution");
+    private static final TextoNode Vitoria = new TextoNode("Vitoria", "Victory");
+    private static final TextoNode Drop = new TextoNode("ITENS DROPADOS:", "DROPPED ITEMS:");
+    private static final TextoNode XpObtido = new TextoNode("Experiência obtida:", "Obtained Exp:");
+    private static final TextoNode MakkoObtido = new TextoNode("Makkos obtidos:", "Obtained Makkos:");
+    private static final TextoNode Recompensa = new TextoNode("RECOMPENSAS:", "REWARDS:");
+    private static final TextoNode Descricao = new TextoNode("Descrição:", "Description:");
+    private static final TextoNode Preco = new TextoNode("Preço:", "Price:");
+    private static final TextoNode Armadura = new TextoNode("Armaduras", "Armor");
+    private static final TextoNode Minerio = new TextoNode("Minérios", "Ores");
+    private static final TextoNode Pocoes = new TextoNode("Poções", "Potions");
+    private static final TextoNode Atributos = new TextoNode("Atributos", "Attributes");
+    private static final TextoNode HpAtual = new TextoNode("HP atual:", "Current HP:");
+    private static final TextoNode MpAtual = new TextoNode("MP atural:", "Current MP:");
+    private static final TextoNode PrecoR = new TextoNode("Preço para se recuperar:", "Price to recover:");
+    private static final TextoNode Recuperar = new TextoNode("Recuperar", "Recover");
 
     //Craft
     private static final TextoNode Criacao = new TextoNode("Criação de itens", "Items creation");
 
     private static final TextoNode Quantidade = new TextoNode("Quantidade", "Quantity");
     private static final TextoNode Prob = new TextoNode("Probabilidade de sucesso:", "Chance of Success:");
-    private static final TextoNode Forjar = new TextoNode("Forjar", "forge");
-    private static final TextoNode Forja = new TextoNode("Forja", "forge");
+    private static final TextoNode Forjar = new TextoNode("Forjar", "Forge");
+    private static final TextoNode Forja = new TextoNode("Forja", "Forge");
 
     //Conficurações
     private static final TextoNode Config = new TextoNode("Configurações", "Settings");
@@ -302,8 +316,55 @@ public class TextosInterface {
     public static String getEvolucao() {
         return Evoluir.getTexto();
     }
-    public static String getMinerios() {
-        return Minerios.getTexto();
+    public static String getDrop() {
+        return Drop.getTexto();
+    }
+    public static String getMakkoObtido() {
+        return MakkoObtido.getTexto();
+    }
+    public static String getRecompensa() {
+        return Recompensa.getTexto();
+    }
+    public static String getVitoria() {
+        return Vitoria.getTexto();
+    }
+    public static String getXpObtido() {
+        return XpObtido.getTexto();
+    }
+    public static String getDesc() {
+        return Descricao.getTexto();
+    }
+    public static String getPreco() {
+        return Preco.getTexto();
+    }
+    public static String getArmadura() {
+        return Armadura.getTexto();
+    }
+    public static String getMinerio() {
+        return Minerio.getTexto();
+    }
+    public static String getPocoes() {
+        return Pocoes.getTexto();
+    }
+
+    public static String getAtributos() {
+        return Atributos.getTexto();
+    }
+
+    public static String getHpAtual() {
+        return HpAtual.getTexto();
+    }
+
+    public static String getMpAtual() {
+        return MpAtual.getTexto();
+    }
+
+    public static String getPrecoR() {
+        return PrecoR.getTexto();
+    }
+
+    public static String getRecuperar() {
+        return Recuperar.getTexto();
     }
 }
 

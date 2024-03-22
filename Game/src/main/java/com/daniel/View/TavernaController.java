@@ -27,6 +27,18 @@ import static com.daniel.View.Utilidades.*;
 public class TavernaController implements Initializable {
     private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
+    private Text Txt_Atributos;
+
+    @FXML
+    private Text Txt_HpAtual;
+
+    @FXML
+    private Text Txt_MpAtual;
+
+    @FXML
+    private Text Txt_Preco;
+
+    @FXML
     private Button btnDescanso;
 
     @FXML
@@ -55,27 +67,47 @@ public class TavernaController implements Initializable {
 
     @FXML
     private Text txtVida;
-
     @FXML
     void Voltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
-
     }
 
     @FXML
     void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
-        Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
-        Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
-        Player.getPlayer().removerCoins(50);
-        txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
-        txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
+        Rectangle overlay = new Rectangle(panePrincipal.getWidth(), panePrincipal.getHeight(), Color.rgb(0, 0, 0, 1));
+        panePrincipal.getChildren().add(overlay);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), overlay);
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.setOnFinished(event1->{
+            paneInfos.setVisible(false);
+            paneInfos.setDisable(true);
+            btnRestaurar.setDisable(true);
+            btnRestaurar.setVisible(false);
+            try {
+                Player.getPlayer().RecuperarMana(Player.getPlayer().getMP());
+                Player.getPlayer().RecuperarVida(Player.getPlayer().getHP());
+                Player.getPlayer().removerCoins(Main.cidadeAtual.CustoNaninha);
+                txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
+                txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
+            } catch (PlayerInexistenteException | RemoverCoinsException e) {
+                System.out.println("Erro");
+                throw new RuntimeException(e);
+            }
+            FadeTransition fadeOutTransition = new FadeTransition(Duration.seconds(5), overlay);
+            fadeOutTransition.setFromValue(1.0); // Opacidade inicial
+            fadeOutTransition.setToValue(0.0);   // Opacidade final
+            fadeOutTransition.setOnFinished(e2 -> {
+                panePrincipal.getChildren().remove(overlay);
+            });
+            fadeOutTransition.play();
+        });
+        fadeTransition.play();
     }
     @FXML
     void onActionDescanso(ActionEvent event) throws PlayerInexistenteException {
-        // Cria um retângulo para cobrir toda a tela
-        Rectangle overlay = new Rectangle(panePrincipal.getWidth(), panePrincipal.getHeight(), Color.rgb(0, 0, 0, 0.5));
+        Rectangle overlay = new Rectangle(panePrincipal.getWidth(), panePrincipal.getHeight(), Color.rgb(0, 0, 0, 1));
         panePrincipal.getChildren().add(overlay);
-
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), overlay);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
@@ -84,16 +116,15 @@ public class TavernaController implements Initializable {
         fadeTransition.setOnFinished(e -> {
             paneInfos.setVisible(true);
             paneInfos.setDisable(false);
-            btnRestaurar.setDisable(false);
             btnRestaurar.setVisible(true);
             try {
                 txtVida.setText(""+Player.getPlayer().getcHP() + " /"+ Player.getPlayer().getHP());
                 txtMana.setText(""+Player.getPlayer().getcMp() + " /"+ Player.getPlayer().getMP());
-
+                btnRestaurar.setDisable(!(Player.getPlayer().getCoins() >= Main.cidadeAtual.CustoNaninha));
             } catch (PlayerInexistenteException ex) {
                 throw new RuntimeException(ex);
             }
-            txtRestaurar.setText(Integer.toString(50));
+            txtRestaurar.setText(Integer.toString(Main.cidadeAtual.CustoNaninha));
 
             FadeTransition fadeOutTransition = new FadeTransition(Duration.seconds(0.5), overlay);
             fadeOutTransition.setFromValue(1.0); // Opacidade inicial
@@ -116,11 +147,17 @@ public class TavernaController implements Initializable {
     @FXML
     void onActionTaverna(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCassino.fxml")).load());
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Txt_Atributos.setText(TextosInterface.getAtributos());
+        Txt_HpAtual.setText(TextosInterface.getHpAtual());
+        Txt_MpAtual.setText(TextosInterface.getMpAtual());
+        Txt_Preco.setText(TextosInterface.getPreco());
+        btnRestaurar.setText(TextosInterface.getRecuperar());
+        btnDescanso.setText(TextosInterface.getDescancar());
+        btnTaverna.setText(TextosInterface.getTaverna());
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Taverna.jpg");
         configurarBotoes(btnDescanso);
         configurarBotoes(btnTaverna);
@@ -129,7 +166,6 @@ public class TavernaController implements Initializable {
         contornarBotaoVoltar(btnSair);
         btnRestaurar.setText(TextosInterface.getDescancar());
         btnTaverna.setText(TextosInterface.getCassino());
-
     }
     @FXML
     void onClickFechar(ActionEvent event) {

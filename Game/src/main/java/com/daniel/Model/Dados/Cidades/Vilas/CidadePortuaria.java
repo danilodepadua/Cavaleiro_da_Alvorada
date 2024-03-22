@@ -1,13 +1,15 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.CidadeMorta.InimigoSlimeDeEscuridaoNv3;
+import com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria.InimigoLadrao;
+import com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria.InimigoSlimeDeFogoNv3;
+import com.daniel.Model.Dados.Entidades.Inimigos.Ilha.InimigoSlimeDeAguaNv3;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
 import com.daniel.Model.Itens.Armas.*;
 import com.daniel.Model.Itens.Mapas.MapaIlha;
 import com.daniel.Model.Itens.Mapas.MapaPedraveira;
-import com.daniel.Model.Itens.Pocoes.Cerveja;
 import com.daniel.Model.Itens.Pocoes.PocaoCura;
 import com.daniel.Model.Itens.Pocoes.PocaoMp;
 import com.daniel.Model.Quests.*;
@@ -18,10 +20,10 @@ public class CidadePortuaria extends Cidade {
 
     public CidadePortuaria() throws PlayerInexistenteException{
         super("CIDADE PORTUÁRIA", "/com.daniel.Images/Fundos/CidadePortuaria.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",700);
         this.musicPath = "/com.daniel.audios/msc_cidadePortuaria.wav";
 
-        this.inimigos = new Inimigo[]{new InimigoSlimeDeTerraNv2(), new InimigoSlimeDeRaioNv2(), new InimigoSlimeDeAguaNv3(), new InimigoLadrao(), new InimigoSlimeDeFogoNv3(), new InimigoSlimeDeEscuridaoNv3()};
+        this.inimigos = new Inimigo[]{new InimigoSlimeDeAguaNv3(), new InimigoLadrao(), new InimigoSlimeDeFogoNv3(), new InimigoSlimeDeEscuridaoNv3()};
 
         this.itens.add(new FoiceMagica());
         this.itens.add(new Machado());
@@ -30,7 +32,6 @@ public class CidadePortuaria extends Cidade {
         this.itens.add(new EspadaDemoniaca());
         this.itens.add(new PocaoCura());
         this.itens.add(new PocaoMp());
-        this.itens.add(new Cerveja());
         this.itens.add(new MapaPedraveira());
         this.itens.add(new MapaIlha());
         this.quests.add(new QuestSlimeDeTerraNv2());

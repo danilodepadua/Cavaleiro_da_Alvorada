@@ -1,5 +1,6 @@
 package com.daniel.Model.Magias.Poderes;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 import com.daniel.Model.Magias.Animacoes.FastAnimation;
@@ -15,6 +16,6 @@ public class Fast extends Magia implements IEffects {
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
         alvo.UpVel(10);
-        this.mensagem.add(alvo.getNome() + " teve sua velocidade aumentada em 10");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua velocidade aumentada em 10",alvo.getNome() + " has its speed increased by 10"));
     }
 }

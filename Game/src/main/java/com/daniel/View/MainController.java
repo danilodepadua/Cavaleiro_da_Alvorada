@@ -61,7 +61,7 @@ public class MainController implements Initializable {
         configurarBotoes(btnCreditos);
         identificarTextos(Screen);
         btnConfig.setText(TextosInterface.getConfig());
-        btnNovoJogo.setText(TextosInterface.getNovoJogo());
+        btnNovoJogo.setText(TextosInterface.getJogar());
         btnSair.setText(TextosInterface.getSair());
         btnCreditos.setText(TextosInterface.getCreditos());
         Txt_Titulo.setText(TextosInterface.getTitulo());

@@ -3,10 +3,10 @@ package com.daniel.Model.Dados.Cidades.Vilas;
 import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSlimeDeGeloNv3;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSnowMan;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoTRex;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoTigerMan;
+import com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte.InimigoSlimeDeGeloNv3;
+import com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte.InimigoSnowMan;
+import com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro.InimigoTRex;
+import com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro.InimigoTigerMan;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaFerro;
 import com.daniel.Model.Itens.Armaduras.Capacetes.CapaceteFerro;
 import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralFerro;
@@ -21,7 +21,7 @@ public class MontanhaDoNorte extends Cidade {
 
     public MontanhaDoNorte() throws PlayerInexistenteException {
         super("MONTANHA DO NORTE","/com.daniel.Images/Fundos/Montanha do norte.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",800);
         this.inimigos = new Inimigo[]{new InimigoSnowMan(), new InimigoTRex(),
                 new InimigoTigerMan(), new InimigoSlimeDeGeloNv3()};
 

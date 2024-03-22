@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1134.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.LojaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1134.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.LojaController">
    <children>
-      <AnchorPane fx:id="panelImage" prefHeight="288.0" prefWidth="1134.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="panelImage" layoutY="14.0" prefHeight="288.0" prefWidth="1134.0" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
          <children>
             <Button fx:id="btnVoltar" layoutX="12.0" layoutY="4.0" mnemonicParsing="false" onAction="#onClickVoltar" prefHeight="41.0" prefWidth="24.0" style="-fx-background-color: #140e0a;" textFill="GOLDENROD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
@@ -36,7 +36,7 @@
          <children>
             <TabPane fx:id="tabPane" prefHeight="322.0" prefWidth="654.0" style="-fx-background-color: #47362c;" styleClass="tab-header-background" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
               <tabs>
-                <Tab text="       Poções            ">
+                <Tab fx:id="Aba_P" text="       Poções            ">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #140e0a;">
                            <children>
@@ -65,7 +65,7 @@
                         </AnchorPane>
                      </content>
                 </Tab>
-                <Tab text="         Armaduras           ">
+                <Tab fx:id="Aba_Arm" text="         Armaduras           ">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #140e0a;">
                            <children>
@@ -94,7 +94,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="          Armas             ">
+                  <Tab fx:id="Aba_Armas" text="          Armas             ">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #071121;">
                            <children>
@@ -173,7 +173,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="         Minérios          ">
+                  <Tab fx:id="Aba_Minerios" text="         Minérios          ">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="711.0" style="-fx-background-color: #140e0a;">
                            <children>
@@ -210,7 +210,7 @@
                      <children>
                         <HBox prefHeight="16.0" prefWidth="200.0">
                            <children>
-                              <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Carteira:" wrappingWidth="76.94204711914062">
+                              <Text fx:id="Txt_Carteira" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Carteira:" wrappingWidth="76.94204711914062">
                                  <font>
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>
@@ -224,7 +224,7 @@
                         </HBox>
                         <HBox prefHeight="29.0" prefWidth="544.0">
                            <children>
-                              <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="57.741973876953125">
+                              <Text fx:id="Txt_Nome" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="57.741973876953125">
                                  <font>
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>
@@ -238,7 +238,7 @@
                         </HBox>
                         <HBox prefHeight="31.0" prefWidth="470.0">
                            <children>
-                              <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" wrappingWidth="91.34207153320312">
+                              <Text fx:id="Txt_Desc" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" wrappingWidth="91.34207153320312">
                                  <font>
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>
@@ -252,7 +252,7 @@
                         </HBox>
                         <HBox prefHeight="31.0" prefWidth="231.0">
                            <children>
-                              <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço:" wrappingWidth="60.142059326171875">
+                              <Text fx:id="Txt_Preco" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço:" wrappingWidth="60.142059326171875">
                                  <font>
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>
@@ -262,7 +262,7 @@
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>
                               </Text>
-                              <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Venda: " wrappingWidth="60.142059326171875">
+                              <Text fx:id="Txt_Venda" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Venda: " wrappingWidth="60.142059326171875">
                                  <font>
                                     <Font name="Barlow Condensed SemiBold" size="20.0" />
                                  </font>

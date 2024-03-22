@@ -2,6 +2,7 @@ package com.daniel.Model.Magias;
 
 import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
@@ -16,7 +17,7 @@ public abstract class Magia implements Serializable {
     protected TiposElementais tiposElementais;
     protected AnimationsAttack Animation;
     protected boolean agressivo, autoUsavel = true;
-    protected ArrayList<String> mensagem = new ArrayList<>();
+    protected ArrayList<TextoNode> mensagem = new ArrayList<>();
 
     public Magia(String nome, int custo, double multiplicador, TiposElementais tiposElementais, AnimationsAttack animation, boolean agre) {
         this.custo = custo;
@@ -31,7 +32,7 @@ public abstract class Magia implements Serializable {
     }
     public void Conjurar(GerenciadorDeBatalha GB, PersonagemLuta c){
         this.mensagem.clear();
-        this.mensagem.add("Usou " + this.nome);
+        this.mensagem.add(new TextoNode("Usou " + this.nome, "Used " + this.nome));
         ImageView img = GB.getAlvoView(this.autoUsavel);
         boolean pode = c.usarMp(this.custo);
         if(pode) {
@@ -45,7 +46,7 @@ public abstract class Magia implements Serializable {
             }
         }
         else{
-            this.mensagem.add(c.getNome() + " não conseguiu usar a magia");
+            this.mensagem.add(new TextoNode(c.getNome() + " não conseguiu usar a magia",c.getNome() + " failed to use magic"));
             GB.acaoNaoAgreciva(new Timeline(), this.mensagem);
         }
     }

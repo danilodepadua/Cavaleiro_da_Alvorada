@@ -1,5 +1,6 @@
 package com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.BatalhaDeTurnos.TipoBatalha;
@@ -30,7 +31,7 @@ public class BatalhaSequencial extends TipoBatalha {
         pos++;
         if(pos<sequenciaInimigos.size()){
             System.out.println("Nova batalha em sequência");
-            bc.ShowMensage("Um novo inimigo apareceu");
+            bc.ShowMensage(new TextoNode("Um novo inimigo apareceu","A new enemy appeared"));
         }
         else{
             this.finalizado = true;

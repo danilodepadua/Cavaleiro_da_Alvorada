@@ -45,8 +45,8 @@ public class Player extends Personagem implements Serializable {
     private Bestiario bestiario = new Bestiario();
     private Player(String Img, int Force, int Int, String Name, int Velocity, int Res, int sorte) throws PlayerInexistenteException {
         super(Name, Img, Force, Int, Res, Velocity, sorte);
-        this.HP += 589;
-        this.MP +=103;
+        this.HP += 599;
+        this.MP +=199;
         this.currentHp = this.getHP();
         this.currentMp = this.getMP();
         this.inventario = new Inventario();
@@ -61,22 +61,6 @@ public class Player extends Personagem implements Serializable {
         this.magias = new ArrayList<>();
         this.magias.add(new Fogo());
         this.cidadesConehcidas.add(new Auroraville());
-        this.inventario.adicionarItem(new Ferro());
-        this.inventario.adicionarItem(new Ferro());
-        this.inventario.adicionarItem(new Ferro());
-        this.inventario.adicionarItem(new Ferro());
-        this.inventario.adicionarItem(new FragmentoFogo());
-        this.inventario.adicionarItem(new FragmentoFogo());
-        this.inventario.adicionarItem(new FragmentoGlacial());
-        this.inventario.adicionarItem(new FragmentoGlacial());
-        this.inventario.adicionarItem(new FragmentoEscuridao());
-        this.inventario.adicionarItem(new FragmentoEscuridao());
-        this.inventario.adicionarItem(new Ouro());
-        this.inventario.adicionarItem(new Ouro());
-        this.inventario.adicionarItem(new EspadaEletricaBasica());
-        this.inventario.adicionarItem(new EspadaFogoBasica());
-        this.inventario.adicionarItem(new EspadaGeloBasica());
-        this.inventario.adicionarItem(new EspadaSombriaBasica());
         player = this;
     }
     //Criar a instancia unica do player

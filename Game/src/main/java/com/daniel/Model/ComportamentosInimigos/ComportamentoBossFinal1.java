@@ -1,6 +1,7 @@
 package com.daniel.Model.ComportamentosInimigos;
 
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.Magias.Magia;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
@@ -75,6 +76,6 @@ class MagiaPropria extends Magia implements IEffects {
         alvo.setResistencias(conjuntos[1]);
         alvo.setImunidades(conjuntos[2]);
         alvo.setAbsorcao(conjuntos[3]);
-        this.mensagem.add(alvo.getNome() + " mudou a sua afinidade alemental");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " mudou a sua afinidade alemental",alvo.getNome() + " changed it's elemental affinity"));
     }
 }

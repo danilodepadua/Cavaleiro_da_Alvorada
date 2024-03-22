@@ -20,10 +20,10 @@ public class PocaoCura extends Item implements IConsumableOutBattle, IConsumable
     }
 
     @Override
-    public String Consumir(PersonagemLuta p) throws PlayerInexistenteException {
+    public TextoNode Consumir(PersonagemLuta p) throws PlayerInexistenteException {
         p.RecuperarVida(30);
         Player.getPlayer().getInventario().removerItem(this);
-        return "O jogador recuperou 30 de vida";
+        return new TextoNode("O jogador recuperou 30 de vida","The player recover 30 of hp");
     }
     @Override
     public void Consumir() throws PlayerInexistenteException {

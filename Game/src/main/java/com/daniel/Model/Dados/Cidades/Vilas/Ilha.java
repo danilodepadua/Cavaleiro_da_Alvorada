@@ -1,9 +1,8 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoAbelha;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoBabySlime;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSlimeDeEscuridaoNv1;
+import com.daniel.Model.Dados.Entidades.Inimigos.Desapoles.InimigoAbelha;
+import com.daniel.Model.Dados.Entidades.Inimigos.Auroraville.InimigoBabySlime;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Itens.Armas.EspadaFogoBasica;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 public class Ilha extends Cidade {
     public Ilha() throws PlayerInexistenteException {
         super("ILHA","/com.daniel.Images/Fundos/Ilha.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",1000);
 
         this.musicPath = "/com.daniel.audios/msc_ilha.wav";
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
+        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();
         this.itens.add(new EspadaFogoBasica());

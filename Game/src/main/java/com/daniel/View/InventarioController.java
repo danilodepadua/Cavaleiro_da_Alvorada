@@ -74,6 +74,27 @@ public class InventarioController implements Initializable {
     private ScrollPane Scroll;
 
     @FXML
+    private Text Txt_Armas;
+
+    @FXML
+    private Text Txt_Cabeca;
+
+    @FXML
+    private Text Txt_Corpo;
+
+    @FXML
+    private Text Txt_Desc;
+
+    @FXML
+    private Text Txt_Nome;
+
+    @FXML
+    private Text Txt_Pernas;
+
+    @FXML
+    private Text Txt_Quant;
+
+    @FXML
     private Text VelocidadePlayer;
 
     @FXML
@@ -87,7 +108,6 @@ public class InventarioController implements Initializable {
 
     @FXML
     private Button btnUsar;
-
 
     @FXML
     private Button btnVoltar;
@@ -130,6 +150,7 @@ public class InventarioController implements Initializable {
 
     @FXML
     private Text txtQtdItem;
+
     private final JogoFachada jogoFachada = JogoFachada.getInstance();
 
     public void ItemSelecionado(Item i) throws PlayerInexistenteException {
@@ -252,6 +273,13 @@ public class InventarioController implements Initializable {
         txt8.setText(TextosInterface.getDefM()+":");
         txt9.setText(TextosInterface.getResis()+":");
         txt10.setText(TextosInterface.getDefF()+":");
+        Txt_Armas.setText(TextosInterface.getArmas());
+        Txt_Cabeca.setText(TextosInterface.getCabeca());
+        Txt_Corpo.setText(TextosInterface.getCorpo());
+        Txt_Pernas.setText(TextosInterface.getPernas());
+        Txt_Nome.setText(TextosInterface.getNome()+":");
+        Txt_Desc.setText(TextosInterface.getCriacao()+":");
+        Txt_Quant.setText(TextosInterface.getQuantidade()+":");
         VelocidadePlayer.setText("" + Player.getPlayer().getVelocidade());
         ForcaPlayer.setText("" + Player.getPlayer().getForca());
         HpPlayer.setText("" + Player.getPlayer().getcHP() + "/" + Player.getPlayer().getHP());

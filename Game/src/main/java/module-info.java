@@ -53,13 +53,27 @@ module com.daniel.game {
     opens com.daniel.Model.ComportamentosInimigos to javafx.fxml;
     exports com.daniel.Model.Dados.Entidades.Inimigos;
     opens com.daniel.Model.Dados.Entidades.Inimigos to javafx.fxml;
-    exports com.daniel.Model.Dados.Entidades.Inimigos.Viloes;
-    opens com.daniel.Model.Dados.Entidades.Inimigos.Viloes to javafx.fxml;
     exports com.daniel.Model.Taverna;
     opens com.daniel.Model.Taverna to javafx.fxml;
     exports com.daniel.Model.Dados.Entidades.Inimigos.Bosses;
     opens com.daniel.Model.Dados.Entidades.Inimigos.Bosses to javafx.fxml;
     exports com.daniel.Model.Dados.Textos;
     opens com.daniel.Model.Dados.Textos to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.Auroraville;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.Auroraville to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.Desapoles;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.Desapoles to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.CidadeMorta;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.CidadeMorta to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.Especiais;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.Especiais to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte to javafx.fxml;
+    exports com.daniel.Model.Dados.Entidades.Inimigos.Ilha;
+    opens com.daniel.Model.Dados.Entidades.Inimigos.Ilha to javafx.fxml;
 
 }

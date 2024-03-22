@@ -1,6 +1,7 @@
 package com.daniel.Model.ComportamentosInimigos;
 
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.Magias.Magia;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
@@ -68,6 +69,6 @@ class MagiaDrenoVel extends Magia implements IEffects{
     public void aplicarEfeito(PersonagemLuta alvo) {
         alvo.UpVel(-5);
         invo.UpVel(5);
-        this.mensagem.add(alvo.getNome() + " teve sua velocidade roubada em 5 pontos");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua velocidade roubada em 5 pontos",alvo.getNome() + " had it's speed stolen in 5"));
     }
 }

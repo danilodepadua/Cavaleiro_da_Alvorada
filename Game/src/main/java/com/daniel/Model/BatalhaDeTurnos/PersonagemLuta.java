@@ -1,6 +1,7 @@
 package com.daniel.Model.BatalhaDeTurnos;
 
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Magias.AnimationsAttack;
 import com.daniel.Model.Magias.Animacoes.SlashAnimation;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
@@ -16,7 +17,7 @@ public class PersonagemLuta{
     protected AnimationsAttack atqAnim;
     protected ArrayList<Magia> magias;
     protected boolean envenenado = false, dormindo= false, silenciado= false, cegado= false;
-    protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade, stun = 0;
+    protected int currentHp, currentMp, HP, MP, DefF, DefM, AtqM, AtqF, velocidade,sorte, stun = 0, regen = 0;
     public PersonagemLuta(Inimigo i){
         this.HP = i.getHP();
         this.MP = i.getMP();
@@ -34,6 +35,7 @@ public class PersonagemLuta{
         this.Nome = i.getNome();
         this.atqAnim = new SlashAnimation();
         this.magias = i.getMagias();
+        this.sorte = i.getSorte();
     }
 
     public PersonagemLuta(Player p){
@@ -54,6 +56,7 @@ public class PersonagemLuta{
         this.atqAnim = new SlashAnimation();
         this.Nome = p.getNome();
         this.magias = p.getMagias();
+        this.sorte = p.getSorte();
     }
     protected TiposElementais[] fraquezas;
     protected TiposElementais[] resistencias;
@@ -61,11 +64,11 @@ public class PersonagemLuta{
     protected TiposElementais[] absorcao;
     protected TiposElementais tipoAtaqueBase;
 
-    public String tomarDano(int dano, TiposElementais tipo, boolean fisico){
-        String mensagem = this.Nome + " é imune a esse tipo de dano";;
+    public TextoNode tomarDano(int dano, TiposElementais tipo, boolean fisico){
+        TextoNode mensagem = new TextoNode(this.Nome + " é imune a esse tipo de dano",this.Nome + " is immune to this type of damage");
         int danoTomado = 0;
         Random rand = new Random();
-        dano = (int)(dano * rand.nextDouble(4.8, 5.2));
+        dano = (int)(dano * rand.nextDouble(30, 40));
         System.out.println("Dano: " + dano);
         this.dormindo = false;
         if(temTipo(fraquezas, tipo)){
@@ -78,8 +81,11 @@ public class PersonagemLuta{
             if(danoTomado <0){
                 danoTomado = 0;
             }
+            if(danoTomado>9999){
+                danoTomado = 9999;
+            }
             this.currentHp -= danoTomado;
-            mensagem = this.Nome + " tomou " + danoTomado;
+            mensagem = new TextoNode(this.Nome + " tomou " + danoTomado+" de dano",this.Nome + " took " + danoTomado+" of damage");
         }
         else if(temTipo(resistencias, tipo)){
             if(!fisico){
@@ -88,19 +94,25 @@ public class PersonagemLuta{
             else{
                 danoTomado = (int) (dano/2 * Math.exp(-0.005*this.getDefF()));
             }
+            if(danoTomado>9999){
+                danoTomado = 9999;
+            }
             if(danoTomado <0){
                 danoTomado = 0;
-                mensagem = this.Nome + " não tomou dano tomou ";
+                mensagem = new TextoNode(this.Nome + " não tomou dano tomou",this.Nome + " doesn't took damage");
             }
             else {
-                mensagem = this.Nome + " tomou " + danoTomado;
+                mensagem = new TextoNode(this.Nome + " tomou " + danoTomado+" de dano",this.Nome + " took " + danoTomado+" of damage");
             }
             this.currentHp -= danoTomado;
         }
         else if(temTipo(absorcao, tipo)){
             danoTomado = -dano/2;
+            if(danoTomado>9999){
+                danoTomado = 9999;
+            }
             this.currentHp -= danoTomado;
-            mensagem = this.Nome + " recuperou " + -danoTomado + " de vida";
+            mensagem = new TextoNode(this.Nome + " recuperou " + -danoTomado + " de vida",this.Nome + " recovered " + -danoTomado + " of hp");
         }
         else if(!temTipo(imunidades, tipo)){
             if(!fisico){
@@ -112,8 +124,11 @@ public class PersonagemLuta{
             if(danoTomado <0){
                 danoTomado = 0;
             }
+            if(danoTomado>9999){
+                danoTomado = 9999;
+            }
             this.currentHp -= danoTomado;
-            mensagem = this.Nome + " tomou "+danoTomado+" de dano";
+            mensagem = new TextoNode(this.Nome + " tomou "+danoTomado+" de dano",this.Nome + " took " + danoTomado+" of damage");
         }
         return mensagem;
     }
@@ -121,6 +136,23 @@ public class PersonagemLuta{
         this.currentHp -= dano;
         return dano;
     }
+
+    public TiposElementais[] getFraquezas() {
+        return fraquezas;
+    }
+
+    public TiposElementais[] getResistencias() {
+        return resistencias;
+    }
+
+    public TiposElementais[] getImunidades() {
+        return imunidades;
+    }
+
+    public TiposElementais[] getAbsorcao() {
+        return absorcao;
+    }
+
     public boolean usarMp(int i){
         if(this.currentMp >= i && !silenciado){
             this.currentMp -= i;
@@ -133,7 +165,7 @@ public class PersonagemLuta{
     public boolean getEnvenenado(){
         return envenenado;
     }
-    public boolean setCegado(){
+    public boolean getCegado(){
         return cegado;
     }
     public boolean getSilenciado(){
@@ -147,12 +179,12 @@ public class PersonagemLuta{
         }
         return false;
     }
-    public String TomarDanoVeneno(){
+    public TextoNode TomarDanoVeneno(){
         this.currentHp -= this.HP/10;
         if(this.currentHp<=0){
             this.currentHp = 1;
         }
-        return "Tomou dano por envenenamento";
+        return new TextoNode("Tomou dano por envenenamento","Took poison damage");
     }
 
     public int getCurrentHp() {
@@ -220,53 +252,56 @@ public class PersonagemLuta{
     public void UpRes(int Up){
         this.DefF += Up;
     }
-    public String Envenenar(){
+    public void UpSorte(int Up){
+        this.sorte += Up;
+    }
+    public TextoNode Envenenar(){
         Random rand = new Random();
         int i = rand.nextInt(0,100);
         if(i > 50){
             this.envenenado = true;
-            return this.getNome()+" foi envenenado";
+            return new TextoNode(this.getNome()+" foi envenenado",this.getNome()+" was poisoned");
         }
-        return this.getNome()+" não foi envenenado";
+        return new TextoNode(this.getNome()+" não foi envenenado",this.getNome()+" wasn't poisoned");
     }
-    public String Desenvenenar(){
+    public TextoNode Desenvenenar(){
         this.envenenado = false;
-        return this.getNome()+" se recuperou";
+        return new TextoNode(this.getNome()+" se recuperou do veneno",this.getNome()+" recovered from the poison");
     }
-    public String Dormir(){
+    public TextoNode Dormir(){
         Random rand = new Random();
         int i = rand.nextInt(0,100);
         if(i > 50){
             this.dormindo = true;
-            return this.getNome()+" caiu no sono";
+            return new TextoNode(this.getNome()+" caiu no sono",this.getNome()+" fell asleep");
         }
-        return this.getNome()+" não caiu no sono";
+        return new TextoNode(this.getNome()+" não caiu no sono",this.getNome()+" didn't fell asleep");
     }
-    public String Silenciar(){
+    public TextoNode Silenciar(){
         Random rand = new Random();
         int i = rand.nextInt(0,100);
         if(i > 50){
             this.silenciado = true;
-            return this.getNome()+" foi silenciado";
+            return new TextoNode(this.getNome()+" foi silenciado",this.getNome()+" has been silenced");
         }
-        return this.getNome()+" não foi silenciado";
+        return new TextoNode(this.getNome()+" não foi silenciado",this.getNome()+" hasn't been silenced");
     }
-    public String dessilenciar(){
+    public TextoNode dessilenciar(){
         this.silenciado = false;
-        return this.getNome()+" voltou a falar";
+        return new TextoNode(this.getNome()+" voltou a falar",this.getNome()+" can speak again");
     }
-    public String Cegar(){
+    public TextoNode Cegar(){
         Random rand = new Random();
         int i = rand.nextInt(0,100);
         if(i > 50){
             this.cegado = true;
-            return this.getNome()+" foi cegado";
+            return new TextoNode(this.getNome()+" foi cegado",this.getNome()+" has been blinded");
         }
-        return this.getNome()+" não foi cegado";
+        return new TextoNode(this.getNome()+" não foi cegado",this.getNome()+" hasn't been blinded");
     }
-    public String descegar(){
+    public TextoNode descegar(){
         this.cegado = false;
-        return this.getNome()+" voltou a enchegar";
+        return new TextoNode(this.getNome()+" voltou a enchegar",this.getNome()+" can see again");
     }
     public void RecuperarMana(int i) {
         this.currentMp += i;
@@ -281,11 +316,20 @@ public class PersonagemLuta{
         }
     }
     public void aplicarStun(){
-        stun++;
+        if(stun>0) {
+            Random rand = new Random();
+            stun+= rand.nextInt(1,4);
+        }
+    }
+    public void aplicarRegen(){
+        regen+=5;
+        if(regen>5){
+            regen=5;
+        }
     }
     public boolean fugir(int velC){
         Random rand = new Random();
-        return !(velC * rand.nextDouble(0.5, 1.5) > this.velocidade);
+        return !((velC+3) * rand.nextDouble(0.8, 1.2) > this.velocidade);
     }
 
     public void setFraquezas(TiposElementais[] fraquezas) {

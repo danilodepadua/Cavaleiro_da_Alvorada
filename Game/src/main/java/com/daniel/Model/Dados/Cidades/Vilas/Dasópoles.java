@@ -3,7 +3,6 @@ package com.daniel.Model.Dados.Cidades.Vilas;
 import com.daniel.Model.Dados.Cidades.Cidade;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.*;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaCouro;
 import com.daniel.Model.Itens.Armaduras.Capacetes.CapaceteCouro;
 import com.daniel.Model.Itens.Armaduras.Peitorais.PeitoralCouro;
@@ -19,11 +18,11 @@ import java.util.ArrayList;
 public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
         super("DASÓPOLES", "/com.daniel.Images/Fundos/Dasopoles.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",200);
 
         this.musicPath = "/com.daniel.audios/msc_dasopoles.wav";
 
-        this.inimigos = new Inimigo[]{new InimigoSlimeDeFogoNv1(), new InimigoSlimeDeFogoNv2(), new InimigoSlimeDeGeloNv1(), new InimigoSlimeDeTerraNv1(), new InimigoSlimeDeLuzNv1(), new InimigoSlimeDeAguaNv2()};
+        this.inimigos = new Inimigo[]{};
         this.quests.add(new QuestSlimeDeFogoNv1());
         this.quests.add(new QuestSlimeDeFogoNv2());
         this.quests.add(new QuestSlimeDeGeloNv1());

@@ -4,6 +4,7 @@ package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Itens.Item;
 import com.daniel.game.Main;
@@ -11,6 +12,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,6 +40,22 @@ public class ResultadoController implements Initializable {
 
     @FXML
     private Text LevelNum;
+
+    @FXML
+    private Text Txt_Drop;
+
+    @FXML
+    private Text Txt_Exp;
+
+    @FXML
+    private Text Txt_Makkos;
+
+    @FXML
+    private Text Txt_Recompensas;
+
+    @FXML
+    private Text Txt_Titulo;
+
     @FXML
     private Button btnRecolher;
 
@@ -51,13 +69,7 @@ public class ResultadoController implements Initializable {
     private Text txtMoedas;
 
     @FXML
-    private Text txtSuasMoedas;
-
-    @FXML
     private Text txtXpObitdo;
-
-    @FXML
-    private Text txtXpPlayer;
     private int moedasInimigo;
     private int xpInimigo;
     private ArrayList<Item> itensDoInimigo = new ArrayList<>();
@@ -67,8 +79,12 @@ public class ResultadoController implements Initializable {
         txtXpObitdo.setText(String.valueOf(xpInimigo));
         txtMoedas.setText(String.valueOf(moedasInimigo));
         LevelNum.setText(Integer.toString(Player.getPlayer().getLvl()));
-        txtXpPlayer.setText(String.valueOf(Player.getPlayer().getCurrentXp()));
-        txtSuasMoedas.setText(String.valueOf(Player.getPlayer().getCoins()));
+        Txt_Titulo.setText(TextosInterface.getVitoria());
+        Txt_Drop.setText(TextosInterface.getDrop());
+        Txt_Exp.setText(TextosInterface.getXpObtido());
+        Txt_Makkos.setText(TextosInterface.getMakkoObtido());
+        Txt_Recompensas.setText(TextosInterface.getRecompensa());
+        btnRecolher.setText(TextosInterface.getRecolher());
         AtualizarProgressbar();
         jogoFachada.ganharXp(xpInimigo);
         Player.getPlayer().ganharCoins(moedasInimigo);
@@ -100,6 +116,11 @@ public class ResultadoController implements Initializable {
         }
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/FundoVitoria.jpg");
         configurarBotoes(btnRecolher);
+        Platform.runLater(()->{
+            Utilidades.AlinharHorizontal(Txt_Titulo, 0.5);
+            Utilidades.AlinharHorizontal(LevelNum, 0.5);
+            Utilidades.AlinharHorizontal(btnRecolher, 0.5);
+        });
     }
 
     public void atualizarValores(int novoXp, int novasMoedas, ArrayList<Item> itens) throws PlayerInexistenteException {
@@ -143,11 +164,14 @@ public class ResultadoController implements Initializable {
             xpProgressFinal =1;
         }
         int ciclos = 0, xpTemporario = xpInimigo;
-
-        while (xpTemporario > 0) {
-            xpTemporario -= ((Player.getPlayer().getLvl() + ciclos) * 1000 - Player.getPlayer().getCurrentXp());
-            if (xpTemporario >= 0) {
-                ciclos++;
+        xpTemporario -= Player.getPlayer().getXpProx()-Player.getPlayer().getCurrentXp();
+        if(xpTemporario >= 0) {
+            ciclos++;
+            while (xpTemporario > 0) {
+                xpTemporario -= (Player.getPlayer().getLvl() + ciclos) * 1000;
+                if (xpTemporario >= 0) {
+                    ciclos++;
+                }
             }
         }
 

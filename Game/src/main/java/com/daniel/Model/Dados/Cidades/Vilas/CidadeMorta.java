@@ -1,9 +1,8 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoAbelha;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoBabySlime;
-import com.daniel.Model.Dados.Entidades.Inimigos.Viloes.InimigoSlimeDeEscuridaoNv1;
+import com.daniel.Model.Dados.Entidades.Inimigos.Desapoles.InimigoAbelha;
+import com.daniel.Model.Dados.Entidades.Inimigos.Auroraville.InimigoBabySlime;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Itens.Armas.EspadaLuz;
@@ -14,10 +13,10 @@ import java.util.ArrayList;
 
 public class CidadeMorta extends Cidade {
     public CidadeMorta() throws PlayerInexistenteException {
-        super("CIDADE MORTA","/com.daniel.Images/Fundos/CidadeMorta.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg");
+        super("CIDADE MORTA","/com.daniel.Images/Fundos/CidadeMorta.jpg", "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",600);
         this.musicPath = "/com.daniel.audios/msc_cidadeMorta.wav";
 
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha(), new InimigoSlimeDeEscuridaoNv1()};
+        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha()};
         this.itens.add(new Tridente());
         this.quests = new ArrayList<>();
         quests.add(new QuestSlimeDeEscuridaoNv1());

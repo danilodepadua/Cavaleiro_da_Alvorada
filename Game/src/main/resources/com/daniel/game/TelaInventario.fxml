@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.InventarioController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" style="-fx-background-color: #140e0a;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.InventarioController">
     <children>
         <AnchorPane fx:id="PainelInfos" minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="624.0" style="-fx-background-color: #140e0a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -34,7 +34,7 @@
                <children>
                   <HBox prefHeight="10.0" prefWidth="200.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
+                        <Text fx:id="Txt_Nome" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: ">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
                            </font>
@@ -48,7 +48,7 @@
                   </HBox>
                   <HBox prefHeight="22.0" prefWidth="200.0">
                      <children>
-                        <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição: " wrappingWidth="90.73328552246107">
+                        <Text fx:id="Txt_Desc" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição: " wrappingWidth="90.73328552246107">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
                            </font>
@@ -62,7 +62,7 @@
                   </HBox>
                   <HBox prefHeight="24.0" prefWidth="146.0">
                      <children>
-                        <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
+                        <Text fx:id="Txt_Quant" fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade:">
                            <font>
                               <Font name="Barlow Condensed SemiBold" size="20.0" />
                            </font>
@@ -149,22 +149,22 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                 </GridPane>
-                <Text fill="#eccb7e" layoutX="38.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabeça" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="30.0">
+                <Text fx:id="Txt_Cabeca" fill="#eccb7e" layoutX="38.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabeça" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="30.0">
                     <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>
                 </Text>
-                <Text fill="#eccb7e" layoutX="38.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Torso" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="90.0">
+                <Text fx:id="Txt_Corpo" fill="#eccb7e" layoutX="38.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Torso" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="90.0">
                     <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>
                 </Text>
-                <Text fill="#eccb7e" layoutX="38.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pernas" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="150.0">
+                <Text fx:id="Txt_Pernas" fill="#eccb7e" layoutX="38.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pernas" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="150.0">
                     <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>
                 </Text>
-                <Text fill="#eccb7e" layoutX="45.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arma " AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="210.0">
+                <Text fx:id="Txt_Armas" fill="#eccb7e" layoutX="45.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arma " AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="210.0">
                     <font>
                         <Font name="Barlow Condensed SemiBold" size="24.0" />
                     </font>

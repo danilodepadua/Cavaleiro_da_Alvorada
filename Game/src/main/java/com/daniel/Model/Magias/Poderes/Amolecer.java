@@ -1,5 +1,6 @@
 package com.daniel.Model.Magias.Poderes;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 import com.daniel.Model.Magias.Animacoes.DebufAnimation;
@@ -16,6 +17,6 @@ public class Amolecer extends Magia implements IEffects {
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
         alvo.UpRes(-10);
-        this.mensagem.add(alvo.getNome() + " teve sua resistencia diminuida em 10");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua resistencia diminuida em 10",alvo.getNome() + " has it's resistance decreased by 10"));
     }
 }

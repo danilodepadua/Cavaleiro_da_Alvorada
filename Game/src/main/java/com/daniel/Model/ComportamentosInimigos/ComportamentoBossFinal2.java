@@ -1,6 +1,7 @@
 package com.daniel.Model.ComportamentosInimigos;
 
 import com.daniel.Model.BatalhaDeTurnos.Comportamento;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Interfaces.IEffects;
 import com.daniel.Model.Magias.Magia;
 import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
@@ -77,7 +78,7 @@ class MagiaDegenerativa extends Magia implements IEffects {
         alvo.UpInt(-10);
         alvo.UpForca(-10);
         alvo.UpVel(-10);
-        this.mensagem.add(alvo.getNome() + " perdeu 10 pontos em todos os atributos");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " perdeu 10 pontos em todos os atributos",alvo.getNome() + " lost 10 points in all attributes"));
     }
 }
 class MagiaAmaldicoada extends Magia implements IEffects{
@@ -93,7 +94,7 @@ class MagiaAmaldicoada extends Magia implements IEffects{
         alvo.Cegar();
         alvo.Dormir();
         alvo.Silenciar();
-        this.mensagem.add(alvo.getNome() +" foi amaldiçoado com efeitos negativos");
+        this.mensagem.add(new TextoNode(alvo.getNome() +" foi amaldiçoado com efeitos negativos",alvo.getNome() +" was cursed"));
     }
 }
 class MagiaAnjoDaMorte extends Magia implements IEffects{
@@ -106,6 +107,6 @@ class MagiaAnjoDaMorte extends Magia implements IEffects{
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         alvo.TomarDanoVerdadeiro(alvo.getCurrentHp()-1);
-        this.mensagem.add(alvo.getNome() + " teve sua vida reduzida para 1");
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida reduzida para 1",alvo.getNome() + " has it's hp reduced to 1"));
     }
 }

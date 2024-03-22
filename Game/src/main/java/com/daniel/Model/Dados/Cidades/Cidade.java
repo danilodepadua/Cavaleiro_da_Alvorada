@@ -31,11 +31,12 @@ public abstract class Cidade implements Serializable {
     protected boolean dialogoAtivo;
     protected transient ArrayList<Botao> botoes = new ArrayList<>();
     protected String musicPath;
-    public AudioPlayer audioPlayer = new AudioPlayer();
-    public Cidade(String nome, String fundo, String fundoB) {
+    public int CustoNaninha;
+    public Cidade(String nome, String fundo, String fundoB, int Custo) {
         this.Fundo = fundo;
         this.FundoBatalha = fundoB;
         this.Nome = nome;
+        this.CustoNaninha = Custo;
     }
 
     public String getMusicPath(){
