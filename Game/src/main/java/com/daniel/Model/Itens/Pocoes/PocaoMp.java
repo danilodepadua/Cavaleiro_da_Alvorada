@@ -11,23 +11,23 @@ import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 public class PocaoMp extends Item implements IConsumableOutBattle, IConsumableInBattle {
 
     public PocaoMp(){
-        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", new TextoNode("Ether", "Ether"), 1,20,new TextoNode("Poção que recupera 15 de MP","Potion that restores 15 of mp"));
+        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", new TextoNode("Ether", "Ether"), 1,200,new TextoNode("Poção que recupera 100 de MP","Potion that restores 100 of mp"));
     }
 
     public PocaoMp(int quant) {
-        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", new TextoNode("Ether", "Ether"), quant,20,new TextoNode("Poção que recupera 15 de MP","Potion that restores 15 of mp"));
+        super("/com.daniel.Images/Itens/Poções/basic mana potion.png", new TextoNode("Ether", "Ether"), quant,200,new TextoNode("Poção que recupera 100 de MP","Potion that restores 100 of mp"));
     }
 
     @Override
     public TextoNode Consumir(PersonagemLuta p) throws PlayerInexistenteException {
-        p.RecuperarMana(15);
+        p.RecuperarMana(100);
         Player.getPlayer().getInventario().removerItem(this);
-        return new TextoNode("O jogador recuperou 15 de mp","The player recover 15 of mp");
+        return new TextoNode("O jogador recuperou 100 de mp","The player recover 100 of mp");
     }
 
     @Override
     public void Consumir() throws PlayerInexistenteException {
-        Player.getPlayer().RecuperarMana(15);
+        Player.getPlayer().RecuperarMana(100);
         Player.getPlayer().getInventario().removerItem(this);
     }
 

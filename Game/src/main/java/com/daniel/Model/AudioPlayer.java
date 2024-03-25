@@ -44,6 +44,13 @@ public class AudioPlayer implements Serializable {
         mediaPlayer.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
         mediaPlayer.play();
     }
+    public void Play(String loop){
+        stop();
+        Media midia = new Media(Main.class.getResource(loop).toString());
+        mediaPlayer = new MediaPlayer(midia);
+        mediaPlayer.setVolume(ConfiguracoesUsuario.obterVolumePadrao());
+        mediaPlayer.play();
+    }
     public void PlayEfeito(String pathEfeito){
         audioClip = new AudioClip(Main.class.getResource(pathEfeito).toString());
         audioClip.setVolume(ConfiguracoesUsuario.obterVolumePadrao());

@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class TonicoDeResistencia extends Item implements IConsumableInBattle {
     public TonicoDeResistencia(){
-        super("/com.daniel.Images/Itens/Poções/defense potion.png", new TextoNode("Tônico da resiliência","Resilience tonic"), 1, 100, new TextoNode("Poção que concede 5 pontos de resistência durante a batalha","Potion that increases resistance by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/defense potion.png", new TextoNode("Tônico da resiliência","Resilience tonic"), 1, 50000, new TextoNode("Poção que concede 5 pontos de resistência durante a batalha","Potion that increases resistance by 5 during battle"));
     }
 
     public TonicoDeResistencia(int quant) {
-        super("/com.daniel.Images/Itens/Poções/defense potion.png", new TextoNode("Tônico da resiliência","Resilience tonic"), quant, 100, new TextoNode("Poção que concede 5 pontos de resistência durante a batalha","Potion that increases resistance by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/defense potion.png", new TextoNode("Tônico da resiliência","Resilience tonic"), quant, 50000, new TextoNode("Poção que concede 5 pontos de resistência durante a batalha","Potion that increases resistance by 5 during battle"));
     }
 
     @Override

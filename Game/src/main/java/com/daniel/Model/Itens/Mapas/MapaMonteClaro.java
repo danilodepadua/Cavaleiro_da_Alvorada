@@ -9,7 +9,7 @@ import com.daniel.Model.Itens.Item;
 
 public class MapaMonteClaro extends Item implements IConsumableOutBattle {
     public MapaMonteClaro() {
-        super("/com.daniel.Images/Itens/map_01.png", new TextoNode("Monte Claro","Monte Claro"), 1, 70, new TextoNode("Mapa para Monte Claro", "Map to Monte Claro"));
+        super("/com.daniel.Images/Itens/map_01.png", new TextoNode("Monte Claro","Monte Claro"), 1, 7000, new TextoNode("Mapa para Monte Claro", "Map to Monte Claro"));
     }
 
     @Override

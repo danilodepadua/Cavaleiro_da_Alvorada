@@ -3,6 +3,7 @@ package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.BatalhaDeTurnos.*;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Dados.Textos.TextosInterface;
@@ -465,12 +466,13 @@ public class BattleController implements Initializable {
         SetaSubir.setGraphic(setaInv);
         Atualiazar();
     }
-    public void PrepararInimigo(){
+    public void PrepararInimigo(Inimigo inim){
         Timeline t = new Timeline();
         KeyValue kv = new KeyValue(EnimyImg.opacityProperty(), 0);
         KeyValue kvf = new KeyValue(EnimyImg.opacityProperty(), 1);
         KeyFrame kf = new KeyFrame(Duration.ZERO, kv);
-        KeyFrame kff = new KeyFrame(Duration.millis(500), kvf);
+        KeyFrame km = new KeyFrame(Duration.millis(500),event -> EnimyImg.setImage(inim.getImagem()));
+        KeyFrame kff = new KeyFrame(Duration.millis(1000), kvf);
         t.getKeyFrames().add(kf);
         t.getKeyFrames().add(kff);
         t.play();

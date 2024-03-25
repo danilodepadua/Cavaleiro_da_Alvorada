@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class PocaoVoz extends Item implements IConsumableInBattle {
     public PocaoVoz(){
-        super("/com.daniel.Images/Itens/Poções/antidote.png", new TextoNode("Poção da fala","Speech potion"), 1, 100, new TextoNode("Poção para recuperar a habilidade da fala","Potion to regain the ability of speak"));
+        super("/com.daniel.Images/Itens/Poções/antidote.png", new TextoNode("Poção da fala","Speech potion"), 1, 5000, new TextoNode("Poção para recuperar a habilidade da fala","Potion to regain the ability of speak"));
     }
 
     public PocaoVoz(int quant) {
-        super("/com.daniel.Images/Itens/Poções/antidote.png", new TextoNode("Poção da fala","Speech potion"), quant, 100, new TextoNode("Poção para recuperar a habilidade da fala","Potion to regain the ability of speak"));
+        super("/com.daniel.Images/Itens/Poções/antidote.png", new TextoNode("Poção da fala","Speech potion"), quant, 5000, new TextoNode("Poção para recuperar a habilidade da fala","Potion to regain the ability of speak"));
     }
 
     @Override

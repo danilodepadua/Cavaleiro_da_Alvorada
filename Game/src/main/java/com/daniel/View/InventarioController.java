@@ -226,6 +226,7 @@ public class InventarioController implements Initializable {
                 consumable.Consumir();
                 limparTela();
                 AtualizarDados();
+                btnUsar.setDisable(true);
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }

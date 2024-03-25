@@ -22,8 +22,8 @@ public class InimigoSereia3 extends Inimigo {
         this.magias.add(new Splash());
         this.magias.add(new WaterSpyke());
         this.magias.add(new Redemoinho());
-        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.005);
-        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.01);
+        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.05);
+        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMpGrande(), 0, 2, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMp(), 0, 2, 0.3);
     }

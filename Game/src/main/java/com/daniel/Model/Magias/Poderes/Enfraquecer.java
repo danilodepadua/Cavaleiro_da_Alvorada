@@ -9,14 +9,14 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class Enfraquecer extends Magia implements IEffects {
     public Enfraquecer() {
-        super("Debilitare", 20,0, TiposElementais.NaoElemental, new DebufAnimation(), false);
+        super("Debilitare", 5,0, TiposElementais.NaoElemental, new DebufAnimation(), false);
         this.autoUsavel = false;
     }
 
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
-        alvo.UpForca(-10);
-        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua força diminuida em 10",alvo.getNome() + " has it's' strength decreased by 10"));
+        alvo.UpForca(-1);
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua força diminuida em 1",alvo.getNome() + " has it's' strength decreased by 1"));
     }
 }

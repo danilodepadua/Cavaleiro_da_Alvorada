@@ -1,15 +1,17 @@
 package com.daniel.Model.Quests;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
+
 public class QuestSlimeDeGeloNv3 extends Quest {
     public QuestSlimeDeGeloNv3(){
-        this.nome = "Derrote os slimes de gelo super aprimorados";
+        this.nome = new TextoNode("Mate ", "Kill ").getTexto()+"slimes de gelo";
         this.progresso = 0;
         this.objetivo = 7;
         this.recompensaMoedas= 800;
         this.recompensaXP = 1500;
         this.pontosEvolucao = 2;
         this.nomeInimigo = "Slime de gelo grande";
-        this.descricao= "Derrote um total de "+this.objetivo+" slimes da gelo super aprimorados";
+        this.descricao= new TextoNode("Mate ", "Kill ").getTexto()+this.objetivo+" slimes de gelo";
 
     }
 }

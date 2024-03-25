@@ -1,10 +1,14 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossMontanhaDoNorte;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossMonteClaro;
+import com.daniel.Model.Dados.Entidades.Inimigos.Especiais.InimigoSlimeGod;
+import com.daniel.Model.Dados.Entidades.Inimigos.Especiais.InimigoSlimeRei;
+import com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte.*;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte.InimigoSlimeDeGeloNv3;
-import com.daniel.Model.Dados.Entidades.Inimigos.MontanhaDoNorte.InimigoSnowMan;
 import com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro.InimigoTRex;
 import com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro.InimigoTigerMan;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaFerro;
@@ -21,9 +25,8 @@ public class MontanhaDoNorte extends Cidade {
 
     public MontanhaDoNorte() throws PlayerInexistenteException {
         super("MONTANHA DO NORTE","/com.daniel.Images/Fundos/Montanha do norte.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",800);
-        this.inimigos = new Inimigo[]{new InimigoSnowMan(), new InimigoTRex(),
-                new InimigoTigerMan(), new InimigoSlimeDeGeloNv3()};
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",800, new BossMontanhaDoNorte());
+        this.inimigos = new Inimigo[]{new InimigoAveGelada(), new InimigoDragaoBranco(), new InimigoGolemDeGelo(), new InimigoGorila(), new InimigoSlimeDeGeloNv3(), new InimigoSnowMan(), new InimigoTouroDeGelo(),new InimigoSlimeRei(), new InimigoSlimeGod()};
 
         this.musicPath = "/com.daniel.audios/msc_montanhaDoNorte.wav";
 
@@ -39,8 +42,8 @@ public class MontanhaDoNorte extends Cidade {
         this.quests.add(new QuestTigerMan());
         this.quests.add(new QuestSlimeDeGeloNv3());
 
-        quests.add(new QuestSlimeDeEscuridaoNv1());
-        this.dialogoCutscene = "E então o guerreiro seguiu sua jornada passando por uma cidade sombria e sem vida";
+        this.dialogoCutscene = new TextoNode(
+        "E então o guerreiro seguiu sua jornada passando por uma cidade sombria e sem vida","And then the warrior went on his journey through a dark and lifeless city.").getTexto();
         ajustarBotoes();
     }
 
@@ -51,6 +54,7 @@ public class MontanhaDoNorte extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoEstalagem());
         this.botoes.add(criarBotaoSalvar());
     }
 }

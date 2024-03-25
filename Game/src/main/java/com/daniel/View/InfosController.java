@@ -1,6 +1,7 @@
 package com.daniel.View;
 
 import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Magias.TiposElementais;
 import com.daniel.game.Main;
@@ -42,6 +43,28 @@ public class InfosController implements Initializable {
 
     @FXML
     private Rectangle GrafDM;
+    @FXML
+    private Text TxtA;
+
+    @FXML
+    private Text TxtAtqF;
+
+    @FXML
+    private Text TxtAtqM;
+
+    @FXML
+    private Text TxtDefF;
+
+    @FXML
+    private Text TxtDefM;
+
+    @FXML
+    private Text TxtF;
+
+    @FXML
+    private Text TxtI;
+    @FXML
+    private Text TxtR;
 
     @FXML
     private GridPane GridElementos;
@@ -165,10 +188,17 @@ public class InfosController implements Initializable {
                 }
             }
         }
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        TxtA.setText(TextosInterface.getAbs());
+        TxtF.setText(TextosInterface.getFra());
+        TxtI.setText(TextosInterface.getImu());
+        TxtR.setText(TextosInterface.getResis());
+        TxtAtqF.setText(TextosInterface.getAtqFAbrev());
+        TxtAtqM.setText(TextosInterface.getAtqMAbrev());
+        TxtDefF.setText(TextosInterface.getDefFAbrev());
+        TxtDefM.setText(TextosInterface.getDefMAbrev());
         try {
             identificarTextos(panePrincipal);
             configurarBotoes(btnBestiario);
@@ -192,7 +222,7 @@ public class InfosController implements Initializable {
             TxtNomePeitoral.setText(Player.getPlayer().getPeitoral().getNome());
             String xp = "Exp. Atual: " + String.valueOf(Player.getPlayer().getCurrentXp());
             TxtXPAtual.setText(xp);
-            String xpProx = "Exp. Prox.: " + String.valueOf((Player.getPlayer().getLvl()*1000) - Player.getPlayer().getCurrentXp());
+            String xpProx = "Exp. Prox.: " + String.valueOf(Player.getPlayer().getXpProx() - Player.getPlayer().getCurrentXp());
             TxtXPProx.setText(xpProx);
             ImgPlayer.setImage(Player.getPlayer().getImagem());
 

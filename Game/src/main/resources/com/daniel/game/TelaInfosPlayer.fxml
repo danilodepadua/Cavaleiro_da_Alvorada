@@ -20,26 +20,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.InfosController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.InfosController">
    <children>
       <Group layoutX="82.0" layoutY="36.0" AnchorPane.leftAnchor="79.7155294418335" AnchorPane.topAnchor="20.0">
          <children>
-            <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Fis.">
+            <Text fx:id="TxtAtqF" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Fis.">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fill="#eccb7e" layoutY="30.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Mag.">
+            <Text fx:id="TxtAtqM" fill="#eccb7e" layoutY="30.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Atq. Mag.">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fill="#eccb7e" layoutY="60.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Fis.">
+            <Text fx:id="TxtDefF" fill="#eccb7e" layoutY="60.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Fis.">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
             </Text>
-            <Text fill="#eccb7e" layoutY="90.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Mag.">
+            <Text fx:id="TxtDefM" fill="#eccb7e" layoutY="90.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Def. Mag.">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="16.0" />
                </font>
@@ -121,7 +121,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Fraquezas">
+                  <Text fx:id="TxtF" fill="#eccb7e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Fraquezas">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="16.0" />
                      </font>
@@ -171,7 +171,7 @@
                         <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Resistências" GridPane.rowIndex="1">
+                  <Text fx:id="TxtR" fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Resistências" GridPane.rowIndex="1">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="16.0" />
                      </font>
@@ -221,7 +221,7 @@
                         <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Imunidades" GridPane.rowIndex="2">
+                  <Text fx:id="TxtI" fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Imunidades" GridPane.rowIndex="2">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="16.0" />
                      </font>
@@ -271,7 +271,7 @@
                         <Image url="@../../../com.daniel.Images/Icons/Non-ElementalIcon.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Absorções" GridPane.rowIndex="3">
+                  <Text fx:id="TxtA" fill="#eccb7e" layoutX="10.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Absorções" GridPane.rowIndex="3">
                      <font>
                         <Font name="Barlow Condensed SemiBold" size="16.0" />
                      </font>

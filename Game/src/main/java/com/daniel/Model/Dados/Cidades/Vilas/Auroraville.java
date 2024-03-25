@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Auroraville extends Cidade {
     public Auroraville() throws PlayerInexistenteException {
         super("AURORAVILLE", "/com.daniel.Images/Fundos/Fundo3.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg", 50);
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg", 50,null);
         this.musicPath = "/com.daniel.audios/msc_cidadeInicial.wav";
 
         // Inicializa a lista de inimigos corretamente
@@ -29,9 +29,6 @@ public class Auroraville extends Cidade {
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests.add(new QuestBabySlime());
         this.quests.add(new QuestAbelha());
-        this.quests.add(new QuestSlimeDeAguaNv1());
-        this.quests.add(new QuestSlimeDeEscuridaoNv1());
-        this.quests.add(new QuestSlimeDeRaioNv1());
         // Adiciona os itens da loja
         this.itens.add(new EspadaInicial());
         this.itens.add(new PocaoCura());
@@ -56,6 +53,7 @@ public class Auroraville extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoEstalagem());
         this.botoes.add(criarBotaoSalvar());
     }
 }

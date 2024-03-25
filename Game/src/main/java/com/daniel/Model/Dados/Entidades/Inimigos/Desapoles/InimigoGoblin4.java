@@ -25,7 +25,7 @@ public class InimigoGoblin4 extends Inimigo {
         this.magias.add(new Adormecer());
         this.magias.add(new Cegar());
         this.magias.add(new Raio());
-        this.lootTable.AdicionarEntrada(new FragInt(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragInt(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new TonicoDeInteligencia(), 0, 1, 0.05);
         this.lootTable.AdicionarEntrada(new Antidoto(), 0, 2, 0.2);
         this.lootTable.AdicionarEntrada(new PocaoVisao(), 0, 2, 0.2);

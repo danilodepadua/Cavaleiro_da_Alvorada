@@ -144,6 +144,9 @@ public class LojaController implements Initializable {
                 jogoFachada.comprarItem(itemSelecionado);
                 txtSeuSaldo.setText(""+Player.getPlayer().getCoins()+ " Makkos");
                 JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_moedas.wav");
+                if(Player.getPlayer().getCoins()<itemSelecionado.getPreco()){
+                    btnComprar.setDisable(true);
+                }
             } catch (PlayerInexistenteException | RemoverCoinsException | CompraErroException |
                      SemMoedasParaLojaException e) {
                 throw new RuntimeException(e);
@@ -174,7 +177,6 @@ public class LojaController implements Initializable {
             }else if (i instanceof Minerio) {
                 criarBotaoItem(i, minerio%3, (int)minerio/3, gridMinerio);
                 minerio++;
-
             }
         }
     }
@@ -204,6 +206,9 @@ public class LojaController implements Initializable {
         button.setOnAction(event -> {
             try {
                 ItemSelecionado(item); // Chama o método ItemSelecionado com o item clicado
+                if(Player.getPlayer().getCoins()<itemSelecionado.getPreco()){
+                    btnComprar.setDisable(true);
+                }
             } catch (PlayerInexistenteException e) {
                 throw new RuntimeException(e);
             }

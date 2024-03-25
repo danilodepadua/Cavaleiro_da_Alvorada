@@ -86,7 +86,6 @@ public class ResultadoController implements Initializable {
         Txt_Recompensas.setText(TextosInterface.getRecompensa());
         btnRecolher.setText(TextosInterface.getRecolher());
         AtualizarProgressbar();
-        jogoFachada.ganharXp(xpInimigo);
         Player.getPlayer().ganharCoins(moedasInimigo);
         criarItens();
         btnRecolher.setOnAction(event -> {
@@ -108,7 +107,14 @@ public class ResultadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/som_vitoria.wav");
+        JogoFachada.getInstance().getAudioPlayer().Play("/com.daniel.audios/NovasMusicas/Eventos/jingle1.mp3");
+        try {
+            double prog = (double) (Player.getPlayer().getCurrentXp() - ((Player.getPlayer().getLvl() - 1) * 1000)) /(Player.getPlayer().getXpProx()-((Player.getPlayer().getLvl()-1)*1000));
+            System.out.println("Progresso: " + prog);
+            LevelBar.setProgress(prog);
+        } catch (PlayerInexistenteException e) {
+            throw new RuntimeException(e);
+        }
         try {
             atualizarInterface();
         } catch (PlayerInexistenteException e) {
@@ -134,87 +140,90 @@ public class ResultadoController implements Initializable {
         int rowIndex = 0;
 
         for (Item item : itensDoInimigo) {
-            ImageView view = new ImageView();
-            view.setFitHeight(35);
-            view.setFitWidth(35);
-            view.setImage(item.getImage());
+            if(item.getQuant()>0) {
+                ImageView view = new ImageView();
+                view.setFitHeight(35);
+                view.setFitWidth(35);
+                view.setImage(item.getImage());
 
-            Button button = new Button();
-            button.setText("X" + item.getQuant());
-            button.setGraphic(view);
-            button.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
-            button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
-            configurarBotoesResultado(button);
+                Button button = new Button();
+                button.setText("X" + item.getQuant());
+                button.setGraphic(view);
+                button.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                button.setStyle("-fx-background-color:  #241811;-fx-background-insets: 0; -fx-background-radius: 0;-fx-border-width: 1; -fx-focus-traversable: false; -fx-border-color: #eccb7e; -fx-text-fill: #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
+                configurarBotoesResultado(button);
 
-            // Adicione os elementos ao GridPane
-            gridItens.add(button, columnIndex, rowIndex);
+                // Adicione os elementos ao GridPane
+                gridItens.add(button, columnIndex, rowIndex);
 
-            columnIndex++;
-            if (columnIndex >= 2) {
-                columnIndex = 0;
-                rowIndex++;
+                columnIndex++;
+                if (columnIndex >= 2) {
+                    columnIndex = 0;
+                    rowIndex++;
+                }
             }
         }
     }
     private void AtualizarProgressbar() throws PlayerInexistenteException {
-        double xpProgress = (Player.getPlayer().getCurrentXp() - (Player.getPlayer().getXpProx() - (Player.getPlayer().getLvl()) * 1000)) / (Player.getPlayer().getLvl() * 1000.0);
-
-        double xpProgressFinal = (Player.getPlayer().getCurrentXp() - (Player.getPlayer().getXpProx() - (Player.getPlayer().getLvl()) * 1000)) + xpInimigo / (Player.getPlayer().getLvl() * 1000.0);
-        if(xpProgressFinal >1){
-            xpProgressFinal =1;
-        }
-        int ciclos = 0, xpTemporario = xpInimigo;
-        xpTemporario -= Player.getPlayer().getXpProx()-Player.getPlayer().getCurrentXp();
-        if(xpTemporario >= 0) {
-            ciclos++;
-            while (xpTemporario > 0) {
-                xpTemporario -= (Player.getPlayer().getLvl() + ciclos) * 1000;
-                if (xpTemporario >= 0) {
-                    ciclos++;
+        int xpTemp = xpInimigo, xpProx = Player.getPlayer().getXpProx(), ciclos = 1;
+        SequentialTransition ST = new SequentialTransition();
+        boolean primeira = true;
+        while (xpTemp>0) {
+            if (xpTemp + Player.getPlayer().getCurrentXp() >= xpProx) {
+                xpTemp -= xpProx - Player.getPlayer().getCurrentXp();
+                xpProx = xpProx + ((Player.getPlayer().getLvl()+ciclos)*1000);
+                ciclos++;
+                final int xpTempo = xpTemp;
+                double prog;
+                if(primeira){
+                    prog = LevelBar.getProgress();
                 }
+                else {
+                    prog = 0;
+                }
+                primeira = false;
+                KeyValue kv = new KeyValue(LevelBar.progressProperty(), prog);
+                KeyValue kvf = new KeyValue(LevelBar.progressProperty(), 1);
+                KeyFrame kf = new KeyFrame(Duration.ZERO, kv);
+                KeyFrame kff = new KeyFrame(Duration.millis(1000), kvf);
+                Timeline t = new Timeline();
+                t.getKeyFrames().addAll(kf, kff);
+                t.setOnFinished(event->{
+                    System.out.println("Progresso total");
+                    int i = Integer.parseInt(LevelNum.getText());
+                    LevelBar.setProgress(0);
+                    i++;
+                    LevelNum.setText(String.valueOf(i));
+                    if(xpTempo == 0){
+                        try {
+                            jogoFachada.ganharXp(xpInimigo);
+                        } catch (PlayerInexistenteException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                });
+                prog = 0;
+                ST.getChildren().add(t);
+            } else {
+                int xptual = xpTemp + Player.getPlayer().getCurrentXp();
+                xpTemp = 0;
+                KeyValue kv = new KeyValue(LevelBar.progressProperty(), LevelBar.getProgress());
+                KeyValue kvf = new KeyValue(LevelBar.progressProperty(), (double) (xptual - ((Player.getPlayer().getLvl() - 1) * 1000)) / (Player.getPlayer().getXpProx() - ((Player.getPlayer().getLvl() - 1) * 1000)));
+                KeyFrame kf = new KeyFrame(Duration.ZERO, kv);
+                KeyFrame kff = new KeyFrame(Duration.millis(1000), kvf);
+                Timeline t = new Timeline();
+                t.getKeyFrames().addAll(kf, kff);
+                t.setOnFinished(event -> {
+                    System.out.println("Progresso parcial");
+                    try {
+                        jogoFachada.ganharXp(xpInimigo);
+                    } catch (PlayerInexistenteException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                ST.getChildren().add(t);
             }
         }
-
-        xpTemporario = xpInimigo - Player.getPlayer().getLvl() * 1000 - Player.getPlayer().getCurrentXp();
-
-        LevelBar.setProgress(xpProgress);
-        int nivel = Player.getPlayer().getLvl();
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.millis(1000), new KeyValue(LevelBar.progressProperty(), xpProgressFinal))
-        );
-        if(ciclos>0){
-            nivel++;
-            int finalNivel = nivel;
-            timeline.setOnFinished(event -> {
-                LevelNum.setText(String.valueOf(finalNivel));
-                JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_click.wav");
-            });
-        }
-
-        SequentialTransition sequentialTransition = new SequentialTransition();
-        sequentialTransition.getChildren().add(timeline);
-        for (int i = 1; i <= ciclos; i++) {
-            nivel++;
-            System.out.println("Ciclo: " + i + "/" + ciclos);
-
-            sequentialTransition.getChildren().add(CriarProgress((double) xpTemporario / ((Player.getPlayer().getLvl() + i) * 1000),nivel));
-            xpTemporario-=((Player.getPlayer().getLvl() + i) * 1000);
-        }
-        t = sequentialTransition;
-        sequentialTransition.play();
-    }
-    public Timeline CriarProgress(double ValorFinal, int cont){
-        Timeline timeline = new Timeline();
-        if(ValorFinal > 1){
-            ValorFinal = 1;
-            timeline.setOnFinished(event -> {
-                LevelNum.setText(String.valueOf(cont));
-                JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/som_click.wav");
-            });
-        }
-        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(LevelBar.progressProperty(), 0)));
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1000), new KeyValue(LevelBar.progressProperty(), ValorFinal)));
-        return timeline;
+        ST.play();
     }
 }

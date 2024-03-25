@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class TonicoDeInteligencia extends Item implements IConsumableInBattle {
     public TonicoDeInteligencia(){
-        super("/com.daniel.Images/Itens/Poções/magic potion.png", new TextoNode("Tônico da sabedoria","Wisdom tonic"), 1, 100, new TextoNode("Poção que concede 5 pontos de inteligência durante a batalha","Potion that increases intelligence by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/magic potion.png", new TextoNode("Tônico da sabedoria","Wisdom tonic"), 1, 50000, new TextoNode("Poção que concede 5 pontos de inteligência durante a batalha","Potion that increases intelligence by 5 during battle"));
     }
 
     public TonicoDeInteligencia(int quant) {
-        super("/com.daniel.Images/Itens/Poções/magic potion.png", new TextoNode("Tônico da sabedoria","Wisdom tonic"), quant, 100, new TextoNode("Poção que concede 5 pontos de inteligência durante a batalha","Potion that increases intelligence by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/magic potion.png", new TextoNode("Tônico da sabedoria","Wisdom tonic"), quant, 50000, new TextoNode("Poção que concede 5 pontos de inteligência durante a batalha","Potion that increases intelligence by 5 during battle"));
     }
 
     @Override

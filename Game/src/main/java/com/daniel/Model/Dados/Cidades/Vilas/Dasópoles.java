@@ -1,6 +1,11 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossDesapolis;
+import com.daniel.Model.Dados.Entidades.Inimigos.Desapoles.*;
+import com.daniel.Model.Dados.Entidades.Inimigos.Ilha.InimigoAbismo;
+import com.daniel.Model.Dados.Entidades.Inimigos.Ilha.InimigoSereia1;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaCouro;
@@ -18,16 +23,11 @@ import java.util.ArrayList;
 public class Dasópoles extends Cidade {
     public Dasópoles() throws PlayerInexistenteException {
         super("DASÓPOLES", "/com.daniel.Images/Fundos/Dasopoles.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",200);
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",200, new BossDesapolis());
 
         this.musicPath = "/com.daniel.audios/msc_dasopoles.wav";
 
-        this.inimigos = new Inimigo[]{};
-        this.quests.add(new QuestSlimeDeFogoNv1());
-        this.quests.add(new QuestSlimeDeFogoNv2());
-        this.quests.add(new QuestSlimeDeGeloNv1());
-        this.quests.add(new QuestSlimeDeLuzNv1());
-        this.quests.add(new QuestSlimeDeAguaNv2());
+        this.inimigos = new Inimigo[]{new InimigoAbelha(), new InimigoCoelhoBandido(),new InimigoGoblin1(),new InimigoGoblin2(),new InimigoGoblin3(),new InimigoGoblin4(),new InimigoGoblin5(), new InimigoLobisomen(), new InimigoSlimeDeVentoNv3()};
         // Adiciona os itens da loja
         this.itens.add(new PocaoCura());
         this.itens.add(new EspadaAperfeiçoada());
@@ -40,7 +40,8 @@ public class Dasópoles extends Cidade {
         this.itens.add(new PeitoralCouro());
         this.itens.add(new CalcaCouro());
         this.dialogoAtivo = true;
-        this.dialogoCutscene = "Saindo de sua cidade natal, você se depara com uma antiga cidade que antes costumava ser amigável";
+        this.dialogoCutscene = new TextoNode(
+        "Saindo de sua cidade natal, você se depara com uma antiga cidade que antes costumava ser amigável","Leaving your hometown, you come across an old town that used to be friendly").getTexto();
         ajustarBotoes();
     }
 
@@ -52,6 +53,7 @@ public class Dasópoles extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoEstalagem());
         this.botoes.add(criarBotaoSalvar());
     }
 }

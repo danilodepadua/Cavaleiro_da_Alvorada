@@ -1,6 +1,8 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Textos.TextoNode;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Exceptions.*;
 import com.daniel.Model.Dados.RepositorioTaverna.Baralho;
@@ -33,7 +35,6 @@ public class VinteUmController implements Initializable{
     private Baralho baralho;
     private Mão jogador;
     private Mão dealer;
-    private final JogoFachada jogoFachada = JogoFachada.getInstance();
 
     @FXML
     private GridPane GridPaneDealer;
@@ -96,7 +97,7 @@ public class VinteUmController implements Initializable{
     @FXML
     void onClickPuxar(ActionEvent event) throws BaralhoVazioException, PlayerInexistenteException {
         adicionarCarta(GridPanePlayer, jogador, 2);
-        txtSeusPontos.setText("Seus Pontos: "+ jogador.getPontos());
+        txtSeusPontos.setText(new TextoNode("Seus pontos", "Your points").getTexto()+": "+ jogador.getPontos());
         determinarVencedor();
 
     }
@@ -106,7 +107,7 @@ public class VinteUmController implements Initializable{
 
         adicionarCarta(GridPaneDealer, dealer, 0);
         adicionarCarta(GridPaneDealer, dealer, 1);
-        txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+        txtPontosDaCasa.setText(new TextoNode("Pontos da Casa", "House points").getTexto()+": " + dealer.getPontos());
         //Criar um pause pra imersão
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> {
@@ -120,13 +121,13 @@ public class VinteUmController implements Initializable{
                     throw new RuntimeException(ex);
                 }
                 pontosDealer = dealer.getPontos();
-                txtPontosDaCasa.setText("Pontos da Casa: " + dealer.getPontos());
+                txtPontosDaCasa.setText(new TextoNode("Pontos da Casa", "House points").getTexto()+": " + dealer.getPontos());
             }
             // Verifica se alguém ultrapassou 21 (bust)
             if (pontosJogador > 21 && pontosDealer <= 21) {
                 try {
-                    txtVoceGanhou.setText("Você perdeu!");
-                    mostrarResultado("Você perdeu!", txtMensagem, boxMensagem);
+                    txtVoceGanhou.setText(new TextoNode("Você perdeu!", "You lose").getTexto());
+                    mostrarResultado(new TextoNode("Você perdeu!", "You lose").getTexto(), txtMensagem, boxMensagem);
                     Player.getPlayer().removerCoins(valorAposta);
                     configBotoes();
                 } catch (PlayerInexistenteException | RemoverCoinsException ex) {
@@ -134,8 +135,8 @@ public class VinteUmController implements Initializable{
                 }
             } else if (pontosDealer > 21 && pontosJogador <= 21) {
                 try {
-                    txtVoceGanhou.setText("Você venceu!");
-                    mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
+                    txtVoceGanhou.setText(new TextoNode("Você venceu!", "You win").getTexto());
+                    mostrarResultado(new TextoNode("Você venceu!", "You win").getTexto(), txtMensagem, boxMensagem);
                     Player.getPlayer().ganharCoins(valorAposta );
                     configBotoes();
                 } catch (PlayerInexistenteException ex) {
@@ -144,8 +145,8 @@ public class VinteUmController implements Initializable{
             } else {
                 // Verifica quem tem mais pontos sem ultrapassar 21
                 if (pontosJogador > pontosDealer) {
-                    txtVoceGanhou.setText("Você venceu!");
-                    mostrarResultado("Você venceu!", txtMensagem, boxMensagem);
+                    txtVoceGanhou.setText(new TextoNode("Você venceu!", "You win").getTexto());
+                    mostrarResultado(new TextoNode("Você venceu!", "You win").getTexto(), txtMensagem, boxMensagem);
                     try {
                         Player.getPlayer().ganharCoins(valorAposta );
                         configBotoes();
@@ -155,8 +156,8 @@ public class VinteUmController implements Initializable{
 
                 } else if (pontosDealer > pontosJogador) {
                     try {
-                        txtVoceGanhou.setText("Você perdeu!");
-                        mostrarResultado("Você perdeu!", txtMensagem, boxMensagem);
+                        txtVoceGanhou.setText(new TextoNode("Você perdeu!", "You lose").getTexto());
+                        mostrarResultado(new TextoNode("Você perdeu!", "You lose").getTexto(), txtMensagem, boxMensagem);
                         Player.getPlayer().removerCoins(valorAposta);
                         configBotoes();
                     } catch (PlayerInexistenteException | RemoverCoinsException ex) {
@@ -164,8 +165,8 @@ public class VinteUmController implements Initializable{
                     }
                 } else {
                     try {
-                        mostrarResultado("EMPATE!", txtMensagem, boxMensagem);
-                        txtVoceGanhou.setText("Empate!");
+                        mostrarResultado(new TextoNode("Empate!", "Draw").getTexto(), txtMensagem, boxMensagem);
+                        txtVoceGanhou.setText(new TextoNode("Empate!", "Draw").getTexto());
                         configBotoes();
                     } catch (PlayerInexistenteException ex) {
                         throw new RuntimeException(ex);
@@ -194,7 +195,7 @@ public class VinteUmController implements Initializable{
                 // Distribuir cartas iniciais
                 adicionarCarta(GridPanePlayer, jogador, 0);
                 adicionarCarta(GridPanePlayer, jogador, 1);
-                txtSeusPontos.setText("Seus Pontos: "+ jogador.getPontos());
+                txtSeusPontos.setText(new TextoNode("Seus pontos", "Your points").getTexto()+": "+ jogador.getPontos());
                 // Habilitar os botões após o botão "Apostar" ser clicado
                 btnPuxar.setDisable(false);
                 btnManter.setDisable(false);
@@ -224,7 +225,7 @@ public class VinteUmController implements Initializable{
     private void configBotoes() throws PlayerInexistenteException {
         btnApostar.setDisable(false);
         btnVoltar.setDisable(false);
-        txtSeuSaldo.setText("Carteira: "+Player.getPlayer().getCoins()+ " Moedas");
+        txtSeuSaldo.setText(TextosInterface.getCarteira()+": "+Player.getPlayer().getCoins()+ " Makkos");
     }
     private void adicionarCarta(GridPane gridPane, Mão mao, int coluna) throws BaralhoVazioException {
         Carta carta = baralho.pegarCarta();
@@ -283,7 +284,7 @@ public class VinteUmController implements Initializable{
         vboxCaixinha.setSpacing(10);
         // Ajusta o tamanho do TextField
         textFieldAposta.setPrefColumnCount(5);
-
+        txtInsira.setText(new TextoNode("Insira:","Insert:").getTexto());
         // Desabilitar os botões no início
         btnPuxar.setDisable(true);
         btnManter.setDisable(true);
@@ -298,7 +299,7 @@ public class VinteUmController implements Initializable{
         this.dealer = new Mão();
 
         try {
-            txtSeuSaldo.setText("Seu saldo: " + Player.getPlayer().getCoins() + " Moedas");
+            txtSeuSaldo.setText(new TextoNode("Seu soldo", "Your balance").getTexto()+": " + Player.getPlayer().getCoins() + " Makkos");
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }

@@ -16,7 +16,7 @@ public class InimigoGoblin5 extends Inimigo {
         super("Goblin Raider", "/com.daniel.Images/Inimigos/Goblin Raider.png", 14, 30, 15, 20, 30, 20,6000, 80, TiposElementais.NaoElemental, Comportamentos.padrao, 1600, 800);
         this.magias.add(new Fast());
         this.magias.add(new Fortalecer());
-        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new Ferro(), 0, 2, 0.05);
     }
 }

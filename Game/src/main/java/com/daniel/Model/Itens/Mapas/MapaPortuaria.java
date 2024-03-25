@@ -9,7 +9,7 @@ import com.daniel.Model.Itens.Item;
 
 public class MapaPortuaria extends Item implements IConsumableOutBattle {
     public MapaPortuaria() {
-        super("/com.daniel.Images/Itens/map_01.png", new TextoNode("Cidade portuária", "Port City"), 1, 150, new TextoNode("Mapa para Cidade Portuária","Map to Port city"));
+        super("/com.daniel.Images/Itens/map_01.png", new TextoNode("Cidade portuária", "Port City"), 1, 35000, new TextoNode("Mapa para Cidade Portuária","Map to Port city"));
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import java.io.Serializable;
 
 public class Bestiario implements Serializable {
-    private Inimigo[] inimigosConhecidos = new Inimigo[40];
+    private Inimigo[] inimigosConhecidos = new Inimigo[82];
 
     public Inimigo[] getInimigos(){
         return inimigosConhecidos;

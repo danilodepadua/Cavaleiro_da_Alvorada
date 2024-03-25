@@ -5,13 +5,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.MapaController">
+<AnchorPane fx:id="Fundo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.MapaController">
    <children>
       <ImageView fx:id="ImgMapa" fitHeight="575.0" fitWidth="778.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <image>
@@ -47,49 +45,5 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane fx:id="paneAceitar" disable="true" layoutX="417.0" layoutY="307.0" opacity="0.0" prefHeight="255.0" prefWidth="343.0" style="-fx-background-color: #140e0a; -fx-border-color: #eccb7e;" AnchorPane.rightAnchor="439.8">
-         <children>
-            <Text fill="#eccb7e" layoutX="77.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deseja pagar a &#10;passagem para a ilha?" textAlignment="CENTER">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="22.0" />
-               </font>
-            </Text>
-            <HBox layoutX="107.0" layoutY="169.0" prefHeight="59.0" prefWidth="116.0" spacing="30.0">
-               <children>
-                  <Button fx:id="btnSim" mnemonicParsing="false" onAction="#onActionSim" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #241811; -fx-border-color: #eccb7e;" text="Sim" textFill="#eccb7e">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="72.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Custo:" wrappingWidth="47.43899917602539">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="21.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="50 Moedas">
-                     <font>
-                        <Font name="Barlow Condensed SemiBold" size="21.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-            <Button fx:id="btnNao" layoutX="290.0" layoutY="1.0" mnemonicParsing="false" onAction="#onActionNao" prefHeight="43.0" prefWidth="61.0" style="-fx-background-color: transparent;" textFill="#eccb7e" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="16.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../com.daniel.Images/Setas/X.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

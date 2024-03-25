@@ -15,7 +15,7 @@ public class Cure extends Magia implements IEffects {
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
-        alvo.RecuperarVida(50);
-        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida curada em 50",alvo.getNome() + " has it's hp healed by 50"));
+        alvo.RecuperarVida(500);
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida curada em 500",alvo.getNome() + " has it's hp healed by 500"));
     }
 }

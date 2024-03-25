@@ -2,6 +2,8 @@ package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Entidades.Player;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.SaveInexistenteException;
 import com.daniel.game.Main;
 import javafx.event.ActionEvent;
@@ -19,7 +21,6 @@ import static com.daniel.View.Utilidades.configurarBotoes;
 import static com.daniel.View.Utilidades.definirBackground;
 
 public class GameOverController implements Initializable {
-    private AudioPlayer audioPlayer = new AudioPlayer();
 
     @FXML
     private Button btnCarregar;
@@ -41,9 +42,11 @@ public class GameOverController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        JogoFachada.getInstance().getAudioPlayer().PlayLoop("/com.daniel.audios/som_derrota.wav");
+        JogoFachada.getInstance().getAudioPlayer().Play("/com.daniel.audios/NovasMusicas/Eventos/childhood.mp3");
         definirBackground(panePrincipal, "/com.daniel.Images/Fundos/Fundo.png");
         configurarBotoes(btnCarregar);
         configurarBotoes(btnSair);
+        btnCarregar.setText(new TextoNode("Menu principal","Main menu").getTexto());
+        btnSair.setText(new TextoNode("Sair","Quit").getTexto());
     }
 }

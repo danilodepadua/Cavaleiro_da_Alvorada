@@ -13,7 +13,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossMonteClaro extends Inimigo {
     public BossMonteClaro() {
-        super("Behemoth", "com.daniel.Images/Inimigos/Megapack III Behemoth.png", 32, 47, 27, 57, 22, 32,20000, 5000, TiposElementais.Terra, Comportamentos.BossMontanha, 30000, 20000);
+        super("Behemoth", "com.daniel.Images/Inimigos/Megapack III Behemoth.png", 32, 47, 27, 57, 22, 32,20000, 5000, TiposElementais.Terra, Comportamentos.padrao, 30000, 20000);
         this.absorcao = new TiposElementais[]{TiposElementais.Terra};
         this.resistencias = new TiposElementais[]{TiposElementais.Fogo, TiposElementais.Vento,TiposElementais.NaoElemental};
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};

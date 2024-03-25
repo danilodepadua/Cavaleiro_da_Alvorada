@@ -6,19 +6,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.GameOverController">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.daniel.View.GameOverController">
    <children>
       <VBox alignment="CENTER" layoutX="421.0" layoutY="31.0" prefHeight="478.0" prefWidth="341.0" spacing="35.0" AnchorPane.leftAnchor="421.0" AnchorPane.rightAnchor="365.20000000000005">
          <children>
             <Text fill="#eccb7e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: black; -fx-stroke-width: 3;" text="GAME OVER!">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="84.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Não perca as esperanças!">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="24.0" />
                </font>
             </Text>
             <Button fx:id="btnCarregar" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickCarregar" opacity="0.95" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #241811; -fx-border-width: 1; -fx-border-color: #eccb7e;" text="Carregar" textFill="#eccb7e">

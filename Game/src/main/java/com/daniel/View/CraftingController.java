@@ -185,7 +185,7 @@ public class CraftingController implements Initializable {
         return view;
     }
     private Item updateCraft() throws PlayerInexistenteException {
-        Item resultado = craftingFachada.criarBarraFerro(itemSelecionado, itemSelecionado2, 0.3);
+        Item resultado = craftingFachada.criarBarraFerro(itemSelecionado, itemSelecionado2, 0.3*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
@@ -193,81 +193,142 @@ public class CraftingController implements Initializable {
         }
 
 
-        resultado = craftingFachada.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, 0.3);
+        resultado = craftingFachada.criarPocaoVidaGrande(itemSelecionado, itemSelecionado2, 0.3*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, 0.5);
+        resultado = craftingFachada.criarPocaoManaGrande(itemSelecionado, itemSelecionado2, 0.5*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, 0.5);
+        resultado = craftingFachada.criarFerroAperfeicoado(itemSelecionado, itemSelecionado2, 0.5*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, 0.6);
+        resultado = craftingFachada.criarEspadaAperfeicoada(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, 0.4);
+        resultado = craftingFachada.criarEspadaGeloAperfeicoada(itemSelecionado, itemSelecionado2, 0.4*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, 0.7);
+        resultado = craftingFachada.criarEspadaEscuridaoAperfeicoada(itemSelecionado, itemSelecionado2, 0.7*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2,0.6);
+        resultado = craftingFachada.criarEspadaFogoAperfeicoada(itemSelecionado, itemSelecionado2,0.6*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2,0.5);
+        resultado = craftingFachada.criarEspadaEletricaAperfeicoada(itemSelecionado, itemSelecionado2,0.5*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
 
-        resultado = craftingFachada.criarBarraFogo(itemSelecionado, itemSelecionado2, 0.6);
+        resultado = craftingFachada.criarBarraFogo(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
-        resultado = craftingFachada.criarBarraGelo(itemSelecionado, itemSelecionado2, 0.35);
+        resultado = craftingFachada.criarBarraGelo(itemSelecionado, itemSelecionado2, 0.35*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
-        resultado = craftingFachada.criarBarraEscuridao(itemSelecionado, itemSelecionado2, 0.4);
+        resultado = craftingFachada.criarBarraEscuridao(itemSelecionado, itemSelecionado2, 0.4*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);
             return resultado;
         }
-        resultado = craftingFachada.criarBarraOuro(itemSelecionado, itemSelecionado2, 0.6);
+        resultado = craftingFachada.criarBarraOuro(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        //aqui
+        resultado = craftingFachada.criarFargF(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarFragI(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarFragR(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarFragV(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarFragS(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarJoiaF(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarJoiaI(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarJoiaR(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarJoiaS(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
+
+        if (resultado != null) {
+            editarTexto(resultado);
+            return resultado;
+        }
+        resultado = craftingFachada.criarJoiaV(itemSelecionado, itemSelecionado2, 0.6*((double) Player.getPlayer().getInteligencia() /100));
 
         if (resultado != null) {
             editarTexto(resultado);

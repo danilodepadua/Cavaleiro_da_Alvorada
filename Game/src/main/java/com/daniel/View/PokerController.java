@@ -1,5 +1,7 @@
 package com.daniel.View;
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Textos.TextoNode;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Taverna.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.BaralhoVazioException;
@@ -96,8 +98,8 @@ public class PokerController implements Initializable {
                 btnApostar.setDisable(false);
                 throw new SemMoedasCassino();
             } else {
-                mostrarResultado("Rodada: 1");
-                txtAposta.setText("Aposta: "+ aposta);
+                mostrarResultado(TextosInterface.getRodade()+": 1");
+                txtAposta.setText(TextosInterface.getAposta()+": "+ aposta);
                 btnContinuar.setDisable(false);
                 try {
                     adicionarCarta(gridJogador, jogador, 0);
@@ -117,7 +119,7 @@ public class PokerController implements Initializable {
 
             }
         } catch (NumberFormatException e) {
-            System.out.println("Valor de aposta inválido");
+            System.out.println(new TextoNode("Valor de aposta inválido","Invalid bet value").getTexto());
         } catch (SemMoedasCassino e) {
             throw new RuntimeException(e);
         }
@@ -137,6 +139,7 @@ public class PokerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         jogoFachada = JogoFachada.getInstance();
+        txtInsira.setText(new TextoNode("Insira:","Insert:").getTexto());
         this.cartasCentro = new Mão();
         definirBackground(panePrincipal, "/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         identificarTextos(panePrincipal);
@@ -157,7 +160,7 @@ public class PokerController implements Initializable {
 
 
         btnContinuar.setOnAction(event -> {
-            mostrarResultado("Rodada: "+ rodada);
+            mostrarResultado(TextosInterface.getRodade()+": "+ rodada);
             try {
                 if (tresCartas){
                     adicionarCarta(gridCartasNoCentro, cartasCentro, 0);
@@ -202,14 +205,12 @@ public class PokerController implements Initializable {
                 }
                 rodada++;
                 textFieldAposta.setText(null);
-                txtAposta.setText("Aposta: "+aposta);
+                txtAposta.setText(TextosInterface.getAposta()+": "+aposta);
 
 
-            } catch (BaralhoVazioException e) {
+            } catch (BaralhoVazioException | SemMoedasCassino e) {
                 throw new RuntimeException(e);
             } catch (PlayerInexistenteException e) {
-                throw new RuntimeException(e);
-            } catch (SemMoedasCassino e) {
                 throw new RuntimeException(e);
             }
 
@@ -247,32 +248,32 @@ public class PokerController implements Initializable {
         int forcaCasa = jogoFachada.avaliarForcaMao(casa, cartasCentro);
         btnVoltar.setDisable(false);
         if (forcaJogador > forcaCasa ) {
-            mostrarResultado("Você ganhou! ");
+            mostrarResultado(new TextoNode("Você ganhou! ","You win!").getTexto());
             Player.getPlayer().ganharCoins(aposta);
-            txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
-            txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
+            txtSeuResultado.setText(new TextoNode("Seu resultado","Your result").getTexto()+": "+ resultadoJogador);
+            txtResultadoCasa.setText(new TextoNode("Resultado da casa","Home result").getTexto()+": "+ resultadoCasa);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
             tresCartas = true;
             continuar = false;
         } else if (forcaJogador < forcaCasa) {
-            mostrarResultado("Você perdeu!");
-            txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
-            txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
+            mostrarResultado(new TextoNode("Você perdeu! ","You lose!").getTexto());
+            txtSeuResultado.setText(new TextoNode("Seu resultado","Your result").getTexto()+": "+ resultadoJogador);
+            txtResultadoCasa.setText(new TextoNode("Resultado da casa","Home result").getTexto()+": "+ resultadoCasa);
             Player.getPlayer().ganharCoins(-aposta);
             btnApostar.setDisable(false);
             btnContinuar.setDisable(true);
             tresCartas = true;
             continuar = false;
         } else {
-            txtSeuResultado.setText("Seu resultado: "+ resultadoJogador);
-            txtResultadoCasa.setText("Resultado casa: "+ resultadoCasa);
+            txtSeuResultado.setText(new TextoNode("Seu resultado","Your result").getTexto()+": "+ resultadoJogador);
+            txtResultadoCasa.setText(new TextoNode("Resultado da casa","Home result").getTexto()+": "+ resultadoCasa);
             int pontosJogador = jogador.getPontos();
             int pontosCasa = casa.getPontos();
             if (pontosJogador >= pontosCasa){
-                mostrarResultado("Você ganhou!");
+                mostrarResultado(new TextoNode("Você ganhou! ","You win!").getTexto());
             }else {
-                mostrarResultado("Você perdeu!");
+                mostrarResultado(new TextoNode("Você perdeu! ","You lose!").getTexto());
             }
             btnContinuar.setDisable(true);
             tresCartas = true;

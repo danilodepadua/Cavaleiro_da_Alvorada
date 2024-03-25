@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 import static com.daniel.View.Utilidades.*;
 
 public class TavernaController implements Initializable {
-    private final JogoFachada jogoFachada = JogoFachada.getInstance();
     @FXML
     private Text Txt_Atributos;
 
@@ -76,6 +75,7 @@ public class TavernaController implements Initializable {
     void onActionRestaurar(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException {
         Rectangle overlay = new Rectangle(panePrincipal.getWidth(), panePrincipal.getHeight(), Color.rgb(0, 0, 0, 1));
         panePrincipal.getChildren().add(overlay);
+        JogoFachada.getInstance().getAudioPlayer().PlayEfeito("/com.daniel.audios/NovasMusicas/Eventos/INN.mp3");
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), overlay);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);

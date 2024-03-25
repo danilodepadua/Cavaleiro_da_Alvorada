@@ -9,13 +9,13 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class Endurecer extends Magia implements IEffects {
     public Endurecer() {
-        super("Indura", 20,0, TiposElementais.NaoElemental, new BuffAnimation(), false);
+        super("Indura", 5,0, TiposElementais.NaoElemental, new BuffAnimation(), false);
     }
 
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
-        alvo.UpRes(10);
-        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua resistencia aumentada em 10",alvo.getNome() + " has it's' resistance increased by 10"));
+        alvo.UpRes(1);
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua resistencia aumentada em 1",alvo.getNome() + " has it's' resistance increased by 1"));
     }
 }

@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class PocaoVisao extends Item implements IConsumableInBattle {
     public PocaoVisao(){
-        super("/com.daniel.Images/Itens/Poções/will potion.png",new TextoNode("Poção da visão", "Vision potion"), 1, 100, new TextoNode("Poção que cura cegueira","Potion that cure blindness"));
+        super("/com.daniel.Images/Itens/Poções/will potion.png",new TextoNode("Poção da visão", "Vision potion"), 1, 5000, new TextoNode("Poção que cura cegueira","Potion that cure blindness"));
     }
 
     public PocaoVisao(int quant) {
-        super("/com.daniel.Images/Itens/Poções/will potion.png",new TextoNode("Poção da visão", "Vision potion"), quant, 100, new TextoNode("Poção que cura cegueira","Potion that cure blindness"));
+        super("/com.daniel.Images/Itens/Poções/will potion.png",new TextoNode("Poção da visão", "Vision potion"), quant, 5000, new TextoNode("Poção que cura cegueira","Potion that cure blindness"));
     }
 
     @Override

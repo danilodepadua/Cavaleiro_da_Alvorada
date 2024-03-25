@@ -11,23 +11,23 @@ import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 public class PocaoCuraGrande extends Item implements IConsumableOutBattle, IConsumableInBattle {
 
     public PocaoCuraGrande() {
-        super("/com.daniel.Images/Itens/Poções/health potion.png", new TextoNode("Poção grande", "Hi-Potion"), 1, 90, new TextoNode("Poção que cura 70 de vida", "Potion that cures 70 of life"));
+        super("/com.daniel.Images/Itens/Poções/health potion.png", new TextoNode("Poção grande", "Hi-Potion"), 1, 1500, new TextoNode("Poção que cura 2000 de vida", "Potion that cures 2000 of life"));
     }
 
     public PocaoCuraGrande(int quant) {
-        super("/com.daniel.Images/Itens/Poções/health potion.png", new TextoNode("Poção grande", "Hi-Potion"), quant, 90, new TextoNode("Poção que cura 70 de vida", "Potion that cures 70 of life"));
+        super("/com.daniel.Images/Itens/Poções/health potion.png", new TextoNode("Poção grande", "Hi-Potion"), quant, 1500, new TextoNode("Poção que cura 2000 de vida", "Potion that cures 2000 of life"));
 
     }
 
     @Override
     public TextoNode Consumir(PersonagemLuta p) throws PlayerInexistenteException {
-        p.RecuperarVida(70);
+        p.RecuperarVida(2000);
         Player.getPlayer().getInventario().removerItem(this);
-        return new TextoNode("O jogador recuperou 70 de vida","The player recover 70 of hp");
+        return new TextoNode("O jogador recuperou 2000 de vida","The player recover 2000 of hp");
     }
     @Override
     public void Consumir() throws PlayerInexistenteException {
-        Player.getPlayer().RecuperarVida(70);
+        Player.getPlayer().RecuperarVida(2000);
         Player.getPlayer().getInventario().removerItem(this);
     }
 }

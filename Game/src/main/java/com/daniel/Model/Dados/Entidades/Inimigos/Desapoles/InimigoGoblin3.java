@@ -16,7 +16,7 @@ public class InimigoGoblin3 extends Inimigo {
     public InimigoGoblin3() {
         super("Goblin Grunt", "/com.daniel.Images/Inimigos/Goblin Grunt.png", 12, 30, 15, 24, 27, 24,5800, 60, TiposElementais.NaoElemental, Comportamentos.padrao, 1400, 700);
         this.magias.add(new Fast());
-        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new TonicoDeVelocidade(), 0, 1, 0.05);
         this.lootTable.AdicionarEntrada(new Ferro(), 0, 2, 0.05);
     }

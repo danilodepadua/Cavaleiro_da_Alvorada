@@ -104,6 +104,37 @@ public class JogoFachada {
     public Item criarEspadaEletricaAperfeicoada(Item item, Item item2, double chance) {
         return controleCraft.criarEspadaEletricaAperfeicoada(item, item2, chance);
     }
+    //aqui
+    public Item criarFargF(Item item, Item item2, double chance) {
+        return controleCraft.criarFragForce(item, item2, chance);
+    }
+    public Item criarFragV(Item item, Item item2, double chance) {
+        return controleCraft.criarFragVel(item, item2, chance);
+    }
+    public Item criarFragI(Item item, Item item2, double chance) {
+        return controleCraft.criarFragInt(item, item2, chance);
+    }
+    public Item criarFragS(Item item, Item item2, double chance) {
+        return controleCraft.criarFragSorte(item, item2, chance);
+    }
+    public Item criarFragR(Item item, Item item2, double chance) {
+        return controleCraft.criarFragRes(item, item2, chance);
+    }
+    public Item criarJoiaF(Item item, Item item2, double chance) {
+        return controleCraft.criarJoiaForce(item, item2, chance);
+    }
+    public Item criarJoiaS(Item item, Item item2, double chance) {
+        return controleCraft.criarJoiaSorte(item, item2, chance);
+    }
+    public Item criarJoiaR(Item item, Item item2, double chance) {
+        return controleCraft.criarJoiaRes(item, item2, chance);
+    }
+    public Item criarJoiaI(Item item, Item item2, double chance) {
+        return controleCraft.criarJoiaInt(item, item2, chance);
+    }
+    public Item criarJoiaV(Item item, Item item2, double chance) {
+        return controleCraft.criarJoiaVel(item, item2, chance);
+    }
 
     public double getChanceBase() {
         return controleCraft.getChanceBase();

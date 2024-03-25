@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class TonicoDeSorte extends Item implements IConsumableInBattle {
     public TonicoDeSorte(){
-        super("/com.daniel.Images/Itens/Poções/luck potion.png", new TextoNode("Tônico da sorte","Luck tonic"), 1, 100, new TextoNode("Poção que concede 5 pontos de sorte durante a batalha","Potion that increases luck by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/luck potion.png", new TextoNode("Tônico da sorte","Luck tonic"), 1, 50000, new TextoNode("Poção que concede 5 pontos de sorte durante a batalha","Potion that increases luck by 5 during battle"));
     }
 
     public TonicoDeSorte(int quant) {
-        super("/com.daniel.Images/Itens/Poções/luck potion.png", new TextoNode("Tônico da sorte","Luck tonic"), quant, 100, new TextoNode("Poção que concede 5 pontos de sorte durante a batalha","Potion that increases luck by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/luck potion.png", new TextoNode("Tônico da sorte","Luck tonic"), quant, 50000, new TextoNode("Poção que concede 5 pontos de sorte durante a batalha","Potion that increases luck by 5 during battle"));
     }
 
     @Override

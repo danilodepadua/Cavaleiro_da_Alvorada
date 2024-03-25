@@ -1,29 +1,27 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
-import com.daniel.Model.Dados.Entidades.Inimigos.Desapoles.InimigoAbelha;
-import com.daniel.Model.Dados.Entidades.Inimigos.Auroraville.InimigoBabySlime;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossIlha;
+import com.daniel.Model.Dados.Entidades.Inimigos.Ilha.*;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Itens.Armas.EspadaFogoBasica;
 import com.daniel.Model.Itens.Armas.EspadaSombriaBasica;
-import com.daniel.Model.Quests.QuestSlimeDeEscuridaoNv1;
 
 import java.util.ArrayList;
 
 public class Ilha extends Cidade {
     public Ilha() throws PlayerInexistenteException {
         super("ILHA","/com.daniel.Images/Fundos/Ilha.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",1000);
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",500, new BossIlha());
 
         this.musicPath = "/com.daniel.audios/msc_ilha.wav";
-        this.inimigos = new Inimigo[]{new InimigoBabySlime(), new InimigoAbelha()};
+        this.inimigos = new Inimigo[]{new InimigoAbismo(), new InimigoCarangueijo(), new InimigoGolenTartaruga(), new InimigoSereia1(), new InimigoSereia2(), new InimigoSereia3(), new InimigoSlimeDeAguaNv3()};
         // Adiciona quests à lista de quests disponíveis da cidade
         this.quests = new ArrayList<>();
         this.itens.add(new EspadaFogoBasica());
         this.itens.add(new EspadaSombriaBasica());
 
-        quests.add(new QuestSlimeDeEscuridaoNv1());
         ajustarBotoes();
     }
     @Override
@@ -33,6 +31,7 @@ public class Ilha extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoEstalagem());
         this.botoes.add(criarBotaoSalvar());
     }
 }

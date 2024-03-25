@@ -6,7 +6,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class Cajado extends Arma {
     public Cajado() {
-        super("/com.daniel.Images/Itens/Cajado.png", new TextoNode("Cajado Mágico", "Magic Staff"), 1, 10, new TextoNode("Concede um aumento de 10 no ataque mágico", "Incrases magic attack by 10"), 0, 10, TiposElementais.NaoElemental);
+        super("/com.daniel.Images/Itens/Cajado.png", new TextoNode("Cajado Mágico", "Magic Staff"), 1, 1000, new TextoNode("Concede um aumento de 10 no ataque mágico", "Incrases magic attack by 10"), 0, 10, TiposElementais.NaoElemental);
     }
 
     public Cajado(int quant) {

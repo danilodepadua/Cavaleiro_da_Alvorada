@@ -9,11 +9,11 @@ import com.daniel.Model.BatalhaDeTurnos.PersonagemLuta;
 
 public class TonicoDoHeroi extends Item implements IConsumableInBattle {
     public TonicoDoHeroi(){
-        super("/com.daniel.Images/Itens/Poções/resurrection potion.png", new TextoNode("Tônico do heroi","Heroes force"), 1, 100, new TextoNode("Poção que concede 5 pontos em todos os atributos durante a batalha","Potion that increases all attributes by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/resurrection potion.png", new TextoNode("Tônico do heroi","Heroes force"), 1, 150000, new TextoNode("Poção que concede 5 pontos em todos os atributos durante a batalha","Potion that increases all attributes by 5 during battle"));
     }
 
     public TonicoDoHeroi(int quant) {
-        super("/com.daniel.Images/Itens/Poções/resurrection potion.png", new TextoNode("Tônico do heroi","Heroes force"), quant, 100, new TextoNode("Poção que concede 5 pontos em todos os atributos durante a batalha","Potion that increases all attributes by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/resurrection potion.png", new TextoNode("Tônico do heroi","Heroes force"), quant, 150000, new TextoNode("Poção que concede 5 pontos em todos os atributos durante a batalha","Potion that increases all attributes by 5 during battle"));
     }
 
     @Override

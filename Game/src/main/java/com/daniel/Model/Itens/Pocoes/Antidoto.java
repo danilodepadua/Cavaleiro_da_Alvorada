@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class Antidoto extends Item implements IConsumableInBattle {
     public Antidoto(){
-        super("/com.daniel.Images/Itens/Poções/poison potion.png", new TextoNode("Antídoto","Antidote"), 1, 100, new TextoNode("Poção que tira efeito de veneno","Potion that removes poison effect"));
+        super("/com.daniel.Images/Itens/Poções/poison potion.png", new TextoNode("Antídoto","Antidote"), 1, 5000, new TextoNode("Poção que tira efeito de veneno","Potion that removes poison effect"));
     }
 
     public Antidoto(int quant) {
-        super("/com.daniel.Images/Itens/Poções/poison potion.png", new TextoNode("Antídoto","Antidote"), quant, 100, new TextoNode("Poção que tira efeito de veneno","Potion that removes poison effect"));
+        super("/com.daniel.Images/Itens/Poções/poison potion.png", new TextoNode("Antídoto","Antidote"), quant, 5000, new TextoNode("Poção que tira efeito de veneno","Potion that removes poison effect"));
     }
 
     @Override

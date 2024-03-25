@@ -2,6 +2,7 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Bosses;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
+import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Itens.Armas.EspadaDemoniaca;
 import com.daniel.Model.Itens.Minerios.BarraEscuridao;
 import com.daniel.Model.Itens.Minerios.FragM.*;
@@ -12,7 +13,7 @@ import com.daniel.Model.Magias.Poderes.*;
 import com.daniel.Model.Magias.TiposElementais;
 
 public class BossFinal2 extends Inimigo {
-    public BossFinal2() {
+    public BossFinal2() throws PlayerInexistenteException {
         super("Besta abissal", "/com.daniel.Images/Inimigos/Boss Eldritch God Shaccad'Yoggoth.png", 82, 72, 72, 72, 72, 72,55000, 10000, TiposElementais.Escuridao, Comportamentos.BossFinal2, 82500, 55000);
         this.fraquezas = new TiposElementais[]{TiposElementais.Luz};
         this.absorcao = new TiposElementais[]{TiposElementais.Escuridao};

@@ -15,7 +15,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossMontanhaDoNorte extends Inimigo {
     public BossMontanhaDoNorte() {
-        super("Cryo Maiden", "/com.daniel.Images/Inimigos/Megapack III Elemental Lords Ice Maiden.png", 78, 52, 57, 72, 57, 72, 45000, 5000, TiposElementais.NaoElemental, Comportamentos.BossNeve, 67500, 45000);
+        super("Cryo Maiden", "/com.daniel.Images/Inimigos/Megapack III Elemental Lords Ice Maiden.png", 78, 52, 57, 72, 57, 72, 45000, 5000, TiposElementais.NaoElemental, Comportamentos.padrao, 67500, 45000);
         this.absorcao = new TiposElementais[]{TiposElementais.Gelo};
         this.resistencias = new TiposElementais[]{TiposElementais.Agua};
         this.fraquezas = new TiposElementais[]{TiposElementais.Fogo};

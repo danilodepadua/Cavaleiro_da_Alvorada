@@ -24,8 +24,8 @@ public class InimigoAbismo extends Inimigo {
         this.magias.add(new Redemoinho());
         this.magias.add(new Fortalecer());
         this.magias.add(new Fast());
-        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.005);
-        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.01);
+        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.05);
+        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMpGrande(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMp(), 0, 1, 0.3);
         this.lootTable.AdicionarEntrada(new TonicoDeForca(), 0,1,0.1);

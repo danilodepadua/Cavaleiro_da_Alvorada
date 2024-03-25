@@ -24,6 +24,9 @@ public class ControlePlayerXP {
             VerificarLevelUp();
             return true;
         }
+        else{
+            System.out.println("XpAtual: " + Player.getPlayer().getCurrentXp() + "| XpProx.: " + Player.getPlayer().getXpProx());
+        }
         return false;
     }
     public void aprenderMagia() throws PlayerInexistenteException { //caso ele suba o nivel, aprende magias
@@ -39,23 +42,65 @@ public class ControlePlayerXP {
                 break;
             case 5:
                 Player.getPlayer().getMagias().add(new Redemoinho());
+                Player.getPlayer().getMagias().add(new Amolecer());
                 break;
             case 6:
                 Player.getPlayer().getMagias().add(new WaterSpyke());
+                Player.getPlayer().getMagias().add(new Enfraquecer());
             case 7:
                 Player.getPlayer().getMagias().add(new Terra());
+                Player.getPlayer().getMagias().add(new Raio());
                 break;
             case 8:
                 Player.getPlayer().getMagias().add(new Vento());
+                Player.getPlayer().getMagias().add(new Splash());
                 break;
             case 9:
                 Player.getPlayer().getMagias().add(new Adormecer());
+                Player.getPlayer().getMagias().add(new Explosao());
                 break;
             case 10:
-                Player.getPlayer().getMagias().add(new Cura());
+                Player.getPlayer().getMagias().add(new Cure());
+                Player.getPlayer().getMagias().add(new Silenciar());
                 break;
             case 11:
                 Player.getPlayer().getMagias().add(new Fortalecer());
+                Player.getPlayer().getMagias().add(new Endurecer());
+                break;
+            case 12:
+                Player.getPlayer().getMagias().add(new Endurecer());
+                break;
+            case 13:
+                Player.getPlayer().getMagias().add(new Cura());
+                Player.getPlayer().getMagias().add(new Dessilenciar());
+                break;
+            case 14:
+                Player.getPlayer().getMagias().add(new Scan());
+                Player.getPlayer().getMagias().add(new IntUp());
+                break;
+            case 15:
+                Player.getPlayer().getMagias().add(new Veneno());
+                Player.getPlayer().getMagias().add(new Desenvenenar());
+                break;
+            case 16:
+                Player.getPlayer().getMagias().add(new Curaga());
+                Player.getPlayer().getMagias().add(new Slow());
+            case 17:
+                Player.getPlayer().getMagias().add(new ParedeTerra());
+                Player.getPlayer().getMagias().add(new IntDown());
+                break;
+            case 18:
+                Player.getPlayer().getMagias().add(new AirBlast());
+                break;
+            case 19:
+                Player.getPlayer().getMagias().add(new Regen());
+                Player.getPlayer().getMagias().add(new Fast());
+                break;
+            case 20:
+                Player.getPlayer().getMagias().add(new Sopro());
+                break;
+            case 21:
+                Player.getPlayer().getMagias().add(new Stop());
                 break;
             default:
                 break;

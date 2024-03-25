@@ -20,7 +20,7 @@ public class InimigoLobisomen extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};
         this.magias.add(new Fast());
         this.magias.add(new Fortalecer());
-        this.lootTable.AdicionarEntrada(new FragForce(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragForce(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoCura(), 0, 3, 0.5);
         this.lootTable.AdicionarEntrada(new PocaoMp(), 0, 3, 0.5);
         this.lootTable.AdicionarEntrada(new TonicoDeForca(), 0, 1, 0.05);

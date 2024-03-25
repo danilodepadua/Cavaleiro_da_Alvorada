@@ -10,7 +10,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class Scan extends Magia implements IEffects {
     public Scan() {
-        super("Scan", 15, 1.5, TiposElementais.NaoElemental,new DebufAnimation(), false);
+        super("Scan", 10, 1.5, TiposElementais.NaoElemental,new DebufAnimation(), false);
         this.autoUsavel = false;
     }
 

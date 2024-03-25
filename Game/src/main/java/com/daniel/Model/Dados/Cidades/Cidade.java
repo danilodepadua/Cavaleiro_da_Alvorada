@@ -3,6 +3,7 @@ package com.daniel.Model.Dados.Cidades;
 import com.daniel.Controller.JogoFachada;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.AudioPlayer;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Itens.Item;
@@ -27,18 +28,22 @@ public abstract class Cidade implements Serializable {
     protected Inimigo[] inimigos;
     protected ArrayList<Quest> quests = new ArrayList<>(); // Usando ArrayList
     protected ArrayList<Item> itens = new ArrayList<>();
-    protected String  dialogoCutscene;
+    protected String dialogoCutscene;
     protected boolean dialogoAtivo;
     protected transient ArrayList<Botao> botoes = new ArrayList<>();
     protected String musicPath;
     public int CustoNaninha;
-    public Cidade(String nome, String fundo, String fundoB, int Custo) {
+    protected Inimigo boss;
+    public Cidade(String nome, String fundo, String fundoB, int Custo, Inimigo iniBoss) {
         this.Fundo = fundo;
         this.FundoBatalha = fundoB;
         this.Nome = nome;
         this.CustoNaninha = Custo;
+        this.boss= iniBoss;
     }
-
+    public Inimigo getBoss(){
+        return boss;
+    }
     public String getMusicPath(){
         return this.musicPath;
     }
@@ -101,6 +106,15 @@ public abstract class Cidade implements Serializable {
             }
         });
     }
+    protected Botao criarBotaoEstalagem(){
+        return criarBotao(TextosInterface.getTaverna(), () ->{
+            try {
+                Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaEstalagem.fxml")).load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
     protected  Botao criarBotaoCacar(){
         return criarBotao(TextosInterface.getCacar(), () -> {
             try {
@@ -139,25 +153,3 @@ public abstract class Cidade implements Serializable {
     }
 }
 
-class Botao{
-    private String nome;
-    private Runnable func;
-
-    public Botao(String nome, Runnable func) {
-        this.nome = nome;
-        this.func = func;
-    }
-    public void AtualizarNome(){
-
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Runnable getFunc() {
-        return func;
-    }
-
-
-}

@@ -19,7 +19,7 @@ public class InimigoGoblin2 extends Inimigo {
         this.resistencias = new TiposElementais[]{TiposElementais.NaoElemental};
         this.magias.add(new Endurecer());
         this.magias.add(new Fortalecer());
-        this.lootTable.AdicionarEntrada(new FragForce(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragForce(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new TonicoDeForca(), 0, 1, 0.05);
         this.lootTable.AdicionarEntrada(new PocaoCura(), 0, 3, 0.2);
     }

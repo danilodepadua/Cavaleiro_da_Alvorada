@@ -1,6 +1,8 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Textos.TextoNode;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Taverna.Carta;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.*;
@@ -64,7 +66,7 @@ public class MemoriaController implements Initializable {
 
         if (Player.getPlayer().getCoins() < valorAposta){
             txtVitoria.setText("");
-            txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
+            txtSeuSaldo.setText(TextosInterface.getCarteira()+": "+ Player.getPlayer().getCoins());
             try {
                 if (valorAposta > Player.getPlayer().getCoins() ) {
                     throw new SemMoedasCassino();
@@ -89,6 +91,7 @@ public class MemoriaController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //Metodos estaticos estilizados do jogo
         identificarTextos(anchorPane);
+        txtInsira.setText(new TextoNode("Insira:","Insert:").getTexto());
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnApostar);
         configurarBotoes(btnDesistir);
@@ -112,7 +115,7 @@ public class MemoriaController implements Initializable {
         txtVitoria.setText("");
         txtAcumulado.setText("");
         try {
-            txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
+            txtSeuSaldo.setText(TextosInterface.getCarteira()+": "+ Player.getPlayer().getCoins());
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
         }
@@ -197,16 +200,16 @@ public class MemoriaController implements Initializable {
                     if (limitarVirada.get(0).getNome().equals(limitarVirada.get(1).getNome())) {
                         removerCartasDoGrid(gridBaralho, limitarVirada);
                         valorAcumulado += valorAposta; //acumular o valor do dinheiro
-                        txtAcumulado.setText("Valor acumulado: " + valorAcumulado + " Moedas");
+                        txtAcumulado.setText(new TextoNode("Valor acumulado", "Earned value").getTexto()+": " + valorAcumulado + " Makkos");
                     } else if (limitarVirada.get(0).getNome().equals("Coringa") || limitarVirada.get(1).getNome().equals("Coringa")) {
                         btnDesistir.setDisable(true);
                         try {
                             if (valorAcumulado != 0) {
-                                txtVitoria.setText("Você perdeu: " + Player.getPlayer().removerCoins(valorAcumulado)+ " Moedas");
+                                txtVitoria.setText(new TextoNode("Você perdeu","You lose").getTexto()+": " + Player.getPlayer().removerCoins(valorAposta)+ " Makkos");
                             } else {
-                                txtVitoria.setText("Você perdeu: " + Player.getPlayer().removerCoins(valorAposta)+ " Moedas");
+                                txtVitoria.setText(new TextoNode("Você perdeu","You lose").getTexto()+": " + Player.getPlayer().removerCoins(valorAposta)+ " Makkos");
                             }
-                            txtSeuSaldo.setText("Carteira: " + Player.getPlayer().getCoins());
+                            txtSeuSaldo.setText(TextosInterface.getCarteira()+": " + Player.getPlayer().getCoins());
                             valorAcumulado = 0;
                         } catch (PlayerInexistenteException | RemoverCoinsException e) {
                             throw new RuntimeException(e);
@@ -275,8 +278,8 @@ public class MemoriaController implements Initializable {
     @FXML
     void Desistir() throws PlayerInexistenteException {
         Player.getPlayer().ganharCoins(valorAcumulado);
-        txtVitoria.setText("Ganhou: "+ valorAcumulado+ " Moedas");
-        txtSeuSaldo.setText("Carteira: "+ Player.getPlayer().getCoins());
+        txtVitoria.setText(new TextoNode("Ganhou","Earned").getTexto()+": "+ valorAcumulado+ " Makkos");
+        txtSeuSaldo.setText(TextosInterface.getCarteira()+": "+ Player.getPlayer().getCoins());
         valorAcumulado = 0;
         btnDesistir.setDisable(true);
         reiniciarJogo();

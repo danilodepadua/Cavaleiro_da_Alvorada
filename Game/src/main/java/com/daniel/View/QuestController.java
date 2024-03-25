@@ -1,6 +1,8 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.Dados.Textos.TextoNode;
+import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Quests.Quest;
 import com.daniel.game.Main;
@@ -29,16 +31,14 @@ public class QuestController implements Initializable {
     int questAtual = 0;
     @FXML
     private Button bntSetaSubir;
-
+    @FXML
+    private Text TxtQuests;
     @FXML
     private Button btnSetaDescer;
-
     @FXML
     private AnchorPane panePrincipal;
-
     @FXML
     private VBox vboxQuests;
-
     @FXML
     private Button btnVoltar;
 
@@ -63,7 +63,7 @@ public class QuestController implements Initializable {
 
         progressBar.setProgress((double) quest.getProgresso() / quest.getObjetivo());
         progressBar.setStyle(PROGRESS_BAR_COLOR);
-        Button btnRecolher = new Button("Recolher");
+        Button btnRecolher = new Button(TextosInterface.getRecolher());
         btnRecolher.setStyle("-fx-background-color: #241811; -fx-border-color:  #eccb7e; -fx-text-fill:  #eccb7e; -fx-font-family: 'Barlow Condensed SemiBold'");
         btnRecolher.setPrefWidth(100);
         btnRecolher.setPrefHeight(30);
@@ -125,6 +125,7 @@ public class QuestController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TxtQuests.setText(new TextoNode("Quests disponíveis","Available quests").getTexto());
         definirBackground(panePrincipal,"/com.daniel.Images/Cartas/MesaTaverna.jpeg");
         configurarSetas();
         ImageView seta = new ImageView();

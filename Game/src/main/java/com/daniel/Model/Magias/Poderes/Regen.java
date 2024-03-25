@@ -9,7 +9,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class Regen extends Magia implements IEffects {
     public Regen() {
-        super("Regen", 20, 1.5, TiposElementais.NaoElemental,new BuffAnimation(), false);
+        super("Regen", 25, 1.5, TiposElementais.NaoElemental,new BuffAnimation(), false);
     }
 
     @Override

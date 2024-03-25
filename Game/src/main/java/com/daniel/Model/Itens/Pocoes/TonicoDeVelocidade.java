@@ -9,11 +9,11 @@ import com.daniel.Model.Itens.Item;
 
 public class TonicoDeVelocidade extends Item implements IConsumableInBattle {
     public TonicoDeVelocidade(){
-        super("/com.daniel.Images/Itens/Poções/agility potion.png", new TextoNode("Tônico de volocidade","Speed tonic"), 1, 100, new TextoNode("Poção que concede 5 pontos de velocidade durante a batalha","Potion that increases speed by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/agility potion.png", new TextoNode("Tônico de volocidade","Speed tonic"), 1, 50000, new TextoNode("Poção que concede 5 pontos de velocidade durante a batalha","Potion that increases speed by 5 during battle"));
     }
 
     public TonicoDeVelocidade(int quant) {
-        super("/com.daniel.Images/Itens/Poções/agility potion.png", new TextoNode("Tônico de volocidade","Speed tonic"), quant, 100, new TextoNode("Poção que concede 5 pontos de velocidade durante a batalha","Potion that increases speed by 5 during battle"));
+        super("/com.daniel.Images/Itens/Poções/agility potion.png", new TextoNode("Tônico de volocidade","Speed tonic"), quant, 50000, new TextoNode("Poção que concede 5 pontos de velocidade durante a batalha","Potion that increases speed by 5 during battle"));
     }
 
     @Override

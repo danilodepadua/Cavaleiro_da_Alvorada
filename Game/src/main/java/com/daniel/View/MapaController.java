@@ -1,7 +1,14 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
+import com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha.BatalhaComum;
+import com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha.BatalhaPredefinida;
+import com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha.BatalhaSequencial;
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Cidades.Vilas.BatalhaDePedraveira;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossFinal1;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossFinal2;
+import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Dados.Textos.TextosInterface;
 import com.daniel.Model.Exceptions.CidadeInexistenteException;
@@ -27,6 +34,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -48,13 +56,6 @@ public class MapaController extends Utilidades implements Initializable {
     @FXML
     private Button btnVoltar;
     @FXML
-    private Button btnNao;
-
-    @FXML
-    private Button btnSim;
-    @FXML
-    private AnchorPane paneAceitar;
-    @FXML
     void OnActionVoltar(ActionEvent event) throws IOException {
         Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
     }
@@ -62,13 +63,8 @@ public class MapaController extends Utilidades implements Initializable {
     void OnActionViajar(ActionEvent event) throws IOException, CidadeInexistenteException {
         // Configura a cidade atual
         if ( cidadeTroca != null) {
-            if (cidadeTroca.getNome().equals("ILHA")) { //condiçao para ilha, verifica se é a ilham se for, aparece o pane
-                paneAceitar.setDisable(false);
-                paneAceitar.setOpacity(1.0);
-            } else {
-                Main.cidadeAtual = cidadeTroca;
-                exibirCutscene();
-            }
+            Main.cidadeAtual = cidadeTroca;
+            exibirCutscene();
         }else {
             throw new CidadeInexistenteException();
         }
@@ -105,11 +101,19 @@ public class MapaController extends Utilidades implements Initializable {
                 adicionarCaracteresComAtraso(mensagemCutscene, mensagemText, () -> {
                     // Muda para a cena da cidade após a animação da cutscene
                     try {
-                        Main.ChangeScene(new FXMLLoader(Main.class.getResource("TelaCidade.fxml")).load());
-                    } catch (IOException e) {
+                        if(Objects.equals(cidadeAtual.getNome(), new BatalhaDePedraveira().getNome())){
+                            ArrayList<Inimigo> inimigos = new ArrayList<>();
+                            inimigos.add(new BossFinal1());
+                            inimigos.add(new BossFinal2());
+                            JogoFachada.getInstance().getGerenciadorDeBatalha().Inicializar(new BatalhaSequencial(inimigos, JogoFachada.getInstance().getGerenciadorDeBatalha()));
+                        }
+                        else{
+                            JogoFachada.getInstance().getGerenciadorDeBatalha().Inicializar(new BatalhaPredefinida(cidadeAtual.getBoss()));
+                        }
+                    } catch (IOException | PlayerInexistenteException e) {
                         throw new RuntimeException(e);
                     }
-            });
+                });
             }
         } else {
             //Se não ta ativo, chama a tela de load
@@ -158,8 +162,6 @@ public class MapaController extends Utilidades implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnViajar.setText(TextosInterface.getViajar());
         btnViajar.setDisable(true);
-        contornarBotaoVoltar(btnNao);
-        configurarBotoes(btnSim);
         contornarBotaoVoltar(btnVoltar);
         configurarBotoes(btnViajar);
         ImgMapa.setFitHeight(Main.getAltura() - 100);
@@ -192,9 +194,6 @@ public class MapaController extends Utilidades implements Initializable {
                             case "CIDADE MORTA":
                                 MostraMarca(0.73, 0.195);
                                 break;
-                            case "ILHA":
-                                MostraMarca(0.35, 0.83);
-                                break;
                             case "CIDADE PORTUÁRIA":
                                 MostraMarca(0.305,0.52);
                                 break;
@@ -221,24 +220,6 @@ public class MapaController extends Utilidades implements Initializable {
             parallelTransition.play();
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    void onActionNao(ActionEvent event) {
-        paneAceitar.setDisable(true);
-        paneAceitar.setOpacity(0);
-    }
-    @FXML
-    void onActionSim(ActionEvent event) throws PlayerInexistenteException, RemoverCoinsException, IOException, SemMoedasException {
-        Main.cidadeAtual = cidadeTroca;
-        int passagem = 50;
-        int dinheiro =  Player.getPlayer().getCoins();
-        if (dinheiro >= passagem){
-            Player.getPlayer().removerCoins(passagem);
-            exibirCutscene();
-            System.out.println("Viajando com passagem");
-        }else {
-            throw new SemMoedasException();
         }
     }
 }

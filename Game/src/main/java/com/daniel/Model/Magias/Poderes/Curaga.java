@@ -15,7 +15,7 @@ public class Curaga extends Magia implements IEffects {
     @Override
     public void aplicarEfeito(PersonagemLuta alvo) {
         System.out.println("Alvo: " + alvo.getNome());
-        alvo.RecuperarVida(500);
-        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida curada em 500",alvo.getNome() + " has it's hp healed by 500"));
+        alvo.RecuperarVida(5000);
+        this.mensagem.add(new TextoNode(alvo.getNome() + " teve sua vida curada em 5000",alvo.getNome() + " has it's hp healed by 5000"));
     }
 }

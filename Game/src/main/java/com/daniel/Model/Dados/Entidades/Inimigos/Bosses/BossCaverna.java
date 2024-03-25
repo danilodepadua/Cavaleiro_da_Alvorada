@@ -14,7 +14,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossCaverna extends Inimigo {
     public BossCaverna() {
-        super("Orc Chief", "/com.daniel.Images/Inimigos/Boss Orc Chief Grunt.png", 54, 67, 37, 57, 42, 32,30000, 5000, TiposElementais.NaoElemental, Comportamentos.BossCaverna, 45000, 30000);
+        super("Orc Chief", "/com.daniel.Images/Inimigos/Boss Orc Chief Grunt.png", 54, 67, 37, 57, 42, 32,30000, 5000, TiposElementais.NaoElemental, Comportamentos.padrao, 45000, 30000);
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
         this.resistencias = new TiposElementais[]{TiposElementais.Gelo, TiposElementais.Vento};
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};

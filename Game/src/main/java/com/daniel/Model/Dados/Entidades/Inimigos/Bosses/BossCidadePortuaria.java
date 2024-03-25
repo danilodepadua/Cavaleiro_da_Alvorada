@@ -15,7 +15,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossCidadePortuaria extends Inimigo {
     public BossCidadePortuaria() {
-        super("Urmica", "/com.daniel.Images/Inimigos/Boss Sea Calamity Urmica.png", 62, 67, 37, 92, 27, 37,35000, 5000, TiposElementais.Agua, Comportamentos.BossPorto, 52500, 35000);
+        super("Urmica", "/com.daniel.Images/Inimigos/Boss Sea Calamity Urmica.png", 62, 67, 37, 92, 27, 37,35000, 5000, TiposElementais.Agua, Comportamentos.padrao, 52500, 35000);
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
         this.resistencias = new TiposElementais[]{TiposElementais.Gelo, TiposElementais.Vento};
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};

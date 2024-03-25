@@ -16,7 +16,7 @@ public class InimigoGoblin1 extends Inimigo {
         this.magias.add(new Fast());
         this.magias.add(new Veneno());
         this.magias.add(new Slow());
-        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.01);
+        this.lootTable.AdicionarEntrada(new FragVel(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new TonicoDeVelocidade(), 0, 1, 0.05);
         this.lootTable.AdicionarEntrada(new Antidoto(), 0, 2, 0.5);
         this.lootTable.AdicionarEntrada(new PocaoCura(), 0, 5, 0.5);

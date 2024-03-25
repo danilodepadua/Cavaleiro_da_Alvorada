@@ -1,5 +1,7 @@
 package com.daniel.Model.Quests;
 
+import com.daniel.Model.Dados.Textos.TextoNode;
+
 public class QuestSlimeGod extends Quest {
     public QuestSlimeGod() {
         this.nome = "Deus Slime";
@@ -9,7 +11,7 @@ public class QuestSlimeGod extends Quest {
         this.recompensaXP = 1500;
         this.pontosEvolucao = 2;
         this.nomeInimigo = "Slime primordials";
-        this.descricao= "Derrote o Deus Slime";
+        this.descricao= new TextoNode("Mate o", "Kill the").getTexto()+" Deus Slime";
 
     }
 }

@@ -135,7 +135,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMaisForca(ActionEvent event) throws PlayerInexistenteException {
-        if(pontosDisp>0) {
+        if(pontosDisp>0 && progBarForca.getProgress()<100) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText(""+ pontosDisp);
@@ -145,7 +145,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMaisInt(ActionEvent event) throws PlayerInexistenteException {
-        if(pontosDisp>0) {
+        if(pontosDisp>0&& progBarInt.getProgress()<100) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText(""+ pontosDisp);
@@ -155,7 +155,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMaisRes(ActionEvent event) throws PlayerInexistenteException {
-        if(pontosDisp>0) {
+        if(pontosDisp>0&& progBarRes.getProgress()<100) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText(""+ pontosDisp);
@@ -165,7 +165,7 @@ public class EvoluçaoController implements Initializable {
 
     @FXML
     void onClickMaisVel(ActionEvent event) throws PlayerInexistenteException {
-        if(pontosDisp>0) {
+        if(pontosDisp>0&& progBarVel.getProgress()<100) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText(""+ pontosDisp);
@@ -174,7 +174,7 @@ public class EvoluçaoController implements Initializable {
     }
     @FXML
     void onClickMaisSorte(ActionEvent event) throws PlayerInexistenteException {
-        if(pontosDisp>0) {
+        if(pontosDisp>0&& progBarSorte.getProgress()<100) {
             pontosDisp--;
             Player.getPlayer().setPontos(pontosDisp);
             txtPontos.setText(""+ pontosDisp);
@@ -280,6 +280,7 @@ public class EvoluçaoController implements Initializable {
             txtForce.setText(""+calcularValorDaBarra(progBarForca));
             txtRes.setText(""+ calcularValorDaBarra(progBarRes));
             txtInt.setText(""+calcularValorDaBarra(progBarInt));
+            txtSorte.setText(""+calcularValorDaBarra(progBarSorte));
 
             pontosDisp = Player.getPlayer().getPontos();
             txtPontos.setText(""+ pontosDisp);
@@ -289,6 +290,7 @@ public class EvoluçaoController implements Initializable {
             progBarInt.setProgress(Player.getPlayer().getInteligencia()/100.0);
             progBarRes.setProgress(Player.getPlayer().getResistencia()/100.0);
             progBarVel.setProgress(Player.getPlayer().getVelocidade()/100.0);
+            progBarSorte.setProgress(Player.getPlayer().getSorte()/100.0);
 
         } catch (PlayerInexistenteException e) {
             throw new RuntimeException(e);

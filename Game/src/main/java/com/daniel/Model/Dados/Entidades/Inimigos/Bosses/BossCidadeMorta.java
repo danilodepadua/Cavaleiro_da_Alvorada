@@ -2,7 +2,6 @@ package com.daniel.Model.Dados.Entidades.Inimigos.Bosses;
 
 import com.daniel.Model.ComportamentosInimigos.Comportamentos;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
-import com.daniel.Model.Itens.Armas.EspadaEletricaAperfeicoada;
 import com.daniel.Model.Itens.Armas.EspadaSombriaAperfeicoada;
 import com.daniel.Model.Itens.Armas.EspadaSombriaBasica;
 import com.daniel.Model.Itens.Minerios.FragM.*;
@@ -14,7 +13,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossCidadeMorta extends Inimigo {
     public BossCidadeMorta() {
-        super("Master Witch", "/com.daniel.Images/Inimigos/Halloween Witch Baba.png", 49, 37, 57, 27, 47, 47,26000, 7000, TiposElementais.Escuridao, Comportamentos.BossBruxa, 39000, 26000);
+        super("Master Witch", "/com.daniel.Images/Inimigos/Halloween Witch Baba.png", 49, 37, 57, 27, 47, 47,26000, 7000, TiposElementais.Escuridao, Comportamentos.padrao, 39000, 26000);
         this.absorcao = new TiposElementais[]{TiposElementais.Escuridao};
         this.resistencias = new TiposElementais[]{TiposElementais.Gelo, TiposElementais.Vento};
         this.fraquezas = new TiposElementais[]{TiposElementais.Luz,TiposElementais.Fogo};

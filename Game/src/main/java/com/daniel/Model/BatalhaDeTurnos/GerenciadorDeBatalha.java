@@ -22,7 +22,7 @@ public class GerenciadorDeBatalha {
 
     public TipoBatalha tipoBatalha;
     public PersonagemLuta player, inimigo;
-    BattleController controller;
+    public BattleController controller;
     Comportamento comp;
     States estado;
 
@@ -80,8 +80,8 @@ public class GerenciadorDeBatalha {
                 turnoInimigo();
             } else {
                 this.controller.ShowProgressBar(true);
-                this.pBar += (double) this.player.getVelocidade() / 100;
-                this.iBar += (double) this.inimigo.getVelocidade() / 100;
+                this.pBar += (double) this.player.getVelocidade() / 1000;
+                this.iBar += (double) this.inimigo.getVelocidade() / 1000;
                 this.controller.SetPlyerBar(pBar);
                 Timeline timeline = new Timeline();
                 timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.1), event -> {
@@ -121,7 +121,7 @@ public class GerenciadorDeBatalha {
             System.out.println("Turno player");
         }
     }
-    public void turnoInimigo() throws IOException{
+    public void turnoInimigo() throws IOException, PlayerInexistenteException {
         estado = States.turnoInimigo;
         ArrayList<TextoNode> mensagem = new ArrayList<>();
         if(this.inimigo.envenenado){
@@ -168,16 +168,24 @@ public class GerenciadorDeBatalha {
         this.controller.EsconderInterfacePlayer();
         Random rand = new Random();
         double taxaAcerto = 1/(1+Math.exp(-0.01*(atacante.getVelocidade() + (0.25*(atacante.sorte+5-alvo.sorte)) - alvo.getVelocidade())));
-        double taxaCritico = 1/(1+Math.exp(-0.1*(atacante.getVelocidade() + (0.25*(atacante.sorte+5-alvo.sorte)) - alvo.getVelocidade())));
+        double taxaCritico = 1/(1+Math.exp(-0.005*(atacante.getVelocidade() + (0.25*(atacante.sorte+5-alvo.sorte)) - alvo.getVelocidade())));
         System.out.println("Taxa de acerto: " + taxaAcerto + "/nPlayer: " + this.player.getVelocidade() + "/nInimigo: " + this.inimigo.getVelocidade());
         if(atacante.cegado){
             taxaAcerto /= 2;
         }
         if(taxaAcerto < 0.2){
-            taxaAcerto = 0.2;
+            if(atacante.cegado) {
+                taxaAcerto = 0.2;
+            }
+            else{
+                taxaAcerto = 0.65;
+            }
         }
         else if(taxaAcerto > 0.95){
             taxaAcerto = 0.95;
+        }
+        if(taxaCritico>0.3){
+            taxaCritico = 0.3;
         }
         System.out.println("Taxa de acerto: " + taxaAcerto);
         if(!(taxaAcerto > rand.nextDouble(0,1))){
@@ -243,11 +251,12 @@ public class GerenciadorDeBatalha {
             }
         }
     }
-    public void fugir(boolean conseguiu) throws IOException {
+    public void fugir(boolean conseguiu) throws IOException, PlayerInexistenteException {
         ArrayList<TextoNode> i = new ArrayList<TextoNode>();
         if(this.tipoBatalha.escapavel) {
             if (conseguiu) {
                 int quem;
+                Player.getPlayer().AtualizarStatus(this.player.getCurrentHp(), this.player.getCurrentMp());
                 if(estado==States.turnoPlayer){
                     quem = 1;
                 }
@@ -275,6 +284,7 @@ public class GerenciadorDeBatalha {
                 this.tipoBatalha.Vitoria();
                 if(!this.tipoBatalha.finalizado){
                     this.inimigo = new PersonagemLuta(this.tipoBatalha.inimigo);
+                    this.controller.PrepararInimigo(this.tipoBatalha.inimigo);
                     this.iBar = 0;
                     VerificarTurno();
                 }

@@ -20,8 +20,8 @@ public class InimigoSereia1 extends Inimigo {
         this.fraquezas = new TiposElementais[]{TiposElementais.Eletrico};
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
         this.magias.add(new Splash());
-        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.005);
-        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.01);
+        this.lootTable.AdicionarEntrada(new FragIntM(), 0, 1, 0.05);
+        this.lootTable.AdicionarEntrada(new FragInt(), 0, 2, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMpGrande(), 0, 1, 0.1);
         this.lootTable.AdicionarEntrada(new PocaoMp(), 0, 1, 0.3);
     }

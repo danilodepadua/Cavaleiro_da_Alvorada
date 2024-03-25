@@ -18,9 +18,13 @@ public class TextosInterface {
     private static final TextoNode Desquipar = new TextoNode("Desquipar", "Unequip");
     private static final TextoNode Usar = new TextoNode("Usar", "Use");
     private static final TextoNode AtqM = new TextoNode("Ataque mágico", "Magic attack");
+    private static final TextoNode AtqMAbrev = new TextoNode("Atq. M.", "Atk. M.");
     private static final TextoNode AtqF = new TextoNode("Ataque físico", "Physical attack");
+    private static final TextoNode AtqFAbrev = new TextoNode("Atq. F.", "Atk. P.");
     private static final TextoNode DefM = new TextoNode("Defesa mágica", "Magic defense");
+    private static final TextoNode DefMAbrev = new TextoNode("Def. M.", "Def. M.");
     private static final TextoNode DefF = new TextoNode("Defesa física", "Physical Defense");
+    private static final TextoNode DefFAbrev = new TextoNode("Def. F.", "Def. P.");
     private static final TextoNode Cabeca = new TextoNode("Cabeça", "Head");
     private static final TextoNode Corpo = new TextoNode("Corpo", "Body");
     private static final TextoNode Pernas = new TextoNode("Pernas", "Legs");
@@ -59,6 +63,8 @@ public class TextosInterface {
     private static final TextoNode Prob = new TextoNode("Probabilidade de sucesso:", "Chance of Success:");
     private static final TextoNode Forjar = new TextoNode("Forjar", "Forge");
     private static final TextoNode Forja = new TextoNode("Forja", "Forge");
+    private static final TextoNode Aposta = new TextoNode("Aposta", "Bet");
+    private static final TextoNode Rodade = new TextoNode("Rodada", "Round");
 
     //Conficurações
     private static final TextoNode Config = new TextoNode("Configurações", "Settings");
@@ -365,6 +371,30 @@ public class TextosInterface {
 
     public static String getRecuperar() {
         return Recuperar.getTexto();
+    }
+
+    public static String getAtqFAbrev() {
+        return AtqFAbrev.getTexto();
+    }
+
+    public static String getAtqMAbrev() {
+        return AtqMAbrev.getTexto();
+    }
+
+    public static String getDefFAbrev() {
+        return DefFAbrev.getTexto();
+    }
+
+    public static String getDefMAbrev() {
+        return DefMAbrev.getTexto();
+    }
+
+    public static String getAposta() {
+        return Aposta.getTexto();
+    }
+
+    public static String getRodade() {
+        return Rodade.getTexto();
     }
 }
 

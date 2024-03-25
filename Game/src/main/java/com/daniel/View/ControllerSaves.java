@@ -59,6 +59,7 @@ public class ControllerSaves implements Initializable {
             for(Cidade c : saveSelecionado.getPlayer().getCidadesConehcidas()){
                 c.ajustarBotoes();
             }
+            Main.setSaveAtual(saveNum);
             Player.setPlayer(saveSelecionado.getPlayer());
             saveSelecionado.getCidade().ajustarBotoes();
             Main.cidadeAtual = saveSelecionado.getCidade();

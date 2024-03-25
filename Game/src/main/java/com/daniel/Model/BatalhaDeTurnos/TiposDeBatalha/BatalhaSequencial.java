@@ -1,5 +1,6 @@
 package com.daniel.Model.BatalhaDeTurnos.TiposDeBatalha;
 
+import com.daniel.Model.BatalhaDeTurnos.GerenciadorDeBatalha;
 import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 public class BatalhaSequencial extends TipoBatalha {
     ArrayList<Inimigo> sequenciaInimigos;
     int pos = 0;
-    BattleController bc;
-    public BatalhaSequencial(ArrayList<Inimigo> inimigos, BattleController bc){
+    GerenciadorDeBatalha bc;
+    public BatalhaSequencial(ArrayList<Inimigo> inimigos, GerenciadorDeBatalha bc){
         sequenciaInimigos = inimigos;
         this.bc = bc;
     }
@@ -31,7 +32,9 @@ public class BatalhaSequencial extends TipoBatalha {
         pos++;
         if(pos<sequenciaInimigos.size()){
             System.out.println("Nova batalha em sequência");
-            bc.ShowMensage(new TextoNode("Um novo inimigo apareceu","A new enemy appeared"));
+            ArrayList<TextoNode> msgn= new ArrayList<>();
+            msgn.add(new TextoNode("Um novo inimigo apareceu","A new enemy appeared"));
+            bc.controller.mostrarResultado(msgn);
         }
         else{
             this.finalizado = true;

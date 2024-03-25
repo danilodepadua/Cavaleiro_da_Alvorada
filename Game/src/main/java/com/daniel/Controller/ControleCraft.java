@@ -3,6 +3,9 @@ package com.daniel.Controller;
 import com.daniel.Model.Itens.Armas.*;
 import com.daniel.Model.Itens.Item;
 import com.daniel.Model.Itens.Minerios.*;
+import com.daniel.Model.Itens.Minerios.FragM.*;
+import com.daniel.Model.Itens.Minerios.FragP.*;
+import com.daniel.Model.Itens.Minerios.Joias.*;
 import com.daniel.Model.Itens.Pocoes.PocaoCura;
 import com.daniel.Model.Itens.Pocoes.PocaoCuraGrande;
 import com.daniel.Model.Itens.Pocoes.PocaoMp;
@@ -21,6 +24,106 @@ public class ControleCraft  {
         return null;
     }
 
+    public Item criarFragSorte(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragSorte && item2 instanceof FragSorte) { //depois verifica se participam da condiçao específica do craft
+                FragSorteM barraFerro = new FragSorteM();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarFragForce(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragForce && item2 instanceof FragForce) { //depois verifica se participam da condiçao específica do craft
+                FragForceM barraFerro = new FragForceM();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarFragRes(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragRes && item2 instanceof FragRes) { //depois verifica se participam da condiçao específica do craft
+                FragResM barraFerro = new FragResM();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarFragInt(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragInt && item2 instanceof FragInt) { //depois verifica se participam da condiçao específica do craft
+                FragIntM barraFerro = new FragIntM();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarFragVel(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragVel && item2 instanceof FragVel) { //depois verifica se participam da condiçao específica do craft
+                FragVelM barraFerro = new FragVelM();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarJoiaSorte(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragSorteM && item2 instanceof FragSorteM) { //depois verifica se participam da condiçao específica do craft
+                JoiaSorte barraFerro = new JoiaSorte();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarJoiaForce(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragForceM && item2 instanceof FragForceM) { //depois verifica se participam da condiçao específica do craft
+                JoiaForce barraFerro = new JoiaForce();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarJoiaRes(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragResM && item2 instanceof FragResM) { //depois verifica se participam da condiçao específica do craft
+                JoiaRes barraFerro = new JoiaRes();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarJoiaInt(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragIntM && item2 instanceof FragIntM) { //depois verifica se participam da condiçao específica do craft
+                JoiaInt barraFerro = new JoiaInt();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
+    public Item criarJoiaVel(Item item, Item item2, double chance) {
+        if (item != null && item2 != null) { //Verifica se nao é nulo
+            if (item instanceof FragVelM && item2 instanceof FragVelM) { //depois verifica se participam da condiçao específica do craft
+                JoiaVel barraFerro = new JoiaVel();
+                this.chanceBase = chance;
+                return barraFerro;
+            }
+        }
+        return null;
+    }
     public  Item criarPocaoVidaGrande(Item item, Item item2, double chance) {
         if (item != null && item2 != null) {
             if (item instanceof PocaoCura && item2 instanceof PocaoCura) {

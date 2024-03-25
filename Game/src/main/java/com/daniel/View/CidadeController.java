@@ -1,7 +1,6 @@
 package com.daniel.View;
 
 import com.daniel.Controller.JogoFachada;
-import com.daniel.Model.AudioPlayer;
 import com.daniel.Model.Dados.Entidades.Player;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.game.Main;
@@ -38,10 +37,6 @@ public class CidadeController implements Initializable {
 
     @FXML
     private Button btnCraft;
-
-    @FXML
-    private Button btnInventario;
-
 
     @FXML
     private Button btnStatus;
@@ -147,7 +142,6 @@ public class CidadeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         identificarTextos(Screen);
-        controladorMusica = new AudioPlayer();
         if(Main.cidadeAtual.getMusicPath() != null){
             JogoFachada.getInstance().getAudioPlayer().PlayLoop(Main.cidadeAtual.getMusicPath());
         }
@@ -196,7 +190,6 @@ public class CidadeController implements Initializable {
 
         definirBackground(Screen, Main.cidadeAtual.getCaminhoImagem());
         configurarBotoes(btnStatus);
-        configurarBotoes(btnInventario);
         configurarBotoes(btnConfig);
         configurarBotoes(btnCraft);
         // Configurar os estilos para os Labels de informações

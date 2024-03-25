@@ -13,7 +13,7 @@ import com.daniel.Model.Magias.TiposElementais;
 
 public class BossDesapolis extends Inimigo {
     public BossDesapolis() {
-        super("Yggdrasil", "/com.daniel.Images/Inimigos/Boss Dryad Yggdrasil.png", 16, 37, 27, 22, 32, 27,12000, 3000, TiposElementais.NaoElemental, Comportamentos.BossFloresta, 18000, 12000);
+        super("Yggdrasil", "/com.daniel.Images/Inimigos/Boss Dryad Yggdrasil.png", 16, 37, 27, 22, 32, 27,12000, 3000, TiposElementais.NaoElemental, Comportamentos.padrao, 18000, 12000);
         this.absorcao = new TiposElementais[]{TiposElementais.Agua};
         this.resistencias = new TiposElementais[]{TiposElementais.Terra, TiposElementais.Vento};
         this.fraquezas = new TiposElementais[]{TiposElementais.Fogo};

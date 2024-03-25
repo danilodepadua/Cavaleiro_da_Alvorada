@@ -1,7 +1,10 @@
 package com.daniel.Model.Dados.Cidades.Vilas;
 
 import com.daniel.Model.Dados.Cidades.Cidade;
+import com.daniel.Model.Dados.Entidades.Inimigos.Bosses.BossMonteClaro;
 import com.daniel.Model.Dados.Entidades.Inimigos.CidadePortuaria.InimigoLadrao;
+import com.daniel.Model.Dados.Entidades.Inimigos.MonteClaro.*;
+import com.daniel.Model.Dados.Textos.TextoNode;
 import com.daniel.Model.Exceptions.PlayerInexistenteException;
 import com.daniel.Model.Dados.Entidades.Inimigos.Inimigo;
 import com.daniel.Model.Itens.Armaduras.Calcas.CalcaMalha;
@@ -19,10 +22,10 @@ import java.util.ArrayList;
 public class MonteClaro extends Cidade {
     public MonteClaro() throws PlayerInexistenteException {
         super("MONTE CLARO", "/com.daniel.Images/Fundos/FundoCanyon.jpg",
-                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",500);
+                "/com.daniel.Images/Fundos/FundoBatalhaBosque.jpg",500, new BossMonteClaro());
         this.musicPath = "/com.daniel.audios/msc_monteClaro.wav";
 
-        this.inimigos = new Inimigo[]{new InimigoLadrao()};
+        this.inimigos = new Inimigo[]{new InimigoTigerMan(), new InimigoChimera(), new InimigoTouroDragao(), new InimigoTRex(), new InimigoWereBear(), new InimigoUrso(), new InimigoSlimeDeTerraNv3(), new InimigoSlimeDeLuzNv3(), new InimigoHarpia(), new InimigoCorvoGigante(), new InimigoDragao(), new InimigoFetero(), new InimigoGrifo(), new InimigoLobo(), new InimigoMinhocaTerra()};
 
         // Adiciona os itens da loja
         this.itens.add(new EspadaEletricaBasica());
@@ -34,14 +37,10 @@ public class MonteClaro extends Cidade {
         this.itens.add(new PeitoralMalha());
         this.itens.add(new CalcaMalha());
         this.itens.add(new MapaPortuaria());
-        this.quests.add(new QuestSlimeDeFogoNv2());
-        this.quests.add(new QuestSlimeDeAguaNv2());
-        this.quests.add(new QuestSlimeDeGeloNv2());
-        this.quests.add(new QuestSlimeDeLuzNv2());
-        this.quests.add(new QuestSlimeDeVentoNv2());
 
         this.dialogoAtivo = true;
-        this.dialogoCutscene = "Você se aproxima de uma antiga cidade seca e montanhosa conhecida desde de a antiguidade, com um povo forte e sobrevivente";
+        this.dialogoCutscene = new TextoNode(
+        "Você se aproxima de uma antiga cidade seca e montanhosa conhecida desde de a antiguidade, com um povo forte e sobrevivente","You approach an ancient dry and mountainous city known since antiquity, with a strong and surviving people").getTexto();
         ajustarBotoes();
     }
 
@@ -53,6 +52,7 @@ public class MonteClaro extends Cidade {
         this.botoes.add(criarBotaoCacar());
         this.botoes.add(criarBotaoLoja());
         this.botoes.add(criarBotaoQuest());
+        this.botoes.add(criarBotaoEstalagem());
         this.botoes.add(criarBotaoSalvar());
     }
 }
